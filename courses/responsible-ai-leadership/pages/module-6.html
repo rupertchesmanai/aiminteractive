@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 6 — Embedding AI Guardrails | Responsible AI Leadership</title>
+<meta name="description" content="The Guardrail Designer — classify data risk, match the four guardrail types, and redesign guardrails that work in real workflows. Module 6." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .daytag{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#141414;background:var(--teal-light);padding:4px 10px;margin-bottom:6px}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:62ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .keyline{margin-top:24px;border-left:4px solid var(--teal-light);padding:4px 0 4px 16px;max-width:52ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:16.5px;color:#fff}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+
+  /* poll */
+  .poll{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+  @media(max-width:620px){.poll{grid-template-columns:1fr}}
+  .pollopt{border:1px solid var(--line);background:#fff;padding:15px 18px;cursor:pointer;transition:.15s}
+  .pollopt:hover{border-color:var(--teal)}
+  .pollopt.on{background:var(--cream-alt);box-shadow:inset 4px 0 0 var(--coral)}
+  .pollopt .k{font-family:var(--head);font-weight:700;color:var(--coral);font-size:13px}
+  .pollopt .t{font-size:14px;color:var(--ink);margin-top:3px}
+
+  /* data classifier */
+  .ditem{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;border:1px solid var(--line);background:#fff;padding:11px 16px;margin-bottom:7px}
+  @media(max-width:680px){.ditem{grid-template-columns:1fr}}
+  .ditem .dn{font-size:13.5px;color:var(--ink)}
+  .ditem.trap.revealed .dn::after{content:" ⚠ high-risk — often misclassified";color:var(--coral-dark);font-size:11.5px;font-weight:600}
+  .rseg{display:flex;gap:4px;flex-wrap:wrap}
+  .rseg button{font-family:var(--head);font-weight:600;font-size:11px;border:1px solid var(--line);background:var(--cream-alt);padding:5px 9px;cursor:pointer}
+  .rseg button.on[data-r="1"]{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .rseg button.on[data-r="2"]{background:#3E8E84;color:#fff;border-color:#3E8E84}
+  .rseg button.on[data-r="3"]{background:#C98A1E;color:#fff;border-color:#C98A1E}
+  .rseg button.on[data-r="4"]{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .permit{font-size:11.5px;color:var(--teal-ink);margin-top:4px;min-height:14px;font-style:italic}
+  .weakguards{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .wg{background:#1c1c1c;color:#fff;padding:8px 13px;font-size:12.5px;font-family:var(--head);font-weight:600;text-decoration:line-through;opacity:.7}
+
+  /* four types matcher */
+  .types{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+  @media(max-width:760px){.types{grid-template-columns:1fr 1fr}}
+  .gtype{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:16px 18px}
+  .gtype h4{font-size:15px;margin-bottom:5px}
+  .gtype .p{font-size:12px;color:var(--grey);margin-bottom:8px}
+  .gtype .ex{font-size:11.5px;color:var(--teal-ink);background:var(--cream-alt);padding:7px 10px}
+  .gtype.t2{border-top-color:#3E8E84} .gtype.t3{border-top-color:#C98A1E} .gtype.t4{border-top-color:var(--coral)}
+  .matcher{margin-top:20px;border:1px solid var(--line);background:#fff;padding:20px 22px}
+  .matcher .sc{font-size:16px;color:var(--ink);margin-bottom:12px;min-height:24px}
+  .matcher .sc b{font-family:var(--head)}
+  .mopts{display:flex;gap:8px;flex-wrap:wrap}
+  .mopts button{font-family:var(--head);font-weight:600;font-size:13px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 15px;cursor:pointer}
+  .mfb{margin-top:12px;font-size:13.5px;padding:11px 14px;display:none}
+  .mfb.show{display:block}
+  .mfb.right{background:rgba(0,141,128,.1);border-left:4px solid var(--teal-dark);color:var(--teal-ink)}
+  .mfb.wrong{background:rgba(220,90,70,.1);border-left:4px solid var(--coral);color:var(--coral-dark)}
+  .mprog{font-size:12px;color:var(--muted);margin-top:10px}
+
+  /* guardrail designer */
+  .breakmap{display:flex;gap:0;margin-top:6px;overflow-x:auto}
+  .bm{flex:1;min-width:135px;border:1px solid var(--line);background:#fff;padding:12px 13px;cursor:pointer;position:relative;font-size:12.5px}
+  .bm:not(:last-child){border-right:0}
+  .bm:hover{background:var(--cream-alt)}
+  .bm.on{background:var(--cream-alt);box-shadow:inset 0 4px 0 var(--coral)}
+  .bm .s{font-family:var(--head);font-weight:600;font-size:13px;color:var(--ink)}
+  .bm .ar{position:absolute;right:-8px;top:50%;transform:translateY(-50%);z-index:2;color:var(--muted)}
+  .bmbody{margin-top:14px;background:var(--cream-alt);border-left:4px solid var(--coral);padding:14px 18px;font-size:13.5px;min-height:50px}
+  .designer{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:22px;align-items:start}
+  @media(max-width:980px){.designer{grid-template-columns:1fr}}
+  .typepick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .typepick button{font-family:var(--head);font-weight:600;font-size:13px;border:1px solid var(--line);background:#fff;padding:9px 14px;cursor:pointer}
+  .typepick button.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .scaffold{display:flex;flex-direction:column;gap:10px}
+  .scaffold .lead2{font-size:13px;color:var(--grey)}
+  .scaffold input{width:100%;font-family:var(--body);font-size:14px;border:1px solid var(--line);background:var(--cream-alt);padding:10px 12px}
+  .scaffold input:focus{outline:2px solid var(--teal);background:#fff}
+  .designout{position:sticky;top:118px;background:var(--teal);color:#fff;padding:22px}
+  .designout::before{content:"";position:absolute;top:14px;right:16px;width:22px;height:2px;background:rgba(255,255,255,.6)}
+  .designout .ttl{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.9;margin-bottom:10px}
+  .designout .typebadge{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 9px;margin-bottom:12px}
+  .designout .grd{font-family:var(--head);font-weight:500;font-size:16px;line-height:1.5}
+  .designout .grd b{font-weight:700;border-bottom:2px solid rgba(255,255,255,.5)}
+
+  /* overlay table */
+  .overlay{width:100%;border-collapse:collapse;margin-top:6px}
+  .overlay th,.overlay td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  .overlay th{background:var(--teal);color:#fff;font-family:var(--head);font-weight:600;font-size:12px}
+  .overlay td input{width:100%;border:1px solid var(--line);background:var(--cream-alt);padding:7px 9px;font-family:var(--body);font-size:12.5px}
+  .overlay td input:focus{outline:2px solid var(--teal);background:#fff}
+  .miniseg{display:flex;gap:3px}
+  .miniseg button{font-family:var(--head);font-weight:600;font-size:10.5px;border:1px solid var(--line);background:var(--cream-alt);padding:4px 7px;cursor:pointer}
+  .miniseg button.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .miniseg.risk button.on[data-v="L"]{background:var(--teal-dark)} .miniseg.risk button.on[data-v="M"]{background:#C98A1E;border-color:#C98A1E} .miniseg.risk button.on[data-v="H"]{background:var(--coral);border-color:var(--coral)}
+
+  /* risk logic */
+  .risklogic{width:100%;border-collapse:collapse;margin-top:6px}
+  .risklogic th,.risklogic td{border:1px solid var(--line);padding:11px 14px;text-align:left;font-size:13px;vertical-align:top}
+  .risklogic th{background:var(--cream-alt);font-family:var(--head);font-weight:600}
+  .risklogic td:first-child{font-family:var(--head);font-weight:700;width:90px}
+  .risklogic tr.low td:first-child{color:var(--teal-dark)} .risklogic tr.med td:first-child{color:#C98A1E} .risklogic tr.high td:first-child{color:var(--coral-dark)}
+
+  /* pause triggers */
+  .triggers{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .trig{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:#fff;padding:13px 16px;cursor:pointer}
+  .trig:hover{border-color:var(--coral)}
+  .trig.on{box-shadow:inset 4px 0 0 var(--coral);background:#fff}
+  .trig .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;margin-top:1px}
+  .trig.on .bx{background:var(--coral);border-color:var(--coral)}
+  .trig .n{font-family:var(--head);font-weight:700;color:var(--coral);flex:0 0 20px}
+  .trig .tx{font-size:13.5px;color:var(--ink)}
+  .trig .tx b{font-family:var(--head)}
+
+  .tradeoffs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  @media(max-width:720px){.tradeoffs{grid-template-columns:1fr}}
+  .to{border:1px solid var(--line);padding:15px 17px;background:#fff;font-size:13px}
+  .to b{font-family:var(--head);color:var(--teal-dark)}
+
+  .designer-close{background:#1c1c1c;color:#fff;padding:26px 28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .designer-close .big{font-family:var(--head);font-weight:600;font-size:20px;flex:1;min-width:260px}
+  .designer-close .shift{display:flex;align-items:center;gap:12px}
+  .designer-close .from{color:#9a958d;text-decoration:line-through;font-size:15px}
+  .designer-close .to2{font-family:var(--head);font-weight:700;font-size:17px;color:var(--teal-light)}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:13.5px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-6">
+
+<!-- CHROME -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mhero">
+    <div class="hero-media"><video autoplay muted loop playsinline preload="metadata" poster="../assets/media/pics/runway-blue-hour.jpg"><source src="../assets/media/mp4/runway-blue-hour.mp4" type="video/mp4"></video></div>
+  <div class="wrap inner">
+    <span class="daytag">Day 2</span>
+    <div class="eyebrow">Module 6</div>
+    <h1>Embedding AI Guardrails</h1>
+    <p class="lead">Module 5 was judgement quality. This is system design: how responsible AI use becomes repeatable when you’re not in the room. Guardrails aren’t policy statements or generic reminders to “use AI responsibly” — they’re the practical boundaries, review points and escalation expectations that let teams apply judgement consistently in real work.</p>
+    <div class="keyline"><span>AI risk doesn’t sit in the tool. It accumulates in the workflow — so guardrails must sit there too.</span></div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Diagnose why vague guardrails fail before designing new ones</span></div>
+      <div><span class="d">→</span><span>Choose the right guardrail type for the risk and the moment</span></div>
+      <div><span class="d">→</span><span>Place guardrails where AI influences judgement in a workflow</span></div>
+      <div><span class="d">→</span><span>Make the trade-off in every guardrail explicit</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Guardrail Designer</div>
+  </div>
+</section>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#reality">When Rules Meet Reality</a>
+    <a href="#stress">Stress-Test</a>
+    <a href="#types">The Four Types</a>
+    <a href="#designer">The Designer</a>
+    <a href="#risk">Risk Logic</a>
+    <a href="#redline">Red Lines</a>
+  </div>
+</div>
+
+<!-- INTRO + RAIL -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">From gatekeeper to system designer</h2>
+        <p class="section-lead">Most AI use doesn’t happen in ideal conditions. It happens under time pressure, in incomplete situations, inside workflows where people are trying to move quickly. If expectations are vague, people fill the gap themselves. If controls are too broad or too restrictive, people work around them. Either way, risk gets harder to see.</p>
+        <p>So the leadership task isn’t to block everything or approve everything personally. It’s to translate policy intent into guardrails that are usable, visible and proportionate to risk — so good judgement happens even when you’re not present.</p>
+        <div class="note teal"><b>The reframe:</b> guardrails are how leadership intent becomes real in everyday work. The question is not “do we have rules?” — it’s “do they work under pressure?”</div>
+      </div>
+      <div>
+        <div class="rail">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>What effective guardrails do</li>
+              <li>The four types of guardrails</li>
+              <li>A simple risk-to-guardrail logic</li>
+              <li>Red-line boundary heuristics</li>
+              <li>A note on trade-offs</li>
+              <li>What this means for how you lead</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>When Rules Meet Reality</li>
+              <li>Stress-test weak guardrails</li>
+              <li>Guardrail redesign (4 types)</li>
+              <li>The pause check I actually use</li>
+              <li>Workflow guardrail design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN RULES MEET REALITY -->
+<section class="band white" id="reality">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">When rules meet reality</span></div>
+    <h2 class="section">Guardrails have a reputation problem</h2>
+    <p class="section-lead">Think about the AI or data guardrails in your organisation. Which feels most familiar in practice?</p>
+    <div class="poll" id="poll" style="margin-top:18px"></div>
+    <div class="note teal" style="margin-top:18px"><b>OECD 2025 (200+ real AI deployments):</b> organisations that embedded governance early — in planning and design, not after deployment — moved <i>faster</i>, not slower. When teams understand the framework they’re working within, they innovate inside it without seeking permission at every step. <b>Well-designed guardrails enable responsible speed</b> — they don’t lack rules, they lack usable guidance in real workflows.</div>
+  </div>
+</section>
+
+<!-- STRESS TEST: DATA CLASSIFIER -->
+<section class="band tint" id="stress">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Stress-test weak guardrails</span></div>
+    <h2 class="section">The board-briefing stress test</h2>
+    <p class="section-lead">You’re preparing a 5-slide board briefing on expanding AI in customer operations — a decision that influences budget and regulatory exposure. Time is tight; without AI you can’t finish. The only guardrails you’ve been given are the four below. Classify each data source by risk, and watch a binary rule like “don’t input confidential information” fall apart.</p>
+
+    <div class="weakguards">
+      <span class="wg">“Use AI responsibly”</span>
+      <span class="wg">“Do not input confidential information”</span>
+      <span class="wg">“Only approved tools may be used”</span>
+      <span class="wg">“Outputs must be checked”</span>
+    </div>
+
+    <div class="dash" style="margin-top:18px">
+      <div class="dhead"><div class="ic">▦</div><div><h3>Classify the data — what AI use does each allow?</h3><div class="sub">Pick a risk level; the permitted AI use updates. Then reveal which sources are commonly misclassified.</div></div></div>
+      <div class="pad" style="padding:20px 24px">
+        <div id="dataItems"></div>
+        <button class="btn ghost" id="revealRisk" style="margin-top:8px">Reveal high-risk sources</button>
+        <div class="note" style="margin-top:16px"><b>Where the guardrails fail:</b> “Don’t input confidential information” is binary, but the reality is <i>graduated</i> — public data can be summarised freely, sensitive or re-identifiable data needs human abstraction first, and unclear-provenance data should only test framing, not conclusions. The weak rules give a team member under time pressure no usable answer at the moment of decision.</div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:18px">
+      <h3>Your decision — and the debrief</h3>
+      <div class="hint">From the workbook activity. Saves to your Leadership Plan.</div>
+      <div class="field"><label for="st1">Would you use AI for this board briefing — and for what?</label><textarea id="st1" rows="2" data-capture="m6.stress.useai"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="st2">What would you check?</label><textarea id="st2" rows="2" data-capture="m6.stress.check"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="st3">What would you avoid?</label><textarea id="st3" rows="2" data-capture="m6.stress.avoid"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="st4">Debrief — where did the guardrails fail?</label><textarea id="st4" rows="2" data-capture="m6.stress.failed"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="st5">What drove your decision?</label><textarea id="st5" rows="2" data-capture="m6.stress.drove"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR TYPES -->
+<section class="band white" id="types">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Toolkit</span></div>
+    <h2 class="section">The four types of guardrails</h2>
+    <p class="section-lead">Guardrails aren’t interchangeable. Treating them as the same leads to blanket rules or unclear expectations. There are four types — and selecting the right one is a leadership decision, not a framework to memorise.</p>
+    <div class="types">
+      <div class="gtype"><h4>Guidance</h4><div class="p">Supports judgement where risk is low. No mandated action.</div><div class="ex">“Use AI to draft, not decide.”</div></div>
+      <div class="gtype t2"><h4>Controls</h4><div class="p">Requires a specific step — a mandatory review or sign-off in the workflow.</div><div class="ex">“Human review before customer-facing content is sent.”</div></div>
+      <div class="gtype t3"><h4>Escalation triggers</h4><div class="p">Specify when a decision moves to higher oversight.</div><div class="ex">“If a customer commitment is included, escalate to approvals.”</div></div>
+      <div class="gtype t4"><h4>Prohibitions</h4><div class="p">Block AI use entirely where risk or ethics demand it.</div><div class="ex">“AI must not autonomously send external communications.”</div></div>
+    </div>
+
+    <div class="matcher">
+      <div style="font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Match the type — which guardrail fits?</div>
+      <div class="sc" id="matchScenario"></div>
+      <div class="mopts">
+        <button data-t="Guidance">Guidance</button>
+        <button data-t="Controls">Controls</button>
+        <button data-t="Escalation">Escalation</button>
+        <button data-t="Prohibition">Prohibition</button>
+      </div>
+      <div class="mfb" id="matchFb"></div>
+      <div class="mprog" id="matchProg"></div>
+    </div>
+    <div class="note" style="margin-top:18px"><b>The discipline:</b> don’t default to prohibition because it feels safest, or guidance because it’s least disruptive. Match the type to the actual risk, the workflow context, and the capability of the people applying it.</div>
+  </div>
+</section>
+
+<!-- THE DESIGNER -->
+<section class="band tint" id="designer">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">Diagnose, then redesign</span></div>
+    <h2 class="section">The Guardrail Designer</h2>
+    <p class="section-lead">A good guardrail tells someone exactly what to do at a specific moment in a workflow. First find where the weak guardrail breaks; then redesign it as the right type using the scaffold — and watch the usable guardrail assemble.</p>
+
+    <h3 style="font-family:var(--head);font-size:17px;margin:24px 0 4px;color:var(--ink)">1 · Where does the guardrail break?</h3>
+    <p class="section-lead" style="margin-bottom:12px">Click a workflow moment to see what to notice — and what kind of guardrail it needs.</p>
+    <div class="breakmap" id="breakmap"></div>
+    <div class="bmbody" id="bmBody"></div>
+    <div class="capture" style="margin-top:14px">
+      <div class="hint">Diagnose before you redesign — these save to your Leadership Plan.</div>
+      <div class="field"><label for="rd1">Identify the workflow moment where the original guardrail breaks down most clearly. Why does it fail there?</label><textarea id="rd1" rows="2" data-capture="m6.redesign.where"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="rd2">At that workflow moment, what should have been noticed?</label><textarea id="rd2" rows="2" data-capture="m6.redesign.noticed"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="rd3">What kind of guardrail is needed at that point in the workflow?</label><textarea id="rd3" rows="2" data-capture="m6.redesign.type"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+
+    <h3 style="font-family:var(--head);font-size:17px;margin:28px 0 4px;color:var(--ink)">2 · Redesign it with the right type</h3>
+    <div class="designer">
+      <div>
+        <div class="typepick" id="typepick">
+          <button data-t="Guidance" class="on">Guidance</button>
+          <button data-t="Controls">Control</button>
+          <button data-t="Escalation">Escalation</button>
+          <button data-t="Prohibition">Prohibition</button>
+        </div>
+        <div class="scaffold" id="scaffold"></div>
+      </div>
+      <div class="designout" id="designout">
+        <div class="ttl">Your designed guardrail</div>
+        <div class="typebadge" id="dBadge">Guidance</div>
+        <div class="grd" id="dGrd"></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--head);font-size:17px;margin:30px 0 4px;color:var(--ink)">3 · Overlay it on your own workflow</h3>
+    <p class="section-lead" style="margin-bottom:12px">Return to one workflow where AI is active or likely to become active. For each point AI enters, set the risk tier, the guardrail type, and who owns the judgement. Focus on hand-over and sign-off points.</p>
+    <div style="overflow-x:auto">
+      <table class="overlay" id="overlay">
+        <thead><tr><th style="width:22%">Workflow step</th><th style="width:24%">AI role here</th><th style="width:14%">Risk tier</th><th style="width:18%">Guardrail type</th><th style="width:22%">Who owns the judgement</th></tr></thead>
+        <tbody id="overlayBody"></tbody>
+      </table>
+    </div>
+    <div class="capture" style="margin-top:16px">
+      <div class="field"><label for="tradeoff">What trade-off have you made in this design?<span class="q">e.g. the speed you’ve accepted less of, or the risk you’ve consciously held rather than transferred.</span></label><textarea id="tradeoff" rows="2" data-capture="m6.tradeoff"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK LOGIC -->
+<section class="band white" id="risk">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Reference</span><span class="tag ghost">Risk-to-guardrail logic</span></div>
+    <h2 class="section">Match the guardrail to the consequence</h2>
+    <p class="section-lead">A simple design principle: the more is at stake, the further the guardrail moves from guidance toward control, escalation and prohibition.</p>
+    <table class="risklogic">
+      <thead><tr><th>Risk</th><th>Typical examples</th><th>AI use</th><th>Guardrail type</th></tr></thead>
+      <tbody>
+        <tr class="low"><td>Low</td><td>Drafting internal comms, summarising notes, generating ideas for review.</td><td>Experimentation encouraged; oversight light; mistakes recoverable.</td><td>Guidance · light review · clear ownership</td></tr>
+        <tr class="med"><td>Medium</td><td>Analysing data to inform decisions, customer-facing content, supporting performance reviews.</td><td>Permitted with defined oversight; outputs validated before acting.</td><td>Defined controls · review points · clear ownership</td></tr>
+        <tr class="high"><td>High</td><td>Decisions affecting employment, high-stakes client recommendations, regulatory submissions, M&amp;A.</td><td>Requires formal approval — or isn’t acceptable without explicit controls.</td><td>Escalation triggers · formal sign-off · prohibitions where needed</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:18px"><b>Agentic AI is a different category.</b> Most AI today <i>informs</i> decisions. Agentic AI <i>acts</i> — it can send, approve, pay, or change something with no human step in between. The practical message: <b>if it can click, send, approve, pay or change something, it must be visible, registered and overseen.</b> Make your position on this explicit now — before a team member decides for you by assuming silence was permission.</div>
+  </div>
+</section>
+
+<!-- RED LINES -->
+<section class="band tint" id="redline">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">The pause check I actually use</span></div>
+    <h2 class="section">Red-line boundary heuristics</h2>
+    <p class="section-lead">Your job isn’t to assess everything — it’s to notice when something deserves a pause. Five situations should always interrupt momentum, even when the tool looks capable and the pressure is on. Run a real AI use in your area against them — fast scan, not a risk assessment.</p>
+    <div class="triggers" id="triggers" style="margin-top:18px"></div>
+    <div class="capture" style="margin-top:18px">
+      <div class="field"><label for="pause">For the trigger you ticked — what would “pause” actually mean in practice?<span class="q">e.g. stop, redesign, escalate, require sign-off.</span></label><textarea id="pause" rows="2" data-capture="m6.pause"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+
+    <div class="capture" style="margin-top:16px">
+      <h3>Optional — the guardrail gap</h3>
+      <div class="hint">Hold your own organisation’s AI policy against a real task. Saves to your Leadership Plan.</div>
+      <div class="field"><label for="gg1">What does this tell me I should do when I am not sure whether to use AI for a specific task?</label><textarea id="gg1" rows="2" data-capture="m6.gap.unsure"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="gg2">Where would I have to stop and ask someone — and who would that person be?</label><textarea id="gg2" rows="2" data-capture="m6.gap.askwho"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="gg3">Where might I just make a call on my own because the policy gives me nothing useful?</label><textarea id="gg3" rows="2" data-capture="m6.gap.owncall"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+
+    <h3 style="font-family:var(--head);font-size:19px;margin:30px 0 6px;color:var(--ink)">Every guardrail is a trade-off — make it explicit</h3>
+    <div class="tradeoffs">
+      <div class="to"><b>We require review here</b> because the output could shape a high-consequence decision.</div>
+      <div class="to"><b>We allow lighter control here</b> because the work is low-risk and easy to correct.</div>
+      <div class="to"><b>We prohibit AI here</b> because the judgement must remain unmistakably human.</div>
+    </div>
+    <p class="section-lead" style="margin-top:14px">Guardrails are not neutral. They reflect leadership choices about where to hold risk, where to create speed, and where to insist on visible accountability.</p>
+  </div>
+</section>
+
+<!-- SYSTEM DESIGNER CLOSE -->
+<section class="band white">
+  <div class="wrap">
+    <div class="designer-close">
+      <div class="big">An air traffic controller doesn’t keep airspace safe by stopping all movement. Safety comes from visible rules, separation standards and clear coordination points — so movement happens responsibly.</div>
+      <div class="shift">
+        <span class="from">Leader as gatekeeper</span>
+        <span style="color:var(--teal-light);font-size:20px">→</span>
+        <span class="to2">Leader as system designer</span>
+      </div>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>Strong leaders don’t review everything.</b> They design systems where good judgement happens even when they’re not present. That’s what guardrails are for.</div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-four-types-of-guardrails.jpg" data-title="The Four Types of Guardrails"><span class="thumb"><img src="../assets/media/cheatsheets/the-four-types-of-guardrails.jpg" alt="The Four Types of Guardrails" loading="lazy"></span><span class="cap">The Four Types of Guardrails</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/risk-to-guardrail-logic.jpg" data-title="Risk-to-Guardrail Logic"><span class="thumb"><img src="../assets/media/cheatsheets/risk-to-guardrail-logic.jpg" alt="Risk-to-Guardrail Logic" loading="lazy"></span><span class="cap">Risk-to-Guardrail Logic</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-ai-pause-button.jpg" data-title="The AI Pause Button"><span class="thumb"><img src="../assets/media/cheatsheets/the-ai-pause-button.jpg" alt="The AI Pause Button" loading="lazy"></span><span class="cap">The AI Pause Button</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/slow-down-without-stopping-progress.jpg" data-title="Slow Down Without Stopping Progress"><span class="thumb"><img src="../assets/media/cheatsheets/slow-down-without-stopping-progress.jpg" alt="Slow Down Without Stopping Progress" loading="lazy"></span><span class="cap">Slow Down Without Stopping Progress</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/from-day-1-to-day-2-what-i-need-guardrails-for.jpg" data-title="What I Need Guardrails For"><span class="thumb"><img src="../assets/media/cheatsheets/from-day-1-to-day-2-what-i-need-guardrails-for.jpg" alt="What I Need Guardrails For" loading="lazy"></span><span class="cap">What I Need Guardrails For</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS + PAGER -->
+<section class="band tint">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Guardrails are leadership decisions, not policy statements.</b> They’re practical boundaries embedded in real work.</div>
+      <div class="tk"><b>Bad guardrails increase risk.</b> Vague or blanket rules slow low-risk work and push high-stakes AI use underground.</div>
+      <div class="tk"><b>Match the type to the moment.</b> Guidance, controls, escalation and prohibition each serve a distinct purpose.</div>
+      <div class="tk"><b>Risk accumulates in workflows.</b> Place guardrails where AI actually influences judgement — at hand-overs and sign-offs.</div>
+      <div class="tk"><b>Proportionate, not maximal.</b> The aim is visible, workable, risk-proportionate boundaries — not maximum restriction.</div>
+      <div class="tk"><b>Make the trade-off explicit.</b> Every guardrail holds risk somewhere; responsible leaders name where.</div>
+    </div>
+    <div class="pager">
+      <a href="module-5.html" class="prev"><div class="lbl">← Previous module</div><div class="ttl">Evaluate AI-Assisted Outputs</div></a>
+      <a href="module-7.html" class="next"><div class="lbl">Next module →</div><div class="ttl">Lead Through AI Incidents</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 6 — Embedding AI Guardrails</small>
+    </div>
+    <small>AI risk accumulates in workflows, not tools — so guardrails must sit there too.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ===== POLL ===== */
+const POLL=[
+ ["A","Rules that slow down low-risk work"],["B","Rules people quietly work around"],
+ ["C","Rules no one really follows"],["D","Something else"]
+];
+const pollEl=document.getElementById('poll');
+POLL.forEach(([k,t])=>{
+  const d=document.createElement('div'); d.className='pollopt';
+  d.innerHTML=`<div class="k">${k}</div><div class="t">${t}</div>`;
+  d.addEventListener('click',()=>{document.querySelectorAll('.pollopt').forEach(x=>x.classList.remove('on'));d.classList.add('on');try{window.RAL.setCaptureValue('m6.poll',t);}catch(e){}});
+  pollEl.appendChild(d);
+});
+
+/* ===== DATA CLASSIFIER ===== */
+const DATA=[
+ ["Public industry report excerpts",false],
+ ["Competitor AI adoption examples",false],
+ ["Generic productivity benchmarks",false],
+ ["Internal performance metrics (call-centre efficiency)",false],
+ ["Staff feedback summaries",false],
+ ["Draft strategy notes",false],
+ ["De-identified customer complaints (re-identifiable if combined)",true],
+ ["Small sample of customer interaction transcripts",true],
+ ["Early findings from a not-yet-released internal audit",true],
+ ["Customer sentiment data (unclear how it was derived)",true],
+ ["Preliminary legal view — not for distribution",true]
+];
+const PERMIT={1:"→ Summarise, synthesise, draft",2:"→ Summarise patterns — no attribution or inference",3:"→ No direct input; human abstraction first",4:"→ Use only to test framing, not conclusions"};
+const RLAB={1:"Public",2:"Internal",3:"Sensitive",4:"Grey zone"};
+const di=document.getElementById('dataItems');
+DATA.forEach(([name,trap],idx)=>{
+  const row=document.createElement('div'); row.className='ditem'+(trap?' trap':''); row.dataset.i=idx;
+  row.innerHTML=`<div><div class="dn">${name}</div><div class="permit" id="permit-${idx}"></div></div>
+    <div class="rseg" data-i="${idx}">
+      <button data-r="1">Public</button><button data-r="2">Internal</button><button data-r="3">Sensitive</button><button data-r="4">Grey</button>
+    </div>`;
+  di.appendChild(row);
+});
+document.querySelectorAll('.rseg').forEach(seg=>{
+  seg.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      document.getElementById('permit-'+seg.dataset.i).textContent=PERMIT[b.dataset.r];
+    });
+  });
+});
+document.getElementById('revealRisk').addEventListener('click',()=>{
+  document.querySelectorAll('.ditem.trap').forEach(r=>r.classList.add('revealed'));
+});
+
+/* ===== FOUR TYPES MATCHER ===== */
+const MATCH=[
+ ["AI drafts internal meeting notes for the team","Guidance","supports judgement where risk is low — no mandated step needed."],
+ ["Customer-facing content before it is sent","Controls","a required review step belongs in the workflow before it goes out."],
+ ["A customer commitment is included in the output","Escalation","responsibility should move to the role that owns approvals."],
+ ["AI autonomously sends external communications","Prohibition","the risk demands AI not be used here at all, regardless of capability."],
+ ["An output will inform a regulatory submission","Escalation","this crosses a governance threshold — move it to higher oversight."],
+ ["Summarising a public report to spark ideas","Guidance","low risk and recoverable — light guidance is proportionate."]
+];
+let mi=0, mcorrect=0;
+const mScen=document.getElementById('matchScenario'), mFb=document.getElementById('matchFb'), mProg=document.getElementById('matchProg');
+function showMatch(){
+  if(mi>=MATCH.length){
+    mScen.innerHTML=`<b>Done.</b> You matched ${mcorrect}/${MATCH.length}. The skill isn’t writing rules — it’s choosing the right type for the risk and the moment.`;
+    document.querySelectorAll('.mopts button').forEach(b=>b.disabled=true);
+    mFb.classList.remove('show'); mProg.textContent='';
+    return;
+  }
+  mScen.innerHTML=`<b>Scenario ${mi+1}:</b> ${MATCH[mi][0]}`;
+  mFb.classList.remove('show');
+  mProg.textContent=`Scenario ${mi+1} of ${MATCH.length}`;
+}
+document.querySelectorAll('.mopts button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(mi>=MATCH.length)return;
+    const correct=MATCH[mi][1];
+    if(b.dataset.t===correct){mcorrect++;mFb.className='mfb show right';mFb.innerHTML=`✓ <b>${correct}</b> — ${MATCH[mi][2]}`;}
+    else {mFb.className='mfb show wrong';mFb.innerHTML=`Not quite — this is <b>${correct}</b>: ${MATCH[mi][2]}`;}
+    mi++;
+    setTimeout(showMatch,1400);
+  });
+});
+showMatch();
+
+/* ===== GUARDRAIL DESIGNER ===== */
+const BREAK=[
+ ["Inputs selected","Which sources are authoritative? What knowledge is missing?","source rules, data-use guidance"],
+ ["AI draft / summary","What context may be compressed or flattened?","working-material guidance, review requirement (control)"],
+ ["Output reviewed","Is the review checking context and missing knowledge — not just tone?","a defined review step (control)"],
+ ["Output circulated / reused","Is it being treated as more settled or decision-ready than it is?","draft labelling, reuse restrictions, escalation"],
+ ["Output influences action","Who owns the judgement and could explain it later?","sign-off, escalation, prohibition if needed"]
+];
+const bm=document.getElementById('breakmap');
+BREAK.forEach((n,i)=>{
+  const d=document.createElement('div'); d.className='bm'; d.dataset.i=i;
+  d.innerHTML=`<div class="s">${n[0]}</div>${i<BREAK.length-1?'<span class="ar">→</span>':''}`;
+  d.addEventListener('click',()=>{document.querySelectorAll('.bm').forEach(x=>x.classList.remove('on'));d.classList.add('on');
+    document.getElementById('bmBody').innerHTML=`<b style="font-family:var(--head)">${n[0]}.</b> Notice: ${n[1]} <br><span style="color:var(--coral-dark)"><b>May need:</b> ${n[2]}</span>`;});
+  bm.appendChild(d);
+});
+document.querySelector('.bm').click();
+
+/* redesign scaffold */
+const SCAF={
+ Guidance:[["a","when… (the condition)"],["b","AI may be used to… (the task)"],["c","provided that… (the safeguard)"]],
+ Controls:[["a","before… (the workflow moment)"],["b","… must occur (the required step)"]],
+ Escalation:[["a","if… (the trigger is true)"],["b","escalate to… (the role/owner)"]],
+ Prohibition:[["a","AI must not be used when… (the condition)"],["b","regardless of… (capability/pressure)"]]
+};
+const SENT={
+ Guidance:f=>`When <b>${f.a||'___'}</b>, AI may be used to <b>${f.b||'___'}</b>, provided that <b>${f.c||'___'}</b>.`,
+ Controls:f=>`Before <b>${f.a||'___'}</b> happens, <b>${f.b||'___'}</b> must occur.`,
+ Escalation:f=>`If <b>${f.a||'___'}</b> is true, this decision must be escalated to <b>${f.b||'___'}</b>.`,
+ Prohibition:f=>`AI must not be used when <b>${f.a||'___'}</b>, regardless of <b>${f.b||'___'}</b>.`
+};
+let curType='Guidance', fields={a:'',b:'',c:''};
+function renderScaffold(){
+  const sc=document.getElementById('scaffold'); fields={a:'',b:'',c:''};
+  sc.innerHTML='';
+  SCAF[curType].forEach(([k,ph])=>{
+    const inp=document.createElement('input'); inp.placeholder=ph; inp.dataset.k=k;
+    inp.addEventListener('input',()=>{fields[inp.dataset.k]=inp.value;renderOut();});
+    sc.appendChild(inp);
+  });
+  document.getElementById('dBadge').textContent=curType;
+  renderOut();
+}
+function renderOut(){
+  document.getElementById('dGrd').innerHTML=SENT[curType](fields);
+  const hasContent=Object.values(fields).some(v=>v&&v.trim());
+  if(hasContent){try{window.RAL.setCaptureValue('m6.redesign',curType+': '+document.getElementById('dGrd').textContent);}catch(e){}}
+}
+document.querySelectorAll('#typepick button').forEach(b=>{
+  b.addEventListener('click',()=>{document.querySelectorAll('#typepick button').forEach(x=>x.classList.remove('on'));b.classList.add('on');curType=b.dataset.t;renderScaffold();});
+});
+renderScaffold();
+
+/* workflow overlay */
+const overlayBody=document.getElementById('overlayBody');
+for(let r=1;r<=3;r++){
+  const tr=document.createElement('tr');
+  tr.innerHTML=`
+    <td><input type="text" data-capture="m6.wf.r${r}.step" placeholder="e.g. Draft generated"></td>
+    <td><input type="text" data-capture="m6.wf.r${r}.role" placeholder="e.g. Writes commentary"></td>
+    <td><div class="miniseg risk" data-k="m6.wf.r${r}.risk"><button data-v="L">L</button><button data-v="M">M</button><button data-v="H">H</button></div></td>
+    <td><div class="miniseg type" data-k="m6.wf.r${r}.type"><button data-v="G">Guid</button><button data-v="C">Ctrl</button><button data-v="E">Esc</button><button data-v="P">Proh</button></div></td>
+    <td><input type="text" data-capture="m6.wf.r${r}.owner" placeholder="Named role"></td>`;
+  overlayBody.appendChild(tr);
+}
+document.querySelectorAll('.miniseg').forEach(seg=>{
+  seg.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');try{window.RAL.setCaptureValue(seg.dataset.k,b.textContent);}catch(e){}});
+  });
+});
+
+/* ===== RED-LINE PAUSE TRIGGERS ===== */
+const TRIG=[
+ ["It affects someone’s livelihood, opportunity or access","Hiring, firing, promotion, rostering, ratings, credit, benefits, eligibility — these need a human decision owner, not an AI one."],
+ ["The outcome is hard to undo and hard to explain","If you couldn’t walk an affected person or a regulator through how you got there, you’re not in a position to automate it."],
+ ["It would commit the organisation externally","Anything that sends, signs, approves or publishes on your behalf needs a named human sign-off before it moves."],
+ ["It involves data that shouldn’t be in the prompt","Personal, confidential, commercially sensitive or protected information doesn’t go into tools not explicitly approved for it."],
+ ["The AI has stopped assisting and started deciding","Output used without comprehension — forwarded, approved or acted on without a human reading and owning it — signals scope drift."]
+];
+const tEl=document.getElementById('triggers');
+TRIG.forEach((t,i)=>{
+  const d=document.createElement('div'); d.className='trig'; d.dataset.on='0';
+  d.innerHTML=`<span class="bx">✓</span><span class="n">${i+1}</span><span class="tx"><b>${t[0]}.</b> ${t[1]}</span>`;
+  d.addEventListener('click',()=>{d.dataset.on=d.dataset.on==='1'?'0':'1';d.classList.toggle('on');});
+  tEl.appendChild(d);
+});
+</script>
+</body>
+</html>

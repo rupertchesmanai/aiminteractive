@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIM Interactive Workbooks — Course Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #00C0AF; --teal-light: #53DFCB; --teal-dark: #008D80;
+    --cream: #F1EEDE; --coral: #DC5A46; --coral-dark: #B53D2C;
+    --black: #000000; --white: #FFFFFF;
+    --text-dark: #423A3A; --text-grey: #595959; --text-muted: #A7A7A7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--teal);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  h1, h2, h3, .condensed { font-family: 'IBM Plex Sans Condensed', sans-serif; font-weight: 500; }
+
+  /* ---------- Chrome ---------- */
+  .topbar { padding: 28px 40px 0; }
+  .topbar img { height: 44px; width: auto; display: block; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 56px 40px 8px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .eyebrow { color: rgba(0,0,0,0.55); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(34px, 5vw, 58px); font-weight: 600; line-height: 1.06; max-width: 760px; }
+  .hero p.lead { margin-top: 16px; font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.9); max-width: 560px; }
+
+  /* ---------- Course cards ---------- */
+  .courses {
+    padding: 40px 40px 72px; max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+  }
+  .card {
+    background: var(--cream); color: var(--text-dark);
+    border-radius: 14px; padding: 30px 28px 26px;
+    display: flex; flex-direction: column; gap: 12px;
+    cursor: pointer; border: none; text-align: left;
+    font-family: inherit;
+    transition: transform .18s ease, box-shadow .18s ease;
+    position: relative; overflow: hidden;
+  }
+  .card:hover, .card:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.22); outline: none; }
+  .card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+    background: var(--accent, var(--teal-dark));
+  }
+  .card .tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--accent, var(--teal-dark)); }
+  .card h2 { font-size: 26px; line-height: 1.15; font-weight: 600; }
+  .card p { font-size: 14.5px; color: var(--text-grey); font-weight: 400; line-height: 1.5; flex: 1; }
+  .card .enter {
+    display: flex; align-items: center; gap: 8px; margin-top: 8px;
+    font-size: 14px; font-weight: 600; color: var(--text-dark);
+  }
+  .card .lock { font-size: 15px; }
+  .card .arrow { transition: transform .18s ease; }
+  .card:hover .arrow { transform: translateX(4px); }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top: auto; padding: 22px 40px 30px; font-size: 12.5px; color: rgba(0,0,0,0.5); }
+
+  /* ---------- Password modal ---------- */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.66);
+    display: none; align-items: center; justify-content: center; z-index: 200; padding: 24px;
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--cream); color: var(--text-dark);
+    border-radius: 14px; padding: 36px 34px 30px; width: 100%; max-width: 420px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .modal .tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--teal-dark); margin-bottom: 8px; }
+  .modal h3 { font-size: 24px; margin-bottom: 6px; }
+  .modal p { font-size: 14px; color: var(--text-grey); margin-bottom: 18px; }
+  .modal input {
+    width: 100%; padding: 13px 14px; font-size: 16px; font-family: inherit;
+    border: 2px solid rgba(66,58,58,0.25); border-radius: 8px; background: var(--white);
+    color: var(--text-dark); letter-spacing: 1px;
+  }
+  .modal input:focus { outline: none; border-color: var(--teal-dark); }
+  .modal.error input { border-color: var(--coral); animation: shake .3s; }
+  .modal .err { display: none; color: var(--coral-dark); font-size: 13px; font-weight: 600; margin-top: 8px; }
+  .modal.error .err { display: block; }
+  .modal .actions { display: flex; gap: 10px; margin-top: 20px; }
+  .modal button {
+    font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+    border-radius: 8px; padding: 12px 22px; border: none;
+  }
+  .btn-go { background: var(--black); color: var(--white); flex: 1; }
+  .btn-go:hover { background: var(--teal-dark); }
+  .btn-cancel { background: transparent; color: var(--text-grey); }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+  @media (max-width: 640px) {
+    .topbar { padding: 22px 24px 0; }
+    .hero { padding: 40px 24px 4px; }
+    .courses { padding: 32px 24px 56px; }
+    footer { padding: 18px 24px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="Assets/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+</div>
+
+<section class="hero">
+  <div class="eyebrow">Interactive Workbooks</div>
+  <h1>Your course hub.</h1>
+  <p class="lead">Choose your course below and enter the access code shared by your facilitator to open the interactive workbook.</p>
+</section>
+
+<main class="courses">
+  <button class="card" style="--accent: var(--teal-dark);" data-course="responsible-ai-leadership" data-title="Responsible AI Leadership">
+    <span class="tag">Leadership · 8 Modules</span>
+    <h2>Responsible AI Leadership</h2>
+    <p>The AIRSPACE framework for leading AI adoption — defensible decisions, guardrails, incidents and change.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+
+  <button class="card" style="--accent: var(--coral);" data-course="data-analytics" data-title="Data Analytics Essentials">
+    <span class="tag">Analytics</span>
+    <h2>Data Analytics Essentials</h2>
+    <p>An interactive learning hub for turning raw data into confident, evidence-based business decisions.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+
+  <button class="card" style="--accent: var(--black);" data-course="agentic-ai" data-title="Designing Workflows for Agentic AI">
+    <span class="tag">Agentic AI</span>
+    <h2>Designing Workflows for Agentic AI</h2>
+    <p>Design, delegate and supervise agentic AI workflows — from single tasks to multi-step automation.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+</main>
+
+<footer>© Australian Institute of Management · Access codes are provided by your facilitator.</footer>
+
+<!-- Password modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="tag">Access Required</div>
+    <h3 id="modalTitle">Course</h3>
+    <p>Enter the access code for this course.</p>
+    <input type="password" id="pwInput" placeholder="Access code" autocomplete="off">
+    <div class="err">That code isn’t right — please check with your facilitator.</div>
+    <div class="actions">
+      <button class="btn-go" id="btnGo">Open workbook</button>
+      <button class="btn-cancel" id="btnCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // NOTE: simple client-side gate — deters casual access, not a security boundary.
+  var COURSES = {
+    'responsible-ai-leadership': { title: 'Responsible AI Leadership', url: 'courses/responsible-ai-leadership/index.html', code: 'bGVhZDIwMjY=' },
+    'data-analytics':            { title: 'Data Analytics Essentials', url: 'courses/data-analytics/index.html',            code: 'ZGF0YTIwMjY=' },
+    'agentic-ai':                { title: 'Designing Workflows for Agentic AI', url: 'courses/agentic-ai/index.html',       code: 'YWdlbnQyMDI2' }
+  };
+
+  var overlay = document.getElementById('overlay');
+  var modal = document.getElementById('modal');
+  var input = document.getElementById('pwInput');
+  var current = null;
+
+  function openModal(key) {
+    var c = COURSES[key];
+    if (!c) return;
+    current = key;
+    document.getElementById('modalTitle').textContent = c.title;
+    modal.classList.remove('error');
+    input.value = '';
+    overlay.classList.add('open');
+    setTimeout(function () { input.focus(); }, 50);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    current = null;
+  }
+
+  function submit() {
+    if (!current) return;
+    var c = COURSES[current];
+    var attempt = btoa(input.value.trim().toLowerCase());
+    if (attempt === c.code) {
+      try { sessionStorage.setItem('aim_access_' + current, 'granted'); } catch (e) {}
+      window.location.href = c.url;
+    } else {
+      modal.classList.remove('error');
+      void modal.offsetWidth; // restart animation
+      modal.classList.add('error');
+      input.select();
+    }
+  }
+
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var key = card.getAttribute('data-course');
+      try {
+        if (sessionStorage.getItem('aim_access_' + key) === 'granted') {
+          window.location.href = COURSES[key].url;
+          return;
+        }
+      } catch (e) {}
+      openModal(key);
+    });
+  });
+
+  document.getElementById('btnGo').addEventListener('click', submit);
+  document.getElementById('btnCancel').addEventListener('click', closeModal);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  // Bounced here from a guarded workbook page? Auto-open the right modal.
+  var param = new URLSearchParams(window.location.search).get('course');
+  if (param && COURSES[param]) openModal(param);
+})();
+</script>
+</body>
+</html>

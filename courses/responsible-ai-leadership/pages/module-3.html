@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 3 — Defining AI Leadership Direction | Responsible AI Leadership</title>
+<meta name="description" content="The Leadership Stance Builder — decode your silence, anchor your position, and build an AI Leadership Position Card that holds under pressure. Module 3." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #163230 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:62ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .keyline{margin-top:24px;border-left:4px solid var(--teal-light);padding:4px 0 4px 16px;max-width:50ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:17px;color:#fff}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+
+  /* silence decoder */
+  .sigs{display:flex;flex-direction:column;gap:8px}
+  .obs{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fff;padding:12px 15px;cursor:pointer;transition:.16s}
+  .obs:hover{border-color:var(--teal)}
+  .obs.on{box-shadow:inset 4px 0 0 var(--coral);background:#fff}
+  .obs .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+  .obs.on .bx{background:var(--coral);border-color:var(--coral)}
+  .obs .tx{font-size:14px;color:var(--ink)}
+  .decode{margin-top:16px;padding:18px 20px;background:#1c1c1c;color:#fff;border-left:4px solid var(--coral)}
+  .decode .lbl{font-family:var(--head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light);margin-bottom:8px}
+  .decode .msg{font-family:var(--head);font-weight:500;font-size:18px;line-height:1.4}
+  .decode .sub{font-size:13px;color:#cfcfcf;margin-top:10px}
+  .claritytrap{background:var(--cream-alt);border-left:4px solid var(--teal);padding:14px 18px;font-size:14.5px;margin-top:18px}
+  .claritytrap b{font-family:var(--head)}
+
+  /* foundations */
+  .founds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  @media(max-width:760px){.founds{grid-template-columns:1fr}}
+  .found{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:18px 20px}
+  .found .n{font-family:var(--head);font-weight:700;color:var(--teal-dark);font-size:13px;letter-spacing:.1em}
+  .found h4{font-size:18px;margin:6px 0 6px}
+  .found p{font-size:13px;color:var(--grey)}
+
+  /* shadow strategy */
+  .shadow{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fff;margin-top:6px}
+  @media(max-width:720px){.shadow{grid-template-columns:1fr}}
+  .shadow .col{padding:20px 22px}
+  .shadow .col.env{border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(220,90,70,.05),transparent)}
+  @media(max-width:720px){.shadow .col.env{border-right:0;border-bottom:1px solid var(--line)}}
+  .shadow h5{font-family:var(--head);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .shadow .env h5{color:var(--coral-dark)} .shadow .pri h5{color:var(--teal-dark)}
+  .shadow .hint2{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+  .pillrow{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{border:1px solid var(--line);background:var(--cream-alt);padding:7px 12px;font-size:12.5px;cursor:pointer;font-family:var(--head);font-weight:600;transition:.15s}
+  .pill:hover{border-color:var(--teal)}
+  .pill.on.env{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .pill.on.pri{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .shadowsynth{margin-top:14px;padding:16px 20px;background:var(--cream-alt);border-left:4px solid var(--teal);font-size:14px}
+
+  /* pressure scripts */
+  .plist{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+  @media(max-width:880px){.plist{grid-template-columns:repeat(2,1fr)}}
+  .pbtn{border:1px solid var(--line);background:#fff;padding:12px 13px;cursor:pointer;text-align:left;font-family:var(--body);transition:.15s}
+  .pbtn:hover{border-color:var(--teal)}
+  .pbtn.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .pbtn .pt{font-family:var(--head);font-weight:600;font-size:13px}
+  .scriptbox{background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal);padding:20px 22px}
+  .scriptbox .pl{font-family:var(--head);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .scriptbox .sc{font-size:16px;color:var(--ink);font-style:italic}
+  .qcheck{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px}
+  @media(max-width:760px){.qcheck{grid-template-columns:1fr 1fr}}
+  .qc{background:var(--cream-alt);border:1px solid var(--line);padding:12px 13px}
+  .qc h6{font-family:var(--head);font-size:12.5px;color:var(--teal-dark);margin-bottom:3px}
+  .qc p{font-size:11.5px;color:var(--grey)}
+
+  /* position card builder */
+  .pcwrap{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+  @media(max-width:1000px){.pcwrap{grid-template-columns:1fr}}
+  .pcbuild{display:flex;flex-direction:column;gap:14px}
+  .pcsec{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:16px 18px}
+  .pcsec .ph{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .pcsec .ph .n{font-family:var(--head);font-weight:700;font-size:12px;color:#fff;background:var(--teal-dark);width:22px;height:22px;flex:0 0 22px;display:flex;align-items:center;justify-content:center}
+  .pcsec .ph h4{font-size:15px}
+  .pcsec .q{font-size:11.5px;color:var(--grey);margin-bottom:8px}
+  .pcsec input[type=text],.pcsec textarea{width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px;resize:vertical;margin-bottom:8px}
+  .pcsec input:focus,.pcsec textarea:focus{outline:2px solid var(--teal);background:#fff}
+  .pcsec label.sub{font-family:var(--head);font-weight:600;font-size:12px;color:var(--ink);display:block;margin:2px 0 4px}
+  .roleopts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+  .roleopts .ro{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid var(--line);padding:6px 11px;cursor:pointer;background:var(--cream-alt)}
+  .roleopts .ro.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+
+  .pcside{position:sticky;top:118px;display:flex;flex-direction:column;gap:16px}
+  .claritybox{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 22px}
+  .claritybox .score{font-family:var(--head);font-weight:700;font-size:44px;line-height:1;color:var(--teal-dark)}
+  .claritybox .verdict{font-family:var(--head);font-weight:600;font-size:15px;margin:4px 0 12px}
+  .claritybox .trap{font-size:12.5px;color:var(--grey);margin-top:12px;font-style:italic}
+  .rat{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:10px}
+  .rat li{font-size:12px;padding-left:18px;position:relative}
+  .rat li.good::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+  .rat li.bad::before{content:"!";position:absolute;left:0;color:var(--coral-dark);font-weight:700}
+  .rat li.empty{color:var(--muted)}
+
+  /* live card preview */
+  .cardprev{background:var(--teal);color:#fff;padding:22px 22px;position:relative}
+  .cardprev::before{content:"";position:absolute;top:14px;right:16px;width:22px;height:2px;background:rgba(255,255,255,.6)}
+  .cardprev .ttl{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.9;margin-bottom:12px}
+  .cardprev .stmt{font-family:var(--head);font-weight:500;font-size:15px;line-height:1.5}
+  .cardprev .stmt b{font-weight:700;border-bottom:2px solid rgba(255,255,255,.5)}
+  .cardprev .pcline{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.25);font-size:12.5px}
+  .cardprev .pcline span{opacity:.8}
+  .printbtn{margin-top:4px}
+
+  /* good vs poor */
+  .gpcompare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:760px){.gpcompare{grid-template-columns:1fr}}
+  .gp{border:1px solid var(--line);padding:18px 20px;background:#fff}
+  .gp.good{border-top:4px solid var(--teal)} .gp.poor{border-top:4px solid var(--coral)}
+  .gp h5{font-family:var(--head);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .gp.good h5{color:var(--teal-dark)} .gp.poor h5{color:var(--coral-dark)}
+  .gp p{font-size:13.5px;color:var(--ink);line-height:1.55}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  @media(max-width:820px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:13.5px}
+  .takeaways .tk b{font-family:var(--head)}
+  .takehome{background:#1c1c1c;color:#fff;border-left:5px solid var(--teal-light);padding:20px 24px}
+  .takehome h4{font-size:17px;margin-bottom:6px;color:#fff}
+  .takehome p{font-size:13.5px;color:#d4d4d4}
+  @media print{header.chrome,.subnav,footer.site,.pager,.pcbuild,.claritybox,.band:not(#position){display:none!important}.cardprev{box-shadow:none}}
+</style>
+</head>
+<body class="self" data-page="module-3">
+
+<!-- CHROME -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mhero">
+    <div class="hero-media"><video autoplay muted loop playsinline preload="metadata" poster="../assets/media/pics/leader-at-window.jpg"><source src="../assets/media/mp4/leader-at-window.mp4" type="video/mp4"></video></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 3</div>
+    <h1>Defining AI Leadership Direction</h1>
+    <p class="lead">Policy tells people what the organisation permits. A leadership position tells people what <i>you</i> expect, what needs caution, and what you’ll stand behind when AI is involved. If you don’t make it explicit, your team will infer one anyway — from your behaviour and your silence.</p>
+    <div class="keyline"><span>Policies cover your organisation. Your position covers your airspace.</span></div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Distinguish organisational policy from leader-owned direction</span></div>
+      <div><span class="d">→</span><span>Define the strategy, values and risk boundaries that shape AI use</span></div>
+      <div><span class="d">→</span><span>Recognise where pressure is most likely to erode clarity</span></div>
+      <div><span class="d">→</span><span>Articulate one position you can communicate and defend</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Leadership Stance Builder</div>
+  </div>
+</section>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#silence">What Silence Permits</a>
+    <a href="#shape">What Shapes Your Position</a>
+    <a href="#pressure">Holding the Line</a>
+    <a href="#position">Position Card</a>
+    <a href="#example">Good vs Poor</a>
+    <a href="#test">Pressure-Test</a>
+  </div>
+</div>
+
+<!-- INTRO + RAIL -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">Policy is not the same as direction</h2>
+        <p class="section-lead">Most teams don’t work from policy alone. They work from what’s made visible in practice: what the leader notices, what gets questioned, what gets praised, what’s allowed to pass — and what happens when pressure rises.</p>
+        <p>If your position is unclear, your team will still form one. It will be inferred from your behaviour, your silence, and what seems to be tolerated. This module makes that position explicit — and tests whether it holds when convenience would otherwise take over.</p>
+        <div class="note teal"><b>A working draft, not a doctrine.</b> You’re not aiming for perfect wording today. You’re building a first-draft leadership position clear enough to use, test and strengthen over time.</div>
+      </div>
+      <div>
+        <div class="rail">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>Why leadership direction matters</li>
+              <li>Silence is interpreted as permission</li>
+              <li>What should shape my position</li>
+              <li>AI should serve the strategy, not a shadow one</li>
+              <li>Leading under pressure — language to hold the line</li>
+              <li>Leadership Stance on AI</li>
+              <li>AI Leadership Position Card</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>What Is Your Silence Currently Permitting?</li>
+              <li>Strategy and values alignment</li>
+              <li>My pressure + my line</li>
+              <li>Pressure-test your leadership position</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SILENCE DECODER -->
+<section class="band white" id="silence">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Diagnostic — write privately</span></div>
+    <h2 class="section">What is your silence currently permitting?</h2>
+    <p class="section-lead">Silence is rarely experienced as neutrality. In the absence of an explicit position, your team still receives a message — from what you reward and what you let pass. Tick what’s currently true of you, and read the message they’re likely receiving.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="sigs" id="obs"></div>
+        <div class="decode" id="decode"></div>
+      </div>
+      <div>
+        <div class="claritytrap"><b>The clarity trap.</b> A position is only useful if it reduces ambiguity in practice. The test: <i>would a reasonable team member, working quickly and in good faith, know what to do here without needing to ask?</i> If not, it isn’t clear enough yet.</div>
+        <div class="capture" style="margin-top:16px">
+          <h3>Private reflection</h3>
+          <div class="hint">Diagnostic, not performative. Saves to your Leadership Plan.</div>
+          <div class="field"><label for="s1">What would a reasonable team member assume is acceptable AI use right now?</label><textarea id="s1" rows="2" data-capture="m3.silence.assume"></textarea><span class="saved">✓ Saved</span></div>
+          <div class="field"><label for="s2">Where would they be unsure — and how would they resolve it?</label><textarea id="s2" rows="2" data-capture="m3.silence.unsure"></textarea><span class="saved">✓ Saved</span></div>
+          <div class="field"><label for="s3">What risk does that create for you as their leader?</label><textarea id="s3" rows="2" data-capture="m3.silence.risk"></textarea><span class="saved">✓ Saved</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT SHAPES POSITION -->
+<section class="band tint" id="shape">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Foundations</span><span class="tag ghost">Strategy · values · consequence</span></div>
+    <h2 class="section">What should shape your position</h2>
+    <p class="section-lead">A strong position isn’t built from personal comfort or general caution. It’s shaped by three things — and these become the anchors for the card you’ll build below.</p>
+    <div class="founds">
+      <div class="found"><div class="n">01 · STRATEGY</div><h4>What it’s for</h4><p>What is AI use supposed to help achieve in your area?</p></div>
+      <div class="found"><div class="n">02 · VALUES</div><h4>What you protect</h4><p>What must not be compromised, even if AI improves speed, cost or output?</p></div>
+      <div class="found"><div class="n">03 · CONSEQUENCE</div><h4>Where you’re exposed</h4><p>Where would a poor call create exposure you’d later be expected to explain?</p></div>
+    </div>
+
+    <h3 style="font-family:var(--head);font-size:19px;margin:30px 0 6px;color:var(--ink)">AI serves the strategy — or it builds a shadow one</h3>
+    <p class="section-lead" style="margin-bottom:14px">AI amplifies the strongest signals already in your environment. If those signals are speed, volume and cost, AI will amplify those — not necessarily what matters most. Mark what your environment rewards, and what actually matters here.</p>
+    <div class="shadow">
+      <div class="col env">
+        <h5>What my environment rewards most</h5>
+        <div class="hint2">AI will amplify these by default</div>
+        <div class="pillrow" id="envPills"></div>
+      </div>
+      <div class="col pri">
+        <h5>What actually matters most here</h5>
+        <div class="hint2">Your position keeps AI anchored to these</div>
+        <div class="pillrow" id="priPills"></div>
+      </div>
+    </div>
+    <div class="shadowsynth" id="shadowSynth">Select from each side to see the gap your position has to close.</div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Activity — Strategy &amp; values alignment</h3>
+      <div class="hint">Short, direct anchors — not essays. These pre-fill your Position Card below.</div>
+      <div class="grid2">
+        <div class="field"><label for="a1">Strategic purpose<span class="q">We are using AI in this area to support…</span></label><input type="text" id="a1" data-capture="m3.anchor.purpose"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="a2">Non-negotiable value<span class="q">We are not willing to compromise…</span></label><input type="text" id="a2" data-capture="m3.anchor.value"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="a3">Unacceptable trade-off<span class="q">Even if performance improves, we will not trade off…</span></label><input type="text" id="a3" data-capture="m3.anchor.tradeoff"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="a4">Who might this upset or contradict?<span class="q">Name a role, peer, executive or stakeholder.</span></label><input type="text" id="a4" data-capture="m3.anchor.upset"><span class="saved">✓ Saved</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESSURE / HOLD THE LINE -->
+<section class="band white" id="pressure">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">My pressure + my line</span></div>
+    <h2 class="section">Leading under pressure — language to hold the line</h2>
+    <p class="section-lead">Positions sound reasonable written quietly in a workbook. They’re tested under executive urgency, deadlines, enthusiasm and FOMO. Pick the pressure most real for you and pre-load language you can actually use — without defaulting to “just roll it out” or “shut it down”.</p>
+    <div class="plist" id="plist" style="margin-top:20px"></div>
+    <div class="scriptbox" id="scriptbox"></div>
+
+    <h3 style="font-family:var(--head);font-size:18px;margin:26px 0 4px;color:var(--ink)">A quick leadership check</h3>
+    <div class="qcheck">
+      <div class="qc"><h6>Decision clarity</h6><p>What decision will this actually shape?</p></div>
+      <div class="qc"><h6>Accountability</h6><p>Who would explain this if it went wrong?</p></div>
+      <div class="qc"><h6>Risk signal</h6><p>What’s the most credible downside?</p></div>
+      <div class="qc"><h6>Red-line trigger</h6><p>Does this cross something I’ve already said no to?</p></div>
+      <div class="qc"><h6>Automation creep</h6><p>Is this starting to act on our behalf?</p></div>
+    </div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Make it yours — three lines</h3>
+      <div class="hint">Public expressions of your leadership position, not just responses. One sentence each. These feed your Position Card.</div>
+      <div class="field"><label for="l1">We will…<span class="q">How we move forward.</span></label><input type="text" id="l1" data-capture="m3.line.we_will"><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="l2">We will not / we pause if…<span class="q">Your red line or escalation trigger.</span></label><input type="text" id="l2" data-capture="m3.line.we_wont"><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="l3">Before we do, we check…<span class="q">Pick 2–3 from the quick check above.</span></label><input type="text" id="l3" data-capture="m3.line.we_check"><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION CARD -->
+<section class="band tint" id="position">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">The culmination of the module</span></div>
+    <h2 class="section">Your AI Leadership Position Card</h2>
+    <p class="section-lead">Convert your thinking into a position that’s clear enough to communicate, practical enough to guide behaviour, and strong enough to defend. Not policy language — a leader’s operating position. The clarity meter answers the only question that matters: would your team know what to do without asking?</p>
+
+    <div class="pcwrap" style="margin-top:18px">
+      <div class="pcbuild">
+        <div class="pcsec"><div class="ph"><span class="n">1</span><h4>Strategic purpose</h4></div><div class="q">In my area, AI should support…</div><input type="text" id="pc1" data-capture="m3.card.purpose"></div>
+        <div class="pcsec"><div class="ph"><span class="n">2</span><h4>Non-negotiable value</h4></div><div class="q">The value or principle I am not willing to trade away is…</div><input type="text" id="pc2" data-capture="m3.card.value"></div>
+        <div class="pcsec"><div class="ph"><span class="n">3</span><h4>Permitted role of AI</h4></div><div class="q">What role may AI appropriately play? (select any that apply)</div>
+          <div class="roleopts" id="pcroles">
+            <span class="ro" data-r="Assist">Assist</span>
+            <span class="ro" data-r="Recommend">Recommend</span>
+            <span class="ro" data-r="Automate low-risk steps">Automate low-risk steps</span>
+            <span class="ro" data-r="Not used in some contexts">Not used in some contexts</span>
+          </div>
+          <div class="q">In practice, AI may be used to…</div><input type="text" id="pc3" data-capture="m3.card.rolePractice"></div>
+        <div class="pcsec"><div class="ph"><span class="n">4</span><h4>My boundary</h4></div><div class="q">AI must not be used to…</div><input type="text" id="pc4" data-capture="m3.card.boundary"><label class="sub">This boundary matters because…</label><input type="text" id="pc4b" data-capture="m3.card.boundaryWhy"></div>
+        <div class="pcsec"><div class="ph"><span class="n">5</span><h4>Human ownership</h4></div><div class="q">The decision owner is…</div><input type="text" id="pc5" data-capture="m3.card.owner"><label class="sub">Human review is required when…</label><input type="text" id="pc5b" data-capture="m3.card.review"><label class="sub">If challenged later, accountability sits here because…</label><input type="text" id="pc5c" data-capture="m3.card.acctBecause"></div>
+        <div class="pcsec"><div class="ph"><span class="n">6</span><h4>Pressure point</h4></div><div class="q">The pressure most likely to test this position is…</div><input type="text" id="pc6" data-capture="m3.card.pressure"><label class="sub">Under that pressure, the line I will still hold is…</label><input type="text" id="pc6b" data-capture="m3.card.line"></div>
+        <div class="pcsec"><div class="ph"><span class="n">7</span><h4>Team-facing clarity</h4></div><div class="q">If my team remembers one thing, it should be…</div><input type="text" id="pc7" data-capture="m3.card.remember"><label class="sub">A team member should pause or escalate when…</label><input type="text" id="pc7b" data-capture="m3.card.escalate"></div>
+      </div>
+
+      <div class="pcside">
+        <div class="claritybox">
+          <div style="font-family:var(--head);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Clarity</div>
+          <div class="score" id="cScore">0</div>
+          <div class="verdict" id="cVerdict" style="color:var(--muted)">Not started</div>
+          <div class="meter"><i id="cBar"></i></div>
+          <ul class="rat" id="cRat"><li class="empty">Fill the card to build clarity…</li></ul>
+          <div class="trap" id="cTrap">Would a team member know what to do without asking?</div>
+        </div>
+        <div class="cardprev" id="cardPrev">
+          <div class="ttl">My AI Leadership Position</div>
+          <div class="stmt" id="prevStmt"></div>
+          <div class="pcline" id="prevExtra"></div>
+        </div>
+        <button class="btn ghost printbtn" onclick="window.print()">⎙ Print / save this card</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOD VS POOR -->
+<section class="band white" id="example">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Calibrate</span><span class="tag ghost">Revisited in Module 4</span></div>
+    <h2 class="section">What a strong position sounds like</h2>
+    <p class="section-lead">A strong position makes six things clear: what AI is for, what value constrains it, what role AI may play, where the line is, what must stay human, and when to pause or escalate. Compare.</p>
+    <div class="gpcompare">
+      <div class="gp good">
+        <h5>✓ Strong leadership position</h5>
+        <p>“In my area, AI assists with first drafts, summarising and internal analysis, but it must not replace human judgement about what matters. Human judgement must remain visible in review and sign-off. Important context must not be lost as information moves through the workflow. If something feels unclear, incomplete or hard to explain, people are expected to pause or escalate. Any output that reaches a customer, affects a team member’s standing, or informs an external commitment requires a named person to review it and sign off. We do not let AI make final decisions about individuals. When something goes wrong, the question is not what the AI did. It is what <i>we</i> approved.”</p>
+      </div>
+      <div class="gp poor">
+        <h5>✕ Weak leadership position</h5>
+        <p>“We’re supportive of the team using AI to work smarter. Just be sensible about it, check the outputs, and use your judgement. If something looks off, flag it. We’ll review things as we go and adjust if we need to. Obviously follow the policy.”</p>
+        <p style="margin-top:12px;color:var(--coral-dark);font-size:12.5px"><b>Why it fails:</b> nothing here tells a team member working at speed what they may do, where the line is, or what must stay human. It’s delegated ambiguity dressed as support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESSURE TEST -->
+<section class="band tint" id="test">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Final activity</span><span class="tag ghost">Pressure-test in pairs</span></div>
+    <h2 class="section">Pressure-test your position</h2>
+    <p class="section-lead">In the room, you’d read your position aloud in 60 seconds and your partner would test it — not rewrite it. Run the same three tests on yourself, then tighten the wording.</p>
+    <div class="grid3" style="margin-top:20px">
+      <div class="capture"><h3 style="font-size:17px">1 · Permission</h3><div class="hint">What would a reasonable team member now believe they’re allowed to do?</div><textarea rows="3" data-capture="m3.test.permission" style="width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px"></textarea></div>
+      <div class="capture"><h3 style="font-size:17px">2 · The line</h3><div class="hint">Where is the line still unclear, if anywhere?</div><textarea rows="3" data-capture="m3.test.line" style="width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px"></textarea></div>
+      <div class="capture"><h3 style="font-size:17px">3 · The wobble</h3><div class="hint">Under pressure, what part is most likely to wobble?</div><textarea rows="3" data-capture="m3.test.wobble" style="width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px"></textarea></div>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>The three-question gut check:</b> Would I say this out loud to my team? Would a reasonable team member know what to do from it? Would I still stand behind it if an AI issue surfaced tomorrow? If not — tighten the wording now.</div>
+
+    <div class="takehome" style="margin-top:26px">
+      <h4>⏎ Take-home only — AI as a thought partner (not in the session)</h4>
+      <p>Once your position is locked by your own judgement, you can paste it into an AI tool and ask it — as a neutral thought partner — to surface ambiguities, unstated assumptions, pressure points, and ways it could be misread as permission. It must <b>not</b> rewrite or improve your position. This reinforces the principle: AI is most useful <i>after</i> judgement is formed, not in place of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/write-your-ai-leadership-stance.jpg" data-title="Write Your AI Leadership Stance"><span class="thumb"><img src="../assets/media/cheatsheets/write-your-ai-leadership-stance.jpg" alt="Write Your AI Leadership Stance" loading="lazy"></span><span class="cap">Write Your AI Leadership Stance</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-ai-leadership-position-card.jpg" data-title="The AI Leadership Position Card"><span class="thumb"><img src="../assets/media/cheatsheets/the-ai-leadership-position-card.jpg" alt="The AI Leadership Position Card" loading="lazy"></span><span class="cap">The AI Leadership Position Card</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/what-is-your-silence-permitting.jpg" data-title="What Is Your Silence Permitting?"><span class="thumb"><img src="../assets/media/cheatsheets/what-is-your-silence-permitting.jpg" alt="What Is Your Silence Permitting?" loading="lazy"></span><span class="cap">What Is Your Silence Permitting?</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/policy-vs-leadership-stance.jpg" data-title="Policy vs Leadership Stance"><span class="thumb"><img src="../assets/media/cheatsheets/policy-vs-leadership-stance.jpg" alt="Policy vs Leadership Stance" loading="lazy"></span><span class="cap">Policy vs Leadership Stance</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/turning-values-into-ai-conditions.jpg" data-title="Turning Values into AI Conditions"><span class="thumb"><img src="../assets/media/cheatsheets/turning-values-into-ai-conditions.jpg" alt="Turning Values into AI Conditions" loading="lazy"></span><span class="cap">Turning Values into AI Conditions</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/pressure-to-line-worksheet.jpg" data-title="Pressure-to-Line Worksheet"><span class="thumb"><img src="../assets/media/cheatsheets/pressure-to-line-worksheet.jpg" alt="Pressure-to-Line Worksheet" loading="lazy"></span><span class="cap">Pressure-to-Line Worksheet</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/executive-pushback-scripts.jpg" data-title="Executive Pushback Scripts"><span class="thumb"><img src="../assets/media/cheatsheets/executive-pushback-scripts.jpg" alt="Executive Pushback Scripts" loading="lazy"></span><span class="cap">Executive Pushback Scripts</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/leadership-stance-conversation-guide.jpg" data-title="Leadership Stance Conversation Guide"><span class="thumb"><img src="../assets/media/cheatsheets/leadership-stance-conversation-guide.jpg" alt="Leadership Stance Conversation Guide" loading="lazy"></span><span class="cap">Leadership Stance Conversation Guide</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/interim-ai-expectations-for-teams.jpg" data-title="Interim AI Expectations for Teams"><span class="thumb"><img src="../assets/media/cheatsheets/interim-ai-expectations-for-teams.jpg" alt="Interim AI Expectations for Teams" loading="lazy"></span><span class="cap">Interim AI Expectations for Teams</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS + PAGER -->
+<section class="band white">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Policy ≠ direction.</b> Policy covers the organisation; your position covers your airspace.</div>
+      <div class="tk"><b>Silence is permission.</b> Say nothing and your team infers a stance from your behaviour.</div>
+      <div class="tk"><b>AI serves strategy — or builds a shadow one.</b> It amplifies the strongest signals unless you anchor it.</div>
+      <div class="tk"><b>Values become constraints.</b> They define what you won’t trade away, even when the case sounds strong.</div>
+      <div class="tk"><b>Pressure is the real test.</b> If your line creates no tension, it may be too vague to shape behaviour.</div>
+      <div class="tk"><b>Make six things clear.</b> What AI is for, where the line is, and what stays human — at minimum.</div>
+    </div>
+    <div class="pager">
+      <a href="module-2.html" class="prev"><div class="lbl">← Previous module</div><div class="ttl">Making AI Decisions Defensible</div></a>
+      <a href="module-4.html" class="next"><div class="lbl">Next module →</div><div class="ttl">AI Readiness</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 3 — Defining AI Leadership Direction</small>
+    </div>
+    <small>Policies cover your organisation. Your position covers your airspace.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ===== SILENCE DECODER ===== */
+const OBS=[
+ "I consistently reward speed",
+ "I accept polished outputs without asking how they were produced",
+ "I rarely ask how AI was used in a piece of work",
+ "I’ve said little or nothing explicit about AI",
+ "I let ‘probably fine’ pass when momentum is high"
+];
+const obsEl=document.getElementById('obs');
+OBS.forEach(o=>{
+  const d=document.createElement('button'); d.className='obs'; d.dataset.on='0';
+  d.innerHTML=`<span class="bx">✓</span><span class="tx">${o}</span>`;
+  d.addEventListener('click',()=>{d.dataset.on=d.dataset.on==='1'?'0':'1';d.classList.toggle('on');decode();});
+  obsEl.appendChild(d);
+});
+function decode(){
+  const n=[...document.querySelectorAll('.obs')].filter(x=>x.dataset.on==='1').length;
+  const el=document.getElementById('decode');
+  if(n===0){
+    el.innerHTML=`<div class="lbl">The message your team receives</div><div class="msg">Nothing ticked — but have you made your position <i>explicit</i>? If you’ve only avoided these, your team may still be guessing.</div><div class="sub">An unstated position is still a position. Make it visible.</div>`;
+  } else {
+    el.innerHTML=`<div class="lbl">The message your team receives</div><div class="msg">“Use it if it helps. Keep moving. Don’t create a problem.”</div><div class="sub">That isn’t clarity — it’s <b>delegated ambiguity</b>. It becomes a leadership risk the moment an outcome needs to be explained. (${n} signal${n>1?'s':''} ticked.)</div>`;
+  }
+}
+decode();
+
+/* ===== SHADOW STRATEGY ===== */
+const ENV=["Speed","Output volume","Cost pressure","Visible responsiveness"];
+const PRI=["Trust","Fairness","Quality","Defensibility","Consistency","Safety","Explainability"];
+function mkPills(arr,host,cls){
+  arr.forEach(x=>{const b=document.createElement('button');b.className='pill '+cls;b.textContent=x;b.dataset.on='0';
+    b.addEventListener('click',()=>{b.dataset.on=b.dataset.on==='1'?'0':'1';b.classList.toggle('on');shadowSynth();});host.appendChild(b);});
+}
+mkPills(ENV,document.getElementById('envPills'),'env');
+mkPills(PRI,document.getElementById('priPills'),'pri');
+function chosen(host){return [...host.querySelectorAll('.pill')].filter(p=>p.dataset.on==='1').map(p=>p.textContent);}
+function shadowSynth(){
+  const e=chosen(document.getElementById('envPills'));
+  const p=chosen(document.getElementById('priPills'));
+  const el=document.getElementById('shadowSynth');
+  if(!e.length&&!p.length){el.textContent="Select from each side to see the gap your position has to close.";return;}
+  const eTxt=e.length?e.join(', '):'whatever is loudest';
+  const pTxt=p.length?p.join(', '):'what actually matters';
+  el.innerHTML=`Left unanchored, AI will amplify <b style="color:var(--coral-dark)">${eTxt}</b> — not necessarily <b style="color:var(--teal-dark)">${pTxt}</b>. Your leadership position is what keeps AI use anchored to the second list.`;
+}
+
+/* ===== PRESSURE SCRIPTS ===== */
+const PRESS=[
+ ["Exec mandate","“We’re going AI-first”","I support the mandate. My role is to make sure we adopt safely. We’ll start with low-risk use cases, define ownership, and only scale once we can show controls are working."],
+ ["Cost-out / productivity","Efficiency targets","We’ll pursue efficiency gains, but we won’t buy speed by creating rework, incidents or trust loss. We’ll measure productivity and error rate, complaints, and rework."],
+ ["Speed / deadlines","Delivery pressure","Yes to speed — with guardrails. If we can’t do the minimum checks, it’s not ‘fast’, it’s ‘unmanaged risk’. Let’s narrow scope rather than skip controls."],
+ ["Competitor / FOMO","“Everyone’s doing it”","Copying competitors isn’t a strategy. Our differentiator is trust and reliability. We’ll move quickly where it’s reversible and be deliberate where it isn’t."],
+ ["KPI pressure","“Hit the number”","We’re not going to game the KPI with AI. If AI changes the process, we adjust the KPI or add a quality metric, so we don’t incentivise bad outcomes."],
+ ["Vendor hype","“The tool can do it all”","We’ll treat vendor claims as untested until proven in our context. We pilot, evaluate, then decide — especially for people-impacting or customer-facing use."],
+ ["Team enthusiasm","“Let us experiment”","I want you to experiment. Here’s the safe sandbox: low-risk tasks, approved tools, no sensitive data, and a clear human owner. Bring me anything that touches customers, staff outcomes or external commitments."],
+ ["Fear of saying no","The ‘Not-No’ pattern","I’m not saying ‘no’. I’m saying ‘not yet’ — until we can answer three questions: who owns the decision, what are the controls, and how we’ll know it’s working."]
+];
+const plist=document.getElementById('plist');
+PRESS.forEach((p,i)=>{
+  const b=document.createElement('button'); b.className='pbtn'+(i===0?' on':''); b.dataset.i=i;
+  b.innerHTML=`<div class="pt">${p[0]}</div>`;
+  b.addEventListener('click',()=>showScript(i));
+  plist.appendChild(b);
+});
+function showScript(i){
+  document.querySelectorAll('.pbtn').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const p=PRESS[i];
+  document.getElementById('scriptbox').innerHTML=`<div class="pl">${p[0]} — ${p[1]}</div><div class="sc">“${p[2]}”</div>`;
+}
+showScript(0);
+
+/* ===== POSITION CARD ROLES ===== */
+let roles=new Set();
+document.querySelectorAll('#pcroles .ro').forEach(r=>{
+  r.addEventListener('click',()=>{
+    const v=r.dataset.r;
+    if(roles.has(v)){roles.delete(v);r.classList.remove('on');}else{roles.add(v);r.classList.add('on');}
+    try{window.RAL.setCaptureValue('m3.card.roles',[...roles].join(', '));}catch(e){}
+    updateCard();
+  });
+});
+
+/* ===== CLARITY METER + LIVE CARD ===== */
+const val=id=>{const e=document.getElementById(id);return e?(e.value||'').trim():'';};
+const VAGUE=/be sensible|use your judg|as we go|probably fine|we'?ll adjust|just be|work smarter|obviously follow|if it helps/i;
+function updateCard(){
+  const purpose=val('pc1'),value=val('pc2'),rolePr=val('pc3'),boundary=val('pc4'),boundaryWhy=val('pc4b'),
+        owner=val('pc5'),review=val('pc5b'),pressure=val('pc6'),line=val('pc6b'),remember=val('pc7'),escalate=val('pc7b');
+  const keys=[purpose,value,(roles.size>0||rolePr),boundary,owner,(pressure&&line),(remember||escalate)];
+  const filled=keys.filter(k=>typeof k==='string'?k.length>=8:!!k).length;
+  // flags
+  const allText=[purpose,value,rolePr,boundary,boundaryWhy,owner,review,pressure,line,remember,escalate].join(' ');
+  let flags=[];
+  if(VAGUE.test(allText)) flags.push("Vague language (“be sensible / use your judgement”) won’t guide behaviour under pressure");
+  if(boundary && boundary.length<6) flags.push("Your boundary is too thin — name exactly what AI must not do");
+  if(owner && /team|everyone|we all|the group/i.test(owner) && !/[A-Z]/.test(owner.replace(/^./,''))) {}
+  let score=Math.max(0,Math.round(filled/7*100 - flags.length*12));
+
+  // strengthening
+  const good=[];
+  if(purpose.length>=8) good.push("Purpose named");
+  if(value.length>=6) good.push("A value you won’t trade away");
+  if(roles.size>0) good.push("AI’s role is bounded ("+[...roles].length+" set)");
+  if(boundary.length>=6 && !VAGUE.test(boundary)) good.push("A real boundary (creates tension)");
+  if(owner.length>=2) good.push("A named human owner");
+  if(pressure && line) good.push("Pressure point + the line you’ll hold");
+  if(escalate.length>=6) good.push("Team knows when to escalate");
+
+  document.getElementById('cScore').textContent=score;
+  document.getElementById('cBar').style.width=score+'%';
+  const gEl=document.getElementById('cRat');
+  let html = good.length? good.map(g=>`<li class="good">${g}</li>`).join('') : '<li class="empty">Fill the card to build clarity…</li>';
+  html += flags.map(f=>`<li class="bad">${f}</li>`).join('');
+  gEl.innerHTML=html;
+  const v=document.getElementById('cVerdict');
+  let vt,vc;
+  if(filled===0){vt="Not started";vc="var(--muted)";}
+  else if(score<40){vt="Too vague to shape behaviour";vc="var(--coral-dark)";}
+  else if(score<70){vt="Getting clearer";vc="#C98A1E";}
+  else if(score<90){vt="Clear & usable";vc="var(--teal-dark)";}
+  else{vt="Clear, owned, defensible";vc="var(--teal-dark)";}
+  v.textContent=vt;v.style.color=vc;
+  document.getElementById('cTrap').textContent = score>=70
+    ? "✓ A team member would likely know what to do without asking."
+    : "Would a team member know what to do without asking? Not yet.";
+
+  // live preview
+  const ph=t=>t?`<b>${t}</b>`:`<span>______</span>`;
+  document.getElementById('prevStmt').innerHTML =
+    `In my area, we will use AI to support ${ph(purpose)}. We will not use AI to ${ph(boundary)}. Human ownership remains with ${ph(owner)}. If ${ph(pressure||escalate)}, we pause, review or escalate before acting.`;
+  let extra='';
+  if(roles.size) extra+=`<div class="pcline"><span>AI may:</span> ${[...roles].join(' · ')}</div>`;
+  if(value) extra+=`<div class="pcline"><span>Won’t trade away:</span> ${value}</div>`;
+  if(line) extra+=`<div class="pcline"><span>The line I’ll hold:</span> ${line}</div>`;
+  document.getElementById('prevExtra').innerHTML=extra;
+}
+document.querySelectorAll('.pcsec input').forEach(i=>i.addEventListener('input',updateCard));
+
+/* ===== prefill from anchors (B) + line (C) ===== */
+try{
+  const cap=window.RAL.getCapture();
+  const set=(id,key)=>{const e=document.getElementById(id);if(e&&!e.value&&cap[key]){e.value=cap[key];}};
+  set('pc1','m3.anchor.purpose'); set('pc2','m3.anchor.value');
+  set('pc6','m3.line.we_wont'); set('pc6b','m3.line.we_will');
+  if(cap['m3.card.roles']){cap['m3.card.roles'].split(', ').forEach(v=>{const r=[...document.querySelectorAll('#pcroles .ro')].find(x=>x.dataset.r===v);if(r){roles.add(v);r.classList.add('on');}});}
+}catch(e){}
+updateCard();
+</script>
+</body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 4 — AI Readiness | Responsible AI Leadership</title>
+<meta name="description" content="The Readiness Reality Check — a readiness radar, a workflow x-ray, and a stress test that shows what holds in theory but fails under pressure. Module 4." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:62ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .keyline{margin-top:24px;border-left:4px solid var(--teal-light);padding:4px 0 4px 16px;max-width:54ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:16.5px;color:#fff}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+
+  /* radar dashboard */
+  .radarwrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:0}
+  @media(max-width:900px){.radarwrap{grid-template-columns:1fr}}
+  .radarstage{background:#0e1614;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  #radar{width:100%;max-width:380px;height:auto}
+  .legend{display:flex;gap:18px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+  .legend span{font-size:11.5px;color:#cfcfcf;display:flex;align-items:center;gap:6px}
+  .legend i{width:14px;height:3px;display:block}
+  .radarscores{display:flex;gap:22px;margin-top:12px}
+  .radarscores div{text-align:center}
+  .radarscores .v{font-family:var(--head);font-weight:700;font-size:26px;line-height:1}
+  .radarscores .l{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#9a958d;margin-top:3px}
+  .radarctrl{padding:22px 24px}
+  .dimrow{padding:12px 0;border-bottom:1px solid var(--line)}
+  .dimrow:last-child{border-bottom:0}
+  .dimrow .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dimrow .nm{font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink)}
+  .dimrow .q{font-size:11.5px;color:var(--grey);margin:3px 0 8px}
+  .seg{display:flex;gap:5px}
+  .seg button{font-family:var(--head);font-weight:600;font-size:11.5px;border:1px solid var(--line);background:var(--cream-alt);padding:5px 11px;cursor:pointer}
+  .seg button.on[data-v="3"]{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .seg button.on[data-v="2"]{background:#C98A1E;color:#fff;border-color:#C98A1E}
+  .seg button.on[data-v="1"]{background:var(--coral);color:#fff;border-color:var(--coral)}
+
+  .stressbar{margin-top:18px;background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px}
+  .stressbar .lbl{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:10px}
+  .stress-toggles{display:flex;flex-wrap:wrap;gap:8px}
+  .stress{font-family:var(--head);font-weight:600;font-size:12.5px;border:1px solid var(--line);background:#fff;padding:8px 13px;cursor:pointer}
+  .stress.on{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .stressnote{font-size:12.5px;color:var(--ink);margin-top:12px}
+
+  /* x-ray pipeline */
+  .pipe{display:flex;align-items:stretch;gap:0;margin-top:6px;overflow-x:auto}
+  .pnode{flex:1;min-width:150px;border:1px solid var(--line);background:#fff;padding:14px 14px;cursor:pointer;position:relative;transition:.16s}
+  .pnode:not(:last-child){border-right:0}
+  .pnode:hover{background:var(--cream-alt)}
+  .pnode.on{background:var(--cream-alt);box-shadow:inset 0 4px 0 var(--teal)}
+  .pnode.risk.on{box-shadow:inset 0 4px 0 var(--coral)}
+  .pnode .st{font-family:var(--head);font-weight:600;font-size:13.5px;color:var(--ink)}
+  .pnode .ar{position:absolute;right:-9px;top:50%;transform:translateY(-50%);z-index:2;color:var(--muted);font-size:16px}
+  .pnode .rk{display:inline-block;margin-top:6px;font-size:9.5px;font-family:var(--head);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--coral);padding:2px 6px}
+  .pnodebody{margin-top:14px;background:var(--cream-alt);border-left:4px solid var(--teal);padding:16px 18px;font-size:14px;min-height:64px}
+  .pnodebody.risk{border-left-color:var(--coral)}
+
+  /* stance vs workflow */
+  .svw{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .svrow{border:1px solid var(--line);background:#fff;cursor:pointer}
+  .svrow .head{display:flex;align-items:center;gap:12px;padding:13px 16px}
+  .svrow .head .ix{font-family:var(--head);font-weight:700;color:#fff;background:var(--teal-dark);width:24px;height:24px;flex:0 0 24px;display:flex;align-items:center;justify-content:center;font-size:12px}
+  .svrow .head .t{font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink)}
+  .svrow .head .pl{margin-left:auto;color:var(--teal-dark);font-weight:700;font-size:18px}
+  .svrow .body{max-height:0;overflow:hidden;transition:.25s;padding:0 16px}
+  .svrow.open .body{max-height:200px;padding:0 16px 14px}
+  .svrow .body .c{font-size:13px;color:var(--ink);margin-bottom:8px}
+  .svrow .body .c b{color:var(--coral-dark);font-family:var(--head)}
+  .svrow .body .r{font-size:12.5px;color:var(--teal-ink)}
+  .svrow .body .r b{font-family:var(--head)}
+
+  /* myths */
+  .myths{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  @media(max-width:720px){.myths{grid-template-columns:1fr}}
+  .myth{border:1px solid var(--line);background:#fff;padding:16px 18px;cursor:pointer}
+  .myth:hover{border-color:var(--coral)}
+  .myth .m{font-family:var(--head);font-weight:600;font-size:15px;color:var(--ink)}
+  .myth .b{font-size:12.5px;color:var(--coral-dark);margin-top:8px;max-height:0;overflow:hidden;opacity:0;transition:.25s}
+  .myth.open .b{max-height:120px;opacity:1}
+  .safe{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:720px){.safe{grid-template-columns:1fr}}
+  .safe .box{background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px}
+  .safe h5{font-family:var(--head);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:9px}
+  .safe ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .safe li{font-size:13px;color:var(--ink);padding-left:15px;position:relative}
+  .safe li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--teal)}
+  .shift{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px;background:#1c1c1c;color:#fff;padding:18px 22px}
+  .shift .from{font-size:15px;color:#bdbdbd;text-decoration:line-through}
+  .shift .ar{color:var(--teal-light);font-size:20px}
+  .shift .to{font-family:var(--head);font-weight:600;font-size:16px}
+
+  /* info chain */
+  .chainflow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-top:6px}
+  .cn{background:var(--teal);color:#fff;padding:12px 16px;font-family:var(--head);font-weight:600;font-size:13.5px}
+  .cn.alt{background:var(--teal-dark)}
+  .cnar{color:var(--muted);padding:0 8px;font-size:16px}
+
+  /* agentic */
+  .agentic{background:#1c1c1c;color:#fff;border-left:5px solid var(--coral);padding:20px 24px}
+  .agentic h4{font-size:17px;margin-bottom:8px;color:#fff}
+  .agentic ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;margin:10px 0}
+  .agentic li{font-size:13.5px;color:#d4d4d4;padding-left:16px;position:relative}
+  .agentic li::before{content:"▸";position:absolute;left:0;color:var(--coral)}
+  .agentic p{font-size:13.5px;color:#bdbdbd}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:13.5px}
+  .takeaways .tk b{font-family:var(--head)}
+  .checklist{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+  .chk{display:flex;align-items:center;gap:11px;cursor:pointer;font-size:13.5px}
+  .chk .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+  .chk.on .bx{background:var(--teal-dark);border-color:var(--teal-dark)}
+</style>
+</head>
+<body class="self" data-page="module-4">
+
+<!-- CHROME -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mhero">
+    <div class="hero-media"><img src="../assets/media/pics/operations-room-night.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 4</div>
+    <h1>AI Readiness</h1>
+    <p class="lead">You’ve seen where AI shapes judgement, defined a stance, and set your line. Now the harder question: is your reality able to support it? A leadership position can be sound on paper and still become difficult to uphold if the surrounding workflow conditions are weak.</p>
+    <div class="keyline"><span>Readiness is the strength of the conditions around AI use — not the existence of the tool itself.</span></div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Understand what readiness actually means for leaders</span></div>
+      <div><span class="d">→</span><span>See why readiness gaps hide in capable, well-meaning teams</span></div>
+      <div><span class="d">→</span><span>Read readiness through real workflows, not tool lists</span></div>
+      <div><span class="d">→</span><span>Anchor one real workflow to carry into Day 2</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Readiness Reality Check</div>
+  </div>
+</section>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#radar-sec">Readiness Radar</a>
+    <a href="#xray">Workflow X-Ray</a>
+    <a href="#hidden">Hidden Gaps</a>
+    <a href="#info">Information Management</a>
+    <a href="#anchor">Anchor Day 2</a>
+  </div>
+</div>
+
+<!-- INTRO + RAIL -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">From stance to reality</h2>
+        <p class="section-lead">AI readiness isn’t a maturity score or a tool inventory. For leaders it’s simpler and more demanding: is AI influence visible, can outputs be questioned before action, do people know when to escalate, does enough context stay attached as information moves, and could you still explain the decision conditions later?</p>
+        <p>A capable, high-performing, well-intentioned team can still be unready — if AI use is informal, summaries are trusted too quickly, escalation is vague, or review depends on individual vigilance rather than designed practice. This module shifts from defining a stance to testing whether reality can sustain it.</p>
+        <div class="note teal"><b>The most important foundation for Day 2:</b> AI rarely creates risk in isolation — it accumulates within workflows. So we assess readiness by looking at real workflows, not policies or tool lists.</div>
+      </div>
+      <div>
+        <div class="rail">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>What “AI readiness” means</li>
+              <li>Why readiness gaps hide in capable teams</li>
+              <li>Why AI visibility within workflows beats tools</li>
+              <li>Information management</li>
+              <li>Key takeaways</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>Leadership stance vs Workflow reality</li>
+              <li>Readiness Reality Check</li>
+              <li>Anchor Your Day 2 Workflow</li>
+              <li>End-of-day reflection</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RADAR -->
+<section class="band white" id="radar-sec">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">First-instinct level — precision not required</span></div>
+    <h2 class="section">The Readiness Reality Check</h2>
+    <p class="section-lead">Rate five conditions around AI use. Only mark <b>Strong</b> if it would still hold under pressure <i>and</i> when you’re not in the room. Then switch on the pressures — speed, ambiguity, hierarchy — and watch what holds in theory but fails in practice.</p>
+
+    <div class="dash" style="margin-top:20px">
+      <div class="dhead"><div class="ic">◎</div><div><h3>Readiness radar — on paper vs under pressure</h3><div class="sub">Most capable teams mark several areas Partial or Unclear. That’s expected.</div></div></div>
+      <div class="radarwrap">
+        <div class="radarstage">
+          <svg id="radar" viewBox="0 0 360 330" role="img" aria-label="Readiness radar"></svg>
+          <div class="legend">
+            <span><i style="background:#53DFCB"></i> On paper</span>
+            <span><i style="background:#DC5A46"></i> Under pressure</span>
+          </div>
+          <div class="radarscores">
+            <div><div class="v" id="paperScore" style="color:#53DFCB">—</div><div class="l">On paper</div></div>
+            <div><div class="v" id="pressScore" style="color:#DC5A46">—</div><div class="l">Under pressure</div></div>
+          </div>
+        </div>
+        <div class="radarctrl">
+          <div id="dims"></div>
+          <div class="stressbar">
+            <div class="lbl">⚡ Stress-test the conditions</div>
+            <div class="stress-toggles" id="stressToggles"></div>
+            <div class="stressnote" id="stressNote">What holds in theory may fail when speed, ambiguity or hierarchy intervene. <b>Strong</b> conditions are more resilient than <b>Partial</b> ones — that gap is the point.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agentic" style="margin-top:18px">
+      <h4>⚡ Agentic AI — a readiness stress test, not a prediction</h4>
+      <p>Most AI today supports thinking, drafting and summarising. Agentic AI changes the equation by <b>acting</b>. When that happens:</p>
+      <ul><li>consequences arrive faster</li><li>errors propagate more widely</li><li>accountability questions become immediate</li></ul>
+      <p>If your workflows already make it hard to explain decisions, validate outputs, or trace actions to human judgement, greater autonomy will magnify those weaknesses. Toggle “Agentic” above to see existing gaps scale.</p>
+    </div>
+
+    <div class="two-col" style="margin-top:22px">
+      <div class="capture">
+        <h3>Private reflection</h3>
+        <div class="hint">Look only at what you completed. Short phrases. Don’t problem-solve — clarity is enough. Saves to your Leadership Plan.</div>
+        <div class="field"><label for="g1">The readiness gap where my stance would feel hardest to defend right now is…</label><input type="text" id="g1" data-capture="m4.gap.where"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="g2">This matters most because, under pressure…</label><input type="text" id="g2" data-capture="m4.gap.why"><span class="saved">✓ Saved</span></div>
+      </div>
+      <div class="prose">
+        <div class="note"><b>Readiness is not a scorecard.</b> A low score isn’t failure — it’s visibility. The task isn’t to solve every gap today. It’s to see clearly where your stance is well supported, where it’s exposed, and where judgement may be harder to uphold than it first appears.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW X-RAY -->
+<section class="band tint" id="xray">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Leadership stance vs workflow reality</span></div>
+    <h2 class="section">The workflow x-ray</h2>
+    <p class="section-lead">A reasonable workflow can still undermine a reasonable stance. Here’s the scenario from the workbook: a manager drafts the weekly team update with AI from KPIs, incident notes, backlog, staffing changes and team-lead comments. Trace where risk accumulates — risk doesn’t appear at the tool, it builds at summaries, handovers, and the moment a draft starts shaping decisions.</p>
+
+    <div class="pipe" id="pipe" style="margin-top:20px"></div>
+    <div class="pnodebody" id="pnodeBody"></div>
+
+    <h3 style="font-family:var(--head);font-size:19px;margin:30px 0 6px;color:var(--ink)">Where does the workflow quietly contradict the stance?</h3>
+    <p class="section-lead" style="margin-bottom:14px">A position isn’t contradicted only when someone breaks it. It’s contradicted when the workflow is too weak to make it real. Using the Module 3 strong-stance example, open each line to see where this scenario undermines it.</p>
+    <div class="svw" id="svw"></div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Discussion questions</h3>
+      <div class="hint">Work these through, then capture the group conclusion below. All save to your Leadership Plan.</div>
+      <div class="field"><label for="svwq1">1. Which part of the leadership stance looks strongest on paper, but weakest in practice in this scenario?</label><textarea id="svwq1" rows="2" data-capture="m4.svw.q1"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="svwq2">2. Where does the real role of AI exceed the role the stance says it should play?</label><textarea id="svwq2" rows="2" data-capture="m4.svw.q2"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="svwq3">3. What important context, nuance, or less visible work may be lost as the update moves from mixed inputs to AI-generated summary?</label><textarea id="svwq3" rows="2" data-capture="m4.svw.q3"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="svwq4">4. Does human review in this scenario protect judgement, or mainly approve the output?</label><textarea id="svwq4" rows="2" data-capture="m4.svw.q4"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="svwq5">5. If someone felt the summary was incomplete or misleading, would the workflow make challenge or escalation realistic?</label><textarea id="svwq5" rows="2" data-capture="m4.svw.q5"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="svwq6">6. What does this scenario suggest is not yet fully ready in the workflow?</label><textarea id="svwq6" rows="2" data-capture="m4.svw.q6"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+
+    <div class="capture" style="margin-top:16px">
+      <h3>Group conclusion</h3>
+      <div class="hint">Saves to your Leadership Plan.</div>
+      <div class="field"><label for="c1">The leadership stance is most at risk of being contradicted when…</label><textarea id="c1" rows="2" data-capture="m4.svw.risk"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="c2">This happens because the workflow is not yet strong enough in…</label><textarea id="c2" rows="2" data-capture="m4.svw.because"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIDDEN GAPS -->
+<section class="band white" id="hidden">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Concept</span></div>
+    <h2 class="section">Why readiness gaps hide in capable teams</h2>
+    <p class="section-lead">Many AI risks don’t come from recklessness or unapproved tools. They come from capable people using AI to cope with complexity and workload. Because it feels sensible and productive, it goes unquestioned. These four reassurances are exactly where gaps hide — click each.</p>
+    <div class="myths" id="myths"></div>
+
+    <div class="safe">
+      <div class="box">
+        <h5>Readiness weakens if people can’t safely say…</h5>
+        <ul>
+          <li>“I’m not sure this output holds.”</li>
+          <li>“I don’t know what this is based on.”</li>
+          <li>“This looks polished, but I’m not comfortable relying on it.”</li>
+          <li>“I’m not sure whether this should move forward.”</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h5>Leaders build readiness by making AI discussable</h5>
+        <ul>
+          <li>Ask “where is AI already helping people get work done?”</li>
+          <li>Treat disclosure with curiosity, not criticism.</li>
+          <li>Make surfacing uncertainty early a contribution, not resistance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="shift">
+      <span class="from">“Did you use AI?”</span>
+      <span class="ar">→</span>
+      <span class="to">“What did we rely on most here — and how do we know it holds?”</span>
+    </div>
+  </div>
+</section>
+
+<!-- INFORMATION MANAGEMENT -->
+<section class="band tint" id="info">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Concept</span><span class="tag ghost">Leadership work</span></div>
+    <h2 class="section">Information management is more than data governance</h2>
+    <p class="section-lead">Most AI-related leadership failures are not failures of raw data. They’re failures of context, interpretation and meaning management. Leaders govern the whole chain — and whether enough context travels with information as it moves.</p>
+    <div class="chainflow">
+      <span class="cn">Data</span><span class="cnar">→</span>
+      <span class="cn alt">Information</span><span class="cnar">→</span>
+      <span class="cn">Knowledge</span><span class="cnar">→</span>
+      <span class="cn alt">Context</span><span class="cnar">→</span>
+      <span class="cn">AI-generated outputs</span>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>The leadership question:</b> is the full chain — data, information, knowledge, context and AI-generated outputs — governed strongly enough to support defensible decisions? That includes knowing what stays provisional, what shouldn’t be reused, and what isn’t decision-ready without further human judgement.</div>
+  </div>
+</section>
+
+<!-- ANCHOR DAY 2 -->
+<section class="band white" id="anchor">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Bridge to Day 2</span><span class="tag ghost">Anchor your workflow</span></div>
+    <h2 class="section">Anchor your Day 2 workflow</h2>
+    <p class="section-lead">Choose one real workflow from your area to be your practical case for Day 2. Everything tomorrow — output evaluation, guardrails, incidents, change — will be grounded in this one example.</p>
+
+    <div class="ref" id="m1ref" style="display:none;background:var(--cream-alt);border:1px dashed var(--teal);padding:8px 13px;font-size:13px;color:var(--teal-ink);margin:14px 0;display:inline-flex;align-items:center;gap:8px">◆ You named this in Module 1: <b id="m1refName"></b> — reuse it, or pick another below.</div>
+
+    <div class="two-col" style="margin-top:14px">
+      <div class="capture">
+        <h3>Step 1 — Is this a good workflow?</h3>
+        <div class="hint">A strong Day-2 case ticks all four.</div>
+        <div class="checklist" id="checklist"></div>
+        <h3 style="margin-top:8px">Step 2–4 — Define it</h3>
+        <div class="field"><label for="w1">One-line description of the workflow<span class="q">e.g. “Weekly team update drafted with AI,” “Hiring shortlist creation,” “Customer feedback analysis.”</span></label><input type="text" id="w1" data-capture="m4.day2.workflow"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="w2">Where is AI used (or likely to be) in it?</label><input type="text" id="w2" data-capture="m4.day2.where"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="w3">Why is this a good test case for responsible AI leadership?</label><input type="text" id="w3" data-capture="m4.day2.why"><span class="saved">✓ Saved</span></div>
+      </div>
+      <div>
+        <div class="capture">
+          <h3>Peer validation</h3>
+          <div class="hint">In the room, a partner asks you this one question. Answer it for yourself.</div>
+          <div class="field"><label for="w4">Where do you feel most exposed, or least clear, about how AI shapes judgement in this workflow?</label><textarea id="w4" rows="3" data-capture="m4.day2.exposed"></textarea><span class="saved">✓ Saved</span></div>
+        </div>
+        <div class="capture" style="margin-top:16px">
+          <h3>End-of-day reflection</h3>
+          <div class="hint">Capture your key takeaways from Day 1.</div>
+          <div class="field"><label for="eod">Day 1 — what I most need to act on</label><textarea id="eod" rows="3" data-capture="m4.eod" placeholder="Your key takeaways…"></textarea><span class="saved">✓ Saved</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-five-part-ai-readiness-check.jpg" data-title="The Five-Part AI Readiness Check"><span class="thumb"><img src="../assets/media/cheatsheets/the-five-part-ai-readiness-check.jpg" alt="The Five-Part AI Readiness Check" loading="lazy"></span><span class="cap">The Five-Part AI Readiness Check</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/are-we-ready-to-lead-ai-here.jpg" data-title="Are We Ready to Lead AI Here?"><span class="thumb"><img src="../assets/media/cheatsheets/are-we-ready-to-lead-ai-here.jpg" alt="Are We Ready to Lead AI Here?" loading="lazy"></span><span class="cap">Are We Ready to Lead AI Here?</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/readiness-gap-finder.jpg" data-title="Readiness Gap Finder"><span class="thumb"><img src="../assets/media/cheatsheets/readiness-gap-finder.jpg" alt="Readiness Gap Finder" loading="lazy"></span><span class="cap">Readiness Gap Finder</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/ai-workflow-risk-heat-map.jpg" data-title="AI Workflow Risk Heat Map"><span class="thumb"><img src="../assets/media/cheatsheets/ai-workflow-risk-heat-map.jpg" alt="AI Workflow Risk Heat Map" loading="lazy"></span><span class="cap">AI Workflow Risk Heat Map</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/risk-travels-through-the-workflow.jpg" data-title="Risk Travels Through the Workflow"><span class="thumb"><img src="../assets/media/cheatsheets/risk-travels-through-the-workflow.jpg" alt="Risk Travels Through the Workflow" loading="lazy"></span><span class="cap">Risk Travels Through the Workflow</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/capability-escalation-and-context-builder.jpg" data-title="Capability, Escalation & Context Builder"><span class="thumb"><img src="../assets/media/cheatsheets/capability-escalation-and-context-builder.jpg" alt="Capability, Escalation & Context Builder" loading="lazy"></span><span class="cap">Capability, Escalation & Context Builder</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS + PAGER -->
+<section class="band tint">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close of Day 1</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Readiness = conditions, not maturity.</b> It’s the strength of the conditions around judgement, not technical maturity or tool lists.</div>
+      <div class="tk"><b>Shadow AI is where risk accumulates.</b> Informal and embedded use must be made visible and discussable.</div>
+      <div class="tk"><b>Capable teams have gaps too.</b> Weak questioning, escalation or context retention undermine even high performers.</div>
+      <div class="tk"><b>Workflows reveal what policies hide.</b> They show where AI shapes judgement, compresses context, or bypasses review.</div>
+      <div class="tk"><b>Safety enables readiness.</b> People must know when to pause, escalate or challenge — and feel safe doing it.</div>
+      <div class="tk"><b>Pressure is the real test.</b> What holds in theory may fail when speed, ambiguity or hierarchy intervene.</div>
+    </div>
+    <div class="note teal" style="margin-top:20px"><b>That’s Day 1.</b> You can now see where AI shapes judgement, you’ve set a stance, and you’ve tested whether your reality supports it. Day 2 gives you a structure — AIRSPACE — for responding to all of it.</div>
+    <div class="pager">
+      <a href="module-3.html" class="prev"><div class="lbl">← Previous module</div><div class="ttl">Defining AI Leadership Direction</div></a>
+      <a href="airspace.html" class="next"><div class="lbl">Day 2 begins →</div><div class="ttl">Introducing the AIRSPACE Framework</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 4 — AI Readiness</small>
+    </div>
+    <small>Readiness is the strength of the conditions around AI use — not the tool itself.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ============ READINESS RADAR ============ */
+const DIMS=[
+ {k:'vis',l:'Visibility of AI use',q:'Do I know where AI is already shaping work — formally or informally?'},
+ {k:'data',l:'Data readiness',q:'Is information current, complete and relevant enough for the judgement?'},
+ {k:'cap',l:'Capability to question outputs',q:'Could people spot a confident-but-weak output before acting?'},
+ {k:'esc',l:'Escalation clarity',q:'Would people know when to stop, who to ask — and feel safe doing it?'},
+ {k:'stew',l:'Information & context stewardship',q:'Does context stay attached; is provisional kept distinct from decision-ready?'}
+];
+const STRESSORS=[
+ {k:'speed',l:'Speed'},{k:'ambiguity',l:'Ambiguity'},{k:'hierarchy',l:'Hierarchy'},{k:'agentic',l:'Agentic (AI acts)'}
+];
+const ratings={}; DIMS.forEach(d=>ratings[d.k]=2); // default Partial
+const stress=new Set();
+
+// build dim controls
+const dimsEl=document.getElementById('dims');
+DIMS.forEach(d=>{
+  const row=document.createElement('div'); row.className='dimrow';
+  row.innerHTML=`<div class="top"><div><div class="nm">${d.l}</div><div class="q">${d.q}</div></div></div>
+    <div class="seg" data-k="${d.k}">
+      <button data-v="3">Strong</button><button data-v="2" class="on">Partial</button><button data-v="1">Unclear</button>
+    </div>`;
+  dimsEl.appendChild(row);
+});
+document.querySelectorAll('.seg').forEach(seg=>{
+  seg.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      ratings[seg.dataset.k]=+b.dataset.v;
+      try{window.RAL.setCaptureValue('m4.readiness.'+seg.dataset.k, b.textContent);}catch(e){}
+      drawRadar();
+    });
+  });
+});
+// stress toggles
+const stEl=document.getElementById('stressToggles');
+STRESSORS.forEach(s=>{
+  const b=document.createElement('button'); b.className='stress'; b.textContent=s.l;
+  b.addEventListener('click',()=>{ if(stress.has(s.k)){stress.delete(s.k);b.classList.remove('on');}else{stress.add(s.k);b.classList.add('on');} drawRadar(); });
+  stEl.appendChild(b);
+});
+
+function effective(v){
+  let pen=0;
+  stress.forEach(s=>{ const w=(s==='agentic')?1.4:1.0; pen += (v>=3?0.45:v>=2?0.78:0.25)*w; });
+  return Math.max(0.4, v-pen);
+}
+
+const RC=180, CY=160, R=120;
+function polar(i,val){
+  const ang=(-90 + i*72)*Math.PI/180;
+  const r=(val/3)*R;
+  return [RC + r*Math.cos(ang), CY + r*Math.sin(ang)];
+}
+function drawRadar(){
+  const svg=document.getElementById('radar');
+  let s='';
+  // rings
+  for(let ring=1;ring<=3;ring++){
+    let pts=DIMS.map((d,i)=>polar(i,ring).join(',')).join(' ');
+    s+=`<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1"/>`;
+  }
+  // spokes + labels
+  DIMS.forEach((d,i)=>{
+    const [x,y]=polar(i,3);
+    s+=`<line x1="${RC}" y1="${CY}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.10)"/>`;
+    const [lx,ly]=polar(i,3.42);
+    let anchor = Math.abs(lx-RC)<6?'middle':(lx>RC?'start':'end');
+    // wrap label into two lines
+    const words=d.l.split(' '); let l1=words.slice(0,2).join(' '), l2=words.slice(2).join(' ');
+    s+=`<text x="${lx}" y="${ly}" fill="#cfcfcf" font-size="10.5" font-family="IBM Plex Sans Condensed" text-anchor="${anchor}">${l1}${l2?`<tspan x="${lx}" dy="12">${l2}</tspan>`:''}</text>`;
+  });
+  // paper polygon
+  const paperPts=DIMS.map((d,i)=>polar(i,ratings[d.k]).join(',')).join(' ');
+  s+=`<polygon points="${paperPts}" fill="rgba(83,223,203,.12)" stroke="#53DFCB" stroke-width="2"/>`;
+  DIMS.forEach((d,i)=>{const [x,y]=polar(i,ratings[d.k]);s+=`<circle cx="${x}" cy="${y}" r="3" fill="#53DFCB"/>`;});
+  // pressure polygon (only if stressors active)
+  if(stress.size){
+    const prPts=DIMS.map((d,i)=>polar(i,effective(ratings[d.k])).join(',')).join(' ');
+    s+=`<polygon points="${prPts}" fill="rgba(220,90,70,.20)" stroke="#DC5A46" stroke-width="2" stroke-dasharray="4 3"/>`;
+    DIMS.forEach((d,i)=>{const [x,y]=polar(i,effective(ratings[d.k]));s+=`<circle cx="${x}" cy="${y}" r="3" fill="#DC5A46"/>`;});
+  }
+  svg.innerHTML=s;
+  // scores
+  const paper=DIMS.reduce((a,d)=>a+ratings[d.k],0)/DIMS.length/3*100;
+  const press=DIMS.reduce((a,d)=>a+effective(ratings[d.k]),0)/DIMS.length/3*100;
+  document.getElementById('paperScore').textContent=Math.round(paper)+'%';
+  document.getElementById('pressScore').textContent= stress.size?Math.round(press)+'%':'—';
+  const drop=Math.round(paper-press);
+  if(stress.size){
+    document.getElementById('stressNote').innerHTML=`Under <b>${[...stress].length}</b> pressure${stress.size>1?'s':''}, readiness drops <b>${drop} points</b>. Notice that areas you rated <b>Strong</b> hold their shape far better than <b>Partial</b> ones — that resilience gap is exactly what you’re building.`;
+  } else {
+    document.getElementById('stressNote').innerHTML=`What holds in theory may fail when speed, ambiguity or hierarchy intervene. <b>Strong</b> conditions are more resilient than <b>Partial</b> ones — that gap is the point. Toggle a pressure to see it.`;
+  }
+}
+drawRadar();
+
+/* ============ WORKFLOW X-RAY ============ */
+const NODES=[
+ {t:"Mixed inputs",d:"KPIs, incident notes, backlog, staffing changes and team-lead comments — quantitative and qualitative, current and dated, all blended together."},
+ {t:"AI summary",risk:true,d:"The compression point. Source nuance, time-period differences and less-visible work can drop out as mixed inputs become one clean, confident summary."},
+ {t:"Human review",risk:true,d:"Does review protect judgement — or mainly approve the output? Symbolic review checks tone and formatting, not what the summary quietly left out."},
+ {t:"Shared picture",risk:true,d:"Once sent, the update shapes what looks urgent, what looks under control, and what gets less attention. A handover where a draft starts shaping decisions."},
+ {t:"Planning",d:"The summary is carried into later decisions as if it were the full picture. Accountability lands here — but the framing was formed upstream, often unowned."}
+];
+const pipe=document.getElementById('pipe');
+NODES.forEach((n,i)=>{
+  const d=document.createElement('div'); d.className='pnode'+(n.risk?' risk':''); d.dataset.i=i;
+  d.innerHTML=`<div class="st">${n.t}</div>${n.risk?'<span class="rk">Risk builds</span>':''}${i<NODES.length-1?'<span class="ar">→</span>':''}`;
+  d.addEventListener('click',()=>showNode(i));
+  pipe.appendChild(d);
+});
+function showNode(i){
+  document.querySelectorAll('.pnode').forEach(p=>p.classList.toggle('on',+p.dataset.i===i));
+  const n=NODES[i], b=document.getElementById('pnodeBody');
+  b.className='pnodebody'+(n.risk?' risk':'');
+  b.innerHTML=`<b style="font-family:var(--head)">${n.t}.</b> ${n.d}`;
+}
+showNode(1);
+
+/* stance vs workflow rows */
+const SVW=[
+ ["AI should assist, not replace judgement","The AI draft becomes the team’s working picture — shaping urgency and attention, not merely assisting.","Visibility — AI’s real role exceeds the assisting role the stance assumes."],
+ ["Human judgement must remain visible","Review can rubber-stamp a polished summary rather than test what it compressed.","Capability & review — scrutiny has to mean more than checking tone and formatting."],
+ ["Important context must not be lost","Source nuance and less-visible work disappear between mixed inputs and the summary.","Information stewardship — context isn’t staying attached as it moves."],
+ ["People should pause or escalate when needed","If the summary felt incomplete, would the workflow make raising it realistic — or get quietly worked around?","Escalation clarity & psychological safety."],
+ ["Human accountability remains clear","Accountability lands at planning, but the picture was framed upstream where no one owned it.","Ownership — the frame has no named owner while it’s being formed."]
+];
+const svw=document.getElementById('svw');
+SVW.forEach((r,i)=>{
+  const d=document.createElement('div'); d.className='svrow';
+  d.innerHTML=`<div class="head"><span class="ix">${i+1}</span><span class="t">${r[0]}</span><span class="pl">+</span></div>
+    <div class="body"><div class="c"><b>Where the scenario contradicts it:</b> ${r[1]}</div><div class="r"><b>What this suggests isn’t ready:</b> ${r[2]}</div></div>`;
+  d.addEventListener('click',()=>{d.classList.toggle('open');d.querySelector('.pl').textContent=d.classList.contains('open')?'–':'+';});
+  svw.appendChild(d);
+});
+
+/* ============ MYTHS ============ */
+const MYTHS=[
+ ["“Our team is capable.”","Capable people use AI to cope with complexity and workload — that’s exactly where informal use hides."],
+ ["“We already review things.”","Review can be symbolic — checking tone and formatting, not testing what the summary compressed."],
+ ["“We use approved tools.”","Approved tools still embed AI features and summaries that shape work invisibly."],
+ ["“We’re not doing anything reckless.”","Readiness gaps appear in careful teams under pressure with reasonable intent — not only careless ones."]
+];
+const mEl=document.getElementById('myths');
+MYTHS.forEach(m=>{
+  const d=document.createElement('div'); d.className='myth';
+  d.innerHTML=`<div class="m">${m[0]}</div><div class="b">↳ ${m[1]}</div>`;
+  d.addEventListener('click',()=>d.classList.toggle('open'));
+  mEl.appendChild(d);
+});
+
+/* ============ ANCHOR CHECKLIST ============ */
+const CHECKS=[
+ "Is this workflow recurring and meaningful in your role?",
+ "Is AI already used, or likely to be used soon?",
+ "Would you be expected to explain or defend the outcome if challenged?",
+ "Does it connect to people, customers, money, compliance, or reputation?"
+];
+const cl=document.getElementById('checklist');
+CHECKS.forEach((c,i)=>{
+  const d=document.createElement('div'); d.className='chk';
+  d.innerHTML=`<span class="bx">✓</span><span>${c}</span>`;
+  d.addEventListener('click',()=>d.classList.toggle('on'));
+  cl.appendChild(d);
+});
+
+/* prefill from Module 1 workflow */
+try{
+  const cap=window.RAL.getCapture();
+  if(cap['m1.workflow.name']){
+    document.getElementById('m1ref').style.display='inline-flex';
+    document.getElementById('m1refName').textContent=cap['m1.workflow.name'];
+    const w1=document.getElementById('w1'); if(w1 && !w1.value){w1.value=cap['m1.workflow.name']; window.RAL.setCaptureValue('m4.day2.workflow',w1.value);}
+  }
+}catch(e){}
+</script>
+</body>
+</html>

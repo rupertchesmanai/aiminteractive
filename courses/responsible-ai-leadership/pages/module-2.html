@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 2 — Making AI Decisions Defensible | Responsible AI Leadership</title>
+<meta name="description" content="The Decision Framing Canvas — an interactive 8-panel canvas with a live defensibility meter. Module 2 of Responsible AI Leadership." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 82% 0%, #15302d 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:60ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .keyline{margin-top:24px;border-left:4px solid var(--coral);padding:4px 0 4px 16px;max-width:56ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:17px;color:#fff}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead.coral .ic{background:var(--coral)}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+
+  /* weak justifications */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .chip-j{border:1px solid var(--line);background:#fff;padding:13px 16px;cursor:pointer;max-width:330px;transition:.16s}
+  .chip-j:hover{border-color:var(--coral)}
+  .chip-j .q{font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink)}
+  .chip-j .a{font-size:12.5px;color:var(--coral-dark);margin-top:8px;max-height:0;overflow:hidden;opacity:0;transition:.25s}
+  .chip-j.open{border-color:var(--coral);background:#fff}
+  .chip-j.open .a{max-height:120px;opacity:1;margin-top:8px}
+  .chip-j .tag{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+
+  /* signals */
+  .signals{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .sig{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);background:#fff;padding:12px 15px;cursor:pointer;transition:.16s}
+  .sig:hover{border-color:var(--teal)}
+  .sig.on{border-color:var(--coral);background:#fff;box-shadow:inset 4px 0 0 var(--coral)}
+  .sig .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+  .sig.on .bx{background:var(--coral);border-color:var(--coral)}
+  .sig .tx{font-size:14px;color:var(--ink)}
+  .sigverdict{margin-top:16px;padding:16px 18px;background:var(--cream-alt);border-left:4px solid var(--teal);font-size:14.5px}
+  .sigverdict b{font-family:var(--head)}
+
+  /* canvas */
+  .ref{display:inline-flex;align-items:center;gap:8px;background:var(--cream-alt);border:1px dashed var(--teal);padding:8px 13px;font-size:13px;color:var(--teal-ink);margin-top:14px}
+  .canvasgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  @media(max-width:840px){.canvasgrid{grid-template-columns:1fr}}
+  .panel{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:16px 18px;display:flex;flex-direction:column}
+  .panel.key{border-top-color:var(--coral)}
+  .panel .ph{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+  .panel .ph .n{font-family:var(--head);font-weight:700;font-size:12px;color:#fff;background:var(--teal-dark);width:22px;height:22px;flex:0 0 22px;display:flex;align-items:center;justify-content:center}
+  .panel.key .ph .n{background:var(--coral)}
+  .panel .ph h4{font-size:15px;color:var(--ink)}
+  .panel .prompt{font-size:12.5px;color:var(--grey);margin-bottom:9px}
+  .panel textarea,.panel input[type=text]{width:100%;font-family:var(--body);font-size:13.5px;color:var(--ink);border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px;resize:vertical}
+  .panel textarea:focus,.panel input:focus{outline:2px solid var(--teal);background:#fff}
+  .roleopts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
+  .roleopts label{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid var(--line);padding:6px 11px;cursor:pointer;background:var(--cream-alt)}
+  .roleopts input{position:absolute;opacity:0;pointer-events:none}
+  .roleopts label.sel{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .panel .flag{display:none;margin-top:9px;font-size:12px;color:var(--coral-dark);background:rgba(220,90,70,.08);border-left:3px solid var(--coral);padding:7px 10px}
+  .panel .flag.show{display:block}
+  .panel details{margin-top:9px}
+  .panel summary{cursor:pointer;font-size:11.5px;color:var(--teal-dark);font-family:var(--head);font-weight:600;list-style:none}
+  .panel summary::-webkit-details-marker{display:none}
+  .panel summary::before{content:"▸ ";}
+  .panel details[open] summary::before{content:"▾ ";}
+  .panel .ex{font-size:12px;margin-top:7px}
+  .panel .ex .g{color:var(--teal-dark)} .panel .ex .b{color:var(--coral-dark)}
+  .panel .note2{font-size:11.5px;color:var(--coral-dark);margin-top:7px;display:none}
+  .panel .note2.show{display:block}
+
+  /* meter dock */
+  .meterdock{position:sticky;top:118px}
+  .meterdock .box{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 22px}
+  .meterdock .score{font-family:var(--head);font-weight:700;font-size:46px;line-height:1;color:var(--teal-dark)}
+  .meterdock .verdict{font-family:var(--head);font-weight:600;font-size:15px;margin:4px 0 14px}
+  .meterdock h5{font-family:var(--head);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 7px}
+  .rat{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .rat li{font-size:12.5px;padding-left:18px;position:relative;color:var(--ink)}
+  .rat li.good::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+  .rat li.bad::before{content:"!";position:absolute;left:0;color:var(--coral-dark);font-weight:700}
+  .rat li.empty{color:var(--muted)}
+  .canvaslayout{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:start}
+  @media(max-width:980px){.canvaslayout{grid-template-columns:1fr}.meterdock{position:static}}
+
+  /* pair test */
+  .pairs{display:flex;flex-direction:column;gap:8px}
+  .pt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fff;padding:13px 16px;cursor:pointer}
+  .pt:hover{border-color:var(--teal)}
+  .pt.on{box-shadow:inset 4px 0 0 var(--teal);background:#fff}
+  .pt .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+  .pt.on .bx{background:var(--teal-dark);border-color:var(--teal-dark)}
+  .pt .tx{font-size:14px;color:var(--ink)}
+  .pt .tx b{font-family:var(--head)}
+  .ptsum{margin-top:14px;padding:15px 18px;background:var(--cream-alt);border-left:4px solid var(--teal);font-size:14px}
+
+  /* explain table */
+  .explain{display:flex;flex-direction:column;gap:12px}
+  .erow{display:grid;grid-template-columns:230px 1fr;border:1px solid var(--line);background:#fff}
+  @media(max-width:720px){.erow{grid-template-columns:1fr}}
+  .erow .l{background:var(--cream-alt);padding:14px 16px;border-right:1px solid var(--line)}
+  @media(max-width:720px){.erow .l{border-right:0;border-bottom:1px solid var(--line)}}
+  .erow .l h5{font-family:var(--head);font-size:14px;color:var(--ink)}
+  .erow .l p{font-size:11.5px;color:var(--grey);margin-top:3px}
+  .erow .r{padding:12px 14px}
+  .erow textarea{width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:9px 11px;resize:vertical}
+  .erow textarea:focus{outline:2px solid var(--teal);background:#fff}
+  .swcompare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:680px){.swcompare{grid-template-columns:1fr}}
+  .swcompare .col{border:1px solid var(--line);padding:16px 18px;background:#fff}
+  .swcompare h5{font-family:var(--head);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px}
+  .swcompare .strong h5{color:var(--teal-dark)} .swcompare .weak h5{color:var(--coral-dark)}
+  .swcompare ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .swcompare li{font-size:13px;color:var(--ink);padding-left:16px;position:relative}
+  .swcompare .strong li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark)}
+  .swcompare .weak li::before{content:"✕";position:absolute;left:0;color:var(--coral-dark)}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:14px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-2">
+
+<!-- CHROME -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mhero">
+    <div class="hero-media"><img src="../assets/media/pics/architects-desk.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 2</div>
+    <h1>Making AI Decisions Defensible</h1>
+    <p class="lead">Module 1 showed AI can shape direction before a decision is named. This module begins where that becomes hard to defend. The question leaders are actually asked is not “did you use AI?” — it’s “can you stand behind the judgement that shaped the outcome?”</p>
+    <div class="keyline"><span>“If you cannot clearly articulate the problem you are solving, you cannot credibly defend how AI was used — regardless of how strong the output looks.”</span></div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Recognise weak justifications that don’t yet justify reliance</span></div>
+      <div><span class="d">→</span><span>Spot the signals that leadership judgement is now required</span></div>
+      <div><span class="d">→</span><span>Frame a real decision so it is explicit, bounded and defensible</span></div>
+      <div><span class="d">→</span><span>Keep AI’s role bounded and accountability visibly human</span></div>
+      <div><span class="d">→</span><span>Explain an AI-assisted decision so it holds up under pressure</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Decision Framing Canvas</div>
+  </div>
+</section>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#trap">The Tool-First Trap</a>
+    <a href="#signals">When Judgement Is Required</a>
+    <a href="#canvas">The Canvas</a>
+    <a href="#pairtest">Pair-Test</a>
+    <a href="#explain">Explain the Decision</a>
+    <a href="#ownership">Visible Ownership</a>
+  </div>
+</div>
+
+<!-- INTRO + RAIL -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">The next layer of the same problem</h2>
+        <p class="section-lead">This is not a new topic — it’s the next layer. Module 1 was about <i>seeing</i> where AI shapes judgement. Module 2 raises the standard: that judgement must now be made explicit early enough to be defended later.</p>
+        <p>A leader may be able to explain where information came from, how an output was produced, and who reviewed it. Under scrutiny, that is often not enough. The harder question is whether the judgement itself was visible early enough to be credible when accountability lands.</p>
+        <div class="note teal"><b>Position the Canvas as a leadership discipline — not a compliance worksheet.</b> Not every prompt needs a full canvas. It’s for the moment AI stops simply supporting execution and starts shaping judgement, priorities or action you’d later have to explain.</div>
+      </div>
+      <div>
+        <div class="rail coral">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>Weak justifications leaders should recognise</li>
+              <li>When AI is already in play</li>
+              <li>Signals that leadership judgement is required</li>
+              <li>Why a decision discipline is needed</li>
+              <li>The Decision Framing Canvas</li>
+              <li>From individual judgement to visible ownership</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>What Would You Ask Nina?</li>
+              <li>Complete your Canvas (40–45 min)</li>
+              <li>Final Activity: Explain the Decision</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL-FIRST TRAP + WEAK JUSTIFICATIONS -->
+<section class="band white" id="trap">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">What would you ask Nina?</span></div>
+    <h2 class="section">The tool-first trap &amp; weak justifications</h2>
+    <p class="section-lead">The consequences of Nina’s decision have surfaced. You’re in the executive review. Your task is not to decide whether AI should have been used — it’s to judge whether the reasoning behind its use can be credibly defended. Most justifications you’ll hear are reasons to <i>explore</i> AI, not to <i>rely</i> on it. Click each to see why.</p>
+
+    <div class="chips" id="chips"></div>
+
+    <div class="note teal" style="margin-top:20px"><b>The reframe:</b> the question is not whether AI <i>can</i> be used. It’s whether AI <i>should</i> be used — in this context, for this decision, with this level of consequence, and with human judgement still visible. If those aren’t answered, speed isn’t a strength. It’s a risk multiplier.</div>
+
+    <div class="capture" style="margin-top:24px">
+      <h3>Your three questions for Nina</h3>
+      <div class="hint">Short and direct. The ones that test whether the judgement — not the process — can be defended. Saves to your Leadership Plan.</div>
+      <div class="field">
+        <label for="ask">The three questions I would ask Nina<span class="q">e.g. “What was the real decision? What level of challenge did the brief get before it shaped staffing? Who owned the frame?”</span></label>
+        <textarea id="ask" rows="3" data-capture="m2.ask" placeholder="1. …&#10;2. …&#10;3. …"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNALS -->
+<section class="band tint" id="signals">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Diagnostic</span></div>
+    <h2 class="section">Does this decision need discipline yet?</h2>
+    <p class="section-lead">Sometimes AI is being considered for a new decision; sometimes it’s already shaping the workflow. In both cases the task is the same: pause early enough to make judgement visible before reliance hardens into action. Tick any signal that’s true of your situation.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="signals" id="signals-list"></div>
+        <div class="sigverdict" id="sigverdict"></div>
+      </div>
+      <div class="prose">
+        <div class="note"><b>These are leadership signals, not technical warnings.</b> They indicate the work is no longer just being completed — it’s beginning to shape direction.</div>
+        <p style="margin-top:16px;font-size:14px;color:var(--grey)">AI will do exactly what it’s asked. But it cannot tell you whether the question itself is the right one, or whether it quietly embeds trade-offs, assumptions or risks you would later be expected to explain. That’s the work the Canvas makes visible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CANVAS -->
+<section class="band white" id="canvas">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">40–45 min · one real decision</span></div>
+    <h2 class="section">The Decision Framing Canvas</h2>
+    <p class="section-lead">Work with <b>one real decision</b> — ideally the workflow you identified in Module 1. Choose something that matters, influences people or priorities, and would be hard to explain if challenged. As you fill each panel, the meter tracks whether your judgement is becoming defensible — and flags the classic pitfalls.</p>
+    <div class="ref" id="m1ref" style="display:none">◆ Working from your Module 1 workflow: <b id="m1refName"></b></div>
+
+    <div class="canvasvideo" style="margin:18px 0 4px;max-width:780px">
+      <video controls preload="metadata" poster="../assets/img/canvas-poster.png" style="width:100%;background:#000;border:1px solid var(--line);display:block">
+        <source src="../assets/media/TheDecisionFramingCanvas.mp4" type="video/mp4">
+        Your browser can’t play this video. The Canvas is fully interactive below.
+      </video>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">Walkthrough — the Decision Framing Canvas. Watch this first, then build your own canvas in the eight panels below.</div>
+    </div>
+
+    <div class="canvaslayout" style="margin-top:18px">
+      <div>
+        <div class="canvasgrid" id="canvasgrid"></div>
+      </div>
+      <div class="meterdock">
+        <div class="box">
+          <div style="font-family:var(--head);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Defensibility</div>
+          <div class="score" id="score">0</div>
+          <div class="verdict" id="verdict" style="color:var(--muted)">Not started</div>
+          <div class="meter"><i id="defBar"></i></div>
+          <h5>Strengthening</h5>
+          <ul class="rat" id="ratGood"><li class="empty">Fill panels to build defensibility…</li></ul>
+          <h5>Watch out for</h5>
+          <ul class="rat" id="ratBad"><li class="empty">No pitfalls detected yet.</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Identify the primary risk you are accepting</h3>
+      <div class="hint">Step 4 of the Canvas — name the risk explicitly. Saves automatically to your Leadership Plan.</div>
+      <div class="field"><label for="cr1">What is the most important downside you would be accountable for?</label><textarea id="cr1" rows="2" data-capture="m2.canvas.risk.downside" placeholder="Type your answer…"></textarea><span class="saved">✓ Saved to My Plan</span></div>
+      <div class="field"><label for="cr2">Who is most affected?</label><textarea id="cr2" rows="2" data-capture="m2.canvas.risk.affected" placeholder="Type your answer…"></textarea><span class="saved">✓ Saved to My Plan</span></div>
+      <div class="field"><label for="cr3">What assumption, if proven wrong, would most undermine your decision?</label><textarea id="cr3" rows="2" data-capture="m2.canvas.risk.assumption" placeholder="Type your answer…"></textarea><span class="saved">✓ Saved to My Plan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIR TEST -->
+<section class="band tint" id="pairtest">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Pair-test</span></div>
+    <h2 class="section">Test it like a partner would</h2>
+    <p class="section-lead">In the room, you’d swap canvases and test each other’s — not whether you <i>agree</i> with the decision, but whether it’s clear, credible and defensible. Run the same five checks on your own canvas.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="pairs" id="pairs"></div>
+        <div class="ptsum" id="ptsum"></div>
+      </div>
+      <div class="prose">
+        <div class="note teal"><b>Difficulty is useful here.</b> The step you found hardest to articulate is usually where defensibility is weakest. If the judgement is hard to explain, that’s a sign more framing is needed — not a reason to move on.</div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:20px">
+      <h3>Lock-in reflection (optional)</h3>
+      <div class="hint">Step 7 of the Canvas. Saves automatically to your Leadership Plan.</div>
+      <div class="field"><label for="chard">Where did this decision feel hardest to articulate?</label><textarea id="chard" rows="2" data-capture="m2.canvas.hardest" placeholder="Type your answer…"></textarea><span class="saved">✓ Saved to My Plan</span></div>
+      <div class="field"><label for="cleast">What part of my judgement would I be least comfortable defending under pressure?</label><textarea id="cleast" rows="2" data-capture="m2.canvas.least_defensible" placeholder="Type your answer…"></textarea><span class="saved">✓ Saved to My Plan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLAIN THE DECISION -->
+<section class="band white" id="explain">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Final activity</span><span class="tag ghost">Integration point</span></div>
+    <h2 class="section">Explain the Decision</h2>
+    <p class="section-lead">The integration point for the module. Leadership isn’t only making the judgement — it’s being able to explain and stand behind it. Draft a short, plain-language explanation you could give to a peer, an executive, a regulator, or someone directly affected. Write as if speaking, not filing a report.</p>
+
+    <div class="explain" id="explain-table" style="margin-top:22px"></div>
+
+    <div class="note" style="margin-top:18px"><b>Partner question (the only one):</b> “Where would you feel least comfortable explaining this under pressure?” That single question surfaces the weak point faster than any checklist.</div>
+
+    <div class="swcompare">
+      <div class="col strong">
+        <h5>Strong explanations</h5>
+        <ul>
+          <li>Name the real decision, not the task</li>
+          <li>Are clear on AI’s bounded role</li>
+          <li>State explicitly what was checked</li>
+          <li>Hold human accountability clearly</li>
+          <li>Justify oversight by risk, not convenience</li>
+        </ul>
+      </div>
+      <div class="col weak">
+        <h5>Weaker explanations</h5>
+        <ul>
+          <li>Describe process, not judgement</li>
+          <li>Rely on “we reviewed it”</li>
+          <li>Avoid naming trade-offs</li>
+          <li>Implicitly defer to AI’s credibility</li>
+          <li>Sound like “the system suggested…”</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNERSHIP -->
+<section class="band tint" id="ownership">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Synthesis</span><span class="tag ghost">From judgement to visible ownership</span></div>
+    <h2 class="section">Make ownership visible while the work is still moving</h2>
+    <p class="section-lead">When AI’s influence stays informal, leaders can carry responsibility for outcomes with no record of where judgement sat or why the level of reliance was acceptable. A decision-ownership register turns invisible ownership into something that can be seen, discussed and improved. Complete one row, based on the canvas you just built.</p>
+
+    <div class="capture" style="margin-top:20px">
+      <h3>Ownership register — one row</h3>
+      <div class="hint">A start, not a bureaucracy. Saves to your Leadership Plan.</div>
+      <div class="grid2">
+        <div class="field"><label for="r1">Decision point<span class="q">Where AI shapes what’s noticed or prioritised.</span></label><input type="text" id="r1" data-capture="m2.reg.point"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="r2">Who owns the judgement<span class="q">A named human, not a team or a tool.</span></label><input type="text" id="r2" data-capture="m2.reg.owner"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="r3">AI’s influence here<span class="q">Assist / recommend / automate — and over what.</span></label><input type="text" id="r3" data-capture="m2.reg.influence"><span class="saved">✓ Saved</span></div>
+        <div class="field"><label for="r4">Why this reliance is acceptable<span class="q">The rationale you could defend.</span></label><input type="text" id="r4" data-capture="m2.reg.why"><span class="saved">✓ Saved</span></div>
+      </div>
+      <div class="field"><label for="r5">Where I’d be most exposed if questioned<span class="q">The part that’s hardest to defend.</span></label><input type="text" id="r5" data-capture="m2.reg.exposure"><span class="saved">✓ Saved</span></div>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>The Canvas is the foundation for guardrails.</b> You can’t set a boundary around a decision you haven’t framed. Day 2 builds directly on the framing you just did.</div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-one-page-ai-decision-canvas.jpg" data-title="The One-Page AI Decision Canvas"><span class="thumb"><img src="../assets/media/cheatsheets/the-one-page-ai-decision-canvas.jpg" alt="The One-Page AI Decision Canvas" loading="lazy"></span><span class="cap">The One-Page AI Decision Canvas</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/decision-canvas-worked-example.jpg" data-title="Decision Canvas — Worked Example"><span class="thumb"><img src="../assets/media/cheatsheets/decision-canvas-worked-example.jpg" alt="Decision Canvas — Worked Example" loading="lazy"></span><span class="cap">Decision Canvas — Worked Example</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/problem-first-tool-second.jpg" data-title="Problem First, Tool Second"><span class="thumb"><img src="../assets/media/cheatsheets/problem-first-tool-second.jpg" alt="Problem First, Tool Second" loading="lazy"></span><span class="cap">Problem First, Tool Second</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/what-to-record-when-ai-shapes-a-decision.jpg" data-title="What to Record When AI Shapes a Decision"><span class="thumb"><img src="../assets/media/cheatsheets/what-to-record-when-ai-shapes-a-decision.jpg" alt="What to Record When AI Shapes a Decision" loading="lazy"></span><span class="cap">What to Record When AI Shapes a Decision</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-four-lenses-of-ai-accountability.jpg" data-title="The Four Lenses of AI Accountability"><span class="thumb"><img src="../assets/media/cheatsheets/the-four-lenses-of-ai-accountability.jpg" alt="The Four Lenses of AI Accountability" loading="lazy"></span><span class="cap">The Four Lenses of AI Accountability</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/common-ai-touchpoints-by-function.jpg" data-title="Common AI Touchpoints by Function"><span class="thumb"><img src="../assets/media/cheatsheets/common-ai-touchpoints-by-function.jpg" alt="Common AI Touchpoints by Function" loading="lazy"></span><span class="cap">Common AI Touchpoints by Function</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS + PAGER -->
+<section class="band white">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Defensibility = explainability.</b> If it can’t be explained clearly, it can’t be defended — no matter how strong the output looks.</div>
+      <div class="tk"><b>Start with the decision, not the tool.</b> Naming the real decision first is what makes everything after it defensible.</div>
+      <div class="tk"><b>A defensible decision ≠ a strong output.</b> It’s one where judgement stayed visible, bounded and explainable throughout.</div>
+      <div class="tk"><b>Speed without framing is a risk multiplier.</b> Convenience, clarity and pace are reasons to explore AI — not to rely on it.</div>
+    </div>
+    <div class="pager">
+      <a href="module-1.html" class="prev"><div class="lbl">← Previous module</div><div class="ttl">The AI Leadership Context</div></a>
+      <a href="module-3.html" class="next"><div class="lbl">Next module →</div><div class="ttl">Defining AI Leadership Direction</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 2 — Making AI Decisions Defensible</small>
+    </div>
+    <small>If you cannot articulate the problem, you cannot defend how AI was used.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ============ WEAK JUSTIFICATIONS ============ */
+const WEAK=[
+ ["“It will be faster.”","Speed is a reason to explore AI — not to rely on it. Without framing, speed is a risk multiplier."],
+ ["“Other teams are already using it.”","Adoption elsewhere says nothing about whether it fits this decision, at this consequence."],
+ ["“The tool is very good at this.”","Capability is not authority. The question is what influence you’re prepared to authorise here."],
+ ["“We need to show progress.”","Pressure to move is not a basis for reliance you could defend later."],
+ ["“It produced a clearer answer.”","Clarity can mask weak or incomplete reasoning. Coherent isn’t the same as correct."],
+ ["“It got us to a recommendation quickly.”","Convenience isn’t consequence-tested judgement. Reaching an answer fast isn’t owning it."]
+];
+const chips=document.getElementById('chips');
+WEAK.forEach(([q,a])=>{
+  const d=document.createElement('div'); d.className='chip-j';
+  d.innerHTML=`<div class="tag">Sounds practical…</div><div class="q">${q}</div><div class="a">↳ ${a}</div>`;
+  d.addEventListener('click',()=>d.classList.toggle('open'));
+  chips.appendChild(d);
+});
+
+/* ============ SIGNALS ============ */
+const SIGNALS=[
+ "The problem has already been narrowed by the proposed tool",
+ "Efficiency is starting to substitute for judgement",
+ "Important context is hard to see, compare, or retain",
+ "Trade-offs are being embedded implicitly rather than chosen consciously",
+ "The output sounds more confident than the underlying reasoning deserves"
+];
+const sl=document.getElementById('signals-list');
+const sv=document.getElementById('sigverdict');
+SIGNALS.forEach((s,i)=>{
+  const d=document.createElement('button'); d.className='sig'; d.dataset.on='0';
+  d.innerHTML=`<span class="bx">✓</span><span class="tx">${s}</span>`;
+  d.addEventListener('click',()=>{ d.dataset.on = d.dataset.on==='1'?'0':'1'; d.classList.toggle('on'); updateSig(); });
+  sl.appendChild(d);
+});
+function updateSig(){
+  const n=[...document.querySelectorAll('.sig')].filter(x=>x.dataset.on==='1').length;
+  let v;
+  if(n===0) v="<b>Nothing ticked.</b> If this looks like execution support with low consequence, no formal pause is needed — stay alert.";
+  else if(n<=2) v="<b>"+n+" signal"+(n>1?"s":"")+" present.</b> Worth a deliberate pause. Name the real decision before reliance hardens.";
+  else v="<b>"+n+" signals present.</b> Decision discipline is needed now — AI is shaping direction you’ll later have to explain. Use the Canvas below.";
+  sv.innerHTML=v;
+}
+updateSig();
+
+/* ============ THE CANVAS ============ */
+const PANELS=[
+ {id:'c1',key:true,t:"The real decision",prompt:"In one sentence — the leadership decision I am making is… (avoid tasks or tools; name what you’d be accountable for).",
+  strong:"Whether to reprioritise staff based on AI-assisted workload analysis.", weak:"Use AI to analyse workload."},
+ {id:'c2',t:"The problem",prompt:"The real leadership or organisational problem I’m trying to solve is…",
+  strong:"We can’t confidently say where to add or pull back capacity.", weak:"We want a clearer briefing pack."},
+ {id:'c3',t:"The trade-offs",prompt:"I’m consciously prioritising… and accepting that … may be constrained, delayed or diminished.",
+  strong:"Faster triage may risk missing low-volume, high-severity cases.", weak:"The trade-off is efficiency and quality."},
+ {id:'c4',t:"AI’s role",role:true,prompt:"What level of influence am I prepared to authorise here?",
+  strong:"AI may summarise and identify patterns, but not recommend staffing changes without human review.", weak:"AI will help with everything except final sign-off."},
+ {id:'c5',t:"Human judgement",prompt:"What must remain human in this decision?",
+  strong:"The weighting of invisible work and the final prioritisation call.", weak:"Humans are in the loop."},
+ {id:'c6',t:"Review & validation",prompt:"Before I rely on the output, I will check…",
+  strong:"Source data, anomalies, and local context with the affected teams.", weak:"We reviewed it."},
+ {id:'c7',t:"Accountability",prompt:"I remain accountable for this decision because… (do not reference the tool, model or vendor).",
+  strong:"I own the final judgement and must explain the basis for relying on the brief.", weak:"I’m accountable because I approved it."},
+ {id:'c8',key:true,t:"Defensibility",prompt:"If asked to explain this to a staff member, executive or regulator, I’d say… (without deflecting to AI).",
+  strong:"We relied on the output only after checking source data, anomalies and local context.", weak:"The system suggested this was the right call."}
+];
+const grid=document.getElementById('canvasgrid');
+PANELS.forEach((p,i)=>{
+  const el=document.createElement('div'); el.className='panel'+(p.key?' key':'');
+  let inner=`<div class="ph"><span class="n">${i+1}</span><h4>${p.t}</h4></div><div class="prompt">${p.prompt}</div>`;
+  if(p.role){
+    inner+=`<div class="roleopts" id="roleopts">
+      <label data-r="Assist"><input type="radio" name="airole" value="Assist">Assist</label>
+      <label data-r="Recommend"><input type="radio" name="airole" value="Recommend">Recommend</label>
+      <label data-r="Automate"><input type="radio" name="airole" value="Automate">Automate</label>
+      <label data-r="Not used"><input type="radio" name="airole" value="Not used">Not used</label>
+    </div>
+    <div class="note2" id="autoNote">⚠ Automate means delegating action, not just insight — this increases consequence, reversibility risk and accountability.</div>
+    <textarea id="c4why" rows="2" data-capture="m2.canvas.c4why" placeholder="Why this role fits the decision…"></textarea>
+    <textarea id="c4not" rows="2" style="margin-top:8px" data-capture="m2.canvas.c4not" placeholder="One role that should NOT be used here, and why…"></textarea>`;
+  } else {
+    inner+=`<textarea id="${p.id}" rows="3" data-capture="m2.canvas.${p.id}" placeholder="Your answer…"></textarea>`;
+  }
+  inner+=`<div class="flag" id="flag-${p.id}"></div>
+    <details><summary>Strong vs weak example</summary>
+      <div class="ex"><span class="g">✓ ${p.strong}</span></div>
+      <div class="ex"><span class="b">✕ ${p.weak}</span></div>
+    </details>`;
+  el.innerHTML=inner;
+  grid.appendChild(el);
+});
+
+// role selection styling + note
+document.querySelectorAll('input[name=airole]').forEach(r=>{
+  r.addEventListener('change',()=>{
+    document.querySelectorAll('.roleopts label').forEach(l=>l.classList.toggle('sel', l.dataset.r===r.value));
+    document.getElementById('autoNote').classList.toggle('show', r.value==='Automate');
+    try{ window.RAL.setCaptureValue('m2.canvas.role', r.value); }catch(e){}
+    analyze();
+  });
+});
+
+const val=id=>{const e=document.getElementById(id);return e?(e.value||'').trim():'';};
+function selectedRole(){const r=document.querySelector('input[name=airole]:checked');return r?r.value:'';}
+
+function analyze(){
+  const flags={};
+  // panel fill checks
+  const filled={
+    c1:val('c1').length>=20, c2:val('c2').length>=18, c3:val('c3').length>=18,
+    c4:(selectedRole()!=='' && val('c4why').length>=12), c5:val('c5').length>=12,
+    c6:val('c6').length>=12, c7:val('c7').length>=15, c8:val('c8').length>=20
+  };
+  // weak-phrase detection
+  if(val('c1') && (/\b(use|using|adopt|deploy|implement)\b[^.]*\bai\b/i.test(val('c1')) || /^(use|using)\b/i.test(val('c1')) || /\b(summari|analy[sz]e|draft|automat)/i.test(val('c1')) && val('c1').length<45))
+    flags.c1="That names a task or the tool — name the decision you’d be accountable for (e.g. “whether to reprioritise staff…”).";
+  if(val('c3') && ((/efficien/i.test(val('c3'))&&/quality/i.test(val('c3'))&&val('c3').length<60) || (val('c3').length>0&&val('c3').length<22)))
+    flags.c3="Too generic — name the actual consequence you’re accepting (e.g. “may miss low-volume, high-severity cases”).";
+  if(/everything except|except (the )?final|except sign[- ]?off/i.test(val('c4why')+' '+val('c4not')))
+    flags.c4="“Everything except sign-off” is too broad — bound the role to specific tasks.";
+  if(/\bapprov/i.test(val('c7')) && !/own|judgement|judgment|explain|basis/i.test(val('c7')))
+    flags.c7="Approval isn’t the same as visible judgement — say why you own the judgement.";
+  if(/\b(the system|the tool|the model|the vendor|the ai|ai did|ai made|it decided)\b/i.test(val('c7')))
+    flags.c7="Don’t reference the tool — accountability is yours.";
+  if(/system suggested|the (ai|tool|model)\b|it (recommend|suggest)|ai said|ai told/i.test(val('c8')))
+    flags.c8="This defers to the tool — explain your reasoning, not the system’s.";
+
+  // render flags
+  PANELS.forEach(p=>{
+    const f=document.getElementById('flag-'+p.id);
+    if(f){ if(flags[p.id]){f.textContent='! '+flags[p.id];f.classList.add('show');} else {f.classList.remove('show');} }
+  });
+
+  const filledCount=Object.values(filled).filter(Boolean).length;
+  const flagCount=Object.keys(flags).length;
+  let score=Math.max(0, Math.round(filledCount/8*100 - flagCount*8));
+
+  // strengthening list
+  const good=[];
+  if(filled.c1 && !flags.c1) good.push("Decision named, not a task");
+  if(filled.c3 && !flags.c3 && /miss|lose|risk|delay|reduc|sacrific|slower|fragil|constrain|trade/i.test(val('c3'))) good.push("Real trade-off named");
+  if(filled.c4 && !flags.c4 && selectedRole()) good.push("AI’s role is bounded ("+selectedRole()+")");
+  if(filled.c7 && !flags.c7) good.push("Accountability stays human");
+  if(filled.c8 && !flags.c8) good.push("Explanation owns the judgement");
+  if(filled.c5) good.push("Human judgement protected");
+  if(filled.c6) good.push("Validation step defined");
+
+  const gEl=document.getElementById('ratGood');
+  gEl.innerHTML = good.length? good.map(g=>`<li class="good">${g}</li>`).join('') : '<li class="empty">Fill panels to build defensibility…</li>';
+  const bEl=document.getElementById('ratBad');
+  const bads=Object.values(flags);
+  bEl.innerHTML = bads.length? bads.map(b=>`<li class="bad">${b}</li>`).join('') : '<li class="empty">No pitfalls detected yet.</li>';
+
+  document.getElementById('score').textContent=score;
+  document.getElementById('defBar').style.width=score+'%';
+  const vEl=document.getElementById('verdict');
+  let vt,vc;
+  if(filledCount===0){vt="Not started";vc="var(--muted)";}
+  else if(score<40){vt="Under-framed";vc="var(--coral-dark)";}
+  else if(score<70){vt="Taking shape";vc="#C98A1E";}
+  else if(score<90){vt="Defensible";vc="var(--teal-dark)";}
+  else {vt="Strongly defensible";vc="var(--teal-dark)";}
+  vEl.textContent=vt;vEl.style.color=vc;
+}
+grid.addEventListener('input',analyze);
+analyze();
+
+/* prefill Module 1 workflow reference */
+try{
+  const cap=window.RAL.getCapture();
+  if(cap['m1.workflow.name']){
+    document.getElementById('m1ref').style.display='inline-flex';
+    document.getElementById('m1refName').textContent=cap['m1.workflow.name'];
+  }
+  if(cap['m2.canvas.role']){
+    const r=document.querySelector('input[name=airole][value="'+cap['m2.canvas.role']+'"]');
+    if(r){r.checked=true;r.dispatchEvent(new Event('change'));}
+  }
+}catch(e){}
+
+/* ============ PAIR TEST ============ */
+const PT=[
+ ["Is the decision clearly named?","Framing a decision, not describing a task."],
+ ["Are the trade-offs real?","You understand what could be lost or harmed."],
+ ["Is AI’s role bounded?","AI is kept to an appropriate role."],
+ ["Does accountability stay human and visible?","Responsibility hasn’t drifted to the tool."],
+ ["Could this explanation hold up under pressure?","The decision is actually defensible."]
+];
+const pairs=document.getElementById('pairs');
+PT.forEach((p,i)=>{
+  const d=document.createElement('button'); d.className='pt'; d.dataset.on='0';
+  d.innerHTML=`<span class="bx">✓</span><span class="tx"><b>${p[0]}</b> — ${p[1]}</span>`;
+  d.addEventListener('click',()=>{d.dataset.on=d.dataset.on==='1'?'0':'1';d.classList.toggle('on');ptSum();});
+  pairs.appendChild(d);
+});
+function ptSum(){
+  const n=[...document.querySelectorAll('.pt')].filter(x=>x.dataset.on==='1').length;
+  const el=document.getElementById('ptsum');
+  let m;
+  if(n===5) m="<b>All five hold.</b> This is a decision you could stand behind later — judgement stayed visible, bounded and explainable throughout.";
+  else if(n>=3) m="<b>"+n+" of 5.</b> Solid, but the unchecked items are where defensibility is weakest — that’s where to keep framing.";
+  else m="<b>"+n+" of 5.</b> The judgement is still under-framed. Return to the canvas panels behind the unchecked items.";
+  el.innerHTML=m;
+}
+ptSum();
+
+/* ============ EXPLAIN THE DECISION ============ */
+const EXPLAIN=[
+ ["Decision / workflow context","What was being decided or produced? What was at stake?","ctx"],
+ ["AI’s role","Where did AI contribute — drafting, analysing, summarising, recommending?","role"],
+ ["Key risk you were managing","What could realistically go wrong if the output was wrong, incomplete or biased? What’s the risk level?","risk"],
+ ["Scrutiny applied, and why","What human review or checks occurred, by whom, and at what point — before action?","scrutiny"],
+ ["Rationale for trust or constraint","Why was this level of reliance appropriate? What limits did you account for? What would have changed your judgement?","rationale"],
+ ["Accountability clarity","If challenged later, who is expected to explain and stand behind this — and why?","acct"]
+];
+const et=document.getElementById('explain-table');
+EXPLAIN.forEach((r,i)=>{
+  const d=document.createElement('div'); d.className='erow';
+  d.innerHTML=`<div class="l"><h5>${i+1}. ${r[0]}</h5><p>${r[1]}</p></div>
+    <div class="r"><textarea rows="2" data-capture="m2.explain.${r[2]}" placeholder="Write as if speaking…"></textarea></div>`;
+  et.appendChild(d);
+});
+</script>
+</body>
+</html>

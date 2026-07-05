@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Introducing AIRSPACE | Responsible AI Leadership</title>
+<meta name="description" content="The AIRSPACE Flight Deck — the Responsible Leadership Framework that threads through every Day 2 module. Day 2 opener." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .daytag{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#141414;background:var(--teal-light);padding:4px 10px;margin-bottom:6px}
+  .keyline{margin-top:24px;border-left:4px solid var(--teal-light);padding:4px 0 4px 16px;max-width:54ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:16.5px;color:#fff}
+
+  /* flight deck */
+  .deck{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+  @media(max-width:900px){.deck{grid-template-columns:1fr}}
+  .deckstage{position:relative;background:#0c1614;min-height:520px}
+  #flightdeck{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .deckstage .hint{position:absolute;left:18px;bottom:16px;color:#6f8a86;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .deckstage .fb{position:absolute;inset:0;display:none;flex-wrap:wrap;align-content:center;justify-content:center;gap:10px;padding:30px}
+  .deckstage .fbn{width:64px;height:64px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--head);font-weight:700;font-size:26px}
+  .decklist{padding:14px 0}
+  .dl{display:flex;align-items:center;gap:14px;padding:12px 22px;cursor:pointer;border-left:4px solid transparent;transition:.15s}
+  .dl:hover{background:var(--cream-alt)}
+  .dl.on{background:var(--cream-alt);border-left-color:var(--teal)}
+  .dl .L{font-family:var(--head);font-weight:700;font-size:22px;color:#fff;background:var(--teal-dark);width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center}
+  .dl.on .L{background:var(--teal)}
+  .dl .nm{font-family:var(--head);font-weight:600;font-size:15px;color:var(--ink)}
+  .dl .sub{font-size:11.5px;color:var(--muted)}
+
+  .detail{margin-top:22px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+  .detail .dh{background:var(--teal);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:16px}
+  .detail .dh .L{font-family:var(--head);font-weight:700;font-size:40px;line-height:1}
+  .detail .dh h3{font-size:21px}
+  .detail .dh .q{font-size:13px;opacity:.92;margin-top:3px}
+  .detail .db{padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:680px){.detail .db{grid-template-columns:1fr}}
+  .detail .col h5{font-family:var(--head);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .detail .col p{font-size:14px;color:var(--ink)}
+  .detail .go{margin:0 24px 22px;display:inline-flex;align-items:center;gap:8px}
+
+  .continuity{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+  @media(max-width:820px){.continuity{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.continuity{grid-template-columns:1fr}}
+  .cont{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:16px 18px}
+  .cont .m{font-family:var(--head);font-weight:700;color:var(--teal-dark);font-size:12px}
+  .cont p{font-size:12.5px;color:var(--grey);margin-top:6px}
+</style>
+</head>
+<body class="self" data-page="airspace">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+    <div class="hero-media"><img src="../assets/media/pics/atrium-columns.jpg" alt=""></div>
+  <div class="wrap inner">
+    <span class="daytag">Day 2 begins</span>
+    <div class="eyebrow" style="color:var(--teal-light)">The Responsible Leadership Framework</div>
+    <h1>Introducing AIRSPACE</h1>
+    <p class="lead">Yesterday was about seeing where AI begins to shape judgement, accountability and leadership exposure. Today is about what responsible leadership looks like once you can see that. AIRSPACE is a practical structure for working with what Day 1 surfaced — not another model to memorise, but a container for responsible practice.</p>
+    <div class="keyline"><span>Day 1 surfaced the leadership challenge. Day 2 is the structure for responding to it.</span></div>
+  </div>
+</section>
+
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#deck">The Flight Deck</a>
+    <a href="#continuity">Built on Day 1</a>
+    <a href="#shift">The Day 2 Shift</a>
+  </div>
+</div>
+
+<section class="band cream">
+  <div class="wrap">
+    <div class="prose" style="max-width:72ch">
+      <div class="kicker"><span class="tag">Reset &amp; reorient</span></div>
+      <h2 class="section">A container for what you already surfaced</h2>
+      <p class="section-lead">Day 1 may have felt stretching, sobering, or unfinished — by design. You examined where AI shapes judgement, why accountability begins earlier, what makes decisions defensible, how to set a stance, and whether your conditions support it. AIRSPACE turns that awareness into deliberate practice.</p>
+      <p>Use it as a simple decision guide: anchor the context, identify the core decision, right-size AI’s role and risk, set direction and ownership, probe readiness, assess output quality, control use and escalate when needed, then embed learning over time. Rather than treating each Day 2 module as separate, use AIRSPACE as the thread that connects them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLIGHT DECK -->
+<section class="band white" id="deck">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">The AIRSPACE Flight Deck</span></div>
+    <h2 class="section">Walk the framework</h2>
+    <p class="section-lead">Eight leadership tasks, one structure. Select a letter to open the question it asks — and jump to the module where you’ll put it into practice.</p>
+
+    <div class="deck" style="margin-top:20px">
+      <div class="deckstage">
+        <canvas id="flightdeck"></canvas>
+        <div class="hint">◆ AIRSPACE — the operating model</div>
+        <div class="fb" id="deckFb"></div>
+      </div>
+      <div class="decklist" id="decklist"></div>
+    </div>
+
+    <div class="detail" id="detail"></div>
+  </div>
+</section>
+
+<!-- CONTINUITY -->
+<section class="band tint" id="continuity">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Continuity</span></div>
+    <h2 class="section">AIRSPACE builds directly on Day 1</h2>
+    <p class="section-lead">Each part of the framework picks up a thread you already pulled. Nothing here is new — it’s organised.</p>
+    <div class="continuity">
+      <div class="cont"><div class="m">Module 1</div><p>Leaders own the conditions under which decisions are formed.</p></div>
+      <div class="cont"><div class="m">Module 2</div><p>Judgement and accountability must be made explicit.</p></div>
+      <div class="cont"><div class="m">Module 3</div><p>Leaders need a clear, visible stance.</p></div>
+      <div class="cont"><div class="m">Module 4</div><p>That stance must be supported by real conditions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEETS -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for the framework</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-airspace-framework.jpg" data-title="The AIRSPACE Framework"><span class="thumb"><img src="../assets/media/cheatsheets/the-airspace-framework.jpg" alt="The AIRSPACE Framework" loading="lazy"></span><span class="cap">The AIRSPACE Framework</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/from-day-1-to-day-2-what-i-need-guardrails-for.jpg" data-title="From Day 1 to Day 2"><span class="thumb"><img src="../assets/media/cheatsheets/from-day-1-to-day-2-what-i-need-guardrails-for.jpg" alt="From Day 1 to Day 2" loading="lazy"></span><span class="cap">From Day 1 to Day 2</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="band white" id="shift">
+  <div class="wrap">
+    <div class="note teal"><b>A shift in tone for Day 2.</b> Today should feel more applied, constructive and confidence-building. This is where you begin to strengthen oversight, clarify guardrails, respond more effectively when things go wrong, and support more trustworthy AI adoption. The goal isn’t perfect control — it’s clearer judgement, visible ownership, and more defensible leadership practice.</div>
+    <div class="pager">
+      <a href="module-4.html" class="prev"><div class="lbl">← End of Day 1</div><div class="ttl">AI Readiness</div></a>
+      <a href="module-5.html" class="next"><div class="lbl">First Day 2 module →</div><div class="ttl">Evaluate AI-Assisted Outputs</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Day 2 — The AIRSPACE Framework</small>
+    </div>
+    <small>Anchor context · Identify the decision · Right-size role &amp; risk · Set direction · Probe readiness · Assess outputs · Control &amp; escalate · Embed.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+const AIR=[
+ {L:'A',nm:'Accountable context',q:'Where in my area is AI already shaping judgement, priorities, or decisions?',builds:'Module 1 — you mapped where AI shapes judgement and where accountability begins.',powers:'Frames everything: name where AI already operates before you act.',mod:'module-1.html',modlbl:'Revisit Module 1'},
+ {L:'I',nm:'Identify the core decision',q:'What problem are we actually trying to solve — and is AI the right response?',builds:'Module 2 — the Decision Framing Canvas made the real decision explicit.',powers:'Stops the tool-first trap: frame the decision before reliance hardens.',mod:'module-2.html',modlbl:'Revisit Module 2'},
+ {L:'R',nm:'Right-size AI’s role & risk',q:'What role should AI play here, and what level of risk is acceptable in this context?',builds:'Module 6 — guardrail types and the risk-to-guardrail logic.',powers:'Matches the guardrail and oversight to what’s actually at stake.',mod:'module-6.html',modlbl:'Explore in Module 6'},
+ {L:'S',nm:'Set direction, boundaries & ownership',q:'What expectations, limits and decision rights must be clear before AI is used?',builds:'Module 3 — your AI Leadership Position Card.',powers:'Gives the team something to rely on from you when you’re not in the room.',mod:'module-3.html',modlbl:'Revisit Module 3'},
+ {L:'P',nm:'Probe readiness',q:'Do we have the capability, data, oversight and escalation readiness to use AI responsibly?',builds:'Module 4 — the Readiness Reality Check radar.',powers:'Tests whether your stance can actually survive under pressure.',mod:'module-4.html',modlbl:'Revisit Module 4'},
+ {L:'A',nm:'Assess output quality & reliability',q:'Is this output accurate, reliable, appropriately scrutinised, and fit for the decision it informs?',builds:'Module 5 — the Output Inspector and the Evaluation Card.',powers:'Separates presentation quality from decision reliability.',mod:'module-5.html',modlbl:'Explore in Module 5'},
+ {L:'C',nm:'Control use & escalate when needed',q:'What guardrails, review points and escalation triggers are required in practice?',builds:'Modules 6 & 7 — guardrail design and the incident Response Console.',powers:'Makes responsible use repeatable, and the response ready when something fails.',mod:'module-7.html',modlbl:'Explore in Module 7'},
+ {L:'E',nm:'Embed, review & improve',q:'How will we build adoption, reinforce accountability and learn over time?',builds:'Module 8 — leading sustained change and your first moves.',powers:'Turns judgement into ongoing leadership practice, not a one-time decision.',mod:'module-8.html',modlbl:'Explore in Module 8'}
+];
+
+/* list */
+const dl=document.getElementById('decklist');
+AIR.forEach((a,i)=>{
+  const d=document.createElement('div'); d.className='dl'+(i===0?' on':''); d.dataset.i=i;
+  d.innerHTML=`<span class="L">${a.L}</span><div><div class="nm">${a.nm}</div><div class="sub">${a.builds.split(' — ')[0]}</div></div>`;
+  d.addEventListener('click',()=>select(i));
+  dl.appendChild(d);
+});
+function select(i){
+  document.querySelectorAll('.dl').forEach(x=>x.classList.toggle('on',+x.dataset.i===i));
+  const a=AIR[i];
+  document.getElementById('detail').innerHTML=`
+    <div class="dh"><span class="L">${a.L}</span><div><h3>${a.nm}</h3><div class="q">${a.q}</div></div></div>
+    <div class="db">
+      <div class="col"><h5>Builds on</h5><p>${a.builds}</p></div>
+      <div class="col"><h5>What it powers</h5><p>${a.powers}</p></div>
+    </div>
+    <a class="btn ghost go" href="${a.mod}">${a.modlbl} →</a>`;
+  if(window.__deckSelect) window.__deckSelect(i);
+}
+select(0);
+
+/* 3D flight deck */
+(function(){
+  const canvas=document.getElementById('flightdeck'), fb=document.getElementById('deckFb');
+  function fallback(){
+    canvas.style.display='none'; fb.style.display='flex';
+    AIR.forEach(a=>{const n=document.createElement('div');n.className='fbn';n.textContent=a.L;fb.appendChild(n);});
+  }
+  const SRCS=["https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js","https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"];
+  let _si=0;
+  function loadThree(){
+    const s=document.createElement('script'); s.src=SRCS[_si];
+    s.onerror=()=>{ _si++; if(_si<SRCS.length){ loadThree(); } else { fallback(); } };
+    s.onload=onThree;
+    document.head.appendChild(s);
+  }
+  function onThree(){
+    if(!window.THREE){fallback();return;}
+    const host=canvas.parentElement;
+    let W=host.clientWidth,H=host.clientHeight;
+    const scene=new THREE.Scene(); scene.fog=new THREE.FogExp2(0x0c1614,0.05);
+    const cam=new THREE.PerspectiveCamera(50,W/H,0.1,100); cam.position.set(0,1.5,9.2); cam.lookAt(0,0,0);
+    const r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true}); r.setPixelRatio(Math.min(devicePixelRatio,2)); r.setSize(W,H,false);
+    const grp=new THREE.Group(); scene.add(grp);
+    // core
+    const core=new THREE.Mesh(new THREE.IcosahedronGeometry(0.62,1),new THREE.MeshBasicMaterial({color:0xffffff})); grp.add(core);
+    const coreHalo=new THREE.Mesh(new THREE.RingGeometry(0.8,0.9,48),new THREE.MeshBasicMaterial({color:0x53DFCB,transparent:true,opacity:0.5,side:THREE.DoubleSide})); grp.add(coreHalo);
+    // letter texture helper
+    function letterTex(ch){
+      const c=document.createElement('canvas'); c.width=c.height=128; const x=c.getContext('2d');
+      x.fillStyle='rgba(0,0,0,0)'; x.fillRect(0,0,128,128);
+      x.fillStyle='#ffffff'; x.font='700 84px "IBM Plex Sans Condensed", sans-serif'; x.textAlign='center'; x.textBaseline='middle';
+      x.fillText(ch,64,70);
+      const t=new THREE.CanvasTexture(c); t.needsUpdate=true; return t;
+    }
+    const N=AIR.length, R=3.2, nodes=[], threads=[];
+    const COL=[0x53DFCB,0x2ec9bb,0x00C0AF,0x14b3a4,0x53DFCB,0x2ec9bb,0x00C0AF,0xDC5A46];
+    for(let i=0;i<N;i++){
+      const ang=(i/N)*Math.PI*2 - Math.PI/2;
+      const x=Math.cos(ang)*R, y=Math.sin(ang)*R*0.62, z=Math.sin(ang)*0.6;
+      const node=new THREE.Group(); node.position.set(x,y,z);
+      const sph=new THREE.Mesh(new THREE.SphereGeometry(0.42,24,24),new THREE.MeshBasicMaterial({color:COL[i]}));
+      node.add(sph);
+      const glow=new THREE.Mesh(new THREE.RingGeometry(0.5,0.62,32),new THREE.MeshBasicMaterial({color:COL[i],transparent:true,opacity:0.4,side:THREE.DoubleSide}));
+      node.add(glow);
+      const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:letterTex(AIR[i].L),transparent:true})); spr.scale.set(0.6,0.6,0.6); spr.position.z=0.45; node.add(spr);
+      node.userData={sph,glow,base:0.42,x,y,z}; grp.add(node); nodes.push(node);
+      // thread to core
+      const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0),new THREE.Vector3(x,y,z)]);
+      const line=new THREE.Line(g,new THREE.LineBasicMaterial({color:COL[i],transparent:true,opacity:0.18})); grp.add(line); threads.push(line);
+    }
+    let sel=0;
+    const reducedDeck = window.RAL && window.RAL.reducedMotion;
+    window.__deckSelect=function(i){ sel=i; if(reducedDeck) frame(); };
+    // raycaster click
+    const ray=new THREE.Raycaster(), m=new THREE.Vector2();
+    canvas.addEventListener('click',e=>{
+      const b=canvas.getBoundingClientRect(); m.x=((e.clientX-b.left)/b.width)*2-1; m.y=-((e.clientY-b.top)/b.height)*2+1;
+      ray.setFromCamera(m,cam);
+      const hits=ray.intersectObjects(nodes.map(n=>n.userData.sph));
+      if(hits.length){ const idx=nodes.findIndex(n=>n.userData.sph===hits[0].object); if(idx>=0 && window.select)window.select(idx); }
+    });
+    let t=0;
+    function frame(){
+      if(!reducedDeck){
+        t+=0.005;
+        grp.rotation.y=Math.sin(t*0.5)*0.25;
+        core.rotation.y+=0.01; core.rotation.x+=0.006;
+      }
+      coreHalo.lookAt(cam.position);
+      nodes.forEach((n,i)=>{
+        const on=(i===sel);
+        const cur=n.userData.sph.scale.x;
+        const ns=reducedDeck?(on?1.38:1.0):cur+((on?1.38:1.0)-cur)*0.12;
+        n.userData.sph.scale.setScalar(ns);
+        n.userData.glow.material.opacity=on?0.85:0.4;
+        n.userData.glow.lookAt(cam.position);
+        threads[i].material.opacity=on?0.7:0.18;
+        n.children[2].material.opacity=1;
+      });
+      r.render(scene,cam); if(!reducedDeck) requestAnimationFrame(frame);
+    }
+    frame();
+    addEventListener('resize',()=>{W=host.clientWidth;H=host.clientHeight;cam.aspect=W/H;cam.updateProjectionMatrix();r.setSize(W,H,false);});
+  }
+  loadThree();
+})();
+// expose select for raycaster
+window.select=select;
+</script>
+</body>
+</html>

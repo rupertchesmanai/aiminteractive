@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 1 — The AI Leadership Context | Responsible AI Leadership</title>
+<meta name="description" content="The Airspace You Lead — an interactive altitude model, the Lens Activity, and the Nina case. Module 1 of Responsible AI Leadership." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  /* ---------- page-specific ---------- */
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:60ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+
+  /* dashboard shell */
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead.coral .ic{background:var(--coral)}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+
+  /* Airspace dashboard */
+  .airwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+  @media(max-width:880px){.airwrap{grid-template-columns:1fr}}
+  .scene{position:relative;background:#0e1614;min-height:480px}
+  #airspaceCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .scene .fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:20px}
+  .scene .fb-band{height:14%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;padding-left:14px;color:#fff;font-family:var(--head);font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+  .scene .climb{position:absolute;left:14px;top:16px;color:var(--teal-light);font-family:var(--head);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .airctrl{padding:22px 24px}
+  .levels{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+  .lvl{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fff;padding:11px 14px;cursor:pointer;text-align:left;transition:.16s;width:100%;font-family:var(--body)}
+  .lvl:hover{border-color:var(--teal)}
+  .lvl.on{border-color:var(--teal-dark);background:var(--cream-alt);box-shadow:inset 4px 0 0 var(--teal)}
+  .lvl .n{font-family:var(--head);font-weight:700;font-size:13px;color:#fff;width:24px;height:24px;flex:0 0 24px;display:flex;align-items:center;justify-content:center;background:var(--teal-dark)}
+  .lvl.key .n{background:var(--coral)}
+  .lvl .nm{font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink)}
+  .lvl .al{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-left:auto}
+  .lvl.key .nm::after{content:" ★ key moment";color:var(--coral-dark);font-size:11px;font-weight:600}
+  .expl{border-top:1px solid var(--line);padding-top:16px}
+  .expl .row{display:flex;gap:12px;margin-bottom:12px}
+  .expl .lab{font-family:var(--head);font-weight:600;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);width:118px;flex:0 0 118px;padding-top:2px}
+  .expl .val{font-size:14px;color:var(--ink)}
+  .expl .q{background:var(--cream-alt);border-left:4px solid var(--teal);padding:11px 14px;font-family:var(--head);font-weight:500;font-size:14.5px;color:var(--teal-ink)}
+  .expl.keymoment .q{border-color:var(--coral);color:var(--coral-dark)}
+
+  /* influence chain */
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:900px){.chain{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.chain{grid-template-columns:1fr}}
+  .flip{position:relative;min-height:150px;cursor:pointer;border:1px solid var(--line);background:#fff;padding:18px 16px;transition:.18s;display:flex;flex-direction:column}
+  .flip:hover{border-color:var(--teal);transform:translateY(-3px)}
+  .flip .ph{font-family:var(--head);font-weight:600;font-size:15px;color:var(--ink)}
+  .flip .front{font-size:12.5px;color:var(--grey);margin-top:8px}
+  .flip .back{font-size:13px;color:var(--teal-ink);margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-weight:500;opacity:.55}
+  .flip:hover .back,.flip.open .back{opacity:1}
+  .flip .tagn{font-family:var(--head);font-size:11px;color:var(--teal);font-weight:700;letter-spacing:.1em}
+
+  /* lens */
+  .lenswrap{display:grid;grid-template-columns:230px 1fr;gap:0;border:1px solid var(--line);background:#fff}
+  @media(max-width:820px){.lenswrap{grid-template-columns:1fr}}
+  .lenstabs{border-right:1px solid var(--line);background:var(--cream-alt)}
+  @media(max-width:820px){.lenstabs{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}}
+  .lenstab{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px 18px;cursor:pointer;font-family:var(--body)}
+  .lenstab .t{font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink)}
+  .lenstab .s{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .lenstab.on{background:#fff;box-shadow:inset 4px 0 0 var(--teal)}
+  .lenstab:hover{background:#fff}
+  .lensbody{padding:24px 26px}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-bottom:16px}
+  @media(max-width:620px){.compare{grid-template-columns:1fr}}
+  .compare .c{padding:18px 18px}
+  .compare .before{background:#fff;border-right:1px solid var(--line)}
+  .compare .after{background:#fff;background:linear-gradient(180deg,rgba(0,192,175,.07),rgba(0,192,175,.02))}
+  .compare h5{font-family:var(--head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .compare .before h5{color:var(--muted)}
+  .compare .after h5{color:var(--teal-dark)}
+  .compare p{font-size:13.5px;color:var(--ink)}
+  .lensprompt{background:var(--cream-alt);border-left:4px solid var(--coral);padding:13px 16px;font-family:var(--head);font-weight:500;font-size:15px;color:var(--coral-dark)}
+
+  /* responsible synthesis */
+  .resp{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+  @media(max-width:900px){.resp{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.resp{grid-template-columns:1fr}}
+  .resp .r{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:16px}
+  .resp .r h5{font-family:var(--head);font-size:13.5px;color:var(--ink);margin-bottom:6px}
+  .resp .r p{font-size:12.5px;color:var(--grey)}
+
+  /* Nina */
+  .ninagrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  @media(max-width:880px){.ninagrid{grid-template-columns:1fr}}
+  video{width:100%;background:#000;border:1px solid var(--line)}
+  .videocap{font-size:12px;color:var(--muted);margin-top:8px}
+  .tl{margin-top:4px}
+  .tlhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .tlhead .bn{font-family:var(--head);font-weight:600;font-size:15px;color:var(--ink)}
+  .tlhead .st{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  input[type=range]{width:100%;accent-color:var(--teal-dark);cursor:pointer}
+  .authority{margin:14px 0 4px}
+  .authority .lab{display:flex;justify-content:space-between;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:5px}
+  .beatbody{background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px;min-height:120px;font-size:14px;color:var(--ink)}
+  .beatbody.key{border-left:4px solid var(--coral)}
+  .beatbody .keytag{display:inline-block;font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--coral);padding:3px 8px;margin-bottom:8px}
+  .reveal-q{margin-top:18px;background:#fff;border:1px solid var(--line);padding:18px 20px}
+  .reveal-q h4{font-size:15px;margin-bottom:10px}
+  .reveal-ans{margin-top:14px;padding:14px 16px;background:var(--cream-alt);border-left:4px solid var(--teal);font-size:13.5px;display:none}
+  .reveal-ans.show{display:block}
+  details.def{border:1px solid var(--line);background:#fff;margin-top:10px}
+  details.def summary{cursor:pointer;padding:13px 16px;font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink);list-style:none}
+  details.def summary::-webkit-details-marker{display:none}
+  details.def summary::before{content:"+ ";color:var(--teal)}
+  details.def[open] summary::before{content:"– "}
+  details.def .dbody{padding:0 16px 14px}
+  details.def ol{padding-left:20px}
+  details.def li{font-size:13px;color:var(--ink);margin-bottom:7px}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:14px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-1">
+
+<!-- ============ CHROME ============ -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="mhero">
+    <div class="hero-media"><video autoplay muted loop playsinline preload="metadata" poster="../assets/media/pics/control-tower-dusk.jpg"><source src="../assets/media/mp4/control-tower-dusk.mp4" type="video/mp4"></video></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 1</div>
+    <h1>The AI Leadership Context</h1>
+    <p class="lead">Before AI is a tool problem, it is a judgement problem. This module shows how AI quietly shapes decisions before anyone formally decides — and why your accountability begins earlier than you think.</p>
+    <div class="anchors">
+      <div class="anchor t"><span class="bar"></span><span>You don’t fly the plane. You own the airspace.</span></div>
+      <div class="anchor"><span class="bar"></span><span>AI doesn’t need to make the final decision to significantly shape it.</span></div>
+    </div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Recognise how AI changes the conditions in which judgement forms</span></div>
+      <div><span class="d">→</span><span>Explain why accountability begins earlier in AI-enabled work</span></div>
+      <div><span class="d">→</span><span>See how AI shapes a decision without being the decision-maker</span></div>
+      <div><span class="d">→</span><span>Describe responsible leadership when AI is embedded in everyday work</span></div>
+      <div><span class="d">→</span><span>Identify one workflow in your area to watch more closely</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Airspace You Lead</div>
+  </div>
+</section>
+
+<!-- ============ SUBNAV ============ -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#airspace">The Airspace Model</a>
+    <a href="#shape">How AI Shapes Decisions</a>
+    <a href="#lens">The Lens Activity</a>
+    <a href="#responsible">Responsible Leadership</a>
+    <a href="#nina">The Nina Case</a>
+    <a href="#workflow">Your Workflow</a>
+  </div>
+</div>
+
+<!-- ============ INTRO + RAIL ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">From “AI as a tool” to “AI as a leadership condition”</h2>
+        <p class="section-lead">In traditional decision-making, accountability felt concentrated at the point of approval: a recommendation was presented, debated, decided, and ownership attached to that moment. In AI-enabled work that sequence is less stable.</p>
+        <p>Direction begins earlier. Options narrow before discussion. Confidence forms before scrutiny. A summary or synthesis starts shaping how a situation is understood before anyone has explicitly decided to rely on it. This module asks you to see that shift — and to accept what it means for your accountability.</p>
+        <div class="note teal"><b>The key line to hold throughout:</b> leaders own the conditions under which decisions are formed. You are not asked to become a technical expert in AI — only to notice where judgement is already being shaped.</div>
+      </div>
+      <div>
+        <div class="rail">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>AI Leadership Reality</li>
+              <li>The airspace you lead</li>
+              <li>You don’t fly the plane, you own the airspace</li>
+              <li>How AI shapes a decision without being the decision-maker</li>
+              <li>What responsible leadership looks like</li>
+              <li>Where in my workflow do I watch now?</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>The Brief That Became the Decision (Nina)</li>
+              <li>The Lens Activity</li>
+              <li>Identify the Workflow You Need to Watch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD A: AIRSPACE ============ -->
+<section class="band white" id="airspace">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard A</span><span class="tag ghost">Interactive</span></div>
+    <h2 class="section">The Airspace You Lead</h2>
+    <p class="section-lead">A decision rarely begins at sign-off. It climbs through five stages — and AI has already shaped it on the way up. Move through the altitudes to see what is happening, how AI influences it, and where your accountability actually sits.</p>
+    <div class="dash" style="margin-top:22px">
+      <div class="dhead"><div class="ic">▲</div><div><h3>Climb the decision — Information to Action</h3><div class="sub">Click an altitude, or use the decision token. The ★ marks the moment accountability begins.</div></div></div>
+      <div class="airwrap">
+        <div class="scene">
+          <canvas id="airspaceCanvas"></canvas>
+          <div class="climb">▲ Altitude — formality of the decision</div>
+          <div class="fallback" id="airFallback" style="display:none"></div>
+        </div>
+        <div class="airctrl">
+          <div class="levels" id="levels" role="tablist" aria-label="Decision altitude"></div>
+          <div class="expl" id="expl"></div>
+        </div>
+      </div>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>Why this matters.</b> The “airspace” is every stage below sign-off. A leader who only shows up at <i>Action</i> arrives after the decision has already been framed. Owning the airspace means attending to the altitudes where the picture is being built.</div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Reflection — Where is AI already shaping your airspace?</h3>
+      <div class="hint">From the workbook. Saves automatically to your Leadership Plan.</div>
+      <div class="field">
+        <label for="m1aw">Where in my role is AI already shaping what gets noticed, what gets trusted, what gets prioritised, or what gets acted on?</label>
+        <textarea id="m1aw" rows="2" data-capture="m1.airspace.where" placeholder="Name where it is already happening…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+      <div class="field">
+        <label for="m1as">Complete the sentence: <b>One place in my leadership airspace where AI influence already exists is…</b></label>
+        <textarea id="m1as" rows="2" data-capture="m1.airspace.sentence" placeholder="One place in my leadership airspace where AI influence already exists is…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW AI SHAPES DECISIONS ============ -->
+<section class="band tint" id="shape">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Concept</span></div>
+    <h2 class="section">AI doesn’t need to make the decision to shape it</h2>
+    <p class="section-lead">AI rarely makes the final call. It only needs to shape the shared picture. Once it shapes the picture, it shapes the conversation; once it shapes the conversation, it shapes the options; once it shapes the options, it shapes the decision. Hover each card to see the leadership question it raises.</p>
+    <div class="chain" id="chain" style="margin-top:22px"></div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD C: LENS ============ -->
+<section class="band white" id="lens">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">The Lens</span></div>
+    <h2 class="section">What changes in leadership conditions when AI is involved in the process?</h2>
+    <p class="section-lead">AI-enabled work doesn’t simply create new outputs. It changes what counts as signal, what gets trusted, what gets challenged, and what stays visible. Choose a lens to compare the same room <i>before</i> AI and <i>with</i> AI — then sit with the leadership question it surfaces.</p>
+    <div class="lenswrap" style="margin-top:22px">
+      <div class="lenstabs" id="lenstabs" role="tablist"></div>
+      <div class="lensbody" id="lensbody"></div>
+    </div>
+    <div class="capture" style="margin-top:22px">
+      <h3>Capture your group insight</h3>
+      <div class="hint">From the workbook activity. Saves automatically to your Leadership Plan.</div>
+      <div class="field">
+        <label for="m1lens">Complete the statement: <b>When AI is involved, leaders now need to be explicit about ___ because ___.</b></label>
+        <textarea id="m1lens" rows="2" data-capture="m1.lens.explicit_because" placeholder="When AI is involved, leaders now need to be explicit about … because …"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESPONSIBLE LEADERSHIP ============ -->
+<section class="band tint" id="responsible">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Synthesis</span></div>
+    <h2 class="section">What responsible leadership looks like now</h2>
+    <p class="section-lead">Once you can see how the conditions have changed, responsible leadership becomes explicit about five things — not to overload you with solutions, but to keep judgement visible before it can be governed.</p>
+    <div class="resp" id="resp"></div>
+    <div class="note teal" style="margin-top:20px"><b>The shift this module creates:</b> from “AI might be shaping decisions” to “I am responsible for the conditions under which decisions are formed.” That is the foundation everything else in the course is built on.</div>
+  </div>
+</section>
+
+<!-- ============ QUOTE BAND: into the case ============ -->
+<section class="quoteband">
+  <div class="qm"><img src="../assets/media/pics/lighthouse-fog.jpg" alt=""></div>
+  <div class="qc">
+    <div class="qs">The case ahead — Lighthouse Group</div>
+    <div class="ql">No misconduct. No breach. A capable, respected leader. That is precisely why it matters: influence accumulated before anyone decided to hand it over.</div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD D: NINA ============ -->
+<section class="band white" id="nina">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Case study</span><span class="tag ghost">The Brief That Became the Decision</span></div>
+    <h2 class="section">The Nina case</h2>
+    <p class="section-lead">Lighthouse Group — about 1,000 staff. No misconduct. No obvious policy breach. A capable, respected leader. That is precisely why it matters: influence accumulated without anyone deciding to hand it over. Watch the case, then scrub the timeline and watch authority quietly build.</p>
+
+    <div class="ninagrid" style="margin-top:24px">
+      <div>
+        <video controls preload="metadata" poster="../assets/img/framing.png">
+          <source src="../assets/media/nina.mp4" type="video/mp4">
+          Your browser can’t play this video. The full case is in the timeline alongside.
+        </video>
+        <div class="videocap">Case study video — “The Brief That Became the Decision.” Watch for the moment the brief stops informing the discussion and starts shaping it.</div>
+
+        <div class="reveal-q">
+          <h4>Where does leadership accountability begin?</h4>
+          <p style="font-size:13px;color:var(--grey);margin-bottom:12px">Drag the marker to the beat where you think Nina became accountable for the outcome — then reveal the course’s read.</p>
+          <input type="range" id="accGuess" min="0" max="10" value="0" aria-label="Accountability begins at beat">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px"><span>Background</span><span>Realisation</span></div>
+          <button class="btn coral" style="margin-top:14px" id="accReveal">Reveal the answer</button>
+          <div class="reveal-ans" id="accAns"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="dash">
+          <div class="dhead coral"><div class="ic">●</div><div><h3>Timeline — how a brief becomes a decision</h3><div class="sub">Eleven beats. The authority meter shows how much the brief is steering judgement.</div></div></div>
+          <div class="pad">
+            <div class="tlhead"><span class="bn" id="beatName">1 · Background</span><span class="st" id="beatStage">Information</span></div>
+            <input type="range" id="beatSlider" min="0" max="10" value="0" aria-label="Case timeline">
+            <div class="authority">
+              <div class="lab"><span>Brief’s authority over the decision</span><span id="authPct">5%</span></div>
+              <div class="meter"><i id="authBar"></i></div>
+            </div>
+            <div class="beatbody" id="beatBody"></div>
+          </div>
+        </div>
+
+        <details class="def">
+          <summary>The eight questions Nina could not fully answer</summary>
+          <div class="dbody">
+            <p style="font-size:13px;color:var(--grey);margin:10px 0 12px">She could describe the <i>process</i>. Defending the <i>judgement</i> was harder. A leader can do the first and still fail the second.</p>
+            <ol>
+              <li>What decision was actually being made?</li>
+              <li>What role did AI play — support, synthesis, recommendation, or authority?</li>
+              <li>What was the level of consequence, and did scrutiny match it?</li>
+              <li>What assumptions were challenged before the brief shaped action?</li>
+              <li>What information was validated rather than merely accepted?</li>
+              <li>What remained human, and where did accountability sit?</li>
+              <li>What would have stopped or changed the decision?</li>
+              <li>How would this be explained if challenged under pressure?</li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:26px">
+      <h3>Activity 1 — The Brief That Became the Decision (pair discussion)</h3>
+      <div class="hint">Discuss the case with a partner, then capture your answers. Saves automatically to your Leadership Plan.</div>
+      <div class="field">
+        <label for="m1q1">1. At what point did the brief stop simply informing discussion and start shaping leadership judgement?</label>
+        <textarea id="m1q1" rows="2" data-capture="m1.brief.q1" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+      <div class="field">
+        <label for="m1q2">2. What gave the brief enough authority that the group began treating it as a basis for action?</label>
+        <textarea id="m1q2" rows="2" data-capture="m1.brief.q2" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+      <div class="field">
+        <label for="m1q3">3. Where did leadership accountability begin before any formal decision was made?</label>
+        <textarea id="m1q3" rows="2" data-capture="m1.brief.q3" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+      <div class="field">
+        <label for="m1sent">Complete this sentence together: <b>Leadership accountability began when…</b></label>
+        <textarea id="m1sent" rows="2" data-capture="m1.brief.sentence" placeholder="Leadership accountability began when…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:18px">
+      <h3>Activity — What would you ask Nina?</h3>
+      <div class="hint">Not “what did the AI get wrong?” but the leadership questions that would have kept judgement visible. Your answer saves automatically to your Leadership Plan.</div>
+      <div class="field">
+        <label for="ask">If you were the executive in the review, what would you ask Nina?
+          <span class="q">e.g. “At what point did the brief stop being one input? Who owned the frame once it became the working version of reality?”</span></label>
+        <textarea id="ask" rows="3" data-capture="m1.ask" placeholder="Type your questions…"></textarea>
+        <span class="saved">✓ Saved to My Plan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARD E: WORKFLOW ============ -->
+<section class="band tint" id="workflow">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Carry this through the course</span></div>
+    <h2 class="section">Identify the workflow you need to watch</h2>
+    <p class="section-lead">Choose one real workflow in your own area where AI may already be shaping judgement. It doesn’t need to be perfect — just real enough to work with. You’ll return to this exact workflow in every later module and in your final plan.</p>
+
+    <div class="two-col" style="margin-top:22px">
+      <div class="capture">
+        <h3>My workflow to watch</h3>
+        <div class="hint">Everything here saves automatically and reappears in My Leadership Plan.</div>
+        <div class="field">
+          <label for="wf-name">The workflow<span class="q">Name a real, recurring piece of work in your area.</span></label>
+          <input type="text" id="wf-name" data-capture="m1.workflow.name" placeholder="e.g. Weekly operational briefing for the leadership meeting">
+          <span class="saved">✓ Saved</span>
+        </div>
+        <div class="field">
+          <label for="wf-role">Where AI sits in it<span class="q">Is AI summarising, synthesising, drafting, recommending, ranking?</span></label>
+          <input type="text" id="wf-role" data-capture="m1.workflow.role" placeholder="e.g. Synthesises dashboards + commentary into a single summary">
+          <span class="saved">✓ Saved</span>
+        </div>
+        <div class="field">
+          <label for="wf-stage">The highest altitude it reaches<span class="q">How far up the airspace does AI’s influence travel?</span></label>
+          <select id="wf-stage" data-capture="m1.workflow.stage" style="width:100%;font-family:var(--body);font-size:14.5px;border:1px solid var(--line);background:var(--cream-alt);padding:11px 13px">
+            <option value="">Choose a stage…</option>
+            <option>Information — it gathers inputs</option>
+            <option>Interpretation — it tells us what they mean</option>
+            <option>Framing — it becomes our shared picture</option>
+            <option>Direction — it shapes which options feel reasonable</option>
+            <option>Action — it influences real decisions</option>
+          </select>
+          <span class="saved">✓ Saved</span>
+        </div>
+      </div>
+      <div class="capture">
+        <h3>What I need to protect</h3>
+        <div class="hint">The conditions you’re now accountable for.</div>
+        <div class="field">
+          <label for="wf-comp">What could be compressed or lost?<span class="q">Invisible work, volatility, mismatched time periods, local context…</span></label>
+          <textarea id="wf-comp" rows="2" data-capture="m1.workflow.compressed" placeholder="What might the synthesis make easier to miss?"></textarea>
+          <span class="saved">✓ Saved</span>
+        </div>
+        <div class="field">
+          <label for="wf-human">What must stay human?<span class="q">The judgement you will not delegate to the output.</span></label>
+          <textarea id="wf-human" rows="2" data-capture="m1.workflow.human" placeholder="What remains your call, explicitly?"></textarea>
+          <span class="saved">✓ Saved</span>
+        </div>
+        <div class="field">
+          <label for="wf-moment">The moment I need to watch<span class="q">When does input quietly become frame in this workflow?</span></label>
+          <textarea id="wf-moment" rows="2" data-capture="m1.workflow.moment" placeholder="Where does ‘what’s happening?’ become ‘given this, what do we adjust?’"></textarea>
+          <span class="saved">✓ Saved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/my-ai-airspace-map.jpg" data-title="My AI Airspace Map"><span class="thumb"><img src="../assets/media/cheatsheets/my-ai-airspace-map.jpg" alt="My AI Airspace Map" loading="lazy"></span><span class="cap">My AI Airspace Map</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/airspace-boundary-finder.jpg" data-title="Airspace Boundary Finder"><span class="thumb"><img src="../assets/media/cheatsheets/airspace-boundary-finder.jpg" alt="Airspace Boundary Finder" loading="lazy"></span><span class="cap">Airspace Boundary Finder</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/responsibility-shift-tracker.jpg" data-title="Responsibility Shift Tracker"><span class="thumb"><img src="../assets/media/cheatsheets/responsibility-shift-tracker.jpg" alt="Responsibility Shift Tracker" loading="lazy"></span><span class="cap">Responsibility Shift Tracker</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/ai-influence-mapping-worksheet.jpg" data-title="AI Influence Mapping Worksheet"><span class="thumb"><img src="../assets/media/cheatsheets/ai-influence-mapping-worksheet.jpg" alt="AI Influence Mapping Worksheet" loading="lazy"></span><span class="cap">AI Influence Mapping Worksheet</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-new-ai-leadership-reality.jpg" data-title="The New AI Leadership Reality"><span class="thumb"><img src="../assets/media/cheatsheets/the-new-ai-leadership-reality.jpg" alt="The New AI Leadership Reality" loading="lazy"></span><span class="cap">The New AI Leadership Reality</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/day-1-roadmap.jpg" data-title="Day 1 Roadmap"><span class="thumb"><img src="../assets/media/cheatsheets/day-1-roadmap.jpg" alt="Day 1 Roadmap" loading="lazy"></span><span class="cap">Day 1 Roadmap</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TAKEAWAYS + PAGER ============ -->
+<section class="band white">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Leaders own the conditions.</b> Accountability attaches to how a situation is framed, not only to the moment of sign-off.</div>
+      <div class="tk"><b>Influence ≠ authorship.</b> AI shapes decisions by shaping the shared picture — even when a human makes the final call.</div>
+      <div class="tk"><b>Clarity can mislead.</b> A fluent, coherent synthesis can feel more complete than the evidence beneath it.</div>
+      <div class="tk"><b>Watch the shift.</b> The risk rises the moment a brief moves from information to frame — name it, and increase scrutiny to match.</div>
+    </div>
+
+    <div class="pager">
+      <a href="../index.html" class="prev"><div class="lbl">← Back to</div><div class="ttl">Course Hub</div></a>
+      <a href="module-2.html" class="next"><div class="lbl">Next module →</div><div class="ttl">Making AI Decisions Defensible</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 1 — The AI Leadership Context</small>
+    </div>
+    <small>Leaders own the conditions under which decisions are formed.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/airspace3d.js"></script>
+<script>
+/* ================= DATA ================= */
+const STAGES=[
+ {nm:"Information", al:"Ground", key:false,
+  happening:"Raw inputs arrive — dashboards, backlog data, complaints, manager commentary, partner updates. Individually reasonable; collectively, no one has decided which should count more.",
+  ai:"AI ingests and stores. It decides nothing yet — but it is already choosing what to keep, smooth and compress.",
+  acct:"Low and diffuse. The decision hasn’t formed — but the conditions for it are being set.",
+  q:"Which inputs are uneven, incomplete, or invisible in the data?"},
+ {nm:"Interpretation", al:"Low", key:false,
+  happening:"The material is read for meaning. Patterns and ‘pressure points’ begin to emerge from what used to be scattered.",
+  ai:"AI suggests what the material means — clustering themes and surfacing patterns, smoothing inconsistency as it goes.",
+  acct:"Forming. Someone is now relying on AI’s reading of the evidence, often without naming it.",
+  q:"What did the synthesis make easier to see — and easier to miss?"},
+ {nm:"Framing", al:"Mid", key:true,
+  happening:"The brief becomes the shared picture. The room moves from “what do we think is happening?” to “given this picture, what should we adjust?”",
+  ai:"AI’s output is now the working version of reality. It shapes what counts as evidence and which options feel practical.",
+  acct:"This is where accountability begins — whether or not anyone names it. You now own the frame.",
+  q:"Has anyone named the shift from input to frame — and raised scrutiny to match?"},
+ {nm:"Direction", al:"High", key:false,
+  happening:"Options narrow. “Modest, temporary, data-informed” adjustments start to feel reasonable — and easy to defend in the moment.",
+  ai:"The AI-shaped frame now steers which choices appear on the table, and which quietly fall off it.",
+  acct:"Squarely human and visible — but easy to under-own when the picture already feels settled.",
+  q:"Is reliance on the output now stronger than anyone intended?"},
+ {nm:"Action", al:"Cruise · sign-off", key:false,
+  happening:"Staffing and prioritisation change. Weeks later small signs accumulate, and an executive asks: “Walk us through how this brief shaped the decision.”",
+  ai:"AI never made the call — but it shaped the picture the call emerged from.",
+  acct:"Lands fully with the leader. The question is no longer “where did the data come from?” but “what challenge did it receive before it shaped action?”",
+  q:"Could I defend the level of reliance — clearly, under pressure?"}
+];
+
+const CHAIN=[
+ {ph:"What gets noticed", f:"AI amplifies some signals and quietens others as it synthesises.", b:"→ Which signals are being amplified or missed?"},
+ {ph:"What gets trusted", f:"Fluency and coherence make an output feel credible before it’s tested.", b:"→ Why does this output feel credible?"},
+ {ph:"What gets prioritised", f:"A clear frame makes some options feel practical and others invisible.", b:"→ Are options narrowing too early?"},
+ {ph:"What gets acted on", f:"Reliance can deepen quietly as the picture feels settled.", b:"→ Has reliance become stronger than intended?"},
+ {ph:"What gets ignored", f:"Compression hides context that didn’t fit the summary.", b:"→ What context has been compressed or excluded?"}
+];
+
+const LENSES=[
+ {t:"What counts as signal", s:"Raw vs synthesised",
+  before:"People weigh raw inputs themselves. The messiness is visible, so inconsistencies are hard to ignore.",
+  after:"A clean synthesis sets what registers as signal. Smoothed, compressed inputs start to feel like fact.",
+  prompt:"What is now treated as signal that was once treated as raw, uneven material?"},
+ {t:"What gets trusted", s:"Earned vs assumed",
+  before:"Credibility is earned through debate and familiar sources arguing their case.",
+  after:"Fluency, coherence and breadth make an output feel trustworthy before anyone tests it.",
+  prompt:"Am I trusting this because it’s right — or because it’s clear?"},
+ {t:"What gets challenged", s:"Nuance vs clarity",
+  before:"Competing interpretations invite challenge. Nuance surfaces naturally in the room.",
+  after:"A coherent frame is harder to challenge; under time pressure, nuance sounds like quibbling.",
+  prompt:"What level of challenge does this output need before it shapes action?"},
+ {t:"What stays visible", s:"Argued vs compressed",
+  before:"Invisible work and local context get argued for out loud by the people who hold them.",
+  after:"Compression hides what doesn’t show up in metrics — escalation handling, relationships, volatility.",
+  prompt:"What has become invisible now that the picture looks complete?"}
+];
+
+const RESP=[
+ {h:"What counts as signal", p:"Be explicit about which inputs carry weight — and which are uneven or compressed."},
+ {h:"What review means", p:"Define the level of challenge an output needs before it can shape action."},
+ {h:"Where AI fits", p:"Decide where AI should and should not be used in this workflow."},
+ {h:"What stays human", p:"Name the judgement that must remain yours, visibly."},
+ {h:"What’s hardest to defend", p:"Surface, early, what would be most exposed under later scrutiny."}
+];
+
+const BEATS=[
+ {n:"Background", stage:"Information", auth:5, txt:"“Use AI where it helps speed up analysis, while governance continues to evolve.” Practical permission, not a blank cheque. Teams begin using AI to prepare leadership material faster."},
+ {n:"The pressure", stage:"Information", auth:10, txt:"Demand has shifted. Senior leaders keep asking: “Where should we focus effort, and where can we safely pull back?” Nina is expected at the planning meeting with a clearer answer."},
+ {n:"The briefing pack", stage:"Information", auth:20, txt:"Several teams assemble a pack from eight mixed sources — backlog data, dashboards, complaints, vacancies, manager commentary, partner updates. None invalid. But no one decides which signals should count more once blended."},
+ {n:"The AI synthesis", stage:"Interpretation", auth:35, txt:"The AI does what it was asked: a brief noticeably clearer than before. Measured, professional, careful. Three cautious observations — one area may need capacity, one looks ‘less active’, some segments seem quieter."},
+ {n:"The meeting opens", stage:"Interpretation", auth:45, txt:"The pack gives the meeting structure. Managers recognise their own inputs in it — which adds credibility, even though the synthesis compressed and transformed the material."},
+ {n:"Concerns raised", stage:"Interpretation", auth:50, txt:"A few managers push back: low-activity work includes escalation and relationship management; a ‘quiet’ segment is historically volatile; some sources span different time periods. The concerns complicate the brief — they don’t disprove it. Under time pressure, nuance struggles against clarity."},
+ {n:"The shift", stage:"Framing", auth:70, key:true, txt:"The question changes from “what is happening?” to “given this picture, what should we adjust?” The brief stops informing the discussion and becomes the frame for it — the working version of reality. No one votes to make it authoritative; it simply acquires authority."},
+ {n:"The decision forms", stage:"Direction", auth:80, txt:"Modest, temporary, data-informed changes are agreed — redirect some capacity, review the ‘less active’ function, ease attention on quieter segments. The careful language makes it feel easy to defend. A decision is made. No one thinks of it as an AI decision."},
+ {n:"The aftermath", stage:"Action", auth:88, txt:"The receiving team tightens faster than expected. The ‘less active’ function strains — its invisible work wasn’t in the metrics. A partner notices slower responsiveness. Staff feel reduced to indicators. No single failure — but signs accumulate."},
+ {n:"The executive review", stage:"Action", auth:95, txt:"“Walk us through how this brief shaped the decision.” Then the harder question: “What level of challenge did the analysis receive before it influenced staffing and prioritisation?” Nina realises the answer is unclear. The room goes quiet."},
+ {n:"Nina’s realisation", stage:"Action", auth:100, txt:"AI did not make the decision. It created the frame within which the decision became reasonable. She can explain the process — but not fully defend the judgement behind the level of reliance. And the consequences sit with her."}
+];
+const KEY_BEAT=6; // "The shift"
+
+/* ================= RENDER: AIRSPACE ================= */
+const levelsEl=document.getElementById('levels');
+const explEl=document.getElementById('expl');
+let air=null, curLevel=0;
+// buttons top(Action)->bottom(Information)
+for(let i=STAGES.length-1;i>=0;i--){
+  const s=STAGES[i];
+  const b=document.createElement('button');
+  b.className='lvl'+(s.key?' key':''); b.dataset.i=i; b.setAttribute('role','tab');
+  b.innerHTML=`<span class="n">${i+1}</span><span class="nm">${s.nm}</span><span class="al">${s.al}</span>`;
+  b.addEventListener('click',()=>setLevel(i));
+  levelsEl.appendChild(b);
+}
+function setLevel(i){
+  curLevel=i;
+  document.querySelectorAll('.lvl').forEach(b=>b.classList.toggle('on', +b.dataset.i===i));
+  const s=STAGES[i];
+  explEl.className='expl'+(s.key?' keymoment':'');
+  explEl.innerHTML=`
+    <div class="row"><div class="lab">What’s happening</div><div class="val">${s.happening}</div></div>
+    <div class="row"><div class="lab">AI’s influence</div><div class="val">${s.ai}</div></div>
+    <div class="row"><div class="lab">Where accountability sits</div><div class="val">${s.acct}</div></div>
+    <div class="q">${s.key?'★ ':''}Leadership question — ${s.q}</div>`;
+  if(air) air.setLevel(i);
+}
+// 3D mount + fallback
+const canvas=document.getElementById('airspaceCanvas');
+const fb=document.getElementById('airFallback');
+air=window.Airspace.mount(canvas,{onReady:(ok)=>{
+  if(!ok){
+    canvas.style.display='none'; fb.style.display='flex';
+    for(let i=STAGES.length-1;i>=0;i--){
+      const d=document.createElement('div'); d.className='fb-band';
+      d.style.background=['rgba(83,223,203,.18)','rgba(46,201,187,.18)','rgba(0,192,175,.20)','rgba(226,162,59,.20)','rgba(220,90,70,.22)'][i];
+      d.textContent=(i+1)+' · '+STAGES[i].nm; fb.appendChild(d);
+    }
+  }
+}});
+setLevel(0);
+
+/* ================= RENDER: CHAIN ================= */
+const chainEl=document.getElementById('chain');
+CHAIN.forEach((c,i)=>{
+  const d=document.createElement('div'); d.className='flip'; d.tabIndex=0;
+  d.innerHTML=`<div class="tagn">0${i+1}</div><div class="ph">${c.ph}</div><div class="front">${c.f}</div><div class="back">${c.b}</div>`;
+  d.addEventListener('click',()=>d.classList.toggle('open'));
+  d.addEventListener('keypress',e=>{if(e.key==='Enter')d.classList.toggle('open');});
+  chainEl.appendChild(d);
+});
+
+/* ================= RENDER: LENS ================= */
+const tabsEl=document.getElementById('lenstabs');
+const bodyEl=document.getElementById('lensbody');
+LENSES.forEach((l,i)=>{
+  const b=document.createElement('button'); b.className='lenstab'+(i===0?' on':''); b.dataset.i=i; b.setAttribute('role','tab');
+  b.innerHTML=`<div class="t">${l.t}</div><div class="s">${l.s}</div>`;
+  b.addEventListener('click',()=>showLens(i));
+  tabsEl.appendChild(b);
+});
+function showLens(i){
+  document.querySelectorAll('.lenstab').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const l=LENSES[i];
+  bodyEl.innerHTML=`
+    <div class="compare">
+      <div class="c before"><h5>Before AI</h5><p>${l.before}</p></div>
+      <div class="c after"><h5>With AI</h5><p>${l.after}</p></div>
+    </div>
+    <div class="lensprompt">Leadership question — ${l.prompt}</div>`;
+}
+showLens(0);
+
+/* ================= RENDER: RESP ================= */
+const respEl=document.getElementById('resp');
+RESP.forEach(r=>{const d=document.createElement('div');d.className='r';d.innerHTML=`<h5>${r.h}</h5><p>${r.p}</p>`;respEl.appendChild(d);});
+
+/* ================= NINA TIMELINE ================= */
+const slider=document.getElementById('beatSlider');
+const beatName=document.getElementById('beatName');
+const beatStage=document.getElementById('beatStage');
+const beatBody=document.getElementById('beatBody');
+const authBar=document.getElementById('authBar');
+const authPct=document.getElementById('authPct');
+function showBeat(i){
+  const b=BEATS[i];
+  beatName.textContent=(i+1)+' · '+b.n;
+  beatStage.textContent=b.stage;
+  beatBody.className='beatbody'+(b.key?' key':'');
+  beatBody.innerHTML=(b.key?'<span class="keytag">★ The brief becomes the frame</span>':'')+b.txt;
+  authBar.style.width=b.auth+'%';
+  authPct.textContent=b.auth+'%';
+}
+slider.addEventListener('input',()=>showBeat(+slider.value));
+showBeat(0);
+
+/* ================= ACCOUNTABILITY REVEAL ================= */
+document.getElementById('accReveal').addEventListener('click',()=>{
+  const g=+document.getElementById('accGuess').value;
+  const ans=document.getElementById('accAns');
+  let verdict;
+  if(g<KEY_BEAT) verdict="You’ve placed it <b>early</b> — and that instinct is right that accountability starts before sign-off. But it <i>crystallises</i> at a specific beat:";
+  else if(g===KEY_BEAT) verdict="Spot on. This is exactly the beat the course points to:";
+  else verdict="By the beat you chose, accountability has already <b>landed</b> with Nina. It actually began earlier — here:";
+  ans.innerHTML=`${verdict} <b>“The shift” (beat 7)</b>, when the question changes from “what is happening?” to “given this picture, what should we adjust?” That is the moment the brief stops being one input and becomes the working version of reality. Before it, the brief informs. After it, the brief frames — and leadership accountability already exists, whether or not anyone names it.`;
+  ans.classList.add('show');
+  slider.value=KEY_BEAT; showBeat(KEY_BEAT);
+});
+</script>
+</body>
+</html>

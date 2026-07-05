@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 7 — Lead Through AI Incidents | Responsible AI Leadership</title>
+<meta name="description" content="The Response Console — diagnose the failure type, lead the first 48 hours, and Contain / Escalate / Correct. Module 7." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #3a1410 0%, #141414 58%)}
+  .daytag{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--coral);padding:4px 10px;margin-bottom:6px}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:62ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:#f0a594;font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .keyline{margin-top:24px;border-left:4px solid var(--coral);padding:4px 0 4px 16px;max-width:52ch}
+  .keyline span{font-family:var(--head);font-weight:500;font-size:16.5px;color:#fff}
+  .dashtag{background:rgba(220,90,70,.18);border-color:rgba(220,90,70,.4)}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--coral);display:flex;align-items:center;justify-content:center;color:#fff}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+  .subnav a.active{border-color:var(--coral);color:var(--coral-dark)}
+
+  /* scenario card */
+  .scenario{background:#fff;border:1px solid var(--line);border-left:5px solid var(--coral);padding:18px 22px;margin-top:6px}
+  .scenario .lab{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+  .scenario p{font-size:14px;color:var(--ink);margin-bottom:8px}
+  .scenario p:last-child{margin-bottom:0}
+
+  /* binary choice */
+  .binary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  @media(max-width:620px){.binary{grid-template-columns:1fr}}
+  .bopt{border:1px solid var(--line);background:#fff;padding:16px 18px;cursor:pointer;transition:.15s}
+  .bopt:hover{border-color:var(--coral)}
+  .bopt.on{box-shadow:inset 4px 0 0 var(--coral);background:var(--cream-alt)}
+  .bopt .t{font-family:var(--head);font-weight:600;font-size:15px}
+  .bopt .d{font-size:12.5px;color:var(--grey);margin-top:4px}
+  .binaryreveal{display:none;margin-top:16px;background:#1c1c1c;color:#fff;border-left:5px solid var(--coral);padding:18px 22px}
+  .binaryreveal.show{display:block}
+  .binaryreveal .big{font-family:var(--head);font-weight:600;font-size:19px;margin-bottom:8px}
+  .binaryreveal p{font-size:13.5px;color:#d4d4d4}
+
+  /* is this an incident */
+  .incidents{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  @media(max-width:680px){.incidents{grid-template-columns:1fr}}
+  .inc{border:1px solid var(--line);background:#fff;padding:14px 16px;cursor:pointer}
+  .inc:hover{border-color:var(--coral)}
+  .inc .q{font-size:13.5px;color:var(--ink)}
+  .inc .v{font-size:12px;color:var(--coral-dark);font-weight:600;margin-top:8px;max-height:0;overflow:hidden;opacity:0;transition:.25s}
+  .inc.open{box-shadow:inset 4px 0 0 var(--coral)}
+  .inc.open .v{max-height:80px;opacity:1}
+
+  /* diagnoser */
+  .diag{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .dbtn{flex:1;min-width:200px;border:1px solid var(--line);background:#fff;padding:16px 18px;cursor:pointer;text-align:left;transition:.15s}
+  .dbtn:hover{border-color:var(--coral)}
+  .dbtn .t{font-family:var(--head);font-weight:600;font-size:15px}
+  .dbtn .d{font-size:12px;color:var(--grey);margin-top:4px}
+  .dbtn.sel{box-shadow:inset 4px 0 0 var(--coral)}
+  .diagfb{display:none;margin-top:16px;padding:18px 22px;font-size:13.5px}
+  .diagfb.show{display:block}
+  .diagfb.right{background:rgba(0,141,128,.1);border-left:5px solid var(--teal-dark);color:var(--ink)}
+  .diagfb.wrong{background:rgba(220,90,70,.1);border-left:5px solid var(--coral);color:var(--ink)}
+  .diagfb b{font-family:var(--head)}
+  .leaderscript{background:var(--cream-alt);border:1px solid var(--line);padding:16px 20px;margin-top:16px;font-size:14px;font-style:italic;color:var(--ink)}
+  .lenses{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  @media(max-width:720px){.lenses{grid-template-columns:1fr}}
+  .lens{border:1px solid var(--line);padding:14px 16px;background:#fff;font-size:12.5px}
+  .lens b{font-family:var(--head);color:var(--coral-dark);display:block;margin-bottom:4px}
+
+  /* governance drift */
+  .driftfactors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  @media(max-width:680px){.driftfactors{grid-template-columns:1fr}}
+  .df{border:1px solid var(--line);background:#fff;padding:14px 16px;cursor:pointer;display:flex;gap:12px;align-items:flex-start}
+  .df:hover{border-color:var(--coral)}
+  .df.on{box-shadow:inset 4px 0 0 var(--coral);background:var(--cream-alt)}
+  .df .bx{width:18px;height:18px;flex:0 0 18px;border:2px solid var(--muted);border-radius:50%;margin-top:2px;display:flex;align-items:center;justify-content:center}
+  .df.on .bx{background:var(--coral);border-color:var(--coral)}
+  .df.on .bx::after{content:"";width:7px;height:7px;background:#fff;border-radius:50%}
+  .df .t{font-family:var(--head);font-weight:600;font-size:14px}
+  .df .d{font-size:12px;color:var(--grey);margin-top:2px}
+
+  /* first 48 */
+  .f48{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:760px){.f48{grid-template-columns:1fr}}
+  .f48 .col h5{font-family:var(--head);font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .f48 .say h5{color:var(--teal-dark)} .f48 .avoid h5{color:var(--coral-dark)}
+  .f48 ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .f48 li{font-size:13px;color:var(--ink);padding-left:18px;position:relative}
+  .f48 .say li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+  .f48 .avoid li::before{content:"✕";position:absolute;left:0;color:var(--coral-dark);font-weight:700}
+  .threeline{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  @media(max-width:720px){.threeline{grid-template-columns:1fr}}
+
+  /* response console */
+  .console{border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+  .console .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--line)}
+  @media(max-width:760px){.console .stages{grid-template-columns:1fr}}
+  .cstage{padding:18px 20px;border-right:1px solid var(--line);text-align:center}
+  .cstage:last-child{border-right:0}
+  .cstage .n{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--coral);display:inline-block;padding:3px 10px;margin-bottom:8px}
+  .cstage h4{font-size:17px;margin-bottom:4px}
+  .cstage p{font-size:12.5px;color:var(--grey)}
+  .console .body{padding:20px 24px}
+  .conseg{margin-bottom:20px;padding-bottom:20px;border-bottom:1px dashed var(--line)}
+  .conseg:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+  .conseg .sh{font-family:var(--head);font-weight:600;font-size:14px;color:var(--coral-dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .conseg .sh .num{background:var(--coral);color:#fff;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px}
+  .chk2{display:flex;flex-wrap:wrap;gap:8px}
+  .chk2 button{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid var(--line);background:var(--cream-alt);padding:7px 12px;cursor:pointer}
+  .chk2 button.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .corr{display:flex;flex-direction:column;gap:8px}
+  .corropt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:#fff;padding:13px 16px;cursor:pointer}
+  .corropt:hover{border-color:var(--coral)}
+  .corropt .bx{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--muted);margin-top:1px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+  .corropt.sel .bx{background:var(--coral);border-color:var(--coral)}
+  .corropt .tx{font-size:13.5px;color:var(--ink)}
+  .corrfb{display:none;margin-top:12px;padding:14px 18px;font-size:13.5px}
+  .corrfb.show{display:block}
+  .corrfb.right{background:rgba(0,141,128,.1);border-left:4px solid var(--teal-dark)}
+  .corrfb.wrong{background:rgba(220,90,70,.1);border-left:4px solid var(--coral)}
+  .credtests{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  @media(max-width:680px){.credtests{grid-template-columns:1fr}}
+  .credtests .ct{background:var(--cream-alt);border:1px solid var(--line);padding:11px 14px;font-size:12.5px}
+  .credtests .ct b{font-family:var(--head);color:var(--teal-dark)}
+  .easiest{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .easiest button{font-family:var(--head);font-weight:600;font-size:13px;border:1px solid var(--line);background:#fff;padding:9px 16px;cursor:pointer}
+  .easiest button.on{background:var(--coral);color:#fff;border-color:var(--coral)}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:13.5px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-7">
+
+<!-- CHROME -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mhero">
+    <div class="hero-media"><video autoplay muted loop playsinline preload="metadata" poster="../assets/media/pics/storm-clearing-dawn.jpg"><source src="../assets/media/mp4/storm-clearing-dawn.mp4" type="video/mp4"></video></div>
+  <div class="wrap inner">
+    <span class="daytag">Day 2 · Incident response</span>
+    <div class="eyebrow" style="color:#f0a594">Module 7</div>
+    <h1>Lead Through AI Incidents</h1>
+    <p class="lead">AI incidents rarely begin with failure. They begin with something that doesn’t sit right — before all the facts are known. This module isn’t about policy, prevention or perfect governance. It’s about how you respond in that moment: calm, structured, accountable, and proportionate.</p>
+    <div class="keyline"><span>You cannot respond well until you understand what kind of failure you are dealing with.</span></div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Recognise what counts as an AI incident or near miss</span></div>
+      <div><span class="d">→</span><span>Diagnose the type of failure before acting</span></div>
+      <div><span class="d">→</span><span>Take proportionate first moves that reduce repeat risk</span></div>
+      <div><span class="d">→</span><span>Stay visibly accountable without over-reacting</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Response Console</div>
+  </div>
+</section>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#moment">The First Moment</a>
+    <a href="#incident">What Counts</a>
+    <a href="#diagnose">Diagnose First</a>
+    <a href="#drift">Governance Drift</a>
+    <a href="#first48">First 48 Hours</a>
+    <a href="#console">Contain · Escalate · Correct</a>
+  </div>
+</div>
+
+<!-- INTRO + RAIL -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag coral">Module overview</span></div>
+        <h2 class="section">When something doesn’t sit right</h2>
+        <p class="section-lead">It might be a confident AI report that conflicts with your lived experience, an output that feels thin but is already shaping discussion, or a quiet concern raised by a team member. At that point you don’t yet know how serious it is — but accountability already exists, and how you respond now shapes what your team does next.</p>
+        <p>Leaders are judged not just on outcomes, but on how they respond when things go wrong. This module is about that moment: not diagnosing perfectly, but responding well.</p>
+        <div class="note"><b>The first leadership moment is when doubt appears.</b> If leaders wait for dramatic failure, learning arrives too late — most harm comes from the quiet failures, not the dramatic ones.</div>
+      </div>
+      <div>
+        <div class="rail coral">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>When something doesn’t sit right</li>
+              <li>What counts as an AI incident</li>
+              <li>Lead with diagnosis (model / data / governance)</li>
+              <li>Avoid the double error</li>
+              <li>Prevent governance drift</li>
+              <li>First 48 hours: calm accountability</li>
+              <li>Response model: Contain, Escalate, Correct</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>Make the First Moves (diagnose &amp; respond)</li>
+              <li>Audit a Drifted Process</li>
+              <li>Instinctive Reaction</li>
+              <li>First Response Planning</li>
+              <li>Apply the Response Model</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FIRST MOMENT: BAN THAT BACKFIRED -->
+<section class="band white" id="moment">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Anchor scenario</span><span class="tag ghost">The ban that backfired</span></div>
+    <h2 class="section">Your first leadership moment</h2>
+    <div class="scenario">
+      <div class="lab">Situation</div>
+      <p>After an AI-assisted report contained errors, a leader restricted the AI tool across the team. The tool had been used legitimately to draft and synthesise internal material.</p>
+      <div class="lab">What happened next</div>
+      <p>The team still needed the capability. Use didn’t stop — it moved to personal accounts, external tools, and informal workarounds. Visibility reduced. Risk increased.</p>
+    </div>
+    <p class="section-lead" style="margin-top:18px">When something goes wrong, what’s your instinct?</p>
+    <div class="binary" id="binary">
+      <div class="bopt" data-k="ban"><div class="t">Default to broad restriction</div><div class="d">Restrict or ban the tool across the team to be safe.</div></div>
+      <div class="bopt" data-k="contain"><div class="t">Contain the specific failure mode</div><div class="d">Pause the exact step that failed; keep the rest working and visible.</div></div>
+    </div>
+    <div class="binaryreveal" id="binaryReveal">
+      <div class="big">A ban is not a response. It is a displacement.</div>
+      <p>Broad restriction doesn’t remove the need — it pushes use into the shadows, where you can’t see it. Containing the <i>specific</i> failure mode reduces risk while keeping the capability visible and accountable. Hold that instinct: you’ll return to it in the Response Console below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT COUNTS -->
+<section class="band tint" id="incident">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Concept</span></div>
+    <h2 class="section">What counts as an AI incident</h2>
+    <p class="section-lead">Most AI failures don’t arrive looking like a disaster. They arrive looking like a slightly odd result — a report that doesn’t quite add up, an output a team member accepted because the AI sounded confident. An AI incident is any situation where AI use contributed to an outcome that was harmful, incorrect, or significantly outside intent — <i>including near misses</i>. Which of these qualify? Click each.</p>
+    <div class="incidents" id="incidents" style="margin-top:14px"></div>
+    <div class="note" style="margin-top:18px"><b>ISACA / MIT AI Incident Database (2025):</b> the incidents causing the most organisational harm weren’t dramatic system failures — they were the quiet ones: a hiring system no one scrutinised, a chatbot giving confident wrong advice, a workflow that drifted until the human check was a formality. Individually they looked isolated. As a pattern, they were <i>familiar, often predictable, and frequently avoidable.</i></div>
+    <div class="capture" style="margin-top:18px">
+      <div class="field"><label for="quiet">Quiet reflection — where would something like this show up in your area, early and quietly?</label><textarea id="quiet" rows="2" data-capture="m7.quiet"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSE -->
+<section class="band white" id="diagnose">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Dashboard</span><span class="tag ghost">Make the first moves</span></div>
+    <h2 class="section">Diagnose the failure before you act</h2>
+    <p class="section-lead">When something goes wrong, the instinctive question is “what did the AI do?” The more useful one is “where did this failure actually <i>originate</i>?” Read the scenario and pick the most likely failure type.</p>
+
+    <div class="scenario">
+      <div class="lab">Scenario — customer data across systems</div>
+      <p>An organisation used AI to work with customer data held across multiple systems. The use case was legitimate, the tool appropriate, the people acting in good faith. The AI began producing outputs that led to customers being contacted or treated as someone they were not — wrong identity, wrong context, wrong interaction. The immediate instinct was to look at the AI.</p>
+    </div>
+
+    <div class="diag" id="diag" style="margin-top:16px">
+      <button class="dbtn" data-k="model"><div class="t">Model problem</div><div class="d">The system produced unreliable, biased or incorrect outputs. Fixes involve the tool/model/config.</div></button>
+      <button class="dbtn" data-k="data"><div class="t">Data problem</div><div class="d">The AI performed as designed, but the data was incomplete, inconsistent or unfit. Fixes sit upstream.</div></button>
+      <button class="dbtn" data-k="gov"><div class="t">Governance problem</div><div class="d">AI was used at a risk level or context without adequate oversight. Fixes involve workflow, ownership, escalation.</div></button>
+    </div>
+    <div class="diagfb" id="diagFb"></div>
+
+    <div class="leaderscript">Leader script — “We’re going to separate facts, causes, and accountability. We can be firm on standards without turning this into blame theatre. If you have context that helps us understand what happened, bring it forward now — no surprises.”</div>
+    <div class="lenses">
+      <div class="lens"><b>Good-faith judgement</b>Incomplete information, acting in good faith — respond with learning.</div>
+      <div class="lens"><b>Knowingly bypassing a control</b>A different conversation — about standards.</div>
+      <div class="lens"><b>Unsafe path was easiest</b>A system-design problem — the workflow made it likely.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE DRIFT -->
+<section class="band tint" id="drift">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Activity</span><span class="tag ghost">Audit a drifted process</span></div>
+    <h2 class="section">Prevent governance drift</h2>
+    <p class="section-lead">Of all failure modes, governance drift most consistently goes unnoticed until it produces a significant outcome. It doesn’t start with a decision to stop following the process — a good process just erodes quietly.</p>
+    <div class="scenario">
+      <div class="lab">Case — the process that stayed on paper</div>
+      <p>A team introduced an AI-assisted process for weekly reporting narratives, with a mandatory human review step. For several weeks the review was thorough. Then timelines tightened, the AI outputs kept looking reasonable, and the reviewer who owned the step moved roles. Nobody reassigned it. The step stayed on the process document — but stopped happening. Weeks later, unusual external conditions produced results the AI narrative explained plausibly but entirely wrongly. The report went out. Decisions were made. No individual had done anything obviously wrong.</p>
+    </div>
+    <p class="section-lead" style="margin-top:18px">Four small factors caused the drift — none significant alone. Mark the one most present in your environment.</p>
+    <div class="driftfactors" id="driftFactors"></div>
+    <div class="note" style="margin-top:18px"><b>The corrective action is not a new AI rule.</b> Reassign ownership of the review step, clarify exactly what it must catch, and add a way to verify it’s happening. Then prevent recurrence with the guardrails you designed in Module 6.</div>
+    <div class="capture" style="margin-top:16px">
+      <div class="field"><label for="dcorr">Once governance drift comes to light, what corrective actions are required?<span class="q">Reassign ownership, clarify what the step must catch, add a way to verify it’s happening.</span></label><textarea id="dcorr" rows="2" data-capture="m7.drift.corrective"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="prevent">What preventative action will you commit to, to reduce governance drift in your area?</label><textarea id="prevent" rows="2" data-capture="m7.prevent"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST 48 -->
+<section class="band white" id="first48">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Activity</span><span class="tag ghost">First response planning</span></div>
+    <h2 class="section">The first 48 hours — calm accountability</h2>
+    <div class="scenario">
+      <div class="lab">Scenario</div>
+      <p>An AI-assisted report your team produced last week has been circulated to a senior stakeholder. A team member has just told you a key data input was incomplete and the conclusions may be unreliable. The stakeholder hasn’t acted on it yet.</p>
+    </div>
+    <div class="capture" style="margin-top:16px">
+      <div class="field"><label for="firstthought">Instinctive reaction — what is the first thing you think of doing?<span class="q">Capture your gut response before the structured plan.</span></label><textarea id="firstthought" rows="2" data-capture="m7.firstthought"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+    <p class="section-lead" style="margin-top:16px">Your biggest task isn’t to be certain — it’s to be visible, calm and credible while the facts emerge. When leaders go quiet to “get the full picture,” a vacuum forms and the narrative forms without you. Credibility comes from saying three things early and consistently:</p>
+    <div class="threeline">
+      <div class="capture"><div class="field"><label for="t1">1 · What we know<span class="q">Facts only.</span></label><textarea id="t1" rows="3" data-capture="m7.know"></textarea></div></div>
+      <div class="capture"><div class="field"><label for="t2">2 · What we don’t know yet<span class="q">And what would change our view.</span></label><textarea id="t2" rows="3" data-capture="m7.dontknow"></textarea></div></div>
+      <div class="capture"><div class="field"><label for="t3">3 · What we’re doing next<span class="q">Who is doing what, by when.</span></label><textarea id="t3" rows="3" data-capture="m7.next"></textarea></div></div>
+    </div>
+    <div class="f48" style="margin-top:18px">
+      <div class="col say">
+        <h5>Signal three non-negotiables</h5>
+        <ul>
+          <li>We act proportionately, not theatrically — pause the specific risk point, not the whole tool.</li>
+          <li>We protect honest disclosure — concerns raised early are handled as learning, not scapegoating.</li>
+          <li>We preserve the trail — capture what happened before changes are made, so we can learn.</li>
+        </ul>
+      </div>
+      <div class="col avoid">
+        <h5>What to avoid in the first 48 hours</h5>
+        <ul>
+          <li>Quietly “fixing” it and moving on.</li>
+          <li>Waiting for certainty before speaking.</li>
+          <li>Resolving it privately before the right functions have visibility.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note teal" style="margin-top:16px"><b>A practical leader prompt:</b> “We’ve paused this specific output while we check the source data. We are not banning the tool, but we are not relying on this report until the issue is understood.”</div>
+
+    <div class="capture" style="margin-top:18px">
+      <h3>First response planning — draft your messages</h3>
+      <div class="hint">From the workbook. Saves to your Leadership Plan.</div>
+      <div class="field"><label for="msgteam">A · Your message to the team (now)<span class="q">What you will say, and how you will invite relevant context to surface safely.</span></label><textarea id="msgteam" rows="3" data-capture="m7.msg.team"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="msgstake">B · Your message to the stakeholder (today)<span class="q">What you will say, what you will not over-claim, and what you will commit to by when.</span></label><textarea id="msgstake" rows="3" data-capture="m7.msg.stakeholder"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="msgvis">D · Visibility plan<span class="q">Who else needs to be informed early (roles/functions), and the first message they need from you.</span></label><textarea id="msgvis" rows="2" data-capture="m7.msg.visibility"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESPONSE CONSOLE -->
+<section class="band tint" id="console">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Dashboard</span><span class="tag ghost">Apply the response model</span></div>
+    <h2 class="section">The Response Console — Contain · Escalate · Correct</h2>
+    <p class="section-lead">Once you have initial facts and a working diagnosis, use this three-stage model. The stages can overlap, but each has a different purpose. Work the case below through it.</p>
+
+    <div class="scenario" style="margin-top:8px">
+      <div class="lab">Case — the update that kept moving</div>
+      <p>A team used AI to generate weekly operational updates for senior leaders. The tool was approved for drafting and pattern recognition, but the final update was meant to be reviewed by a manager before it informed planning. Over time the update moved faster; the outputs usually looked credible, and the review became lighter. In one cycle the AI-generated update overstated likely demand in one part of the business and understated risk in another. It was shared internally and was about to inform a resource-allocation decision. A team member noticed before the decision was finalised and raised it.</p>
+    </div>
+
+    <div class="console" style="margin-top:18px">
+      <div class="stages">
+        <div class="cstage"><span class="n">1 · Contain</span><h4>Stop the spread</h4><p>A temporary, targeted pause at the specific failure point — preserve evidence.</p></div>
+        <div class="cstage"><span class="n">2 · Escalate</span><h4>Visibility, not panic</h4><p>Get the right roles visibility early — based on risk type, not embarrassment.</p></div>
+        <div class="cstage"><span class="n">3 · Correct</span><h4>Change the conditions</h4><p>Fix the root cause and add a way to detect if the fix is working.</p></div>
+      </div>
+      <div class="body">
+        <div class="conseg">
+          <div class="sh"><span class="num">1</span>Contain — which point do you pause?</div>
+          <div style="font-size:13px;color:var(--grey);margin-bottom:8px">Good containment is specific, reversible, visible, and doesn’t drive work underground. Pick the proportionate pause:</div>
+          <div class="chk2" id="containOpts">
+            <button data-k="ban">Pause all AI use</button>
+            <button data-k="point" data-good="1">Pause this update informing planning, until reviewed</button>
+            <button data-k="nothing">Let it ride — someone caught it</button>
+          </div>
+          <div id="containFb" style="font-size:13px;margin-top:10px;display:none"></div>
+        </div>
+        <div class="conseg">
+          <div class="sh"><span class="num">2</span>Escalate — who needs early visibility?</div>
+          <div style="font-size:13px;color:var(--grey);margin-bottom:8px">Escalate by risk type, early, with a clear statement of known/unknown. Select who to involve:</div>
+          <div class="chk2" id="escOpts"></div>
+        </div>
+        <div class="conseg">
+          <div class="sh"><span class="num">3</span>Correct — choose the strongest action</div>
+          <div class="corr" id="corr"></div>
+          <div class="corrfb" id="corrFb"></div>
+          <div class="credtests">
+            <div class="ct"><b>Matches the failure type</b> — governance fixes ownership/oversight, not the model.</div>
+            <div class="ct"><b>Names an owner and a deadline</b> — who makes the change, by when.</div>
+            <div class="ct"><b>Adds a detection mechanism</b> — how you’ll know the fix is being followed.</div>
+            <div class="ct"><b>Reduces repeat likelihood</b> — not just “explains” the incident after the fact.</div>
+          </div>
+        </div>
+        <div class="conseg">
+          <div class="sh"><span class="num">?</span>Final reflection</div>
+          <div style="font-size:13px;color:var(--grey);margin-bottom:8px">Which stage is easiest to get wrong under pressure?</div>
+          <div class="easiest" id="easiest">
+            <button data-k="Contain">Contain</button>
+            <button data-k="Escalate">Escalate</button>
+            <button data-k="Correct">Correct</button>
+          </div>
+          <div id="easiestFb" style="font-size:13px;margin-top:10px;color:var(--coral-dark);display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:20px">
+      <h3>AI Incident Response &amp; Learning Record</h3>
+      <div class="hint">Capture the artefact so the learning isn’t lost. Saves to your Leadership Plan.</div>
+      <div class="field"><label for="rec1">What happened?<span class="q">Facts, the workflow step, the timeline.</span></label><textarea id="rec1" rows="2" data-capture="m7.record.what"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="rec2">Why did it happen?<span class="q">Model, data or governance.</span></label><textarea id="rec2" rows="2" data-capture="m7.record.why"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="rec3">What judgement drifted, or wasn’t applied?</label><textarea id="rec3" rows="2" data-capture="m7.record.drift"></textarea><span class="saved">✓ Saved</span></div>
+      <div class="field"><label for="rec4">What needs to change to reduce repeat risk?<span class="q">Owner, deadline, detection mechanism.</span></label><textarea id="rec4" rows="2" data-capture="m7.record.change"></textarea><span class="saved">✓ Saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEETS ============ -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">One-page summaries you can keep. Click any sheet to view it full-screen; use “Open / download” to grab a copy in a new tab.</p>
+    <div class="sheets">
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/what-counts-as-an-ai-incident.jpg" data-title="What Counts as an AI Incident"><span class="thumb"><img src="../assets/media/cheatsheets/what-counts-as-an-ai-incident.jpg" alt="What Counts as an AI Incident" loading="lazy"></span><span class="cap">What Counts as an AI Incident</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/diagnose-the-failure-type.jpg" data-title="Diagnose Before You Act"><span class="thumb"><img src="../assets/media/cheatsheets/diagnose-the-failure-type.jpg" alt="Diagnose Before You Act" loading="lazy"></span><span class="cap">Diagnose Before You Act</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/contain-escalate-correct.jpg" data-title="Contain → Escalate → Correct"><span class="thumb"><img src="../assets/media/cheatsheets/contain-escalate-correct.jpg" alt="Contain → Escalate → Correct" loading="lazy"></span><span class="cap">Contain → Escalate → Correct</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/the-first-48-hours.jpg" data-title="The First 48 Hours"><span class="thumb"><img src="../assets/media/cheatsheets/the-first-48-hours.jpg" alt="The First 48 Hours" loading="lazy"></span><span class="cap">The First 48 Hours</span></button>
+      <button type="button" class="sheet" data-sheet data-full="../assets/media/cheatsheets/governance-drift.jpg" data-title="Prevent Governance Drift"><span class="thumb"><img src="../assets/media/cheatsheets/governance-drift.jpg" alt="Prevent Governance Drift" loading="lazy"></span><span class="cap">Prevent Governance Drift</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEAWAYS + PAGER -->
+<section class="band white">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>Incidents begin with doubt, not disaster.</b> The first leadership moment is when something doesn’t sit right.</div>
+      <div class="tk"><b>Diagnose before you act.</b> Model, data or governance — the right fix depends entirely on which.</div>
+      <div class="tk"><b>A ban is a displacement.</b> Contain the specific failure; don’t drive use underground with blanket restriction.</div>
+      <div class="tk"><b>Avoid the double error.</b> Overcorrecting and losing confidence both feel decisive but neither fixes the cause.</div>
+      <div class="tk"><b>First 48 hours = calm accountability.</b> Say what you know, what you don’t, and what you’re doing next.</div>
+      <div class="tk"><b>Correct the conditions.</b> Real fixes match the failure type, name an owner, and add detection.</div>
+    </div>
+    <div class="pager">
+      <a href="module-6.html" class="prev"><div class="lbl">← Previous module</div><div class="ttl">Embedding AI Guardrails</div></a>
+      <a href="module-8.html" class="next"><div class="lbl">Next module →</div><div class="ttl">Lead Through AI Change</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · Module 7 — Lead Through AI Incidents</small>
+    </div>
+    <small>AI incidents test whether leadership judgement was visible, deliberate, and explainable.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ===== BAN THAT BACKFIRED ===== */
+document.querySelectorAll('#binary .bopt').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#binary .bopt').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('binaryReveal').classList.add('show');
+    try{window.RAL.setCaptureValue('m7.instinct',b.dataset.k==='ban'?'broad restriction':'contain the specific failure');}catch(e){}
+  });
+});
+
+/* ===== WHAT COUNTS ===== */
+const INC=[
+ ["AI outputs were used without adequate validation","✓ Qualifies — judgement drifted; an outcome you now need to explain."],
+ ["The wrong data was fed in; the output was plausible but flawed","✓ Qualifies — plausible-but-wrong is the classic quiet failure."],
+ ["A good process eroded until the human check became a formality","✓ Qualifies — governance drift, even with no single error."],
+ ["AI acted beyond the scope anyone had explicitly sanctioned","✓ Qualifies — scope drift; accountability became unclear."],
+ ["A near miss that could have mattered but didn’t, this time","✓ Qualifies — near misses are incidents worth examining."],
+ ["A polished report that quietly conflicts with lived experience","✓ Qualifies — the ‘slightly odd result’ that needs your attention."]
+];
+const incEl=document.getElementById('incidents');
+INC.forEach(([q,v])=>{
+  const d=document.createElement('div'); d.className='inc';
+  d.innerHTML=`<div class="q">${q}</div><div class="v">${v}</div>`;
+  d.addEventListener('click',()=>d.classList.toggle('open'));
+  incEl.appendChild(d);
+});
+
+/* ===== DIAGNOSER ===== */
+const DFB={
+ data:["right","✓ <b>Data problem.</b> A technical review found the AI did exactly what it was designed to — matching on fragmented data where the same customer appeared in different forms across systems, with no single source of truth. The AI didn’t fail; it <i>exposed</i> a data-infrastructure problem that existed long before AI, faster and more visibly. The fix sits upstream of the tool. The deeper question: why did it take a customer impact to surface a fragmentation problem someone already knew existed?"],
+ model:["wrong","Tempting — but the AI performed as designed. Reconfiguring or banning the model won’t fix fragmented data with no consistent identifier. Look upstream: this is a <b>data problem</b>."],
+ gov:["wrong","Oversight matters — and readiness is the deeper layer here. But the root cause the technical review found was the <b>data</b> itself: fragmented across systems with no single source of truth. The likely fix sits upstream of the tool."]
+};
+document.querySelectorAll('#diag .dbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#diag .dbtn').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    const [cls,txt]=DFB[b.dataset.k];
+    const fb=document.getElementById('diagFb');
+    fb.className='diagfb show '+cls; fb.innerHTML=txt+(cls==='right'?' <br><br><b>Then comes the double error:</b> overcorrecting with a ban or new rules, plus a loss of confidence in AI that goes further than warranted. Neither addresses the root cause.':'');
+    try{window.RAL.setCaptureValue('m7.diagnosis',b.dataset.k);}catch(e){}
+  });
+});
+
+/* ===== GOVERNANCE DRIFT ===== */
+const DRIFT=[
+ ["Time pressure","Delivery timelines tightened, so the review felt like a luxury."],
+ ["No one owns the guardrail","The reviewer moved roles and the step was never formally reassigned."],
+ ["AI keeps producing acceptable outputs","Because it usually looked fine, the check felt unnecessary."],
+ ["Forgotten rationale","A leadership change meant the original reason for the control was lost."]
+];
+const dfEl=document.getElementById('driftFactors');
+DRIFT.forEach((f,i)=>{
+  const d=document.createElement('div'); d.className='df';
+  d.innerHTML=`<span class="bx"></span><div><div class="t">${i+1}. ${f[0]}</div><div class="d">${f[1]}</div></div>`;
+  d.addEventListener('click',()=>{document.querySelectorAll('.df').forEach(x=>x.classList.remove('on'));d.classList.add('on');try{window.RAL.setCaptureValue('m7.drift',f[0]);}catch(e){}});
+  dfEl.appendChild(d);
+});
+
+/* ===== RESPONSE CONSOLE ===== */
+// contain
+document.querySelectorAll('#containOpts button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#containOpts button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const fb=document.getElementById('containFb'); fb.style.display='block';
+    if(b.dataset.good){fb.style.color='var(--teal-dark)';fb.innerHTML='✓ Specific, reversible, visible — and it doesn’t drive the team to personal accounts. The rest of the workflow keeps running.';}
+    else if(b.dataset.k==='ban'){fb.style.color='var(--coral-dark)';fb.innerHTML='✕ Too broad — this is the displacement trap. It pauses far more than the failure point and pushes use out of sight.';}
+    else {fb.style.color='var(--coral-dark)';fb.innerHTML='✕ Containment means a deliberate, targeted pause — not relying on luck that someone catches the next one.';}
+  });
+});
+// escalate
+const ESC=["Risk","Legal","Privacy","Security","Data governance","Accountable business owner","Customer / comms"];
+const escEl=document.getElementById('escOpts');
+ESC.forEach(e=>{const b=document.createElement('button');b.textContent=e;
+  b.addEventListener('click',()=>{b.classList.toggle('on');
+    const chosen=[...escEl.querySelectorAll('button.on')].map(x=>x.textContent);
+    try{window.RAL.setCaptureValue('m7.escalate',chosen.join(', '));}catch(e){}});escEl.appendChild(b);});
+// correct
+const CORR=[
+ ["Remind the team to be more careful next time","wrong","A reminder looks decisive but changes no conditions — the drift will simply recur."],
+ ["Add another approval step","wrong","More process on top of a review that already wasn’t happening doesn’t fix ownership — it adds friction without detection."],
+ ["Reassign ownership of the review step, clarify what it must catch, and add a way to verify it’s happening","right","This matches the failure type (governance), names an owner, and adds detection — it actually reduces repeat likelihood."],
+ ["Pause all AI use in forecasting","wrong","Overcorrection — it removes a useful capability without addressing why the review stopped, and drives workarounds."]
+];
+const corrEl=document.getElementById('corr');
+CORR.forEach((c,i)=>{
+  const d=document.createElement('div'); d.className='corropt'; d.dataset.r=c[1];
+  d.innerHTML=`<span class="bx">${i+1}</span><span class="tx">${c[0]}</span>`;
+  d.addEventListener('click',()=>{
+    document.querySelectorAll('.corropt').forEach(x=>x.classList.remove('sel'));
+    d.classList.add('sel');
+    const fb=document.getElementById('corrFb');
+    fb.className='corrfb show '+(c[1]==='right'?'right':'wrong');
+    fb.innerHTML=(c[1]==='right'?'✓ ':'✕ ')+c[2];
+    try{window.RAL.setCaptureValue('m7.correct',c[0]);}catch(e){}
+  });
+  corrEl.appendChild(d);
+});
+// easiest
+document.querySelectorAll('#easiest button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#easiest button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const fb=document.getElementById('easiestFb'); fb.style.display='block';
+    const msg={Contain:'Often paused too broadly (a ban) or not at all.',Escalate:'Frequently delayed by embarrassment — escalate by risk type, early.',Correct:'The most commonly botched — “busy work” that looks decisive but doesn’t match the failure type.'};
+    fb.textContent='Many leaders say '+b.dataset.k+'. '+msg[b.dataset.k];
+    try{window.RAL.setCaptureValue('m7.easiest',b.dataset.k);}catch(e){}
+  });
+});
+</script>
+</body>
+</html>

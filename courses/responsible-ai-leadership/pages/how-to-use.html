@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_responsible-ai-leadership";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=responsible-ai-leadership");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use this site | Responsible AI Leadership</title>
+<meta name="description" content="How the course site works — Present vs Self-paced modes, how dashboards map to the workbook, and how your answers are saved." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:680px){.modes{grid-template-columns:1fr}}
+  .mode{border:1px solid var(--line);background:#fff;padding:20px 22px;border-top:4px solid var(--teal)}
+  .mode.coral{border-top-color:var(--coral)}
+  .mode h4{font-size:18px;margin-bottom:8px}
+  .mode p{font-size:13.5px;color:var(--grey);margin-bottom:6px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--line);padding:18px 20px}
+  .step .n{font-family:var(--head);font-weight:700;color:var(--teal-dark);font-size:24px}
+  .step h4{font-size:15px;margin:6px 0 5px}
+  .step p{font-size:13px;color:var(--grey)}
+  .faq{border:1px solid var(--line);background:#fff;margin-top:8px}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq details:last-child{border-bottom:0}
+  .faq summary{cursor:pointer;padding:15px 20px;font-family:var(--head);font-weight:600;font-size:15px;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"+ ";color:var(--teal)}
+  .faq details[open] summary::before{content:"– "}
+  .faq .a{padding:0 20px 16px;font-size:13.5px;color:var(--ink)}
+</style>
+</head>
+<body class="self">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">Responsible AI Leadership</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#day1">Day 1</a>
+      <a href="../index.html#day2">Day 2</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+    <div class="hero-media"><img src="../assets/media/pics/frosted-glass-light.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow" style="color:var(--teal-light)">Orientation</div>
+    <h1>How to use this site</h1>
+    <p class="lead">Every section of the workshop becomes an interactive dashboard. The site works on screen in the room and stands alone for revision afterwards — and everything you type is saved for you.</p>
+  </div>
+</section>
+
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#modes">Two Modes</a>
+    <a href="#flow">How It Flows</a>
+    <a href="#saving">Your Answers</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</div>
+
+<section class="band cream" id="modes">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Two modes, one site</span></div>
+    <h2 class="section">Present or self-paced</h2>
+    <p class="section-lead">Use the toggle in the top-right of every page. It changes how much explanation shows, without changing the content.</p>
+    <div class="modes">
+      <div class="mode"><h4>Self-paced</h4><p>For revisiting before or after the workshop. Fuller explanations, “why this matters” notes, and private answer capture. Dashboards teach the concept on their own.</p></div>
+      <div class="mode coral"><h4>Present</h4><p>For driving on screen in the room. Larger visuals, less body text, big interactive moments. Ideal when your facilitator is leading the discussion.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="flow">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">How it flows</span></div>
+    <h2 class="section">A dashboard for every section</h2>
+    <p class="section-lead">The course runs in order, but you can jump anywhere from the hub. Each module page mirrors the workbook — same sections, same activities — turned into something you interact with.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Start at the hub</h4><p>The home page maps both days. Each card names the dashboard that teaches that section.</p></div>
+      <div class="step"><div class="n">2</div><h4>Work each dashboard</h4><p>Drag, classify, rate, build. The interaction is the learning — the “sections covered” rail shows how it maps to the workbook.</p></div>
+      <div class="step"><div class="n">3</div><h4>Carry your workflow</h4><p>The workflow you pick in Module 1 follows you through every later module and into your plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="saving">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag">Your answers</span></div>
+        <h2 class="section">Everything saves automatically</h2>
+        <p class="section-lead">Anything you type is saved to your device as you go — no account, no sign-in. It’s private to this browser. At the end, your canvas, stance card, guardrails, incident response and first moves are all gathered into <b>My Leadership Plan</b>, which you can print or save as a PDF.</p>
+        <p style="font-size:13.5px;color:var(--grey)">Because it’s stored on your device, use the same browser to keep your work — and you can clear it any time from the plan page.</p>
+        <a class="btn" href="my-plan.html" style="margin-top:8px">Open My Leadership Plan →</a>
+      </div>
+      <div class="note teal" style="align-self:center"><b>Tip for facilitators.</b> In Present mode you can fill a shared example live on screen. For the room’s own work, learners use their own devices in Self-paced mode so each person keeps their plan.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="faq">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">FAQ</span></div>
+    <h2 class="section">Quick questions</h2>
+    <div class="faq" style="margin-top:14px">
+      <details><summary>Do I need an account?</summary><div class="a">No. Nothing is sent anywhere — your answers live in this browser on your device.</div></details>
+      <details><summary>Will my answers sync across devices?</summary><div class="a">Not in this version. Use the same browser to keep your work, and print your plan to PDF if you want a permanent copy.</div></details>
+      <details><summary>Do I have to do it in order?</summary><div class="a">No — jump anywhere from the hub. But the course is designed as an arc, and a few activities build on earlier ones (your Module 1 workflow, for example).</div></details>
+      <details><summary>What if a 3D visual doesn’t load?</summary><div class="a">Every 3D scene has a clean 2D fallback, so the dashboard still works without it.</div></details>
+    </div>
+    <div class="pager">
+      <a href="../index.html" class="prev"><div class="lbl">←</div><div class="ttl">Course Hub</div></a>
+      <a href="welcome.html" class="next"><div class="lbl">Start here →</div><div class="ttl">Welcome &amp; orientation</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">Responsible AI Leadership</div>
+      <small>Australian Institute of Management · How to use this site</small>
+    </div>
+    <small>Works in the room and stands alone for revision.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
