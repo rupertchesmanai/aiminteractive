@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 — Team Types &amp; How AI Can Help | AI for Teamwork</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Module 1 — Team Types &amp; How AI Can Help | AI for Teamwork">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .ttype{display:grid;grid-template-columns:340px 1fr;gap:26px;background:#fff;border:1px solid var(--line);margin-top:20px}
+  @media(max-width:900px){.ttype{grid-template-columns:1fr}}
+  .ttype .timg{position:relative;min-height:240px}
+  .ttype .timg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ttype .tbody{padding:22px 26px 22px 0}
+  @media(max-width:900px){.ttype .tbody{padding:20px 22px}}
+  .ttype h3{font-size:22px;margin-bottom:6px}
+  .ttype .tsub{font-size:14px;color:var(--grey);max-width:62ch;margin-bottom:12px}
+  .tfacts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .tfact{font-family:var(--head);font-weight:600;font-size:12px;background:var(--cream-alt);border:1px solid var(--line);padding:6px 11px}
+  .tfact b{color:var(--accent-dark)}
+  .ttype details{border-top:1px solid var(--line-soft);padding:9px 0 0;margin-top:9px}
+  .ttype summary{cursor:pointer;font-family:var(--head);font-weight:600;font-size:13px;color:var(--accent-dark);list-style:none}
+  .ttype summary::-webkit-details-marker{display:none}
+  .ttype summary::before{content:"+ "}
+  .ttype details[open] summary::before{content:"− "}
+  .ttype details ul{margin:8px 0 4px 18px;font-size:13.5px;color:var(--grey)}
+  .ttype details li{margin-bottom:4px}
+  .aihelp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+  @media(max-width:860px){.aihelp{grid-template-columns:1fr}}
+  .aihelp .box{background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent);padding:18px 20px}
+  .aihelp h4{font-size:16px;margin-bottom:6px}
+  .aihelp p{font-size:13.5px;color:var(--grey)}
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;display:block}
+</style>
+</head>
+<body data-page="module-1">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#types">Three team types</a><a href="#aihelp">Where AI helps</a><a href="#a21">Activity 2.1</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/m1-hero-three-team-zones.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Module 1</div>
+    <h1>Team Types &amp; How AI Can Help</h1>
+    <p class="lead">"Team" is a catch-all for a spectrum of very different groupings — each with its own demands on communication, clarity and shared understanding. Before using AI to improve teamwork, work out what kind of team you're actually in.</p>
+    <div class="anchors">
+      <div class="anchor a"><span class="bar"></span><span>Three broad team types, and how their needs differ</span></div>
+      <div class="anchor t"><span class="bar"></span><span>Where AI genuinely supports each context</span></div>
+      <div class="anchor"><span class="bar"></span><span>Place your own team on the collaboration spectrum</span></div>
+    </div>
+    <div class="dashtag">🕘 ~35 minutes · Activity 2.1</div>
+  </div>
+</section>
+
+<!-- ============ THREE TEAM TYPES ============ -->
+<section class="band cream" id="types">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Anchor concepts</span></div>
+    <h2 class="section">Three broad team types.</h2>
+    <p class="section-lead">This course uses three categories to anchor discussion. Most real teams sit somewhere between them — that's exactly what the spectrum activity below is for.</p>
+
+    <div class="ttype">
+      <div class="timg"><img src="../assets/media/pics/m1-independent-focus.jpg" alt="An analyst working solo at a window desk with headphones"></div>
+      <div class="tbody">
+        <h3>1 · Groups of solo contributors</h3>
+        <p class="tsub">Most work is largely independent. Individuals progress tasks on their own and connect with others only when sharing updates or handing over work. Errors arise from assumptions, incomplete information or unclear expectations.</p>
+        <div class="tfacts"><span class="tfact">Communication load: <b>low — but clarity matters</b></span><span class="tfact">AI helps: <b>structuring updates, checking logic, refining writing</b></span></div>
+        <div class="selfOnly">
+          <details><summary>Typical organisational design</summary><ul><li>A collection of individual contributors with limited structural interdependence.</li><li>Pools of specialists (analysts, designers, researchers) who deliver work independently.</li></ul></details>
+          <details><summary>Typical delivery approaches</summary><ul><li>Classical project management with individual work packages.</li><li>Kanban-style personal queues or ad-hoc task assignments.</li></ul></details>
+          <details><summary>Typical examples</summary><ul><li>Business analysts working separately on different artefacts.</li><li>Individual contributors in strategy, research or compliance functions.</li></ul></details>
+        </div>
+      </div>
+    </div>
+
+    <div class="ttype">
+      <div class="timg"><img src="../assets/media/pics/m1-complementary-tablet-pass.jpg" alt="Two colleagues passing a tablet between adjacent desks"></div>
+      <div class="tbody">
+        <h3>2 · Loosely connected teams</h3>
+        <p class="tsub">People work on adjacent or complementary tasks that relate to a shared outcome, but day-to-day progress doesn't depend on continuous interaction. Context can be lost, duplicated or fragmented across channels.</p>
+        <div class="tfacts"><span class="tfact">Communication load: <b>moderate, often asynchronous</b></span><span class="tfact">AI helps: <b>unifying information, summarising threads, structuring distributed work</b></span></div>
+        <div class="selfOnly">
+          <details><summary>Typical organisational design</summary><ul><li>Pools of shared resources who rotate between initiatives.</li><li>Functional groups aligned to the same domain but not delivering as a single unit.</li></ul></details>
+          <details><summary>Typical delivery approaches</summary><ul><li>Classical project management with individual work packages — especially when average tenure is much shorter than the project.</li><li>Kanban-style personal queues or ad-hoc assignments.</li></ul></details>
+          <details><summary>Typical examples</summary><ul><li>A shared pool of business analysts supporting multiple projects.</li><li>Cross-functional advisory teams that coordinate occasionally to align outputs.</li></ul></details>
+        </div>
+      </div>
+    </div>
+
+    <div class="ttype">
+      <div class="timg"><img src="../assets/media/pics/m1-coupled-huddle.jpg" alt="Four people shoulder-to-shoulder around one laptop in intense collaboration"></div>
+      <div class="tbody">
+        <h3>3 · Shared-goal, high-interdependence teams</h3>
+        <p class="tsub">Teams in the agile/scrum or core-project sense: members rely heavily on one another's outputs, sometimes hour to hour, and often can't get work done without deep collaboration. Misunderstandings have immediate impact on delivery.</p>
+        <div class="tfacts"><span class="tfact">Communication load: <b>high, co-ordination continuous</b></span><span class="tfact">AI helps: <b>meeting prep, synthesising notes, surfacing risks, cutting admin</b></span></div>
+        <div class="selfOnly">
+          <details><summary>Typical organisational design</summary><ul><li>Fully cross-functional teams bringing diverse skills together around one unified goal.</li><li>Stable delivery units operating as a cohesive whole.</li></ul></details>
+          <details><summary>Typical delivery approaches</summary><ul><li>Scrum-like approaches with frequent interaction.</li><li>Continuous-flow Kanban in operations or call-centre teams with high interdependence.</li></ul></details>
+          <details><summary>Typical examples</summary><ul><li>Management consulting case teams.</li><li>Software delivery teams with shared objectives.</li><li>Cross-functional squads working on a single product or customer outcome.</li></ul></details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHERE AI HELPS ============ -->
+<section class="band white" id="aihelp">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">The pattern</span></div>
+    <h2 class="section">Where AI supports each context.</h2>
+    <p class="section-lead">The communication need varies, but AI supports all three contexts the same way: by reducing ambiguity, structuring information and strengthening shared understanding.</p>
+    <div class="aihelp">
+      <div class="box"><h4>Solo contributors</h4><p>Refine reasoning, detect gaps, rewrite for clarity, and translate complex work into structured formats.</p></div>
+      <div class="box"><h4>Loosely connected</h4><p>Consolidate updates, summarise distributed conversations, and maintain shared visibility across channels.</p></div>
+      <div class="box"><h4>Interdependent</h4><p>Clarify objectives, surface missing information, structure action lists, and reduce cognitive load during fast-moving work.</p></div>
+    </div>
+    <div class="note accent" style="margin-top:18px"><b>The test for any AI use:</b> AI enhances teamwork when it reduces friction and supports human decision-making — not when it replaces the conversation.</div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 2.1 ============ -->
+<section class="band tint" id="a21">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 2.1</span></div>
+      <h2 class="section" style="max-width:none">Where do my team(s) sit?</h2>
+      <button class="timerchip" type="button" data-minutes="8">⏱ 8:00</button>
+    </div>
+    <p class="section-lead">Place your team on the five-point collaboration spectrum, and note why. You'll group with participants of similar profiles for later activities — so an honest placement makes the whole day more useful.</p>
+
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="rail accent" style="grid-template-columns:1fr">
+          <div class="box"><h4>Steps</h4><ul>
+            <li>Review your team context from Activity 1.1 and your challenge from Activity 1.2 — they'll help you categorise accurately.</li>
+            <li>Drag the marker to the point that best reflects your team's collaboration style.</li>
+            <li>Write a brief rationale for the position you chose.</li>
+            <li>Optionally, ask an LLM to suggest or confirm the placement — then critically review its answer; AI suggestions may be inaccurate or incomplete.</li>
+          </ul></div>
+        </div>
+        <div class="pinstrip"><span class="ic">📌</span><div class="pt"><b>Your challenge from this morning:</b><br><span data-pin="a12_challenge" data-pin-from="Activity 1.2 on the Welcome page"></span></div></div>
+        <div class="imgcard"><img src="../assets/media/pics/m1-spectrum-glass-wall.jpg" alt="A participant placing a marker along a spectrum drawn on a glass wall"></div>
+      </div>
+      <div>
+        <div class="spectrum" data-zones="Solo contributors|Solo ↔ loosely connected|Loosely connected|Loosely ↔ interdependent|Interdependent">
+          <div class="sp-labels"><span>Solo contributors</span><span>Loosely connected</span><span>Interdependent</span></div>
+          <input type="range" min="0" max="100" value="50" data-capture="a21_position" aria-label="Team collaboration spectrum — 0 is solo contributors, 100 is interdependent teams">
+          <div class="sp-readout"></div>
+        </div>
+        <div class="capture">
+          <h3>Your rationale</h3>
+          <p class="hint">Where do your teams sit — and why did you characterise them as such?</p>
+          <div class="field">
+            <label>Brief rationale <span class="saved">Saved ✓</span></label>
+            <textarea rows="5" data-capture="a21_rationale" placeholder="What made this position the best fit? Where was there disagreement or uncertainty?"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>What made this position the best fit for your team?</li>
+          <li>Where did there seem to be disagreement or uncertainty?</li>
+          <li>How might this context change over time or across work?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Team collaboration context shapes communication needs and failure modes.</li>
+          <li>Correctly identifying context makes later discussions more meaningful.</li>
+          <li>AI outputs require critical review — they remain imperfect even when "completed" and should never replace judgement.</li>
+        </ul></div>
+      </div>
+      <div class="note accent" style="margin-top:14px"><b>Facilitator cue:</b> for future activities, group participants by similar team profiles — shared challenges make richer discussions.</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="extras-strip" data-extras='[
+    {"id":"x1a","type":"Sorting Game","title":"Which Team Is This?","img":"x1a-which-team.jpg"},
+    {"id":"x1b","type":"Prediction Game","title":"Friction Forecast","img":"x1b-friction-forecast.jpg"}
+  ]'></div>
+  <div class="pager">
+    <a href="welcome.html"><div class="lbl">← Previous</div><div class="ttl">Welcome &amp; Orientation</div></a>
+    <a class="next" href="module-2.html"><div class="lbl">Next →</div><div class="ttl">Module 2 — Risks &amp; the Human-Centred AI Workflow</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+/* ===== Extra 1A · Sorting Game — "Which Team Is This?" ===== */
+AFTX.register('x1a', function(g){
+  var ui=g.ui, root=g.root;
+  var TYPES=['Solo contributors','Loosely connected','Interdependent'];
+  var V=[
+    {q:'A pool of compliance analysts who share a Slack channel but each deliver their own reports.',a:0,tell:"Nobody's work blocks anyone else's."},
+    {q:'A scrum squad shipping a patch by Friday — testers are blocked until the developers merge.',a:2,tell:'Hour-to-hour dependency: one blocked person blocks the team.'},
+    {q:'A shared pool of business analysts supporting five projects, syncing fortnightly.',a:1,tell:'Adjacent work toward shared outcomes, with only occasional alignment.'},
+    {q:"A consulting case team building one client deck for Monday's board meeting.",a:2,tell:"One deliverable, everyone's sections must land together."},
+    {q:'Researchers each writing a chapter of the annual report, edited together at the end.',a:1,tell:'Complementary tasks meeting only at the hand-over point.'},
+    {q:'Regional sales reps with individual territories and a monthly team call.',a:0,tell:'Peer group energy — but delivery is entirely individual.'},
+    {q:'A hospital theatre team mid-operation.',a:2,tell:'Continuous, second-by-second coordination; misunderstanding has immediate impact.'},
+    {q:'Designers rotating between initiatives from a shared studio pool.',a:1,tell:'Shared resources, rotating context — the classic loose configuration.'},
+    {q:'Strategy analysts who each own a separate board paper.',a:0,tell:'Clarity matters at hand-over, but the work itself is independent.'},
+    {q:'A newsroom on election night — editors, writers and fact-checkers minute to minute.',a:2,tell:'Continuous flow with immediate dependencies. Pure interdependence.'},
+    {q:'Franchise owners who meet quarterly to swap what is working.',a:0,tell:'A community of solo operators — no shared delivery at all.'},
+    {q:"Marketing and legal reviewing each other's outputs at defined hand-over points.",a:1,tell:'Coupled at the hand-overs, independent in between.'}
+  ];
+  ui.lead(root,'Twelve teams, twenty seconds each. Call the type as a room, tap to lock it, and watch for the tell.');
+  var score=ui.score(root);
+  var rounds=V.map(function(v){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-q">'+ui.esc(v.q)+'</div>');
+      c.appendChild(card);
+      var answered=false;
+      var cd=ui.countdown(card,20,function(){
+        if(answered) return; answered=true;
+        score.miss();
+        ui.reveal(c,'Time! It was <b>'+ui.esc(TYPES[v.a])+'</b> — '+ui.esc(v.tell),true);
+        nextBtn(c,next);
+      });
+      ui.vote(c,{options:TYPES.map(function(t,i){return {label:t,correct:i===v.a,why:'The tell: '+v.tell};}),
+        onDone:function(i,correct){
+          if(answered) return; answered=true; cd.stop();
+          if(correct) score.add(1); else score.miss();
+          nextBtn(c,next);
+        }});
+    };
+  });
+  ui.deck(root,{label:'Team',rounds:rounds,onEnd:function(){
+    ui.pointCard(root,'Final: '+score.value()+' of 12. You cannot pick the right AI support until you have named the team type — and most real teams are messier than the label.');
+  }});
+  function nextBtn(c,next){ var b=ui.el('button','btn accent','Next team →'); b.type='button'; b.addEventListener('click',next); c.appendChild(b); }
+});
+
+/* ===== Extra 1B · Prediction Game — "Friction Forecast" ===== */
+AFTX.register('x1b', function(g){
+  var ui=g.ui, root=g.root;
+  var MODES=['Assumption error','Duplicated work','Lost context','Misunderstanding cascade'];
+  var R=[
+    {t:'Solo contributors',q:'Three compliance analysts each interpret a new regulation their own way before writing their reports.',a:0,
+     why:'Solo work fails first on unshared assumptions. AI support: have the AI check reasoning and surface gaps before hand-over.'},
+    {t:'Loosely connected',q:'Three analysts each summarise the same customer research, separately, for different sponsors.',a:1,
+     why:'Nobody can see the overlap. AI support: consolidate updates and maintain shared visibility across the pool.'},
+    {t:'Loosely connected',q:'Decisions get made in one chat channel — and never reach the delivery tracker.',a:2,
+     why:'Context fragments across channels. AI support: unify information and summarise distributed threads.'},
+    {t:'Interdependent',q:'Mid-sprint, a verbal API change reaches half the squad.',a:3,
+     why:'In coupled teams a half-received message cascades within hours. AI support: clarify objectives and keep structured, shared action lists.'},
+    {t:'Hybrid · solo → loose',q:'A specialist pool starts co-delivering one client outcome — without changing how they communicate.',a:2,
+     why:'Interdependence rose but the comms stayed async: context falls into the new gaps first. AI support: a shared knowledge file everyone prompts from.'},
+    {t:'Hybrid · loose → interdependent',q:'Two loosely connected teams merge for launch week. Each assumes the other owns customer comms.',a:0,
+     why:'Ownership assumptions are the first casualty when coupling rises. AI support: surface the unowned items with a side-by-side comparison of both plans.'}
+  ];
+  ui.lead(root,'A team type and a situation. Predict which failure mode bites first — the last two are hybrids, where most real teams live.');
+  var score=ui.score(root);
+  var rounds=R.map(function(r){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-round" style="margin-bottom:4px">'+ui.esc(r.t)+'</div><div class="gx-q">'+ui.esc(r.q)+'</div>');
+      c.appendChild(card);
+      ui.vote(c,{options:MODES.map(function(m,i){return {label:m,correct:i===r.a,why:r.why};}),
+        onDone:function(i,correct){
+          if(correct) score.add(1); else score.miss();
+          var b=ui.el('button','btn accent','Next forecast →'); b.type='button'; b.addEventListener('click',next); c.appendChild(b);
+        }});
+    };
+  });
+  ui.deck(root,{label:'Forecast',rounds:rounds,onEnd:function(){
+    ui.pointCard(root,'Final: '+score.value()+' of 6. Failure modes follow team type — name the type, predict the friction, and pick the AI support that heads it off.');
+  }});
+});
+</script>
+</body>
+</html>

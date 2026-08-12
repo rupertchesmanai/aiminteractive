@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2 — Risks &amp; the Human-Centred AI Workflow | AI for Teamwork</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Module 2 — Risks &amp; the Human-Centred AI Workflow | AI for Teamwork">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;display:block}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border:1px solid var(--line);border-top:4px solid var(--coral);padding:16px 18px}
+  .stat .sv{font-family:var(--head);font-weight:700;font-size:30px;color:var(--coral-dark);line-height:1}
+  .stat .sl{font-size:12.5px;color:var(--grey);margin-top:6px}
+  .wf{counter-reset:wf;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  @media(max-width:900px){.wf{grid-template-columns:1fr}}
+  .wfstep{background:#fff;border:1px solid var(--line);padding:18px 20px;position:relative}
+  .wfstep::before{counter-increment:wf;content:counter(wf);position:absolute;top:-13px;left:14px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--head);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .wfstep h4{font-size:15.5px;margin:4px 0 6px}
+  .wfstep p{font-size:13px;color:var(--grey)}
+  .scenA{background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px;font-size:14px;margin-bottom:10px}
+  .scenA b{font-family:var(--head)}
+  .pick{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .pick button{font-family:var(--head);font-weight:600;font-size:13px;padding:10px 16px;background:#fff;border:1px solid var(--line);cursor:pointer}
+  .pick button:hover{border-color:var(--accent)}
+  .pick button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .abgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  @media(max-width:860px){.abgrid{grid-template-columns:1fr}}
+  .abcol{background:#fff;border:1px solid var(--line);border-top:5px solid var(--muted);padding:20px 22px}
+  .abcol.b{border-top-color:var(--accent)}
+  .abcol h3{font-size:19px;margin-bottom:4px}
+  .abcol .absub{font-size:13px;color:var(--grey);margin-bottom:12px}
+  .risk3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  @media(max-width:900px){.risk3{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="module-2">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#scenarios">Two scenarios</a><a href="#offloading">Cognitive offloading</a><a href="#drift">Context drift</a>
+  <a href="#halluc">Hallucinations</a><a href="#workflow">The workflow</a><a href="#a22">Activity 2.2</a><a href="#a23">Activity 2.3</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/m2-hero-sceptical-review.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Module 2</div>
+    <h1>Risks &amp; the Human-Centred AI Workflow</h1>
+    <p class="lead">AI brings real benefits into team environments — and three real risks: cognitive offloading, context drift and hallucination. This module names them, shows how they bite, and gives you the repeatable workflow that guards against all three.</p>
+    <div class="anchors">
+      <div class="anchor"><span class="bar"></span><span>Two scenarios where helpful AI quietly went wrong</span></div>
+      <div class="anchor t"><span class="bar"></span><span>The research on what AI does to memory and ownership</span></div>
+      <div class="anchor a"><span class="bar"></span><span>The six-step loop you'll use for the rest of the day</span></div>
+    </div>
+    <div class="dashtag">🕘 ~55 minutes · Activities 2.2 &amp; 2.3</div>
+  </div>
+</section>
+
+<!-- ============ TWO SCENARIOS ============ -->
+<section class="band cream" id="scenarios">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Benefits and risks</span></div>
+    <h2 class="section">Two scenarios where AI helps — then quietly hurts.</h2>
+    <p class="section-lead">Both stories start with a genuine productivity win. Reveal each beat and watch where the risk creeps in.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <h3 style="font-size:20px;margin-bottom:10px">Scenario 1 · The weekly team update</h3>
+        <div class="reveal">
+          <div class="rv-step"><b>Without AI:</b> team members each write a short update, compare notes, clarify differences and align on the message before sending it upward. Slow — but everyone understands the whole picture.</div>
+          <div class="rv-step"><b>With AI:</b> the coordinator feeds rough notes and last week's update into an AI tool. A clean draft appears quickly — less writing time, less duplication, consistent tone. A genuine win.</div>
+          <div class="rv-step"><b>The risk:</b> because the draft feels finished, people spend less time checking facts or calibrating with each other. Priority shifts discussed verbally but never written down fail to appear. Subtle risks are missed.</div>
+          <div class="rv-step"><b>The result:</b> the update looks polished, but the team's understanding is thinner — and the misalignment surfaces in the leadership meeting. This is <b>cognitive offloading</b>.</div>
+          <button class="rv-next btn accent" type="button" data-done="That's cognitive offloading">Reveal next</button>
+        </div>
+        <div class="imgcard" style="margin-top:14px"><img src="../assets/media/pics/m2-offloading-disengaged.jpg" alt="A team member slumped back, passively watching AI text scroll"></div>
+      </div>
+      <div>
+        <h3 style="font-size:20px;margin-bottom:10px">Scenario 2 · The client briefing pack</h3>
+        <div class="reveal">
+          <div class="rv-step"><b>Without AI:</b> a consulting team reads through discovery notes, highlights important details and debates which themes should anchor the deck. Slow — but they know the evidence cold.</div>
+          <div class="rv-step"><b>With AI:</b> the lead consultant uploads transcripts, emails and whiteboard photos into a summarisation tool. Neat themes and draft slide text appear — faster early stages, less noise, coherent structure.</div>
+          <div class="rv-step"><b>The risk:</b> because the output feels comprehensive, the team examines the raw material less. Contradictions across interviews get flattened. A small but high-impact customer segment disappears entirely.</div>
+          <div class="rv-step"><b>The result:</b> the client queries the basis of an insight — and the team can't point to the source. Well-structured deck, weak grasp of the evidence, confidence drops in the room. This is <b>context drift</b>.</div>
+          <button class="rv-next btn accent" type="button" data-done="That's context drift">Reveal next</button>
+        </div>
+        <div class="imgcard" style="margin-top:14px"><img src="../assets/media/pics/m2-drift-fading-copies.jpg" alt="Photocopies of a message laid in a row, each copy fainter than the last"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COGNITIVE OFFLOADING ============ -->
+<section class="band white" id="offloading">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Risk 1</span></div>
+    <h2 class="section">Cognitive offloading — what the research shows.</h2>
+    <p class="section-lead">Offloading happens when a tool holds, processes or interprets information you would normally retain — AI drafting, rewriting or structuring before a human has fully processed the material. The MIT Media Lab's <i>Your Brain on ChatGPT</i> study (54 participants, EEG-tracked writing tasks) measured what that costs:</p>
+    <div class="stats">
+      <div class="stat"><div class="sv">−20%</div><div class="sl">Brain activity when using ChatGPT for generative support</div></div>
+      <div class="stat"><div class="sv">83.3%</div><div class="sl">of AI-assisted writers couldn't recall their own essay content shortly after — vs 13.3% without AI</div></div>
+      <div class="stat"><div class="sv">4.2/10</div><div class="sl">Sense of ownership over AI-assisted work — vs 8.7 without AI</div></div>
+      <div class="stat"><div class="sv">−12–15%</div><div class="sl">Residual EEG impact persisting into subsequent tasks</div></div>
+    </div>
+    <div class="selfOnly prose" style="margin-top:18px">
+      <p>For teams, the implications are direct: individuals remember less of the underlying detail; reduced ownership weakens accountability for recommendations; frequent AI use across a day can degrade later tasks; and teams that skip verification miss risks, nuance and contextual meaning.</p>
+    </div>
+    <div class="note" style="margin-top:14px"><i>"AI assistance changes how people engage with their own ideas, affecting both memory and commitment to the work."</i> — MIT Media Lab, <i>Your Brain on ChatGPT</i>, 2024.</div>
+  </div>
+</section>
+
+<!-- ============ CONTEXT DRIFT ============ -->
+<section class="band tint" id="drift">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag coral">Risk 2</span></div>
+        <h2 class="section">Context drift.</h2>
+        <div class="prose">
+          <p>Unlike humans, AI systems work within a fixed "window" of text. As conversations lengthen — typically seven or more rounds of prompts — earlier information gets condensed or dropped to make room for new input. Specific details fade, subtle nuances disappear, and the model's grasp of your context quietly degrades.</p>
+          <p>Relying on drifted outputs — summaries, recommendations, briefing packs — means missing vital earlier detail, especially when nobody cross-checks against the original source material.</p>
+        </div>
+        <div class="note accent" style="margin-top:14px"><b>The counter-move:</b> deliberately <b>re-inject</b> earlier prompts and restate key details as the interaction lengthens. Reintroducing important information maintains continuity and keeps the AI anchored to your actual context.</div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m2-drift-fading-copies-2.jpg" alt="A hand holding a faded final photocopy up to the light"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALLUCINATIONS ============ -->
+<section class="band white" id="halluc">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Risk 3</span></div>
+    <h2 class="section">Hallucinations — confident, plausible, wrong.</h2>
+    <p class="section-lead">A hallucination is AI-generated information that appears confident and plausible but is factually incorrect, invented, or unsupported by the material provided. In teamwork it's dangerous because fabricated details enter documents, decisions and discussions without anyone noticing.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div class="selfOnly">
+        <div class="rail" style="grid-template-columns:1fr">
+          <div class="box"><h4>Why they happen</h4><ul>
+            <li>Training data lacks context and nuance — under-represented languages, paywalled domains, true expert-level knowledge. The model answers with "the average intelligence of the internet".</li>
+            <li>Neural nets are probabilistic, not rule-based — identical inputs won't produce identical outputs.</li>
+            <li>LLMs don't "look up" the internet when answering, and have limited working memory.</li>
+            <li>Models are built at a point in time — without prompting them to fetch recent information, they can't know breaking news.</li>
+          </ul></div>
+          <div class="box"><h4>When they bite hardest</h4><ul>
+            <li>Prompts lack context.</li>
+            <li>The AI is asked to infer beyond what it knows.</li>
+            <li>Verification steps are skipped.</li>
+            <li>Cognitive offloading is already in play — a less-engaged team is far less likely to catch the invention.</li>
+          </ul></div>
+        </div>
+      </div>
+      <div>
+        <p class="section-lead" style="margin:0 0 10px"><b>Try it — spot the inventions.</b> An AI summarised the project sync from the course transcript. Two of these claims never happened. Tap the ones you'd verify:</p>
+        <div class="flagset">
+          <button class="flag" type="button" data-good="0">The migration script passed staging on Tuesday.</button>
+          <button class="flag" type="button" data-good="1">The team agreed to move the launch to the 22nd.</button>
+          <button class="flag" type="button" data-good="0">Support wants a week's notice before reset emails go out.</button>
+          <button class="flag" type="button" data-good="1">Daniel confirmed the invoice-export vendor renewal is signed.</button>
+          <div class="fs-score"></div>
+        </div>
+        <div class="imgcard" style="margin-top:12px"><img src="../assets/media/pics/m2-hallucination-highlighter.jpg" alt="A highlighter catching one invented line in a printed AI summary"></div>
+      </div>
+    </div>
+    <div class="scenA selfOnly" style="margin-top:20px"><b>Over-reliance, compounded:</b> a project team uses an LLM to generate core sections of an executive briefing — stakeholder interview summaries, risk considerations — refining structure but never reviewing the raw sources. At the leadership review, a key risk from early interviews is missing entirely, and nobody can recall which stakeholder raised which concern. The team synthesised too early, never built a shared mental model, and spent days of emails and follow-ups repairing the report — and their credibility.</div>
+  </div>
+</section>
+
+<!-- ============ THE WORKFLOW ============ -->
+<section class="quoteband" id="workflow">
+  <div class="qm"><img src="../assets/media/pics/m2-loop-overhead-process.jpg" alt=""></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="qs" style="text-align:left">The answer — used for the rest of today</div>
+    <h2 style="text-align:left;font-size:clamp(24px,3.4vw,34px)">An ethical, human-centric AI workflow</h2>
+    <p style="text-align:left;opacity:.88;max-width:64ch;margin-top:8px;font-size:15px">Six steps that get the benefits of AI without the drawbacks: verify outputs, re-inject context deliberately, and keep humans owning meaning, decision logic and communication quality.</p>
+  </div>
+</section>
+<section class="band cream">
+  <div class="wrap">
+    <div class="wf">
+      <div class="wfstep"><h4>Break the task into smaller steps</h4><p>The AI may assist with suggestions, but the list of steps and the approach are guided by the human.</p></div>
+      <div class="wfstep"><h4>Prompt one step at a time</h4><p>Small, scoped prompts keep you in control and make errors visible early.</p></div>
+      <div class="wfstep"><h4>Validate each output</h4><p>Check every step before proceeding — meaning drift, added content, lost nuance.</p></div>
+      <div class="wfstep"><h4>Re-inject or refine</h4><p>When accuracy declines, reintroduce your original notes and restate key context.</p></div>
+      <div class="wfstep"><h4>Final human review</h4><p>Review the complete output — content-complete is not the same as usable.</p></div>
+      <div class="wfstep"><h4>Rewrite in your own tone</h4><p>Re-writing in your own words strengthens recall, ownership and your natural voice.</p></div>
+    </div>
+    <div class="selfOnly rail accent" style="margin-top:20px;grid-template-columns:1fr">
+      <div class="box"><h4>Why this works</h4><ul>
+        <li>Reduces cognitive offloading — the human stays actively engaged at each stage.</li>
+        <li>Improves accuracy — errors are corrected before they compound across a task.</li>
+        <li>Supports ethical use — the human remains responsible for meaning, judgement and decision quality.</li>
+        <li>Produces clearer thinking — breaking work into steps reveals assumptions and gaps in logic.</li>
+        <li>Strengthens accountability — the final output reflects human authorship, not unexamined AI suggestions.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 2.2 ============ -->
+<section class="band white" id="a22">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 2.2</span></div>
+      <h2 class="section" style="max-width:none">Discuss the ethical AI-human loop</h2>
+      <button class="timerchip" type="button" data-minutes="10">⏱ 10:00</button>
+    </div>
+    <p class="section-lead">Pick one of the scenarios you've just seen, and work out in your group exactly where the human-centric workflow would have prevented the bad outcome. Keep the conversation anchored on where the loop broke — not on debating the scenario details.</p>
+    <div class="pick" id="a22pick" role="group" aria-label="Choose a scenario">
+      <button type="button" data-val="Scenario 1 — Weekly Team Update">Scenario 1 · Weekly Team Update</button>
+      <button type="button" data-val="Scenario 2 — Client Briefing Pack">Scenario 2 · Client Briefing Pack</button>
+      <button type="button" data-val="Over-reliance on AI — Executive Briefing">Over-reliance on AI · Executive Briefing</button>
+    </div>
+    <div class="capture" style="max-width:760px">
+      <h3>Your findings</h3>
+      <p class="hint">Which workflow step(s) would have prevented the risk outcome — and how?</p>
+      <div class="field">
+        <label>Where the loop would have caught it <span class="saved">Saved ✓</span></label>
+        <textarea rows="4" data-capture="a22_note" placeholder="e.g. Step 3 (validate each output) — the missing customer segment would have surfaced when checking themes against the raw interviews…"></textarea>
+      </div>
+    </div>
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Risk usually emerges from skipped checks, not bad intent.</li>
+          <li>The ethical loop is a practical safeguard, not a compliance exercise.</li>
+          <li>Small verification steps prevent larger downstream issues.</li>
+        </ul></div>
+        <div class="box"><h4>Facilitator cues</h4><ul>
+          <li>If discussion drifts into tool features or hypothetical fixes, bring it back to human checks, decisions and hand-offs.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 2.3 ============ -->
+<section class="band tint" id="a23">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 2.3</span></div>
+      <h2 class="section" style="max-width:none">Practise the loop — synthesise our work so far</h2>
+      <button class="timerchip" type="button" data-minutes="25">⏱ 25:00</button>
+    </div>
+    <p class="section-lead">Two teams, same goal: use AI to consolidate everything learned so far, for retention — not speed. One difference between the teams. Then compare what came back.</p>
+
+    <div class="abgrid">
+      <div class="abcol">
+        <h3>Team A · Straightforward AI use</h3>
+        <p class="absub">Paste the course material into your LLM and prompt directly. Optionally add your own notes, discussion points or chat content, and ask for a format that aids recall.</p>
+        <div class="promptbox" style="margin:0">
+          <div class="pb-head"><span class="pb-label">Team A prompt</span><button class="copychip" type="button">Copy</button></div>
+          <pre>Take the learnings above and synthesise the material to help with consolidation and retention of information.</pre>
+        </div>
+      </div>
+      <div class="abcol b">
+        <h3>Team B · The human-centred workflow</h3>
+        <p class="absub">Same goal, but run the six-step loop. Tick each step as your team completes it:</p>
+        <div class="checklist nocross" data-checklist="a23_loop" style="margin:0">
+          <label><input type="checkbox" data-ck="s1"><span><b>1 · Break it into parts</b> — identify the elements to retain: purpose of the course, team types, how AI supports each, cognitive offloading…</span></label>
+          <label><input type="checkbox" data-ck="s2"><span><b>2 · Prompt one element at a time</b> — "Rewrite this idea in three clear sentences, using only what I provide."</span></label>
+          <label><input type="checkbox" data-ck="s3"><span><b>3 · Validate accuracy</b> — check for meaning drift, added content, loss of nuance; refine the prompt if needed.</span></label>
+          <label><input type="checkbox" data-ck="s4"><span><b>4 · Re-inject context</b> — if accuracy drops, reintroduce your original notes.</span></label>
+          <label><input type="checkbox" data-ck="s5"><span><b>5 · Final human review</b> — content-complete output often still isn't in your natural voice.</span></label>
+          <label><input type="checkbox" data-ck="s6"><span><b>6 · Rewrite in your own tone</b> — a short final synthesis in your own words.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="capture">
+          <h3>Course summary so far</h3>
+          <p class="hint">Paste your team's final synthesis here.</p>
+          <div class="field">
+            <label>Final synthesis <span class="saved">Saved ✓</span></label>
+            <textarea rows="6" data-capture="a23_summary" placeholder="Your verified, rewritten summary of the course so far…"></textarea>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m2-teamab-compare.jpg" alt="Two teams comparing their outputs across a training room"></div>
+        <p class="presentOnly note accent" style="margin-top:12px"><b>Delivery notes:</b> FTF — small groups around a shared screen, then mix Team A and B outputs to compare. Online — Team A and B breakout rooms with one shared screen each (check screen-share permissions in the main Zoom session first), then regroup to compare.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;font-size:19px">Group discussion — where did the outputs diverge?</h3>
+    <p class="section-lead" style="margin-top:6px">Compare Team A and Team B. Record the risks you can actually see in the outputs:</p>
+    <div class="risk3">
+      <div class="capture" style="padding:18px 20px"><div class="field" style="margin:0"><label>Cognitive offloading risks <span class="saved">Saved ✓</span></label><textarea rows="4" data-capture="a23_offloading" placeholder="Where did Team A think less?"></textarea></div></div>
+      <div class="capture" style="padding:18px 20px"><div class="field" style="margin:0"><label>Context drift risks <span class="saved">Saved ✓</span></label><textarea rows="4" data-capture="a23_drift" placeholder="What was condensed, shifted or lost?"></textarea></div></div>
+      <div class="capture" style="padding:18px 20px"><div class="field" style="margin:0"><label>Possible hallucinations <span class="saved">Saved ✓</span></label><textarea rows="4" data-capture="a23_halluc" placeholder="What appeared that wasn't in the source?"></textarea></div></div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>Where did Team A and Team B outputs start to diverge?</li>
+          <li>What content was added, lost, or shifted in meaning?</li>
+          <li>Which steps in the human-centred workflow made the biggest difference?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Differences in output quality are driven by process.</li>
+          <li>Human review is required even when AI output appears complete.</li>
+          <li>Rewriting in one's own words strengthens understanding and recall.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="extras-strip" data-extras='[
+    {"id":"x2a","type":"Detective","title":"Spot the Fake","img":"x2a-spot-the-fake.jpg"},
+    {"id":"x2b","type":"Puzzle","title":"Loop in Order","img":"x2b-loop-in-order.jpg"}
+  ]'></div>
+  <div class="pager">
+    <a href="module-1.html"><div class="lbl">← Previous</div><div class="ttl">Module 1 — Team Types &amp; How AI Can Help</div></a>
+    <a class="next" href="module-3.html"><div class="lbl">Next →</div><div class="ttl">Module 3 — Better-Prepared Attendees</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+/* ===== Extra 2A · Detective — "Spot the Fake" ===== */
+AFTX.register('x2a', function(g){
+  var ui=g.ui, root=g.root;
+  var CLAIMS=[
+    {t:'The migration script passed staging on Tuesday.',fake:false},
+    {t:'The team agreed to move the launch to the 22nd.',fake:true, why:'Whether the launch date moves is still open, pending the estimate.'},
+    {t:'Support wants at least a week’s notice before reset emails go out.',fake:false},
+    {t:'Daniel confirmed the invoice-export vendor renewal is signed.',fake:true, why:'Daniel wasn’t even in the meeting — the renewal is an open risk.'},
+    {t:'Eleven of fourteen help articles are drafted.',fake:false},
+    {t:'Sandra approved the reset-email approach for pre-2019 accounts.',fake:true, why:'The sign-off is still with Priya to raise — nothing is approved.'},
+    {t:'Partners will be included in the main announcement, not the teaser.',fake:false},
+    {t:'The green beta-feedback tab will be removed at launch.',fake:true, why:'Decision was the opposite: keep it for launch, review in a month.'},
+    {t:'Marcus will confirm the performance estimate by midday tomorrow.',fake:false},
+    {t:'Lena needs the final billing copy by Thursday.',fake:true, why:'Friday — worst case Monday. A small drift that reschedules real people.'}
+  ];
+  var TRANSCRIPT='Marcus: migration script passed staging Tuesday; pre-2019 accounts need a sign-off that isn’t engineering’s call. Aisha: support wants a week’s notice before reset emails; help articles 11 of 14 drafted. Priya: I’ll take the sign-off to Sandra. Tom: billing copy back Friday, worst case Monday; teaser on the 10th; partners in the main send only. Marcus: search at 4s — provisionally take the 3–4 day fix; I’ll confirm the estimate by midday tomorrow; launch date decision pending. Daniel (absent) flagged the vendor renewal as a risk — unresolved. Beta tab: keep for launch, review in a month.';
+  ui.lead(root,'An AI wrote the minutes for the Portal Relaunch sync. Five of these ten claims are fabricated. Phase 1: flag from memory, 75 seconds. Phase 2: open the source and finish the job.');
+  var score=ui.score(root); score.set('—');
+  var phase=1, locked=false, memoryHits=null, memoryFalse=null;
+  var card=ui.el('div','gx-card','<div class="gx-q">Tap every claim you’d refuse to trust without checking:</div>');
+  root.appendChild(card);
+  var cd=ui.countdown(card,75,function(){ if(phase===1&&!locked) endPhase1(); });
+  var list=ui.el('div','gx-order');
+  CLAIMS.forEach(function(cl,i){
+    var b=ui.el('button','gx-oitem','<span class="gx-num">'+(i+1)+'</span><span>'+ui.esc(cl.t)+'</span>');
+    b.type='button'; b.dataset.i=i;
+    b.addEventListener('click',function(){ if(locked) return; b.classList.toggle('sel'); });
+    list.appendChild(b);
+  });
+  root.appendChild(list);
+  var lockBtn=ui.el('button','btn accent','Lock my flags'); lockBtn.type='button';
+  lockBtn.addEventListener('click',function(){ if(phase===1&&!locked) endPhase1(); else if(phase===2&&!locked) endPhase2(); });
+  root.appendChild(lockBtn);
+  function grade(){
+    var hits=0, falses=0;
+    list.querySelectorAll('.gx-oitem').forEach(function(b){
+      var cl=CLAIMS[Number(b.dataset.i)], flagged=b.classList.contains('sel');
+      b.classList.remove('right','wrong');
+      if(flagged&&cl.fake){hits++; b.classList.add('right');}
+      else if(flagged&&!cl.fake){falses++; b.classList.add('wrong');}
+      else if(!flagged&&cl.fake){ b.style.outline='2px dashed var(--coral)'; }
+    });
+    return {hits:hits,falses:falses};
+  }
+  function clearMarks(){ list.querySelectorAll('.gx-oitem').forEach(function(b){ b.classList.remove('right','wrong'); b.style.outline=''; }); }
+  function endPhase1(){
+    locked=true; cd.stop();
+    var r=grade(); memoryHits=r.hits; memoryFalse=r.falses;
+    score.set(r.hits+'/5 from memory');
+    ui.reveal(root,'From memory: <b>'+r.hits+' of 5 fabrications caught</b>'+(r.falses?', and '+r.falses+' real fact'+(r.falses>1?'s':'')+' wrongly accused':'')+'. Dashed outlines are the fakes that slipped past. Now open the source and fix your flags.');
+    var det=ui.el('details','', '<summary style="cursor:pointer;font-family:var(--head);font-weight:600;padding:10px 0">📄 Open the meeting source</summary><div style="font-size:13.5px;color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);padding:14px 16px;border-left:4px solid var(--teal)">'+ui.esc(TRANSCRIPT)+'</div>');
+    root.insertBefore(det, lockBtn);
+    clearMarks(); locked=false; phase=2; lockBtn.textContent='Final check ✓';
+  }
+  function endPhase2(){
+    locked=true;
+    var r=grade();
+    score.set(r.hits+'/5 verified');
+    var gap=r.hits-(memoryHits||0);
+    ui.pointCard(root,'From memory: '+memoryHits+'/5. With the source open: '+r.hits+'/5. That gap is cognitive offloading made visible — verification isn’t optional, because memory feels reliable and isn’t.'+(r.falses?' ('+r.falses+' real fact'+(r.falses>1?'s':'')+' still wrongly accused — over-suspicion has a cost too.)':''));
+    lockBtn.style.display='none';
+  }
+});
+
+/* ===== Extra 2B · Puzzle — "Loop in Order" ===== */
+AFTX.register('x2b', function(g){
+  var ui=g.ui, root=g.root;
+  var STEPS=['Break the task into smaller steps','Prompt one step at a time','Validate each output','Re-inject or refine','Final human review','Rewrite in your own tone'];
+  var MISHAPS=[
+    {q:'The whole job went in as one giant prompt — and came back as an uncheckable wall of plausible text.',a:0},
+    {q:'Steps two, three and four were generated before anyone had read the result of step one.',a:1},
+    {q:'A due date appeared in the minutes that nobody ever said.',a:2},
+    {q:'Twelve prompts in, the AI had quietly forgotten the audience and half the constraints.',a:3},
+    {q:'Content-complete and shipped unread — the client found the error before the team did.',a:4},
+    {q:'Accurate, but so obviously machine-written that the team ignored it.',a:5}
+  ];
+  ui.lead(root,'Round 1: rebuild the six-step loop against the clock — tap two steps to swap them. Round 2: match each real-world mishap to the single step that would have caught it.');
+  var score=ui.score(root);
+  ui.deck(root,{label:'Round',rounds:[
+    function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-q">Restore the human-centred workflow. 60 seconds.</div>');
+      c.appendChild(card);
+      var done=false;
+      var cd=ui.countdown(card,60,function(){
+        if(done) return; done=true;
+        var right=ord.grade();
+        score.add(right); if(right<6) score.miss();
+        ui.reveal(c,'Time! '+right+' of 6 steps in place.',right<6);
+        btn(c,next,'On to the mishaps →');
+      });
+      var ord=ui.order(c,{items:STEPS,answer:STEPS,onSolved:function(){
+        if(done) return; done=true; cd.stop();
+        score.add(6);
+        ui.reveal(c,'Loop restored with time to spare.');
+        btn(c,next,'On to the mishaps →');
+      }});
+    }
+  ].concat(MISHAPS.map(function(m){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-q">'+ui.esc(m.q)+'</div><div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px">Which step would have caught it?</div>');
+      c.appendChild(card);
+      ui.vote(c,{options:STEPS.map(function(s,i){return {label:s,correct:i===m.a,why:'Step '+(m.a+1)+' — '+STEPS[m.a]+' — exists precisely for this failure.'};}),
+        onDone:function(i,correct){
+          if(correct) score.add(1); else score.miss();
+          btn(c,next,'Next mishap →');
+        }});
+    };
+  })),onEnd:function(){
+    ui.pointCard(root,'Final: '+score.value()+' pts. The loop isn’t ceremony — every step exists because a specific failure walks straight through the gap it guards.');
+  }});
+  function btn(c,next,label){ var b=ui.el('button','btn accent',label); b.type='button'; b.addEventListener('click',next); c.appendChild(b); }
+});
+
+(function(){
+  /* Activity 2.2 scenario picker — persisted */
+  var wrap=document.getElementById('a22pick');
+  if(!wrap) return;
+  var btns=[...wrap.querySelectorAll('button')];
+  function apply(v){ btns.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-val')===v); }); }
+  try{ apply((JSON.parse(localStorage.getItem('aft.capture')||'{}'))['a22_scenario']||''); }catch(e){}
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-val');
+      apply(v);
+      if(window.AFT&&AFT.setCaptureValue){ AFT.setCaptureValue('a22_scenario',v); }
+      document.dispatchEvent(new CustomEvent('aft:capture',{detail:{key:'a22_scenario',value:v}}));
+    });
+  });
+})();
+</script>
+</body>
+</html>

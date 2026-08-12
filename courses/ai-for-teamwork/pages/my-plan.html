@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Teamwork Plan — AI for Teamwork | AIM</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Teamwork Plan — AI for Teamwork | AIM">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .planhead{background:#fff;border:2px solid var(--accent);padding:26px 30px;margin-top:8px}
+  .planhead h3{font-size:22px;color:var(--accent-dark);margin-bottom:14px}
+  .pitem{margin-bottom:16px}
+  .pitem:last-child{margin-bottom:0}
+  .pitem .pl{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:4px}
+  .pitem .pv{font-size:14.5px;color:var(--ink);white-space:pre-wrap;background:var(--cream-alt);border:1px solid var(--line-soft);padding:10px 14px}
+  .pitem .pv.empty{color:var(--muted);font-style:italic;background:transparent;border-style:dashed}
+  .pitem .pv.empty a{color:var(--accent-dark);font-weight:600;font-style:normal}
+  .psec{background:#fff;border:1px solid var(--line);border-top:5px solid var(--teal-dark);padding:22px 26px;margin-top:18px}
+  .psec h3{font-size:18px;margin-bottom:4px}
+  .psec .psub{font-family:var(--head);font-weight:600;font-size:12px;color:var(--muted);margin-bottom:14px}
+  .pv .ckdone{color:var(--teal-dark);font-weight:600}
+  .pv ul{margin:2px 0 2px 18px}
+  @media print{
+    .planhead{border:2px solid #000}
+    .psec{border:1px solid #999;border-top:3px solid #000}
+    .pitem .pv{background:#fff;border:1px solid #ccc}
+    .pitem .pv.empty{display:none}
+    .pitem:has(.pv.empty){display:none}
+    .printhead{display:block !important;border-bottom:3px solid #000;padding-bottom:8px;margin-bottom:14px}
+  }
+  .printhead{display:none;font-family:var(--head)}
+  .printhead b{font-size:20px}
+  .printcover{display:none}
+  @media print{
+    .printcover{display:block;position:relative;height:96vh;overflow:hidden;page-break-after:always;break-after:page}
+    .printcover img{width:100%;height:100%;object-fit:cover;display:block}
+    .printcover .pc-title{position:absolute;top:40px;left:44px;right:44px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+    .printcover .pc-title b{display:block;font-family:var(--head);font-weight:700;font-size:36px;line-height:1.1;margin-bottom:8px}
+    .printcover .pc-title span{font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.92}
+  }
+</style>
+</head>
+<body data-page="my-plan">
+
+<div class="printcover" aria-hidden="true">
+  <img src="../assets/media/pics/myplan-print-cover.jpg" alt="">
+  <div class="pc-title"><b>My Teamwork Plan</b><span>AI for Teamwork · Australian Institute of Management</span></div>
+</div>
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="welcome.html">Welcome</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/myplan-hero-overhead-desk.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Your output from today</div>
+    <h1>My Teamwork Plan</h1>
+    <p class="lead">Everything you captured across the day, gathered into one page — with your next-week experiment front and centre. Print it, or copy it into your own notes.</p>
+    <div class="printbar" style="margin-top:22px">
+      <button class="btn accent" type="button" data-print>🖨 Print / Save as PDF</button>
+      <button class="btn ghost" type="button" id="copyAllBtn" style="background:#fff">📋 Copy everything as text</button>
+    </div>
+  </div>
+</section>
+
+<section class="band cream">
+  <div class="wrap">
+    <div class="printhead"><b>My Teamwork Plan — AI for Teamwork (AIM)</b><br><span id="printDate"></span></div>
+
+    <!-- Action plan first -->
+    <div class="planhead" id="planhead">
+      <h3>⭐ My next-week experiment</h3>
+      <div id="planItems"></div>
+    </div>
+
+    <!-- Close & Reflect -->
+    <div class="psec" style="border-top-color:var(--coral)">
+      <h3>Close &amp; Reflect</h3>
+      <div class="psub">Activity 9.1 — consolidate the day before you leave</div>
+      <div class="noprint" style="border:1px solid var(--line);overflow:hidden;margin-bottom:16px;max-height:220px"><img src="../assets/media/pics/close-reflect-leaving.jpg" alt="Participants leaving the training room in warm evening light" style="width:100%;object-fit:cover;max-height:220px"></div>
+      <div class="capture" style="border:0;padding:0">
+        <div class="field"><label>One way my approach to teamwork with AI has shifted today <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="a91_shift" placeholder="Today shifted how I…"></textarea></div>
+        <div class="field"><label>The practice that feels most immediately usable next week <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="a91_practice" placeholder="The first thing I'll actually use is…"></textarea></div>
+        <div class="field"><label>One risk I'm now more alert to when using AI at work <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="a91_risk" placeholder="I'll be watching for…"></textarea></div>
+        <div class="field" style="margin:0"><label>General Q&amp;A — space for notes <span class="saved">Saved ✓</span></label><textarea rows="3" data-capture="a91_notes" placeholder="Anything else worth keeping…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Everything else, injected -->
+    <div id="daySections"></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+(function(){
+  function cap(){ try{ return JSON.parse(localStorage.getItem('aft.capture')||'{}'); }catch(e){ return {}; } }
+  var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
+
+  var A41_ITEMS=['Rachel wants a meeting with the project teams early next week','The schedule has been re-baselined twice due to a vendor delay','Delivery and Product have each escalated concerns independently','Rachel is under pressure from senior leadership','The dashboard should really be red, not amber','The slippage is visible somewhere but not widely acknowledged','Which workstreams Rachel expects to attend','What outcome Rachel expects to walk away with','What exactly is slipping — timeline, quality, scope or readiness'];
+  var A41_COLS=['Known','Inferred','Missing'];
+  var A71_ITEMS=['Three clients got welcome emails twice','New checklist template saved an hour per client','Nobody knows who owns the Salesforce data fixes','New starter had no system access for her first week','Same question answered in three Slack channels','Decisions from last retro never got actioned','Onboarding time down from 12 days to 9','Client X almost churned — noticed only by chance','The Wednesday no-meeting block actually happened','Senior staff cancelling leave to cover the work'];
+  var A71_COLS=['Handovers & comms','Process & tools','People & wellbeing','Wins to keep'];
+  var CK_LABELS={
+    a23_loop:{s1:'Break it into parts',s2:'Prompt one element at a time',s3:'Validate accuracy',s4:'Re-inject context',s5:'Final human review',s6:'Rewrite in your own tone'},
+    a42_checks:{names:'No invented names',decisions:'No invented decisions',dates:'No invented due dates',intent:'No implied intent',differ:'Summaries differentiated by audience'},
+    a61_synthesis:{contradictions:'Contradictions found and discussed',tone:'Tone inconsistencies identified',nuance:'Lost nuance recovered',halluc:'Hallucinations caught',frameworks:'Frameworks correctly applied',voice:'Unified-voice rewrites agreed'},
+    a71_checks:{verified:'Checked against original notes',noinvent:'No inventions survived',rewritten:'Rewritten in our own words'}
+  };
+  var ZONES=['Solo contributors','Solo ↔ loosely connected','Loosely connected','Loosely ↔ interdependent','Interdependent'];
+
+  function textVal(c,key){ var v=(c[key]||'').trim(); return v||null; }
+  function renderSpectrum(c){
+    var v=textVal(c,'a21_position'); if(v===null) return null;
+    var n=Number(v); var zone=ZONES[Math.min(ZONES.length-1,Math.floor(n/(100.0001/ZONES.length)))];
+    return zone+' ('+n+'/100)';
+  }
+  function renderSorter(c,key,items,cols){
+    var raw=textVal(c,key); if(!raw) return null;
+    var state; try{ state=JSON.parse(raw); }catch(e){ return null; }
+    var keys=Object.keys(state); if(!keys.length) return null;
+    var by={}; keys.forEach(function(i){ var col=cols[Number(state[i])]; if(!col) return; (by[col]=by[col]||[]).push(items[Number(i)]); });
+    var html='<ul>';
+    cols.forEach(function(col){ if(by[col]) html+='<li><b>'+esc(col)+':</b> '+by[col].map(esc).join(' · ')+'</li>'; });
+    return html+'</ul>';
+  }
+  function renderChecklist(c,key){
+    var raw=textVal(c,key); if(!raw) return null;
+    var ticked; try{ ticked=JSON.parse(raw); }catch(e){ return null; }
+    if(!ticked.length) return null;
+    var labels=CK_LABELS[key]||{};
+    return '<span class="ckdone">✓ '+ticked.length+' checked:</span> '+ticked.map(function(t){return esc(labels[t]||t);}).join(' · ');
+  }
+
+  var PLAN=[
+    {key:'a81_challenge',label:'The challenge I will improve next week',link:'module-8.html'},
+    {key:'a81_workflow',label:'My human-AI workflow — where AI acts, where I verify',link:'module-8.html'},
+    {key:'a81_brief',label:'Brief for my manager / team',link:'module-8.html'},
+    {key:'a81_success',label:'Success criteria and adjustment plan',link:'module-8.html'},
+    {key:'a81_date',label:'Check-in date',link:'module-8.html'}
+  ];
+  var SECTIONS=[
+    {t:'Welcome & Orientation',s:'Activities 1.1 – 1.2',link:'welcome.html',items:[
+      {key:'a11_superpower',label:'Our team superpower (Activity 1.1)'},
+      {key:'a11_observation',label:'What I noticed about my first AI output'},
+      {key:'a12_challenge',label:'📌 The teamwork challenge I named for the day'}]},
+    {t:'Module 1 — Team Types',s:'Activity 2.1',link:'module-1.html',items:[
+      {key:'a21_position',label:'Where my team sits on the collaboration spectrum',render:renderSpectrum},
+      {key:'a21_rationale',label:'Why'}]},
+    {t:'Module 2 — Risks & the Workflow',s:'Activities 2.2 – 2.3',link:'module-2.html',items:[
+      {key:'a22_scenario',label:'Scenario we analysed'},
+      {key:'a22_note',label:'Where the loop would have caught it'},
+      {key:'a23_loop',label:'Workflow steps we practised',render:function(c){return renderChecklist(c,'a23_loop');}},
+      {key:'a23_summary',label:'Our course synthesis'},
+      {key:'a23_offloading',label:'Cognitive offloading risks we saw'},
+      {key:'a23_drift',label:'Context drift risks we saw'},
+      {key:'a23_halluc',label:'Possible hallucinations we caught'}]},
+    {t:'Module 3 — Better-Prepared Attendees',s:'Activities 3.1 – 3.2',link:'module-3.html',items:[
+      {key:'a31_persona',label:'Example persona I chose'},
+      {key:'a31_bespoke1',label:'Bespoke persona 1'},
+      {key:'a31_bespoke2',label:'Bespoke persona 2'},
+      {key:'a31_taskA',label:'Message adapted for the example persona'},
+      {key:'a31_taskB',label:'Message adapted for bespoke persona 1'},
+      {key:'a31_taskC',label:'Message adapted for bespoke persona 2'},
+      {key:'a31_insight',label:'Self-insight'},
+      {key:'a32_handwritten',label:'My handwritten wellbeing check-in'},
+      {key:'a32_persona_msg',label:'Check-in tailored for an example persona'},
+      {key:'a32_bespoke_msg',label:'Check-in tailored for my bespoke persona'}]},
+    {t:'Module 4 — Optimise Time Together',s:'Activities 4.1 – 4.3',link:'module-4.html',items:[
+      {key:'a41_sort',label:'Known / Inferred / Missing triage',render:function(c){return renderSorter(c,'a41_sort',A41_ITEMS,A41_COLS);},html:true},
+      {key:'a41_agenda',label:'Meeting agenda for the invite'},
+      {key:'a41_knowledge',label:'Knowledge file'},
+      {key:'a41_email',label:'Email to Rachel'},
+      {key:'a41_briefs',label:'Attendee brief'},
+      {key:'a42_exec',label:'Transcript summary — for my boss'},
+      {key:'a42_peers',label:'Transcript summary — for peers'},
+      {key:'a42_att',label:'Transcript summary — for attendees'},
+      {key:'a42_checks',label:'Validation pass',render:function(c){return renderChecklist(c,'a42_checks');},html:true},
+      {key:'a43_conclusion',label:'Our conclusions (before AI)'},
+      {key:'a43_insights',label:'Insights after the AI challenge'}]},
+    {t:'Module 5 — Deeper Analysis',s:'Activities 5.1 – 5.2',link:'module-5.html',items:[
+      {key:'a51_insights',label:'Framework insights on the workload scenario'},
+      {key:'a52_reflection',label:'Transparency barriers we identified'},
+      {key:'a52_norm',label:'📌 What would make AI transparency normal in my team'}]},
+    {t:'Module 6 — Change Management Capstone',s:'Activity 6.1',link:'module-6.html',items:[
+      {key:'a61_team',label:'My team'},
+      {key:'a61_draft',label:'Working draft'},
+      {key:'a61_final',label:'Final contribution to the blueprint'},
+      {key:'a61_synthesis',label:'Whole-group synthesis',render:function(c){return renderChecklist(c,'a61_synthesis');},html:true}]},
+    {t:'Module 7 — Other Use Cases',s:'Activities 7.1 – 7.4',link:'module-7.html',items:[
+      {key:'a71_sort',label:'Retro notes clustered by hand',render:function(c){return renderSorter(c,'a71_sort',A71_ITEMS,A71_COLS);},html:true},
+      {key:'a71_checks',label:'Validation',render:function(c){return renderChecklist(c,'a71_checks');},html:true},
+      {key:'a71_insight',label:'The insight I shared'},
+      {key:'a71_notes',label:'Where I will use this at work'},
+      {key:'a72_structure',label:'Structure-first summarisation'},
+      {key:'a73_output',label:'Best tone transformation'},
+      {key:'a74_check',label:'Template verification pass'}]}
+  ];
+
+  function itemHTML(c,it,link){
+    var v = it.render ? it.render(c) : textVal(c,it.key);
+    var isHTML = !!it.render;
+    var body;
+    if(v===null||v===undefined){
+      body='<div class="pv empty">Not captured yet — <a href="'+link+'">open the page</a> to add it.</div>';
+    } else {
+      body='<div class="pv">'+(isHTML? v : esc(v))+'</div>';
+    }
+    return '<div class="pitem"><div class="pl">'+esc(it.label)+'</div>'+body+'</div>';
+  }
+
+  function build(){
+    var c=cap();
+    document.getElementById('planItems').innerHTML = PLAN.map(function(it){ return itemHTML(c,it,it.link); }).join('');
+    document.getElementById('daySections').innerHTML = SECTIONS.map(function(sec){
+      return '<div class="psec"><h3>'+esc(sec.t)+'</h3><div class="psub">'+esc(sec.s)+' · <a href="'+sec.link+'" style="color:var(--accent-dark)">open</a></div>'
+        + sec.items.map(function(it){ return itemHTML(c,it,sec.link); }).join('')
+        + '</div>';
+    }).join('');
+  }
+  build();
+  document.addEventListener('aft:capture',build);
+  document.getElementById('printDate').textContent = new Date().toLocaleDateString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  /* copy everything as text */
+  document.getElementById('copyAllBtn').addEventListener('click',function(){
+    var c=cap(); var out=['MY TEAMWORK PLAN — AI for Teamwork (AIM)','Generated '+new Date().toLocaleDateString('en-AU'),''];
+    out.push('=== MY NEXT-WEEK EXPERIMENT ===');
+    PLAN.forEach(function(it){ var v=textVal(c,it.key); if(v){ out.push(it.label+':'); out.push(v); out.push(''); } });
+    ['a91_shift','a91_practice','a91_risk','a91_notes'].forEach(function(k,i){
+      var labels=['Shift in my approach','Most usable practice','Risk I am alert to','Notes'];
+      var v=textVal(c,k); if(v){ out.push(labels[i]+': '+v); }
+    });
+    out.push('');
+    SECTIONS.forEach(function(sec){
+      var lines=[];
+      sec.items.forEach(function(it){
+        var v = it.render ? it.render(c) : textVal(c,it.key);
+        if(v===null||v===undefined) return;
+        if(it.render){ v=String(v).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(); }
+        lines.push(it.label+':'); lines.push(v); lines.push('');
+      });
+      if(lines.length){ out.push('=== '+sec.t.toUpperCase()+' ==='); out=out.concat(lines); }
+    });
+    var txt=out.join('\n');
+    var done=function(){ var b=document.getElementById('copyAllBtn'); var o=b.textContent; b.textContent='Copied ✓'; setTimeout(function(){b.textContent=o;},1600); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done,function(){fallback(txt);done();}); }
+    else { fallback(txt); done(); }
+    function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); }
+  });
+})();
+</script>
+</body>
+</html>

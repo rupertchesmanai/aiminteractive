@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5 — Deeper Analysis &amp; Thought Partners | AI for Teamwork</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Module 5 — Deeper Analysis &amp; Thought Partners | AI for Teamwork">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;display:block}
+  .hats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  @media(max-width:860px){.hats{grid-template-columns:1fr}}
+  .hat{background:#fff;border:1px solid var(--line);border-top:6px solid var(--hc,#999);text-align:left;padding:0;cursor:pointer;font-family:var(--body);transition:.15s}
+  .hat:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .hat .hh{padding:12px 16px 4px;font-family:var(--head);font-weight:700;font-size:15.5px}
+  .hat .hl{padding:0 16px 12px;font-size:12.5px;color:var(--grey)}
+  .hat.on{outline:3px solid var(--hc,#999)}
+  .hatdef{display:none;background:#fff;border:1px solid var(--line);border-left:6px solid var(--hc,#999);padding:16px 20px;margin-top:14px}
+  .hatdef.show{display:block}
+  .hatdef h4{font-size:17px;margin-bottom:4px}
+  .hatdef p{font-size:14px;color:var(--grey);margin-bottom:10px}
+  .disc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .disc .dq{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);padding:14px 18px}
+  .disc .dq b{font-family:var(--head);font-size:15px}
+  .disc .dq p{font-size:13px;color:var(--grey);margin-top:3px}
+  @media(max-width:700px){.disc{grid-template-columns:1fr}}
+  .fw4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  @media(max-width:960px){.fw4{grid-template-columns:repeat(2,1fr)}}
+  .fw4 .f{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:14px 16px;font-size:12.5px;color:var(--grey)}
+  .fw4 .f b{display:block;font-family:var(--head);font-size:15px;color:var(--ink);margin-bottom:4px}
+  .scen details{background:#fff;border:1px solid var(--line);margin-bottom:8px}
+  .scen summary{cursor:pointer;padding:13px 16px;font-family:var(--head);font-weight:600;font-size:14.5px;list-style:none}
+  .scen summary::-webkit-details-marker{display:none}
+  .scen summary::before{content:"+ ";color:var(--accent-dark)}
+  .scen details[open] summary::before{content:"− "}
+  .whycards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+  @media(max-width:760px){.whycards{grid-template-columns:1fr}}
+  .whycards .w{background:#fff;border:1px solid var(--line);border-left:5px solid var(--coral);padding:13px 16px;font-size:13px;color:var(--grey)}
+  .whycards .w b{display:block;font-family:var(--head);font-size:14px;color:var(--ink)}
+</style>
+</head>
+<body data-page="module-5">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#why">Why analysis fails</a><a href="#frameworks">Frameworks</a><a href="#a51">Activity 5.1</a>
+  <a href="#transparency">Transparency</a><a href="#a52">Activity 5.2</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/m5-hero-strategist-glass-wall.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Module 5</div>
+    <h1>Deeper Analysis &amp; Thought Partners</h1>
+    <p class="lead">Teams analyse problems from a narrow range of viewpoints — familiar patterns, preferred methods, functional expertise. Structured frameworks plus AI widen the lens; humans keep responsibility for accuracy, completeness and judgement.</p>
+    <div class="anchors">
+      <div class="anchor a"><span class="bar"></span><span>Six Thinking Hats and DISC-informed lenses</span></div>
+      <div class="anchor t"><span class="bar"></span><span>AI that surfaces gaps — without inventing facts</span></div>
+      <div class="anchor"><span class="bar"></span><span>Making AI use transparent, normal and low-risk</span></div>
+    </div>
+    <div class="dashtag">🕘 ~35 minutes · Activities 5.1 &amp; 5.2</div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="band cream" id="why">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">The problem</span></div>
+        <h2 class="section">Why teams struggle with analysis.</h2>
+        <div class="prose">
+          <p>People fall back on familiar patterns, preferred methods or functional expertise. Important context gets overlooked, risks are understated, and recommendations end up weaker than they appear. Multiple lenses reduce the risk of false certainty — especially under pressure.</p>
+          <p>AI can support broader thinking, but its output requires careful guidance, verification and correction. Accuracy, completeness, and spotting what still needs work remain <b>human responsibilities</b>.</p>
+        </div>
+      </div>
+      <div class="imgcard"><img src="../assets/media/pics/m5-balanced-weighing-inputs.jpg" alt="Weighing a physical decision card against an AI suggestion"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAMEWORKS ============ -->
+<section class="band white" id="frameworks">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Widen the thinking</span></div>
+    <h2 class="section">Six Thinking Hats.</h2>
+    <p class="section-lead">Edward de Bono's method separates emotions, facts, risks and ideas into distinct lenses — reducing confusion, lowering conflict and producing more balanced thinking. Tap a hat for its lens and a ready-made AI prompt stem.</p>
+    <div class="two-col" style="margin-top:16px">
+      <div>
+        <div class="hats" id="hats">
+          <button class="hat" type="button" style="--hc:#e8e6e0" data-hat="white"><span class="hh">⬜ White — Facts &amp; data</span><span class="hl" style="display:block">What is known, unknown, and still needed</span></button>
+          <button class="hat" type="button" style="--hc:#d94f3d" data-hat="red"><span class="hh">🟥 Red — Feelings &amp; intuition</span><span class="hl" style="display:block">Gut reactions, without justification</span></button>
+          <button class="hat" type="button" style="--hc:#2b2b2b" data-hat="black"><span class="hh">⬛ Black — Risks &amp; problems</span><span class="hl" style="display:block">Weaknesses, threats, reasons it may fail</span></button>
+          <button class="hat" type="button" style="--hc:#e5b93c" data-hat="yellow"><span class="hh">🟨 Yellow — Benefits &amp; value</span><span class="hl" style="display:block">Advantages, opportunities, upside</span></button>
+          <button class="hat" type="button" style="--hc:#3d9c50" data-hat="green"><span class="hh">🟩 Green — Ideas &amp; alternatives</span><span class="hl" style="display:block">New options, creative possibilities</span></button>
+          <button class="hat" type="button" style="--hc:#2D7DD2" data-hat="blue"><span class="hh">🟦 Blue — Process &amp; control</span><span class="hl" style="display:block">Purpose, next steps, structure</span></button>
+        </div>
+        <div class="hatdef" id="hatdef"></div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m5-sixhats-felt-hats.jpg" alt="Six coloured felt hats in a row on a conference table"></div>
+        <div class="note accent" style="margin-top:12px"><b>Use the Hats when:</b> teams are stuck in one perspective; conversations mix emotion, detail, speculation and strategy; a decision feels rushed; stakeholders disagree because they're using different thinking styles without realising; or analysis needs to slow down so assumptions can surface. The method pairs well with an LLM: the model generates ideas or questions per hat, the team judges which insights are relevant and accurate.</div>
+      </div>
+    </div>
+
+    <h2 class="section" style="margin-top:36px">DISC-informed lenses.</h2>
+    <p class="section-lead">A behavioural-preference view: explore the same issue from four working-style angles, so both people and process factors get examined.</p>
+    <div class="two-col" style="margin-top:8px">
+      <div class="disc">
+        <div class="dq"><b>D · Dominance</b><p>Fast-paced, results-first — what decision moves this forward now?</p></div>
+        <div class="dq"><b>I · Influence</b><p>People-oriented — who needs to be engaged, energised, brought along?</p></div>
+        <div class="dq"><b>S · Steadiness</b><p>Task-oriented and consistent — what keeps delivery stable through the change?</p></div>
+        <div class="dq"><b>C · Conscientiousness</b><p>Methodical — what does the evidence, detail and process actually say?</p></div>
+      </div>
+      <div class="imgcard"><img src="../assets/media/pics/m5-disc-four-quadrant.jpg" alt="Four professionals with four distinct working energies in quadrant seating"></div>
+    </div>
+
+    <div class="selfOnly">
+      <h2 class="section" style="margin-top:36px">Diagnostic frameworks.</h2>
+      <p class="section-lead">Where the Hats and DISC widen <i>how</i> you think, these structure <i>what</i> you analyse. AI can generate questions for each lens — humans decide which questions are appropriate.</p>
+      <div class="fw4">
+        <div class="f"><b>PESTLE</b>Political, Economic, Social, Technological, Legal, Environmental — external influences on your project or organisation.</div>
+        <div class="f"><b>SWOT + evidence</b>Strengths, Weaknesses, Opportunities, Threats — each point backed by evidence, not vibes.</div>
+        <div class="f"><b>VRIO</b>Value, Rarity, Imitability, Organisation — can your capabilities sustain competitive advantage?</div>
+        <div class="f"><b>McKinsey 7S</b>Strategy, Structure, Systems, Skills, Staff, Style, Shared Values — diagnosing alignment issues and collaboration barriers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 5.1 ============ -->
+<section class="band tint" id="a51">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 5.1</span></div>
+      <h2 class="section" style="max-width:none">AI for balanced thinking and analysis</h2>
+      <button class="timerchip" type="button" data-minutes="10">⏱ 10:00</button>
+    </div>
+    <p class="section-lead">A deliberately stress-inducing scenario. Each team member uses an LLM with a different risk or diagnosis framework — then you compare what each lens surfaced. AI must surface gaps, <b>not resolve them</b>.</p>
+
+    <details class="scen" style="margin-top:14px"><summary style="background:#fff;border:1px solid var(--line)">The scenario — workload pressure across five strategic projects</summary>
+      <div style="background:#fff;border:1px solid var(--line);border-top:0">
+        <div class="promptbox source" style="margin:0;border:0">
+          <div class="pb-head"><span class="pb-label">Scenario: workload pressure on teams</span><button class="copychip" type="button" data-copy="#sc51">Copy scenario</button></div>
+          <pre id="sc51">Your organisation is running five major strategic projects: Atlas (customer portal rebuild), Helios (regulatory reporting uplift), Meridian (data platform migration), Northstar (branch operations redesign) and Riverstone (cybersecurity strengthening). Together they are a substantial part of the strategic roadmap — and they compete for the same constrained pool of talent: 38 key delivery roles, but only 24 full-time staff. The gap is filled by part-time contractors with unpredictable tenure, creating fluctuating capability in solution architecture, data engineering and test management.
+
+Over the last three months, reported workload rose 27% while resourcing capacity rose only 6%. Leading indicators of strain: sick leave up from 1.8 to 3.1 days per person per month; informal overtime normalised; usually-clear staff submitting incomplete, ambiguous work needing multiple rework cycles; inconsistent attendance at cross-team alignment sessions. Atlas is five weeks behind schedule. Helios has two compliance defects found by internal audit — both traced to rushed verification and inadequate peer review.
+
+Despite this, leadership dashboards still present a positive picture: green milestones, on-track budgets. Many risk logs haven't been updated for seven to ten weeks; PMs report being "too busy delivering" to run risk reviews. Teams are declining optional training, deferring mandatory access reviews and deprioritising continuous improvement. Executives receive polished decks while teams describe mounting pressure, unclear priorities and resource conflicts.
+
+Shortcuts are compounding risk: sprint items merged without acceptance criteria met; stakeholder validation compressed or skipped; change communications drafted without impact assessments. Helios and Meridian are in friction over the same two critical data engineers. Senior staff are cancelling planned leave, reinforcing a culture of heroic effort over sustainable delivery.
+
+These patterns — rising workload, reduced quality signals, shortcuts, stale risk information, resource friction, and a widening gap between governance reporting and reality — suggest systemic strain. Without intervention: missed regulatory obligations, reputational damage from delayed releases, burnout in key roles, and expensive rework.</pre>
+        </div>
+      </div>
+    </details>
+
+    <div class="two-col" style="margin-top:16px">
+      <div>
+        <div class="rail accent" style="grid-template-columns:1fr">
+          <div class="box"><h4>Steps</h4><ul>
+            <li>Each team member asks an LLM to suggest one or more risk/diagnosis frameworks (e.g. McKinsey 7S) and applies a different one.</li>
+            <li>Craft prompts so the LLM <b>engages you to gather more information</b> — never invents facts absent from the scenario.</li>
+            <li>Have the AI suggest missing information and blind spots — you may invent details to feed it, as humans (in real life, you'd add real context).</li>
+            <li>Compare outputs across frameworks. What did multiple lenses catch that one would have missed?</li>
+          </ul></div>
+        </div>
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">The no-invention guard — add this to your prompt</span><button class="copychip" type="button">Copy guard</button></div>
+          <pre>You must not invent, infer, or assume facts.
+If you cannot complete the task using only the provided information:
+- Say: "Insufficient information to proceed."
+- List the exact information required.
+- Ask clarifying questions.
+Producing a confident answer with missing data is considered an error.</pre>
+        </div>
+      </div>
+      <div>
+        <div class="capture">
+          <h3>Your insights</h3>
+          <p class="hint">What did the frameworks surface? Where did AI help you get to grips with a stressful scenario — and where did it risk doing the thinking for you?</p>
+          <div class="field" style="margin:0">
+            <label>Record your insights <span class="saved">Saved ✓</span></label>
+            <textarea rows="7" data-capture="a51_insights" placeholder="Gaps surfaced: … / Blind spots caught by a second lens: … / What we'd verify: …"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>How did AI alongside a framework change how quickly you got oriented, versus the framework alone?</li>
+          <li>Where did AI help you apply the framework rigorously — and where did it risk doing the thinking for you?</li>
+          <li>What checks ensured the output reflected the scenario, not AI-generated assumptions?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>A single framework both narrows and focuses thinking.</li>
+          <li>Multiple lenses reduce false certainty under pressure.</li>
+          <li>AI is most useful challenging confidence and exposing blind spots — not producing recommendations.</li>
+          <li>This is a stress-inducing scenario by design — debrief how the AI affected participants' grip on it, and any similar experiences.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRANSPARENCY ============ -->
+<section class="band white" id="transparency">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">Culture</span></div>
+        <h2 class="section">AI use and transparency.</h2>
+        <p class="section-lead">Transparency is a powerful risk mitigation — yet most people hesitate to disclose AI use. Why:</p>
+        <div class="whycards">
+          <div class="w"><b>Perceived reduced effort or skill</b>"Will they think I didn't put the work in — or can't do it myself?"</div>
+          <div class="w"><b>Job security anxiety</b>"If AI does this, does my role look more automatable?"</div>
+          <div class="w"><b>Stigma or cultural resistance</b>In some teams and industries, AI use still carries a quiet stigma.</div>
+          <div class="w"><b>Unclear policies</b>When guidelines on AI use and disclosure are vague, silence feels safer.</div>
+        </div>
+        <div class="selfOnly note" style="margin-top:14px"><b>The cost of hiding it:</b> hidden reliance means unchecked cognitive offloading; concealed use causes untraceable context drift and undermines accountability; hallucinations go undetected under pressure; and trust erodes as teammates feel excluded from how work is really being done.</div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m5-transparency-open-laptop.jpg" alt="A team member openly turning his laptop to show colleagues how he produced a document"></div>
+        <div class="selfOnly rail accent" style="grid-template-columns:1fr;margin-top:14px">
+          <div class="box"><h4>Transparent, human-centred teams can…</h4><ul>
+            <li>Catch and correct mistakes by openly reviewing AI outputs together.</li>
+            <li>Maintain shared context — e.g. via knowledge files — reducing drift as work moves between people and systems.</li>
+            <li>Develop collective expertise rather than letting skills atrophy.</li>
+            <li>Build trust through honest conversations about how and why AI is used.</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 5.2 ============ -->
+<section class="band cream" id="a52">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 5.2</span></div>
+      <h2 class="section" style="max-width:none">AI transparency discussion</h2>
+      <button class="timerchip" type="button" data-minutes="10">⏱ 10:00</button>
+    </div>
+    <p class="section-lead">Reflecting on the workload scenario — its pressure, its hidden shortcuts — discuss the three angles below. The aim is naming the barriers to open dialogue about AI, and how working as a team overcomes them.</p>
+    <div class="two-col" style="margin-top:16px">
+      <div class="rail accent" style="grid-template-columns:1fr;margin:0">
+        <div class="box"><h4>Personal reflection</h4><ul><li>How do you feel about being transparent when using AI for work tasks? What concerns or reservations might you have?</li></ul></div>
+        <div class="box"><h4>Team perspective</h4><ul><li>How does your team view AI use? Any shared beliefs, anxieties, or unspoken norms about disclosing it?</li></ul></div>
+        <div class="box"><h4>Organisational position</h4><ul><li>What's your organisation's stance? Are policies clear? Open encouragement — or hesitation and uncertainty?</li></ul></div>
+      </div>
+      <div>
+        <div class="capture">
+          <h3>Capture the conversation</h3>
+          <div class="field"><label>Barriers we identified <span class="saved">Saved ✓</span></label><textarea rows="4" data-capture="a52_reflection" placeholder="Where does disclosure feel risky today — and why?"></textarea></div>
+          <div class="field" style="margin:0"><label>📌 One thing that would make AI transparency feel normal and low-risk in my team <span class="q">This carries into your Module 8 action plan.</span> <span class="saved">Saved ✓</span></label><textarea rows="3" data-capture="a52_norm" placeholder="e.g. A team norm: say 'AI-drafted, human-checked' on any doc where a model wrote the first pass…"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="extras-strip" data-extras='[
+    {"id":"x5a","type":"Speed Round","title":"Hat Swap","img":"x5a-hat-swap.jpg"},
+    {"id":"x5b","type":"Dilemma Cards","title":"Disclosure Dilemmas","img":"x5b-disclosure-dilemmas.jpg"}
+  ]'></div>
+  <div class="pager">
+    <a href="module-4.html"><div class="lbl">← Previous</div><div class="ttl">Module 4 — Optimise Time Together</div></a>
+    <a class="next" href="module-6.html"><div class="lbl">Next →</div><div class="ttl">Module 6 — Change Management of AI Adoption</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+(function(){
+  var DEFS={
+    white:{t:'White Hat — Facts and data',p:'Focus on what is known, what is not known and what information is still needed. Use when you want to clarify the evidence, avoid guesswork and anchor the discussion in verified detail.',s:'Wearing the White Hat only: using just the information I provide, list what is known, what is unknown, and what information is still needed. Do not speculate.'},
+    red:{t:'Red Hat — Feelings and intuition',p:'Capture gut reactions, emotions, early concerns or enthusiasm without needing justification. Use to understand team sentiment or uncover discomfort affecting decision quality.',s:'Wearing the Red Hat only: what emotional reactions, concerns or enthusiasm might people feel about this situation? No justification needed — surface the feelings.'},
+    black:{t:'Black Hat — Risks and problems',p:'Identify weaknesses, threats, potential failures and reasons something may not work. Use to prevent blind optimism and ensure risks are understood before committing.',s:'Wearing the Black Hat only: what are the weaknesses, threats and reasons this may fail? Be specific and tie each risk to the provided information.'},
+    yellow:{t:'Yellow Hat — Benefits and value',p:'Highlight advantages, opportunities and positive outcomes. Use to balance risk with value and ensure upside is not overlooked.',s:'Wearing the Yellow Hat only: what advantages, opportunities and positive outcomes could arise here — grounded in the provided information?'},
+    green:{t:'Green Hat — Ideas and alternatives',p:'Generate new options, creative possibilities and different approaches. Use to break out of existing patterns or explore unconsidered adjustments.',s:'Wearing the Green Hat only: generate alternative approaches and creative options we have not considered. Flag which would need new information to assess.'},
+    blue:{t:'Blue Hat — Process and control',p:'Guide the thinking process: clarify purpose, define next steps, organise how the hats will be used. Use when discussion becomes unfocused.',s:'Wearing the Blue Hat only: propose how we should structure our analysis of this situation — sequence, lenses to apply, and the decision we are working toward.'}
+  };
+  var def=document.getElementById('hatdef');
+  document.querySelectorAll('.hat').forEach(function(h){
+    h.addEventListener('click',function(){
+      var on=h.classList.contains('on');
+      document.querySelectorAll('.hat').forEach(function(x){x.classList.remove('on');});
+      if(on){def.classList.remove('show');def.innerHTML='';return;}
+      h.classList.add('on');
+      var d=DEFS[h.getAttribute('data-hat')];
+      def.style.setProperty('--hc', getComputedStyle(h).getPropertyValue('--hc'));
+      def.innerHTML='<h4>'+d.t+'</h4><p>'+d.p+'</p>'
+        +'<div class="promptbox" style="margin:0"><div class="pb-head"><span class="pb-label">Prompt stem</span>'
+        +'<button class="copychip" type="button">Copy</button></div><pre>'+d.s+'</pre></div>';
+      def.classList.add('show');
+      if(window.AFT&&AFT.components) AFT.components.initCopyChips();
+    });
+  });
+})();
+</script>
+<script>
+/* ===== Extra 5A · Speed Round — "Hat Swap" ===== */
+AFTX.register('x5a', function(g){
+  var ui=g.ui, root=g.root;
+  var HATS=[
+    {label:'White Hat', color:'#EDEAE0', hint:'Facts only — what is known, unknown, still needed. No speculation.'},
+    {label:'Red Hat', color:'#DC5A46', hint:'Feelings and gut reactions — no justification required.'},
+    {label:'Black Hat', color:'#3A3A3A', hint:'Risks, weaknesses, reasons this fails. Be specific.'},
+    {label:'Yellow Hat', color:'#E9B44C', hint:'Benefits, value, upside — grounded, not fluffy.'},
+    {label:'Green Hat', color:'#4C9F70', hint:'New options and alternatives nobody has raised yet.'},
+    {label:'Blue Hat', color:'#2D7DD2', hint:'Process — how should the group think this through, in what order?'}
+  ];
+  var SCEN=ui.shuffle([
+    'The team wants to roll AI-generated meeting summaries out to clients next month.',
+    'Your manager suggests replacing the weekly status meeting with an AI-written digest.',
+    'A teammate proposes letting AI draft every first reply to customer complaints.',
+    'Finance is asking whether the team’s AI subscriptions are actually worth the money.',
+    'A new starter asks if it’s okay to paste client data into a public chatbot.',
+    'The exec team wants a “fully AI-first” pilot squad stood up by end of quarter.',
+    'Someone proposes an AI notetaker in every 1:1 — including the sensitive ones.',
+    'The team’s AI assistant confidently put a wrong figure into a board pack.'
+  ]);
+  ui.lead(root,'Spin — whoever the facilitator points at must respond to the scenario wearing ONLY the hat that comes up, for 30 seconds, even if it’s the opposite of their instinct. The room judges: did they stay in the hat?');
+  var score=ui.score(root);
+  var si=0;
+  var area=ui.el('div'); root.appendChild(area);
+  var brief=ui.el('div','gx-card','<div class="gx-q" style="font-size:16px;color:rgba(255,255,255,.55)">Your hat appears after the spin…</div>');
+  var play=ui.el('div');
+  ui.spinner(area,{button:'Spin for a hat',segments:HATS,onLand:function(seg){
+    var sc=SCEN[si%SCEN.length]; si++;
+    brief.innerHTML='<div class="gx-round">Your brief</div>'
+      +'<div class="gx-q">Respond wearing <span style="color:'+seg.color+';text-shadow:0 0 1px rgba(255,255,255,.4)">'+ui.esc(seg.label)+'</span> only — '+ui.esc(seg.hint)+'</div>'
+      +'<div class="gx-q" style="margin-top:10px;font-size:16px">“'+ui.esc(sc)+'”</div>';
+    play.innerHTML='';
+    var start=ui.el('button','btn accent','Start 0:30 ▸'); start.type='button';
+    play.appendChild(start);
+    start.addEventListener('click',function(){
+      start.remove();
+      var tc=ui.el('div','gx-card','<div class="gx-q">In the hat… go.</div>');
+      play.appendChild(tc);
+      ui.countdown(tc,30,function(){ tc.querySelector('.gx-q').textContent='Time! Room — did they stay in the hat?'; });
+      var row=ui.el('div','gx-votes');
+      var yes=ui.el('button','gx-vote','Stayed in the hat ✓ (+1)'); yes.type='button';
+      var no=ui.el('button','gx-vote','Slipped out ✗'); no.type='button';
+      yes.addEventListener('click',function(){ if(yes.disabled)return; yes.disabled=no.disabled=true; yes.classList.add('right'); score.add(1); });
+      no.addEventListener('click',function(){ if(no.disabled)return; yes.disabled=no.disabled=true; no.classList.add('wrong'); score.miss(); });
+      row.appendChild(yes); row.appendChild(no);
+      play.appendChild(row);
+    });
+  }});
+  root.appendChild(brief); root.appendChild(play);
+  var fin=ui.el('button','btn dark','Finish the game'); fin.type='button'; fin.style.marginTop='16px';
+  fin.addEventListener('click',function(){
+    ui.pointCard(root,'Room score: '+score.value()+'. Responding against instinct is the whole exercise — the hats are a discipline, not a personality. If your natural Black Hat can hold a convincing Yellow for 30 seconds, your meetings can too.');
+    fin.remove();
+  });
+  root.appendChild(fin);
+});
+
+/* ===== Extra 5B · Dilemma Cards — "Disclosure Dilemmas" ===== */
+AFTX.register('x5b', function(g){
+  var ui=g.ui, root=g.root;
+  var CARDS=[
+    {t:'AI fixed the spelling and grammar in your email to a client.',
+     w:'Almost nobody discloses spellcheck — that’s the room’s baseline. Watch where your own line sits as the cards climb.'},
+    {t:'AI restructured your report — the ideas are yours, but the shape and flow are the model’s.',
+     w:'Structure shapes meaning more than we admit. It still feels like “help” though — most rooms stay quiet here.'},
+    {t:'AI wrote the first draft of a client proposal. You edited it heavily before sending.',
+     w:'First drafts anchor everything — tone, framing, what never got mentioned. The client believes they’re reading you.'},
+    {t:'The analysis on the slide you’re presenting as your professional judgement was produced by AI.',
+     w:'This is where “help” becomes authorship. Quick test: would your answer change if the figure turned out to be wrong?'},
+    {t:'You used AI to prepare counterarguments for a difficult negotiation — with a colleague.',
+     w:'Using AI *about* a colleague changes the relationship, not just the work. Would you be comfortable if they knew?'},
+    {t:'AI drafted the sensitive performance feedback you gave a direct report.',
+     w:'Feedback lands because it’s yours. If they learned a model drafted it, does the feedback still count?'},
+    {t:'AI wrote the heartfelt farewell message for a departing teammate. Everyone praised your beautiful words.',
+     w:'The praise was for sincerity. Disclosure here costs something real — which is exactly why a shared norm helps.'},
+    {t:'Your team’s award-winning idea came out of an AI brainstorm. Nobody has ever mentioned that.',
+     w:'Credit, awards, promotion evidence. Once the stakes are shared, disclosure stops being a personal choice.'}
+  ];
+  var OPTS=['Disclose','It depends','Stay quiet'];
+  var COLS=['#00C0AF','#E9B44C','#DC5A46'];
+  var tally=[0,0,0];
+  ui.lead(root,'Eight situations, climbing stakes. For each: hands up, then the facilitator records the room’s majority call. Watch the drift bar — where does this room’s line actually sit?');
+  var bar=ui.el('div','gx-card','<div class="gx-round">Room drift</div><div class="ddbar" style="display:flex;height:14px;border-radius:7px;overflow:hidden;background:rgba(255,255,255,.08)"></div><div class="ddleg" style="font-family:var(--head);font-size:12.5px;margin-top:8px;color:rgba(255,255,255,.65)">No calls yet</div>');
+  root.appendChild(bar);
+  function drawBar(){
+    var n=tally[0]+tally[1]+tally[2];
+    var b=bar.querySelector('.ddbar'); b.innerHTML='';
+    if(!n) return;
+    tally.forEach(function(v,i){
+      if(!v) return;
+      var s=ui.el('div'); s.style.width=(v/n*100)+'%'; s.style.background=COLS[i]; b.appendChild(s);
+    });
+    bar.querySelector('.ddleg').innerHTML=tally.map(function(v,i){
+      return '<span style="color:'+COLS[i]+'">■</span> '+ui.esc(OPTS[i])+' ×'+v;
+    }).join(' &nbsp; ');
+  }
+  var rounds=CARDS.map(function(cd){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-q" style="font-size:17px;font-weight:500">'+ui.esc(cd.t)+'</div>');
+      c.appendChild(card);
+      ui.vote(c,{options:OPTS.map(function(o){return {label:o,why:cd.w};}),
+        onDone:function(i){ tally[i]++; drawBar(); btn(c,next); }});
+    };
+  });
+  ui.deck(root,{label:'Card',rounds:rounds,onEnd:function(){
+    var n=tally[0]+tally[1]+tally[2];
+    ui.pointCard(root,'The room’s calls: Disclose ×'+tally[0]+' · It depends ×'+tally[1]+' · Stay quiet ×'+tally[2]+' of '+n+'. Every table draws the line in a different place — and that’s the problem. Transparency norms exist so no individual ever has to face these cards alone.');
+  }});
+  function btn(c,next){ var x=ui.el('button','btn accent','Next card →'); x.type='button'; x.addEventListener('click',next); c.appendChild(x); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Component Kitchen Sink — AI for Teamwork | AIM</title>
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body data-page="kitchen-sink">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#c-copy">Copy chip</a><a href="#c-gate">AI gate</a><a href="#c-spectrum">Spectrum</a>
+  <a href="#c-tabs">Tabs</a><a href="#c-sorter">Sorter</a><a href="#c-reveal">Reveal</a>
+  <a href="#c-flags">Flagset</a><a href="#c-timer">Timer</a><a href="#c-check">Checklist</a><a href="#c-pin">Pin</a><a href="#c-print">Print</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/hub-loop-motif-handoff-2.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Internal — Phase 2</div>
+    <h1>Component Kitchen Sink</h1>
+    <p class="lead">Every shared interactive component, exercised on one page. If it works here, it works in the modules. Test keys use the <code>_ks_</code> prefix so they never touch course progress.</p>
+  </div>
+</section>
+
+<section class="band cream" id="c-copy">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Copy chip + prompt box</h2>
+    <p class="section-lead">Used on every activity: participants copy prompts and source texts into their own LLM with one click.</p>
+    <div class="promptbox">
+      <div class="pb-head"><span class="pb-label">Suggested prompt</span><button class="copychip" type="button">Copy prompt</button></div>
+      <pre id="ksPrompt">Take the learnings above and synthesise the material to help with consolidation and retention of information.</pre>
+    </div>
+    <div class="promptbox source">
+      <div class="pb-head"><span class="pb-label">Source text</span><button class="copychip" type="button">Copy source</button></div>
+      <pre>The migration script passed staging on Tuesday. There's still the edge case with accounts created before 2019 — maybe two thousand users, could be more.</pre>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="c-gate">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Component</span></div>
+    <h2 class="section">AI gate</h2>
+    <p class="section-lead">The AI step stays locked until the human-first field has content (min 20 characters here) — enforcing "handwrite first" from the facilitator guide.</p>
+    <div class="capture" style="max-width:680px">
+      <h3>Step 1 — your own words first</h3>
+      <p class="hint">Write at least 20 characters to unlock Step 2.</p>
+      <div class="field">
+        <label>Handwritten draft <span class="saved">Saved ✓</span></label>
+        <textarea rows="3" data-capture="_ks_gate_src" placeholder="Write your genuine first draft here…"></textarea>
+      </div>
+    </div>
+    <div class="ai-gate" data-gate="_ks_gate_src" data-gate-min="20" style="max-width:680px">
+      <div class="gate-lock"><span class="ic">🔒</span><span>
+        <span class="state-locked"><b>Locked.</b> Complete Step 1 in your own words first — the AI step unlocks automatically.</span>
+        <span class="state-open"><b>Unlocked.</b> Now refine with AI — and keep authorship of the final version.</span>
+      </span></div>
+      <div class="gate-content">
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">Step 2 — AI refinement prompt</span><button class="copychip" type="button">Copy</button></div>
+          <pre>Here is my draft check-in message. Suggest two alternative phrasings that keep my meaning and tone. Do not add new content.</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="c-spectrum">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Spectrum slider</h2>
+    <p class="section-lead">Activity 2.1 — drag your team onto the collaboration spectrum. Position persists.</p>
+    <div class="spectrum" data-zones="Independent|Complementary|Tightly coupled" style="max-width:680px">
+      <div class="sp-labels"><span>Independent</span><span>Complementary</span><span>Tightly coupled</span></div>
+      <input type="range" min="0" max="100" value="50" data-capture="_ks_spectrum" aria-label="Team collaboration spectrum">
+      <div class="sp-readout"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="c-tabs">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Tabs</h2>
+    <p class="section-lead">Activity 4.2's three audiences; Activity 3.1's personas.</p>
+    <div class="tabs" data-tabs style="max-width:680px">
+      <div class="tabbar" role="tablist">
+        <button class="tab on" type="button" data-tab="exec">For your boss</button>
+        <button class="tab" type="button" data-tab="peers">For your peers</button>
+        <button class="tab" type="button" data-tab="attendees">For attendees</button>
+      </div>
+      <div class="tabpane on" data-pane="exec"><div class="field"><label>Executive summary <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="_ks_tab_exec" placeholder="Paste your validated summary…"></textarea></div></div>
+      <div class="tabpane" data-pane="peers"><div class="field"><label>Peer summary <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="_ks_tab_peers" placeholder="Questions, risks, interdependencies…"></textarea></div></div>
+      <div class="tabpane" data-pane="attendees"><div class="field"><label>Attendee summary <span class="saved">Saved ✓</span></label><textarea rows="2" data-capture="_ks_tab_att" placeholder="Decisions, assignments, due dates…"></textarea></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band cream" id="c-sorter">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Component</span></div>
+    <h2 class="section">Sorter</h2>
+    <p class="section-lead">Activity 4.1's Known / Inferred / Missing triage. Tap a statement, then tap its column. Tap a placed statement to send it back. Placement persists.</p>
+    <div class="sorter" data-sorter="_ks_sort" data-cols="Known|Inferred|Missing">
+      <div class="sorter-hint">Statements about the meeting scenario:</div>
+      <div class="sorter-pool">
+        <button class="chipitem" type="button">The workshop is for the Q3 planning cycle</button>
+        <button class="chipitem" type="button">Sandra probably wants a decision by Friday</button>
+        <button class="chipitem" type="button">Who actually owns the final budget call</button>
+        <button class="chipitem" type="button">Twelve people have been invited</button>
+        <button class="chipitem" type="button">The venue has AV problems</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="c-reveal">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Component</span></div>
+    <h2 class="section">Reveal (staged scenario)</h2>
+    <p class="section-lead">Module 2's cognitive-offloading and context-drift stories play out beat by beat.</p>
+    <div class="reveal" style="max-width:680px">
+      <div class="rv-step"><b>Beat 1.</b> Jordan starts using AI to draft the weekly team update. It's faster, and the first few are good.</div>
+      <div class="rv-step"><b>Beat 2.</b> Weeks pass. Jordan stops reading the source reports — the AI "knows what to say by now."</div>
+      <div class="rv-step"><b>Beat 3.</b> A key figure changes mid-month. The update ships with last month's number. Nobody catches it for two weeks.</div>
+      <div class="rv-step"><b>The point.</b> The tool didn't fail — the checking stopped. AI can support teamwork, but teams must stay cognitively engaged.</div>
+      <button class="rv-next btn accent" type="button" data-done="Story complete">Reveal next beat</button>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="c-flags">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Component</span></div>
+    <h2 class="section">Flagset (spot what to verify)</h2>
+    <p class="section-lead">Module 2's hallucination exercise: an AI summary with invented details — tap the claims you'd verify before trusting.</p>
+    <div class="flagset" style="max-width:680px">
+      <p class="section-lead" style="margin-bottom:12px">The AI summarised the project meeting as follows. Two details never appeared in the transcript:</p>
+      <button class="flag" type="button" data-good="0">Marcus reported the migration script passed staging on Tuesday.</button>
+      <button class="flag" type="button" data-good="1">The team agreed the launch will move to the 22nd.</button>
+      <button class="flag" type="button" data-good="0">Aisha's team has drafted eleven of fourteen help articles.</button>
+      <button class="flag" type="button" data-good="1">Daniel confirmed the vendor renewal is signed.</button>
+      <div class="fs-score"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="c-timer">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Component</span></div>
+    <h2 class="section">Timer chip (Present mode only)</h2>
+    <p class="section-lead">Facilitator countdowns from the FG durations. Switch to <b>Present</b> in the header to see it; click to start, click again to reset. (Demo timer: 1 minute.)</p>
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity demo</span></div>
+      <h3 style="font-size:19px">Icebreaker</h3>
+      <button class="timerchip" type="button" data-minutes="1">⏱ 1:00</button>
+    </div>
+    <p class="presentOnly note accent" style="max-width:680px"><b>Facilitator cue (Present-only):</b> this paragraph is only visible in Present mode — used for FG coaching notes and discussion questions.</p>
+  </div>
+</section>
+
+<section class="band cream" id="c-check">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Checklist (persistent)</h2>
+    <p class="section-lead">Activity 4.2's validation pass. Ticks persist across reloads.</p>
+    <div class="checklist" data-checklist="_ks_check" style="max-width:680px">
+      <label><input type="checkbox" data-ck="names"><span>No invented names — every person mentioned appears in the transcript</span></label>
+      <label><input type="checkbox" data-ck="decisions"><span>No invented decisions — "agreed/decided" claims trace to the source</span></label>
+      <label><input type="checkbox" data-ck="dates"><span>No invented due dates — every date is in the source or marked as proposed</span></label>
+      <label><input type="checkbox" data-ck="intent"><span>No implied intent — nobody's motives have been guessed at</span></label>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="c-pin">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Pinned challenge strip</h2>
+    <p class="section-lead">Modules 3–8 re-display the challenge captured in Activity 1.2. Type below to simulate; the strip updates live.</p>
+    <div class="capture" style="max-width:680px;margin-bottom:14px">
+      <div class="field"><label>Simulated Activity 1.2 capture <span class="saved">Saved ✓</span></label>
+      <textarea rows="2" data-capture="_ks_pin_src" placeholder="One specific teamwork challenge…"></textarea></div>
+    </div>
+    <div class="pinstrip" style="max-width:680px"><span class="ic">📌</span><div class="pt"><b>Your challenge from this morning:</b><br><span data-pin="_ks_pin_src" data-pin-from="the field above"></span></div></div>
+  </div>
+</section>
+
+<section class="band tint" id="c-print">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">Component</span></div>
+    <h2 class="section">Print stylesheet</h2>
+    <p class="section-lead">My Teamwork Plan prints to clean A4: chrome, heroes, buttons and timers all drop out; captures and checklists keep their content.</p>
+    <div class="printbar"><button class="btn accent" type="button" data-print>Print preview this page</button></div>
+  </div>
+</section>
+
+<section class="band cream" id="c-extras">
+  <div class="wrap">
+    <div class="kicker"><span class="tag coral">Component</span></div>
+    <h2 class="section">Extras engine (E1)</h2>
+    <p class="section-lead">The strip below is exactly what module pages will declare. The demo game exercises every engine primitive — timed deck, vote-and-reveal with scoring, tap-to-swap ordering, the spinner, and the closing point card. The second card shows the "in production" state.</p>
+    <div class="extras-strip" data-pics="../assets/media/pics/" data-extras='[
+      {"id":"demo-deck","type":"Engine Test","title":"Primitive Playground","img":"x1b-friction-forecast.jpg"},
+      {"id":"not-built-yet","type":"Sorting Game","title":"Which Team Is This?","img":"x1a-which-team.jpg"}
+    ]'></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Internal component test page.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+/* E1 demo game — proves every primitive end-to-end */
+AFTX.register('demo-deck', function(g){
+  var ui=g.ui, root=g.root;
+  ui.lead(root, 'Three quick rounds, one per primitive family. Play through to the point card.');
+  var score = ui.score(root);
+  ui.deck(root, {
+    label:'Round',
+    rounds:[
+      /* Round 1: vote + countdown */
+      function(c, next){
+        var card=ui.el('div','gx-card','<div class="gx-q">A polished AI draft arrives and the team stops checking facts. Which risk is this?</div>');
+        c.appendChild(card);
+        var cd=ui.countdown(card, 20, function(){});
+        ui.vote(c, {options:[
+          {label:'Cognitive offloading', correct:true, why:'The tool now holds what humans used to — understanding thins even as output improves.'},
+          {label:'Context drift'},
+          {label:'Hallucination'},
+          {label:'Prompt injection'}
+        ], onDone:function(i, correct){
+          cd.stop();
+          if(correct) score.add(1); else score.miss();
+          var btn=ui.el('button','btn accent','Next round →'); btn.type='button';
+          btn.addEventListener('click', next); c.appendChild(btn);
+        }});
+      },
+      /* Round 2: order */
+      function(c, next){
+        var card=ui.el('div','gx-card','<div class="gx-q">Tap two steps to swap them — restore the human-centred loop.</div>');
+        c.appendChild(card);
+        ui.order(c, {
+          items:['Validate each output','Break the task into steps','Rewrite in your own tone','Prompt one step at a time'],
+          answer:['Break the task into steps','Prompt one step at a time','Validate each output','Rewrite in your own tone'],
+          onSolved:function(){
+            score.add(2);
+            ui.reveal(c,'Solved — the loop holds.');
+            var btn=ui.el('button','btn accent','Next round →'); btn.type='button';
+            btn.addEventListener('click', next); c.appendChild(btn);
+          }
+        });
+      },
+      /* Round 3: spinner */
+      function(c, next){
+        var card=ui.el('div','gx-card','<div class="gx-q">Spin for a thinking hat, answer in that mode, then finish.</div>');
+        c.appendChild(card);
+        ui.spinner(c, {
+          button:'Spin the wheel',
+          segments:[{label:'White — facts'},{label:'Red — feelings'},{label:'Black — risks'},{label:'Yellow — upside'},{label:'Green — ideas'},{label:'Blue — process'}],
+          onLand:function(seg){
+            score.add(1);
+            var btn=ui.el('button','btn accent','Finish →'); btn.type='button';
+            btn.addEventListener('click', next); c.appendChild(btn);
+          }
+        });
+      }
+    ],
+    onEnd:function(){
+      ui.pointCard(root, 'Every extra ends like this: one line the facilitator can land, then back to the module. Final score: '+score.value()+' pts.');
+    }
+  });
+});
+</script>
+</body>
+</html>

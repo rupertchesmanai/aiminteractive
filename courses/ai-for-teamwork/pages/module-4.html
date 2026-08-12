@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4 — Optimise Time Together | AI for Teamwork</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Module 4 — Optimise Time Together | AI for Teamwork">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;display:block}
+  .chatmsg{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);padding:18px 22px;font-size:15px;margin:14px 0}
+  .chatmsg .from{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:6px}
+  .scen details{background:#fff;border:1px solid var(--line);margin-bottom:8px}
+  .scen summary{cursor:pointer;padding:13px 16px;font-family:var(--head);font-weight:600;font-size:14.5px;list-style:none}
+  .scen summary::-webkit-details-marker{display:none}
+  .scen summary::before{content:"+ ";color:var(--accent-dark)}
+  .scen details[open] summary::before{content:"− "}
+  .scen .sd{padding:0 16px 14px;font-size:13.5px;color:var(--grey)}
+  .scen .sd ul{margin:6px 0 8px 18px}
+  .scen .sd li{margin-bottom:4px}
+  .att{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+  @media(max-width:1000px){.att{grid-template-columns:repeat(2,1fr)}}
+  .attc{background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent);padding:12px 14px;font-size:12px;color:var(--grey)}
+  .attc b{display:block;font-family:var(--head);font-size:13.5px;color:var(--ink)}
+  .attc i{display:block;font-style:normal;font-family:var(--head);font-weight:600;font-size:11px;color:var(--accent-dark);margin-bottom:4px}
+  .kf{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+  @media(max-width:820px){.kf{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="module-4">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#why">Why meetings</a><a href="#kfile">Knowledge files</a><a href="#a41">Activity 4.1</a>
+  <a href="#transcripts">Transcripts</a><a href="#a42">Activity 4.2</a><a href="#a43">Activity 4.3</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/m4-hero-golden-hour-meeting.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Module 4</div>
+    <h1>Optimise Time Together</h1>
+    <p class="lead">Meetings are how teams coordinate, share information and decide. This module uses AI before, during and after: clarify purpose before you convene, turn transcripts into accountable actions, and let AI challenge your assumptions before you commit.</p>
+    <div class="anchors">
+      <div class="anchor a"><span class="bar"></span><span>Build a knowledge file from a deliberately ambiguous request</span></div>
+      <div class="anchor t"><span class="bar"></span><span>Three audience-fit summaries from one messy transcript</span></div>
+      <div class="anchor"><span class="bar"></span><span>AI as a challenger — not a decision-maker</span></div>
+    </div>
+    <div class="dashtag">🕘 ~50 minutes · Activities 4.1, 4.2 &amp; 4.3</div>
+  </div>
+</section>
+
+<!-- ============ WHY MEETINGS ============ -->
+<section class="band cream" id="why">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">Why it matters</span></div>
+        <h2 class="section">Why optimising meetings empowers teams.</h2>
+        <div class="prose">
+          <p>Much of the time organisations lose in meetings stems from unclear agendas, uneven participation and fragmented context entering the room (Allen, Lehmann-Willenbrock &amp; Rogelberg 2018). High-performing teams counter this with shared preparation, context alignment and clarity of purpose — the three factors repeatedly identified as the strongest predictors of meeting effectiveness.</p>
+          <p class="selfOnly">Meetings run poorly when people arrive with different assumptions, incomplete context or unclear expectations. Without a shared understanding of purpose, discussions drift and decisions are hard to capture. Fragmented notes then make it hard to identify what was decided, what remains unresolved and who owns next steps. AI helps by organising information before the meeting, making assumptions visible, and transforming raw notes into decisions and actions — <b>but only with verification and human judgement</b>.</p>
+        </div>
+        <div class="note accent" style="margin-top:14px"><b>Optimised meetings create:</b> stronger direction, less rework, and better team efficiency <i>and</i> shared understanding.</div>
+      </div>
+      <div class="imgcard"><img src="../assets/media/pics/m4-badmeeting-drifting.jpg" alt="A meeting drifting — one attendee checks his watch, another gazes out the window"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KNOWLEDGE FILES ============ -->
+<section class="band white" id="kfile">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">The technique</span></div>
+    <h2 class="section">The knowledge file — anchoring AI to what you actually know.</h2>
+    <p class="section-lead">A knowledge file is a short collection of information you prepare before working with an LLM. It gives the model the context you already hold — improving accuracy, reducing drift, preventing hallucinations, and keeping you in control of meaning. You'll use them for the rest of the course.</p>
+    <div class="kf">
+      <div class="rail accent" style="grid-template-columns:1fr;margin:0">
+        <div class="box"><h4>To create one</h4><ul>
+          <li>List what you already know about the situation.</li>
+          <li>Capture facts, constraints, risks and unanswered questions.</li>
+          <li>Describe who is involved and why their perspectives matter.</li>
+          <li>Add relevant timelines, pressures or decisions due.</li>
+          <li>Keep it concise and factual.</li>
+          <li>Save it to a PDF and re-import it into your LLM (method varies by tool).</li>
+        </ul></div>
+      </div>
+      <div class="note" style="align-self:start"><b>Why it works:</b> a knowledge file is a living artefact — it improves alignment before, during and after the meeting, and every prompt that references it starts from your verified context instead of the model's guesses.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 4.1 ============ -->
+<section class="band tint" id="a41">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 4.1</span></div>
+      <h2 class="section" style="max-width:none">Preparing for and optimising a meeting</h2>
+      <button class="timerchip" type="button" data-minutes="25">⏱ 25:00</button>
+    </div>
+    <p class="section-lead">The scenario below is <b>deliberately ambiguous</b> — exactly the situation where an unguided AI will happily "fill in" the gaps with false assumptions. Separate what is known, inferred and missing <i>before</i> you prompt anything.</p>
+
+    <div class="chatmsg"><div class="from">Teams message · Wednesday 4:52 pm · Rachel T. (your manager)</div>"Can you pull together a meeting with the project teams so we can get on the same page before things slip further? There are concerns. Let's regroup early next week."<br><span style="font-size:12.5px;color:var(--grey)">She goes offline almost immediately to join another call. No further detail follows.</span></div>
+
+    <div class="scen">
+      <details><summary>Recent background — the Orion program</summary><div class="sd">Your organisation is midway through a multi-stream transformation program called Orion, with three delivery workstreams that must land together for a Q3 launch. Over the past two months:<ul>
+        <li>The delivery schedule has been re-baselined twice due to a vendor onboarding delay.</li>
+        <li>The integration team raised concerns about API readiness, but no consolidated impact assessment exists.</li>
+        <li>Requirements sign-off has produced contradictory decisions made verbally across channels.</li>
+        <li>The change team is fielding inconsistent messages from senior leaders.</li>
+        <li>Delivery and Product have been escalating concerns independently — neither aware of the other's escalation.</li>
+        <li>A senior executive informally asked for "a clear narrative of where things actually are".</li>
+      </ul>Internal Slack hints at growing frustration: engineers unclear why priorities shifted twice this week; three decision points awaiting Product Owner confirmation; the dashboard shows "amber" but some feel it should be "red"; a customer demo was postponed with no shared rationale.</div></details>
+      <details><summary>What happened this morning</summary><div class="sd">At stand-up, two developers said they were "blocked by unconfirmed requirements" — while the BA believed those requirements were already approved. Meanwhile the Change Manager heard that stakeholders across Operations "do not understand what is changing next month", even though no communications had been planned for next month. None of these signals have been consolidated into a single view.</div></details>
+      <details><summary>Your manager — Rachel T.</summary><div class="sd">Senior Program Manager, six years with the organisation. Known for structured thinking, calm leadership and evidence-based decisions; background in large-scale banking transformation, stabilising programs drifting into ambiguity. Values concise reliable escalation, cross-team collaboration, clear narrative, and people who bring forward well-organised information. Respected but stretched — pulled into governance forums for three weeks with less direct visibility of delivery. Which makes her short, vague, urgent message stand out even more.</div></details>
+      <details><summary>Possible attendees</summary><div class="sd"><div class="att">
+        <div class="attc"><b>Sarah N.</b><i>Delivery Lead</i>Oversees timelines and progress. Needs clarity on emerging risks and blocked dependencies.</div>
+        <div class="attc"><b>Alex T.</b><i>Business Analyst</i>Manages requirements. Needs to know what changed and what requires revalidation.</div>
+        <div class="attc"><b>Daniel R.</b><i>Product Owner</i>Owns prioritisation and customer value. Needs release implications and trade-offs.</div>
+        <div class="attc"><b>Priya N.</b><i>Technical Lead</i>Assesses integration risks. Needs specifics about what is slipping and why.</div>
+        <div class="attc"><b>Marcus L.</b><i>Change &amp; Comms Manager</i>Needs a coherent narrative about what happened and what comes next.</div>
+      </div></div></details>
+    </div>
+
+    <h3 style="margin-top:24px;font-size:19px">Step 1 · Sort the signals — known, inferred, or missing?</h3>
+    <p class="section-lead" style="margin-top:6px">Before any prompting, triage. Tap a statement, then tap its column.</p>
+    <div class="sorter" data-sorter="a41_sort" data-cols="Known|Inferred|Missing">
+      <div class="sorter-pool">
+        <button class="chipitem" type="button">Rachel wants a meeting with the project teams early next week</button>
+        <button class="chipitem" type="button">The schedule has been re-baselined twice due to a vendor delay</button>
+        <button class="chipitem" type="button">Delivery and Product have each escalated concerns independently</button>
+        <button class="chipitem" type="button">Rachel is under pressure from senior leadership</button>
+        <button class="chipitem" type="button">The dashboard should really be red, not amber</button>
+        <button class="chipitem" type="button">The slippage is visible somewhere but not widely acknowledged</button>
+        <button class="chipitem" type="button">Which workstreams Rachel expects to attend</button>
+        <button class="chipitem" type="button">What outcome Rachel expects to walk away with</button>
+        <button class="chipitem" type="button">What exactly is slipping — timeline, quality, scope or readiness</button>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;font-size:19px">Steps 2–5 · Design the meeting, build the knowledge file, confirm with Rachel</h3>
+    <div class="two-col" style="margin-top:12px">
+      <div>
+        <div class="capture">
+          <div class="field"><label>Step 2 — Re-designed meeting, as an agenda for the calendar invite <span class="q">What kind of meeting/workshop is needed? Purpose and expected outcomes first — focus on outcomes, not topics.</span> <span class="saved">Saved ✓</span></label><textarea rows="6" data-capture="a41_agenda" placeholder="Purpose: … / Outcomes we will leave with: … / Agenda: …"></textarea></div>
+          <div class="field"><label>Step 3 — Knowledge file <span class="q">Context, attendees, risks and gaps — one file for your whole team. Use an LLM to refine structure, not to invent facts.</span> <span class="saved">Saved ✓</span></label><textarea rows="6" data-capture="a41_knowledge" placeholder="What we know / what we've inferred / what's missing / who's involved / decisions due…"></textarea></div>
+        </div>
+      </div>
+      <div>
+        <div class="capture">
+          <div class="field"><label>Step 4 — Email to Rachel <span class="q">Ask her to confirm or validate purpose, attendees and outcomes. Tone check: it should invite confirmation — not justify decisions or seek approval.</span> <span class="saved">Saved ✓</span></label><textarea rows="5" data-capture="a41_email" placeholder="Hi Rachel — ahead of Monday, here's what I'm planning. Could you confirm…"></textarea></div>
+          <div class="field"><label>Step 5 — Brief for one attendee <span class="q">Why they should attend, what's in it for them, what may be expected of them.</span> <span class="saved">Saved ✓</span></label><textarea rows="5" data-capture="a41_briefs" placeholder="Sarah — this session will surface the blocked dependencies affecting your timeline…"></textarea></div>
+        </div>
+        <div class="imgcard" style="margin-top:14px"><img src="../assets/media/pics/m4-knowledgefile-sorting-cards.jpg" alt="Sorting printed cards into three labelled columns"></div>
+      </div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>Where could AI help you surface clarity faster — without deciding anything for you?</li>
+          <li>What part of this would you not trust AI with, and why?</li>
+          <li>What would you explicitly check or rewrite before sharing anything with others?</li>
+        </ul></div>
+        <div class="box"><h4>Facilitator cues &amp; debrief</h4><ul>
+          <li>Watch for teams jumping to scheduling before clarifying purpose and outcomes — redirect.</li>
+          <li>The knowledge file is a living artefact — before, during and after the meeting.</li>
+          <li>This activity surfaces how quickly teams default to action when clarity is missing.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRANSCRIPTS ============ -->
+<section class="band white" id="transcripts">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">After the meeting</span></div>
+        <h2 class="section">Transcripts and raw notes → decisions and actions.</h2>
+        <div class="prose">
+          <p>Post-meeting notes are usually disorganised and incomplete. An LLM can group related points, highlight key decisions, surface unresolved questions and organise actionable steps — and blending its synthesis with your own notes and trackers builds a more complete picture. As always: review and confirm that nothing has been misrepresented or fabricated.</p>
+        </div>
+      </div>
+      <div class="imgcard"><img src="../assets/media/pics/m4-transcript-annotation.jpg" alt="A printed transcript being annotated by hand"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 4.2 ============ -->
+<section class="band cream" id="a42">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 4.2</span></div>
+      <h2 class="section" style="max-width:none">Turning a meeting transcript into useful summaries</h2>
+      <button class="timerchip" type="button" data-minutes="10">⏱ 10:00</button>
+    </div>
+    <p class="section-lead">One AI-transcribed meeting, three audiences. Follow the human-AI loop — one step at a time, validating at each step — and produce three clearly different summaries. <a href="../assets/media/transcript.txt" download style="color:var(--accent-dark);font-weight:600">Download the transcript</a> or copy it below.</p>
+
+    <details class="scen" style="margin-top:14px"><summary style="background:#fff;border:1px solid var(--line)">View / copy the sample transcript (Customer Portal Relaunch — weekly sync)</summary>
+      <div style="background:#fff;border:1px solid var(--line);border-top:0">
+        <div class="promptbox source" style="margin:0;border:0">
+          <div class="pb-head"><span class="pb-label">AI-generated transcript — may contain transcription errors</span><button class="copychip" type="button" data-copy="#tx42">Copy transcript</button></div>
+          <pre id="tx42">Meeting: Customer Portal Relaunch — weekly project sync (32 min)
+Attendees: Priya (project lead), Marcus (engineering), Lena (design), Tom (marketing), Aisha (customer support). Apologies: Daniel (finance).
+
+Priya: Quick round on the portal relaunch. Marcus, where are we on the login migration?
+Marcus: The migration script passed staging on Tuesday. There's still the edge case with accounts created before 2019 — maybe two thousand users, could be more, I haven't pulled the exact number.
+Priya: Is that a blocker for the the fifteenth?
+Marcus: Not if those users get the reset email flow. But someone needs to sign that off — not an engineering call.
+Aisha: Support would want at least a week's notice before reset emails go out. Last time we got hammered with tickets.
+Priya: Noted. I'll take the sign-off to Sandra. [inaudible] probably Thursday.
+Lena: Design update — dashboard screens done except billing. Waiting on final copy from Tom's team.
+Tom: Copy's basically done, legal just needs to glance at the refund wording. Back by Friday, worst case Monday.
+Lena: Monday still makes the build cut-off, but nothing after Monday please.
+Marcus: One more thing — performance. We deferred the caching layer to phase two, but load tests show the search page at four seconds on peak profile. Worse than the current site.
+Priya: Four seconds is not shippable. What would a fix take inside this phase?
+Marcus: Rough guess, three or four days. It would push the code freeze. Or ship with search as-is flagged as known — I wouldn't recommend it.
+Tom: Launching slower than the old site is the one thing the press release can't survive.
+Priya: Agreed — provisionally take the three to four days. Marcus, confirm the estimate by tomorrow midday and we'll decide whether the fifteenth moves.
+Aisha: Help articles — eleven of fourteen drafted; the last three depend on final billing screens.
+Lena: I can give you near-final screenshots now.
+Priya: Tom, the email announcement?
+Tom: Draft's with brand. Teaser on the tenth, main announcement launch morning. Rachel asked about the partner newsletter — I said I'd find out.
+Priya: Partners go in the main send, not the teaser. Yours, Tom. Risks — anything new?
+Marcus: Daniel flagged the invoice-export vendor renewal lands mid-month — if procurement slips, exports could be offline at launch. Low likelihood, ugly if it happens.
+Priya: Aisha, you talk to that vendor already — chase it? Status by Wednesday.
+Aisha: Can do.
+Priya: Decisions so far: performance fix provisionally in, billing copy Friday-slash-Monday, partners in main announcement only. Still open: the pre-2019 account approach (with me and Sandra), and whether the launch date moves, pending Marcus's estimate.
+Lena: The old portal's green "beta feedback" tab — keeping it? Looks dated but people use it.
+Priya: Keep for launch, review usage in a month. Same time next week: Marcus midday tomorrow on the estimate, Tom partner comms, Aisha vendor status Wednesday, me on the Sandra sign-off.</pre>
+        </div>
+      </div>
+    </details>
+
+    <div class="note accent" style="margin:16px 0"><b>The human-AI loop, again:</b> break the task into steps · prompt one step at a time · validate each output · re-inject when accuracy declines · final human review · rewrite in your own tone. The human sets the steps — even if AI suggests options.</div>
+
+    <div class="tabs" data-tabs>
+      <div class="tabbar" role="tablist">
+        <button class="tab on" type="button" data-tab="boss">a · For your boss</button>
+        <button class="tab" type="button" data-tab="peers">b · For your peers</button>
+        <button class="tab" type="button" data-tab="att">c · For the attendees</button>
+      </div>
+      <div class="tabpane on" data-pane="boss"><div class="field"><label>Executive summary <span class="q">You can give the LLM instructions about your real boss — or reuse Rachel from the previous scenario.</span> <span class="saved">Saved ✓</span></label><textarea rows="5" data-capture="a42_exec" placeholder="Your validated summary for your boss…"></textarea></div></div>
+      <div class="tabpane" data-pane="peers"><div class="field"><label>Peer summary <span class="q">Structured around questions, risks, issues and interdependencies they need to understand. Ensure nothing is invented.</span> <span class="saved">Saved ✓</span></label><textarea rows="5" data-capture="a42_peers" placeholder="Your validated summary for peers…"></textarea></div></div>
+      <div class="tabpane" data-pane="att"><div class="field"><label>Attendee summary <span class="q">Action-focused: decisions, assignments, due dates, follow-ups.</span> <span class="saved">Saved ✓</span></label><textarea rows="5" data-capture="a42_att" placeholder="Your validated summary for attendees…"></textarea></div></div>
+    </div>
+
+    <div class="two-col" style="margin-top:16px">
+      <div class="checklist" data-checklist="a42_checks">
+        <label><input type="checkbox" data-ck="names"><span>No invented names — every person mentioned appears in the transcript</span></label>
+        <label><input type="checkbox" data-ck="decisions"><span>No invented decisions — "agreed/decided" claims trace to the source</span></label>
+        <label><input type="checkbox" data-ck="dates"><span>No invented due dates — every date is in the source or clearly marked proposed</span></label>
+        <label><input type="checkbox" data-ck="intent"><span>No implied intent — nobody's motives have been guessed at</span></label>
+        <label><input type="checkbox" data-ck="differ"><span>All three summaries are clearly differentiated by audience</span></label>
+      </div>
+      <div class="presentOnly rail coral" style="margin:0">
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Summaries sound plausible even when they are wrong.</li>
+          <li>Audience tailoring increases usefulness — and the risk of accidental invention.</li>
+          <li>Validation at each step reduces drift across the three versions.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 4.3 ============ -->
+<section class="band white" id="a43">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 4.3</span></div>
+      <h2 class="section" style="max-width:none">Challenging assumptions to strengthen your decision</h2>
+      <button class="timerchip" type="button" data-minutes="15">⏱ 15:00</button>
+    </div>
+    <p class="section-lead">AI can broaden perspectives, surface assumptions and expose risks — as a <b>challenger</b>, not a decision-maker. Reach your own conclusions first; the AI step unlocks after you've committed to them.</p>
+
+    <details class="scen" style="margin-top:14px" open><summary style="background:#fff;border:1px solid var(--line)">The scenario — a flagship capability program losing steam</summary>
+      <div style="background:#fff;border:1px solid var(--line);border-top:0">
+        <div class="promptbox source" style="margin:0;border:0">
+          <div class="pb-head"><span class="pb-label">Scenario</span><button class="copychip" type="button" data-copy="#sc43">Copy scenario</button></div>
+          <pre id="sc43">You are leading a major internal capability program launched as a flagship initiative by the executive team — building core skills in data, AI and modern ways of working across multiple business units, positioned as a key enabler of strategy. The first two waves were very successful: strong attendance, positive feedback, visible executive sponsorship.
+
+Over the past four weeks, registrations have declined, attendance has fallen, and engagement has weakened — people arrive late, keep cameras off, contribute minimally. A few managers hint informally that staff feel overloaded and see the program as an "extra" on top of real work, but nobody has raised this formally. Leadership still calls the program non-negotiable and expects full scope. They want a revised participation strategy by next week.
+
+You do not have clear data on which groups are disengaging or why. There are no agreed metrics beyond attendance and basic satisfaction, and no shared view on whether the cause is timing, relevance, facilitation style, workload, or a combination. Some stakeholders privately suggest managers aren't giving people protected time. Others imply the content feels too generic. You must decide whether to continue, reshape or temporarily slow the program — and how to position that with executives.
+
+Many assumptions risk shaping your thinking: that low attendance equals low interest (rather than workload conflict); that executive sponsorship translates into local manager support; that the current format is the only viable format; that people who attend are actually engaged. Your decision affects staff workload, program credibility, and your own reputation with leadership.</pre>
+        </div>
+      </div>
+    </details>
+
+    <div class="two-col" style="margin-top:16px">
+      <div>
+        <div class="capture">
+          <h3>Step 2 — your conclusions first</h3>
+          <p class="hint">Discuss in your team. What do you recommend, and why? Commit before consulting AI — the challenge step unlocks when you have.</p>
+          <div class="field" style="margin:0">
+            <label>Your conclusions <span class="saved">Saved ✓</span></label>
+            <textarea rows="6" data-capture="a43_conclusion" placeholder="We recommend… because…"></textarea>
+          </div>
+        </div>
+        <div class="imgcard" style="margin-top:14px"><img src="../assets/media/pics/m4-assumptions-disagreement.jpg" alt="Two colleagues in respectful disagreement across a table"></div>
+      </div>
+      <div>
+        <div class="ai-gate" data-gate="a43_conclusion" data-gate-min="30">
+          <div class="gate-lock"><span class="ic">🔒</span><span>
+            <span class="state-locked"><b>Locked.</b> Record your own conclusions first — AI challenges thinking; it doesn't replace it.</span>
+            <span class="state-open"><b>Unlocked.</b> Now let the AI attack your reasoning — and judge which challenges actually matter.</span>
+          </span></div>
+          <div class="gate-content">
+            <div class="promptbox">
+              <div class="pb-head"><span class="pb-label">Step 3 — challenge prompt</span><button class="copychip" type="button">Copy</button></div>
+              <pre>Here is a scenario and my team's conclusions: [paste both]. Challenge our thinking. Give us alternative interpretations, disagree with our conclusion where the evidence allows, and name the assumptions we appear to be making. Do not soften your critique.</pre>
+            </div>
+            <div class="field"><label>Step 4 — relevant insights to share back <span class="q">Which assumptions did the AI challenge that you hadn't named? Where was its critique useful — and where misaligned with reality? Do you accept, reject, or need evidence?</span> <span class="saved">Saved ✓</span></label><textarea rows="6" data-capture="a43_insights" placeholder="Challenge accepted: … / Challenge rejected because: … / Needs evidence: …"></textarea></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>Which assumptions were you most confident in before using AI?</li>
+          <li>Which assumptions did the AI challenge that you had not explicitly named?</li>
+          <li>Where did the critique feel useful — and where misaligned with context or reality?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief &amp; cues</h4><ul>
+          <li>Assumptions sit beneath confident recommendations.</li>
+          <li>AI is a challenger, not a decision-maker; human judgement decides which challenges matter.</li>
+          <li>Redirect if teams accept AI feedback without disagreement or qualification.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="extras-strip" data-extras='[
+    {"id":"x4a","type":"Simulation","title":"The 4:52 Message","img":"x4a-452-message.jpg"},
+    {"id":"x4b","type":"Card Game","title":"Agenda or Anarchy","img":"x4b-agenda-or-anarchy.jpg"}
+  ]'></div>
+  <div class="pager">
+    <a href="module-3.html"><div class="lbl">← Previous</div><div class="ttl">Module 3 — Better-Prepared Attendees</div></a>
+    <a class="next" href="module-5.html"><div class="lbl">Next →</div><div class="ttl">Module 5 — Deeper Analysis &amp; Thought Partners</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+/* ===== Extra 4A · Simulation — "The 4:52 Message" ===== */
+AFTX.register('x4a', function(g){
+  var ui=g.ui, root=g.root;
+  var BEATS=[
+    {q:'4:52pm Wednesday. Rachel: "Can you pull together a meeting with the project teams so we can get on the same page before things slip further? There are concerns. Let\'s regroup early next week." She goes offline. Your first move?',
+     opts:[
+       {label:'Book Monday 9am with all the project teams right now — look decisive.',pts:0,con:'Decisive-looking, but you\'ve just committed fourteen calendars to a meeting with no purpose. The invite question thread starts within the hour.'},
+       {label:'Fire back six clarifying questions tonight.',pts:1,con:'Right instinct — but Rachel is offline and stretched. Six questions reads as homework; you may wait a day for one-word answers.'},
+       {label:'Draft a knowledge file from what you already know, and send one line: "Planning Monday — here\'s my read, can you confirm the outcome you want?"',pts:2,con:'You did the thinking, and left Rachel a ten-second confirm. This is what "concise, reliable escalation" means to her.'}
+     ]},
+    {q:'Thursday morning. Rachel still hasn\'t replied. Meanwhile you remember: Delivery and Product have each been escalating concerns — separately.',
+     opts:[
+       {label:'Proceed anyway: send everyone an invite titled "Orion alignment".',pts:0,con:'"Alignment" tells nobody what to prepare. Both leads assume it\'s about the other team\'s problem.'},
+       {label:'Sit with the Delivery and Product leads first, and consolidate their two escalations into one picture.',pts:2,con:'The two escalations turn out to be the same slippage seen from two sides — your knowledge file just became the single view nobody had.'},
+       {label:'Wait for Rachel — it\'s her meeting.',pts:1,con:'Safe, but a day is gone and the dashboard debate is now happening in Slack without you.'}
+     ]},
+    {q:'The dashboard shows amber. Half the team privately says it should be red. Your pre-read needs to say something.',
+     opts:[
+       {label:'Present amber as-is — it\'s the official status.',pts:0,con:'The room spends the first twenty minutes relitigating the colour instead of deciding anything.'},
+       {label:'Show both: "Reported: amber. Signals suggesting red: …" with every source labelled.',pts:2,con:'Nobody argues with labelled evidence. The colour debate becomes a two-minute decision.'},
+       {label:'Change it to red yourself to force urgency.',pts:1,con:'Honest, maybe — but it\'s not your escalation to own, and Sarah opens the meeting asking who touched her dashboard.'}
+     ]},
+    {q:'Time to design the meeting itself.',
+     opts:[
+       {label:'All fourteen people, two hours, "get on the same page".',pts:0,con:'Fourteen people at two hours is 28 person-hours to produce a follow-up meeting.'},
+       {label:'Five owners, 45 minutes, knowledge file as pre-read, three decisions listed in the invite.',pts:2,con:'Everyone arrives knowing the three decisions. Two are made in the room; the third gets an owner and a date.'},
+       {label:'1:1s with each lead first, group meeting later in the week.',pts:1,con:'Thorough — but "later in the week" is exactly what "before things slip further" wasn\'t asking for.'}
+     ]}
+  ];
+  var ENDINGS=[
+    {min:7,t:'🏆 The fifteen-minute alignment',d:'Rachel replies to your pre-read: "This is exactly it — see you Monday." The meeting confirms what your knowledge file already established, assigns the third decision, and finishes early. Two people ask for your template.'},
+    {min:5,t:'✅ Tight but real',d:'The meeting works — decisions get made — though a chunk of it rebuilds context that a sharper pre-read would have carried in.'},
+    {min:3,t:'😐 The two-hour circle',d:'Everyone speaks, heads nod, and the follow-up meeting is booked before this one ends. Sound familiar?'},
+    {min:1,t:'⚠️ Triage with the wrong ten people',d:'Half the room can\'t answer the questions that matter and the people who could aren\'t there. Rachel leaves early. The real meeting happens Thursday — organised by someone else.'},
+    {min:0,t:'🔥 Monday, 9:04am',d:'Fourteen people, no agenda, two rival versions of the dashboard on screen, and Rachel\'s face saying the slippage now includes this meeting.'}
+  ];
+  ui.lead(root,'A branching sequel to Activity 4.1. Vote each move as a room — clarity compounds, and so does its absence.');
+  var score=ui.score(root);
+  var rounds=BEATS.map(function(bt){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-q">'+ui.esc(bt.q)+'</div>');
+      c.appendChild(card);
+      ui.vote(c,{options:bt.opts.map(function(o){return {label:o.label};}),
+        onDone:function(i){
+          var o=bt.opts[i];
+          if(o.pts>0) score.add(o.pts); else score.miss();
+          ui.reveal(c,ui.esc(o.con),o.pts===0);
+          var b=ui.el('button','btn accent','Continue →'); b.type='button'; b.addEventListener('click',next); c.appendChild(b);
+        }});
+    };
+  });
+  ui.deck(root,{label:'Beat',rounds:rounds,onEnd:function(){
+    var s=score.value();
+    var end=ENDINGS.filter(function(e){return s>=e.min;})[0];
+    var card=ui.el('div','gx-card','<div class="gx-round">Your Monday — clarity '+s+'/8</div><div class="gx-q">'+ui.esc(end.t)+'</div><div style="margin-top:8px;font-size:14.5px;color:rgba(255,255,255,.85)">'+ui.esc(end.d)+'</div>');
+    root.appendChild(card);
+    ui.pointCard(root,'Clarity-seeking feels slower and is faster. The winning path never asked Rachel for approval — it invited her to confirm.');
+  }});
+});
+
+/* ===== Extra 4B · Card Game — "Agenda or Anarchy" ===== */
+AFTX.register('x4b', function(g){
+  var ui=g.ui, root=g.root;
+  var BUDGET=60;
+  var CARDS=[
+    {id:'A1',l:'Rachel — sponsor',c:5,k:'att'},
+    {id:'A2',l:'Sarah — Delivery lead',c:5,k:'att'},
+    {id:'A3',l:'Alex — Business Analyst',c:5,k:'att'},
+    {id:'A4',l:'Daniel — Product Owner',c:5,k:'att'},
+    {id:'A5',l:'Priya — Technical lead',c:5,k:'att'},
+    {id:'A6',l:'Marcus — Change & comms',c:5,k:'att'},
+    {id:'A7',l:'All fourteen project members',c:20,k:'att'},
+    {id:'G1',l:'Pre-read: the knowledge file, sent ahead',c:0,k:'good'},
+    {id:'G2',l:'Agenda: one source of truth on the slippage',c:10,k:'good'},
+    {id:'G3',l:'Agenda: decide amber vs red',c:10,k:'good'},
+    {id:'G4',l:'Agenda: assign owners + next checkpoints',c:10,k:'good'},
+    {id:'G5',l:'Status roundtable — "everyone shares"',c:25,k:'trap'},
+    {id:'G6',l:'AI-generated 40-slide context deck',c:15,k:'trap'},
+    {id:'G7',l:'"Any other business"',c:10,k:'trap'}
+  ];
+  ui.lead(root,'Build Monday\'s alignment meeting from the cards below. Budget: 60 minutes — every card costs the room something. Lock it in to see what your meeting actually achieves.');
+  var meter=ui.el('div','gx-card','<div class="gx-round">Time spent</div><div class="gx-timerbar"><i style="width:0%"></i></div><div class="gx-q" style="font-size:16px"><span id="x4bspend">0</span> / 60 minutes</div>');
+  root.appendChild(meter);
+  var grid=ui.el('div','gx-votes'); grid.style.gridTemplateColumns='1fr 1fr';
+  var sel={};
+  CARDS.forEach(function(cd){
+    var b=ui.el('button','gx-vote',ui.esc(cd.l)+' <span style="float:right;color:var(--teal-light)">'+cd.c+'m</span>');
+    b.type='button';
+    b.addEventListener('click',function(){
+      if(locked) return;
+      sel[cd.id]=!sel[cd.id];
+      b.classList.toggle('sel',!!sel[cd.id]);
+      var s=spend();
+      meter.querySelector('#x4bspend').textContent=s;
+      var bar=meter.querySelector('.gx-timerbar i');
+      bar.style.width=Math.min(100,s/BUDGET*100)+'%';
+      meter.querySelector('.gx-timerbar').classList.toggle('low',s>BUDGET);
+    });
+    grid.appendChild(b);
+  });
+  root.appendChild(grid);
+  var locked=false;
+  var lock=ui.el('button','btn accent','Lock the meeting'); lock.type='button';
+  root.appendChild(lock);
+  function spend(){ return CARDS.reduce(function(t,cd){ return t+(sel[cd.id]?cd.c:0); },0); }
+  lock.addEventListener('click',function(){
+    if(locked) return; locked=true; lock.style.display='none';
+    var s=spend(), good=0, lines=[];
+    if(s>BUDGET){ lines.push('⏰ '+s+' minutes into a 60-minute room: the meeting overruns, the last agenda item — usually the decisions — is the one that dies.'); }
+    else { good++; lines.push('✔ Inside budget: '+s+' of 60 minutes, with slack for the unexpected.'); }
+    if(sel.G1){ good++; lines.push('✔ The pre-read means minute one starts on decisions, not history.'); }
+    else lines.push('✖ No pre-read: the first twenty minutes rebuild context the invite could have carried.');
+    var agendas=(sel.G2?1:0)+(sel.G3?1:0)+(sel.G4?1:0);
+    if(agendas>=2){ good++; lines.push('✔ '+agendas+' decision-shaped agenda items — people can prepare positions in advance.'); }
+    else lines.push('✖ Fewer than two real decisions on the agenda: this is a conversation, not a meeting.');
+    if(sel.G5) lines.push('💀 The status roundtable ate 25 minutes and displaced a decision. It always does.');
+    else { good++; }
+    if(sel.G6) lines.push('✖ Nobody read slide 12 of the AI deck. Nobody read slide 2.');
+    if(sel.G7) lines.push('✖ "Any other business" ran twelve minutes and produced one grievance and zero actions.');
+    if(sel.A7) lines.push('✖ Fourteen attendees ÷ the clock = 4 minutes of airtime each. Most watched.');
+    if(sel.G3&&!sel.A2) lines.push('✖ You put amber-vs-red on the agenda without Sarah, whose dashboard it is. She is furious — correctly.');
+    if(sel.G4&&!sel.A4) lines.push('✖ Owners were assigned without the Product Owner in the room. Two un-assign themselves by Wednesday.');
+    if(sel.G2&&!sel.A5) lines.push('△ The single-source-of-truth discussion missed Priya\'s integration risks — a gap someone finds later.');
+    var verdict = good>=4 ? '🏆 A meeting people mention approvingly at other meetings.' : good>=3 ? '✅ Decisions got made — with some avoidable friction.' : good>=2 ? '😐 A familiar meeting. The follow-up is already booked.' : '🔥 Anarchy, minuted.';
+    var out=ui.el('div','gx-card','<div class="gx-round">The consequence reveal</div><div class="gx-q" style="font-size:17px">'+verdict+'</div><div style="margin-top:10px;font-size:14px;display:flex;flex-direction:column;gap:6px">'+lines.map(function(l){return '<div>'+l+'</div>';}).join('')+'</div>');
+    root.appendChild(out);
+    ui.pointCard(root,'A meeting is a budget: every attendee and every item costs minutes someone else paid for. Spend them on decisions.');
+    out.scrollIntoView({block:'nearest',behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome &amp; Orientation — AI for Teamwork | AIM</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Welcome &amp; Orientation — AI for Teamwork | AIM">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .lo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:820px){.lo-grid{grid-template-columns:1fr}}
+  .lo{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent)}
+  .lo summary{cursor:pointer;padding:14px 18px;font-family:var(--head);font-weight:600;font-size:15px;list-style:none;display:flex;gap:10px;align-items:baseline}
+  .lo summary::-webkit-details-marker{display:none}
+  .lo summary .n{color:var(--accent-dark);font-weight:700;flex:0 0 auto}
+  .lo[open] summary{border-bottom:1px solid var(--line-soft)}
+  .lo .lo-body{padding:12px 18px 16px;font-size:14px;color:var(--grey)}
+  .ten{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+  @media(max-width:860px){.ten{grid-template-columns:1fr}}
+  .tencard{display:block;background:#fff;border:1px solid var(--line);padding:16px 18px;transition:.15s}
+  .tencard:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .tencard .tn{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.1em;color:var(--accent-dark);text-transform:uppercase}
+  .tencard h4{font-size:15.5px;margin:4px 0 6px;line-height:1.25}
+  .tencard p{font-size:13px;color:var(--grey)}
+  .tencard .mod{display:inline-block;margin-top:8px;font-family:var(--head);font-weight:600;font-size:11.5px;color:var(--accent-dark)}
+  .llm{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+  @media(max-width:1000px){.llm{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.llm{grid-template-columns:1fr}}
+  .llmcard{background:#fff;border:1px solid var(--line);padding:16px;font-size:12.5px;color:var(--grey)}
+  .llmcard b{display:block;font-family:var(--head);font-size:15px;color:var(--ink);margin-bottom:4px}
+  .llmcard a{color:var(--accent-dark);font-weight:600;font-size:12px;word-break:break-all}
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;height:100%;object-fit:cover}
+  .agentlist{columns:2;column-gap:28px;font-size:14px;color:var(--ink);margin:10px 0 0;padding-left:18px}
+  @media(max-width:760px){.agentlist{columns:1}}
+  .agentlist li{margin-bottom:6px;break-inside:avoid}
+</style>
+</head>
+<body data-page="welcome">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#outcomes">Outcomes</a><a href="#ten">Ten things</a><a href="#llm">Your LLM</a>
+  <a href="#agents">A note on agents</a><a href="#a11">Activity 1.1</a><a href="#a12">Activity 1.2</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/wel-hero-arrivals.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Start here</div>
+    <h1>Welcome &amp; Orientation</h1>
+    <p class="lead">This course equips you to use AI as a practical partner in communication, collaboration and day-to-day teamwork — improving clarity, reducing cognitive load, and keeping human judgement at the centre.</p>
+    <div class="anchors">
+      <div class="anchor a"><span class="bar"></span><span>Warm up your LLM with a low-stakes first prompt</span></div>
+      <div class="anchor t"><span class="bar"></span><span>Name the teamwork challenge you want AI to improve</span></div>
+      <div class="anchor"><span class="bar"></span><span>That challenge follows you all day — and returns in Module 8</span></div>
+    </div>
+    <div class="dashtag">🕘 Section One · ~40 minutes · new here? read <a href="how-to-use.html" style="text-decoration:underline;color:#fff">How to use this site</a> first</div>
+  </div>
+</section>
+
+<!-- ============ LEARNING OUTCOMES ============ -->
+<section class="band cream" id="outcomes">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">By the end of today</span></div>
+    <h2 class="section">Six things you'll walk out able to do.</h2>
+    <p class="section-lead">Tap any outcome to expand it. Every one is practised hands-on today — none of this is theory-only.</p>
+    <div class="lo-grid">
+      <details class="lo"><summary><span class="n">01</span>Explain how AI enhances teamwork</summary><div class="lo-body">Across different team types — by improving communication clarity, collaboration patterns and workflow efficiency, while maintaining human control over meaning, tone and judgement.</div></details>
+      <details class="lo"><summary><span class="n">02</span>Apply a human-centric AI workflow</summary><div class="lo-body">One that prevents cognitive offloading by verifying, rewriting and checking AI outputs across day-to-day team tasks. This loop is the spine of the whole course.</div></details>
+      <details class="lo"><summary><span class="n">03</span>Adapt communication for diverse needs</summary><div class="lo-body">Use AI to adjust tone, structure, language, processing style and inclusivity — including support for neurodiversity, multilingual communication and team wellbeing check-ins.</div></details>
+      <details class="lo"><summary><span class="n">04</span>Use AI to improve meeting quality</summary><div class="lo-body">Prepare effectively, clarify objectives, challenge assumptions, synthesise raw notes into decisions and accountable actions, and optimise your own contribution before and after meetings.</div></details>
+      <details class="lo"><summary><span class="n">05</span>Strengthen team analysis and decisions</summary><div class="lo-body">Use AI to surface risks, stressors, workload issues, missing perspectives and cognitive blind spots through structured tools like Six Thinking Hats and DISC.</div></details>
+      <details class="lo"><summary><span class="n">06</span>Spot everyday practical use cases</summary><div class="lo-body">Pro-forma creation, summarisation, reformatting and tone transformation — selecting the tasks that provide immediate value to your team.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEN THINGS ============ -->
+<section class="band white" id="ten">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">The menu</span></div>
+        <h2 class="section">Ten things you can do with AI to improve your teamwork.</h2>
+        <p class="section-lead">A preview of the whole day — each card links to the module where you'll practise it.</p>
+      </div>
+      <div class="imgcard" style="max-height:300px"><img src="../assets/media/pics/wel-ten-things-whiteboard.jpg" alt="Facilitator arranging ten cards in a grid on a whiteboard"></div>
+    </div>
+    <div class="ten">
+      <a class="tencard" href="module-3.html"><span class="tn">1 · Communication</span><h4>Rewrite communication for different processing styles</h4><p>Adjust the same message for analytical thinkers, fast processors, detail-seekers, multilingual colleagues or neurodiverse teammates. Messages land cleanly and reduce follow-up cycles.</p><span class="mod">Module 3 →</span></a>
+      <a class="tencard" href="module-3.html"><span class="tn">2 · Wellbeing</span><h4>Tailor check-in messages to strengthen psychological safety</h4><p>Shape variations of a message to suit different personalities and stress levels. Earlier risk visibility, more open team communication.</p><span class="mod">Module 3 →</span></a>
+      <a class="tencard" href="module-4.html"><span class="tn">3 · Meetings</span><h4>Prepare with a structured context summary</h4><p>Reorganise what you already know — purpose, concerns, expected decisions — into a clearer pre-meeting brief. Sharper discussions, fewer mid-meeting resets.</p><span class="mod">Module 4 →</span></a>
+      <a class="tencard" href="module-4.html"><span class="tn">4 · Follow-through</span><h4>Turn messy notes into validated decisions and actions</h4><p>Group scattered notes, extract decisions, highlight open questions — then verify against the source. Faster follow-through, reliable action lists.</p><span class="mod">Module 4 →</span></a>
+      <a class="tencard" href="module-5.html"><span class="tn">5 · Thinking</span><h4>Identify thinking traps and test assumptions</h4><p>Surface blind spots, alternative interpretations and overlooked risks. Stronger, more balanced recommendations with less cognitive bias.</p><span class="mod">Modules 4–5 →</span></a>
+      <a class="tencard" href="module-7.html"><span class="tn">6 · Documents</span><h4>Shift tone or format without losing meaning</h4><p>Convert long or formal documents into onboarding guides, FAQs, briefing notes or multilingual variants. Clearer understanding, faster knowledge transfer.</p><span class="mod">Module 7 →</span></a>
+      <a class="tencard" href="module-7.html"><span class="tn">7 · Learning</span><h4>Make sense of scattered feedback</h4><p>Feed AI the raw comments from a check-in or retro, organise them into themes — then rewrite the themes yourself. Faster patterns, focused improvement.</p><span class="mod">Module 7 →</span></a>
+      <a class="tencard" href="module-5.html"><span class="tn">8 · Alignment</span><h4>Strengthen cross-team alignment with comparison summaries</h4><p>Side-by-side summaries of multiple viewpoints, using only the information provided. Quicker detection of misalignment and conflicting priorities.</p><span class="mod">Module 5 →</span></a>
+      <a class="tencard" href="module-7.html"><span class="tn">9 · Consistency</span><h4>Standardise repeatable processes</h4><p>Consistent templates for weekly updates, stakeholder messages or incident summaries — checked against your dataset. Less manual effort, more consistency.</p><span class="mod">Module 7 →</span></a>
+      <a class="tencard" href="#agents"><span class="tn">10 · Agents</span><h4>Have AI agents absorb administrative load</h4><p>Covered in depth by other AIM courses — agents can automate many teamwork tasks so your team focuses on the work only humans can do.</p><span class="mod">See the note on agents ↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHOOSING YOUR LLM ============ -->
+<section class="band tint" id="llm">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Setup</span></div>
+    <h2 class="section">Choosing your Large Language Model.</h2>
+    <p class="section-lead">We'll warm up your chosen LLM in a moment. If you don't have one set up, any of these works — some have free tiers; some features need a paid plan.</p>
+    <div class="llm">
+      <div class="llmcard"><b>ChatGPT</b>Email or single sign-on. Supports file uploads and step-by-step workflows.<br><a href="https://chat.openai.com" target="_blank" rel="noopener">chat.openai.com</a></div>
+      <div class="llmcard"><b>Microsoft Copilot</b>Works with Microsoft accounts. Enterprise access may be provided by your workplace.<br><a href="https://copilot.microsoft.com" target="_blank" rel="noopener">copilot.microsoft.com</a></div>
+      <div class="llmcard"><b>Google Gemini</b>Google account required. Strong integration with Google Docs and Drive.<br><a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></div>
+      <div class="llmcard"><b>Anthropic Claude</b>Email signup. Good for long documents and structured reasoning.<br><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></div>
+      <div class="llmcard"><b>Perplexity</b>Email signup. Strong for research synthesis and contextual summaries.<br><a href="https://www.perplexity.ai" target="_blank" rel="noopener">perplexity.ai</a></div>
+    </div>
+    <div class="note accent" style="margin-top:18px"><b>Assumed knowledge:</b> basic LLM literacy, awareness of prompting basics and workflow concepts, and access to one AI tool to use throughout the session. That's it — no technical expertise required.</div>
+  </div>
+</section>
+
+<!-- ============ A NOTE ON AGENTS ============ -->
+<section class="band white" id="agents">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag ghost">Context</span><span class="tag accent">A note on agents</span></div>
+        <h2 class="section">This course is about generative AI. Agents are a different door.</h2>
+        <div class="prose">
+          <p>Although this course focuses on human-centred AI use, it's worth knowing about <b>AI agents</b> — tools that can perform multi-step tasks on your behalf: executing workflows, monitoring a source of truth, pulling information from multiple systems, drafting updates and handing results back to a human for approval.</p>
+          <p>Different platforms use different names — OpenAI says <i>agents or autonomous tools</i>, Google says <i>agents or automations</i>, Anthropic says <i>tasks or tool-use sequences</i>, Microsoft says <i>Copilot agents</i>. The idea is the same: several steps in a workflow, carried out without you guiding every step in real time.</p>
+        </div>
+        <div class="selfOnly">
+          <h4 style="margin-top:16px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Used carefully, agents can support teamwork by:</h4>
+          <ul class="agentlist">
+            <li>Keeping shared documents, trackers or registers up to date</li>
+            <li>Consolidating chat, email and meeting notes into structured summaries</li>
+            <li>Monitoring risks and actions, prompting the team near deadlines</li>
+            <li>Preparing recurring meeting packs or weekly updates</li>
+            <li>Maintaining stakeholder logs and communication notes</li>
+            <li>Assembling onboarding materials automatically</li>
+            <li>Acting as a neutral go-between across teams</li>
+          </ul>
+        </div>
+        <div class="note" style="margin-top:16px"><b>Why we're parking them today:</b> errors can compound across an agent's steps, which is why the human-centred techniques in this course come first — master these before "over-automating". Agents are covered in depth in AIM's agentic AI courses; treat this section as post-course reading.</div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/wel-agents-note-closed-door.jpg" alt="A closed door at the end of an office corridor with a small glowing light — capability set aside for later"></div>
+        <p class="presentOnly note accent" style="margin-top:12px"><b>Facilitator cue:</b> "why aren't we using agents?" is the most common early question — point here, keep it brief, and refer interested participants to the agentic AI course. Today's focus is generative AI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 1.1 ============ -->
+<section class="band cream" id="a11">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 1.1</span></div>
+      <h2 class="section" style="max-width:none">Ice-breaker — introduce your team context</h2>
+      <button class="timerchip" type="button" data-minutes="8">⏱ 8:00</button>
+    </div>
+    <p class="section-lead">A low-stakes first interaction with your LLM: give it real context about how your team works, and ask for your team's "superpower". Early clarity about team operations sets up every activity that follows.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="rail accent" style="grid-template-columns:1fr">
+          <div class="box"><h4>Steps</h4><ul>
+            <li>Open your Large Language Model.</li>
+            <li>Prompt it with extensive data on your team — how much co-operation, collaboration and co-ordination the work needs, how shared the goals are, how much communication it takes to deliver value.</li>
+            <li>Ask: <i>based on the kind of work my team does, what is one team superpower we ought to have?</i></li>
+            <li>Re-prompt to edit the answer into a fun, ice-breaker-friendly summary — 40 words or less.</li>
+          </ul></div>
+        </div>
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">Example prompt — adapt it to your team</span><button class="copychip" type="button">Copy prompt</button></div>
+          <pre>My team is a cross-functional digital learning design group in the education sector. Here is context about how we work:
+• We collaborate daily across design, content, facilitation, and quality assurance.
+• Our work is moderately interdependent: no single piece can be delivered without handovers and shared context.
+• We coordinate closely with SMEs, product managers and delivery teams.
+• Communication load is high — we pass work between multiple contributors and must maintain clarity to avoid rework.
+• Our shared goals are to produce accurate, inclusive and high-impact learning products.
+• We operate in a hybrid environment, so asynchronous clarity matters.
+• Common friction points include fragmented updates, assumptions, and uneven visibility of work in progress.
+
+Using only this information, what is ONE "team superpower" my team ought to have to work at its best?</pre>
+        </div>
+      </div>
+      <div>
+        <div class="imgcard" style="max-height:340px;margin-bottom:16px"><img src="../assets/media/pics/wel-icebreaker-first-prompt.jpg" alt="A participant delighted by his first LLM response"></div>
+        <div class="capture">
+          <h3>Your team superpower</h3>
+          <p class="hint">Place your final answer here — 40 words or less, ice-breaker friendly.</p>
+          <div class="field">
+            <label>Final answer <span class="saved">Saved ✓</span></label>
+            <textarea rows="3" data-capture="a11_superpower" placeholder="Our team superpower ought to be…"></textarea>
+          </div>
+          <div class="field">
+            <label>What did you notice? <span class="q">What surprised you? What did you immediately trust — and what would you verify before using this at work?</span> <span class="saved">Saved ✓</span></label>
+            <textarea rows="3" data-capture="a11_observation" placeholder="One surprise, one thing I'd verify…"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>What surprised you about the output you received?</li>
+          <li>What did you immediately trust, and what did you question?</li>
+          <li>What would you need to verify before using this output at work?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Early interaction lowers barriers to participation and builds psychological safety.</li>
+          <li>AI outputs are provisional and require active human verification.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 1.2 ============ -->
+<section class="band white" id="a12">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 1.2</span></div>
+      <h2 class="section" style="max-width:none">Identify a teamwork challenge to improve with AI</h2>
+      <button class="timerchip" type="button" data-minutes="8">⏱ 8:00</button>
+    </div>
+    <p class="section-lead">Anchor the day around a real teamwork challenge. If your team already has one, name it. If you want fresh perspective, use your LLM as a thought partner — one prompt to surface improvement areas, a second to explore where AI can help.</p>
+    <div class="two-col" style="margin-top:20px">
+      <div>
+        <div class="rail accent" style="grid-template-columns:1fr">
+          <div class="box"><h4>Common challenges teams name</h4><ul>
+            <li>Inconsistent message interpretation across hybrid teams</li>
+            <li>Slow decisions because inputs arrive fragmented — email, chat, ad-hoc conversations</li>
+            <li>Uneven participation in discussions</li>
+            <li>Workload visibility gaps across projects</li>
+            <li>Manual preparation and follow-through around meetings</li>
+          </ul></div>
+        </div>
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">Prompt 1 — surface challenges</span><button class="copychip" type="button">Copy</button></div>
+          <pre>Here is context about my team and how we work: [describe your team]. Based only on this, list the five most likely teamwork challenges holding us back, phrased as specific, observable problems — not generic categories.</pre>
+        </div>
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">Prompt 2 — where AI can help</span><button class="copychip" type="button">Copy</button></div>
+          <pre>For each challenge above, suggest where AI could realistically help — and where it couldn't. Keep human judgement, relationships and accountability out of AI's hands. Flag any suggestion that would need verification or human review.</pre>
+        </div>
+      </div>
+      <div>
+        <div class="imgcard" style="max-height:300px;margin-bottom:16px"><img src="../assets/media/pics/wel-challenge-writing.jpg" alt="A participant writing one clear problem statement"></div>
+        <div class="capture" style="border-top-color:var(--accent)">
+          <h3>📌 Your challenge for the day</h3>
+          <p class="hint">Capture your final problem statement — one specific challenge, 40 words or less. <b>This follows you through the whole day and returns in Module 8</b>, where you'll design a one-week experiment to improve it.</p>
+          <div class="field">
+            <label>Final problem statement <span class="saved">Saved ✓</span></label>
+            <textarea rows="4" data-capture="a12_challenge" placeholder="e.g. Handovers between sales and onboarding lose context — clients repeat themselves and welcome emails go out twice."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>What makes this challenge persistent rather than one-off?</li>
+          <li>What would visibly change if this improved next week?</li>
+          <li>Where does it show up most often in day-to-day work?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Well-framed problems improve the usefulness of AI support.</li>
+          <li>Similar challenges often appear across different teams — discuss the clusters.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="pager">
+    <a href="../index.html"><div class="lbl">← Back</div><div class="ttl">Course Hub</div></a>
+    <a class="next" href="module-1.html"><div class="lbl">Next →</div><div class="ttl">Module 1 — Team Types &amp; How AI Can Help</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

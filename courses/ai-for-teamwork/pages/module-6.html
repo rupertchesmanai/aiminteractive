@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 6 — Change Management of AI Adoption | AI for Teamwork</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Module 6 — Change Management of AI Adoption | AI for Teamwork">
+<meta property="og:description" content="An interactive AIM workbook: eight modules of human-centred AI collaboration skills for real teams — with games, frameworks and a next-week action plan.">
+<meta property="og:image" content="../assets/media/pics/og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{if(sessionStorage.getItem('aim_access_ai-for-teamwork')!=='granted'){location.replace('../../../index.html?course=ai-for-teamwork');}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .imgcard{border:1px solid var(--line);overflow:hidden;background:#fff}
+  .imgcard img{width:100%;display:block}
+  .pers4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  @media(max-width:960px){.pers4{grid-template-columns:repeat(2,1fr)}}
+  .pc{background:#fff;border:1px solid var(--line);border-top:5px solid var(--accent);padding:14px 16px;font-size:12.5px;color:var(--grey)}
+  .pc b{display:block;font-family:var(--head);font-size:16px;color:var(--ink);margin-bottom:4px}
+  .adkar{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+  @media(max-width:900px){.adkar{grid-template-columns:1fr}}
+  .ak{background:#fff;border:1px solid var(--line);padding:14px 14px;position:relative;font-size:12.5px;color:var(--grey)}
+  .ak b{display:block;font-family:var(--head);font-size:15px;color:var(--accent-dark)}
+  .ak::after{content:"→";position:absolute;right:-13px;top:40%;font-size:16px;color:var(--muted);z-index:2}
+  .ak:last-child::after{content:""}
+  @media(max-width:900px){.ak::after{content:"↓";right:auto;left:14px;top:auto;bottom:-16px}}
+  .kotter{counter-reset:ko;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  @media(max-width:960px){.kotter{grid-template-columns:repeat(2,1fr)}}
+  .ko{background:#fff;border:1px solid var(--line);padding:16px;position:relative;font-size:12.5px;color:var(--grey)}
+  .ko::before{counter-increment:ko;content:counter(ko);position:absolute;top:-12px;left:12px;width:24px;height:24px;border-radius:50%;background:var(--teal-dark);color:#fff;font-family:var(--head);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+  .ko b{display:block;font-family:var(--head);font-size:14px;color:var(--ink);margin:4px 0 3px}
+  .stake{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  @media(max-width:900px){.stake{grid-template-columns:1fr}}
+  .sk{background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal-dark);padding:12px 14px;font-size:12.5px;color:var(--grey)}
+  .sk b{display:block;font-family:var(--head);font-size:14px;color:var(--ink)}
+  .sk i{display:block;font-style:normal;font-family:var(--head);font-weight:600;font-size:11px;color:var(--teal-dark);margin-bottom:3px}
+  .scen details{background:#fff;border:1px solid var(--line);margin-bottom:8px}
+  .scen summary{cursor:pointer;padding:13px 16px;font-family:var(--head);font-weight:600;font-size:14.5px;list-style:none}
+  .scen summary::-webkit-details-marker{display:none}
+  .scen summary::before{content:"+ ";color:var(--accent-dark)}
+  .scen details[open] summary::before{content:"− "}
+  .scen .sd{padding:0 16px 14px;font-size:13.5px;color:var(--grey)}
+  .scen .sd ul{margin:6px 0 8px 18px}
+  .pick{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .pick button{font-family:var(--head);font-weight:600;font-size:13px;padding:10px 16px;background:#fff;border:1px solid var(--line);cursor:pointer}
+  .pick button:hover{border-color:var(--accent)}
+  .pick button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .teambrief{background:#fff;border:1px solid var(--line);border-top:5px solid var(--muted);padding:18px 20px;margin-bottom:12px;transition:.15s}
+  .teambrief.sel{border-top-color:var(--accent);outline:2px solid var(--accent)}
+  .teambrief h4{font-size:16.5px;margin-bottom:3px}
+  .teambrief .tb-lens{font-family:var(--head);font-weight:600;font-size:12px;color:var(--accent-dark);margin-bottom:8px}
+  .teambrief ul{margin:0 0 0 18px;font-size:13px;color:var(--grey)}
+  .teambrief li{margin-bottom:3px}
+</style>
+</head>
+<body data-page="module-6">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management">
+      <span><span class="lt">AI for Teamwork</span><br><span class="ls">Interactive Workbook</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Hub</a>
+      <a href="my-plan.html">My Plan</a>
+      <a href="references.html">References</a>
+      <div class="modeToggle" role="group" aria-label="Viewing mode">
+        <button type="button" data-mode="present">Present</button>
+        <button type="button" data-mode="self">Self-paced</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav"><div class="wrap row">
+  <a href="#concepts">Change concepts</a><a href="#case">The case</a><a href="#a61">Activity 6.1</a><a href="#combine">Combining</a>
+</div></div>
+
+<section class="mhero">
+  <div class="hero-media"><img src="../assets/media/pics/m6-hero-hospital-corridor.jpg" alt=""></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Module 6 · Capstone</div>
+    <h1>Change Management of AI Adoption</h1>
+    <p class="lead">The capstone brings the whole day together: communication tailoring, team types, wellbeing, meeting discipline, structured frameworks and the human-centred workflow — applied in teams to one deliberately complex case. Success is process, not perfection.</p>
+    <div class="anchors">
+      <div class="anchor a"><span class="bar"></span><span>Change personas, ADKAR and Kotter's 8 steps</span></div>
+      <div class="anchor t"><span class="bar"></span><span>A hospital workforce reform under real pressure</span></div>
+      <div class="anchor"><span class="bar"></span><span>Five team outputs, combined into one blueprint</span></div>
+    </div>
+    <div class="dashtag">🕘 ~45 minutes · Activity 6.1 (capstone)</div>
+  </div>
+</section>
+
+<!-- ============ CHANGE CONCEPTS ============ -->
+<section class="band cream" id="concepts">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">The lenses</span></div>
+    <h2 class="section">Change personas — how people meet change.</h2>
+    <p class="section-lead">Reactions to change vary with past experience, confidence, workload and sense of control. Recognising the patterns lets you tailor communication and support — and gives your LLM the context it needs to help meaningfully.</p>
+    <div class="two-col" style="margin-top:14px">
+      <div class="pers4" style="grid-template-columns:repeat(2,1fr)">
+        <div class="pc"><b>Pioneers</b>Move quickly, test ideas early, enjoy ambiguity. They ask for opportunity and autonomy.</div>
+        <div class="pc"><b>Pragmatists</b>Adopt when they see evidence it's useful. They need clarity, examples and low-risk pathways.</div>
+        <div class="pc"><b>Sceptics</b>Question assumptions, look for gaps and risks. They need transparency, logic and validated evidence.</div>
+        <div class="pc"><b>Traditionalists</b>Prefer familiar routines and stable patterns. They need reassurance, clear expectations and time to adjust.</div>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m6-personas-four-reactions.jpg" alt="Four staff reacting differently to the same announcement"></div>
+        <div class="note" style="margin-top:12px"><b>Important:</b> these personas are not labels. They help you anticipate the concerns and motivations that shape behaviour during transformation.</div>
+      </div>
+    </div>
+
+    <h2 class="section" style="margin-top:36px">ADKAR — diagnosing where change is stuck.</h2>
+    <p class="section-lead">A practical model for guiding individuals through change: find whether the blocker is awareness, desire, knowledge, ability or reinforcement — then adjust communication or support.</p>
+    <div class="adkar">
+      <div class="ak"><b>Awareness</b>Do people understand why the change is needed and what problem it solves?</div>
+      <div class="ak"><b>Desire</b>Do people want to participate and see value in it?</div>
+      <div class="ak"><b>Knowledge</b>Do people know how to change and what new behaviours are expected?</div>
+      <div class="ak"><b>Ability</b>Can people perform the new behaviours confidently under real conditions?</div>
+      <div class="ak"><b>Reinforcement</b>Are new behaviours supported, recognised and sustained over time?</div>
+    </div>
+
+    <h2 class="section" style="margin-top:36px">Kotter's 8 steps — structuring the whole transformation.</h2>
+    <p class="section-lead">A proven sequence for organisation-wide change — and a grounded framework that makes your LLM's suggestions follow known good practice instead of ad-hoc ideas.</p>
+    <div class="two-col" style="margin-top:8px">
+      <div class="kotter" style="grid-template-columns:repeat(2,1fr)">
+        <div class="ko"><b>Create urgency</b>Show why the change matters now.</div>
+        <div class="ko"><b>Build a guiding coalition</b>Leaders with authority and influence.</div>
+        <div class="ko"><b>Form a strategic vision</b>Define the future state clearly and simply.</div>
+        <div class="ko"><b>Communicate the vision</b>Repeat it consistently across all channels.</div>
+        <div class="ko"><b>Remove obstacles</b>Address barriers in systems, behaviours, policies.</div>
+        <div class="ko"><b>Generate short-term wins</b>Visible early progress builds momentum.</div>
+        <div class="ko"><b>Sustain acceleration</b>Use early wins to drive deeper change.</div>
+        <div class="ko"><b>Institute the change</b>Embed new behaviours and norms into everyday work.</div>
+      </div>
+      <div class="imgcard"><img src="../assets/media/pics/m6-frameworks-stepped-cards.jpg" alt="A hand placing the fifth of five stepped cards in an ascending staircase"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE CASE ============ -->
+<section class="band white" id="case">
+  <div class="wrap">
+    <div class="kicker"><span class="tag accent">The case study</span></div>
+    <h2 class="section">Hospital workforce and timekeeping reform.</h2>
+    <p class="section-lead">A medium-sized hospital network — three campuses, 1,200 clinical staff — has had payroll discrepancies for nine months. Error rates exceed 7%; overtime allocation is inconsistent; staff report underpayment, overpayment and uncertainty; unions have raised formal concerns. Leadership is rolling out <b>Chronos</b>, a digital timekeeping and rostering system, targeting 30% payroll-variance reduction in three months. The timeline is ambitious, consultation has been limited, the system has known gaps, and trust is fragile. This is not only a systems change — it's a behavioural and cultural transformation affecting pay, workload, fairness, safety, trust and industrial relations.</p>
+
+    <div class="note" style="margin:16px 0"><b>Anti-hallucination rule for the whole capstone:</b> keep a hard line between what the case <i>states</i> and what your team <i>proposes</i> — and actively catch the LLM "completing" missing facts.</div>
+
+    <div class="scen">
+      <details><summary>Stakeholder personas — six people inside the change</summary><div class="sd"><div class="stake">
+        <div class="sk"><b>Marianne</b><i>Nurse Unit Manager</i>Manages safe staffing and ratios. Believes Chronos doesn't reflect ward complexity; worried about patient impact if errors occur.</div>
+        <div class="sk"><b>James</b><i>Junior Nurse</i>New to the workforce; makes data-entry mistakes from fatigue; fears underpayment; unsure how the system works.</div>
+        <div class="sk"><b>Claire</b><i>Union Representative</i>Focused on fairness, entitlements, consultation. Worried about accuracy; wants guarantees about data use.</div>
+        <div class="sk"><b>Victor</b><i>Finance Analyst</i>Manages payroll variance. Wants reliable data; concerned about budget exposure and audit findings.</div>
+        <div class="sk"><b>Sameer</b><i>IT Systems Lead</i>Owns Chronos configuration; knows the build is incomplete; under pressure to meet timelines.</div>
+        <div class="sk"><b>Leila</b><i>Workforce Planner</i>Needs accurate data for forecasts; sees opportunity but fears rushed adoption creates new errors.</div>
+      </div></div></details>
+      <details><summary>Union and industrial relations complexity</summary><div class="sd">Three active unions with different consultation clauses in their enterprise agreements; transformation cannot progress without addressing them. Trust is fragile after historical failures. Union concerns:<ul>
+        <li>Chronos may misclassify overtime categories — particularly call-backs and shift extensions.</li>
+        <li>It may reduce pay for blended roles crossing award categories.</li>
+        <li>Managers may use digital timestamps for performance critique or discipline.</li>
+        <li>Chronos training hours aren't included in current staffing allocations.</li>
+        <li>Some ward roster rules don't match the award conditions the system applies.</li>
+      </ul>A previous payroll failure at another state hospital has created a backdrop of caution and strong emotion. Industrial relations risk is high.</div></details>
+      <details><summary>Operational challenges and system limitations</summary><div class="sd">System constraints:<ul>
+        <li>Rostering templates don't align with specialised ward patterns, including double-coverage procedures.</li>
+        <li>The interface isn't mobile-optimised — yet clinicians work between locations.</li>
+        <li>Automated overtime triggers misinterpret breaks and micro-shifts, over- and under-counting.</li>
+        <li>Award rules for part-time staff with shift extensions apply inconsistently.</li>
+      </ul>Staff behaviours compound the gaps:<ul>
+        <li>Paper approvals persist in high-pressure wards and are entered late.</li>
+        <li>Casual staff hold multiple system profiles — duplication and pay errors.</li>
+        <li>Some nurses delay logging overtime out of guilt, fear of rejection or team pressure.</li>
+      </ul></div></details>
+      <details><summary>Overtime pressures and financial risk</summary><div class="sd">Overtime is now 12% of total staffing expenditure against an 8% benchmark. Underpayments have damaged trust; overpayments create budget exposure. Executives are concerned about audit findings, legal liability for misclassified entitlements, burnout and clinical safety risks from chronic overtime, and workforce planning crippled by poor data quality. Transformation must stabilise both accuracy <b>and</b> confidence.</div></details>
+    </div>
+    <div class="promptbox source" style="margin-top:12px">
+      <div class="pb-head"><span class="pb-label">Full case — for your LLM</span><button class="copychip" type="button" data-copy="#case61">Copy full case</button></div>
+      <pre id="case61" style="max-height:120px">CASE: Hospital workforce and timekeeping reform. A medium-sized hospital network (three campuses, 1,200 clinical staff) has had payroll discrepancies for nine months; error rates exceed 7%; overtime allocation is inconsistent; staff report underpayment, overpayment and uncertainty about entitlements; unions have raised formal concerns. Leadership is rolling out Chronos, a digital timekeeping and rostering system, targeting a 30% payroll-variance reduction within three months. The timeline is ambitious, consultation limited, the system has known configuration gaps, staff trust is fragile. This is a behavioural and cultural transformation affecting pay, workload, fairness, safety, trust and industrial relations — not only a systems change.
+STAKEHOLDERS: Marianne, Nurse Unit Manager — safe staffing/ratios; believes Chronos doesn't reflect ward complexity; concerned about patient impact. James, Junior Nurse — new; data-entry mistakes from fatigue; fears underpayment; unsure how the system works. Claire, Union Rep — fairness, entitlements, consultation; worried about accuracy; requests guarantees on data use. Victor, Finance Analyst — wants reliable data; concerned about budget exposure and audit findings. Sameer, IT Systems Lead — owns configuration; knows the build is incomplete; under timeline pressure. Leila, Workforce Planner — needs accurate data; sees opportunity; fears rushed adoption creates new errors.
+INDUSTRIAL RELATIONS: three active unions with different consultation clauses; fragile trust from historical failures. Concerns: overtime categories (call-backs, shift extensions) may be misclassified; blended roles crossing award categories may lose pay; timestamps may be used for performance critique; training hours not in staffing allocations; some ward roster rules don't match applied award conditions. A previous payroll failure at another state hospital fuels caution and emotion.
+SYSTEM LIMITATIONS: rostering templates misaligned with specialised ward patterns including double coverage; not mobile-optimised though clinicians move between locations; automated overtime triggers misread breaks/micro-shifts (over- and under-counts); part-time shift-extension award rules applied inconsistently. BEHAVIOURS: late-entered paper approvals in high-pressure wards; casual staff with multiple profiles causing duplication; nurses delaying overtime logging from guilt, fear of rejection or team pressure.
+FINANCIALS: overtime is 12% of staffing expenditure vs 8% benchmark; underpayments damaged trust; overpayments create budget exposure; executive concerns include audit findings, legal liability for misclassification, burnout and clinical safety, and poor planning data. GOAL: design a transformation response that stabilises accuracy and confidence.</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITY 6.1 ============ -->
+<section class="band tint" id="a61">
+  <div class="wrap">
+    <div class="acthead">
+      <div class="kicker" style="margin:0"><span class="tag activity">Activity 6.1</span><span class="tag ghost">Capstone</span></div>
+      <h2 class="section" style="max-width:none">Design the transformation response</h2>
+      <button class="timerchip" type="button" data-minutes="30">⏱ 30:00</button>
+    </div>
+    <p class="section-lead">Up to five teams, each owning one component through its own framework lens. AI may support analysis, option generation and structure — but verify every insight and rewrite it in your own tone. Each output combines later into a single transformation blueprint. <b>Timebox:</b> produce a shareable first version, then spend the final minutes tightening language and checking internal consistency.</p>
+
+    <h3 style="margin-top:20px;font-size:19px">Pick your team</h3>
+    <div class="pick" id="a61pick" role="group" aria-label="Choose your team">
+      <button type="button" data-val="Team A">Team A</button>
+      <button type="button" data-val="Team B">Team B</button>
+      <button type="button" data-val="Team C">Team C</button>
+      <button type="button" data-val="Team D">Team D</button>
+      <button type="button" data-val="Team E">Team E</button>
+    </div>
+
+    <div class="two-col" style="margin-top:10px">
+      <div>
+        <div class="teambrief" data-team="Team A"><h4>Team A · Change &amp; communication strategy</h4><div class="tb-lens">Lens: Change personas (Pioneers · Pragmatists · Sceptics · Traditionalists)</div><ul>
+          <li>A clear narrative for why the transformation is needed</li>
+          <li>Messaging tailored to each persona type</li>
+          <li>A training and adoption outline reflecting different needs</li>
+          <li>A channel strategy for leaders, managers, unions and staff</li>
+          <li>Early communication touchpoints and trust-building moves</li>
+        </ul></div>
+        <div class="teambrief" data-team="Team B"><h4>Team B · Sequence the change</h4><div class="tb-lens">Lens: Kotter's 8 steps</div><ul>
+          <li>A short diagnosis of where the hospital sits across the 8 steps</li>
+          <li>How to create urgency and build a guiding coalition</li>
+          <li>A draft change vision specific to Chronos and workforce reform</li>
+          <li>Short-term wins targetable in the first four weeks</li>
+          <li>Actions to sustain acceleration and embed the change</li>
+        </ul></div>
+        <div class="teambrief" data-team="Team C"><h4>Team C · Diagnose transformation barriers</h4><div class="tb-lens">Lens: ADKAR</div><ul>
+          <li>Cultural, behavioural, and workload barriers</li>
+          <li>System and process barriers; industrial relations barriers</li>
+          <li>Gaps in urgency, sponsorship, vision or communication</li>
+          <li>Specific ADKAR breakdowns for key groups</li>
+        </ul></div>
+        <div class="teambrief" data-team="Team D"><h4>Team D · Operational &amp; system stabilisation</h4><div class="tb-lens">Lens: operations and delivery</div><ul>
+          <li>Known system limitations and configuration priorities</li>
+          <li>Training requirements and capacity constraints</li>
+          <li>Ward-specific rostering patterns; data quality issues</li>
+          <li>Quick wins that reduce errors within four weeks</li>
+        </ul></div>
+        <div class="teambrief" data-team="Team E"><h4>Team E · Roadmap, risks &amp; measures</h4><div class="tb-lens">Lens: program governance</div><ul>
+          <li>A four-week rapid stabilisation roadmap</li>
+          <li>Major risks with mitigations</li>
+          <li>Measures for accuracy, trust, adoption and overtime stability</li>
+          <li>Dependencies across IT, operations, unions and workforce planning; executive alignment recommendation</li>
+        </ul></div>
+      </div>
+      <div>
+        <div class="capture">
+          <h3>Your team's answer</h3>
+          <p class="hint">Discuss the outputs in your team and improve the final product — with human knowledge added, the sum of your teamwork should beat the LLM's unthinking analysis.</p>
+          <div class="field"><label>Working draft <span class="saved">Saved ✓</span></label><textarea rows="7" data-capture="a61_draft" placeholder="Your team's shareable first version…"></textarea></div>
+          <div class="field" style="margin:0"><label>Final — tightened and consistency-checked <span class="saved">Saved ✓</span></label><textarea rows="6" data-capture="a61_final" placeholder="The version you'll contribute to the combined blueprint…"></textarea></div>
+        </div>
+        <div class="imgcard" style="margin-top:14px"><img src="../assets/media/pics/m6-capstone-five-teams.jpg" alt="Five teams working in parallel clusters, facilitator coaching one"></div>
+      </div>
+    </div>
+
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Facilitator — during breakouts</h4><ul>
+          <li>Circulate actively; don't stay at the front.</li>
+          <li>Prompts that force deeper thinking: "What is the AI missing?" · "What needs human judgement here?" · "Does this align with your framework?"</li>
+          <li>Watch for cognitive offloading — intervene when teams look passive.</li>
+          <li>Normalise confusion — the complexity is intentional.</li>
+        </ul></div>
+        <div class="box"><h4>Teaming</h4><ul>
+          <li>Small groups (≤6): two teams, A and B. Medium–large: 3–6 teams, one framework each; frameworks can repeat if needed.</li>
+          <li>Fewer teams? Assign from A forwards.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMBINING ============ -->
+<section class="band white" id="combine">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker"><span class="tag accent">Combining our work</span></div>
+        <h2 class="section">Five outputs, one blueprint.</h2>
+        <div class="prose">
+          <p>To bring it together: give the LLM a structure for the final output, have representatives from each team check the fidelity of their inputs in the combined result, and iterate — humans working the outputs, LLMs interrogating them through risk lenses and frameworks as before.</p>
+        </div>
+        <div class="promptbox">
+          <div class="pb-head"><span class="pb-label">The combining frame — feed each team's output plus this structure</span><button class="copychip" type="button">Copy</button></div>
+          <pre>Combine the team outputs below into one coherent transformation blueprint using exactly this structure:
+1. Context and current state
+2. Barriers and root causes
+3. Change sequence
+4. Operational stabilisation
+5. Communication and adoption
+6. Roadmap, risks and measures
+Use only the content provided. Where team outputs contradict each other, list the contradiction explicitly rather than resolving it silently.</pre>
+        </div>
+        <p class="presentOnly note accent"><b>Delivery pathways:</b> FTF — each team emails their text to the facilitator (simplest and most reliable), who pastes into a master document, merges with the LLM and projects it. Alternatives: QR-code upload folder or a shared doc. Online — each team pastes output into the meeting chat labelled clearly ("Team C — ADKAR section"); facilitator combines, formats and screen-shares. If outputs hit chat word limits, AI can shorten them first.</p>
+      </div>
+      <div>
+        <div class="imgcard"><img src="../assets/media/pics/m6-combine-assembling-pages.jpg" alt="Many hands assembling separate team pages into one master document"></div>
+        <h3 style="margin:16px 0 6px;font-size:17px">Whole-group synthesis — the most important step</h3>
+        <div class="checklist" data-checklist="a61_synthesis">
+          <label><input type="checkbox" data-ck="contradictions"><span>Contradictions between team outputs found and discussed — they're areas of focus, not failures</span></label>
+          <label><input type="checkbox" data-ck="tone"><span>Tone inconsistencies identified</span></label>
+          <label><input type="checkbox" data-ck="nuance"><span>Nuance lost in combination recovered — combining flattens unless humans check</span></label>
+          <label><input type="checkbox" data-ck="halluc"><span>Hallucinations / AI mis-stitching caught</span></label>
+          <label><input type="checkbox" data-ck="frameworks"><span>Frameworks correctly applied by each team</span></label>
+          <label><input type="checkbox" data-ck="voice"><span>Agreed what must be rewritten in a unified human voice</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="presentOnly">
+      <div class="rail coral" style="margin-top:18px">
+        <div class="box"><h4>Discussion questions</h4><ul>
+          <li>How did using different frameworks across teams improve the final output?</li>
+          <li>Where did team outputs contradict each other — and why?</li>
+          <li>What detail or nuance was lost when everything was combined into one view?</li>
+        </ul></div>
+        <div class="box"><h4>Debrief</h4><ul>
+          <li>Parallel frameworks surface blind spots a single lens misses.</li>
+          <li>Contradictions between outputs are signal — areas needing attention.</li>
+          <li>Combining flattens nuance unless humans actively check for loss of meaning and intent.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="extras-strip" data-extras='[
+    {"id":"x6a","type":"Role Play","title":"The Town Hall","img":"x6a-town-hall.jpg"},
+    {"id":"x6b","type":"Puzzle","title":"Kotter Scramble","img":"x6b-kotter-scramble.jpg"}
+  ]'></div>
+  <div class="pager">
+    <a href="module-5.html"><div class="lbl">← Previous</div><div class="ttl">Module 5 — Deeper Analysis &amp; Thought Partners</div></a>
+    <a class="next" href="module-7.html"><div class="lbl">Next →</div><div class="ttl">Module 7 — Other Use Cases for AI</div></a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">AI for Teamwork — Interactive Workbook</div></div>
+    <small>© Australian Institute of Management · Your responses are stored only in this browser.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script>
+(function(){
+  var wrap=document.getElementById('a61pick');
+  if(!wrap) return;
+  var btns=[...wrap.querySelectorAll('button')];
+  function apply(v){
+    btns.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-val')===v); });
+    document.querySelectorAll('.teambrief').forEach(function(t){ t.classList.toggle('sel', t.getAttribute('data-team')===v); });
+  }
+  try{ apply((JSON.parse(localStorage.getItem('aft.capture')||'{}'))['a61_team']||''); }catch(e){}
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-val');
+      apply(v);
+      if(window.AFT&&AFT.setCaptureValue){ AFT.setCaptureValue('a61_team',v); }
+      document.dispatchEvent(new CustomEvent('aft:capture',{detail:{key:'a61_team',value:v}}));
+    });
+  });
+})();
+</script>
+<script>
+/* ===== Extra 6A · Role Play — "The Town Hall" ===== */
+AFTX.register('x6a', function(g){
+  var ui=g.ui, root=g.root;
+  var P={pi:'Pioneer',pr:'Pragmatist',sc:'Sceptic',tr:'Traditionalist'};
+  var NEED={
+    pi:'Pioneers need a role and a boundary — channel the energy, hold the scope. Shut them down and you lose your best advocates.',
+    pr:'Pragmatists need concrete specifics — what changes on Tuesday, what training, what time. Vision statements bounce straight off them.',
+    sc:'Sceptics need evidence and honest answers — including honesty about past failures and who sees the data. Spin makes them stronger.',
+    tr:'Traditionalists need respect for what worked and a supported, gradual path. Change must not read as a verdict on their past.'
+  };
+  var CARDS=ui.shuffle([
+    {q:'“We tried a new roster system in 2019. It lasted four months. Why on earth is this different?”',p:'sc'},
+    {q:'“The paper timesheet takes me two minutes and it has never once failed me.”',p:'tr'},
+    {q:'“I don’t care about the vision slide. What exactly changes about my Tuesday?”',p:'pr'},
+    {q:'“Why stop at timekeeping? We could automate half of rostering today — I’ll build it myself.”',p:'pi'},
+    {q:'“Who sees this data? Because from here it looks like surveillance with a friendlier logo.”',p:'sc'},
+    {q:'“I have done rosters this way for eighteen years. Are you telling me I’ve been doing it wrong?”',p:'tr'},
+    {q:'“The pilot ward got extra staff to cover the training time. Do we get that too, or just the workload?”',p:'pr'},
+    {q:'“I’ve already started a workaround spreadsheet that syncs into it. That’s fine, right?”',p:'pi'}
+  ]);
+  ui.lead(root,'The Chronos rollout town hall is open, and the floor has questions. A team takes each objection and answers it live in under 45 seconds. Then the room votes: did it land? Only after the vote do we reveal who was really asking — and what they needed to hear.');
+  var score=ui.score(root);
+  var rounds=CARDS.map(function(cd){
+    return function(c,next){
+      var card=ui.el('div','gx-card','<div class="gx-round">From the floor</div><div class="gx-q" style="font-size:17px;font-weight:500">'+ui.esc(cd.q)+'</div>');
+      c.appendChild(card);
+      var start=ui.el('button','btn accent','Answer it — 0:45 ▸'); start.type='button';
+      c.appendChild(start);
+      start.addEventListener('click',function(){
+        start.remove();
+        var tc=ui.el('div','gx-card','<div class="gx-q">Answering…</div>');
+        c.appendChild(tc);
+        ui.countdown(tc,45,function(){ tc.querySelector('.gx-q').textContent='Time! Room — did it land?'; });
+        ui.vote(c,{options:[{label:'Landed 👏'},{label:'Didn’t land 😬'}],
+          onDone:function(i){
+            if(i===0) score.add(1); else score.miss();
+            ui.reveal(c,'<b>That was a '+ui.esc(P[cd.p])+'.</b> '+ui.esc(NEED[cd.p]), i!==0);
+            var x=ui.el('button','btn accent','Next objection →'); x.type='button'; x.addEventListener('click',next); c.appendChild(x);
+          }});
+      });
+    };
+  });
+  ui.deck(root,{label:'Objection',rounds:rounds,onEnd:function(){
+    ui.pointCard(root,'Landed: '+score.value()+' of 8. Notice what the misses had in common — the same answer cannot land for all four personas. Pioneers need a role, Pragmatists need specifics, Sceptics need evidence, Traditionalists need respect. Persona-blind messaging is why change comms fail.');
+  }});
+});
+
+/* ===== Extra 6B · Puzzle — "Kotter Scramble" ===== */
+AFTX.register('x6b', function(g){
+  var ui=g.ui, root=g.root;
+  var STEPS=[
+    'Share the audit: payroll errors cost the hospital $1.8m last year',
+    'Recruit Marianne, Claire and Sameer as the core rollout group',
+    'Agree the one-line story: accurate pay, fairer rosters, less admin',
+    'Take that story to every ward meeting — including night shift',
+    'Fix the Wi-Fi dead zones so clock-on actually works',
+    'Publish the pilot ward’s result: zero pay errors in month one',
+    'Extend the rollout to theatres and outpatients',
+    'Write Chronos into induction, policy and the EBA'
+  ];
+  var KNAMES=['Create urgency','Build a guiding coalition','Form a strategic vision','Communicate the vision','Remove obstacles','Generate short-term wins','Sustain acceleration','Institute the change'];
+  var CASCADE=[
+    'Complacency wins. Chronos competes with everything else on the priority list and loses — the rollout stalls at “when things calm down”, which is never.',
+    'Marianne shrugs, Claire mobilises the union, Sameer deprioritises the tickets. One enthusiastic sponsor cannot carry eight wards alone.',
+    'Activity without a story. Everyone can list the tasks; nobody can say why. The first hard trade-off — budget, timing, staffing — kills it.',
+    'The vision lives in a slide deck nobody opens. Night shift hears rumours instead, and rumours always say “job cuts”.',
+    'People try it once, hit the Wi-Fi dead zone outside Ward 4, and quietly go back to paper. The system gets blamed, not the obstacle.',
+    'Six months in, the sceptics ask “what has this actually delivered?” — and nobody has an answer. Support drains away.',
+    'Victory is declared after the pilot. Two years later Chronos covers one ward and payroll runs both systems forever.',
+    'It works — until the champions leave. New starters learn the old way from day one, and the change evaporates in eighteen months.'
+  ];
+  ui.lead(root,'Part one: the Chronos rollout, shuffled. Tap two events to swap them until the hospital’s change story runs in Kotter’s order. Part two: we break it.');
+  var host=ui.el('div'); root.appendChild(host);
+  ui.order(host,{items:STEPS,answer:STEPS,onSolved:function(){
+    ui.reveal(host,'<b>Solved — that’s Kotter’s eight steps</b>: '+ui.esc(KNAMES.join(' → '))+'.');
+    var p2=ui.el('div','gx-card','<div class="gx-round">Part two — break the sequence</div><div class="gx-q">The room picks ONE step to delete from the rollout. Predict the failure out loud first — then tap it to see the cascade.</div>');
+    root.appendChild(p2);
+    var wrap=ui.el('div','gx-votes');
+    KNAMES.forEach(function(k,i){
+      var b=ui.el('button','gx-vote',ui.esc((i+1)+'. '+k)); b.type='button';
+      b.addEventListener('click',function(){
+        if(b.disabled) return;
+        wrap.querySelectorAll('.gx-vote').forEach(function(x){x.disabled=true;});
+        b.classList.add('wrong');
+        ui.reveal(root,'<b>Without “'+ui.esc(k)+'”:</b> '+ui.esc(CASCADE[i]),true);
+        var again=ui.el('button','btn dark','Try removing another step'); again.type='button'; again.style.marginTop='10px';
+        again.addEventListener('click',function(){
+          wrap.querySelectorAll('.gx-vote').forEach(function(x){x.disabled=false;x.classList.remove('wrong');});
+          again.remove(); fin.remove();
+        });
+        var fin=ui.el('button','btn accent','Finish ▸'); fin.type='button'; fin.style.marginTop='10px'; fin.style.marginLeft='8px';
+        fin.addEventListener('click',function(){
+          ui.pointCard(root,'Kotter is a load-bearing sequence — pull out any single step and you can name the exact way the change collapses. That’s its diagnostic power: when a rollout is failing, look for the step that’s missing.');
+          fin.remove(); again.remove();
+        });
+        root.appendChild(again); root.appendChild(fin);
+      });
+      wrap.appendChild(b);
+    });
+    root.appendChild(wrap);
+  }});
+});
+</script>
+</body>
+</html>
