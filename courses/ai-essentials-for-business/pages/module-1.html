@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_ai-essentials-for-business";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=ai-essentials-for-business");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 1 — Understanding AI: Foundations &amp; Evolution | AI Essentials for Business</title>
+<meta name="description" content="Cutoff dates, myths vs truths, key terms, popular models, and a live Act-Explain-Please prompt builder. Module 1 of AI Essentials for Business." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:60ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:var(--teal-light);font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--head);font-weight:700}
+  .dash .dhead.coral .ic{background:var(--coral)}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+  .dash .pad{padding:22px 24px}
+
+  /* cutoff clock */
+  .clockwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+  @media(max-width:880px){.clockwrap{grid-template-columns:1fr}}
+  .dial{padding:22px 24px;background:var(--cream-alt);display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+  .modelbtn{border:1px solid var(--line);background:#fff;padding:12px 16px;cursor:pointer;font-family:var(--body);text-align:left;flex:1 1 150px;transition:.16s}
+  .modelbtn:hover{border-color:var(--teal)}
+  .modelbtn.on{border-color:var(--teal-dark);background:var(--teal);color:#fff}
+  .modelbtn .nm{font-family:var(--head);font-weight:600;font-size:14.5px}
+  .modelbtn .dt{font-size:11.5px;opacity:.85;margin-top:3px}
+  .clockexpl{padding:22px 24px}
+  .clockexpl .big{font-family:var(--head);font-weight:700;font-size:34px;color:var(--teal-dark)}
+  .clockexpl .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:2px}
+  .clockexpl .q{margin-top:14px;background:var(--cream-alt);border-left:4px solid var(--teal);padding:12px 15px;font-size:13.5px}
+
+  /* myth flip */
+  .mythgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:700px){.mythgrid{grid-template-columns:1fr}}
+  .flipcard{position:relative;min-height:150px;cursor:pointer;border:1px solid var(--line);background:#fff;padding:18px 20px;transition:.18s}
+  .flipcard:hover{border-color:var(--coral);transform:translateY(-2px)}
+  .flipcard .tagn{font-family:var(--head);font-size:11px;color:var(--coral-dark);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .flipcard .myth{font-family:var(--head);font-weight:600;font-size:15.5px;color:var(--ink);margin-top:8px}
+  .flipcard .truth{font-size:13px;color:var(--teal-ink);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:none}
+  .flipcard.open .truth{display:block}
+  .flipcard.open{border-color:var(--teal)}
+  .flipcard .hint{font-size:11px;color:var(--muted);margin-top:8px}
+
+  /* match term quiz */
+  .matchwrap{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:760px){.matchwrap{grid-template-columns:1fr}}
+  .defcard{background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;font-size:13.5px}
+  .termpool{display:flex;flex-wrap:wrap;gap:8px}
+  .termbtn{font-family:var(--head);font-weight:600;font-size:13px;border:1px solid var(--line);background:var(--cream-alt);padding:8px 13px;cursor:pointer}
+  .termbtn.used{opacity:.35;pointer-events:none}
+  .defcard select{width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:8px 10px;margin-top:8px}
+  .quizscore{margin-top:14px;font-family:var(--head);font-weight:600;font-size:14px;color:var(--teal-dark)}
+
+  /* model picker tabs */
+  .lenswrap{display:grid;grid-template-columns:190px 1fr;gap:0;border:1px solid var(--line);background:#fff}
+  @media(max-width:820px){.lenswrap{grid-template-columns:1fr}}
+  .lenstabs{border-right:1px solid var(--line);background:var(--cream-alt)}
+  @media(max-width:820px){.lenstabs{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}}
+  .lenstab{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px 18px;cursor:pointer;font-family:var(--head);font-weight:600;font-size:14.5px}
+  .lenstab.on{background:#fff;box-shadow:inset 4px 0 0 var(--teal)}
+  .lenstab:hover{background:#fff}
+  .lensbody{padding:22px 24px}
+  .swgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-bottom:14px}
+  @media(max-width:620px){.swgrid{grid-template-columns:1fr}}
+  .swgrid .c{padding:16px 18px}
+  .swgrid .strengths{background:linear-gradient(180deg,rgba(0,192,175,.07),rgba(0,192,175,.02));border-right:1px solid var(--line)}
+  .swgrid .weaknesses{background:linear-gradient(180deg,rgba(220,90,70,.06),rgba(220,90,70,.02))}
+  .swgrid h5{font-family:var(--head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .swgrid .strengths h5{color:var(--teal-dark)}
+  .swgrid .weaknesses h5{color:var(--coral-dark)}
+  .swgrid ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .swgrid li{font-size:12.7px;color:var(--ink);padding-left:14px;position:relative}
+  .swgrid li::before{content:"";position:absolute;left:0;top:6px;width:5px;height:5px;background:var(--teal)}
+  .weaknesses li::before{background:var(--coral)}
+  .usefor{background:var(--cream-alt);border-left:4px solid var(--teal);padding:12px 15px;font-size:13.5px}
+
+  /* prompt builder */
+  .buildwrap{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.buildwrap{grid-template-columns:1fr}}
+  .apeField label{display:block;font-family:var(--head);font-weight:600;font-size:12.5px;color:var(--teal-dark);margin-bottom:5px}
+  .apeField input{width:100%;font-family:var(--body);font-size:14px;border:1px solid var(--line);background:var(--cream-alt);padding:10px 12px;margin-bottom:14px}
+  .apeField input:focus{outline:2px solid var(--teal);background:#fff}
+  .promptOut{background:#141414;color:#e8e6df;padding:20px 22px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.6;white-space:pre-wrap;min-height:140px}
+  .promptOut .ph{color:#8a8a82}
+  .fwtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .fwtab{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid var(--line);background:var(--cream-alt);padding:7px 12px;cursor:pointer}
+  .fwtab.on{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}
+  .fwexample{background:var(--cream-alt);border-left:4px solid var(--coral);padding:12px 15px;font-size:13px;margin-top:10px}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:14px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-1">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">AI Essentials for Business</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#morning">Morning</a>
+      <a href="../index.html#afternoon">Afternoon</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="wrap inner">
+    <div class="eyebrow">Morning · Module 1</div>
+    <h1>Understanding AI: Foundations &amp; Evolution</h1>
+    <p class="lead">You've heard AI will "replace your job." This module strips away the jargon and myths, so you know what AI actually is, what it isn't, and how to get better results out of it — starting with your first prompt.</p>
+    <div class="anchors">
+      <div class="anchor t"><span class="bar"></span><span>AI isn't magic — it's pattern prediction.</span></div>
+      <div class="anchor"><span class="bar"></span><span>Clear prompts shape results. Context is everything.</span></div>
+    </div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Explain what AI is and what acronyms like LLM mean</span></div>
+      <div><span class="d">→</span><span>Clarify common AI terms and cut through the hype</span></div>
+      <div><span class="d">→</span><span>Identify myths and pitfalls to avoid when using AI</span></div>
+      <div><span class="d">→</span><span>Apply basic prompting techniques to get better outputs</span></div>
+      <div><span class="d">→</span><span>Recognise how context transforms results</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Model Cutoff Clock &amp; Prompt Builder</div>
+  </div>
+</section>
+
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#cutoff">Cutoff Dates</a>
+    <a href="#myths">Myths vs Truths</a>
+    <a href="#terms">Key Terms</a>
+    <a href="#models">Popular Models</a>
+    <a href="#builder">Prompt Builder</a>
+  </div>
+</div>
+
+<section class="band cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="prose">
+        <div class="kicker"><span class="tag ghost">Module overview</span></div>
+        <h2 class="section">What AI is, really</h2>
+        <p class="section-lead">An AI model is a system trained to recognise patterns in data. A large language model (LLM) is built by compressing enormous amounts of text into a predictive model. It doesn't "think" — it predicts the most likely next word, or token.</p>
+        <p>LLMs are built during a training phase and have a cutoff date — they have no knowledge of events after that date and can't access the internet in real time unless you explicitly turn on web search. That single fact explains a huge amount of AI's odd behaviour.</p>
+        <div class="note teal"><b>The key line to hold throughout:</b> AI models predict patterns based on training data — they do not truly "know" or "understand." They have no awareness, and no idea what happened after their cutoff date.</div>
+      </div>
+      <div>
+        <div class="rail">
+          <div class="box">
+            <h4>Sections covered</h4>
+            <ul>
+              <li>What is AI, really?</li>
+              <li>Cutoff dates &amp; knowledge limits</li>
+              <li>Myths vs truths</li>
+              <li>Key terms to know</li>
+              <li>Popular models</li>
+              <li>Prompting basics &amp; beyond</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Activities</h4>
+            <ul>
+              <li>Myths in my workplace</li>
+              <li>Match the term</li>
+              <li>Write your first prompt</li>
+              <li>Redo your prompt with a framework</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUTOFF CLOCK -->
+<section class="band white" id="cutoff">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard A</span><span class="tag ghost">Interactive</span></div>
+    <h2 class="section">The Model Cutoff Clock</h2>
+    <p class="section-lead">Every model has a knowledge cutoff — the date its training data ends. Click a model to see its cutoff and what it means for what it can (and can't) know.</p>
+    <div class="dash" style="margin-top:22px">
+      <div class="dhead"><div class="ic">◷</div><div><h3>Which models know what, and until when</h3><div class="sub">Cutoff dates shift every time a new model releases — check the source link in References for the latest.</div></div></div>
+      <div class="clockwrap">
+        <div class="dial" id="modelDial"></div>
+        <div class="clockexpl" id="modelExpl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MYTHS -->
+<section class="band tint" id="myths">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Myths vs Truths</span></div>
+    <h2 class="section">Four myths worth retiring</h2>
+    <p class="section-lead">Popular narratives about AI often misrepresent its capabilities. Click a card to flip it and see the truth underneath.</p>
+    <div class="mythgrid" id="mythGrid" style="margin-top:20px"></div>
+    <div class="capture" style="margin-top:22px">
+      <h3>Myths in my workplace</h3>
+      <div class="hint">Which AI myth have you heard most in your team or organisation? Saves automatically to your AI Toolkit.</div>
+      <div class="field">
+        <label for="m1myth">The myth I hear most, and how I'd explain the truth simply to a colleague</label>
+        <textarea id="m1myth" rows="3" data-capture="m1.myth" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS QUIZ -->
+<section class="band white" id="terms">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Match the term</span></div>
+    <h2 class="section">Match each definition to its term</h2>
+    <p class="section-lead">Click a term below, then click the definition it belongs to. Get all five and the dashboard will let you know.</p>
+    <div class="matchwrap" style="margin-top:20px">
+      <div id="defList"></div>
+      <div>
+        <div class="subhead" style="font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Terms</div>
+        <div class="termpool" id="termPool"></div>
+        <div class="quizscore" id="quizScore">0 of 5 matched</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL PICKER -->
+<section class="band tint" id="models">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard B</span><span class="tag ghost">Popular Models</span></div>
+    <h2 class="section">ChatGPT, Claude, Gemini, Grok — what's each one for?</h2>
+    <p class="section-lead">Every major model has real strengths and real weaknesses. Pick a model to compare, then check the "what should I use this for" note underneath.</p>
+    <div class="lenswrap" style="margin-top:22px">
+      <div class="lenstabs" id="modelTabs"></div>
+      <div class="lensbody" id="modelBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPT BUILDER -->
+<section class="band white" id="builder">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Act – Explain – Please</span></div>
+    <h2 class="section">Build your first prompt, live</h2>
+    <p class="section-lead">The quality of AI output depends heavily on the prompt. Fill in Act, Explain and Please below and watch the finished prompt assemble on the right — generic prompts produce generic results.</p>
+    <div class="dash" style="margin-top:22px">
+      <div class="dhead"><div class="ic">✎</div><div><h3>The Act – Explain – Please builder</h3><div class="sub">Assign a role, give context, then make a clear request.</div></div></div>
+      <div class="pad">
+        <div class="buildwrap">
+          <div class="apeField">
+            <label for="ape-act">Act — assign a role</label>
+            <input type="text" id="ape-act" placeholder="Act as a marketing consultant…">
+            <label for="ape-explain">Explain — give context</label>
+            <input type="text" id="ape-explain" placeholder="…working for a professional services firm, writing to new clients…">
+            <label for="ape-please">Please — make a clear request</label>
+            <input type="text" id="ape-please" placeholder="…draft a welcome email under 150 words.">
+            <button class="btn ghost" id="ape-fill" type="button" style="margin-top:4px">Fill with an example</button>
+          </div>
+          <div>
+            <div class="promptOut" id="promptOut"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:26px">
+          <div class="subhead" style="font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Beyond basics — try another framework</div>
+          <div class="fwtabs" id="fwTabs"></div>
+          <div id="fwBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>Write your first prompt</h3>
+      <div class="hint">Think of a routine task in your role. Draft a basic prompt, then rewrite it using Act–Explain–Please. Saves automatically to your AI Toolkit.</div>
+      <div class="field">
+        <label for="m1before">A basic prompt for a routine task in my role</label>
+        <textarea id="m1before" rows="2" data-capture="m1.prompt.before" placeholder="e.g. write an email to a client"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+      <div class="field">
+        <label for="m1after">Rewritten using Act – Explain – Please (or the framework you tried above)</label>
+        <textarea id="m1after" rows="3" data-capture="m1.prompt.after" placeholder="Type your rewritten prompt…"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+      <div class="field">
+        <label for="m1compare">If you tested it in an AI tool — which was more useful, and why?</label>
+        <textarea id="m1compare" rows="2" data-capture="m1.prompt.compare" placeholder="Type your observations…"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEETS -->
+<section class="band cream">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Take-away cheat sheets</span></div>
+    <h2 class="section">Cheat sheets for this module</h2>
+    <p class="section-lead">Quick-reference cards you can keep. Click any card to view it full-screen.</p>
+    <div class="sheets" id="sheets1"></div>
+  </div>
+</section>
+
+<section class="band white">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span></div>
+    <h2 class="section">Key takeaways</h2>
+    <div class="takeaways" style="margin-top:20px">
+      <div class="tk"><b>AI is not magic.</b> It's pattern prediction — myths arise from misunderstanding, and the truth is AI augments human work.</div>
+      <div class="tk"><b>Clear prompts shape results.</b> Context is everything — Act, Explain, Please beats a vague one-liner every time.</div>
+      <div class="tk"><b>Cutoff dates matter.</b> AI has no knowledge of events after its training — turn on web search when it counts.</div>
+      <div class="tk"><b>A bit of fun helps you learn</b> what can go right, and what can go wrong, without workplace stakes.</div>
+    </div>
+    <div class="pager">
+      <a href="welcome.html" class="prev"><div class="lbl">← Back to</div><div class="ttl">Welcome &amp; Orientation</div></a>
+      <a href="module-2.html" class="next"><div class="lbl">Next module →</div><div class="ttl">Collaborating Together</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AI Essentials for Business</div>
+      <small>Australian Institute of Management · Module 1 — Understanding AI</small>
+    </div>
+    <small>AI isn't magic — it's pattern prediction.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ================= CUTOFF CLOCK ================= */
+const MODELS=[
+ {nm:"GPT-5", dt:"October 2024", note:"Has no knowledge of anything after October 2024, and never will — until OpenAI releases a new model. Turn on web search for anything current."},
+ {nm:"Google Gemini", dt:"January 2025", note:"A few months fresher than GPT-5 by default. Still can't see today's news without search switched on."},
+ {nm:"Claude 4 Opus", dt:"March 2025", note:"The most recent cutoff of the major four — still a training-time snapshot, not a live feed."},
+ {nm:"Meta Llama-4", dt:"August 2024", note:"The oldest cutoff of this group — worth checking before relying on it for anything recent."},
+ {nm:"DeepSeek", dt:"January 2025", note:"Comparable freshness to Gemini — always verify against the source link before you rely on a date."},
+ {nm:"Grok", dt:"Constantly updated", note:"Directly connected to X in real time, so it behaves differently to the others — but 'constantly updated' isn't the same as 'always correct.'"},
+];
+const dial=document.getElementById('modelDial'), expl=document.getElementById('modelExpl');
+MODELS.forEach((m,i)=>{
+  const b=document.createElement('button'); b.className='modelbtn'+(i===0?' on':''); b.dataset.i=i;
+  b.innerHTML=`<div class="nm">${m.nm}</div><div class="dt">${m.dt}</div>`;
+  b.addEventListener('click',()=>setModel(i));
+  dial.appendChild(b);
+});
+function setModel(i){
+  document.querySelectorAll('.modelbtn').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const m=MODELS[i];
+  expl.innerHTML=`<div class="lbl">Cutoff date</div><div class="big">${m.dt}</div>
+    <div class="q">${m.note}</div>`;
+}
+setModel(0);
+
+/* ================= MYTHS FLIP ================= */
+const MYTHS=[
+ {myth:"AI knows everything and is infallible", truth:"AI models are just figuring out the next token; they hallucinate and can be confidently wrong."},
+ {myth:"AI will replace human workers entirely", truth:"AI augments human work and may replace some tasks — but not humans as a whole."},
+ {myth:"AI outputs are always objective and unbiased", truth:"AI reflects and can amplify the biases present in its training data."},
+ {myth:"AI systems inherently understand ethics", truth:"AI systems have no moral understanding — ethical use depends entirely on humans."},
+];
+const mythGrid=document.getElementById('mythGrid');
+MYTHS.forEach(m=>{
+  const d=document.createElement('div'); d.className='flipcard'; d.tabIndex=0;
+  d.innerHTML=`<div class="tagn">The myth</div><div class="myth">${m.myth}</div><div class="truth">${m.truth}</div><div class="hint">Click to reveal the truth</div>`;
+  d.addEventListener('click',()=>d.classList.toggle('open'));
+  d.addEventListener('keypress',e=>{if(e.key==='Enter')d.classList.toggle('open');});
+  mythGrid.appendChild(d);
+});
+
+/* ================= MATCH THE TERM ================= */
+const TERMDATA=[
+ {term:"Token", def:"A unit of text, about 4–5 letters"},
+ {term:"Prompt engineering", def:"Crafting instructions to get better outputs"},
+ {term:"Hallucination", def:"When the model makes up plausible but false facts"},
+ {term:"Alignment", def:"Ensuring systems avoid harm and reflect human values"},
+ {term:"LLM", def:"A model trained to predict the next token"},
+];
+let shuffledTerms=[...TERMDATA.map(t=>t.term)].sort(()=>Math.random()-0.5);
+let selectedTerm=null, matched=0;
+const defList=document.getElementById('defList'), termPool=document.getElementById('termPool'), quizScore=document.getElementById('quizScore');
+TERMDATA.forEach((t,i)=>{
+  const c=document.createElement('div'); c.className='defcard'; c.dataset.i=i;
+  c.innerHTML=`<b>${t.def}</b><div class="matchslot" id="slot-${i}" style="margin-top:8px;font-family:var(--head);font-weight:600;font-size:12.5px;color:var(--muted)">Click a term, then click here…</div>`;
+  c.addEventListener('click',()=>{
+    if(!selectedTerm || c.dataset.matched) return;
+    const slot=c.querySelector('.matchslot');
+    if(selectedTerm===t.term){
+      slot.textContent='✓ '+selectedTerm; slot.style.color='var(--teal-dark)';
+      c.dataset.matched='1'; matched++;
+      document.querySelectorAll('.termbtn').forEach(b=>{if(b.textContent===selectedTerm)b.classList.add('used');});
+    } else {
+      slot.textContent='Not quite — try again'; slot.style.color='var(--coral-dark)';
+      setTimeout(()=>{ if(!c.dataset.matched) slot.textContent='Click a term, then click here…'; slot.style.color='var(--muted)'; },1100);
+    }
+    selectedTerm=null;
+    quizScore.textContent=matched+' of 5 matched'+(matched===5?' — nice work!':'');
+  });
+  defList.appendChild(c);
+});
+shuffledTerms.forEach(term=>{
+  const b=document.createElement('button'); b.className='termbtn'; b.textContent=term;
+  b.addEventListener('click',()=>{ selectedTerm=term; });
+  termPool.appendChild(b);
+});
+
+/* ================= MODEL PICKER TABS ================= */
+const PICKMODELS=[
+ {t:"ChatGPT", s:"Versatile & fast",
+  strengths:["Versatile — excellent for writing, coding, productivity and enterprise use","Low response times, especially GPT-5 Instant","File uploads, memory, custom GPTs, Agent Mode, Deep Research","Strong performance with organised data and code"],
+  weaknesses:["October 2024 cutoff — no news unless web search is on","Pro mode has PhD-level reasoning but costs $200/month","Some responses are verbose or overly sanitised","Sheer breadth of context means wildly variable answers"],
+  usefor:"Use ChatGPT daily — it's the strongest general-purpose model."},
+ {t:"Claude", s:"Safety & coding",
+  strengths:["Most proactive safety protocols and alignment work","Coherent, beautiful, more creative language than ChatGPT","Built with a different UI to help people use it effectively","Industry standard for coding"],
+  weaknesses:["Can get confused by very long prompts (context window improving)","Can overcomplicate simple tasks","Fewer GPUs behind the scenes can slow it at peak times","Focus on safety has meant slower feature releases"],
+  usefor:"Reach for Claude when you want to do coding tasks."},
+ {t:"Gemini", s:"Multimodal & Google",
+  strengths:["Natively processes text, images, audio, video and code","Strong reasoning capabilities","Deepest integration with Google's suite and data","Imagen-4 and Veo 3 are among the most powerful image/video generators"],
+  weaknesses:["Veo 3 requires the Ultra plan — $400/month","Google's data-privacy track record is a fair concern","Mostly works inside Google's ecosystem","Going beyond chat means going 'under the hood' at Google"],
+  usefor:"Reach for Gemini when creating beautiful content with Veo 3 and Imagen-4."},
+ {t:"Grok", s:"Real-time & unfiltered",
+  strengths:["Direct connection to trending X posts — up to date by design","Excels at memes, pop culture and cultural fluency","Far less sanitised — will comment on controversial topics","Extremely strong coding, constantly updated"],
+  weaknesses:["Not ideal for serious academic work","Has had incidents of bias, given constant updates","Can be strongly influenced by its creator, for good or bad","Grok-4 Heavy can be very expensive"],
+  usefor:"Reach for Grok if you want more creative, less filtered output."},
+];
+const modelTabs=document.getElementById('modelTabs'), modelBody=document.getElementById('modelBody');
+PICKMODELS.forEach((m,i)=>{
+  const b=document.createElement('button'); b.className='lenstab'+(i===0?' on':''); b.dataset.i=i;
+  b.innerHTML=`${m.t}<div style="font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px">${m.s}</div>`;
+  b.addEventListener('click',()=>showModel(i));
+  modelTabs.appendChild(b);
+});
+function showModel(i){
+  document.querySelectorAll('.lenstab').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const m=PICKMODELS[i];
+  modelBody.innerHTML=`
+    <div class="swgrid">
+      <div class="c strengths"><h5>Strengths</h5><ul>${m.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div>
+      <div class="c weaknesses"><h5>Weaknesses</h5><ul>${m.weaknesses.map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    </div>
+    <div class="usefor"><b>What should I use this for?</b> ${m.usefor}</div>`;
+}
+showModel(0);
+
+/* ================= PROMPT BUILDER ================= */
+const actEl=document.getElementById('ape-act'), explEl=document.getElementById('ape-explain'), pleaseEl=document.getElementById('ape-please'), out=document.getElementById('promptOut');
+function renderPrompt(){
+  const a=actEl.value.trim(), e=explEl.value.trim(), p=pleaseEl.value.trim();
+  if(!a&&!e&&!p){ out.innerHTML='<span class="ph">Your assembled prompt will appear here as you type…</span>'; return; }
+  out.textContent=[a,e,p].filter(Boolean).join(' ');
+}
+[actEl,explEl,pleaseEl].forEach(el=>el.addEventListener('input',renderPrompt));
+document.getElementById('ape-fill').addEventListener('click',()=>{
+  actEl.value='Act as a marketing consultant.';
+  explEl.value="I'm working for a professional services firm, writing to new clients.";
+  pleaseEl.value='Please draft a welcome email under 150 words.';
+  renderPrompt();
+});
+renderPrompt();
+
+const FRAMEWORKS=[
+ {code:"RACE", full:"Role, Action, Context, Explanation", ex:"Role: “You are a career coach.” Action: “Write a LinkedIn post.” Context: “The post is about resilience at work.” Explanation: “Keep it inspiring, under 200 words, for mid-career professionals.”"},
+ {code:"CARE", full:"Context, Action, Result, Example", ex:"Context: “I'm preparing a speech for a graduation ceremony.” Action: “Write the opening paragraph.” Result: “It should sound uplifting and memorable.” Example: “Similar in tone to Steve Jobs' Stanford speech.”"},
+ {code:"APE", full:"Action, Purpose, Execution", ex:"Action: “Draft a cold email to a potential client.” Purpose: “To introduce my AI consulting services and secure a call.” Execution: “Professional, concise (under 150 words), with a clear CTA.”"},
+ {code:"CREATE", full:"Character, Request, Examples, Adjustment, Type of output, Extras", ex:"Character: “Act as a children's storyteller.” Request: “Write a bedtime story about a magical koala.” Examples: “Similar to Winnie the Pooh style.” Adjustment: “Suitable for a 5-year-old.” Type: “A short 3-paragraph story.” Extras: “Include gentle life lessons about kindness.”"},
+ {code:"RISE", full:"Role, Input, Steps, Execution", ex:"Role: “You are a project manager.” Input: “The team missed a deadline.” Steps: “Write an email outlining (1) acknowledgment, (2) new timeline, (3) encouragement.” Execution: “Keep tone constructive and supportive.”"},
+];
+const fwTabs=document.getElementById('fwTabs'), fwBody=document.getElementById('fwBody');
+FRAMEWORKS.forEach((f,i)=>{
+  const b=document.createElement('button'); b.className='fwtab'+(i===0?' on':''); b.dataset.i=i; b.textContent=f.code;
+  b.addEventListener('click',()=>showFw(i));
+  fwTabs.appendChild(b);
+});
+function showFw(i){
+  document.querySelectorAll('.fwtab').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const f=FRAMEWORKS[i];
+  fwBody.innerHTML=`<div style="font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink)">${f.code} — ${f.full}</div><div class="fwexample">${f.ex}</div>`;
+}
+showFw(0);
+
+/* ================= CHEAT SHEETS (native cards) ================= */
+const SHEETS1=[
+ {tag:"Framework", title:"Act – Explain – Please", coral:false, items:["Act — assign the AI a role","Explain — give context, audience, situation","Please — make a clear request with format/limits","Generic prompts → generic results. Always."]},
+ {tag:"Reference", title:"Model Cutoff Dates", coral:false, items:["GPT-5 — October 2024","Google Gemini — January 2025","Claude 4 Opus — March 2025","Meta Llama-4 — August 2024 · DeepSeek — January 2025","Grok — constantly updated (check the source link before relying on any date)"]},
+ {tag:"Quick card", title:"Myth vs Truth", coral:true, items:["AI knows everything → it predicts, and hallucinates","AI replaces workers → it augments most tasks","AI is unbiased → it reflects its training data","AI understands ethics → humans supply the ethics"]},
+ {tag:"Reference", title:"5 Prompting Frameworks", coral:false, items:["RACE — Role, Action, Context, Explanation","CARE — Context, Action, Result, Example","APE — Action, Purpose, Execution","CREATE — Character, Request, Examples, Adjustment, Type, Extras","RISE — Role, Input, Steps, Execution"]},
+];
+const sheetsHost=document.getElementById('sheets1');
+SHEETS1.forEach(s=>{
+  const b=document.createElement('button'); b.type='button'; b.className='sheet'+(s.coral?' coral':''); b.setAttribute('data-sheet','');
+  b.innerHTML=`<span class="thumb"><span class="tag">${s.tag}</span><span class="ic">${s.title}</span></span><span class="cap">${s.title}</span>
+    <template><div class="lbtag">${s.tag}</div><h3>${s.title}</h3><ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul><div class="lbfoot">AI Essentials for Business · Module 1</div></template>`;
+  b.querySelector('.lbcard') // no-op safeguard
+  sheetsHost.appendChild(b);
+});
+// mark lightbox card class (coral) by re-reading dataset when opened
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#sheets1 .sheet').forEach(s=>{
+    s.addEventListener('click',()=>{
+      const card=document.getElementById('aie-lbcard');
+      if(card) card.className='lbcard'+(s.classList.contains('coral')?' coral':'');
+    });
+  });
+});
+</script>
+</body>
+</html>

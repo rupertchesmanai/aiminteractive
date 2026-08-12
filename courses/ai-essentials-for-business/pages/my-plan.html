@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_ai-essentials-for-business";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=ai-essentials-for-business");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My AI Toolkit | AI Essentials for Business</title>
+<meta name="description" content="Everything you captured across the day, collected into one exportable AI toolkit." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%);padding-bottom:10px}
+  .planmeta{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap}
+  .planmeta div{font-size:13px;color:#cdcdcd}
+  .planmeta b{display:block;font-family:var(--head);font-weight:700;font-size:26px;color:#fff}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+  .planmod{margin-bottom:22px;border:1px solid var(--line);background:#fff;break-inside:avoid}
+  .planmod .ph{background:var(--teal);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:12px}
+  .planmod.coral .ph{background:var(--coral)}
+  .planmod .ph .L{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .planmod .ph a{margin-left:auto;font-size:12px;color:#fff;opacity:.9;border:1px solid rgba(255,255,255,.5);padding:5px 10px}
+  .planmod .pb{padding:8px 22px 16px}
+  .pitem{padding:11px 0;border-bottom:1px solid var(--line-soft)}
+  .pitem:last-child{border-bottom:0}
+  .pitem .k{font-family:var(--head);font-weight:600;font-size:12.5px;color:var(--teal-dark);margin-bottom:3px}
+  .planmod.coral .pitem .k{color:var(--coral-dark)}
+  .pitem .v{font-size:14px;color:var(--ink);white-space:pre-wrap}
+
+  .empty{background:#fff;border:1px solid var(--line);border-top:5px solid var(--coral);padding:40px 30px;text-align:center}
+  .empty h3{font-size:22px;margin-bottom:8px}
+  .empty p{font-size:14px;color:var(--grey);max-width:54ch;margin:0 auto 18px}
+  .modgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:640px;margin:0 auto}
+  @media(max-width:560px){.modgrid{grid-template-columns:1fr 1fr}}
+  .modgrid a{font-family:var(--head);font-weight:600;font-size:12.5px;padding:10px;border:1px solid var(--line);background:var(--cream-alt);color:var(--ink)}
+
+  @media print{
+    header.chrome,.toolbar,footer.site,.subnav,.mhero .planmeta,.printhide{display:none!important}
+    .mhero{background:#fff!important;color:#000!important;padding:10px 0}
+    .mhero h1,.mhero .lead,.mhero .eyebrow{color:#000!important}
+    .planmod{box-shadow:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body class="self">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">AI Essentials for Business</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#morning">Morning</a>
+      <a href="../index.html#afternoon">Afternoon</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="wrap inner">
+    <div class="eyebrow" style="color:var(--teal-light)">Your takeaway</div>
+    <h1>My AI Toolkit</h1>
+    <p class="lead">Everything you captured today — your first prompt, your safe-data rewrite, your workflow, your literacy plan and reflections — collected in one place. Print it, or save it as your personal commitment.</p>
+    <div class="planmeta" id="planmeta"></div>
+    <div class="toolbar printhide">
+      <button class="btn" id="downloadBtn">⤓ Download my toolkit</button>
+      <button class="btn" onclick="window.print()">⎙ Print / save as PDF</button>
+      <button class="btn ghost" id="clearBtn">Clear my toolkit</button>
+    </div>
+  </div>
+</section>
+
+<main class="band cream" style="padding-top:34px">
+  <div class="wrap" id="planRoot"></div>
+</main>
+
+<footer class="site printhide">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AI Essentials for Business</div>
+      <small>Australian Institute of Management · My AI Toolkit</small>
+    </div>
+    <small>The goal isn't to master every tool — it's to build a way of thinking that outlasts them.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+const PLAN=[
+ {mod:'Welcome — Prologue & Your Goals', link:'welcome.html', items:[
+   ['welcome.ainews','What\'s new in AI'],
+   ['welcome.brings','What brings me to this course'],
+   ['welcome.success','What success looks like today'],
+   ['welcome.hopes','My hopes / concerns about AI'],
+ ]},
+ {mod:'Module 1 — Understanding AI: Foundations & Evolution', link:'module-1.html', items:[
+   ['m1.myth','The myth I hear most, and the truth'],
+   ['m1.prompt.before','My basic prompt'],
+   ['m1.prompt.after','My rewritten prompt'],
+   ['m1.prompt.compare','Which was more useful, and why'],
+ ]},
+ {mod:'Module 2 — Collaborating Together', link:'module-2.html', items:[
+   ['m2.modes.observe','Comparing modes — observations'],
+   ['m2.safe.actual','Safe context · actual'],
+   ['m2.safe.rewrite','Safe context · rewrite'],
+   ['m2.workflow.step1','My workflow · trigger'],
+   ['m2.workflow.step2','My workflow · action'],
+   ['m2.workflow.step3','My workflow · logic'],
+   ['m2.workflow.step4','My workflow · agent step'],
+   ['m2.bias.ceo','Bias spotting · "ideal CEO"'],
+   ['m2.bias.female','Bias spotting · "ideal female CEO"'],
+   ['m2.bias.africa','Bias spotting · "ideal CEO from Africa"'],
+   ['m2.bias.fix','How I\'d counteract the bias'],
+   ['m2.handson','Hands-on prompting with data'],
+ ]},
+ {mod:'Module 3 — Creating Using AI', link:'module-3.html', coral:true, items:[
+   ['m3.build','What I built (or want to build)'],
+   ['m3.image.simple','Image prompt · simple'],
+   ['m3.image.refined','Image prompt · refined'],
+   ['m3.image.notes','Which image matched my needs, and why'],
+   ['m3.factcheck.claim','Fact-check · the claim'],
+   ['m3.factcheck.supported','Fact-check · supported?'],
+   ['m3.factcheck.notes','Fact-check · notes'],
+   ['m3.boundaries.good','Where AI adds value in my work'],
+   ['m3.boundaries.bad','Where AI should not be used'],
+   ['m3.excited','The creative tool I\'m most excited to try'],
+ ]},
+ {mod:'Module 4 — Integrating AI', link:'module-4.html', coral:true, items:[
+   ['m4.combo.tools','My tool combination'],
+   ['m4.combo.notes','What it would save me time on'],
+   ['m4.plan.daily','One AI tool I\'ll use daily'],
+   ['m4.plan.test','One workflow I\'ll test this month'],
+   ['m4.plan.safeguard','One safeguard I\'ll always apply'],
+   ['m4.plan.share','How I\'ll share AI knowledge with my team'],
+   ['m4.journal.start','Learning journal · Start'],
+   ['m4.journal.stop','Learning journal · Stop'],
+   ['m4.journal.change','Learning journal · Change'],
+   ['m4.journal.continue','Learning journal · Continue'],
+   ['m4.surprise','My biggest surprise today'],
+ ]},
+];
+
+function render(){
+  const cap=window.AIE.getCapture();
+  const root=document.getElementById('planRoot');
+  let modsWithData=0, totalItems=0;
+  let html='';
+  PLAN.forEach(group=>{
+    const filled=group.items.filter(([k])=>cap[k]&&String(cap[k]).trim());
+    if(!filled.length) return;
+    modsWithData++; totalItems+=filled.length;
+    html+=`<div class="planmod${group.coral?' coral':''}">
+      <div class="ph"><span class="L">${group.mod}</span><a href="${group.link}">Edit →</a></div>
+      <div class="pb">${filled.map(([k,lbl])=>`<div class="pitem"><div class="k">${lbl}</div><div class="v">${escapeHtml(String(cap[k]))}</div></div>`).join('')}</div>
+    </div>`;
+  });
+  if(!modsWithData){
+    root.innerHTML=`<div class="empty">
+      <h3>Your toolkit is empty — for now</h3>
+      <p>As you work through the course, everything you type is saved automatically and gathered here. Start anywhere:</p>
+      <div class="modgrid">
+        ${PLAN.map((g)=>`<a href="${g.link}">${g.mod.split(' — ')[0].split(' ').slice(0,2).join(' ')}</a>`).join('')}
+      </div>
+    </div>`;
+  } else {
+    root.innerHTML=html;
+  }
+  document.getElementById('planmeta').innerHTML=`
+    <div><b>${modsWithData}</b> of 5 sections</div>
+    <div><b>${totalItems}</b> entries captured</div>
+    <div><b>${modsWithData>=5?'Complete':modsWithData>=2?'In progress':'Started'}</b> status</div>`;
+}
+function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+render();
+
+function buildExportHTML(){
+  const cap=window.AIE.getCapture();
+  const date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+  let mods=0,items=0,sections='';
+  PLAN.forEach(g=>{
+    const filled=g.items.filter(([k])=>cap[k]&&String(cap[k]).trim());
+    if(!filled.length) return;
+    mods++; items+=filled.length;
+    sections+=`<section class="m${g.coral?' coral':''}"><h2>${escapeHtml(g.mod)}</h2>`
+      +filled.map(([k,lbl])=>`<div class="it"><div class="k">${escapeHtml(lbl)}</div><div class="v">${escapeHtml(String(cap[k]))}</div></div>`).join('')
+      +`</section>`;
+  });
+  if(!mods) sections='<p class="empty">No entries captured yet — work through the course and your answers will appear here.</p>';
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My AI Toolkit — AI Essentials for Business</title>
+<style>
+:root{--teal:#00C0AF;--teal-dark:#008D80;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#2A2522;--line:#e4e0d2;--cream:#F1EEDE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.5;max-width:820px;margin:0 auto;padding:40px 26px}
+header{border-bottom:4px solid var(--teal);padding-bottom:18px;margin-bottom:8px}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--teal-dark)}
+h1{font-size:30px;margin:6px 0 10px;letter-spacing:-.01em}
+.meta{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:#6b6b6b}
+.meta b{color:var(--ink)}
+section.m{border:1px solid var(--line);margin-top:18px;break-inside:avoid}
+section.m h2{background:var(--teal);color:#fff;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:11px 18px}
+section.m.coral h2{background:var(--coral)}
+.it{padding:10px 18px;border-bottom:1px solid #f0ecdd}
+.it:last-child{border-bottom:0}
+.k{font-weight:700;font-size:12px;color:var(--teal-dark);margin-bottom:2px}
+section.m.coral .k{color:var(--coral-dark)}
+.v{font-size:14px;white-space:pre-wrap}
+.empty{padding:30px;text-align:center;color:#6b6b6b;border:1px solid var(--line);margin-top:18px}
+footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:#9a9a9a}
+@media print{body{padding:0}header{padding-top:8px}}
+</style></head><body>
+<header>
+  <div class="eyebrow">Australian Institute of Management · AI Essentials for Business</div>
+  <h1>My AI Toolkit</h1>
+  <div class="meta"><span>Exported <b>${date}</b></span><span><b>${mods}</b> of 5 sections</span><span><b>${items}</b> entries captured</span></div>
+</header>
+${sections}
+<footer>The goal isn't to master every AI tool. It's to build a way of thinking that outlasts them. · Generated from your course workbook.</footer>
+</body></html>`;
+}
+function exportPlan(){
+  const html=buildExportHTML();
+  const blob=new Blob([html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='My-AI-Toolkit.html';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(url); a.remove();},1500);
+}
+document.getElementById('downloadBtn').addEventListener('click',exportPlan);
+
+document.getElementById('clearBtn').addEventListener('click',()=>{
+  if(confirm('Clear everything you have captured across the course? This cannot be undone.')){
+    try{localStorage.removeItem('aie.capture');}catch(e){}
+    try{localStorage.removeItem('aie.last');}catch(e){}
+    render();
+  }
+});
+</script>
+</body>
+</html>

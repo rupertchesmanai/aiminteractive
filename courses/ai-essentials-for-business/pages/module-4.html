@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_ai-essentials-for-business";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=ai-essentials-for-business");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 4 — Integrating AI | AI Essentials for Business</title>
+<meta name="description" content="Combining tools for scale — Gamma, Canva, ElevenLabs, NotebookLM, Midjourney — plus your plan to keep learning. Module 4 of AI Essentials for Business." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #2c1712 0%, #141414 55%)}
+  .outcomes{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;max-width:60ch}
+  .outcomes div{display:flex;gap:9px;font-size:13.5px;opacity:.9}
+  .outcomes .d{color:#f0a594;font-weight:700}
+  @media(max-width:760px){.outcomes{grid-template-columns:1fr}}
+  .dash{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .dash .dhead{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--cream-alt)}
+  .dash .dhead .ic{width:34px;height:34px;flex:0 0 34px;background:var(--coral);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--head);font-weight:700}
+  .dash .dhead h3{font-size:18px;color:var(--ink)}
+  .dash .dhead .sub{font-size:12.5px;color:var(--grey)}
+  .dash .pad{padding:22px 24px}
+
+  /* combo builder */
+  .palette{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}
+  .toolchip{font-family:var(--head);font-weight:600;font-size:13px;border:1px solid var(--line);background:#fff;padding:10px 15px;cursor:pointer;transition:.15s}
+  .toolchip:hover{border-color:var(--coral)}
+  .toolchip.on{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .chainvis{display:flex;flex-wrap:wrap;align-items:center;gap:10px;min-height:44px;margin-bottom:14px}
+  .chainvis .node{font-family:var(--head);font-weight:600;font-size:13px;background:var(--cream-alt);border:1px solid var(--line);padding:9px 14px}
+  .chainvis .arrow{color:var(--muted);font-size:16px}
+  .combodesc{background:var(--cream-alt);border-left:4px solid var(--coral);padding:14px 17px;font-size:13.5px;min-height:24px}
+
+  /* accordion */
+  details.def{border:1px solid var(--line);background:#fff;margin-top:10px}
+  details.def summary{cursor:pointer;padding:15px 18px;font-family:var(--head);font-weight:600;font-size:14.5px;color:var(--ink);list-style:none;display:flex;align-items:center;gap:10px}
+  details.def summary::-webkit-details-marker{display:none}
+  details.def summary::before{content:"+ ";color:var(--teal)}
+  details.def[open] summary::before{content:"– "}
+  details.def .dbody{padding:0 18px 16px;font-size:13.5px;color:var(--ink)}
+  details.def .dbody ol{padding-left:20px;margin-top:8px}
+  details.def .dbody li{margin-bottom:6px}
+  details.def .usecase{background:var(--cream-alt);padding:10px 14px;font-size:12.7px;margin-top:10px;color:var(--grey)}
+
+  /* literacy plan */
+  .plangrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:700px){.plangrid{grid-template-columns:1fr}}
+
+  /* 2x2 journal */
+  .journal2x2{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:700px){.journal2x2{grid-template-columns:1fr}}
+  .jcell{background:#fff;padding:18px 20px}
+  .jcell h4{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .jcell.start h4{color:var(--teal-dark)} .jcell.stop h4{color:var(--coral-dark)}
+  .jcell.change h4{color:#a67c00} .jcell.continue h4{color:var(--teal-dark)}
+  .jcell textarea{width:100%;font-family:var(--body);font-size:13.5px;border:1px solid var(--line);background:var(--cream-alt);padding:10px 12px;resize:vertical}
+  .jcell textarea:focus{outline:2px solid var(--teal);background:#fff}
+
+  .takeaways{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.takeaways{grid-template-columns:1fr}}
+  .takeaways .tk{background:#fff;border:1px solid var(--line);padding:16px 18px;font-size:14px}
+  .takeaways .tk b{font-family:var(--head)}
+</style>
+</head>
+<body class="self" data-page="module-4">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">AI Essentials for Business</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#morning">Morning</a>
+      <a href="../index.html#afternoon">Afternoon</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="wrap inner">
+    <div class="eyebrow" style="color:#f0a594">Afternoon · Module 4</div>
+    <h1>Integrating AI</h1>
+    <p class="lead">You've explored AI concepts, prompting, co-pilot tools and creative applications. This final module is about integration — combining tools into real workflows, verifying results, and applying what you've learned to your own work.</p>
+    <div class="anchors">
+      <div class="anchor"><span class="bar" style="background:#f0a594"></span><span>You are the conductor; AI tools are the orchestra.</span></div>
+      <div class="anchor"><span class="bar" style="background:#53DFCB"></span><span>Teaching others is one of the best ways to consolidate your own learning.</span></div>
+    </div>
+    <div class="outcomes">
+      <div><span class="d">→</span><span>Integrate multiple AI tools into your daily workflow</span></div>
+      <div><span class="d">→</span><span>Apply AI safely while keeping control of the process</span></div>
+      <div><span class="d">→</span><span>Design a practical AI-assisted project</span></div>
+      <div><span class="d">→</span><span>Share and teach others what you've learned</span></div>
+    </div>
+    <div class="dashtag">◆ Dashboard — The Tool Combo Builder</div>
+  </div>
+</section>
+
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#combo">Tool Combo Builder</a>
+    <a href="#walkthroughs">Walkthroughs</a>
+    <a href="#plan">My AI Literacy Plan</a>
+    <a href="#journal">Learning Journal</a>
+  </div>
+</div>
+
+<!-- COMBO BUILDER -->
+<section class="band cream" id="combo">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Dashboard</span><span class="tag ghost">Combining tools for scale</span></div>
+    <h2 class="section">Build your own tool chain</h2>
+    <p class="section-lead">AI tools are most powerful used together. Pick two or more tools below to see what the combination is good for — the principle is simple: you are the conductor, AI tools are the orchestra.</p>
+    <div class="dash" style="margin-top:22px">
+      <div class="dhead"><div class="ic">⛓</div><div><h3>Tool combo builder</h3><div class="sub">Select 2 or more tools from the palette.</div></div></div>
+      <div class="pad">
+        <div class="palette" id="toolPalette"></div>
+        <div class="chainvis" id="chainVis"></div>
+        <div class="combodesc" id="comboDesc">Pick two tools to see what they're good for together.</div>
+      </div>
+    </div>
+
+    <div class="capture" style="margin-top:22px">
+      <h3>My workflow combination</h3>
+      <div class="hint">What would this combination save you time on? Saves automatically to your AI Toolkit.</div>
+      <div class="field">
+        <label for="m4combo">What I'd use this combination for, and what it would save me time on</label>
+        <textarea id="m4combo" rows="2" data-capture="m4.combo.notes" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALKTHROUGHS -->
+<section class="band white" id="walkthroughs">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Reference</span><span class="tag ghost">Step-by-step</span></div>
+    <h2 class="section">Five real pairings, step by step</h2>
+    <p class="section-lead">Each of these starts from a Deep Research report or briefing doc you've already created — expand any card for the exact steps.</p>
+
+    <details class="def">
+      <summary>ChatGPT + Gamma — research into a presentation</summary>
+      <div class="dbody">
+        <ol>
+          <li>Go to gamma.app and sign up (it's free)</li>
+          <li>Click "Create new" → "Paste In Text" → "Summarize Long Text or Document"</li>
+          <li>Paste in your Deep Research and click Generate</li>
+        </ol>
+        <div class="usecase">Gamma is built on Google Gemini, with similar hallucination rates to other tools — use it as a base, then export to PowerPoint to keep refining.</div>
+      </div>
+    </details>
+
+    <details class="def">
+      <summary>ChatGPT + Canva — hundreds of social posts in minutes</summary>
+      <div class="dbody">
+        <ol>
+          <li>Paste your Deep Research into a new chat, then: <i>"Please make me ten tweets to showcase the above to my clients. Format as a TABLE with TWEET and HASHTAG"</i></li>
+          <li>Copy into a spreadsheet, remove extra headers, save as CSV</li>
+          <li>In Canva, use Bulk Create → upload your CSV → Connect Data to the right column → Generate</li>
+        </ol>
+        <div class="usecase">Works for certificates, hundreds of Instagram posts in different languages, even bulk video — as long as your data is formatted correctly.</div>
+      </div>
+    </details>
+
+    <details class="def">
+      <summary>ChatGPT + ElevenLabs — voiceover and sound effects</summary>
+      <div class="dbody">
+        <ol>
+          <li>After your Deep Research, ask ChatGPT: <i>"I want to create a script to quickly explain the above research. Please give me ten soundbites that showcase the core points."</i></li>
+          <li>Create a free account at elevenlabs.io, pick a voice, paste your soundbites into Text to Speech, and Generate</li>
+          <li>Try Sound Effects too — type any effect and click Generate</li>
+        </ol>
+        <div class="usecase">Watch for glitches — accents can drift (an Australian voice can turn American), and stray music or words can appear. Always listen to every generation.</div>
+      </div>
+    </details>
+
+    <details class="def">
+      <summary>NotebookLM + Gamma — research context into a deck</summary>
+      <div class="dbody">
+        <ol>
+          <li>Open the NotebookLM project you created earlier</li>
+          <li>Click "Briefing Doc" and let it render, then copy the contents</li>
+          <li>In Gamma, create a presentation from text using that briefing doc</li>
+        </ol>
+        <div class="usecase">ChatGPT and NotebookLM are entirely different models (OpenAI vs Google) — if one isn't giving you what you need, switching models can help.</div>
+      </div>
+    </details>
+
+    <details class="def">
+      <summary>Midjourney + ChatGPT + Gamma + PowerPoint — the full stack</summary>
+      <div class="dbody">
+        <ol>
+          <li>Upload your PPT to ChatGPT and ask: <i>"Please create ten beautiful photorealistic Midjourney prompts to create images for this presentation. Make all of them shot on a Hasselblad camera with appropriate lenses, --ar 16:9 --style raw"</i></li>
+          <li>Paste the prompts into Midjourney and Upscale the images you like</li>
+          <li>Download the upscaled images and drop them into PowerPoint</li>
+        </ol>
+        <div class="usecase">If an image is close but not quite right, hit "rerun" rather than starting over — and experiment with different cameras and lenses until you get the look you're after.</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- LITERACY PLAN -->
+<section class="band tint" id="plan">
+  <div class="wrap">
+    <div class="kicker"><span class="tag activity">Activity</span><span class="tag ghost">Sustaining AI learning</span></div>
+    <h2 class="section">My AI literacy plan</h2>
+    <p class="section-lead">AI evolves quickly — weekly updates are common. Cultivate a "learning radar": subscribe to trusted sources, follow industry bodies, and share your discoveries. Complete the sentences below to plan how you'll continue.</p>
+    <div class="capture" style="margin-top:18px">
+      <div class="plangrid">
+        <div class="field">
+          <label for="m4plan-daily">One AI tool I will use daily</label>
+          <input type="text" id="m4plan-daily" data-capture="m4.plan.daily" placeholder="Type your answer…">
+        </div>
+        <div class="field">
+          <label for="m4plan-test">One workflow I will start testing this month</label>
+          <input type="text" id="m4plan-test" data-capture="m4.plan.test" placeholder="Type your answer…">
+        </div>
+        <div class="field">
+          <label for="m4plan-safeguard">One safeguard I'll always apply</label>
+          <input type="text" id="m4plan-safeguard" data-capture="m4.plan.safeguard" placeholder="Type your answer…">
+        </div>
+        <div class="field">
+          <label for="m4plan-share">One way I'll share AI knowledge with my team</label>
+          <input type="text" id="m4plan-share" data-capture="m4.plan.share" placeholder="Type your answer…">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING JOURNAL -->
+<section class="band white" id="journal">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Close</span><span class="tag ghost">Learning journal</span></div>
+    <h2 class="section">Start · Stop · Change · Continue</h2>
+    <p class="section-lead">Take this opportunity to reflect on what you've learnt today, and the changes you'll make to apply it.</p>
+    <div class="journal2x2" style="margin-top:18px">
+      <div class="jcell start"><h4>Start</h4><textarea rows="4" data-capture="m4.journal.start" placeholder="What will you start doing?"></textarea></div>
+      <div class="jcell stop"><h4>Stop</h4><textarea rows="4" data-capture="m4.journal.stop" placeholder="What will you stop doing?"></textarea></div>
+      <div class="jcell change"><h4>Change</h4><textarea rows="4" data-capture="m4.journal.change" placeholder="What will you change?"></textarea></div>
+      <div class="jcell continue"><h4>Continue</h4><textarea rows="4" data-capture="m4.journal.continue" placeholder="What will you keep doing?"></textarea></div>
+    </div>
+    <div class="capture" style="margin-top:18px">
+      <div class="field">
+        <label for="m4surprise">The most surprising thing I learned about AI today</label>
+        <textarea id="m4surprise" rows="2" data-capture="m4.surprise" placeholder="Type your answer…"></textarea>
+        <span class="saved">✓ Saved</span>
+      </div>
+    </div>
+
+    <div class="pager">
+      <a href="module-3.html" class="prev"><div class="lbl">← Previous</div><div class="ttl">Creating Using AI</div></a>
+      <a href="my-plan.html" class="next"><div class="lbl">Finish →</div><div class="ttl">My AI Toolkit</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AI Essentials for Business</div>
+      <small>Australian Institute of Management · Module 4 — Integrating AI</small>
+    </div>
+    <small>You are the conductor; AI tools are the orchestra.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+/* ================= COMBO BUILDER ================= */
+const TOOLS=['ChatGPT','Gamma','Canva','ElevenLabs','NotebookLM','Midjourney','PowerPoint'];
+const COMBOS={
+ 'chatgpt|gamma':"Generate text with ChatGPT, then turn it into social posts or a presentation with Gamma.",
+ 'chatgpt|canva':"Turn AI-generated outlines or tables into hundreds of on-brand graphics with Canva's Bulk Create.",
+ 'notebooklm|gamma':"Convert research or PDFs (via a NotebookLM briefing doc) into a presentation with Gamma.",
+ 'canva|midjourney':"Striking Midjourney visuals, dropped straight into Canva's Bulk Create for scale.",
+ 'chatgpt|elevenlabs':"Turn a written brief into speech, music and sound effects with ElevenLabs.",
+ 'chatgpt|midjourney':"ChatGPT writes the Midjourney prompts for you — describe what you want, get ten polished prompts back.",
+ 'gamma|powerpoint':"Use Gamma to get a fast first draft, then export to PowerPoint to keep refining.",
+ 'midjourney|powerpoint':"Generate and upscale images in Midjourney, then drop them straight into your PowerPoint deck.",
+ 'chatgpt|powerpoint':"Upload an existing deck to ChatGPT and ask it to suggest image prompts, copy edits or structure changes.",
+};
+function comboKey(a,b){ return [a,b].sort().join('|'); }
+let selected=[];
+const palette=document.getElementById('toolPalette'), chainVis=document.getElementById('chainVis'), comboDesc=document.getElementById('comboDesc');
+TOOLS.forEach(t=>{
+  const b=document.createElement('button'); b.className='toolchip'; b.textContent=t; b.dataset.id=t.toLowerCase();
+  b.addEventListener('click',()=>{
+    const id=t.toLowerCase();
+    if(selected.includes(id)){ selected=selected.filter(x=>x!==id); b.classList.remove('on'); }
+    else { selected.push(id); b.classList.add('on'); }
+    renderChain();
+  });
+  palette.appendChild(b);
+});
+function renderChain(){
+  if(selected.length<2){
+    chainVis.innerHTML=selected.length===1?`<span class="node">${cap(selected[0])}</span>`:'';
+    comboDesc.textContent='Pick two tools to see what they\'re good for together.';
+    if(window.AIE) window.AIE.setCaptureValue('m4.combo.tools', selected.map(cap).join(' + '));
+    return;
+  }
+  chainVis.innerHTML=selected.map((s,i)=>`<span class="node">${cap(s)}</span>`+(i<selected.length-1?'<span class="arrow">→</span>':'')).join('');
+  let found=[];
+  for(let i=0;i<selected.length;i++){
+    for(let j=i+1;j<selected.length;j++){
+      const k=comboKey(selected[i],selected[j]);
+      if(COMBOS[k]) found.push(COMBOS[k]);
+    }
+  }
+  comboDesc.innerHTML = found.length ? found.map(f=>'• '+f).join('<br><br>') : `${selected.map(cap).join(' + ')} — no worked example in the workbook yet, but the same principle applies: use one to generate raw material, the other to shape or publish it.`;
+  if(window.AIE) window.AIE.setCaptureValue('m4.combo.tools', selected.map(cap).join(' + '));
+}
+function cap(id){ return TOOLS.find(t=>t.toLowerCase()===id)||id; }
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_ai-essentials-for-business";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../index.html?course=ai-essentials-for-business");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Essentials for Business — Course Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  /* ---------- hero (gradient — no bespoke video for this course yet) ---------- */
+  .hero{position:relative;background:var(--black);color:#fff;overflow:hidden;min-height:520px;display:flex;align-items:center}
+  .hero .grad{position:absolute;inset:0;background:
+    radial-gradient(90% 120% at 88% -10%, rgba(0,192,175,.35) 0%, rgba(0,192,175,0) 55%),
+    radial-gradient(70% 90% at 8% 110%, rgba(220,90,70,.28) 0%, rgba(220,90,70,0) 55%),
+    #0e1210}
+  .hero .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(80% 80% at 70% 30%,#000 30%,transparent 75%)}
+  .hero .inner{position:relative;z-index:3;padding:78px 0}
+  .hero .eyebrow{color:var(--teal-light)}
+  .hero h1{font-size:clamp(38px,6vw,68px);font-weight:700;margin:14px 0 8px;max-width:16ch}
+  .hero .sub{font-size:18px;max-width:52ch;opacity:.92;font-weight:300}
+  .phrases{margin-top:28px;display:flex;flex-direction:column;gap:11px;max-width:54ch}
+  .phrase{display:flex;gap:13px;align-items:flex-start;font-family:var(--head);font-weight:500;font-size:17px}
+  .phrase .bar{width:4px;align-self:stretch;background:var(--coral);flex:0 0 4px;margin-top:2px}
+  .phrase.t .bar{background:var(--teal-light)}
+  .hero .meta{margin-top:32px;display:flex;gap:30px;flex-wrap:wrap}
+  .hero .meta div{font-size:13px;opacity:.8}
+  .hero .meta b{display:block;font-family:var(--head);font-weight:600;font-size:24px;opacity:1;color:#fff}
+
+  /* ---------- quote band ---------- */
+  .quoteband .qm{background:linear-gradient(120deg,#0c1a18,#0e1210 60%)}
+
+  /* ---------- course map ---------- */
+  main{padding:54px 0 30px}
+  .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:8px 0 22px;flex-wrap:wrap}
+  .sectionHead h2{font-size:30px;color:var(--ink)}
+  .sectionHead p{font-size:14px;color:var(--grey);max-width:56ch}
+
+  .dayBand{margin:0 0 14px}
+  .dayBand .label{display:flex;align-items:center;gap:14px;margin:30px 0 16px}
+  .dayBand .label .tag{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal-dark);padding:6px 12px}
+  .dayBand .label .tag.pm{background:var(--coral)}
+  .dayBand .label h3{font-size:21px;color:var(--ink);font-weight:600}
+  .dayBand .label .ln{flex:1;height:1px;background:var(--line)}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+  .card{position:relative;background:#fff;border:1px solid var(--line);padding:0;display:flex;flex-direction:column;overflow:hidden;transition:.2s;cursor:pointer}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px -22px rgba(0,0,0,.45);border-color:rgba(0,0,0,.18)}
+  .card .accent{height:5px;background:var(--teal)}
+  .card.coral .accent{background:var(--coral)}
+  .card .pad{padding:22px 24px 24px}
+  .card .num{position:absolute;top:14px;right:20px;font-family:var(--head);font-weight:700;font-size:54px;line-height:1;color:rgba(0,0,0,.05)}
+  .card .kicker{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .card .chip{font-family:var(--head);font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;background:var(--cream);color:var(--teal-dark)}
+  .card.coral .chip{color:var(--coral-dark)}
+  .card .chip.time{background:transparent;color:var(--muted);padding-left:0}
+  .card h4{font-size:21px;color:var(--ink);margin-bottom:4px}
+  .card .dash{font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .card.coral .dash{color:var(--coral-dark)}
+  .card .desc{font-size:14px;color:var(--ink);margin-bottom:14px}
+  .card .reveal{max-height:0;opacity:0;overflow:hidden;transition:.3s ease}
+  .card:hover .reveal,.card.open .reveal{max-height:420px;opacity:1}
+  .card .subhead{font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 8px}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .card li{font-size:12.7px;color:var(--grey);padding-left:15px;position:relative;line-height:1.35}
+  .card li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+  .card.coral li::before{background:var(--coral)}
+  .card .foot{margin-top:16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:13px}
+  .card .open-link{font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);display:flex;align-items:center;gap:7px}
+  .card.coral .open-link{color:var(--coral-dark)}
+  .card .open-link .arr{transition:.2s}
+  .card:hover .open-link .arr{transform:translateX(4px)}
+  .progress{display:flex;gap:3px}
+  .progress i{width:18px;height:5px;background:var(--cream-alt);display:block}
+  .progress i.done{background:var(--teal)}
+  .card.coral .progress i.done{background:var(--coral)}
+  .chip.donechip{background:var(--teal);color:#fff;display:inline-flex;align-items:center;gap:4px}
+  .card.coral .chip.donechip{background:var(--coral)}
+
+  .resume{margin-top:26px}
+  .resumeBtn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#06201d;
+    font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.01em;padding:13px 20px;
+    border:0;cursor:pointer;transition:.18s}
+  .resumeBtn:hover{background:var(--teal-light)}
+  .resumeBtn .lbl{text-transform:uppercase;letter-spacing:.08em;font-size:11px;opacity:.8}
+  .resumeBtn b{font-weight:700}
+  .resumeBtn .arr{font-size:16px}
+
+  .selfOnly{display:block}
+  body.present .selfOnly{display:none}
+  body.present .card .desc{font-size:15px}
+  .presentOnly{display:none}
+  body.present .presentOnly{display:block}
+
+  .minor{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+  @media(max-width:820px){.minor{grid-template-columns:1fr}}
+  .minorCard{background:var(--cream-alt);border:1px solid var(--line);padding:20px 22px}
+  .minorCard h4{font-size:17px;margin-bottom:6px}
+  .minorCard p{font-size:13px;color:var(--grey)}
+</style>
+</head>
+<body class="self">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="#top">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-label="AIM">
+        <rect width="34" height="34" fill="none"/>
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div>
+        <div class="lt">AIM</div>
+        <div class="ls">AI Essentials for Business</div>
+      </div>
+    </a>
+    <nav>
+      <a href="#map">Course Map</a>
+      <a href="#morning">Morning</a>
+      <a href="#afternoon">Afternoon</a>
+      <div class="modeToggle" id="modeToggle">
+        <button data-mode="self" class="on">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="grad"></div>
+  <div class="grid"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">One-day practical intensive</div>
+    <h1>AI Essentials for Business</h1>
+    <p class="sub">A hands-on course, not a theory course. Build the confidence, judgement and muscle memory to use AI tools well from day one — prompting, safe practice, creating, and integrating AI into your real workflow.</p>
+    <div class="phrases">
+      <div class="phrase t"><span class="bar"></span><span>You are the conductor. AI is the orchestra.</span></div>
+      <div class="phrase"><span class="bar"></span><span>The goal isn't to master every tool — it's to build a way of thinking that outlasts them.</span></div>
+    </div>
+    <div class="meta">
+      <div><b>1</b> day</div>
+      <div><b>4</b> modules</div>
+      <div><b>20+</b> hands-on activities</div>
+      <div><b>1</b> game you'll actually build</div>
+    </div>
+    <div class="resume" id="resume"></div>
+  </div>
+</section>
+
+<section class="quoteband">
+  <div class="qm"></div>
+  <div class="qc">
+    <div class="qs">The line this course keeps coming back to</div>
+    <div class="ql">The goal isn't to master every AI tool. It's to develop a way of thinking about AI collaboration that serves you regardless of which tools emerge tomorrow.</div>
+  </div>
+</section>
+
+<main id="map">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow" style="color:var(--teal-dark)">The course, section by section</div>
+        <h2>Course map</h2>
+      </div>
+      <p>Every section becomes its own dashboard. Each card names the live dashboard that teaches it.</p>
+    </div>
+
+    <div class="minor">
+      <a class="minorCard" href="pages/welcome.html">
+        <h4>Welcome, Orientation &amp; Prologue</h4>
+        <p>The course promise, the conductor-and-orchestra framing, a quick AI-news pulse-check, and your learning objectives.</p>
+      </a>
+      <a class="minorCard" href="pages/how-to-use.html">
+        <h4>How to use this site</h4>
+        <p>Present mode vs self-paced mode, how the dashboards map to the workbook, and how your answers are saved.</p>
+      </a>
+    </div>
+
+    <div class="dayBand" id="morning">
+      <div class="label"><span class="tag">Morning</span><h3>Foundations — what AI is, and how to work with it well</h3><span class="ln"></span></div>
+      <div class="grid" id="grid-am"></div>
+    </div>
+
+    <div class="dayBand" id="afternoon">
+      <div class="label"><span class="tag pm">Afternoon</span><h3>Hands-on — creating with AI, then making it stick</h3><span class="ln"></span></div>
+      <div class="grid" id="grid-pm"></div>
+    </div>
+
+    <div class="minor" style="margin-top:26px">
+      <a class="minorCard" href="pages/references.html">
+        <h4>References &amp; Resource Bank</h4>
+        <p>Model cutoff dates, tool pricing (Zapier / Make / N8N, Gamma, Canva, ElevenLabs, Midjourney), and the prompting-framework quick reference.</p>
+      </a>
+      <a class="minorCard" href="pages/my-plan.html">
+        <h4>My AI Toolkit</h4>
+        <p>Everything you captured across the day — myths busted, prompts built, workflows sketched, your literacy plan — collected into one exportable page.</p>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AI Essentials for Business</div>
+      <small>Australian Institute of Management — Course Hub</small>
+    </div>
+    <small>You are the conductor. AI is the orchestra.</small>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+const MODULES=[
+ {slot:'am',n:1,coral:false,title:"Understanding AI: Foundations & Evolution",
+  dash:"The Model Cutoff Clock & Prompt Builder",
+  desc:"Bust the big myths, learn the terms that matter, meet the major models, then build your first prompt with a live Act–Explain–Please assembler.",
+  sections:["What is AI, really?","Cutoff dates & knowledge limits","Myths vs truths","Key terms to know","Popular models: ChatGPT, Claude, Gemini, Grok","Prompting basics: Act–Explain–Please","Beyond basics: RACE, CARE, APE, CREATE, RISE","Have fun, that's an order"],
+  acts:["Myths in my workplace","Match the term","Write your first prompt","Redo your prompt with a framework"],
+  done:0},
+ {slot:'am',n:2,coral:false,title:"Collaborating Together",
+  dash:"The Mode Picker & Workflow Builder",
+  desc:"Work out which mode to use and when, keep your data safe with the CEO Test, meet agentic AI and workflow tools, and spot bias before it spots you.",
+  sections:["ChatGPT's tools and modes","Safe AI practice — the CEO Test & Me Test","Agentic AI & workflow tools (Zapier, Make, N8N)","AI ethics & alignment","Microsoft Copilot","Reflections & key takeaways"],
+  acts:["Try different modes","Create your safe context","Map your daily workflow","Bias spotting practice","Hands-on prompting with data"],
+  done:0},
+ {slot:'pm',n:3,coral:true,title:"Creating Using AI",
+  dash:"Build Snake, Live",
+  desc:"The flagship dashboard — an embedded, playable Snake game you build the same way the workbook teaches it, plus image prompting and a hallucination detective.",
+  sections:["Vibe coding — apps with AI","Website creation","Image creation — ChatGPT, Midjourney, Gemini Flash","Hallucinations","When not to use AI"],
+  acts:["Let's make Snake","Create your first image prompt","Fact-check an AI output","Boundaries of AI in my role"],
+  done:0},
+ {slot:'pm',n:4,coral:true,title:"Integrating AI",
+  dash:"The Tool Combo Builder",
+  desc:"Chain tools into real workflows — Gamma, Canva, ElevenLabs, NotebookLM, Midjourney — then lock in how you'll keep learning after today.",
+  sections:["Combining tools for scale","ChatGPT + Gamma","ChatGPT + Canva","ChatGPT + ElevenLabs","NotebookLM + Gamma","Midjourney + ChatGPT + Gamma + PowerPoint","Sustaining AI learning & practice"],
+  acts:["My workflow combination","My AI literacy plan","Start / Stop / Change / Continue"],
+  done:0},
+];
+
+const ICON='<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2.5" width="13" height="11"/><line x1="1.5" y1="6" x2="14.5" y2="6"/><line x1="5" y1="6" x2="5" y2="13.5"/></svg>';
+
+function getCap(){try{return JSON.parse(localStorage.getItem('aie.capture')||'{}')}catch(e){return{}}}
+const CAP=getCap();
+const TOTALS={1:8,2:9,3:6,4:8};
+function keysWith(prefix){let n=0;for(const k in CAP){if(k.indexOf(prefix)===0&&String(CAP[k]).trim())n++;}return n;}
+function progress(m){
+  const prefix='m'+m.n+'.';
+  const total=TOTALS[m.n]||m.acts.length;
+  const have=keysWith(prefix);
+  return {have,total,frac:total?Math.min(1,have/total):0};
+}
+
+function card(m){
+  const cls=['card'];if(m.coral)cls.push('coral');
+  const pr=progress(m);
+  const dotN=Math.max(m.acts.length,4);
+  const lit=pr.have>0?Math.max(1,Math.round(pr.frac*dotN)):0;
+  const dots=Array.from({length:dotN}).map((_,i)=>`<i class="${i<lit?'done':''}"></i>`).join('');
+  const doneChip=pr.frac>=0.9?'<span class="chip donechip">✓ Done</span>'
+                :pr.have>0?'<span class="chip donechip">In progress</span>':'';
+  const el=document.createElement('a');
+  el.href='pages/module-'+m.n+'.html';
+  el.className=cls.join(' ');
+  el.innerHTML=`
+    <div class="accent"></div>
+    <div class="pad">
+      <div class="num">${m.n}</div>
+      <div class="kicker"><span class="chip">Module ${m.n}</span><span class="chip time">≈ 90 min</span>${doneChip}</div>
+      <h4>${m.title}</h4>
+      <div class="dash">${ICON}<span>Dashboard — ${m.dash}</span></div>
+      <div class="desc">${m.desc}</div>
+      <div class="reveal">
+        <div class="subhead">Sections covered</div>
+        <ul>${m.sections.map(s=>`<li>${s}</li>`).join('')}</ul>
+        <div class="subhead" style="margin-top:12px">Activities</div>
+        <ul>${m.acts.map(s=>`<li>${s}</li>`).join('')}</ul>
+      </div>
+      <div class="foot">
+        <span class="open-link"><span>Open dashboard</span><span class="arr">→</span></span>
+        <span class="progress">${dots}</span>
+      </div>
+    </div>`;
+  return el;
+}
+MODULES.filter(m=>m.slot==='am').forEach(m=>document.getElementById('grid-am').appendChild(card(m)));
+MODULES.filter(m=>m.slot==='pm').forEach(m=>document.getElementById('grid-pm').appendChild(card(m)));
+
+(function(){
+  let last='';try{last=localStorage.getItem('aie.last')||'';}catch(e){}
+  if(!last) return;
+  const m=MODULES.find(x=>('module-'+x.n)===last);
+  const title=m?('Module '+m.n+' — '+m.title):'Pick up where you left off';
+  document.getElementById('resume').innerHTML=
+    `<a class="resumeBtn" href="pages/${last}.html"><span class="lbl">Continue where you left off</span><b>${title}</b><span class="arr">→</span></a>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_ai-essentials-for-business";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=ai-essentials-for-business");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>References &amp; Resource Bank | AI Essentials for Business</title>
+<meta name="description" content="Model cutoff dates, tool pricing, and prompting-framework quick references for AI Essentials for Business." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .mhero{background:radial-gradient(120% 120% at 80% 0%, #15302d 0%, #141414 55%)}
+  .refgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:760px){.refgrid{grid-template-columns:1fr}}
+  .ref{border:1px solid var(--line);background:#fff;padding:18px 20px;display:flex;flex-direction:column}
+  .ref .cat{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+  .ref h4{font-size:16px;margin-bottom:6px}
+  .ref p{font-size:13px;color:var(--grey);margin-bottom:12px;flex:1}
+  .ref .src{font-size:12px;color:var(--muted)}
+  .ref a{font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);margin-top:8px;display:inline-flex;gap:6px;align-items:center}
+</style>
+</head>
+<body class="self">
+
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html" aria-label="Course hub">
+      <svg width="32" height="32" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/>
+        <rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/>
+      </svg>
+      <div><div class="lt">AIM</div><div class="ls">AI Essentials for Business</div></div>
+    </a>
+    <nav>
+      <a href="../index.html">Course Hub</a>
+      <a href="../index.html#morning">Morning</a>
+      <a href="../index.html#afternoon">Afternoon</a>
+      <div class="modeToggle">
+        <button data-mode="self">Self-paced</button>
+        <button data-mode="present">Present</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="wrap inner">
+    <div class="eyebrow" style="color:var(--teal-light)">Resource bank</div>
+    <h1>References &amp; tool pricing</h1>
+    <p class="lead">Model cutoff dates change with every release, and tool pricing shifts often — use these as a starting point and check the source link for the latest.</p>
+  </div>
+</section>
+
+<div class="subnav">
+  <div class="wrap row">
+    <a href="#cutoffs">Model Cutoffs</a>
+    <a href="#pricing">Tool Pricing</a>
+    <a href="#frameworks">Prompting &amp; Safety</a>
+  </div>
+</div>
+
+<section class="band cream" id="cutoffs">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Model knowledge cutoffs</span></div>
+    <h2 class="section">Check before you rely on a date</h2>
+    <div class="refgrid">
+      <div class="ref"><div class="cat">Live reference</div><h4>LLM Knowledge Cutoff Dates</h4><p>A community-maintained, up-to-date list of cutoff dates across every major model — the fastest way to check before you rely on one.</p><div class="src">GitHub — HaoooWang</div><a href="https://github.com/HaoooWang/llm-knowledge-cutoff-dates" target="_blank" rel="noopener">github.com →</a></div>
+      <div class="ref"><div class="cat">Wake-up case</div><h4>Victorian lawyer AI submission incident (2025)</h4><p>A real Australian example of hallucinated citations reaching a courtroom — a useful case to keep front of mind when verifying AI-assisted work.</p><div class="src">Reported via ABC News</div><a href="https://www.abc.net.au/news/2025-08-15/victoria-lawyer-apologises-after-ai-generated-submissions/105661208" target="_blank" rel="noopener">abc.net.au →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band white" id="pricing">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Tool pricing &amp; access</span></div>
+    <h2 class="section">What each tool costs to get started</h2>
+    <div class="refgrid">
+      <div class="ref"><div class="cat">Workflow automation</div><h4>Zapier / Make / N8N</h4><p>Zapier from $46/mo (most connections, easiest start), Make from $10/mo (clearest interface), N8N free to self-host (most powerful, least polished).</p><div class="src">Check current plans before committing</div><a href="https://zapier.com" target="_blank" rel="noopener">zapier.com →</a></div>
+      <div class="ref"><div class="cat">Presentations</div><h4>Gamma</h4><p>Free tier creates presentations up to 10 slides and exports to PowerPoint — a fast way to get a first draft from a Deep Research report.</p><div class="src">gamma.app</div><a href="https://gamma.app" target="_blank" rel="noopener">gamma.app →</a></div>
+      <div class="ref"><div class="cat">Bulk design</div><h4>Canva</h4><p>Bulk Create turns a spreadsheet into hundreds of on-brand graphics, certificates or videos in minutes.</p><div class="src">canva.com</div><a href="https://www.canva.com" target="_blank" rel="noopener">canva.com →</a></div>
+      <div class="ref"><div class="cat">Voice &amp; audio</div><h4>ElevenLabs</h4><p>Realistic voiceover and sound-effect generation in most languages and accents — becoming the industry standard for video voiceover.</p><div class="src">elevenlabs.io</div><a href="https://elevenlabs.io" target="_blank" rel="noopener">elevenlabs.io →</a></div>
+      <div class="ref"><div class="cat">Image generation</div><h4>Midjourney</h4><p>A paid tool, strongest on photorealism, speed and control — ask ChatGPT to write the prompts for you and paste them straight in.</p><div class="src">midjourney.com</div><a href="https://www.midjourney.com" target="_blank" rel="noopener">midjourney.com →</a></div>
+      <div class="ref"><div class="cat">Research</div><h4>NotebookLM</h4><p>Google's research tool — turns your own documents into a briefing doc, podcast or mind map you can carry into other tools.</p><div class="src">notebooklm.google</div><a href="https://notebooklm.google" target="_blank" rel="noopener">notebooklm.google →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="frameworks">
+  <div class="wrap">
+    <div class="kicker"><span class="tag">Prompting &amp; safe practice</span></div>
+    <h2 class="section">Quick reference</h2>
+    <div class="refgrid">
+      <div class="ref"><div class="cat">Framework</div><h4>Act – Explain – Please</h4><p>Assign a role, give context, then make a clear, specific request. The default framework for this course — see Module 1's live builder.</p><div class="src">AI Essentials for Business — Module 1</div></div>
+      <div class="ref"><div class="cat">Framework</div><h4>RACE · CARE · APE · CREATE · RISE</h4><p>Five alternative frameworks for when Act–Explain–Please isn't quite enough structure — each emphasises clarity, audience or step-by-step reasoning.</p><div class="src">AI Essentials for Business — Module 1</div></div>
+      <div class="ref"><div class="cat">Safe practice</div><h4>The CEO Test / The Me Test</h4><p>Would I be comfortable if this prompt and its output were posted publicly? Would I be comfortable if this was my own data being shared like this?</p><div class="src">AI Essentials for Business — Module 2</div></div>
+      <div class="ref"><div class="cat">Judgement</div><h4>The reputation question</h4><p>"Would I trust this answer if my reputation depended on it?" — a fast gut-check for when not to lean on AI at all.</p><div class="src">AI Essentials for Business — Module 3</div></div>
+    </div>
+    <div class="note teal" style="margin-top:18px"><b>For facilitators:</b> refresh the cutoff-date and pricing figures before each cohort — this course ages faster than most, and current numbers land harder than stale ones.</div>
+    <div class="pager">
+      <a href="module-4.html" class="prev"><div class="lbl">←</div><div class="ttl">Integrating AI</div></a>
+      <a href="my-plan.html" class="next"><div class="lbl">→</div><div class="ttl">My AI Toolkit</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AI Essentials for Business</div>
+      <small>Australian Institute of Management · References &amp; Resource Bank</small>
+    </div>
+    <small>Check before you rely on a date.</small>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
