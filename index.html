@@ -121,6 +121,13 @@
 </section>
 
 <main class="courses">
+  <button class="card" style="--accent: var(--coral);" data-course="ai-essentials-for-business" data-title="AI Essentials for Business">
+    <span class="tag">Essentials · 4 Modules</span>
+    <h2>AI Essentials for Business</h2>
+    <p>A one-day, hands-on intensive — foundations, safe practice, creating with AI, and integrating tools into your workflow.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+
   <button class="card" style="--accent: var(--teal-dark);" data-course="responsible-ai-leadership" data-title="Responsible AI Leadership">
     <span class="tag">Leadership · 8 Modules</span>
     <h2>Responsible AI Leadership</h2>
@@ -128,17 +135,31 @@
     <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
   </button>
 
-  <button class="card" style="--accent: var(--coral);" data-course="data-analytics" data-title="Data Analytics Essentials">
+  <button class="card" style="--accent: var(--black);" data-course="data-analytics" data-title="Data Analytics Essentials">
     <span class="tag">Analytics</span>
     <h2>Data Analytics Essentials</h2>
     <p>An interactive learning hub for turning raw data into confident, evidence-based business decisions.</p>
     <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
   </button>
 
-  <button class="card" style="--accent: var(--black);" data-course="agentic-ai" data-title="Designing Workflows for Agentic AI">
+  <button class="card" style="--accent: #6b5bd6;" data-course="agentic-ai" data-title="Designing Workflows for Agentic AI">
     <span class="tag">Agentic AI</span>
     <h2>Designing Workflows for Agentic AI</h2>
     <p>Design, delegate and supervise agentic AI workflows — from single tasks to multi-step automation.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+
+  <button class="card" style="--accent: #2D7DD2;" data-course="ai-for-teamwork" data-title="AI for Teamwork">
+    <span class="tag">Teamwork · 8 Modules</span>
+    <h2>AI for Teamwork</h2>
+    <p>Use AI as a practical teammate — clearer communication, better meetings, deeper analysis and safe, transparent adoption.</p>
+    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
+  </button>
+
+  <button class="card" style="--accent: #B53D2C;" data-course="agentic-ai-for-leaders" data-title="Agentic AI for Leaders">
+    <span class="tag">Leadership · Advanced · 8 Modules</span>
+    <h2>Agentic AI for Leaders</h2>
+    <p>The advanced sequel to Responsible AI Leadership — decide when AI may act on your behalf, draw the boundaries, and defend the decision.</p>
     <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
   </button>
 </main>
@@ -164,9 +185,12 @@
 (function () {
   // NOTE: simple client-side gate — deters casual access, not a security boundary.
   var COURSES = {
+    'ai-essentials-for-business': { title: 'AI Essentials for Business', url: 'courses/ai-essentials-for-business/index.html', code: 'ZXNzZW50aWFsczIwMjY=' },
     'responsible-ai-leadership': { title: 'Responsible AI Leadership', url: 'courses/responsible-ai-leadership/index.html', code: 'bGVhZDIwMjY=' },
     'data-analytics':            { title: 'Data Analytics Essentials', url: 'courses/data-analytics/index.html',            code: 'ZGF0YTIwMjY=' },
-    'agentic-ai':                { title: 'Designing Workflows for Agentic AI', url: 'courses/agentic-ai/index.html',       code: 'YWdlbnQyMDI2' }
+    'agentic-ai':                { title: 'Designing Workflows for Agentic AI', url: 'courses/agentic-ai/index.html',       code: 'YWdlbnQyMDI2' },
+    'ai-for-teamwork':           { title: 'AI for Teamwork', url: 'courses/ai-for-teamwork/index.html',                    code: 'dGVhbTIwMjY=' },
+    'agentic-ai-for-leaders':    { title: 'Agentic AI for Leaders', url: 'courses/agentic-ai-for-leaders/index.html',        code: 'bGVhZGVyczIwMjY=' }
   };
 
   var overlay = document.getElementById('overlay');
