@@ -1,0 +1,32 @@
+TEAM RETROSPECTIVE — RAW NOTES (SAMPLE COURSE RESOURCE — fictional team, fictional names)
+Project: Quarterly customer onboarding improvement sprint
+Format: anonymous sticky notes collected under "went well / didn't go well / puzzles" — unedited, unsorted
+
+- handovers between sales and onboarding still messy, three clients got welcome emails twice
+- loved the new checklist template, saved me at least an hour per client
+- daily standup keeps running to 25 mins
+- nobody knows who owns the Salesforce data fixes
+- the Wednesday no-meeting block actually happened this sprint!! keep it
+- client kickoff decks looking way more consistent now
+- I still find out about scope changes from the client, not from us
+- new starter had no access to half the systems for her first week
+- shoutout to Dev for jumping on the reporting bug on the weekend
+- too many slack channels, same question answered in three places
+- the automated welcome sequence is great but the third email links to the old help centre
+- we said we'd timebox discovery calls to 45 min, most ran over
+- felt like decisions from last retro never got actioned
+- pairing on the two big enterprise clients worked really well
+- handover doc template is too long, nobody fills in sections 4-6
+- why do we still send contracts from personal outlook accounts
+- customer satisfaction scores up this quarter (81 → 87)
+- the risk log hasn't been opened since week 1
+- great energy in the team this sprint, best in months
+- onboarding time for standard clients down from 12 days to 9
+- I don't understand what marketing does with the feedback we send them
+- calendar tetris for kickoff calls across timezones ate my mornings
+- new pricing sheet arrived mid-sprint with no heads-up, caused rework on three proposals
+- the shared drive folder structure finally makes sense, thanks Lena
+- we celebrate wins in slack but never talk about near-misses
+- client X almost churned and we only noticed because of a chance conversation
+- love that leadership joined the demo day
+- still no clear definition of "onboarding complete", every team counts it differently
