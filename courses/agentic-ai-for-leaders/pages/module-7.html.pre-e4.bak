@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 7: Governing Autonomy Over Time — Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../assets/img/aim-logo-blue.png">
+<meta name="description" content="Module 7 · Governing Autonomy Over Time — design the governance cadence that keeps an agent governed after approval.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* twelve-months feed */
+.dossier{background:#141414;color:#d9d4c8;padding:24px 26px;margin:16px 0}
+.dossier .dh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#53DFCB;margin-bottom:12px}
+.dossier p{font-size:13.5px;line-height:1.6;margin-bottom:10px}
+.signals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 4px}
+@media(max-width:820px){.signals{grid-template-columns:1fr}}
+.sig{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-top:4px solid var(--coral);padding:15px 16px}
+.sig .sn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#53DFCB}
+.sig h5{font-family:var(--head);font-size:15px;color:#fff;margin:4px 0 6px}
+.sig p{font-size:12.8px;color:rgba(255,255,255,.8);line-height:1.5;margin:0}
+.sig .ask{margin-top:8px;font-style:italic;color:#fff;font-size:13px}
+/* cadence rows */
+.cadrow{background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.cadrow .ch{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.cadgrid{display:grid;grid-template-columns:1.4fr .7fr .7fr;gap:10px}
+.cadgrid2{display:grid;grid-template-columns:1.4fr .7fr .7fr;gap:10px;margin-top:8px}
+@media(max-width:820px){.cadgrid,.cadgrid2{grid-template-columns:1fr}}
+.cadrow label{display:block;font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.cadrow input[type=text],.cadrow select{width:100%;font-family:var(--body);font-size:13px;padding:8px 10px;border:1px solid var(--line);background:var(--cream)}
+.cadrow input[type=text]:focus,.cadrow select:focus{outline:2px solid var(--teal);background:#fff}
+/* four signal cards */
+.fours{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media(max-width:820px){.fours{grid-template-columns:1fr}}
+.fs{background:var(--ink);color:#fff;padding:16px 18px}
+.fs .cn{font-family:var(--mono);font-size:11px;color:var(--teal-light)}
+.fs h4{font-size:17px;color:#fff;margin:4px 0 5px}
+.fs p{font-size:12.8px;color:rgba(255,255,255,.82);line-height:1.5}
+.fs .kq{margin-top:9px;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);border-top:1px solid rgba(255,255,255,.2);padding-top:8px}
+/* trigger ladder */
+.ladder{background:#fff;border:1px solid var(--line);margin:14px 0}
+.lrow{display:grid;grid-template-columns:44px 170px 1fr;border-bottom:1px solid var(--line)}
+.lrow:last-child{border-bottom:0}
+.lrow .ln{font-family:var(--mono);font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center;background:var(--cream);border-right:1px solid var(--line)}
+.lrow .lt2{font-family:var(--head);font-weight:600;font-size:13.5px;padding:11px 13px;border-right:1px solid var(--line)}
+.lrow .lm{font-size:12.8px;color:var(--grey);padding:11px 13px}
+@media(max-width:640px){.lrow{grid-template-columns:36px 1fr}.lrow .lm{grid-column:1/-1;border-top:1px solid var(--line)}}
+/* around-the-agent list */
+.around{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media(max-width:860px){.around{grid-template-columns:repeat(2,1fr)}}
+.ar{background:var(--cream-alt);border-left:4px solid var(--coral);padding:11px 12px;font-family:var(--head);font-weight:600;font-size:12.3px;line-height:1.35}
+/* prompt blocks */
+.promptbox{background:#141414;color:#d9d4c8;padding:18px 20px;margin:12px 0;position:relative}
+.promptbox .ph{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#53DFCB;margin-bottom:9px}
+.promptbox pre{font-family:var(--mono);font-size:12px;line-height:1.6;white-space:pre-wrap;margin:0}
+.promptbox .copybtn{position:absolute;top:12px;right:12px;font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#141414;background:#53DFCB;border:0;padding:6px 11px;cursor:pointer}
+.promptbox .copybtn:hover{background:#fff}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.gcol{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.gcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px;color:var(--teal-dark)}
+.gcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.gcol li{font-size:12.6px;color:var(--grey);padding-left:14px;position:relative;line-height:1.4}
+.gcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+.sampletab{background:#fff;border:1px solid var(--line);margin-top:10px}
+.sampletab .srow{display:grid;grid-template-columns:170px 1fr 1fr;border-bottom:1px solid var(--line);font-size:12.4px}
+.sampletab .srow:last-child{border-bottom:0}
+.sampletab .sk{font-family:var(--head);font-weight:600;padding:9px 12px;background:var(--cream)}
+.sampletab .sv{padding:9px 12px;color:var(--grey);font-style:italic;line-height:1.45}
+@media(max-width:640px){.sampletab .srow{grid-template-columns:1fr}}
+.checkbox-tests{background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px;margin:12px 0}
+.checkbox-tests h5{font-family:var(--head);font-size:13.5px;margin-bottom:8px}
+</style>
+</head>
+<body data-page="module-7">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m7-hero-lighthouse-keeper.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 2 · Module 7 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “Can we stop it?”</span><span class="arrow">→</span><span class="to">To “Can we govern it over time?”</span></div>
+    <h1>Governing Autonomy Over Time</h1>
+    <p class="sub">Dashboard — The Governance Cadence Studio</p>
+    <div class="gq"><span class="bar" style="background:var(--teal-light)"></span><p>How do we ensure today&#x27;s defensible decision is still defensible twelve months from now?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light)">Leadership move · Govern &amp; sustain</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <!-- ============ OPENING ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>Governance is what happens after the approval</h2>
+    <p class="body">Everything you have done in this course so far has been a <b>point-in-time decision</b>. You approved autonomy. You drew boundaries. You specified observability. You designed intervention paths. Each of those decisions happened once. The challenge is that agents do not operate once. They operate every day — for months, for years — in changing conditions: new customers, new data, new workflows, new expectations. Over time, the conditions you originally approved may no longer hold.</p>
+    <p class="body">Most AI systems don't fail dramatically. They change gradually. Performance drifts. Behaviour evolves. Teams adapt around them. Governance weakens through familiarity. The leadership task is not to stay involved in every decision — it is to stay close enough to the direction of performance to know whether the original decisions are still true. This module is about governance as a <b>cadence</b>: a leadership rhythm, not a one-time approval activity.</p>
+    <div class="key-message"><div class="km-label">The two guiding questions</div>
+    <p>Do we have the governance capacity to sustain this safely over time? And, cross-functionally, what does governance over time actually look like in practice?</p></div>
+  </section>
+
+  <!-- ============ SCENARIO ============ -->
+  <section class="msec" id="scenario">
+    <div class="sec-eyebrow">Scenario</div>
+    <h2>The Complaint Triage Agent — Twelve Months Later</h2>
+    <p class="body">The Complaint Triage agent has now been operating for twelve months. Earlier in the program, you made several leadership decisions about how this agent should be used. You approved its level of autonomy, defined its operating boundaries, considered how its activity would be observed, embedded it into the workflow, and determined how it could be stopped if required. For twelve months, it has worked as intended. Performance has been stable, the team has adapted, and there have been no major incidents. The workflow has become normal.</p>
+
+    <div class="dossier">
+      <div class="dh">Status review · Complaint Triage agent · Month 12 · Then, in the same current month, three signals appear</div>
+      <div class="signals">
+        <div class="sig"><div class="sn">SIGNAL 1</div><h5>Severity drift</h5><p>The agent is classifying slightly more complaints as low severity than it did six months ago. <b>No one approved this change. It has drifted.</b></p></div>
+        <div class="sig"><div class="sn">SIGNAL 2</div><h5>Capability shift</h5><p>A team lead notes that newer customer service representatives are less confident with complex complaints because they have had fewer complex cases to learn from.</p></div>
+        <div class="sig"><div class="sn">SIGNAL 3</div><h5>Scaling pressure</h5><p>The executive committee wants to expand the agent to two acquired subsidiaries and asks:</p><p class="ask">“Is this safe to scale?”</p></div>
+      </div>
+      <p style="margin-top:12px;margin-bottom:0">None of these things are a crisis. But together they represent exactly the type of slow-moving signals governance exists to detect. <b>Your task is not to solve the problem. It is to design the governance cadence that would have surfaced those signals before someone happened to notice them.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ A7.1 ============ -->
+  <section class="msec" id="a71">
+    <img class="secimg" src="../assets/pics/m7-cadence-ritual.jpg" alt="A leadership team in a recurring review meeting, dashboards on the wall" style="max-height:300px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 7.1</span><span class="a-chip time">≈ 15 min</span></div>
+      <h3>The Guardrail Design Sprint</h3>
+      <p class="a-purpose">Design a <b>minimum governance cadence</b> for the Complaint Triage agent. You are not designing a dashboard or a monitoring system — you are designing a <b>leadership rhythm</b>: the smallest practical set of signals, review points and triggers that would keep the agent governed over time. A governed agent is not one where every decision is reviewed. It is one where leaders know <b>what to watch, who needs to review it, and what should happen when something moves outside the agreed boundary</b>.</p>
+
+      <div class="a-step">
+        <div class="s-label">The agent</div>
+        <div class="field"><label for="c-agent">Name and one-sentence description. How long has it been running?</label>
+        <input type="text" id="c-agent" data-key="m7.map.agent" placeholder="e.g. Complaint Triage agent — classifies incoming complaints by severity, routes them, closes low-severity responses. Live twelve months."></div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 &amp; 2 — Signals, review, triggers. For each signal: name what you watch, set the review interval and owner, and define the trigger and the action it forces.</div>
+        <p class="a-purpose" style="margin-bottom:10px">Be selective. <b>If a signal would not change a decision or action, do not include it.</b> Think back on the signals discussed: exceptions or unusual cases · drift in classifications or outcomes · changes in reliability or performance · escalation patterns. A signal is something you <i>watch</i>. A trigger is the point at which you must <i>act</i>: <i>at what point would this stop being something we note and become something we act on?</i></p>
+
+        <div class="cadrow"><div class="ch">SIGNAL ROW 1</div>
+          <div class="cadgrid">
+            <div><label for="s1">Signal — what we watch</label><input type="text" id="s1" data-key="m7.map.s1" placeholder="e.g. cases the agent closed that later reopen"></div>
+            <div><label for="i1">Review — interval</label><select id="i1" data-key="m7.map.i1"><option value="">Choose…</option><option>Continuous</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select></div>
+            <div><label for="o1">Review — who owns it</label><select id="o1" data-key="m7.map.o1"><option value="">Choose…</option><option>Leader</option><option>Risk</option><option>Compliance</option><option>Ops</option><option>Team lead</option></select></div>
+          </div>
+          <div class="cadgrid2">
+            <div><label for="t1">Trigger point — what forces an action</label><input type="text" id="t1" data-key="m7.map.t1" placeholder="the level, pattern or change that forces a closer look"></div>
+            <div style="grid-column:span 2"><label for="a1">Action it forces</label><select id="a1" data-key="m7.map.a1"><option value="">Choose…</option><option>Closer review</option><option>Constraint</option><option>Pause</option><option>Redesign</option></select></div>
+          </div>
+        </div>
+
+        <div class="cadrow"><div class="ch">SIGNAL ROW 2</div>
+          <div class="cadgrid">
+            <div><label for="s2">Signal — what we watch</label><input type="text" id="s2" data-key="m7.map.s2"></div>
+            <div><label for="i2">Review — interval</label><select id="i2" data-key="m7.map.i2"><option value="">Choose…</option><option>Continuous</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select></div>
+            <div><label for="o2">Review — who owns it</label><select id="o2" data-key="m7.map.o2"><option value="">Choose…</option><option>Leader</option><option>Risk</option><option>Compliance</option><option>Ops</option><option>Team lead</option></select></div>
+          </div>
+          <div class="cadgrid2">
+            <div><label for="t2">Trigger point</label><input type="text" id="t2" data-key="m7.map.t2"></div>
+            <div style="grid-column:span 2"><label for="a2">Action it forces</label><select id="a2" data-key="m7.map.a2"><option value="">Choose…</option><option>Closer review</option><option>Constraint</option><option>Pause</option><option>Redesign</option></select></div>
+          </div>
+        </div>
+
+        <div class="cadrow"><div class="ch">SIGNAL ROW 3</div>
+          <div class="cadgrid">
+            <div><label for="s3">Signal — what we watch</label><input type="text" id="s3" data-key="m7.map.s3"></div>
+            <div><label for="i3">Review — interval</label><select id="i3" data-key="m7.map.i3"><option value="">Choose…</option><option>Continuous</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select></div>
+            <div><label for="o3">Review — who owns it</label><select id="o3" data-key="m7.map.o3"><option value="">Choose…</option><option>Leader</option><option>Risk</option><option>Compliance</option><option>Ops</option><option>Team lead</option></select></div>
+          </div>
+          <div class="cadgrid2">
+            <div><label for="t3">Trigger point</label><input type="text" id="t3" data-key="m7.map.t3"></div>
+            <div style="grid-column:span 2"><label for="a3">Action it forces</label><select id="a3" data-key="m7.map.a3"><option value="">Choose…</option><option>Closer review</option><option>Constraint</option><option>Pause</option><option>Redesign</option></select></div>
+          </div>
+        </div>
+
+        <div class="cadrow"><div class="ch">SIGNAL ROW 4</div>
+          <div class="cadgrid">
+            <div><label for="s4">Signal — what we watch</label><input type="text" id="s4" data-key="m7.map.s4"></div>
+            <div><label for="i4">Review — interval</label><select id="i4" data-key="m7.map.i4"><option value="">Choose…</option><option>Continuous</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select></div>
+            <div><label for="o4">Review — who owns it</label><select id="o4" data-key="m7.map.o4"><option value="">Choose…</option><option>Leader</option><option>Risk</option><option>Compliance</option><option>Ops</option><option>Team lead</option></select></div>
+          </div>
+          <div class="cadgrid2">
+            <div><label for="t4">Trigger point</label><input type="text" id="t4" data-key="m7.map.t4"></div>
+            <div style="grid-column:span 2"><label for="a4">Action it forces</label><select id="a4" data-key="m7.map.a4"><option value="">Choose…</option><option>Closer review</option><option>Constraint</option><option>Pause</option><option>Redesign</option></select></div>
+          </div>
+        </div>
+        <div class="hint" style="margin-top:2px">The strike test: for every row ask — <i>if you would never act on it, why are you monitoring it?</i> Remove anything that fails.</div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn coral" data-requires="m7.map.s1,m7.map.i1,m7.map.o1,m7.map.t1,m7.map.a1,m7.map.s2,m7.map.t2" data-reveal="#sprintreveal" data-revealed-label="Revealed">Commit my cadence → the reveal</button>
+      </div>
+      <div class="reveal-box" id="sprintreveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:8px">Most groups catch the drift signal. Most groups can answer whether the agent is safe to scale. The signal most groups miss is the effect on people.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:10px">What the agent is changing <b>around</b> it. The workbook lists four families of signals — exceptions, drift, reliability, escalation patterns — and the deck adds a fifth that almost every group leaves off the map: <b>changes in how the team relies on, challenges or overrides the agent.</b></p>
+        <div class="cadrow" style="margin-bottom:0"><div class="ch">ADD-ON — SIGNAL ROW 5 · THE PEOPLE SIGNAL</div>
+          <div class="cadgrid">
+            <div><label for="s5">Signal — human reliance</label><input type="text" id="s5" data-key="m7.map.s5" placeholder="e.g. override rate and challenge behaviour — are reps still questioning the agent?"></div>
+            <div><label for="i5">Review — interval</label><select id="i5" data-key="m7.map.i5"><option value="">Choose…</option><option>Continuous</option><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select></div>
+            <div><label for="o5">Review — who owns it</label><select id="o5" data-key="m7.map.o5"><option value="">Choose…</option><option>Leader</option><option>Risk</option><option>Compliance</option><option>Ops</option><option>Team lead</option></select></div>
+          </div>
+          <div class="cadgrid2">
+            <div><label for="t5">Trigger point</label><input type="text" id="t5" data-key="m7.map.t5"></div>
+            <div style="grid-column:span 2"><label for="a5">Action it forces</label><select id="a5" data-key="m7.map.a5"><option value="">Choose…</option><option>Closer review</option><option>Constraint</option><option>Pause</option><option>Redesign</option></select></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="presentOnly">
+        <div class="a-step" style="margin-top:16px">
+          <div class="s-label">Group debrief — prepare to share one insight</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:var(--grey)">
+            <li><b>Q1.</b> What is on your map that you would actually act on — and what did you add because it felt responsible but you would never really use?</li>
+            <li><b>Q2.</b> Who, other than you, has to be looking for this cadence to work — and do they know it is their job?</li>
+            <li><b>Q3.</b> The executive committee wants to scale this agent. Based on your cadence, can you answer “is it safe to scale”, and what would have to be true first?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT LAYER ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>Governance Is a Cadence, Not a Document</h2>
+    <p class="body">The most common governance failure is not too little governance. It is governance that exists <b>only at approval</b>. Policies get written. Meetings happen. Documents get signed. Then nobody looks again. An agent continues to operate after approval — it may encounter new conditions, respond to changing patterns, perform differently over time, or influence the people and workflows around it. A minimum governance cadence defines four things explicitly: <b>what signals are watched · how often they are reviewed · who is responsible for reviewing them · what level of concern triggers action.</b></p>
+    <div class="key-message"><div class="km-label">A simple test</div>
+    <p>If the agent drifted next month, would our governance catch it? If the answer is no, the organisation may have approval — but it does not yet have effective governance.</p></div>
+
+    <h2 style="margin-top:30px">The Four Signals Leaders Should Watch</h2>
+    <p class="body dim">Leaders do not need an extensive set of metrics. In many agentic AI workflows, four well-chosen signals provide a useful foundation for governance oversight.</p>
+    <div class="fours">
+      <div class="fs"><div class="cn">1</div><h4>Exceptions</h4><p>The cases that fall outside the expected pattern. They may reveal that the agent is being tested by a scenario it was not designed to handle — a serious complaint classified as routine, or a case that should have escalated but didn't.</p><div class="kq">What kinds of cases would show the agent is operating outside its intended boundary?</div></div>
+      <div class="fs"><div class="cn">2</div><h4>Drift</h4><p>Slow movement in the agent's behaviour over time. Not obvious in any single decision, but significant across weeks or months — a gradual rise in low-severity classifications, a change in compensation patterns, a decline in escalation rates.</p><div class="kq">What patterns would show the agent is changing how it behaves over time?</div></div>
+      <div class="fs"><div class="cn">3</div><h4>Reliability changes</h4><p>The agent's performance starts to shift: accuracy, consistency, escalation quality, or the frequency of human correction. It matters because the conditions under which the agent was approved may no longer hold.</p><div class="kq">What would tell us the agent is no longer performing at the level we approved?</div></div>
+      <div class="fs"><div class="cn">4</div><h4>Escalation patterns</h4><p>When the agent stops and hands work back to a human — what is escalated, how often, and what happens next. A change may mean the agent is becoming too confident, too conservative, or misaligned with the approved boundary.</p><div class="kq">What would tell us the agent is escalating too much, too little, or the wrong kinds of cases?</div></div>
+    </div>
+
+    <h2 style="margin-top:30px">From Signal to Trigger</h2>
+    <p class="body">Watching a signal is not the same as governing an agent. <b>Signals do not create governance. Triggers create governance.</b> A trigger defines the point at which a signal moves from something to observe to something that requires intervention. Triggers lead to different levels of response, in increasing severity:</p>
+    <div class="ladder">
+      <div class="lrow"><div class="ln">1</div><div class="lt2">Closer review</div><div class="lm">Examine the issue in more detail before changing the agent's authority.</div></div>
+      <div class="lrow"><div class="ln">2</div><div class="lt2">Constraint</div><div class="lm">Narrow the agent's authority, limits, or decision scope.</div></div>
+      <div class="lrow"><div class="ln">3</div><div class="lt2">Pause</div><div class="lm">Temporarily stop part or all of the agent's operation.</div></div>
+      <div class="lrow"><div class="ln">4</div><div class="lt2">Redesign</div><div class="lm">Rework the agent, workflow, boundary, or governance model.</div></div>
+    </div>
+    <div class="key-message"><div class="km-label">Key message</div>
+    <p>The leadership skill is not deciding during the crisis. It is deciding before the crisis.</p></div>
+
+    <img class="secimg" src="../assets/pics/m7-empty-chair.jpg" alt="An empty chair at a review table — the person who used to challenge the system" style="max-height:300px">
+    <h2 style="margin-top:8px">The Hidden Governance Risk</h2>
+    <p class="body">The easiest signals to monitor are usually <b>inside</b> the agent: its classifications, accuracy, exceptions, and escalation rates. The harder signals are <b>around</b> the agent. A successful agent can change how people work. It may reduce the number of difficult cases the team sees. Over time, the agent's success can quietly weaken the human capability needed to oversee it.</p>
+    <div class="around">
+      <div class="ar">Reduced employee capability</div>
+      <div class="ar">Reduced challenge behaviour</div>
+      <div class="ar">Dependency formation</div>
+      <div class="ar">Loss of critical expertise</div>
+      <div class="ar">Reduced confidence on edge cases</div>
+    </div>
+    <p class="body dim"><b>Leadership question:</b> what is this agent changing around it that may affect our ability to govern it well?</p>
+  </section>
+
+  <!-- ============ A7.2 ============ -->
+  <section class="msec" id="a72">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 7.2</span><span class="a-chip time">≈ 20 min</span><span class="a-chip" style="background:var(--ink)">Your context</span></div>
+      <h3>The One Signal You Are Not Watching</h3>
+      <p class="a-purpose">Think about one AI agent, automated system, or AI-enabled workflow you are responsible for — or may soon be responsible for — in your own organisation<span id="a72wf"></span>. It may already be operating, use AI to classify, route, recommend, approve, escalate or prioritise work, or be a workflow where AI may soon be introduced. Keep this deliberately simple: you are not designing a full dashboard or governance model. You are identifying <b>one signal that could start your governance cadence</b>.</p>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Your first capture, before AI</div>
+        <div class="fieldrow">
+          <div class="field"><label for="sig-name">The signal — in your own organisation, the single signal you are not currently watching that would most likely be the first sign something had gone wrong</label><textarea id="sig-name" data-key="m7.signal.name" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="sig-owner">Who owns watching it?</label><textarea id="sig-owner" data-key="m7.signal.owner" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="hint">Your signal might relate to: exceptions or unusual cases · drift in decisions, classifications, recommendations or outcomes · changes in reliability, accuracy, confidence or override rates · escalation patterns · changes in how people rely on, challenge, or work around the agent.</div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — AI thought partner: identify early warning signals</div>
+        <div class="checkbox-tests"><h5>Use AI responsibly</h5>
+        <p style="font-size:12.8px;color:var(--grey);line-height:1.5">Use the AI output as a starting point, not as the final answer. AI can help you think of possible triggers, but <b>you remain responsible</b> for deciding what is appropriate, realistic, and defensible in your organisation. A trigger only becomes useful when it is clear enough for people to recognise and act on before the issue becomes harder to manage.</p></div>
+        <div class="promptbox"><div class="ph">Prompt 1 · Copy into your preferred AI tool and adapt</div>
+          <button class="copybtn" data-copy="#prompt1">Copy</button>
+          <pre id="prompt1">Act as an Agentic AI governance thought partner. I am responsible for this AI agent or AI-enabled workflow: [describe it]. It is allowed to [describe what it can do or decide].
+
+Suggest the smallest set of early warning signals that could show the agent is no longer operating as intended or is creating unintended consequences. Include signals about exceptions, drift, reliability, escalation patterns, and changes in how people rely on or challenge the agent.
+
+For each signal, explain why it matters, who should own watching it, and whether it is likely to be an early or late warning. Keep the output practical and specific. Do not create a full dashboard. Maximum 200 words.</pre>
+        </div>
+        <p class="a-purpose" style="margin:8px 0 0">Review the AI output. Is the signal you captured in Step 1 in the AI's list? Do you agree with the output? Make adjustments to your chosen signal if relevant. Your final signal should be one that <b>would change a leadership decision if it moved in the wrong direction</b>.</p>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 3 — AI thought partner: identify possible triggers and actions</div>
+        <p class="a-purpose" style="margin-bottom:8px">The aim is not to let AI decide your governance approach. The aim is to pressure-test your thinking and identify possible trigger points you may not have considered. A useful trigger answers two questions: <b>at what point does this signal require action?</b> and <b>what action would be proportionate?</b></p>
+        <div class="promptbox"><div class="ph">Prompt 2 · Copy into your preferred AI tool and adapt</div>
+          <button class="copybtn" data-copy="#prompt2">Copy</button>
+          <pre id="prompt2">I am a leader responsible for an AI agent, automated system, or AI-enabled workflow.
+The agent or workflow is: [briefly describe the agent or workflow].
+It is allowed to: [describe what the agent can do, decide, recommend, route, approve, escalate, or act on].
+The signal I want to monitor is: [insert the signal you identified].
+This signal matters because: [briefly explain the risk, harm, failure mode, or unintended consequence it may reveal].
+
+Act as a governance thought partner. Help me identify possible triggers and proportionate actions for this signal.
+
+Please suggest:
+Possible trigger points - what level, pattern, change, threshold, recurrence, or exception would indicate that this signal requires action.
+The likely meaning of each trigger - what it may suggest about the agent, workflow, people, risk, or operating context.
+A proportionate action for each trigger, using one of these response types: closer review, constraint, pause, escalation, or redesign.
+Who should be involved in acting on the trigger, such as the accountable leader, team lead, operations, risk, compliance, technology, legal, customer team, or another relevant function.
+
+Keep the response practical and specific to my context. Do not create a full governance framework. Give me a small set of realistic triggers and actions that would help a leader know when to intervene.</pre>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 4 — Choose your trigger and action · capture your AI-assisted version</div>
+        <div class="field"><label for="sig-ai">Signal I am not currently watching (adjusted after the AI conversation, if relevant)</label><textarea id="sig-ai" data-key="m7.signal.ai" style="min-height:56px"></textarea></div>
+        <div class="fieldrow">
+          <div class="field"><label for="sig-trig">Trigger — at what point would this require action?</label><textarea id="sig-trig" data-key="m7.signal.trigger" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="sig-act">Action — what should happen if the trigger is reached?</label><textarea id="sig-act" data-key="m7.signal.action" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="fieldrow">
+          <div class="field"><label for="sig-who">Who should be involved?</label><textarea id="sig-who" data-key="m7.signal.who" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="sig-why">Why this response is proportionate</label><textarea id="sig-why" data-key="m7.signal.why" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="checkbox-tests"><h5>Check your trigger before you move on</h5>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--grey)">
+            <li>· Is it specific enough to act on?</li>
+            <li>· Would someone else know when the trigger has been reached?</li>
+            <li>· Is the action proportionate to the level of concern?</li>
+            <li>· Does the response match the risk, rather than overreacting or underreacting?</li>
+            <li>· Have you named who needs to be involved?</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--grey);margin-top:7px">If the answer to any of these is unclear, refine the trigger before you record it.</p>
+        </div>
+      </div>
+
+      <details class="selfOnly"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Sample Governance Cadence map (Activity Workbook, p.78)</summary>
+        <div class="sampletab">
+          <div class="srow"><div class="sk">The agent</div><div class="sv" style="grid-column:span 2">Complaint Triage agent. Classifies incoming complaints by severity, routes them, and handles the low-severity responses on its own. Live in partial autonomy for twelve months, stable, and now being considered for scaling to two acquired subsidiaries.</div></div>
+          <div class="srow"><div class="sk">Exceptions<br><span style="font-weight:400;font-size:11px">Cases that broke the pattern. The early warning the boundary is being tested.</span></div><div class="sv">Continuous flag, reviewed weekly. Any auto-closed case later reopened or escalated by a human. Owner: Risk.</div><div class="sv">Trigger: any single case the agent closed that turns out to involve a regulatory or material-harm issue.</div></div>
+          <div class="srow"><div class="sk">Drift<br><span style="font-weight:400;font-size:11px">Slow movement over time. The classification mix or escalation rate creeping.</span></div><div class="sv">Monthly. Track the low vs high severity mix against a rolling six-month baseline. Owners: Risk, Compliance.</div><div class="sv">Trigger: low-severity share moves more than 3 points from baseline in any two consecutive months.</div></div>
+          <div class="srow"><div class="sk">Reliability changes<br><span style="font-weight:400;font-size:11px">Movement in how often the agent is right, or how often it escalates.</span></div><div class="sv">Quarterly audit sample against human review. Agreement rate on a blind sample of closed cases. Owner: Risk.</div><div class="sv">Trigger: agreement with human review falls below 90%, or drops more than 4 points quarter on quarter. → Pause.</div></div>
+          <div class="srow"><div class="sk">Escalation patterns<br><span style="font-weight:400;font-size:11px">What it escalates, how often, and what happens after. Often the first visible sign.</span></div><div class="sv">Monthly. Escalation volume, mix, and how the team handles them once received (are hard cases still landing on people who can learn from them?). Owners: Ops, Team lead.</div><div class="sv">Trigger: escalation volume falls sharply and stays low, or team leads report reps losing sharpness on hard cases. → Redesign.</div></div>
+          <div class="srow"><div class="sk">Transfer — the one signal you are not watching</div><div class="sv" style="grid-column:span 2">Our invoice-approval agent auto-approves anything under a set amount. Nobody is tracking whether the share of auto-approvals is creeping up as suppliers learn the threshold. Who owns watching it: Finance Controller, monthly.</div></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="guide selfOnly">
+      <div class="gcol"><h5>Can we govern this over time? — questions for my team</h5>
+        <ul><li>What signals should we monitor?</li><li>How often should governance reviews occur?</li><li>Who owns governance?</li><li>What would trigger a review of the autonomy decision?</li><li>How might workforce capability change over time?</li></ul></div>
+      <div class="gcol"><h5>Questions for a vendor</h5>
+        <ul><li>What signs of drift have other customers experienced?</li><li>How do organisations govern this over time?</li><li>How are updates and model changes communicated?</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 7 artefact · 7 of 8</span>
+        <button class="btn ghost" id="m7print">Download PDF</button></div>
+      <h3>Governance Cadence Map</h3>
+      <p class="ap-note">The leadership rhythm that keeps an agent governed over time — minimum, not maximum. In Module 8 it helps answer: <i>“What evidence shows it is reliable enough — and what governance capacity must exist before scaling?”</i></p>
+      <div class="ap-rows" id="m7rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 7 established</h2>
+    <div class="takeaways"><ul>
+      <li>Governance over time is the capability to keep an agent safe, controlled, and defensible after it has been approved.</li>
+      <li>A governed agent is one where leaders can clearly explain what is being watched, how often it is reviewed, who owns the review, and what triggers action. Without these four things, the organisation is not actively governing the agent — it is relying on hope.</li>
+      <li>A signal is not governance. A signal tied to an action is.</li>
+      <li>The hardest signals are around the agent, not inside it — what it changes in the team, the workflow, and the human capability needed to oversee it.</li>
+      <li>You cannot scale what you cannot govern. When leaders are asked whether an agent is safe to expand, the honest answer depends on the strength of the governance cadence already in place.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing thought</div>
+    <p>Governance is not a sign-off. Governance is the rhythm that keeps every earlier decision true.</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> there is one more layer this module does not open, and the capstone does. As an agent becomes a permanent part of how the organisation runs, someone has to own it as a standing responsibility — and one executive decision has to be made. Module 8 is the decision room.</p>
+  </section>
+
+  <!-- ============ EXTRAS ============ -->
+  <section class="xstrip" aria-label="Optional extras">
+    <div class="xdiv"></div>
+    <div class="xeyebrow">Extras · Optional — self-paced</div>
+    <div class="xgrid">
+      <span class="xtile soon">
+        <span class="xtag"><span>Extra · Signal game</span></span>
+        <h4>Drift Detector</h4>
+        <p>Monthly charts scroll across the watch floor. Click when the drift is real. Hold when it's noise. Both mistakes cost.</p>
+        <span class="xgo">Coming soon</span>
+      </span>
+      <span class="xtile soon">
+        <span class="xtag"><span>Extra · Allocator</span></span>
+        <h4>The Cadence Budget</h4>
+        <p>Twelve attention-points, five signals, twelve simulated months. Overwatch one signal and another quietly rots.</p>
+        <span class="xgo">Coming soon</span>
+      </span>
+    </div>
+  </section>
+
+  <div class="pn">
+    <a href="module-6.html"><span class="lbl">← Previous</span><span>Module 6 — Intervention Readiness</span></a>
+    <a class="next" href="module-8.html"><span class="lbl">Next →</span><span>Module 8 — Executive Leadership Stance</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  /* carry the student's own workflow into A7.2 */
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a72wf').textContent = w? ' — you carried “'+w+'”, use it or pick a more pressing one':'';
+  }
+
+  /* copy buttons for AI prompts */
+  document.querySelectorAll('.copybtn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=document.querySelector(b.getAttribute('data-copy')).textContent;
+      function done(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy'},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done);}
+      else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta);done();}
+    });
+  });
+
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function sigRow(n){
+    var s=AAL.get('m7.map.s'+n); if(!String(s).trim()) return '';
+    var bits=[];
+    if(AAL.has('m7.map.i'+n)) bits.push(AAL.get('m7.map.i'+n));
+    if(AAL.has('m7.map.o'+n)) bits.push('owner: '+AAL.get('m7.map.o'+n));
+    var v=s+(bits.length?' — '+bits.join(', '):'');
+    if(AAL.has('m7.map.t'+n)) v+='\nTrigger: '+AAL.get('m7.map.t'+n)+(AAL.has('m7.map.a'+n)?' → '+AAL.get('m7.map.a'+n):'');
+    return v;
+  }
+  var ROWS=[
+    ['The agent',function(){return AAL.get('m7.map.agent')}],
+    ['Signal 1',function(){return sigRow(1)}],
+    ['Signal 2',function(){return sigRow(2)}],
+    ['Signal 3',function(){return sigRow(3)}],
+    ['Signal 4',function(){return sigRow(4)}],
+    ['Signal 5 — the people signal',function(){return sigRow(5)}],
+    ['The one signal I am not watching',function(){return AAL.get('m7.signal.ai')||AAL.get('m7.signal.name')}],
+    ['Who owns watching it',function(){return AAL.get('m7.signal.owner')}],
+    ['Trigger',function(){return AAL.get('m7.signal.trigger')}],
+    ['Action',function(){return AAL.get('m7.signal.action')}],
+    ['Who should be involved',function(){return AAL.get('m7.signal.who')}],
+    ['Why this response is proportionate',function(){return AAL.get('m7.signal.why')}]
+  ];
+  function rowsHtml(cls){
+    return ROWS.map(function(r){
+      var v=r[1]();
+      if(cls==='pd')return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+(String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+(String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  function drawArtefact(){document.getElementById('m7rows').innerHTML=rowsHtml('ap');}
+  document.getElementById('m7print').addEventListener('click',function(){
+    AAL.printDoc('Governance Cadence Map', rowsHtml('pd'));
+  });
+
+  function refresh(){wf();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

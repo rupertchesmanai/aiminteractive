@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Evidence Pack — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:40px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+/* pack status */
+.packbar{background:var(--ink);color:#fff;padding:22px 26px;margin:18px 0;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+@media(max-width:760px){.packbar{grid-template-columns:1fr}}
+.packbar .pw{font-family:var(--head)}
+.packbar .pw .l{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-light)}
+.packbar .pw .w{font-weight:700;font-size:19px;margin-top:2px}
+.packbar .pnums{display:flex;gap:26px;font-family:var(--head);text-align:center}
+.packbar .pn2 b{display:block;font-size:26px;font-weight:700;color:var(--teal-light)}
+.packbar .pn2 span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.packbar .pn2.gaps b{color:var(--coral)}
+.packmeter{grid-column:1/-1}
+.packmeter .m-track{height:10px;background:rgba(255,255,255,.15);overflow:hidden}
+.packmeter .m-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--coral),var(--teal-light));transition:width .4s ease}
+.packmeter .m-label{display:flex;justify-content:space-between;font-family:var(--head);font-weight:600;font-size:11.5px;color:rgba(255,255,255,.75);margin-top:6px}
+/* decision chain */
+.chainwrap{margin:20px 0}
+.chain2{display:grid;grid-template-columns:repeat(8,1fr);gap:0;position:relative}
+@media(max-width:980px){.chain2{grid-template-columns:repeat(4,1fr);row-gap:26px}}
+@media(max-width:560px){.chain2{grid-template-columns:repeat(2,1fr)}}
+.station{position:relative;text-align:center;padding:0 6px;cursor:pointer;background:none;border:0;font-family:inherit}
+.station .dot{width:44px;height:44px;margin:0 auto;border-radius:50%;border:2.5px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:15px;color:var(--muted);position:relative;z-index:2;transition:all .2s}
+.station .ln{position:absolute;top:22px;left:calc(50% + 24px);right:calc(-50% + 24px);height:2.5px;background:var(--line);z-index:1}
+.station:last-child .ln{display:none}
+@media(max-width:980px){.station:nth-child(4n) .ln{display:none}}
+@media(max-width:560px){.station:nth-child(2n) .ln{display:none}.station:nth-child(4n) .ln{display:none}}
+.station .mv{font-family:var(--head);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.station .nm{font-family:var(--head);font-weight:600;font-size:12px;line-height:1.25;color:var(--ink);margin-top:3px}
+.station .st{font-family:var(--mono);font-size:10px;margin-top:3px;color:var(--muted)}
+.station.started .dot{border-color:var(--coral);color:var(--coral-dark)}
+.station.started .st{color:var(--coral-dark)}
+.station.done .dot{border-color:var(--teal-dark);background:var(--teal-dark);color:#fff}
+.station.done .ln{background:var(--teal-dark)}
+.station.done .st{color:var(--teal-dark)}
+.station:hover .dot{transform:scale(1.08)}
+.station:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+/* export band */
+.exband{background:#fff;border:1px solid var(--line);border-top:5px solid var(--coral);padding:20px 24px;margin:22px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.exband .xt{flex:1;min-width:240px}
+.exband .xt h3{font-family:var(--head);font-size:17px;margin-bottom:3px}
+.exband .xt p{font-size:12.8px;color:var(--grey)}
+/* artefact sections */
+.apane{margin:26px 0}
+.apane .artefact-panel{margin:0}
+.apane .ap-kicker .grp{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.gapchip{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border:1.5px solid var(--coral);color:var(--coral-dark)}
+.gapchip.ok{border-color:var(--teal-dark);color:var(--teal-dark)}
+.editlink{font-family:var(--head);font-weight:600;font-size:12px;color:var(--teal-dark)}
+.emptystate{background:var(--cream-alt);border:1px dashed var(--line);border-left:5px solid var(--coral);padding:20px 24px;margin:18px 0;font-size:14.5px;line-height:1.6;max-width:none}
+.emptystate b{font-family:var(--head)}
+.findings{background:#141414;color:#d9d4c8;padding:20px 24px;margin:22px 0}
+.findings .fh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#53DFCB;margin-bottom:10px}
+.findings p{font-size:13.5px;line-height:1.6}
+.findings .fl{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.findings .fl a{font-family:var(--head);font-weight:600;font-size:11.5px;color:#fff;border:1px solid rgba(255,255,255,.35);padding:5px 10px}
+.findings .fl a:hover{border-color:#53DFCB;color:#53DFCB}
+</style>
+</head>
+<body data-page="evidence-pack">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html"><svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero" style="min-height:360px">
+  <img class="bg" src="../assets/pics/evidence-pack-desk.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Agentic AI for Leaders · Capstone</div>
+    <h1>The Capstone Evidence Pack</h1>
+    <p class="sub">Eight artefacts. One defensible decision.</p>
+    <div class="gq"><span class="bar" style="background:var(--teal-light)"></span><p>Every module leaves you with evidence. Module 8 turns the evidence into a decision.</p></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <!-- ============ PACK STATUS ============ -->
+  <section class="msec" style="margin-top:26px">
+    <div class="packbar" id="packbar"></div>
+    <div class="emptystate" id="emptystate" style="display:none"><b>Nothing captured yet — and that's exactly right for now.</b> This page assembles itself as you work. Every module leaves you with one artefact; each artefact answers part of one executive question. By tomorrow afternoon, this page is your defence. Start with <a href="module-1.html" style="color:var(--teal-dark);font-weight:600">Module 1 →</a></div>
+  </section>
+
+  <!-- ============ DECISION CHAIN ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">The decision chain</div>
+    <h2>From Recognise to Decide &amp; Own</h2>
+    <p class="body dim">Eight stations, one path. Click a station to jump to that artefact below.</p>
+    <div class="chainwrap"><div class="chain2" id="chain2"></div></div>
+  </section>
+
+  <!-- ============ EXPORT ============ -->
+  <section class="msec">
+    <div class="exband">
+      <div class="xt"><h3>Take it with you</h3>
+      <p>The full pack prints as one AIM-branded document — gaps included, honestly, as findings. Your answers live in this browser only; download them to move between devices or days.</p></div>
+      <button class="btn coral" id="packprint">Download full pack PDF</button>
+      <button class="btn primary" data-action="download-state">Download my answers</button>
+      <button class="btn ghost" data-action="load-state">Load answers</button>
+      <button class="btn ghost" data-action="reset-state">Start over</button>
+    </div>
+  </section>
+
+  <!-- ============ FINDINGS ============ -->
+  <section class="msec">
+    <div class="findings" id="findings" style="display:none"></div>
+  </section>
+
+  <!-- ============ EVERYTHING, ASSEMBLED ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Everything, assembled</div>
+    <h2>Your eight artefacts</h2>
+    <p class="body">Populated live from your answers across the course. Where a row is empty, the pack says so — <b>a defensible decision includes both what you know and what you do not yet know.</b></p>
+    <div id="panes"></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The centre of gravity</div>
+    <p>Leaders do not own the technology. Leaders own the consequences of the technology.</p>
+  </div></div>
+
+  <div class="pn">
+    <a href="module-8.html"><span class="lbl">← Previous</span><span>Module 8 — Executive Leadership Stance</span></a>
+    <a class="next" href="references.html"><span class="lbl">Next →</span><span>References &amp; Resource Bank</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/evidence.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+  /* ---------- pack status bar ---------- */
+  function drawBar(){
+    var ps=AALEV.packStat();
+    var wf=AAL.get('me.workflow');
+    var pct=ps.total? Math.round(100*ps.filled/ps.total):0;
+    document.getElementById('packbar').innerHTML=
+      '<div class="pw"><div class="l">The workflow on trial</div><div class="w">'+(wf?esc(wf):'Not yet named — Module 1 starts here')+'</div></div>'+
+      '<div class="pnums">'+
+        '<div class="pn2"><b>'+ps.done+'/8</b><span>artefacts done</span></div>'+
+        '<div class="pn2"><b>'+ps.filled+'</b><span>of '+ps.total+' evidence rows</span></div>'+
+        '<div class="pn2 gaps"><b>'+ps.gaps+'</b><span>gaps = findings</span></div>'+
+      '</div>'+
+      '<div class="packmeter"><div class="m-track"><div class="m-fill" style="width:'+pct+'%"></div></div>'+
+      '<div class="m-label"><span>Evidence assembled</span><span>'+pct+'%</span></div></div>';
+    document.getElementById('emptystate').style.display = ps.filled===0? '':'none';
+  }
+
+  /* ---------- decision chain ---------- */
+  function drawChain(){
+    document.getElementById('chain2').innerHTML=AALEV.ARTEFACTS.map(function(a){
+      var st=AALEV.state(a), s=AALEV.stat(a);
+      var lab=st==='done'?'✓ done':st==='started'?(s.filled+'/'+s.total):'—';
+      return '<button class="station '+st+'" data-goto="#art-'+a.n+'" aria-label="'+a.title+', '+lab+'">'+
+        '<span class="ln"></span><span class="dot">'+(st==='done'?'✓':a.n)+'</span>'+
+        '<span class="mv">'+a.move+'</span><span class="nm">'+a.short+'</span><span class="st">'+lab+'</span></button>';
+    }).join('');
+    document.querySelectorAll('.station').forEach(function(b){
+      b.addEventListener('click',function(){
+        var el=document.querySelector(b.getAttribute('data-goto'));
+        if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  }
+
+  /* ---------- findings summary ---------- */
+  function drawFindings(){
+    var box=document.getElementById('findings');
+    var ps=AALEV.packStat();
+    if(ps.filled===0||ps.gaps===0){
+      if(ps.gaps===0&&ps.filled>0){
+        box.style.display='';
+        box.innerHTML='<div class="fh">Findings audit</div><p><b style="color:#fff">No gaps. All '+ps.total+' evidence rows answered.</b> The pack is complete — the question now is not whether you have evidence, but whether it survives challenge. Module 8&#x27;s challenge round is the test.</p>';
+      } else box.style.display='none';
+      return;
+    }
+    box.style.display='';
+    var withGaps=AALEV.ARTEFACTS.map(function(a){return {a:a,s:AALEV.stat(a)};}).filter(function(x){return x.s.gaps>0;});
+    box.innerHTML='<div class="fh">Findings audit · '+ps.gaps+' gap'+(ps.gaps>1?'s':'')+' across the pack</div>'+
+      '<p>A gap is not a failure — it is evidence about readiness. <b style="color:#fff">If the evidence does not exist, what does that tell you about the decision?</b> Where you cannot answer, treat that as part of your finding — and consider what would need to be true before you could.</p>'+
+      '<div class="fl">'+withGaps.map(function(x){return '<a href="#art-'+x.a.n+'">'+x.a.n+' · '+x.a.short+' — '+x.s.gaps+' gap'+(x.s.gaps>1?'s':'')+'</a>';}).join('')+'</div>';
+  }
+
+  /* ---------- the eight panes ---------- */
+  function drawPanes(){
+    document.getElementById('panes').innerHTML=AALEV.ARTEFACTS.map(function(a){
+      var s=AALEV.stat(a);
+      return '<div class="apane" id="art-'+a.n+'"><div class="artefact-panel">'+
+        '<div class="ap-kicker"><span class="grp"><span class="ap-chip">Artefact '+a.n+' of 8 · '+a.module+' · '+a.move+'</span>'+
+        '<span class="gapchip'+(s.gaps===0?' ok':'')+'">'+(s.gaps===0?'✓ Complete':s.gaps+' gap'+(s.gaps>1?'s':'')+' = findings')+'</span></span>'+
+        '<span class="grp"><a class="editlink" href="'+a.page+'">Edit in '+a.module+' →</a>'+
+        '<button class="btn ghost" data-print="'+a.n+'">Download PDF</button></span></div>'+
+        '<h3>'+a.title+'</h3>'+
+        '<p class="ap-note">'+a.note+'</p>'+
+        '<div class="ap-rows">'+AALEV.rowsHtml(a,'ap')+'</div>'+
+      '</div></div>';
+    }).join('');
+    document.querySelectorAll('[data-print]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var a=AALEV.ARTEFACTS.find(function(x){return x.n===Number(b.getAttribute('data-print'));});
+        AAL.printDoc(a.title, AALEV.rowsHtml(a,'pd'));
+      });
+    });
+  }
+
+  /* ---------- full pack PDF ---------- */
+  document.getElementById('packprint').addEventListener('click',function(){
+    var ps=AALEV.packStat();
+    var cover='<div class="pd-row" style="border-bottom:0"><div class="pd-label">Pack status</div><div class="pd-value">'+
+      ps.done+' of 8 artefacts complete · '+ps.filled+' of '+ps.total+' evidence rows answered · '+ps.gaps+' gap'+(ps.gaps===1?'':'s')+' recorded as findings</div></div>';
+    AAL.printDoc('The Capstone Evidence Pack', cover+AALEV.packHtml());
+  });
+
+  function refresh(){drawBar();drawChain();drawFindings();drawPanes();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

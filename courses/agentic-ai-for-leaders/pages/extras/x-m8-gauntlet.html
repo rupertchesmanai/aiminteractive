@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Challenge Gauntlet — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · The Challenge Gauntlet — board, regulator, workforce and customer fire twelve questions. Survive them all to face the final question with no cards at all.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:780px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:56ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+.brief{margin:16px auto 20px;max-width:62ch;text-align:left;background:#101010;border:1px solid rgba(255,255,255,.14);padding:16px 18px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.82)}
+.brief b{font-family:var(--head);color:var(--teal-light)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.go:disabled{opacity:.35;cursor:not-allowed}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--head)}
+.hud .score{font-weight:700;font-size:22px}
+.hud .score small{font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block}
+.hud .mid{font-family:var(--mono);font-size:12px;color:var(--teal-light)}
+.hud .cred{display:flex;gap:5px}
+.hud .cred i{width:14px;height:14px;background:var(--teal);display:block}
+.hud .cred i.lost{background:rgba(255,255,255,.15)}
+.qbox{background:#141414;border:1px solid rgba(255,255,255,.14);padding:22px 22px 20px}
+.who{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.who .avatar{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border:1.5px solid var(--teal-light);color:var(--teal-light)}
+.who .avatar.reg{border-color:#E8B84B;color:#E8B84B}
+.who .avatar.wf{border-color:#7FB4E8;color:#7FB4E8}
+.who .avatar.cust{border-color:#E88FB0;color:#E88FB0}
+.who .frame{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.5)}
+.qtext{font-family:var(--head);font-weight:700;font-size:clamp(17px,3.4vw,22px);line-height:1.3;margin-bottom:16px}
+.answers{display:flex;flex-direction:column;gap:9px}
+.ans{font-family:var(--body);text-align:left;background:#181818;border:1.5px solid rgba(255,255,255,.2);padding:13px 14px;cursor:pointer;color:rgba(255,255,255,.88);font-size:13.5px;line-height:1.5}
+.ans:hover{border-color:var(--teal-light)}
+.ans:disabled{cursor:default;opacity:.5}
+.ans.good{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);opacity:1}
+.ans.bad{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral);opacity:1}
+.verdict{display:none;margin-top:14px;border-top:1px dashed rgba(255,255,255,.2);padding-top:12px;text-align:left;font-size:13px;line-height:1.55;color:rgba(255,255,255,.85)}
+.verdict b{font-family:var(--head)}
+.verdict .good{color:var(--teal-light)}
+.verdict .bad{color:var(--coral)}
+.nextbtn{display:none;margin-top:14px;text-align:center}
+#final{display:none}
+.finalq{background:#141414;border:1.5px solid var(--teal);padding:26px 24px}
+.finalq .fq{font-family:var(--head);font-weight:700;font-size:clamp(19px,4vw,26px);line-height:1.25;margin:10px 0 6px}
+.finalq .fnote{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.55);margin-bottom:14px}
+.finalq textarea{width:100%;min-height:84px;background:#0f0f0f;border:1.5px solid rgba(255,255,255,.25);color:#fff;font-family:var(--body);font-size:14px;line-height:1.5;padding:12px;resize:vertical}
+.finalq textarea:focus{outline:none;border-color:var(--teal-light)}
+.finalq .subrow{margin-top:12px;text-align:center}
+.model{display:none;margin-top:16px;text-align:left;background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 16px;font-size:13.5px;line-height:1.6}
+.model b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">The Challenge Gauntlet<small>Extras · Module 8 · Gauntlet</small></div>
+  <a class="back" href="../module-8.html">← Back to Module 8</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 7 min</div>
+    <h1>The Challenge Gauntlet</h1>
+    <p class="lead">Board, regulator, workforce and customer fire questions in turn — twelve in all. Three response cards each time: one <b>evasive</b>, one <b>over-promising</b>, one <b>defensible</b>. Lose three credibility and the room turns. Survive all twelve, and you face the final question with <b>no cards at all</b>.</p>
+    <div class="brief"><b>Your stance</b> (from the sample Decision Lab): <b>Constrain.</b> The invoice-approval agent stays at its current threshold. You declined Finance's request to raise it — because no one owns the agent, no stop condition is written, no cadence tracks the creep, and a wrongful payment is hard to reverse. Three gaps, named. Now defend it.</div>
+    <div class="rules"><span class="rule">12 questions · 4 voices</span><span class="rule">3 credibility</span><span class="rule">Final question: your own words</span></div>
+    <button class="go" id="start">Enter the room</button>
+    <div class="facnote"><b>Facilitator note</b>Run after Activity 8.2 — the four voices and their question banks are lifted straight from the Leadership Stance Close. The evasive cards are stitched from phrases every room has heard ("robust processes", "on the journey"); the over-promising cards each contain a claim the evidence can't back — ask the room to name it before revealing. The final no-cards question is the real exercise: one sentence, out loud, before the model answer.</div>
+  </section>
+
+  <section id="play">
+    <div class="hud">
+      <div class="mid" id="prog">QUESTION 1/12</div>
+      <div class="cred" id="cred"><i></i><i></i><i></i></div>
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+    </div>
+    <div class="qbox">
+      <div class="who"><span class="avatar" id="avatar">Board member</span><span class="frame" id="frame"></span></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="answers" id="answers"></div>
+      <div class="verdict" id="verdict"></div>
+      <div class="nextbtn"><button class="go" id="next">Next question →</button></div>
+    </div>
+  </section>
+
+  <section id="final">
+    <div class="finalq">
+      <div class="who"><span class="avatar">Board chair</span><span class="frame">THE ROOM GOES QUIET · NO CARDS THIS TIME</span></div>
+      <div class="fq">“One sentence. Why should this room stand behind your call?”</div>
+      <div class="fnote">Your own words. A strong stance explains the decision, shows the evidence, and names what would change it.</div>
+      <textarea id="sentence" placeholder="Because…" aria-label="Your one-sentence defence"></textarea>
+      <div class="subrow"><button class="go" id="commit" disabled>Say it →</button></div>
+      <div class="model" id="model">
+        <b>The model answer</b>
+        “Because it is the decision the evidence supports: the agent keeps doing what eight clean months justify, it takes on nothing we cannot yet see or govern, and the three gaps that would change my answer are named, owned and dated.”
+        <div style="margin-top:10px;color:rgba(255,255,255,.75)">Compare: did your sentence explain the decision, show the evidence, and name what would change it? +10 for saying it out loud with no cards to hide behind.</div>
+        <div class="subrow" style="margin-top:12px"><button class="go" id="toend">Close the room →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag" id="endtag">The room adjourns</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="fdef">0</b><span>defensible answers</span></div>
+    </div>
+    <div class="takeaway"><b>A strong leadership stance can do three things: explain the decision, show the evidence behind it, and name what would change the decision.</b> Where the evidence is strong, hold the line. Where it is weak, be honest about the gap — you do not need to defend an indefensible gap, and the room can tell when you try.</div>
+    <button class="go" id="again">Face the room again</button>
+    <a href="../module-8.html"><button class="ghosty">Back to Module 8</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+  var LSKEY='aal.x.m8.gauntlet';
+  var el=function(id){return document.getElementById(id)};
+
+  var ROLES={
+    board:{label:'Board member',cls:'',frame:'“CAN YOU DEFEND THIS TO THOSE WHO CARRY ULTIMATE ORGANISATIONAL RISK?”'},
+    reg:{label:'Regulator',cls:'reg',frame:'“CAN YOU SHOW HOW THE DECISION WAS MADE AND WHY IT IS DEFENSIBLE?”'},
+    wf:{label:'Workforce rep',cls:'wf',frame:'“WHAT HAPPENS TO THE PEOPLE WHOSE WORK THIS AGENT CHANGES?”'},
+    cust:{label:'Supplier',cls:'cust',frame:'“IF THE AGENT GETS MY CASE WRONG, WHO IS ACCOUNTABLE?”'}
+  };
+  /* d = defensible, e = evasive, o = over-promising */
+  var QUESTIONS=[
+    {r:'board',q:"Why is this decision worth the value, risk and governance burden?",
+     d:"The agent keeps the value eight clean months justify. What I declined is new risk we can't yet see or govern — and the value we're giving up is priced: three named gaps, and a date to revisit.",
+     e:"There's a lot of context here, and the burden question is one we're continuing to socialise with stakeholders across the business.",
+     o:"The burden is temporary — within a quarter the agent will effectively be governing itself and the threshold question disappears."},
+    {r:'reg',q:"How was this decision made?",
+     d:"Through eight questions, each answered from a named artefact — what the agent is trusted to do, what rights are delegated, what evidence supports it, where the gaps sit. I can walk you through the trail, artefact by artefact.",
+     e:"Through our standard internal processes, which are robust and well established.",
+     o:"By an AI-assisted governance framework that scores every dimension automatically — human error has been designed out of the process."},
+    {r:'wf',q:"What happens to the people whose routine work is reduced?",
+     d:"Finance shifts toward exceptions and judgement calls — and we track that shift deliberately, because if hard cases stop reaching people, the capability I rely on for oversight erodes. It's on the cadence I'm requiring.",
+     e:"People are our greatest asset, and we'll be taking everyone on the journey with us.",
+     o:"No one is affected — the agent only creates capacity, and every role stays exactly as it is today."},
+    {r:'cust',q:"If the agent gets my invoice wrong, who is accountable?",
+     d:"We are — a named human owner, not the agent and not the vendor. Payment authority was delegated under a threshold; accountability wasn't. Today no owner is named, which is exactly why the threshold isn't rising.",
+     e:"There are a number of teams involved, and any issue would be looked at on a case-by-case basis.",
+     o:"It won't get your invoice wrong — the error rate is effectively zero."},
+    {r:'board',q:"What evidence tells us this is ready to scale?",
+     d:"That's the point — it isn't there. I can show eight clean months at the current threshold, and I can show what's missing: near-miss visibility and a drift cadence. The gap is a finding, and it's why we hold.",
+     e:"We have a strong track record overall and the team feels good about where things are heading.",
+     o:"Eight clean months proves it — the error rate is effectively zero, so scaling is a formality."},
+    {r:'reg',q:"If the agent makes a poor decision, how would you reconstruct what happened?",
+     d:"For payments, the record shows the match, the amount and the rule that fired. For near-misses it doesn't yet — that's a named gap, one of my three conditions, and until it closes the threshold stays put.",
+     e:"We would work closely with the vendor to piece together the relevant information.",
+     o:"Every decision is fully explainable end-to-end — we can replay any case in seconds, including cases the system never logged."},
+    {r:'wf',q:"What judgement or capability must the team retain?",
+     d:"The ability to spot a wrongful payment — changed bank details, a supplier that doesn't smell right. So hard cases must keep landing on people who can learn from them, and someone must be checking that they still do.",
+     e:"A range of important skills, which we're mapping as part of a broader capability review.",
+     o:"Long-term, none — the agent will absorb those judgement calls better than people ever could."},
+    {r:'cust',q:"How would I know whether a human reviewed my case?",
+     d:"Under the threshold with a clean match: no human did, by design — and I'll say that plainly. Over it, or on any changed detail, a person decided. The boundary is written down, and you're entitled to know which side your case fell on.",
+     e:"Every case receives an appropriate level of attention from the right people.",
+     o:"A human effectively reviews everything — the agent just does the paperwork."},
+    {r:'board',q:"What would make you change this decision?",
+     d:"Three things, in writing: a named owner, a written stop condition, and a monthly cadence on the auto-approval rate. When they exist, the threshold rises. That trigger is already minuted.",
+     e:"We'd obviously keep the position under review as circumstances evolve.",
+     o:"Nothing — this decision is final, and I'm confident it will never need to change."},
+    {r:'reg',q:"What evidence supports the level of autonomy being allowed?",
+     d:"Eight months of clean approvals under the threshold, delegation limited to clean PO matches, and human ownership of new suppliers and changed bank details. The autonomy matches the evidence — no more.",
+     e:"The system is performing very well against a broad range of internal benchmarks.",
+     o:"The vendor's accuracy figures are industry-leading — well over 99 per cent — so if anything the autonomy level is conservative."},
+    {r:'wf',q:"Who is responsible for managing the impact on roles and skills?",
+     d:"Today, nobody is named — and that's exactly why the first of my three conditions is a named owner. Until that name exists, the agent does less, not more.",
+     e:"It's a shared responsibility across HR, Finance and the leadership team.",
+     o:"The agent's own analytics will flag any skill impacts automatically, so it largely manages itself."},
+    {r:'cust',q:"What happens if the agent misses an exception?",
+     d:"Escalation exists for what it catches. For what it doesn't — the near-miss — I can't yet see those, which is precisely the gap I've named. Until we can, the threshold stays where the evidence supports it.",
+     e:"We have robust processes in place and would respond appropriately.",
+     o:"It can't miss exceptions — the model was trained on every scenario that can occur."}
+  ];
+
+  var idx=0,score=0,cred=3,def=0,survived=false;
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+  function drawCred(){
+    el('cred').innerHTML='<i class="'+(cred<1?'lost':'')+'"></i><i class="'+(cred<2?'lost':'')+'"></i><i class="'+(cred<3?'lost':'')+'"></i>';
+  }
+  function show(){
+    var q=QUESTIONS[idx],role=ROLES[q.r];
+    el('prog').textContent='QUESTION '+(idx+1)+'/12';
+    el('avatar').textContent=role.label;
+    el('avatar').className='avatar '+role.cls;
+    el('frame').textContent=role.frame;
+    el('qtext').textContent='“'+q.q+'”';
+    el('verdict').style.display='none';
+    document.querySelector('.nextbtn').style.display='none';
+    var deck=shuffle([{k:'d',t:q.d},{k:'e',t:q.e},{k:'o',t:q.o}]);
+    el('answers').innerHTML=deck.map(function(c){return '<button class="ans" data-k="'+c.k+'">'+c.t+'</button>'}).join('');
+    el('answers').querySelectorAll('.ans').forEach(function(b){
+      b.addEventListener('click',function(){pick(b)});
+    });
+  }
+  function pick(btn){
+    var k=btn.getAttribute('data-k');
+    var ok=k==='d';
+    el('answers').querySelectorAll('.ans').forEach(function(b){
+      b.disabled=true;
+      if(b.getAttribute('data-k')==='d')b.classList.add('good');
+      else if(b===btn)b.classList.add('bad');
+    });
+    var v=el('verdict');
+    if(ok){
+      score+=10;def++;
+      v.innerHTML='<b class="good">Defensible. +10.</b> It explains the decision, shows the evidence, and names what would change it. The room moves on.';
+    }else{
+      cred--;drawCred();
+      v.innerHTML = k==='e'
+        ? '<b class="bad">The room hears the dodge. Credibility −1.</b> An evasive answer concedes the question without answering it — and this crowd has heard “robust processes” before.'
+        : '<b class="bad">You promised something the evidence can’t back. Credibility −1.</b> Over-promising fails slower than evading, but harder: the first time reality misses the claim, every other answer you gave is re-opened.';
+    }
+    el('score').textContent=score;
+    v.style.display='block';
+    if(cred<=0){
+      v.innerHTML+=' <b class="bad">The room turns.</b>';
+      document.querySelector('.nextbtn').style.display='block';
+      el('next').textContent='Leave the room →';
+      el('next').setAttribute('data-turned','1');
+      return;
+    }
+    document.querySelector('.nextbtn').style.display='block';
+    el('next').textContent=idx===11?'The final question →':'Next question →';
+  }
+  function tierFor(s,surv){
+    if(!surv)return'The Room Turned';
+    if(s>=120)return'Boardroom Unshaken';
+    if(s>=90)return'Held the Line';
+    return'Survived the Room';
+  }
+  function end(){
+    el('play').style.display='none';el('final').style.display='none';el('end').style.display='block';
+    el('endtag').textContent=survived?'The room adjourns':'The room turned at question '+(idx+1);
+    el('tier').textContent=tierFor(score,survived);
+    el('fscore').textContent=score;el('fdef').textContent=def+'/12';
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    idx=0;score=0;cred=3;def=0;survived=false;
+    el('score').textContent='0';drawCred();
+    el('splash').style.display='none';el('end').style.display='none';el('final').style.display='none';
+    el('model').style.display='none';el('sentence').value='';el('commit').disabled=true;
+    el('play').style.display='block';
+    show();
+  }
+  el('next').addEventListener('click',function(){
+    if(el('next').getAttribute('data-turned')){el('next').removeAttribute('data-turned');end();return;}
+    idx++;
+    if(idx>=12){survived=true;el('play').style.display='none';el('final').style.display='block';}
+    else{show();}
+  });
+  el('sentence').addEventListener('input',function(){
+    el('commit').disabled=el('sentence').value.trim().length<20;
+  });
+  el('commit').addEventListener('click',function(){
+    score+=10;el('commit').disabled=true;el('sentence').readOnly=true;
+    el('model').style.display='block';
+  });
+  el('toend').addEventListener('click',end);
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+})();
+</script>
+</body>
+</html>

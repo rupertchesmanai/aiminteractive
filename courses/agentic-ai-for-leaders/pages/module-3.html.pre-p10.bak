@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 3: Delegation and Boundaries — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* authority spectrum */
+.spectrum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:760px){.spectrum{grid-template-columns:repeat(2,1fr)}}
+.spec{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);padding:14px 16px}
+.spec:nth-child(2){border-top-color:var(--teal-dark)}
+.spec:nth-child(3){border-top-color:var(--coral)}
+.spec:nth-child(4){border-top-color:var(--ink)}
+.spec b{font-family:var(--head);font-size:14.5px;display:block;margin-bottom:5px}
+.spec span{font-size:12.5px;color:var(--grey);line-height:1.4;display:block}
+/* three decision types */
+.dtypes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:820px){.dtypes{grid-template-columns:1fr}}
+.dtype{padding:16px 18px;border:1px solid var(--line)}
+.dtype.d{background:rgba(0,192,175,.08)}
+.dtype.c{background:var(--cream-alt)}
+.dtype.n{background:var(--ink);color:#fff}
+.dtype b{font-family:var(--head);font-size:15px;display:block;margin-bottom:5px}
+.dtype span{font-size:12.8px;line-height:1.45;display:block;color:var(--grey)}
+.dtype.n span{color:rgba(255,255,255,.8)}
+/* worked example */
+.wex{border:1px solid var(--line);background:#fff;margin:14px 0}
+.wex .wrow{display:grid;grid-template-columns:170px 1fr;border-bottom:1px solid var(--line)}
+.wex .wrow:last-child{border-bottom:0}
+.wex .wk{font-family:var(--head);font-weight:600;font-size:13px;padding:12px 14px;background:var(--cream);border-right:1px solid var(--line)}
+.wex .wv{font-size:13px;line-height:1.5;padding:12px 14px;color:var(--grey)}
+@media(max-width:640px){.wex .wrow{grid-template-columns:1fr}}
+/* sort board */
+.board{margin:14px 0}
+.brow{background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:9px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.brow .bq{flex:1;min-width:240px;font-size:14.5px;line-height:1.4}
+.brow .bq .bn{font-family:var(--mono);font-size:11px;color:var(--muted);margin-right:8px}
+.seg{display:flex;gap:0;border:1.5px solid rgba(66,58,58,.3)}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg .sl{display:block;font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.04em;padding:9px 14px;border-right:1.5px solid rgba(66,58,58,.3);color:var(--grey);transition:.12s;min-width:44px;text-align:center}
+.seg label:last-child .sl{border-right:0}
+.seg input:checked + .sl{color:#fff}
+.seg label:nth-child(1) input:checked + .sl{background:var(--teal-dark)}
+.seg label:nth-child(2) input:checked + .sl{background:var(--coral)}
+.seg label:nth-child(3) input:checked + .sl{background:var(--ink)}
+.seg input:focus-visible + .sl{outline:3px solid var(--teal);outline-offset:2px}
+.seg label:hover .sl{background:var(--cream)}
+.bkey{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 14px;font-family:var(--head);font-weight:600;font-size:12.5px}
+.bkey span::before{content:"■ ";font-size:14px}
+.bkey .kd::before{color:var(--teal-dark)} .bkey .kc::before{color:var(--coral)} .bkey .kn::before{color:var(--ink)}
+/* board summary */
+.bsum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:700px){.bsum{grid-template-columns:1fr}}
+.bcol{padding:14px 16px;border:1px solid var(--line)}
+.bcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px}
+.bcol.d{background:rgba(0,192,175,.08)} .bcol.c{background:var(--cream-alt)} .bcol.n{background:var(--ink);color:#fff}
+.bcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.bcol li{font-size:12.5px;line-height:1.35}
+.bcol.n li{color:rgba(255,255,255,.85)}
+/* four parts */
+.parts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media(max-width:860px){.parts{grid-template-columns:repeat(2,1fr)}}
+.part{background:#fff;border:1px solid var(--line);border-top:4px solid var(--coral);padding:14px 16px}
+.part .pn2{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.part b{font-family:var(--head);font-size:15px;display:block;margin:4px 0 5px}
+.part span{font-size:12.5px;color:var(--grey);line-height:1.45;display:block}
+/* pressure cards */
+.pressures{display:flex;flex-direction:column;gap:14px;margin:14px 0}
+.press{background:#fff;border:1px solid var(--line);border-left:5px solid var(--coral);padding:18px 20px}
+.press .ph{font-family:var(--head);font-weight:700;font-size:15px;margin-bottom:6px}
+.press .scen{background:var(--cream-alt);padding:12px 16px;font-size:13.5px;line-height:1.55;margin:8px 0 10px;font-style:italic}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--coral);font-weight:700}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.gcol{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.gcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px;color:var(--teal-dark)}
+.gcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.gcol li{font-size:12.6px;color:var(--grey);padding-left:14px;position:relative;line-height:1.4}
+.gcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+</style>
+</head>
+<body data-page="module-3">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m3-hero-the-line.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 3 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “Should it act?”</span><span class="arrow">→</span><span class="to">To “What exactly can it do?”</span></div>
+    <h1>Delegation and Boundaries</h1>
+    <p class="sub">Dashboard — The Boundary Drawing Board</p>
+    <div class="gq"><span class="bar"></span><p>Given that autonomy is accepted, where should authority sit inside the workflow?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)">Leadership move · Design</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>Where exactly is the line?</h2>
+    <p class="body">In Module 2 most of you landed somewhere in the middle: the agent acts here, but not there. That answer is a starting position, not a final position. <b>Partial autonomy is where most risk lives</b>, because it is rarely clear where the boundary actually sits. The moment you say “partial”, the next questions get harder: where exactly is the line? Which decisions sit on which side of it? And what happens when the line gets pushed under pressure? This module is about drawing the line — and testing whether it will hold.</p>
+  </section>
+
+  <!-- ============ AUTHORITY NOT BINARY ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer 1</div>
+    <h2>Authority is not binary</h2>
+    <p class="body">A common mistake is to treat delegation as a yes-or-no question. In reality, authority exists on a spectrum — and each position carries a different accountability load.</p>
+    <div class="spectrum">
+      <div class="spec"><b>Execute</b><span>Carries out a decision that has already been made.</span></div>
+      <div class="spec"><b>Recommend</b><span>Proposes; a human decides.</span></div>
+      <div class="spec"><b>Decide within limits</b><span>Makes the call inside explicit boundaries.</span></div>
+      <div class="spec"><b>Excluded</b><span>Plays no role in this decision at all.</span></div>
+    </div>
+    <p class="body dim">Which is why any AI workflow contains three types of decisions:</p>
+    <div class="dtypes">
+      <div class="dtype d"><b>Delegable decisions</b><span>Routine, reversible and lower consequence.</span></div>
+      <div class="dtype c"><b>Decisions with constraints</b><span>May be delegated only within defined limits.</span></div>
+      <div class="dtype n"><b>Non-delegable decisions</b><span>AI may inform the process, but responsibility remains explicitly human.</span></div>
+    </div>
+    <div class="key-message"><div class="km-label">Key message</div>
+    <p>The question is not “Can the AI do this?” The question is: “Should the authority be delegated?”</p></div>
+  </section>
+
+  <!-- ============ CASE + WORKED EXAMPLE ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Case study</div>
+    <h2>The Complaint Triage Workflow, revisited</h2>
+    <p class="body">Same agent, same pilot data. But this time you are not judging the workflow — you are judging <b>the decisions inside it</b>. Which should remain human-owned, and which, if any, could be assigned to the agent within clear limits?</p>
+    <p class="body dim selfOnly">Before you make the call, study what the three options actually mean in practice, using one task — <i>“send an acknowledgement to the complainant”</i>:</p>
+    <div class="wex selfOnly">
+      <div class="wrow"><div class="wk" style="color:var(--teal-dark)">Delegate</div><div class="wv">The agent may decide when and how to perform the task and execute it without prior human approval — humans monitor performance rather than approve each action. <i>The agent receives a complaint, generates an acknowledgement using the complaint context and sends it immediately.</i></div></div>
+      <div class="wrow"><div class="wk" style="color:var(--coral-dark)">Delegate with constraints</div><div class="wv">The agent may execute without case-by-case approval, but only inside explicitly defined rules, permissions and escalation thresholds. <i>It sends an approved template only after confirming the complaint was recorded; it may personalise basic details but cannot admit fault, promise compensation, state an outcome, or respond to sensitive or high-risk complaints — those go to a human.</i></div></div>
+      <div class="wrow"><div class="wk">Do not delegate</div><div class="wv">The agent has no authority to communicate directly with the complainant. <i>It may prepare a draft, but a complaints officer must review and send it — or the agent does not participate in this step at all.</i></div></div>
+    </div>
+  </section>
+
+  <!-- ============ A3.1 ============ -->
+  <section class="msec" id="a31">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 3.1</span><span class="a-chip time">≈ 25 min</span></div>
+      <h3>Where Is Your Line?</h3>
+      <p class="a-purpose">The Authority &amp; Accountability Boundary Map. This is not a workflow design exercise — it is a leadership decision about what authority is delegated, what remains human, and what you are prepared to stand behind. For each of the eight decisions, make the call: <b>D</b>elegate, delegate with <b>C</b>onstraint, or <b>N</b>on-delegable. Do it on your own first, then compare with your table. <i>Not what the system can do — what you are willing to allow and stand behind.</i></p>
+      <div class="bkey"><span class="kd">D — Delegate to the agent</span><span class="kc">C — Delegate with Constraint</span><span class="kn">N — Non-delegable (a human makes this call)</span></div>
+      <div class="board" id="board"></div>
+      <p class="small" style="margin-bottom:10px">Per decision, ask yourself: <i>if this went wrong, would I be willing to defend allowing the agent to make this decision?</i></p>
+      <div class="btnrow">
+        <button class="btn coral" id="a31commit" data-requires="m3.a31.d1,m3.a31.d2,m3.a31.d3,m3.a31.d4,m3.a31.d5,m3.a31.d6,m3.a31.d7,m3.a31.d8" data-reveal="#a31reveal" data-revealed-label="Boundary drawn">Commit all eight → see your boundary</button>
+      </div>
+
+      <div class="reveal-box" id="a31reveal" style="background:#fff">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:10px">Delegate. Constrain. Protect.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:12px">Some decisions are routine and easier to delegate. Some can only be delegated with constraints. Some carry such consequence that responsibility must remain explicitly human. That is why a defensible boundary has <b>three</b> categories rather than two.</p>
+        <div class="bsum" id="bsum"></div>
+        <p style="font-size:13.5px;color:var(--grey)">A defensible boundary has three parts: what you delegate, what you refuse to delegate — and what should never have been treated as a delegation question at all. Most leaders focus only on the first.</p>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Additional considerations</div>
+        <div class="field">
+          <label for="a31must">Decisions that must remain human — and why. What would you need to explain if challenged?</label>
+          <textarea id="a31must" data-key="m3.a31.mustremain"></textarea>
+        </div>
+        <div class="field">
+          <label for="a31sig">Every boundary sends a signal. What does yours tell your team about what AI is allowed to do, what must remain human, and where judgement still matters — and where could it be misunderstood, stretched, or applied inconsistently?</label>
+          <textarea id="a31sig" data-key="m3.a31.signal"></textarea>
+        </div>
+        <div class="field">
+          <label for="a31notes">Group debrief notes — which decisions were hardest to place? Which would be hardest to defend under scrutiny?</label>
+          <textarea id="a31notes" data-key="m3.a31.notes" style="min-height:56px"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="key-message"><div class="km-label">Remember</div>
+    <p>A boundary is only real if it can be understood, applied, and defended. If it cannot, it is not a boundary — it is an assumption.</p></div>
+  </section>
+
+  <!-- ============ FOUR PARTS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer 2 — boundary design</div>
+    <h2>The four parts of a defensible boundary</h2>
+    <p class="body">Drawing the line is only the beginning. A defensible boundary must be explicit enough for others to implement, monitor and defend. The three design tools — permissions, thresholds and constraints — combine into four parts:</p>
+    <div class="parts">
+      <div class="part"><span class="pn2">1</span><b>Authority</b><span>What is the agent allowed to do — execute, recommend, or decide within limits?</span></div>
+      <div class="part"><span class="pn2">2</span><b>Thresholds</b><span>How far may it go before a human becomes involved? Numerical, policy or risk limits that define the edge.</span></div>
+      <div class="part"><span class="pn2">3</span><b>Escalations &amp; constraints</b><span>Under what conditions must authority return to a human?</span></div>
+      <div class="part"><span class="pn2">4</span><b>Ownership</b><span>Who remains accountable — at decision, operational and authority level? Ownership must stay clear even when the work is no longer done by a person.</span></div>
+    </div>
+    <div class="key-message"><div class="km-label">Key message</div>
+    <p>Delegation does not remove accountability. A defensible boundary answers: what can the agent do — and who owns what happens when it does?</p></div>
+  </section>
+
+  <!-- ============ PROTECTING HUMAN JUDGEMENT ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Protecting human judgement</div>
+    <h2>Boundaries fail through dozens of small nudges</h2>
+    <img class="secimg" src="../assets/pics/m3-pressure-doors.jpg" alt="A calm figure holding a glass door closed against pressure from the other side" style="max-height:300px">
+    <p class="body">Every boundary you draw today will be tested tomorrow by efficiency pressure. The team is overwhelmed. Volumes spike. The agent could do a little more. That is how boundaries fail — not through one decision, through dozens of small nudges. Your responsibility is not only to draw the boundary; it is to <b>protect it when the organisation forgets why it existed</b>.</p>
+    <p class="body dim selfOnly">And remember the value consideration: value doesn't always come from full autonomy. Sometimes it comes from better recommendations, faster triage, or clearer escalation. The leadership decision is not “how much can we delegate?” but “what level of delegation creates the most value with acceptable risk?” The over-delegation failure mode — <i>more AI = better</i> — is very common in reality.</p>
+  </section>
+
+  <!-- ============ A3.2 ============ -->
+  <section class="msec" id="a32">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 3.2</span><span class="a-chip time">≈ 15 min with 3.3</span></div>
+      <h3>Defensible Boundary Design</h3>
+      <p class="a-purpose">From the decisions you mapped in 3.1, choose one — focus on a <b>Delegate with Constraint</b> decision — and complete the full boundary design. Use the group conversation as a sounding board, but write the version <b>you</b> would personally be prepared to defend. The aim is not a perfect boundary; it is testing whether yours is clear and practical.</p>
+
+      <details class="selfOnly" style="margin-bottom:14px"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Study the worked example first — “send an acknowledgement to the complainant”</summary>
+        <div class="wex" style="margin-top:10px">
+          <div class="wrow"><div class="wk">Decision</div><div class="wv">Delegate with Constraint</div></div>
+          <div class="wrow"><div class="wk">Authority</div><div class="wv">May send an approved acknowledgement after confirming the complaint was recorded; may include name, case number, receipt date and standard next steps. Cannot admit fault, assess merits, promise an outcome, offer compensation or alter required response timeframes.</div></div>
+          <div class="wrow"><div class="wk">Threshold</div><div class="wv">Automatic sending only when required information is complete, contact details verified, an approved template suits, and no high-risk indicators are detected.</div></div>
+          <div class="wrow"><div class="wk">Escalation</div><div class="wv">Stop and refer to a complaints officer on: vulnerability, distress, threats, safety concerns, legal or regulatory action, privacy issues, potential media interest, unclear category, missing information, low classification confidence, or a system conflict.</div></div>
+          <div class="wrow"><div class="wk">Ownership</div><div class="wv"><b>Operational:</b> Complaints Manager owns the workflow, templates, thresholds and performance. <b>Technical:</b> the AI/technology team maintains performance, access, integrations and logging. <b>Risk/control:</b> Risk, Legal, Privacy or Compliance approve controls and review incidents. <b>Case:</b> once escalated, a named complaints officer owns the case. <b>Accountability:</b> the designated business owner remains accountable — accountability does not transfer to the agent or the technology provider.</div></div>
+        </div>
+      </details>
+
+      <div class="field">
+        <label for="a32d">The decision I am designing the boundary for</label>
+        <select id="a32d" data-key="m3.a32.decision">
+          <option value="">Choose one of the eight…</option>
+        </select>
+      </div>
+      <div class="field"><label for="a32a">1 · Authority — what is the agent allowed to do? Executing, recommending, or deciding within limits?</label><textarea id="a32a" data-key="m3.a32.authority"></textarea></div>
+      <div class="field"><label for="a32t">2 · Threshold — how far can it go? What numerical, policy or risk limits define the edge of its authority?</label><textarea id="a32t" data-key="m3.a32.threshold"></textarea></div>
+      <div class="field"><label for="a32e">3 · Escalation — when must authority return to a human? What signals, conditions or triggers require handoff?</label><textarea id="a32e" data-key="m3.a32.escalation"></textarea></div>
+      <div class="field"><label for="a32o">4 · Ownership — who remains explicitly accountable for each part of the workflow? Where must human judgement remain visible?</label><textarea id="a32o" data-key="m3.a32.ownership"></textarea></div>
+    </div>
+  </section>
+
+  <!-- ============ A3.3 ============ -->
+  <section class="msec" id="a33">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 3.3</span><span class="a-chip time">≈ 15 min</span></div>
+      <h3>Stress-Test the Boundary</h3>
+      <p class="a-purpose">A boundary is only useful if it holds under pressure. Apply three realistic pressures to the position you just designed. For each: would our boundary still hold? What would make it move? What would need to be in place to protect it? Could we still defend it if challenged?</p>
+
+      <div class="pressures">
+        <div class="press">
+          <div class="ph">Pressure 1 — Efficiency</div>
+          <div class="scen">It's six months from now. Your team is overwhelmed. Complaints are spiking. The agent could handle the cases you currently route to humans — if you just widened its remit by a small amount. The CEO is asking why response times have slipped.</div>
+          <div class="field"><label for="p1">What would keep your boundary from quietly moving in that moment?</label><textarea id="p1" data-key="m3.a33.p1" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="press">
+          <div class="ph">Pressure 2 — Drift over time</div>
+          <div class="scen">It's twelve months from now. Nobody has consciously moved the boundary. But the agent's training data has shifted, the team has slowly expanded what it accepts, and the thresholds you set are still on paper while the agent's actual behaviour has crept beyond them.</div>
+          <div class="field"><label for="p2">How would you notice? What would need to be in place to catch the drift before it becomes a problem?</label><textarea id="p2" data-key="m3.a33.p2" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="press">
+          <div class="ph">Pressure 3 — Accountability challenge</div>
+          <div class="scen">It's two years from now. The boundary held. The agent operated inside the lines you set. But something has still gone wrong — a customer has suffered harm, and a regulator is asking how this happened.</div>
+          <div class="field"><label for="p3">Can you still defend the decision you made today, even though the boundary held?</label><textarea id="p3" data-key="m3.a33.p3" style="min-height:64px"></textarea></div>
+        </div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn primary" data-requires="m3.a33.p1,m3.a33.p2,m3.a33.p3" data-reveal="#a33samples" data-revealed-label="Compared">Compare with the sample answers</button>
+      </div>
+      <div class="reveal-box" id="a33samples">
+        <p style="font-family:var(--head);font-weight:600;font-size:15px;margin-bottom:10px">Sample answers (Activity Workbook, p.36)</p>
+        <p style="font-size:13.5px;line-height:1.6;margin-bottom:8px"><b>Efficiency pressure:</b> “The boundary holds only if the team has enough capacity to take the medium and high cases. If we are overwhelmed, we expand the team, not the agent's remit. Written threshold, in policy, before the pressure hits.”</p>
+        <p style="font-size:13.5px;line-height:1.6;margin-bottom:8px"><b>Drift over time:</b> “Monthly review of cases the agent classified as low that later turned out to be medium or high. If the misclassification rate climbs above an agreed line, we pause the agent's classification autonomy until we understand why.”</p>
+        <p style="font-size:13.5px;line-height:1.6"><b>Accountability challenge:</b> “Yes. The boundary is in writing, the non-delegable items are documented, and the drift signals are monitored. The decision was deliberate.”</p>
+      </div>
+    </div>
+    <p class="body dim">A boundary that survives efficiency pressure, drift and accountability challenge is more than a position on paper — it is a boundary the organisation can operate with. It signals what may be automated, what remains human, and what you are prepared to stand behind when challenged.</p>
+  </section>
+
+  <!-- ============ A3.4 ============ -->
+  <section class="msec" id="a34">
+    <img class="secimg" src="../assets/pics/m3-smallest-task.jpg" alt="A senior manager handing a single small envelope across a desk" style="max-height:300px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 3.4</span><span class="a-chip time">≈ 15 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>My Delegation Decision</h3>
+      <p class="a-purpose">Back to your own workflow<span id="a34wf"></span>. Identify the <b>smallest piece of work</b> you would be comfortable allowing an AI agent to perform. Not delegating as much as possible — a sensible starting point: one specific, observable task where the value is clear, the risk is manageable, and the human boundary can be stated. Not “manage onboarding” — think “check completeness”, “route a request”, “send an approved acknowledgement”.</p>
+
+      <div class="field"><label for="a34t">The specific task I would allow AI to perform</label><input type="text" id="a34t" data-key="m3.a34.task"></div>
+      <div class="field">
+        <label>Why this task?</label>
+        <div class="checks">
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="Low risk"> Low risk</label>
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="High volume"> High volume</label>
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="Easy to reverse"> Easy to reverse</label>
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="Clear rules"> Clear rules</label>
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="Well understood"> Well understood</label>
+          <label><input type="checkbox" data-key="m3.a34.rationale" data-multi value="Other"> Other</label>
+        </div>
+        <div class="hint">High volume or clear rules aren't sufficient on their own — consider the consequence of error and whether the action is recoverable.</div>
+      </div>
+      <div class="fieldrow">
+        <div class="field"><label for="a34h">What must remain human?</label><textarea id="a34h" data-key="m3.a34.human" style="min-height:64px"></textarea></div>
+        <div class="field"><label for="a34e">What would trigger escalation? One observable condition.</label><textarea id="a34e" data-key="m3.a34.escalation" style="min-height:64px"></textarea></div>
+      </div>
+      <div class="field">
+        <label for="a34s">My leadership position — complete the sentence: “The first thing I would be willing to let an AI agent do in this workflow is…”</label>
+        <textarea id="a34s" data-key="m3.a34.statement"></textarea>
+        <div class="hint">Would another person know exactly when escalation is required from what you've written?</div>
+      </div>
+    </div>
+    <div class="key-message"><div class="km-label">Key message to land</div>
+    <p>Responsible delegation starts with the smallest useful task, a clear human boundary and an escalation trigger. Capability does not determine permission — leaders do.</p></div>
+  </section>
+
+  <!-- ============ GUIDE + TRANSFORMATION ============ -->
+  <section class="msec selfOnly">
+    <div class="sec-eyebrow">Leadership conversation guide — where should autonomy stop?</div>
+    <h2>Questions to take back to your team and vendors</h2>
+    <div class="guide">
+      <div class="gcol"><h5>Questions to ask my team</h5>
+        <ul><li>Which decisions should remain human-owned?</li><li>Which decisions are suitable for delegation?</li><li>Which decisions need constraints?</li><li>What authority are we actually transferring?</li><li>Who remains accountable?</li></ul></div>
+      <div class="gcol"><h5>Questions to ask a vendor</h5>
+        <ul><li>Can authority levels be adjusted?</li><li>Can escalation thresholds be configured?</li><li>How are exceptions handled?</li></ul></div>
+    </div>
+    <p class="body dim">Once you've decided what the agent may do and what stays human, three more questions open up: who owns this agent as a standing part of the organisation? What happens to the shape of the team once the routine work moves? And what do the people whose work just changed do now? Those aren't boundary questions — they're transformation questions, and Day 2 comes back to them.</p>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 3 artefact · 3 of 8</span>
+        <button class="btn ghost" id="m3print">Download PDF</button></div>
+      <h3>Boundary Map</h3>
+      <p class="ap-note">Your delegated, constrained and non-delegable decisions, the full boundary design, the stress-test responses and your delegation statement. In Module 8 it answers: <i>“What decision rights are being transferred — and are they delegable?”</i></p>
+      <div class="ap-rows" id="m3rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS + CLOSE ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 3 established</h2>
+    <div class="takeaways"><ul>
+      <li>Authority is not binary — an agent may execute, recommend, decide within limits, or be excluded entirely, and each carries a different accountability load.</li>
+      <li>A defensible boundary has three categories: delegate, constrain, protect — and four parts: authority, thresholds, escalations and ownership.</li>
+      <li>Boundaries fail through dozens of small nudges, not one decision. Drawing the boundary and governing within it are different leadership tasks.</li>
+      <li>A policy states what the organisation believes; a boundary determines what the system actually does.</li>
+      <li>Refusing delegation is also a leadership decision — weigh the value lost as deliberately as the risk avoided.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing thought</div>
+    <p>A defensible boundary is not about what the AI can do. It is about what the organisation is prepared to stand behind when challenged.</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> a boundary on paper doesn't create accountability. Module 4 asks the question that makes every boundary real: <b>how would I know?</b></p>
+  </section>
+
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="module-2.html"><span class="lbl">← Previous</span><span>Module 2 — Defensible Agentic AI Decisions</span></a>
+    <a class="next" href="module-4.html"><span class="lbl">Next →</span><span>Module 4 — Observability</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+  /* ---------------- A3.1 board ---------------- */
+  var DECISIONS=[
+    "Whether to send acknowledgement to the complainant",
+    "Which team should handle the case",
+    "Recognise whether the complaint fits a pattern seen before",
+    "Severity classification — low severity",
+    "Severity classification — medium and high severity",
+    "Compensation offered, within policy band",
+    "Whether the complaint is a regulatory matter requiring reporting",
+    "Whether the complaint's history changes how we respond"
+  ];
+  var CATS=[["D","Delegate"],["C","Delegate with Constraint"],["N","Non-delegable"]];
+  var board=document.getElementById('board');
+  DECISIONS.forEach(function(d,i){
+    var k='m3.a31.d'+(i+1);
+    var row=document.createElement('div');row.className='brow';
+    row.innerHTML='<div class="bq"><span class="bn">'+(i+1)+'</span>'+d+'</div>'+
+      '<div class="seg" role="radiogroup" aria-label="Decision '+(i+1)+'">'+
+      CATS.map(function(c){return '<label><input type="radio" name="bd'+i+'" data-key="'+k+'" value="'+c[1]+'" aria-label="'+c[1]+'"><span class="sl" title="'+c[1]+'">'+c[0]+'</span></label>';}).join('')+
+      '</div>';
+    board.appendChild(row);
+  });
+  AAL.wireFields(board);AAL.refreshGates();
+
+  /* board summary in reveal */
+  function summary(){
+    var cols={'Delegate':[],'Delegate with Constraint':[],'Non-delegable':[]};
+    DECISIONS.forEach(function(d,i){
+      var v=AAL.get('m3.a31.d'+(i+1));
+      if(cols[v])cols[v].push((i+1)+'. '+d);
+    });
+    var el=document.getElementById('bsum');
+    if(!el)return;
+    el.innerHTML=
+      '<div class="bcol d"><h5>Delegate ('+cols['Delegate'].length+')</h5><ul>'+(cols['Delegate'].map(function(x){return '<li>'+x+'</li>';}).join('')||'<li>—</li>')+'</ul></div>'+
+      '<div class="bcol c"><h5>Constrain ('+cols['Delegate with Constraint'].length+')</h5><ul>'+(cols['Delegate with Constraint'].map(function(x){return '<li>'+x+'</li>';}).join('')||'<li>—</li>')+'</ul></div>'+
+      '<div class="bcol n"><h5>Protect ('+cols['Non-delegable'].length+')</h5><ul>'+(cols['Non-delegable'].map(function(x){return '<li>'+x+'</li>';}).join('')||'<li>—</li>')+'</ul></div>';
+  }
+
+  /* ---------------- A3.2 decision select ---------------- */
+  var sel=document.getElementById('a32d');
+  DECISIONS.forEach(function(d,i){
+    var o=document.createElement('option');o.textContent=(i+1)+'. '+d;o.value=d;sel.appendChild(o);
+  });
+  var saved=AAL.get('m3.a32.decision');
+  if(saved) sel.value=saved;
+
+  /* a34 workflow mention */
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a34wf').textContent = w? ' — “'+w+'”':'';
+  }
+
+  /* ---------------- artefact ---------------- */
+  function catLetter(v){return v==='Delegate'?'D':v==='Delegate with Constraint'?'C':v==='Non-delegable'?'N':'';}
+  function boundaryLine(){
+    var parts=[];
+    DECISIONS.forEach(function(d,i){
+      var v=AAL.get('m3.a31.d'+(i+1));
+      if(v)parts.push((i+1)+':'+catLetter(v));
+    });
+    return parts.length? parts.join('  ·  ') : '';
+  }
+  var ROWS=[
+    ['The eight decisions (D/C/N)','__board'],
+    ['Must remain human — and why','m3.a31.mustremain'],
+    ['The signal my boundary sends','m3.a31.signal'],
+    ['Boundary design — decision','m3.a32.decision'],
+    ['Authority','m3.a32.authority'],
+    ['Threshold','m3.a32.threshold'],
+    ['Escalation','m3.a32.escalation'],
+    ['Ownership','m3.a32.ownership'],
+    ['Stress test — efficiency','m3.a33.p1'],
+    ['Stress test — drift','m3.a33.p2'],
+    ['Stress test — accountability','m3.a33.p3'],
+    ['Smallest delegable task','m3.a34.task'],
+    ['Why this task','m3.a34.rationale'],
+    ['What must remain human','m3.a34.human'],
+    ['Escalation trigger','m3.a34.escalation'],
+    ['My leadership position','m3.a34.statement']
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function rowVal(k){ return k==='__board'? boundaryLine() : AAL.get(k); }
+  function drawArtefact(){
+    document.getElementById('m3rows').innerHTML=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('m3print').addEventListener('click',function(){
+    var html=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+    AAL.printDoc('Boundary Map', html);
+  });
+
+  function refresh(){summary();wf();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 8: Executive Leadership Stance — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* question shift */
+.qshift{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin:14px 0}
+@media(max-width:820px){.qshift{grid-template-columns:1fr}}
+.qcol{padding:18px 20px}
+.qcol.old{background:var(--cream-alt);border:1px solid var(--line)}
+.qcol.new{background:var(--ink);color:#fff}
+.qcol .qt{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--muted)}
+.qcol.new .qt{color:var(--teal-light)}
+.qcol.old p{font-family:var(--head);font-weight:600;font-size:17px;color:var(--grey);text-decoration:line-through;text-decoration-color:var(--coral)}
+.qcol.new ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.qcol.new li{font-family:var(--head);font-weight:500;font-size:13.5px;line-height:1.4;padding-left:16px;position:relative}
+.qcol.new li::before{content:"→";position:absolute;left:0;color:var(--teal-light)}
+/* worked example table */
+.wex{background:#fff;border:1px solid var(--line);margin:14px 0}
+.wex .wrow{display:grid;grid-template-columns:230px 1fr;border-bottom:1px solid var(--line)}
+.wex .wrow:last-child{border-bottom:0}
+.wex .wq{font-family:var(--head);font-weight:600;font-size:13.5px;padding:12px 14px;background:var(--cream);border-right:1px solid var(--line)}
+.wex .wa{font-size:13.2px;color:var(--grey);padding:12px 14px;line-height:1.5}
+.wex .wa b{color:var(--ink)}
+@media(max-width:680px){.wex .wrow{grid-template-columns:1fr}.wex .wq{border-right:0;border-bottom:1px solid var(--line)}}
+/* bridge */
+.bq{background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal-dark);padding:16px 18px;margin-bottom:14px}
+.bq .bn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.bq h5{font-family:var(--head);font-size:15.5px;margin:4px 0 2px}
+.bq .src{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:9px}
+.bq textarea{min-height:64px;font-size:13px}
+.evd{background:var(--cream);border:1px dashed var(--line);padding:10px 12px;margin:8px 0 10px}
+.evd .eh{font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.evd .ei{display:flex;gap:8px;margin-bottom:6px;font-size:12px;line-height:1.45}
+.evd .ei:last-child{margin-bottom:0}
+.evd .ei .el{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--teal-dark);flex:0 0 168px;padding-top:1px}
+.evd .ei .ev{color:var(--grey);font-style:italic}
+.evd .ei .ev.gap{color:var(--coral-dark);font-style:normal;font-family:var(--head);font-weight:600;font-size:11.5px}
+@media(max-width:640px){.evd .ei{flex-direction:column;gap:2px}.evd .ei .el{flex:none}}
+/* decision cards */
+.deccards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media(max-width:860px){.deccards{grid-template-columns:repeat(2,1fr)}}
+.deccard{position:relative;cursor:pointer}
+.deccard input{position:absolute;opacity:0;pointer-events:none}
+.deccard .dc{display:block;background:#fff;border:2px solid var(--line);padding:16px 15px;height:100%;transition:border-color .15s}
+.deccard .dc b{font-family:var(--head);font-weight:700;font-size:17px;display:block;margin-bottom:5px}
+.deccard .dc span{font-size:12px;color:var(--grey);line-height:1.4;display:block}
+.deccard:hover .dc{border-color:var(--teal-dark)}
+.deccard input:checked + .dc{border-color:var(--coral);background:var(--cream-alt);box-shadow:inset 0 0 0 1px var(--coral)}
+.deccard input:focus-visible + .dc{outline:3px solid var(--teal);outline-offset:2px}
+/* six lenses */
+.lenses{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+@media(max-width:860px){.lenses{grid-template-columns:1fr}}
+.lens{background:var(--ink);color:#fff;padding:16px 18px}
+.lens .cn{font-family:var(--mono);font-size:11px;color:var(--teal-light)}
+.lens h4{font-size:16px;color:#fff;margin:4px 0 6px}
+.lens .kq{font-family:var(--head);font-weight:600;font-size:13.5px;color:var(--teal-light)}
+/* org shift */
+.orgs{display:flex;flex-direction:column;gap:12px;margin:14px 0}
+.org{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:16px 18px}
+.org .on{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.org h5{font-family:var(--head);font-size:15.5px;margin:3px 0 4px}
+.org .oq{font-size:13px;color:var(--grey);margin-bottom:9px;font-style:italic}
+.org textarea{min-height:56px;font-size:13px}
+/* challenge roles */
+.roles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media(max-width:820px){.roles{grid-template-columns:1fr}}
+.role{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.role .rt{font-family:var(--head);font-weight:700;font-size:14.5px;margin-bottom:4px}
+.role .rc{font-size:13px;color:var(--coral-dark);font-style:italic;margin-bottom:8px}
+.role details summary{font-family:var(--head);font-weight:600;font-size:12px;color:var(--teal-dark);cursor:pointer}
+.role ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:7px}
+.role li{font-size:12.4px;color:var(--grey);padding-left:13px;position:relative;line-height:1.4}
+.role li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+/* pulse replay */
+.pulse{margin:18px 0 6px}
+.pulse .p-row{background:#fff;border:1px solid var(--line);padding:18px 20px;margin-bottom:12px}
+.pulse .p-q{font-family:var(--head);font-weight:600;font-size:15px;margin-bottom:12px}
+.pulse .p-scale{display:flex;align-items:center;gap:14px}
+.pulse .p-scale input{flex:1}
+.pulse .p-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px}
+.pulse .p-val{font-family:var(--head);font-weight:700;font-size:20px;color:var(--teal-dark);min-width:34px;text-align:center}
+.pulse .p-then{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px}
+.pulse .p-then b{color:var(--coral-dark)}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+.sampletab{background:#fff;border:1px solid var(--line);margin-top:10px}
+.sampletab .srow{display:grid;grid-template-columns:210px 1fr;border-bottom:1px solid var(--line);font-size:12.4px}
+.sampletab .srow:last-child{border-bottom:0}
+.sampletab .sk{font-family:var(--head);font-weight:600;padding:9px 12px;background:var(--cream)}
+.sampletab .sv{padding:9px 12px;color:var(--grey);font-style:italic;line-height:1.45}
+@media(max-width:640px){.sampletab .srow{grid-template-columns:1fr}}
+.showlist{background:var(--cream-alt);border:1px solid var(--line);padding:16px 18px;margin:12px 0}
+.showlist h5{font-family:var(--head);font-size:13.5px;margin-bottom:8px}
+.showlist ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+@media(max-width:680px){.showlist ul{grid-template-columns:1fr}}
+.showlist li{font-size:12.8px;color:var(--grey);padding-left:14px;position:relative}
+.showlist li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+</style>
+</head>
+<body data-page="module-8">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m8-hero-the-stance.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 2 · Module 8 · Capstone · ≈ 105 min</div>
+    <div class="crumb"><span class="from">From “Can we govern it?”</span><span class="arrow">→</span><span class="to">To “What’s my decision?”</span></div>
+    <h1>Executive Leadership Stance</h1>
+    <p class="sub">Dashboard — The Executive Decision Room</p>
+    <div class="gq"><span class="bar" style="background:var(--teal-light)"></span><p>What questions should I now ask differently when AI autonomy is proposed — and how do I defend that decision as a leader?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light)">Leadership move · Decide &amp; own</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <!-- ============ OPENING ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>Across two days, you built seven artefacts. Today you bring them together into a single decision.</h2>
+    <p class="body">Every artefact answered part of a leadership question. Until now, we've been analysing the parts. Leaders, however, are rarely asked to analyse. They're asked to <b>decide</b>. There are only four decisions available: <b>Deploy. Scale. Constrain. Withdraw.</b> By the end of this module you will choose one — and, more importantly, you will be able to defend it. The goal is not to determine whether the technology works. The goal is to determine whether the organisation is <b>ready to own the outcome</b>.</p>
+    <div class="qshift">
+      <div class="qcol old"><div class="qt">You no longer ask</div><p>Is the technology good?</p></div>
+      <div class="qcol new"><div class="qt">You ask</div>
+        <ul>
+          <li>Is the value real?</li>
+          <li>Is the workflow ready?</li>
+          <li>Can I defend the authority I have delegated?</li>
+          <li>Can I see enough?</li>
+          <li>Can we intervene?</li>
+          <li>Can we govern it?</li>
+          <li>Can I defend owning what it does?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKED EXAMPLE ============ -->
+  <section class="msec" id="worked">
+    <div class="sec-eyebrow">Worked example</div>
+    <h2>Complaint Triage — One Final Time</h2>
+    <p class="body">Before applying the executive decision process to your own workflow, review how the same method applies to the shared Complaint Triage case. You are not starting the final decision from scratch — <b>each artefact captures part of the evidence base</b>. Watch how the evidence becomes the decision.</p>
+    <img class="secimg" src="../assets/pics/m8-evidence-chain.jpg" alt="Seven documents laid in a chain across a boardroom table, converging on a single page" style="max-height:300px">
+    <div class="wex">
+      <div class="wrow"><div class="wq">What is the agent trusted to do?</div><div class="wa">The <b>Agency Discovery Canvas</b> showed that the agent classifies complaints, routes them, and closes low-severity complaints without direct human review.</div></div>
+      <div class="wrow"><div class="wq">What decision rights have been transferred?</div><div class="wa">The <b>Boundary Map</b> showed that some decisions may be delegated, such as routine classification and routing, while higher-severity judgement and regulatory matters must remain human-owned.</div></div>
+      <div class="wrow"><div class="wq">What evidence supports this level of autonomy?</div><div class="wa">The <b>Autonomy Decision Snapshot</b>, <b>Observability Readiness Map</b> and <b>Governance Cadence Map</b> showed both the original case for autonomy and the evidence needed to sustain it.</div></div>
+      <div class="wrow"><div class="wq">Can the organisation intervene?</div><div class="wa">The <b>Escalation Design Map</b> identified who can stop or constrain the workflow, under what conditions, and on whose authority.</div></div>
+      <div class="wrow"><div class="wq">Can the agent be governed over time?</div><div class="wa">The <b>Governance Cadence Map</b> identified the signals, review points and triggers needed to keep the agent operating within its approved boundary.</div></div>
+    </div>
+
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Anchor case — your call first</span><span class="a-chip time">2 min</span></div>
+      <h3>The executive committee wants to scale the Complaint Triage agent to two subsidiaries. What should we recommend?</h3>
+      <p class="a-purpose">The agent is already live, so the realistic decision is not whether to deploy it for the first time. It is whether to <b>scale, constrain, or withdraw</b>. The evidence: the agent is creating value and operating in parts of the workflow — but the case also shows signs of drift and a potential weakening of team capability as the agent filters more complex cases away from people. Commit your call before the reveal.</p>
+      <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+        <label class="optcard"><input type="radio" name="anchor" data-key="m8.anchor.call" value="Scale"><span class="oc"><b>Scale</b><span>Expand to the two subsidiaries now.</span></span></label>
+        <label class="optcard"><input type="radio" name="anchor" data-key="m8.anchor.call" value="Constrain"><span class="oc"><b>Constrain</b><span>Continue, but tighten before expanding.</span></span></label>
+        <label class="optcard coral"><input type="radio" name="anchor" data-key="m8.anchor.call" value="Withdraw"><span class="oc"><b>Withdraw</b><span>It should not continue in its current form.</span></span></label>
+      </div>
+      <div class="btnrow"><button class="btn coral" data-requires="m8.anchor.call" data-reveal="#anchorreveal" data-revealed-label="Compared">Commit → the worked answer</button></div>
+      <div class="reveal-box" id="anchorreveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:8px">It would be reasonable to choose Constrain. Not because the technology failed — because the evidence says scaling cannot yet be defended.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:8px">The agent appears valuable. It is already operating. But drift is emerging, team capability is reducing, and governance requires strengthening. A defensible decision may therefore be to <b>constrain the agent before scaling it further</b>: tightening the governance cadence, strengthening escalation points, monitoring team capability, and revisiting the scaling decision once the evidence is stronger.</p>
+        <p style="font-size:14px;line-height:1.6"><b>The important point is not that constrain is the only correct answer. The important point is that the decision can be traced back to evidence.</b> Notice the decision did not come from a single artefact — it came from combining evidence across all of them.</p>
+      </div>
+    </div>
+
+    <div class="showlist"><h5>A defensible executive decision should show:</h5>
+      <ul>
+        <li>what the agent is doing</li>
+        <li>which decision rights have been delegated</li>
+        <li>what evidence supports the current level of autonomy</li>
+        <li>where the gaps or risks sit</li>
+        <li>whether intervention is possible</li>
+        <li>whether governance can hold over time</li>
+        <li>why the final decision is appropriate</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ A8.1 ============ -->
+  <section class="msec" id="a81">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 8.1 · Capstone</span><span class="a-chip time">≈ 30 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>The Executive Decision Lab</h3>
+      <p class="a-purpose">Return to the agentic AI use case from your own organisation — every activity in this course has been building towards this decision. Work the eight questions from the evidence you have built, then decide: <b>deploy, scale, constrain, or withdraw</b>. Base the decision on evidence, not on a single metric, opinion, or instinct. Where you have evidence, use it. <b>Where evidence is missing, treat that gap as part of your finding.</b> A defensible decision includes both what you know and what you do not yet know. Do not skip straight to the final decision — the decision should emerge from your reasoning across the eight questions. Your own answers from Modules 1–7 are surfaced under each question.</p>
+
+      <div class="a-step">
+        <div class="s-label">The workflow</div>
+        <div class="field"><label for="decwf">Your own agentic use case, carried from Module 1. Name it, and whether it is live or proposed.</label>
+        <input type="text" id="decwf" data-key="m8.dec.workflow"></div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — The Reasoning Bridge · answer each from the artefact named</div>
+
+        <div class="bq"><div class="bn">QUESTION 1</div><h5>What exactly is this agent being trusted to do?</h5>
+          <div class="src">Agency Discovery Canvas (Module 1) · Workflow Embedding (Module 5)</div>
+          <div class="evd" data-evd='[["M1 · Your workflow","me.workflow"],["M1 · Agency Canvas — decision path","m1.canvas.path"],["M5 · Embedding — honest readiness call","m5.own.verdict"]]'></div>
+          <textarea data-key="m8.br.q1" aria-label="Bridge question 1"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 2</div><h5>What decision rights are being transferred, and are they delegable?</h5>
+          <div class="src">Boundary Map (Module 3)</div>
+          <div class="evd" data-evd='[["M3 · Boundary — must remain human","m3.a31.mustremain"],["M3 · Boundary statement","m3.a34.statement"]]'></div>
+          <textarea data-key="m8.br.q2" aria-label="Bridge question 2"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 3</div><h5>What evidence shows it is reliable enough for this level of autonomy?</h5>
+          <div class="src">Autonomy Snapshot (Module 2) · Observability (Module 4) · Cadence (Module 7)</div>
+          <div class="evd" data-evd='[["M2 · Snapshot — autonomy level","m2.snap.level"],["M4 · Observability — must-have","m4.a42.musthave"],["M7 · Cadence — first signal","m7.map.s1"]]'></div>
+          <textarea data-key="m8.br.q3" aria-label="Bridge question 3"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 4</div><h5>Under what conditions would autonomy need to be constrained or revoked?</h5>
+          <div class="src">Autonomy Snapshot (M2) · Escalation (Module 6) · Cadence (Module 7)</div>
+          <div class="evd" data-evd='[["M2 · Snapshot — trigger to revisit","m2.snap.trigger"],["M6 · Escalation — honest call","m6.map.call"],["M7 · Cadence — first trigger point","m7.map.t1"]]'></div>
+          <textarea data-key="m8.br.q4" aria-label="Bridge question 4"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 5</div><h5>What must leaders be able to see to remain accountable?</h5>
+          <div class="src">Observability Readiness (M4)</div>
+          <div class="evd" data-evd='[["M4 · What I need visible","m4.a42.info"],["M4 · 30-day commitment","m4.a42.commit"]]'></div>
+          <textarea data-key="m8.br.q5" aria-label="Bridge question 5"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 6</div><h5>What harms would be difficult to reverse?</h5>
+          <div class="src">Autonomy Snapshot (M2) · Workflow Embedding (M5) · Escalation (M6)</div>
+          <div class="evd" data-evd='[["M2 · Snapshot — condition","m2.snap.condition"],["M5 · Value & reversibility (criterion 4)","m5.own.c4"],["M6 · Escalation element 1","m6.map.e1"]]'></div>
+          <textarea data-key="m8.br.q6" aria-label="Bridge question 6"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 7</div><h5>What governance capacity must exist before scaling?</h5>
+          <div class="src">Escalation (M6) · Cadence (M7)</div>
+          <div class="evd" data-evd='[["M6 · One change to make","m6.map.change"],["M7 · The one signal not watched","m7.signal.name"]]'></div>
+          <textarea data-key="m8.br.q7" aria-label="Bridge question 7"></textarea></div>
+
+        <div class="bq"><div class="bn">QUESTION 8</div><h5>If challenged by the board, regulator, workforce, or customer, how is this defended?</h5>
+          <div class="src">This module (M8)</div>
+          <textarea data-key="m8.br.q8" aria-label="Bridge question 8"></textarea></div>
+        <div class="hint">If you cannot answer one of the questions, that is not a failure. That gap is evidence. Treat it as a finding.</div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — Force the decision. You only get one choice. No “it depends.” No “yes, but.” No conditions that will magically appear later. Choose.</div>
+        <img class="secimg" src="../assets/pics/m8-four-doors.jpg" alt="Four doors in a corridor — deploy, scale, constrain, withdraw" style="max-height:260px;margin-top:4px">
+        <div class="deccards" role="radiogroup" aria-label="The executive decision">
+          <label class="deccard"><input type="radio" name="dec" data-key="m8.decision.choice" value="Deploy"><span class="dc"><b>Deploy</b><span>Ready, not yet running.</span></span></label>
+          <label class="deccard"><input type="radio" name="dec" data-key="m8.decision.choice" value="Scale"><span class="dc"><b>Scale</b><span>Running well, governance in place to expand.</span></span></label>
+          <label class="deccard"><input type="radio" name="dec" data-key="m8.decision.choice" value="Constrain"><span class="dc"><b>Constrain</b><span>Running, but requires adjustments.</span></span></label>
+          <label class="deccard"><input type="radio" name="dec" data-key="m8.decision.choice" value="Withdraw"><span class="dc"><b>Withdraw</b><span>Should not run in its current form.</span></span></label>
+        </div>
+        <div class="fieldrow">
+          <div class="field"><label for="dev">The evidence — the two or three artefacts that had the greatest bearing on the decision</label><textarea id="dev" data-key="m8.decision.evidence" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="dtr">The trigger — the one condition that would change the decision</label><textarea id="dtr" data-key="m8.decision.trigger" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="field"><label for="ddf">The defence — one or two sentences you would say to a board or regulator to defend this call</label><textarea id="ddf" data-key="m8.decision.defence"></textarea></div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn coral" data-requires="m8.dec.workflow,m8.decision.choice,m8.decision.evidence,m8.decision.trigger,m8.decision.defence" data-reveal="#decreveal" data-revealed-label="Decided">Commit my decision → the reveal</button>
+      </div>
+      <div class="reveal-box" id="decreveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:8px">Most leaders discover that the decisive factor was not the technology.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:8px">It was governance. Visibility. Accountability. Readiness. Intervention. Leadership capability.</p>
+        <p style="font-size:14px;line-height:1.6"><b>Constrain is not a weaker decision. Withdraw is not a failure.</b> Sometimes those are the strongest decisions in the room.</p>
+      </div>
+
+      <div class="presentOnly">
+        <div class="a-step" style="margin-top:16px">
+          <div class="s-label">Facilitator debrief</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:var(--grey)">
+            <li><b>Q1.</b> What did you decide, and what were the two pieces of evidence that most drove it?</li>
+            <li><b>Q2.</b> Who chose constrain or withdraw — and what made you willing to say no?</li>
+            <li><b>Q3.</b> Where did you have a gap — a question you could not answer because the evidence was never built?</li>
+            <li><b>Q4.</b> How has the question you ask changed since the first module?</li>
+          </ul>
+        </div>
+      </div>
+
+      <details class="selfOnly" style="margin-top:14px"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Sample Executive Decision (Activity Workbook, p.91 — invoice-approval agent)</summary>
+        <div class="sampletab">
+          <div class="srow"><div class="sk">The workflow</div><div class="sv">Invoice-approval agent. Auto-approves supplier invoices under a set amount, routes the rest to Finance. Live for eight months. Finance wants to raise the threshold and let it handle more of the mid-value invoices.</div></div>
+          <div class="srow"><div class="sk">1 · Trusted to do</div><div class="sv">Match invoice to PO, check the amount, and pay anything under the threshold without a human. It also decides what counts as a match.</div></div>
+          <div class="srow"><div class="sk">2 · Decision rights</div><div class="sv">Payment authority under the threshold. Delegable for clean matches. Not delegable for new suppliers or changed bank details, that stays human.</div></div>
+          <div class="srow"><div class="sk">3 · Evidence of reliability</div><div class="sv">Eight months clean at the current threshold. But I can see approvals, not the near-misses, and no cadence tracks the auto-approval rate creeping up.</div></div>
+          <div class="srow"><div class="sk">4 · Constrain or revoke when</div><div class="sv">Any duplicate payment, any approval on changed bank details, or auto-approval share moving sharply. No stop condition is currently written down.</div></div>
+          <div class="srow"><div class="sk">5 · Leaders must see</div><div class="sv">The auto-approval rate over time, the rejected and near-miss cases, and any invoice paid on changed supplier details. I can see the first, not the other two.</div></div>
+          <div class="srow"><div class="sk">6 · Hard-to-reverse harms</div><div class="sv">A wrongful payment to a fraudulent supplier. Once the money leaves, recovery is slow and often partial. This is the irreversible harm that grows if the threshold rises.</div></div>
+          <div class="srow"><div class="sk">7 · Governance before scaling</div><div class="sv">GAP. No named owner, no written stop condition, no cadence. I cannot answer this, which is itself the answer: we are not ready to raise the threshold.</div></div>
+          <div class="srow"><div class="sk">8 · The defence</div><div class="sv">I held the threshold where the evidence supports it, and named the three things Finance must put in place before it rises. That is defensible. Raising it now would not be.</div></div>
+          <div class="srow"><div class="sk">The decision</div><div class="sv"><b>☑ Constrain</b> — running, but should do less until ready.</div></div>
+          <div class="srow"><div class="sk">The evidence</div><div class="sv">Governance Cadence (M7): no owner, no cadence. Observability (M4): cannot see near-misses or changed bank details. Escalation (M6): no written stop condition.</div></div>
+          <div class="srow"><div class="sk">The trigger</div><div class="sv">A named owner, a written stop condition, and a monthly cadence on the auto-approval rate. Put those three in place and I will revisit raising the threshold.</div></div>
+          <div class="srow"><div class="sk">The defence</div><div class="sv">The agent is safe at its current threshold and I have kept it there. I declined to raise it because we cannot yet see the near-misses or govern the drift, and a wrongful payment is hard to reverse. Those three gaps are named and owned, and the threshold rises when they are closed.</div></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ SIX LENSES ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>The Six Readiness Lenses</h2>
+    <p class="body">You have made the decision. Now let's name the frame you used. The decision is not a gut feeling — it is the combined result of six readiness judgements. There is no formula and no scoring model: the lenses are the questions.</p>
+    <div class="lenses">
+      <div class="lens"><div class="cn">1</div><h4>Value Case</h4><div class="kq">Is the value real?</div></div>
+      <div class="lens"><div class="cn">2</div><h4>Workflow Fit</h4><div class="kq">Is the workflow agent-ready?</div></div>
+      <div class="lens"><div class="cn">3</div><h4>Boundary Design</h4><div class="kq">What authority can be delegated?</div></div>
+      <div class="lens"><div class="cn">4</div><h4>Observability Readiness</h4><div class="kq">Can leaders remain accountable?</div></div>
+      <div class="lens"><div class="cn">5</div><h4>Escalation Readiness</h4><div class="kq">Can we intervene?</div></div>
+      <div class="lens"><div class="cn">6</div><h4>Governance Readiness</h4><div class="kq">Can we sustain this safely over time?</div></div>
+    </div>
+  </section>
+
+  <!-- ============ ORG SHIFT ============ -->
+  <section class="msec" id="orgshift">
+    <div class="sec-eyebrow">The organisational shift</div>
+    <h2>What changes when agents become part of work</h2>
+    <p class="body">When an AI agent becomes a standing part of how work is done, the leadership task expands. The decision is no longer only whether the technology should be approved. Leaders must also consider how the agent changes <b>ownership, team capability and accountability</b>. Apply each leadership question to your own context.</p>
+    <div class="orgs">
+      <div class="org"><div class="on">SHIFT 1</div><h5>Ongoing Agentic AI Ownership</h5>
+        <div class="oq">Who owns this agent as an ongoing organisational responsibility?</div>
+        <p style="font-size:12.8px;color:var(--grey);margin-bottom:9px">An agent is not a project that ends once it is deployed. It continues to operate, encounter new conditions, and require oversight — someone must monitor performance, review signals, act on triggers, and keep the agent within its approved boundary.</p>
+        <div class="field" style="margin-bottom:0"><label for="org1">Which role within your organisation or team would be responsible for the agentic AI system? Or would a new role be created?</label><textarea id="org1" data-key="m8.org.own"></textarea></div></div>
+      <div class="org"><div class="on">SHIFT 2</div><h5>Roles and Capability Shifts</h5>
+        <div class="oq">How will this agent change the work people do, and what capability must be protected or developed?</div>
+        <p style="font-size:12.8px;color:var(--grey);margin-bottom:9px">When an agent takes on routine work, roles shift toward exceptions, judgement calls, oversight, customer engagement, escalation or assurance. If people stop seeing difficult cases, their judgement may weaken over time — capability can erode without anyone intending it.</p>
+        <div class="field" style="margin-bottom:0"><label for="org2">Apply this leadership question to your context</label><textarea id="org2" data-key="m8.org.capability"></textarea></div></div>
+      <div class="org"><div class="on">SHIFT 3</div><h5>Clear Accountability</h5>
+        <div class="oq">Where has work moved, and has accountability moved with it?</div>
+        <p style="font-size:12.8px;color:var(--grey);margin-bottom:9px">Agentic AI can redistribute work across people, teams and systems in ways the organisation chart may not show. If an agent takes on work previously done by a person, someone must remain responsible for the decision, the outcome, the monitoring, and the response when something goes wrong.</p>
+        <div class="field" style="margin-bottom:0"><label for="org3">Apply this leadership question to your context</label><textarea id="org3" data-key="m8.org.account"></textarea></div></div>
+    </div>
+  </section>
+
+  <!-- ============ A8.2 ============ -->
+  <section class="msec" id="a82">
+    <img class="secimg" src="../assets/pics/m8-challenge-panel.jpg" alt="A leader standing to defend a decision before a panel of four challengers" style="max-height:300px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 8.2 · Final activity</span><span class="a-chip time">≈ 20 min</span></div>
+      <h3>The Leadership Stance Close</h3>
+      <p class="a-purpose">Test whether your final decision can be defended under challenge. Work in a group of three or four — each person takes a turn as the leader defending their decision while the others challenge from a stakeholder perspective. <b>The aim is not to win the challenge. The aim is to test whether your decision is clear, evidence-based and defensible.</b> A strong leadership stance can do three things: explain the decision, show the evidence behind it, and name what would change the decision. Where the evidence is strong, hold the line. Where the evidence is weak, be honest about the gap.</p>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Your stance, from your Decision Lab</div>
+        <div class="evd" id="stance"><div class="eh">When it is your turn, briefly state</div></div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 &amp; 3 — The four challenge roles. Challengers each ask one question from their perspective; their role is to look for the weak point.</div>
+        <div class="roles">
+          <div class="role"><div class="rt">Board member</div><div class="rc">“Can you defend this decision to those who carry ultimate organisational risk?”</div>
+            <details><summary>Suggested challenge questions</summary><ul>
+              <li>Why is this decision worth the value, risk and governance burden?</li>
+              <li>What evidence tells us this is ready to deploy or scale?</li>
+              <li>If you chose constrain or withdraw, what value are we giving up, and why is that justified?</li>
+              <li>What would make you change this decision?</li></ul></details></div>
+          <div class="role"><div class="rt">Regulator or assurance function</div><div class="rc">“Can you show how the decision was made and why it is defensible?”</div>
+            <details><summary>Suggested challenge questions</summary><ul>
+              <li>How was this decision made?</li>
+              <li>What evidence supports the level of autonomy being allowed?</li>
+              <li>What can you show about the agent's performance, boundary, escalation and governance?</li>
+              <li>If the agent makes a poor decision, how would you reconstruct what happened?</li></ul></details></div>
+          <div class="role"><div class="rt">Workforce representative</div><div class="rc">“What happens to the people whose work is changed, reduced or redistributed by this agent?”</div>
+            <details><summary>Suggested challenge questions</summary><ul>
+              <li>What work is being changed or redistributed?</li>
+              <li>What happens to the people whose routine work is reduced?</li>
+              <li>What judgement or capability must the team retain?</li>
+              <li>Who is responsible for managing the impact on roles, skills and oversight?</li></ul></details></div>
+          <div class="role"><div class="rt">Customer or affected user</div><div class="rc">“If the agent gets my case wrong, who is accountable?”</div>
+            <details><summary>Suggested challenge questions</summary><ul>
+              <li>How would I know whether a human reviewed the decision?</li>
+              <li>What happens if the agent misses an exception?</li>
+              <li>How will you prevent harm from being repeated?</li></ul></details></div>
+        </div>
+        <div class="hint">As the leader: hold the line where your evidence supports the decision · explain the trade-offs clearly · name the evidence you are relying on · acknowledge any evidence gap honestly · refine your position if the challenge exposes a weakness. You do not need to defend an indefensible gap — if the challenge is fair, say so and record what needs to be strengthened.</div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 4 — Capture what changed</div>
+        <div class="fieldrow">
+          <div class="field"><label for="cl-strong">The strongest part of my defence was</label><textarea id="cl-strong" data-key="m8.close.strong" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="cl-weak">The weakest or least-evidenced part of my defence was</label><textarea id="cl-weak" data-key="m8.close.weak" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="fieldrow">
+          <div class="field"><label for="cl-chal">The challenge that changed or sharpened my thinking was</label><textarea id="cl-chal" data-key="m8.close.challenge" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="cl-str">One thing I would need to strengthen before defending this decision in my organisation</label><textarea id="cl-str" data-key="m8.close.strengthen" style="min-height:64px"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COURSE CLOSE ============ -->
+  <section class="msec" id="close">
+    <div class="sec-eyebrow">Course close</div>
+    <h2>The pulse, replayed</h2>
+    <p class="body">On the Welcome page, before Module 1, you answered three questions. Answer them again now — your first answers are shown beneath each slider.</p>
+    <div class="pulse">
+      <div class="p-row">
+        <div class="p-q">How much agentic AI is live in your organisation today?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="m8.pulse.live" aria-label="How much agentic AI is live in your organisation today, 0 to 10"><span class="p-val" data-for="m8.pulse.live">0</span></div>
+        <div class="p-ends"><span>None that I know of</span><span>Embedded across workflows</span></div>
+        <div class="p-then" data-then="wel.pulse.live"></div>
+      </div>
+      <div class="p-row">
+        <div class="p-q">How confident are you making decisions about AI autonomy?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="m8.pulse.confidence" aria-label="How confident are you making decisions about AI autonomy, 0 to 10"><span class="p-val" data-for="m8.pulse.confidence">0</span></div>
+        <div class="p-ends"><span>Not confident</span><span>Fully confident</span></div>
+        <div class="p-then" data-then="wel.pulse.confidence"></div>
+      </div>
+      <div class="p-row">
+        <div class="p-q">Could your organisation intervene today if an agent behaved unexpectedly?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="m8.pulse.intervention" aria-label="Could your organisation intervene today if an agent behaved unexpectedly, 0 to 10"><span class="p-val" data-for="m8.pulse.intervention">0</span></div>
+        <div class="p-ends"><span>No idea how</span><span>Clear, tested paths</span></div>
+        <div class="p-then" data-then="wel.pulse.intervention"></div>
+      </div>
+    </div>
+    <div class="field"><label for="cl-q">How has the question you ask changed since the first module?</label><textarea id="cl-q" data-key="m8.close.question" placeholder="From “does the AI work?” towards…"></textarea></div>
+
+    <div class="key-message"><div class="km-label">The executive stance</div>
+    <p>The hardest part of agentic AI is not understanding the technology. It is deciding when it should act. Under what conditions. With what safeguards. And whether you are willing to stand behind the consequence. That is the executive stance. That is what you leave with today.</p></div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 8 artefact · 8 of 8 · Capstone</span>
+        <button class="btn ghost" id="m8print">Download PDF</button></div>
+      <h3>The Executive Decision</h3>
+      <p class="ap-note">The whole course in one call. Every unanswered question below is a gap — and a gap is a finding. Your full Evidence Pack collects all eight artefacts.</p>
+      <div class="ap-rows" id="m8rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 8 established</h2>
+    <div class="takeaways"><ul>
+      <li>The leadership work of agentic AI is not simply approving the technology. It is deciding what the agent may do, under what conditions, with what evidence, with what escalation path, and with what ongoing governance.</li>
+      <li>The decision did not come from a single artefact. It came from combining evidence across all of them — and a gap in the evidence is itself a finding.</li>
+      <li>As agents become embedded in work, leaders must ensure ownership is named, team capability is sustained, and accountability remains clear as work is redistributed.</li>
+      <li>Constrain is not a weaker decision and withdraw is not a failure — sometimes those are the strongest decisions in the room.</li>
+      <li>Deploy, scale, constrain or withdraw is one example of the stance leaders will need to take repeatedly as agentic AI becomes part of organisational work.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The final thought</div>
+    <p>The decision is not whether agentic AI is impressive. The decision is whether this organisation is ready to stand behind this agent, in this workflow, under these conditions.</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> open your <a href="evidence-pack.html" style="color:var(--teal-dark);font-weight:600">Capstone Evidence Pack</a> — all eight artefacts in one place, ready to download, print, and take back to your organisation.</p>
+  </section>
+
+  <div class="pn">
+    <a href="module-7.html"><span class="lbl">← Previous</span><span>Module 7 — Governing Autonomy Over Time</span></a>
+    <a class="next" href="evidence-pack.html"><span class="lbl">Next →</span><span>Capstone — Evidence Pack</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function trunc(s,n){s=String(s);return s.length>n? s.slice(0,n-1)+'…':s;}
+
+  /* prefill the workflow from Module 1 if empty */
+  var wfEl=document.getElementById('decwf');
+  if(!AAL.has('m8.dec.workflow') && AAL.has('me.workflow')){
+    var live=AAL.get('me.workflowLive');
+    wfEl.value=AAL.get('me.workflow')+(live?' — '+live:'');
+    AAL.set('m8.dec.workflow',wfEl.value);
+  }
+
+  /* evidence drawers — surface the student's live answers from prior modules */
+  function drawEvd(){
+    document.querySelectorAll('.evd[data-evd]').forEach(function(box){
+      var items=JSON.parse(box.getAttribute('data-evd'));
+      box.innerHTML='<div class="eh">Your evidence on file</div>'+items.map(function(it){
+        var v=AAL.get(it[1]);
+        return '<div class="ei"><div class="el">'+it[0]+'</div><div class="ev'+(String(v).trim()?'':' gap')+'">'+
+          (String(v).trim()? '“'+esc(trunc(v,180))+'”' : 'Gap — not yet captured. That gap is a finding.')+'</div></div>';
+      }).join('');
+    });
+  }
+
+  /* A8.2 stance summary */
+  function drawStance(){
+    var box=document.getElementById('stance');
+    var rows=[
+      ['Your use case','m8.dec.workflow'],
+      ['Your decision','m8.decision.choice'],
+      ['The evidence that most supports it','m8.decision.evidence'],
+      ['The trigger that would change it','m8.decision.trigger']
+    ];
+    box.innerHTML='<div class="eh">When it is your turn, briefly state</div>'+rows.map(function(r){
+      var v=AAL.get(r[1]);
+      return '<div class="ei"><div class="el">'+r[0]+'</div><div class="ev'+(String(v).trim()?'':' gap')+'">'+
+        (String(v).trim()? esc(v):'Not yet decided — complete the Decision Lab above first.')+'</div></div>';
+    }).join('');
+  }
+
+  /* pulse replay — show day-1 values */
+  function drawThen(){
+    document.querySelectorAll('.p-then').forEach(function(el){
+      var k=el.getAttribute('data-then');
+      var v=AAL.get(k);
+      el.innerHTML = String(v).trim()? 'Your answer before Module 1: <b>'+esc(v)+'</b> / 10' : 'No pre-course answer captured on the Welcome page.';
+    });
+  }
+  /* live value readouts for sliders */
+  function drawVals(){
+    document.querySelectorAll('.p-val[data-for]').forEach(function(el){
+      var v=AAL.get(el.getAttribute('data-for'));
+      el.textContent=String(v).trim()?v:'0';
+    });
+    document.querySelectorAll('.pulse input[type=range]').forEach(function(r){
+      var v=AAL.get(r.getAttribute('data-key'));
+      if(String(v).trim())r.value=v;
+    });
+  }
+
+  var ROWS=[
+    ['The workflow','m8.dec.workflow'],
+    ['1 · Trusted to do','m8.br.q1'],
+    ['2 · Decision rights transferred','m8.br.q2'],
+    ['3 · Evidence of reliability','m8.br.q3'],
+    ['4 · Constrain or revoke when','m8.br.q4'],
+    ['5 · Leaders must be able to see','m8.br.q5'],
+    ['6 · Hard-to-reverse harms','m8.br.q6'],
+    ['7 · Governance before scaling','m8.br.q7'],
+    ['8 · The defence under challenge','m8.br.q8'],
+    ['THE DECISION','m8.decision.choice'],
+    ['The evidence','m8.decision.evidence'],
+    ['The trigger','m8.decision.trigger'],
+    ['The defence','m8.decision.defence'],
+    ['Strongest part of my defence','m8.close.strong'],
+    ['Weakest / least-evidenced part','m8.close.weak'],
+    ['Challenge that sharpened my thinking','m8.close.challenge'],
+    ['To strengthen before defending it at work','m8.close.strengthen']
+  ];
+  function rowsHtml(cls){
+    return ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      if(cls==='pd')return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+(String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+(String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  function drawArtefact(){document.getElementById('m8rows').innerHTML=rowsHtml('ap');}
+  document.getElementById('m8print').addEventListener('click',function(){
+    AAL.printDoc('The Executive Decision', rowsHtml('pd'));
+  });
+
+  function refresh(){drawEvd();drawStance();drawThen();drawVals();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

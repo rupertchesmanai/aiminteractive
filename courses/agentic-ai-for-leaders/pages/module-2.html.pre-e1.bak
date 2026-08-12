@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 2: Defensible Agentic AI Decisions — Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../assets/img/aim-logo-blue.png">
+<meta name="description" content="Module 2 · Defensible Agentic AI Decisions — judge whether autonomy should be allowed, and build the Autonomy Decision Snapshot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* value question checklist */
+.vq{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.vq .q{background:#fff;border:1px solid var(--line);border-left:4px solid var(--teal-dark);padding:12px 16px;font-family:var(--head);font-weight:500;font-size:14.5px}
+/* case dossier */
+.dossier{background:#141414;color:#d9d4c8;padding:24px 26px;margin:16px 0}
+.dossier .dh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#53DFCB;margin-bottom:12px}
+.dossier .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.dossier .cols{grid-template-columns:1fr}}
+.dossier h5{font-family:var(--head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 8px}
+.dossier ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.dossier li{font-size:13px;line-height:1.45;padding-left:14px;position:relative}
+.dossier li::before{content:"·";position:absolute;left:2px;color:#53DFCB}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 4px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);padding:14px 12px;text-align:center}
+.stat b{display:block;font-family:var(--head);font-weight:700;font-size:30px;color:#53DFCB}
+.stat.warn b{color:var(--coral)}
+.stat span{font-size:11px;line-height:1.3;display:block;margin-top:4px;color:rgba(255,255,255,.7)}
+.routes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+@media(max-width:760px){.routes{grid-template-columns:repeat(2,1fr)}}
+.route{background:var(--cream-alt);border:1px solid var(--line);padding:12px 14px;font-family:var(--head);font-weight:600;font-size:13px;text-align:center}
+/* lenses */
+.lensgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+@media(max-width:820px){.lensgrid{grid-template-columns:1fr}}
+.lens{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:18px 20px}
+.lens .ln{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
+.lens h4{font-size:18px;margin:5px 0 6px}
+.lens .cq{font-family:var(--head);font-weight:600;font-size:14px;color:var(--teal-dark);margin-bottom:8px}
+.lens p{font-size:13px;color:var(--grey);line-height:1.5}
+/* delta note */
+.delta{display:none;background:rgba(220,90,70,.09);border-left:5px solid var(--coral-dark);padding:14px 18px;margin:12px 0;font-size:14px}
+.delta.on{display:block}
+/* 13% flip */
+.flip13{background:var(--ink);color:#fff;border:0;cursor:pointer;padding:16px 20px;font-family:var(--head);font-weight:600;font-size:15px;width:100%;text-align:left}
+.flip13 .ans{display:none;color:var(--teal-light);margin-top:8px;font-size:16px}
+.flip13.on .ans{display:block}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--coral);font-weight:700}
+</style>
+</head>
+<body data-page="module-2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m2-hero-the-call.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 2 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “What is acting?”</span><span class="arrow">→</span><span class="to">To “Should it be allowed to act?”</span></div>
+    <h1>Defensible Agentic AI Decisions</h1>
+    <p class="sub">Dashboard — The Autonomy Decision Desk</p>
+    <div class="gq"><span class="bar"></span><p>Should this agent be allowed to act — and if so, under what conditions?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)">Leadership move · Judge</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>From recognition to authorisation</h2>
+    <p class="body">Module 1 asked: <i>is the AI acting?</i> This module asks: <b>is that level of autonomy acceptable?</b> The focus is not whether the system can perform the task — it is whether you can justify allowing it to act, and defend that decision if challenged. This is not just a risk decision. It is a <b>value-risk posture</b> decision.</p>
+  </section>
+
+  <!-- ============ VALUE QUESTION ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Before we look at the system</div>
+    <h2>The Value Question</h2>
+    <p class="body">A core discipline of responsible AI leadership: <b>start with the problem, not the tool.</b> With agentic AI the question is not only whether AI can help — it is whether AI should be allowed to <i>act</i>. Hold these five questions through everything that follows:</p>
+    <div class="vq">
+      <div class="q">What problem is this agent solving?</div>
+      <div class="q">Where is value created?</div>
+      <div class="q">What value does autonomy unlock?</div>
+      <div class="q">Does the value actually require autonomy?</div>
+      <div class="q">What are we accepting in exchange?</div>
+    </div>
+    <p class="body dim selfOnly">In this case, the value claim is that the agent triages thousands of complaints each week, catches urgent complaints faster than humans can, improves responsiveness, and frees staff for complex work. That is the value side. The rest of this module explores whether the governance burden is justified by that value.</p>
+    <div class="key-message"><div class="km-label">Key message</div>
+    <p>If what we accept in exchange becomes larger than the value we unlock, the value-risk posture has flipped. That is the point where leaders should be willing to walk away from autonomy.</p></div>
+  </section>
+
+  <!-- ============ CASE ============ -->
+  <section class="msec" id="case">
+    <div class="sec-eyebrow">Case study — returning to Module 1's first agent</div>
+    <h2>The Complaint Triage Agent</h2>
+    <p class="body">The agent has been running in pilot for six months. Leadership now wants to decide whether to let it operate autonomously, with humans only stepping in on flagged cases. The performance data is in — your role is to determine what level of autonomy, if any, is appropriate.</p>
+    <p class="body dim selfOnly">Before the pilot results, it's worth knowing how systems like this usually arrive — often incrementally, with executive visibility coming late, and the autonomy decision rarely the first decision made:</p>
+    <div class="routes selfOnly">
+      <div class="route">Procurement upgrade</div><div class="route">Vendor proposal</div>
+      <div class="route">Team experiment</div><div class="route">Deliberate adoption</div>
+    </div>
+
+    <div class="dossier">
+      <div class="dh">Briefing pack · Complaint Triage Agent · Pilot month 6</div>
+      <div class="cols">
+        <div><h5>What the agent does</h5>
+          <ul><li>Reads each incoming complaint</li><li>Classifies severity (low, medium, high)</li><li>Routes to the appropriate team</li><li>Triggers compensation offers automatically for lower-tier cases</li><li>Escalates higher-risk cases to human teams</li></ul></div>
+        <div><h5>The context</h5>
+          <ul><li>High volume — thousands of complaints a week</li><li>Strong pressure to reduce response time</li><li>Customer trust is a strategic priority</li><li>Regulated sector — mishandled complaints carry regulatory risk</li></ul></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>87%</b><span>cases classified correctly</span></div>
+        <div class="stat"><b>82%</b><span>compensation decisions match policy</span></div>
+        <div class="stat"><b>9%</b><span>of cases trigger escalation</span></div>
+        <div class="stat warn"><b>!</b><span>edge-case misclassification has caused inappropriate payouts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A2.1 ============ -->
+  <section class="msec" id="a21">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 2.1</span><span class="a-chip time">≈ 25 min</span></div>
+      <h3>Should This Agent Act Alone?</h3>
+      <p class="a-purpose">You will decide with the information available — not perfect visibility of how the pilot was designed. That reflects a common leadership reality: AI decisions are made with partial evidence and uncertainty. Part of your task is deciding whether the evidence is strong enough to trust. <b>This is a decision exercise, not an analysis exercise. You have the information available — make the call.</b></p>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — Individual decision</div>
+        <div class="field">
+          <label>Which position best reflects your judgement of the appropriate level of autonomy? Select one.</label>
+          <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+            <label class="optcard"><input type="radio" name="a21l" data-key="m2.a21.level" value="Allow full autonomy"><span class="oc"><b>Full autonomy</b><span>The agent acts; humans only review flagged cases.</span></span></label>
+            <label class="optcard"><input type="radio" name="a21l" data-key="m2.a21.level" value="Allow partial autonomy"><span class="oc"><b>Partial autonomy</b><span>The agent acts within constraints, with specific human checkpoints.</span></span></label>
+            <label class="optcard coral"><input type="radio" name="a21l" data-key="m2.a21.level" value="Do not allow autonomy yet"><span class="oc"><b>No autonomy yet</b><span>The agent's outputs go to humans for review before action.</span></span></label>
+          </div>
+        </div>
+        <div class="fieldrow">
+          <div class="field"><label for="a21r">Record an explanation for your reasoning</label><textarea id="a21r" data-key="m2.a21.reasoning"></textarea></div>
+          <div class="field"><label for="a21c">Record one concern</label><textarea id="a21c" data-key="m2.a21.concern"></textarea></div>
+        </div>
+        <div class="btnrow">
+          <button class="btn coral" data-requires="m2.a21.level,m2.a21.reasoning,m2.a21.concern" data-reveal="#a21room" data-revealed-label="Committed">Lock my decision → see the room</button>
+        </div>
+      </div>
+
+      <div class="reveal-box" id="a21room" style="padding:0;border:0;background:transparent">
+        <img class="secimg" src="../assets/pics/m2-split-room.jpg" alt="A workshop room split into three groups mid-disagreement" style="margin-top:0">
+        <div style="background:var(--cream-alt);border-left:5px solid var(--teal-dark);padding:18px 22px">
+          <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:8px">Look around the room.</p>
+          <p style="font-size:14px;line-height:1.6">Cohorts consistently split three ways on exactly the information you just used. Everyone saw the same 87%, the same payouts warning, the same regulatory context — and reached different decisions. <b>That is what leadership under uncertainty looks like.</b> The disagreement is not a problem to resolve. The disagreement is the learning.</p>
+        </div>
+
+        <div class="a-step" style="margin-top:18px">
+          <div class="s-label">Step 3 — The Decision Driver Map</div>
+          <div class="fieldrow">
+            <div class="field"><label for="dv1">Value — what value were we trying to unlock?</label><textarea id="dv1" data-key="m2.a21.driverValue" style="min-height:64px"></textarea></div>
+            <div class="field"><label for="dv2">Risk — what risk mattered most?</label><textarea id="dv2" data-key="m2.a21.driverRisk" style="min-height:64px"></textarea></div>
+          </div>
+          <div class="fieldrow">
+            <div class="field"><label for="dv3">Uncertainty — what did we have to assume?</label><textarea id="dv3" data-key="m2.a21.driverUncertainty" style="min-height:64px"></textarea></div>
+            <div class="field"><label for="dv4">Evidence — what would change our decision?</label><textarea id="dv4" data-key="m2.a21.driverEvidence" style="min-height:64px"></textarea></div>
+          </div>
+          <p class="small">Push yourself past “more information” or “better performance” — name the specific evidence threshold that would flip you.</p>
+        </div>
+
+        <div class="a-step">
+          <div class="s-label">The question everyone asks</div>
+          <button class="flip13" id="flip13" type="button">Was 87% good enough? <span style="font-family:var(--head);font-size:12px;opacity:.6">— tap for the answer the room always lands on</span>
+            <span class="ans">It depends on the 13%.</span>
+          </button>
+        </div>
+
+        <div class="a-step">
+          <div class="s-label">Step 4 — Immediate reflection</div>
+          <div class="field">
+            <label for="a21ref">What drove your decision more — performance data, or consequences? What would change your position? And if you had ten agents like this across the organisation, would your decision stay the same?</label>
+            <textarea id="a21ref" data-key="m2.a21.reflect"></textarea>
+          </div>
+          <div class="field">
+            <label for="a21n">Group debrief notes</label>
+            <textarea id="a21n" data-key="m2.a21.notes" style="min-height:56px"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-message"><div class="km-label">Facilitator insight to land</div>
+    <p>Leaders do not authorise autonomy based on accuracy alone. They authorise autonomy based on whether the failure mode is tolerable, recoverable and defensible.</p></div>
+  </section>
+
+  <!-- ============ FOUR LENSES ============ -->
+  <section class="msec" id="lenses">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>The Four Autonomy Decision Lenses</h2>
+    <p class="body">You just made a decision under uncertainty. Now here is a way to make that decision more defensible. In Module 1 we said agents plan, act and adapt — these four lenses help you decide whether an agent doing all three should be allowed to act autonomously.</p>
+    <img class="secimg selfOnly" src="../assets/pics/m2-four-lenses.jpg" alt="Four precision lenses refracting the same light differently" style="max-height:280px">
+    <div class="lensgrid">
+      <div class="lens"><div class="ln">LENS 1</div><h4>Trust and Stability</h4><div class="cq">How consistent is the performance?</div><p>Is the 87% stable? If it drops, who notices first?</p></div>
+      <div class="lens"><div class="ln">LENS 2</div><h4>Failure Consequence</h4><div class="cq">What happens when it gets it wrong?</div><p>Can the harm be reversed?</p></div>
+      <div class="lens"><div class="ln">LENS 3</div><h4>Control and Recoverability</h4><div class="cq">How quickly can you intervene?</div><p>If misclassification starts tomorrow, how long before someone notices?</p></div>
+      <div class="lens"><div class="ln">LENS 4</div><h4>Trade-off Reality</h4><div class="cq">What are we gaining — and what are we giving up?</div><p>Speed and scale are bought with visibility and control.</p></div>
+    </div>
+    <img class="secimg selfOnly" src="../assets/pics/m2-tradeoff-scales.jpg" alt="A brass balance scale weighing a stopwatch against reading glasses" style="max-height:260px">
+    <div class="key-message"><div class="km-label">Key message</div><p>Autonomy is a trade. Speed and scale are bought with visibility and control.</p></div>
+  </section>
+
+  <!-- ============ A2.2 + SNAPSHOT ============ -->
+  <section class="msec" id="a22">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 2.2</span><span class="a-chip time">≈ 20 min</span></div>
+      <h3>Refine Your Decision Using the Lenses</h3>
+      <p class="a-purpose">You made your decision before you had the lenses. Now go back and test it. Re-evaluate the Complaint Triage case with your table, then complete the Autonomy Decision Snapshot below with the position <b>you</b> would personally be prepared to defend — you may agree with your table, or you may differ.</p>
+
+      <div class="delta" id="a22delta"></div>
+
+      <div class="a-step">
+        <div class="s-label">The Autonomy Decision Snapshot — make the call</div>
+        <p class="small" style="margin-bottom:10px">Conditional decisions are stronger than blanket ones. Name the condition. Name the trigger. <b>The agent:</b> Complaint Triage Agent.</p>
+        <div class="field">
+          <label>Autonomy level — tick the level you would allow</label>
+          <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+            <label class="optcard"><input type="radio" name="snapl" data-key="m2.snap.level" value="Full"><span class="oc"><b>Full</b><span>Agent acts. Humans review flagged cases only.</span></span></label>
+            <label class="optcard"><input type="radio" name="snapl" data-key="m2.snap.level" value="Partial"><span class="oc"><b>Partial</b><span>Agent acts within constraints — e.g. specific human checkpoints.</span></span></label>
+            <label class="optcard coral"><input type="radio" name="snapl" data-key="m2.snap.level" value="None yet"><span class="oc"><b>None yet</b><span>Agent outputs go to humans for review before action.</span></span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="snapc">The condition — one thing that must be true for autonomy to proceed at this level</label>
+          <input type="text" id="snapc" data-key="m2.snap.condition" placeholder='e.g. "minimum 90% accuracy on high-severity classifications"'>
+        </div>
+        <div class="field">
+          <label for="snapt">The trigger — one signal that would cause autonomy to pause or be withdrawn</label>
+          <input type="text" id="snapt" data-key="m2.snap.trigger" placeholder='e.g. "any regulatory complaint about a wrongful payout"'>
+        </div>
+        <div class="field">
+          <label for="snapd">The defence — in one sentence, why is this decision defensible?</label>
+          <textarea id="snapd" data-key="m2.snap.defence" style="min-height:64px"></textarea>
+        </div>
+        <div class="meter">
+          <div class="m-track"><div class="m-fill" id="snapfill"></div></div>
+          <div class="m-label"><span>Opinion</span><span id="snappct">0 of 4 parts named</span><span>Defensible position</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A2.3 ============ -->
+  <section class="msec" id="a23">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 2.3</span><span class="a-chip time">≈ 15 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>Apply a readiness check and the lenses to your own example</h3>
+      <p class="a-purpose">Return to the workflow you selected in Module 1<span id="a23wf"></span>. Keep this light — an initial leadership position, not a final approval. Where evidence is missing, make that uncertainty visible rather than inventing detail.</p>
+
+      <div class="field">
+        <label>1 · What level of autonomy would be suitable for your example?</label>
+        <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+          <label class="optcard"><input type="radio" name="a23l" data-key="m2.a23.level" value="Full"><span class="oc"><b>Full</b></span></label>
+          <label class="optcard"><input type="radio" name="a23l" data-key="m2.a23.level" value="Partial"><span class="oc"><b>Partial</b></span></label>
+          <label class="optcard coral"><input type="radio" name="a23l" data-key="m2.a23.level" value="None"><span class="oc"><b>None</b></span></label>
+        </div>
+        <div class="hint">Don't let “partial” become a safe but undefined middle answer — what exactly could it do independently, and where does the human remain?</div>
+      </div>
+      <div class="field"><label for="a23v">2 · What is the main value you would gain from that level of autonomy?</label><textarea id="a23v" data-key="m2.a23.value" style="min-height:60px"></textarea></div>
+      <div class="field">
+        <label>3 · Which autonomy lens matters most for this workflow?</label>
+        <div class="optcards">
+          <label class="optcard"><input type="radio" name="a23lens" data-key="m2.a23.lens" value="Trust and Stability"><span class="oc"><b>Trust &amp; Stability</b></span></label>
+          <label class="optcard"><input type="radio" name="a23lens" data-key="m2.a23.lens" value="Failure Consequence"><span class="oc"><b>Failure Consequence</b></span></label>
+          <label class="optcard"><input type="radio" name="a23lens" data-key="m2.a23.lens" value="Control and Recoverability"><span class="oc"><b>Control &amp; Recoverability</b></span></label>
+          <label class="optcard"><input type="radio" name="a23lens" data-key="m2.a23.lens" value="Trade-off Reality"><span class="oc"><b>Trade-off Reality</b></span></label>
+        </div>
+      </div>
+      <div class="field"><label for="a23lw">…and why does that lens matter more than the other three here?</label><textarea id="a23lw" data-key="m2.a23.lenswhy" style="min-height:60px"></textarea></div>
+      <div class="field"><label for="a23t">4 · One trigger that would make you pause or withdraw autonomy</label><input type="text" id="a23t" data-key="m2.a23.trigger"><div class="hint">Is it specific enough that another leader would know when to act?</div></div>
+      <p class="small">5 · Report back: share your example and the lens that matters most. The strongest positions are conditional, not absolute — <i>no autonomy yet</i> or <i>partial, subject to a clear condition</i> are strong answers when evidence is missing.</p>
+    </div>
+
+    <div class="buildnote" style="border-left-color:var(--teal-dark)"><b>Readiness bridge.</b> The decision is not only <i>“should this agent act?”</i> — it is also <i>“can we support that autonomy over time?”</i> Early deployment should generally be contained, observable, lower-risk and easier to govern. That is where organisations build the discipline for more consequential use cases. Day 2 works through all six readiness elements.</div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 2 artefact · 2 of 8</span>
+        <button class="btn ghost" id="m2print">Download PDF</button></div>
+      <h3>Autonomy Decision Snapshot</h3>
+      <p class="ap-note">Travels with Module 1's Points of Agency &amp; Accountability Map — both are now part of your Capstone Evidence Pack. In Module 8 it answers: <i>“What evidence shows it is reliable enough for this level of autonomy — and under what conditions would autonomy be revoked?”</i></p>
+      <div class="ap-rows" id="m2rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS + CLOSE ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 2 established</h2>
+    <div class="takeaways"><ul>
+      <li>The benefits of autonomy must be significant enough to justify the governance burden.</li>
+      <li>Leaders must understand the consequences of failure, not just the likelihood of success.</li>
+      <li>Defensible autonomy depends on recoverability, governance capability and accountability.</li>
+      <li>The strongest autonomy decisions are conditional, not absolute.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing question</div>
+    <p>The question is not “Can the agent perform the task?” It is: “Can we justify allowing the agent to act — and can we still govern the consequences if it gets it wrong?”</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> most of you landed somewhere in the middle — the agent acts here, but not there. That answer is a starting position, not a final one. Partial autonomy is where most risk lives, because it is rarely clear where the boundary actually sits. Module 3 draws the line.</p>
+  </section>
+
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="module-1.html"><span class="lbl">← Previous</span><span>Module 1 — When AI Begins to Act</span></a>
+    <a class="next" href="module-3.html"><span class="lbl">Next →</span><span>Module 3 — Delegation and Boundaries</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  /* 13% flip */
+  document.getElementById('flip13').addEventListener('click',function(){this.classList.toggle('on');});
+
+  /* delta: A2.2 snapshot level vs A2.1 first call */
+  function normLevel(v){
+    if(/full/i.test(v))return 'Full';
+    if(/partial/i.test(v))return 'Partial';
+    if(/not|none/i.test(v))return 'None yet';
+    return v;
+  }
+  function delta(){
+    var first=AAL.get('m2.a21.level'), now=AAL.get('m2.snap.level');
+    var el=document.getElementById('a22delta');
+    if(first && now && normLevel(first)!==normLevel(now)){
+      el.className='delta on';
+      el.innerHTML='<b>You moved from “'+normLevel(first)+'” to “'+normLevel(now)+'”.</b> That movement is the lenses doing their job — capture what moved you in your defence sentence below.';
+    } else if(first && now){
+      el.className='delta on';
+      el.style.background='rgba(0,141,128,.08)';el.style.borderLeftColor='var(--teal-dark)';
+      el.innerHTML='<b>Your position held under the lenses.</b> A decision that survives structured challenge is stronger than one that was never tested — make the defence sentence carry that.';
+    } else { el.className='delta'; }
+  }
+
+  /* snapshot meter */
+  var SNAP=['m2.snap.level','m2.snap.condition','m2.snap.trigger','m2.snap.defence'];
+  function meter(){
+    var n=SNAP.filter(function(k){return AAL.has(k)}).length;
+    document.getElementById('snapfill').style.width=(n/4*100)+'%';
+    document.getElementById('snappct').textContent=n+' of 4 parts named';
+  }
+
+  /* a23 workflow mention */
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a23wf').textContent = w? ' — “'+w+'”':'';
+  }
+
+  /* artefact */
+  var ROWS=[
+    ['The agent (shared case)','m2.snap.agent__static'],
+    ['Case autonomy level','m2.snap.level'],
+    ['The condition','m2.snap.condition'],
+    ['The trigger','m2.snap.trigger'],
+    ['The defence','m2.snap.defence'],
+    ['My workflow — autonomy level','m2.a23.level'],
+    ['My workflow — main value','m2.a23.value'],
+    ['My workflow — lens that matters most','m2.a23.lens'],
+    ['My workflow — why that lens','m2.a23.lenswhy'],
+    ['My workflow — pause/withdraw trigger','m2.a23.trigger']
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function rowVal(k){
+    if(k==='m2.snap.agent__static')return 'Complaint Triage Agent';
+    return AAL.get(k);
+  }
+  function drawArtefact(){
+    document.getElementById('m2rows').innerHTML=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('m2print').addEventListener('click',function(){
+    var rows=ROWS.map(function(r){return [r[0], r[1]==='m2.snap.agent__static'?null:r[1]];});
+    var html=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+    AAL.printDoc('Autonomy Decision Snapshot', html);
+  });
+
+  function refresh(){delta();meter();wf();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

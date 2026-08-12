@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Foundations Gym — Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../assets/img/aim-logo-blue.png">
+<meta name="description" content="The Foundations Gym — automation, generative AI, AI agents, agentic AI and autonomy, with a spot-the-difference drill.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+.concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:900px){.concepts{grid-template-columns:1fr}}
+.concept{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:18px 20px}
+.concept.agentic{border-top-color:var(--coral)}
+.concept h4{font-size:17px;margin-bottom:7px}
+.concept p{font-size:13px;color:var(--grey);line-height:1.5}
+.concept .anchor{margin-top:9px;font-size:12.5px;color:var(--ink);background:var(--cream-alt);padding:8px 10px;display:block}
+.concept .lq{margin-top:9px;font-family:var(--head);font-weight:600;font-size:12.5px;color:var(--teal-dark)}
+.concept.agentic .lq{color:var(--coral-dark)}
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:760px){.flips{grid-template-columns:1fr}}
+.flip{background:var(--ink);color:#fff;border:0;text-align:left;padding:22px 24px;cursor:pointer;min-height:150px;position:relative;font-family:var(--body)}
+.flip .side-a,.flip .side-b{transition:.2s}
+.flip .side-b{display:none}
+.flip.flipped{background:var(--teal-dark)}
+.flip.flipped .side-a{display:none}
+.flip.flipped .side-b{display:block}
+.flip .fl{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-light);margin-bottom:8px}
+.flip.flipped .fl{color:#fff}
+.flip h4{font-size:19px;margin-bottom:6px;color:#fff}
+.flip p{font-size:13.5px;color:rgba(255,255,255,.85);line-height:1.5}
+.flip .tap{position:absolute;right:16px;bottom:12px;font-family:var(--head);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+/* drill */
+.drill-shell{background:#fff;border:1px solid var(--line);padding:24px 26px}
+.drill-top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.dchip{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--cream);color:var(--ink);padding:6px 12px}
+.dchip b{color:var(--teal-dark)}
+.dchip.streak b{color:var(--coral-dark)}
+.scenario{background:var(--cream-alt);border-left:5px solid var(--ink);padding:18px 22px;font-size:15px;line-height:1.55;min-height:96px;margin-bottom:14px}
+.drill-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.drill-btns{grid-template-columns:1fr}}
+.drill-btns .btn{justify-content:center}
+.dfeed{display:none;padding:16px 20px;margin-top:14px;font-size:14px;line-height:1.5;border-left:5px solid}
+.dfeed.ok{display:block;background:rgba(0,141,128,.08);border-color:var(--teal-dark)}
+.dfeed.no{display:block;background:rgba(220,90,70,.09);border-color:var(--coral-dark)}
+.dfeed b{font-family:var(--head)}
+.dnext{margin-top:14px;display:none}
+.dnext.on{display:block}
+.dend{display:none;text-align:center;padding:26px 20px}
+.dend.on{display:block}
+.dend .score{font-family:var(--head);font-weight:700;font-size:44px;color:var(--teal-dark)}
+.dend p{font-size:14px;color:var(--grey);margin:8px 0 16px}
+</style>
+</head>
+<body data-page="foundations">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="module-1.html">Module 1</a></nav>
+  </div>
+</header>
+
+<section class="hero" style="min-height:380px">
+  <img class="bg" src="../assets/pics/foundations-gym.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">The concept gym — open throughout the course</div>
+    <h1>The Foundations Gym</h1>
+    <p class="sub">Five distinctions everything else builds on. If these land early, the rest of the course gets easier — if they blur, come back here and drill.</p>
+  </div>
+</section>
+
+<main class="stub wrap" id="main">
+
+  <div class="panel">
+    <h2>The five distinctions</h2>
+    <div class="concepts">
+      <div class="concept">
+        <h4>Automation</h4>
+        <p>Executes predefined steps within a process — same trigger, same steps, same rules. It may or may not use AI. If something blocks the track, it stops, fails, or follows the next predefined rule.</p>
+        <span class="anchor">🚆 A train on tracks — reliable, efficient, and the track was laid in advance. Think of a direct debit: same date, same amount, every month.</span>
+        <div class="lq">Leadership focus: are the rules appropriate, reliable and consistently applied?</div>
+      </div>
+      <div class="concept">
+        <h4>Generative AI</h4>
+        <p>Creates content in response to a prompt. A person initiates the interaction, reviews the output and decides what happens next. Nothing happens until you act.</p>
+        <span class="anchor">✉️ AI drafting an email: you ask, it writes, you read, you send.</span>
+        <div class="lq">Leadership question: can we trust the quality of the output?</div>
+      </div>
+      <div class="concept">
+        <h4>AI agents</h4>
+        <p>The system itself — the bot, service or software component performing a task in the workflow. It may follow defined steps, orchestrate tasks, or sit inside a larger process.</p>
+        <span class="anchor">🏷️ Being called an “agent” describes what it <b>is</b> — not how it behaves. The label is not the leadership issue.</span>
+        <div class="lq">The question is what it is actually allowed to decide and do.</div>
+      </div>
+      <div class="concept agentic">
+        <h4>Agentic AI</h4>
+        <p>Pursues a goal across multiple stages of work. It can plan what needs to happen, select between actions, adapt when conditions change, and continue work between human interactions. When it fails, it can fail quietly.</p>
+        <span class="anchor">👩‍🍳 A chef given “make me a cake” — checks ingredients, finds substitutes, adapts. The goal stays the same; the path changes.</span>
+        <div class="lq">Leadership question: what authority should this system exercise on the organisation's behalf?</div>
+      </div>
+      <div class="concept agentic">
+        <h4>Autonomy</h4>
+        <p>Delegated authority — what the system is <b>allowed</b> to do. Not determined by the technology alone: it is set by leadership decisions, governance, policies, controls and workflow design.</p>
+        <span class="anchor">⚖️ Agentic behaviour describes capability. Autonomy describes permission. Deciding how much authority to delegate is the leadership challenge of this course.</span>
+        <div class="lq">Leadership question: how much authority should be delegated — and can you defend it?</div>
+      </div>
+      <div class="concept" style="border-top-color:var(--ink);background:var(--ink);color:#fff">
+        <h4 style="color:#fff">The simple test</h4>
+        <p style="color:rgba(255,255,255,.85)">Automation asks:</p>
+        <p style="font-family:var(--head);font-weight:600;font-size:15px;color:#fff;margin:4px 0 10px">“When X happens, what predefined step should occur?”</p>
+        <p style="color:rgba(255,255,255,.85)">Agentic AI asks:</p>
+        <p style="font-family:var(--head);font-weight:600;font-size:15px;color:var(--teal-light);margin:4px 0">“Given this goal, what needs to happen next — and what should I do or escalate?”</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Two distinctions leaders mix up</h2>
+    <div class="flips">
+      <button class="flip" type="button" aria-pressed="false" id="flip1">
+        <div class="side-a"><div class="fl">Flip me</div><h4>“It's an agent, so it's agentic… right?”</h4><p>A system can be called an agent because of what it <b>is</b>. Does that make it agentic?</p></div>
+        <div class="side-b"><div class="fl">Not necessarily</div><h4>Agent ≠ agentic</h4><p><b>Agent</b> names the system. <b>Agentic</b> describes behaviour — initiative, choosing between actions, adapting, progressing a goal without constant direction. Ignore the label; ask what it's actually being allowed to decide and do.</p></div>
+        <span class="tap">Tap to flip</span>
+      </button>
+      <button class="flip" type="button" aria-pressed="false" id="flip2">
+        <div class="side-a"><div class="fl">Flip me</div><h4>“It's capable of acting alone, so it should.”</h4><p>The system can plan, act and adapt. Does capability settle the question?</p></div>
+        <div class="side-b"><div class="fl">Never</div><h4>Capability ≠ permission</h4><p><b>Agentic behaviour</b> is what the system <i>can</i> do. <b>Autonomy</b> is what it's <i>allowed</i> to do — a leadership decision expressed through governance, boundaries and workflow design. Capability is evidence, not authorisation.</p></div>
+        <span class="tap">Tap to flip</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Drill</span><span class="a-chip time">Replayable · 12 scenarios</span></div>
+    <h3>Spot the Difference</h3>
+    <p class="a-purpose">The extended version of Activity 1.2. Read each scenario and call it: automation, generative AI, or agentic AI. Instant feedback, running streak — and it reshuffles every time you replay.</p>
+
+    <div class="drill-shell" id="drill">
+      <div class="drill-top">
+        <span class="dchip">Question <b id="d-qnum">1</b> / 12</span>
+        <span class="dchip">Score <b id="d-score">0</b></span>
+        <span class="dchip streak">Streak <b id="d-streak">0</b></span>
+        <span class="dchip">Best <b id="d-best">–</b></span>
+      </div>
+      <div id="d-play">
+        <div class="scenario" id="d-scenario"></div>
+        <div class="drill-btns">
+          <button class="btn ghost" data-ans="Automation">Automation</button>
+          <button class="btn ghost" data-ans="Generative AI">Generative AI</button>
+          <button class="btn ghost" data-ans="Agentic AI">Agentic AI</button>
+        </div>
+        <div class="dfeed" id="d-feed"></div>
+        <div class="dnext" id="d-nextwrap"><button class="btn primary" id="d-next">Next scenario →</button></div>
+      </div>
+      <div class="dend" id="d-end">
+        <div class="score"><span id="d-final">0</span>/12</div>
+        <p id="d-verdict"></p>
+        <button class="btn coral" id="d-replay">Replay (reshuffled)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Make it stick</span><span class="a-chip time">≈ 3 min</span></div>
+    <h3>Explain it to a 7-year-old</h3>
+    <p class="a-purpose">The pilot cohort's favourite comprehension test: if you can explain the difference between automation and agentic AI to a seven-year-old, you actually have it.</p>
+    <div class="field">
+      <label for="eli7">Your explanation</label>
+      <textarea id="eli7" data-key="found.eli7" placeholder="e.g. A robot that follows a recipe exactly, versus a chef you ask for a cake…"></textarea>
+      <div class="hint">Saved automatically. Try it out loud on a colleague — or an actual seven-year-old.</div>
+    </div>
+  </div>
+
+  <div class="pn">
+    <a href="how-to-use.html"><span class="lbl">← Previous</span><span>How to use this site</span></a>
+    <a class="next" href="module-1.html"><span class="lbl">Next →</span><span>Module 1 — When AI Begins to Act</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  /* ---------------- flip cards ---------------- */
+  ['flip1','flip2'].forEach(function(id){
+    var b=document.getElementById(id);
+    b.addEventListener('click',function(){
+      b.classList.toggle('flipped');
+      b.setAttribute('aria-pressed',b.classList.contains('flipped')?'true':'false');
+    });
+  });
+
+  /* ---------------- spot-the-difference drill ---------------- */
+  var SCEN=[
+    {t:"A new employee's start date is entered into the HR system. It automatically sends a welcome email and generates a standard onboarding checklist.",a:"Automation",w:"Fixed trigger, fixed sequence — the system is executing predefined steps."},
+    {t:"A manager asks AI to draft a warm welcome message for a new team member. The manager edits and sends it.",a:"Generative AI",w:"The AI creates content in response to a prompt. The human decides what happens next."},
+    {t:"An onboarding system monitors whether IT access, mandatory training, equipment and manager readiness are complete. If IT access is delayed it follows up with IT; if the manager hasn't confirmed readiness, it escalates rather than assuming readiness.",a:"Agentic AI",w:"It's pursuing the goal of day-one readiness — monitoring progress, taking action and escalating when conditions require judgement."},
+    {t:"A direct debit payment processes every month on the same date unless the customer cancels it.",a:"Automation",w:"It follows a standing rule. The system doesn't interpret context or adapt."},
+    {t:"An expense tool flags any claim over a fixed dollar threshold and routes it to a manager. Everything under the threshold passes through.",a:"Automation",w:"A predefined threshold rule, applied identically every time. No interpretation, no adaptation."},
+    {t:"A leader pastes meeting notes into an AI tool and asks for a summary email to the team, reads it, tweaks two lines and sends it.",a:"Generative AI",w:"Content created on request; the human initiates, reviews and decides. Nothing happened until they asked."},
+    {t:"A sales system reads every inbound lead, scores it, decides which look promising and which look like time-wasters, and assigns each to the salesperson best placed to win it — before anyone in the team has seen the lead.",a:"Agentic AI",w:"It's exercising judgement and acting in the live workflow — scoring, deciding and assigning without a human instruction per lead."},
+    {t:"A chatbot drafts suggested replies to customer emails. A service officer reviews every draft and decides whether to send, edit or discard it.",a:"Generative AI",w:"It generates; the human gatekeeps every action. The decision about what happens next stays human."},
+    {t:"A rostering system watches for coverage gaps, swaps shifts between available staff to keep minimum coverage, and only escalates to the manager when no swap can solve it.",a:"Agentic AI",w:"It's working toward a goal (coverage), choosing between actions, acting on the roster, and escalating exceptions — plan, act, adapt."},
+    {t:"Every night at 11pm, the system backs up the customer database and emails a confirmation to the IT team.",a:"Automation",w:"Same schedule, same steps, every night. If the backup fails, it fails loudly — it doesn't rethink the plan."},
+    {t:"A procurement system is given the goal of keeping stock above two weeks' supply. It chooses between approved suppliers, adjusts order quantities when prices move, and flags unusual contract terms for human review.",a:"Agentic AI",w:"Goal-directed across the whole flow: selecting between options, adapting to changing conditions, escalating what exceeds its boundaries."},
+    {t:"A marketer asks AI for three headline options for a campaign, picks the second one, and uses it.",a:"Generative AI",w:"Options generated on request; the human chose and acted. The AI never touched the workflow itself."}
+  ];
+  var order=[],idx=0,score=0,streak=0,answered=false;
+  var $=function(id){return document.getElementById(id)};
+  function shuffle(){order=SCEN.map(function(_,i){return i});
+    for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}}
+  function best(){var b=AAL.get('found.drill.best');$('d-best').textContent=b!==''?b+'/12':'–';}
+  function show(){
+    var s=SCEN[order[idx]];
+    $('d-qnum').textContent=idx+1; $('d-score').textContent=score; $('d-streak').textContent=streak;
+    $('d-scenario').textContent=s.t;
+    $('d-feed').className='dfeed'; $('d-feed').innerHTML='';
+    $('d-nextwrap').className='dnext'; answered=false;
+    document.querySelectorAll('#drill [data-ans]').forEach(function(b){b.disabled=false;});
+  }
+  function finish(){
+    $('d-play').style.display='none';
+    var end=$('d-end'); end.classList.add('on');
+    $('d-final').textContent=score;
+    var prev=parseInt(AAL.get('found.drill.best')||'0',10);
+    if(score>prev) AAL.set('found.drill.best',String(score));
+    best();
+    $('d-verdict').textContent = score>=11 ? "Rock solid. The distinctions are yours — Module 1 will feel easy."
+      : score>=8 ? "Strong. One more replay and they'll be automatic."
+      : "Worth another lap — reread the five cards above, then replay. These distinctions carry the whole course.";
+  }
+  document.querySelectorAll('#drill [data-ans]').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(answered)return; answered=true;
+      var s=SCEN[order[idx]];
+      var ok=b.getAttribute('data-ans')===s.a;
+      if(ok){score++;streak++;}else{streak=0;}
+      $('d-score').textContent=score; $('d-streak').textContent=streak;
+      var f=$('d-feed');
+      f.className='dfeed '+(ok?'ok':'no');
+      f.innerHTML=(ok?'<b>Correct — '+s.a+'.</b> ':'<b>It’s '+s.a+'.</b> ')+s.w;
+      document.querySelectorAll('#drill [data-ans]').forEach(function(x){x.disabled=true;});
+      $('d-nextwrap').className='dnext on';
+      $('d-next').textContent = idx===SCEN.length-1 ? 'See your score →' : 'Next scenario →';
+      $('d-next').focus();
+    });
+  });
+  $('d-next').addEventListener('click',function(){
+    idx++;
+    if(idx>=SCEN.length){finish();return;}
+    show();
+  });
+  $('d-replay').addEventListener('click',function(){
+    $('d-end').classList.remove('on'); $('d-play').style.display='';
+    idx=0;score=0;streak=0;shuffle();show();
+  });
+  shuffle();best();show();
+});
+</script>
+</body>
+</html>

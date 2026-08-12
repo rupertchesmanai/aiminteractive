@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome &amp; Orientation — Agentic AI for Leaders</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='6' fill='%23008D80'/%3E%3Cpath d='M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z' fill='%23fff'/%3E%3Crect x='20.4' y='7' width='3.3' height='20' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="Welcome & orientation — what you carry in from Responsible AI Leadership, what this course is and is not, and your starting pulse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+.founds{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0 6px}
+@media(max-width:900px){.founds{grid-template-columns:repeat(2,1fr)}}
+.found{display:block;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:14px 14px 12px;transition:.15s}
+.found:hover{transform:translateY(-2px);box-shadow:0 12px 30px -18px rgba(0,0,0,.4)}
+.found .fn{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+.found h4{font-size:14.5px;line-height:1.25;margin:6px 0 6px}
+.found .go{font-family:var(--head);font-weight:600;font-size:11.5px;color:var(--teal-dark)}
+.isnt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:700px){.isnt{grid-template-columns:1fr}}
+.isnt .col{background:#fff;border:1px solid var(--line);padding:20px 22px}
+.isnt .col.no{background:var(--cream-alt)}
+.isnt h4{font-size:16px;margin-bottom:10px}
+.isnt .col.no h4{color:var(--coral-dark)}
+.isnt ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.isnt li{font-size:13.5px;color:var(--grey);padding-left:20px;position:relative;line-height:1.4}
+.isnt .col.is li::before{content:"✓";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+.isnt .col.no li::before{content:"✕";position:absolute;left:0;color:var(--coral-dark);font-weight:700}
+.wbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+@media(max-width:800px){.wbs{grid-template-columns:1fr}}
+.wb{background:#fff;border:1px solid var(--line);padding:18px 20px}
+.wb .tag{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ink);padding:4px 8px;display:inline-block;margin-bottom:9px}
+.wb.site .tag{background:var(--teal-dark)}
+.wb h4{font-size:16px;margin-bottom:5px}
+.wb p{font-size:13px;color:var(--grey)}
+.pulse{margin:18px 0 6px}
+.pulse .p-row{background:#fff;border:1px solid var(--line);padding:18px 20px;margin-bottom:12px}
+.pulse .p-q{font-family:var(--head);font-weight:600;font-size:15px;margin-bottom:12px}
+.pulse .p-scale{display:flex;align-items:center;gap:14px}
+.pulse .p-scale input{flex:1}
+.pulse .p-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px}
+.pulse .p-val{font-family:var(--head);font-weight:700;font-size:20px;color:var(--teal-dark);min-width:34px;text-align:center}
+</style>
+</head>
+<body data-page="welcome">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero" style="min-height:420px">
+  <img class="bg" src="../assets/pics/welcome-threshold.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Welcome &amp; Orientation</div>
+    <h1>You already govern AI. Now it wants authority.</h1>
+    <p class="sub">This two-day advanced course is for leaders who are already governing AI use — and now face decisions about delegating authority to autonomous systems.</p>
+  </div>
+</section>
+
+<main class="stub wrap" id="main">
+
+  <div class="panel">
+    <h2>The course promise</h2>
+    <p class="lead" style="margin-bottom:10px">Agentic AI plans, acts and adapts across real business workflows. Where autonomy can create value — and where human oversight remains essential — is now a leadership decision, not a technical one. Across these two days you will build a defensible leadership position piece by piece: recognising what the agent is doing, deciding what level of autonomy is acceptable, drawing the boundary, specifying what must be visible, defining when intervention is required, and setting the review cadence that keeps the decision valid over time.</p>
+    <p class="lead" style="margin:0">By the end, you will be able to assess your organisation's readiness for agentic AI, evaluate where it can create value, and make — and defend — an executive decision about deploying, scaling, constraining or withdrawing it.</p>
+  </div>
+
+  <div class="key-message"><div class="km-label">The question this course prepares you to answer</div>
+  <p>“Why did you allow this agent to act, what limits did you place on it, and how did you know it was still operating safely?”</p></div>
+
+  <div class="panel">
+    <h2>What you're carrying in</h2>
+    <p class="lead">This course builds directly on five responsible leadership foundations from AIM's Responsible AI Leadership course. They matter even more once AI moves closer to action inside the workflow. Tap any tile to revisit it in that course's workbook <span class="small">(its own access code applies)</span>.</p>
+    <div class="founds">
+      <a class="found" href="../../responsible-ai-leadership/pages/module-3.html"><div class="fn">01</div><h4>Defining an AI leadership stance</h4><div class="go">RAIL Module 3 →</div></a>
+      <a class="found" href="../../responsible-ai-leadership/pages/module-2.html"><div class="fn">02</div><h4>Starting with the problem rather than the tool</h4><div class="go">RAIL Module 2 →</div></a>
+      <a class="found" href="../../responsible-ai-leadership/pages/module-1.html"><div class="fn">03</div><h4>Recognising where AI is influencing decisions</h4><div class="go">RAIL Module 1 →</div></a>
+      <a class="found" href="../../responsible-ai-leadership/pages/module-5.html"><div class="fn">04</div><h4>Evaluating AI-assisted outputs</h4><div class="go">RAIL Module 5 →</div></a>
+      <a class="found" href="../../responsible-ai-leadership/pages/module-2.html"><div class="fn">05</div><h4>Ensuring accountability remains human</h4><div class="go">RAIL Module 2 →</div></a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>What this course is — and is not</h2>
+    <div class="isnt">
+      <div class="col is">
+        <h4>This course is</h4>
+        <ul>
+          <li>A leadership course: judgement, governance and authority decisions</li>
+          <li>Practice making calls under uncertainty — before you get the frameworks</li>
+          <li>Built around one workflow from your own organisation, carried through all eight modules</li>
+          <li>Cumulative: every module leaves you with evidence for a final executive decision</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>This course is not</h4>
+        <ul>
+          <li>A tools course or hands-on Copilot training</li>
+          <li>An agent-building or prompt-engineering workshop</li>
+          <li>A technical evaluation of models or vendors</li>
+          <li>A beginner introduction to AI — that's what the foundations refreshers are for</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Your two workbooks — and this site</h2>
+    <div class="wbs">
+      <div class="wb"><span class="tag">Activity Workbook</span><h4>Where you decide</h4><p>The fillable workbook with every activity, worksheet and canvas. Activity numbers here match it exactly — 1.1, 2.3, 6.1 mean the same thing in both.</p></div>
+      <div class="wb"><span class="tag">Concepts Workbook</span><h4>Where the thinking lives</h4><p>The frameworks, cases and reference material behind each module — for reading in your own time, before or after the room.</p></div>
+      <div class="wb site"><span class="tag">This site</span><h4>Both, live</h4><p>Interactive dashboards for every module. Your answers save automatically in this browser and assemble into your exportable Capstone Evidence Pack.</p></div>
+    </div>
+  </div>
+
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Pulse check</span><span class="a-chip time">≈ 2 min</span></div>
+    <h3>Where are you starting from?</h3>
+    <p class="a-purpose">Three honest sliders. No right answers — Module 8 will replay these at the end of Day 2 so you can see how far you've moved.</p>
+    <div class="pulse">
+      <div class="p-row">
+        <div class="p-q">How much agentic AI is live in your organisation today?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="wel.pulse.live" aria-label="How much agentic AI is live in your organisation today, 0 to 10"><span class="p-val" data-for="wel.pulse.live">0</span></div>
+        <div class="p-ends"><span>None that I know of</span><span>Embedded across workflows</span></div>
+      </div>
+      <div class="p-row">
+        <div class="p-q">How confident are you defending an autonomy decision to a board or regulator?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="wel.pulse.confidence" aria-label="How confident are you defending an autonomy decision, 0 to 10"><span class="p-val" data-for="wel.pulse.confidence">0</span></div>
+        <div class="p-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+      <div class="p-row">
+        <div class="p-q">If an agent failed today, how clear is who can intervene — and on whose authority?</div>
+        <div class="p-scale"><input type="range" min="0" max="10" value="0" data-key="wel.pulse.intervention" aria-label="How clear is intervention authority if an agent failed today, 0 to 10"><span class="p-val" data-for="wel.pulse.intervention">0</span></div>
+        <div class="p-ends"><span>No idea</span><span>Crystal clear</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Haven't done Responsible AI Leadership?</h2>
+    <p class="lead" style="margin-bottom:10px">These optional refreshers cover the core ideas this course builds on. They're not required prework — just a useful reference before Module 1.</p>
+    <ul>
+      <li><a href="https://www.aim.com.au/blog/wrap-up-responsible-ai-leadership" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:600">Responsible AI Leadership — Webinar Insights (AIM blog)</a></li>
+      <li><a href="https://www.aim.com.au/digital-skills/courses/responsible-ai-leadership" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:600">The Responsible AI Leadership course (AIM)</a></li>
+      <li>More resources on the <a href="references.html" style="color:var(--coral-dark);font-weight:600">References &amp; Resource Bank</a> page</li>
+    </ul>
+  </div>
+
+  <div class="pn">
+    <a href="../index.html"><span class="lbl">← Back</span><span>Course hub</span></a>
+    <a class="next" href="how-to-use.html"><span class="lbl">Next →</span><span>How to use this site</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  function sync(){
+    document.querySelectorAll('.p-val').forEach(function(v){
+      var k=v.getAttribute('data-for');
+      var inp=document.querySelector('input[data-key="'+k+'"]');
+      if(inp) v.textContent=inp.value;
+    });
+  }
+  document.querySelectorAll('.pulse input[type="range"]').forEach(function(r){
+    r.addEventListener('input',sync);
+  });
+  sync();
+});
+</script>
+</body>
+</html>

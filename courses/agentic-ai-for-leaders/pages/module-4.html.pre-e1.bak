@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 4: Observability — Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../assets/img/aim-logo-blue.png">
+<meta name="description" content="Module 4 · Observability — decide what you must be able to see to remain accountable, in an Observability Readiness Map.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* 48h clock */
+#clock48{position:fixed;right:18px;top:74px;z-index:90;background:#141414;color:#fff;border:1px solid rgba(220,90,70,.6);padding:8px 14px;font-family:var(--mono);font-size:12px;display:none;box-shadow:0 10px 30px -14px rgba(0,0,0,.5)}
+#clock48.on{display:block}
+#clock48 .cl{color:var(--coral);font-size:10px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;font-family:var(--head);font-weight:700}
+#clock48 b{font-size:16px;font-weight:600;letter-spacing:.06em}
+@media(max-width:760px){#clock48{top:auto;bottom:64px;right:12px}}
+/* decision log */
+.dlog{background:#fff;border:1px solid var(--line);margin:16px 0}
+.dlog .dl-head{background:#141414;color:#fff;padding:12px 18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.dlog .dl-head b{color:#53DFCB}
+.dl-sec{background:var(--cream);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);padding:7px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dl-row{display:grid;grid-template-columns:210px 1fr;border-bottom:1px solid var(--line);cursor:pointer;transition:.12s}
+.dl-row:hover{background:var(--cream-alt)}
+.dl-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);padding:10px 18px}
+.dl-row .v{font-size:13px;padding:10px 14px;line-height:1.5}
+.dl-row .v .pill{font-family:var(--mono);font-size:11px;padding:3px 8px;border:1.5px dashed var(--grey)}
+.dl-row .v .pill.solid{background:#141414;color:#fff;border:0}
+.dl-row .v .pill.sev{border:1.5px solid var(--ink);font-weight:600}
+.dl-row.marked{background:rgba(0,192,175,.09)}
+.dl-row.marked .k::before{content:"✓ ";color:var(--teal-dark);font-weight:700}
+@media(max-width:640px){.dl-row{grid-template-columns:1fr}.dl-row .k{padding-bottom:0}}
+/* revealed state */
+.dlog.judged .dl-row{cursor:default}
+.dlog.judged .dl-row:not(.marked){opacity:.45}
+.dl-gap{display:none;grid-template-columns:210px 1fr;border-bottom:1px solid rgba(220,90,70,.4);background:rgba(220,90,70,.07)}
+.dlog.judged .dl-gap{display:grid}
+.dl-gap .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-dark);padding:10px 18px;font-weight:600}
+.dl-gap .v{font-family:var(--mono);font-size:12px;color:var(--coral-dark);padding:10px 14px}
+@media(max-width:640px){.dl-gap{grid-template-columns:1fr}}
+.marknote{font-family:var(--head);font-weight:600;font-size:12.5px;color:var(--teal-dark);margin:8px 0}
+/* pitfalls */
+.pits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+@media(max-width:860px){.pits{grid-template-columns:1fr}}
+.pit{background:#fff;border:1px solid var(--line);border-top:4px solid var(--coral);padding:16px 18px}
+.pit h5{font-family:var(--head);font-size:15px;margin-bottom:7px}
+.pit p{font-size:12.8px;color:var(--grey);line-height:1.5}
+/* visibility four */
+.vis4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media(max-width:820px){.vis4{grid-template-columns:1fr}}
+.vis{background:var(--ink);color:#fff;padding:18px 20px}
+.vis .vn{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:.1em}
+.vis h4{font-size:18px;color:#fff;margin:4px 0 6px}
+.vis p{font-size:13px;color:rgba(255,255,255,.82);line-height:1.5}
+.vis .anchor{margin-top:10px;font-family:var(--head);font-weight:500;font-size:12.8px;color:var(--teal-light);border-top:1px solid rgba(255,255,255,.2);padding-top:9px}
+/* roles */
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.role{font-family:var(--head);font-weight:600;font-size:12.5px;background:#fff;border:1px solid var(--line);padding:8px 13px}
+/* agent-type comparator */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+@media(max-width:860px){.types{grid-template-columns:1fr}}
+.type{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:16px 18px}
+.type h5{font-family:var(--head);font-size:15px;margin-bottom:6px}
+.type p{font-size:12.6px;color:var(--grey);line-height:1.5;margin-bottom:8px}
+.type .lq{font-family:var(--head);font-weight:600;font-size:12.8px;color:var(--teal-dark)}
+/* observable info picker */
+.obs{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.obs label{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:11px 14px;font-size:13.5px;cursor:pointer}
+.obs label:hover{border-color:var(--teal-dark)}
+.obs input{margin-top:2px;accent-color:var(--teal-dark)}
+/* partners */
+.partners{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+@media(max-width:760px){.partners{grid-template-columns:1fr}}
+.partners label{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:11px 14px;font-size:12.8px;line-height:1.4;cursor:pointer}
+.partners input{margin-top:2px;accent-color:var(--teal-dark)}
+.partners b{font-family:var(--head);display:block;font-size:13px}
+/* day 1 summary */
+.d1band{background:var(--ink);color:#fff;padding:30px 30px;margin:40px 0 10px}
+.d1band h2{font-size:24px;color:#fff;margin-bottom:4px}
+.d1band .sub{font-size:13.5px;color:rgba(255,255,255,.75);margin-bottom:18px}
+.d1arts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
+@media(max-width:860px){.d1arts{grid-template-columns:repeat(2,1fr)}}
+.d1art{border:1px solid rgba(255,255,255,.25);padding:12px;font-family:var(--head)}
+.d1art .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.d1art.ok .st{color:var(--teal-light)}
+.d1art .nm{font-weight:600;font-size:12.5px;margin-top:5px;line-height:1.3}
+.d1band .field label{color:rgba(255,255,255,.85)}
+.d1band textarea{background:rgba(255,255,255,.95)}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--coral);font-weight:700}
+</style>
+</head>
+<body data-page="module-4">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<div id="clock48" aria-hidden="true"><span class="cl">Regulator response due</span><b id="clockval">48:00:00</b></div>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m4-hero-audit-room.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 4 · ≈ 90 min <span style="color:var(--teal-light)">· Flexible — may run Day 1 PM or Day 2 AM</span></div>
+    <div class="crumb"><span class="from">From “What can it do?”</span><span class="arrow">→</span><span class="to">To “How would I know?”</span></div>
+    <h1>Observability</h1>
+    <p class="sub">Dashboard — The Audit Room</p>
+    <div class="gq"><span class="bar"></span><p>If you were asked tomorrow to explain how a specific AI-influenced decision was made, could you show it clearly?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)">Leadership move · Sustain</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>A boundary on paper doesn't create accountability</h2>
+    <p class="body">You have now made several leadership decisions: when an agent may act, where its authority stops, and what must remain human-led. This module is about what happens next. Leaders remain accountable because they can <b>see</b> what is happening and challenge it when required — without personally reviewing every AI decision. Observability is not a technical feature. It is the evidence base that makes AI-influenced decisions visible, accountable and defensible.</p>
+    <p class="body dim selfOnly">Whoever asks — a regulator, the board, an executive, a customer, an employee, your own team — what they will need is evidence: what the agent did, what information it relied on, what human review occurred, what boundary applied, and who remained accountable. If that evidence is not available, the autonomy decision and boundary work from earlier today become much harder to defend.</p>
+  </section>
+
+  <!-- ============ SCENARIO ============ -->
+  <section class="msec" id="scenario">
+    <div class="sec-eyebrow">Scenario</div>
+    <h2>The Complaint Triage Audit</h2>
+    <img class="secimg" src="../assets/pics/m4-log-magnified.jpg" alt="A magnifying loupe resting on a printed system log with an empty WHY column" style="max-height:300px">
+    <p class="body">The autonomy decision has been made. The boundary has been drawn. The agent has been running for <b>four months under partial autonomy</b>. A customer claims their complaint was misclassified as low severity, that the standard response was inadequate, and that they suffered material harm. They have contacted the regulator — and the regulator has come back with one question:</p>
+    <div class="key-message"><div class="km-label">The regulator's ask</div>
+    <p>“Walk us through how this specific decision was made. We want to see what the agent saw, what it decided, and what your team did with that.” — You have 48 hours to respond.</p></div>
+    <p class="body dim">This is the moment everything you decided in the last three modules gets tested. Not in the abstract — to someone asking for evidence. The question is not whether the agent made a good or bad call. It is whether you can show how the call was made at all.</p>
+  </section>
+
+  <!-- ============ A4.1 ============ -->
+  <section class="msec" id="a41">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 4.1</span><span class="a-chip time">≈ 30 min</span></div>
+      <h3>Decision Log Review</h3>
+      <p class="a-purpose">Your team has pulled the decision log for the case — this is everything the system recorded. A decision log can look complete at first glance. Your task is to look more carefully. <b>Do not ask whether the agent made a good decision. Ask whether you can show how the decision was made.</b></p>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Individual review</div>
+        <p class="small" style="margin-bottom:8px">Read the log. <b>Click any row</b> that could help you explain how the decision was made — then capture what's present and what's missing below.</p>
+
+        <div class="dlog" id="dlog">
+          <div class="dl-head"><span><b>COMPLAINT TRIAGE SYSTEM</b> · CASE DECISION RECORD</span><span>REF REG-INQ-2025-0847 · EXPORTED 14 NOV 2025</span></div>
+          <div class="dl-row" data-r="1"><div class="k">Case ID</div><div class="v">CT-2025-118342</div></div>
+          <div class="dl-row" data-r="2"><div class="k">Received</div><div class="v">02 Oct 2025, 16:48</div></div>
+          <div class="dl-row" data-r="3"><div class="k">Channel</div><div class="v">Web form</div></div>
+          <div class="dl-row" data-r="4"><div class="k">Customer</div><div class="v">CU-449201, tenure 6 years</div></div>
+          <div class="dl-sec">Complaint as received</div>
+          <div class="dl-row" data-r="5"><div class="k">Complaint text</div><div class="v">“I have been trying to resolve an issue with my account for three weeks. I was told the matter was handled but I have now been charged twice and the money has not been returned. This has caused me real difficulty and I am not able to cover an upcoming payment because of it. I need this sorted urgently.”</div></div>
+          <div class="dl-sec">Agent processing</div>
+          <div class="dl-row" data-r="6"><div class="k">Severity classification</div><div class="v"><span class="pill sev">LOW SEVERITY</span> &nbsp;confidence <b>0.87</b></div></div>
+          <div class="dl-row" data-r="7"><div class="k">Category assigned</div><div class="v">Billing, duplicate charge</div></div>
+          <div class="dl-row" data-r="8"><div class="k">Routing</div><div class="v">Tier 1 automated response</div></div>
+          <div class="dl-row" data-r="9"><div class="k">Action taken</div><div class="v">Standard apology template (BILL-07) sent</div></div>
+          <div class="dl-row" data-r="10"><div class="k">Compensation</div><div class="v"><span class="pill">NONE APPLIED</span></div></div>
+          <div class="dl-row" data-r="11"><div class="k">Human review</div><div class="v"><span class="pill">NOT TRIGGERED</span></div></div>
+          <div class="dl-sec">Resolution</div>
+          <div class="dl-row" data-r="12"><div class="k">Time to action</div><div class="v">3 min 41 sec</div></div>
+          <div class="dl-row" data-r="13"><div class="k">Status</div><div class="v"><span class="pill solid">CLOSED, AUTO</span></div></div>
+          <div class="dl-row" data-r="14"><div class="k">Reopened</div><div class="v">14 Oct 2025, customer escalation to regulator</div></div>
+          <!-- gap rows appear on reveal -->
+          <div class="dl-gap"><div class="k">Why low severity?</div><div class="v">[not recorded] — the reasoning that produced the classification</div></div>
+          <div class="dl-gap"><div class="k">Escalation threshold</div><div class="v">[not recorded] — was 0.87 confidence enough to act without review? Against what threshold?</div></div>
+          <div class="dl-gap"><div class="k">Alternatives considered</div><div class="v">[not recorded] — what would have changed the decision</div></div>
+          <div class="dl-gap"><div class="k">Boundary applied</div><div class="v">[not recorded] — which approved limits governed this action</div></div>
+          <div class="dl-gap"><div class="k">Accountable owner</div><div class="v">[not recorded] — who remained accountable for the outcome</div></div>
+        </div>
+        <div class="marknote" id="marknote">0 rows marked as “helps me explain”</div>
+
+        <div class="fieldrow">
+          <div class="field"><label for="a41p">What is present that could help explain how the decision was made?</label><textarea id="a41p" data-key="m4.a41.present"></textarea></div>
+          <div class="field"><label for="a41m">What is missing that you would need to defend the decision confidently?</label><textarea id="a41m" data-key="m4.a41.missing"></textarea></div>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — Group discussion</div>
+        <div class="fieldrow">
+          <div class="field"><label for="a41q1">1 · What does the log tell us about this decision? What can we see clearly?</label><textarea id="a41q1" data-key="m4.a41.q1" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="a41q2">2 · What does the log <i>not</i> tell us that we'd need to explain or defend it?</label><textarea id="a41q2" data-key="m4.a41.q2" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="fieldrow">
+          <div class="field"><label for="a41q3">3 · Who in the organisation would need this information to do their role properly?</label><textarea id="a41q3" data-key="m4.a41.q3" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="a41q4">4 · If someone asked “Why did the agent classify this as low severity?” — what could we say from this log, and what could we not say?</label><textarea id="a41q4" data-key="m4.a41.q4" style="min-height:64px"></textarea></div>
+        </div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn coral" data-requires="m4.a41.present,m4.a41.missing,m4.a41.q1,m4.a41.q2,m4.a41.q3,m4.a41.q4" data-reveal="#a41reveal" data-revealed-label="Revealed">Commit → the reveal</button>
+      </div>
+
+      <div class="reveal-box" id="a41reveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:10px">The log tells you what the agent did. It does not tell you why.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:8px">You can see the classification, the confidence number, the action taken and the time it took. You cannot see the reasoning that produced the output. In an accountability moment, the question is almost never only <i>“what did the agent do?”</i> — it is <i>“why did it do that, and how did you know that was acceptable?”</i></p>
+        <p style="font-size:14px;line-height:1.6">A complete record of what happened is not the same as a defensible explanation of why it happened. Most leaders only discover this gap when they need to close it — and by then, it may be too late. <b>Look at the log again: the missing rows are now showing.</b></p>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 3 — Group reflection</div>
+        <div class="field"><label for="a41ref">What looked visible at first, but became less clear once you tried to defend the decision?</label><textarea id="a41ref" data-key="m4.a41.reflect"></textarea></div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 4 — The Leadership Observability Guide: when an AI explanation is not enough</div>
+        <p class="small" style="margin-bottom:10px">Some systems cannot provide a complete, reliable account of how they reached an outcome — not necessarily because a vendor is withholding something; some systems are too complex, adaptive or probabilistic. Explainability tools have limits. Three common pitfalls:</p>
+        <div class="pits">
+          <div class="pit"><h5>1 · A confidence score is not a reason</h5><p>It shows how certain the system is about an output — not why the output is correct. A system may be 87% confident a complaint is low severity and still be wrong. It doesn't establish which evidence mattered, whether it was reliable, whether policy was met, or whether the decision was fair.</p></div>
+          <div class="pit"><h5>2 · An attention map is not a justification</h5><p>It may show which inputs received the most computational attention. It does not prove the system interpreted them correctly, considered all relevant information, or reached an appropriate outcome.</p></div>
+          <div class="pit"><h5>3 · An AI-generated summary is not independent evidence</h5><p>The same system generated both the decision and the explanation — it may be a plausible account produced after the event rather than a faithful reconstruction. It is like letting someone mark their own work.</p></div>
+        </div>
+        <div class="field">
+          <label>Which apparent explanation would be <b>least</b> defensible under scrutiny?</label>
+          <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+            <label class="optcard"><input type="radio" name="ldef" data-key="m4.a41.leastdef" value="A confidence score"><span class="oc"><b>The confidence score</b></span></label>
+            <label class="optcard"><input type="radio" name="ldef" data-key="m4.a41.leastdef" value="An attention map"><span class="oc"><b>The attention map</b></span></label>
+            <label class="optcard coral"><input type="radio" name="ldef" data-key="m4.a41.leastdef" value="An AI-generated summary of its own decision"><span class="oc"><b>The AI's own summary</b></span></label>
+          </div>
+          <div class="hint">The key question is not whether the AI can explain itself convincingly — it is whether the organisation can produce evidence that would withstand scrutiny from a board, regulator, customer, employee, auditor or court.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT: WHAT LEADERS NEED ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>What leaders need visibility of to remain accountable</h2>
+    <div class="vis4">
+      <div class="vis"><div class="vn">01</div><h4>Decisions</h4><p>What the agent decided, in which cases, and with what frequency — a record of the decision or action taken, not simply whether the system ran.</p><div class="anchor">In the log you just reviewed — could you clearly see what decision was made?</div></div>
+      <div class="vis"><div class="vn">02</div><h4>Reasoning</h4><p>Why it made the decision: inputs used, alternatives considered, confidence and threshold applied, what would have changed the outcome. This is where observability most often fails.</p><div class="anchor">The agent records what it did. The leader needs enough evidence to understand why.</div></div>
+      <div class="vis"><div class="vn">03</div><h4>Escalations</h4><p>Where the agent stopped and asked for human involvement — how often, what types of cases, and what happened after.</p><div class="anchor">An agent that never escalates is either perfect or invisible. Leaders need to know which.</div></div>
+      <div class="vis"><div class="vn">04</div><h4>Patterns</h4><p>Visibility across many decisions, not just one case: severity classifications shifting over time, escalation rates moving, outcomes clustering in ways that may signal risk or unfairness.</p><div class="anchor">Could the log tell you whether this was one bad case — or part of a wider pattern?</div></div>
+    </div>
+
+    <p class="body dim selfOnly">Different parts of the organisation rely on different slices of this visibility:</p>
+    <div class="roles selfOnly">
+      <span class="role">Leaders — defend decisions</span><span class="role">Risk &amp; compliance — assess exposure</span>
+      <span class="role">Operations — intervene &amp; improve</span><span class="role">Customer teams — respond to complaints</span>
+      <span class="role">Audit &amp; governance — check boundaries hold</span>
+    </div>
+
+    <h2 style="margin-top:30px">Observability looks different for different agents</h2>
+    <div class="types">
+      <div class="type"><h5>Complaint triage agent</h5><p>Customer-facing, high-volume, moderate consequence per case. Individual cases <i>and</i> cross-case patterns both matter.</p><div class="lq">Can we explain individual decisions and detect wider patterns before they become a problem?</div></div>
+      <div class="type"><h5>Scheduling agent</h5><p>Back-office and apparently low-stakes per decision — but repeated decisions can create cumulative unfairness, imbalance or strain.</p><div class="lq">Can we see whether the agent is creating cumulative unfairness or operational strain over time?</div></div>
+      <div class="type"><h5>Financial triage agent</h5><p>High-consequence individual decisions — lending, credit, hardship, fraud. Each decision may need to be fully reconstructable, even later.</p><div class="lq">Can we show exactly how this decision was made, what evidence was used, what humans reviewed, and why the outcome was reached?</div></div>
+    </div>
+    <div class="key-message"><div class="km-label">Specify it before you sign</div>
+    <p>Observability is a procurement decision, a contract decision and an internal-build decision. It happens before the agent is approved, not after. The leaders who get it right specify the visibility they need in writing before they sign off — and refuse to deploy an agent that cannot deliver it.</p></div>
+  </section>
+
+  <!-- ============ A4.2 ============ -->
+  <section class="msec" id="a42">
+    <img class="secimg" src="../assets/pics/m4-control-room-glass.jpg" alt="An operations room with four monitor pools, each watched by a different specialist" style="max-height:300px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 4.2</span><span class="a-chip time">≈ 25 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>My Selected Workflow Visibility Requirement</h3>
+      <p class="a-purpose">You are not designing a dashboard — you are specifying the evidence you would need to remain accountable<span id="a42wf"></span>. If someone challenged an AI-influenced decision tomorrow, what would you need to see? <b>Prioritise the top 2–3</b> from the Observable Information list — don't select everything.</p>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Choose your observable information</div>
+        <div class="obs">
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Decisions made or recommended by the agent"> Decisions made or recommended by the agent</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Information the agent relied on"> Information the agent relied on</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Confidence scores or thresholds"> Confidence scores or thresholds</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Escalation triggers"> Escalation triggers</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Human review or override points"> Human review or override points</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Patterns across decisions"> Patterns across decisions</label>
+          <label><input type="checkbox" data-key="m4.a42.info" data-multi value="Evidence the approved boundary is being followed"> Evidence of whether the approved boundary is being followed</label>
+        </div>
+        <div class="field">
+          <label for="a42mh">My top 2–3, with a brief description of what each would consist of</label>
+          <textarea id="a42mh" data-key="m4.a42.musthave" placeholder='e.g. "I need both the confidence score AND the threshold required for autonomous action — was 87% enough to act without review?"'></textarea>
+        </div>
+        <details class="selfOnly"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Example leader responses (Complaint Triage agent)</summary>
+          <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:12.8px;color:var(--grey)">
+            <li><b>Decisions:</b> “I need to see how complaints were classified, where they were routed, whether compensation was offered, and whether the complaint was automatically closed.”</li>
+            <li><b>Information relied on:</b> “Visibility of the complaint text, customer history, previous complaints, account status, and any indicators that influenced the severity classification.”</li>
+            <li><b>Confidence &amp; thresholds:</b> “Both the confidence score and the threshold required for autonomous action — was 87% enough to act without review?”</li>
+            <li><b>Escalation triggers:</b> “Why a complaint was escalated — or why it was not, despite containing risk indicators.”</li>
+            <li><b>Human review:</b> “Whether a human reviewed the case, who, and whether they agreed or overrode.”</li>
+            <li><b>Patterns:</b> “Reports showing whether low-severity classifications are increasing over time and whether particular complaint types are being misclassified.”</li>
+            <li><b>Boundary evidence:</b> “Assurance the agent only applies compensation within approved limits and makes no regulatory or high-risk decisions without human involvement.”</li>
+          </ul>
+        </details>
+        <details class="selfOnly" style="margin-top:8px"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--coral-dark);cursor:pointer">When leaders should act to secure observability</summary>
+          <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:12.8px;color:var(--grey)">
+            <li><b>Tool &amp; vendor selection:</b> require the ability to reconstruct decisions, view inputs and rules, identify reviews and escalations, analyse patterns, control access, and retain or transfer records.</li>
+            <li><b>Contracting &amp; procurement:</b> document access, retention, reporting, audit rights, incident support, change notifications, and record ownership. Do not rely on claims that a system is “explainable.”</li>
+            <li><b>Internal build brief:</b> specify what operational, leadership, risk, compliance, legal, audit and customer-facing teams need to see.</li>
+            <li><b>Deployment approval:</b> confirm evidence is proportionate to consequences — if inadequate: delay, reduce autonomy, increase review, narrow scope, or require further work.</li>
+            <li><b>Ongoing governance:</b> regularly test that records remain complete, accessible and useful.</li>
+            <li><b>Leadership principle:</b> if the organisation cannot see, reconstruct and defend an AI-influenced decision, it should not delegate that level of authority.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — My next commitment</div>
+        <p class="small" style="margin-bottom:8px">You won't close every observability gap immediately. Choose <b>one</b> gap you can begin to address in the next 30 days — e.g. <i>“Request a review of the current triage decision logs and identify whether we can reconstruct why a complaint was classified low, medium or high. If not, define the additional reasoning data to capture.”</i></p>
+        <div class="field">
+          <label for="a42c">One small action this month to make an AI-enabled decision more visible, traceable or explainable to the people accountable for it</label>
+          <textarea id="a42c" data-key="m4.a42.commit"></textarea>
+        </div>
+        <div class="field">
+          <label>Which partners do you need in the conversation? Pick one or two for the next month.</label>
+          <div class="partners">
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="CIO / CTO / technology leader"><span><b>The CIO, CTO or technology leader</b>You specify what must be visible and reconstructable; they determine how it's delivered.</span></label>
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="Procurement and commercial teams"><span><b>Procurement &amp; commercial</b>Get observability requirements into vendor selection, negotiation and contracts.</span></label>
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="The vendor"><span><b>The vendor</b>What records, reporting, audit access and technical information can the product actually provide?</span></label>
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="Internal data, product and engineering teams"><span><b>Data, product &amp; engineering</b>They translate leadership requirements into architecture, logging, interfaces and controls.</span></label>
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="Risk, compliance, legal and audit"><span><b>Risk, compliance, legal &amp; audit</b>Define the level of evidence the workflow's legal and regulatory risk requires.</span></label>
+            <label><input type="checkbox" data-key="m4.a42.partners" data-multi value="Operational and customer-facing teams"><span><b>Operational &amp; customer-facing teams</b>What's needed to review cases, manage exceptions, respond to affected people, correct errors.</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="a42s">Partner share — complete: “My visibility requirement is… and the first person I need to speak with is…”</label>
+          <textarea id="a42s" data-key="m4.a42.share" style="min-height:64px"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 4 artefact · 4 of 8</span>
+        <button class="btn ghost" id="m4print">Download PDF</button></div>
+      <h3>Observability Readiness Map</h3>
+      <p class="ap-note">Your visibility requirements and 30-day commitment. In Module 8 it answers: <i>“What must leaders be able to see to remain accountable?”</i></p>
+      <div class="ap-rows" id="m4rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 4 established</h2>
+    <div class="takeaways"><ul>
+      <li>Observability is the leadership capability that makes every other decision in this course defensible — the autonomy you approved, the boundary you drew, the accountability you accepted all assume you can see what the system is doing.</li>
+      <li>A record of what happened is not a defensible explanation of why it happened. Activity evidence is not decision defensibility.</li>
+      <li>A confidence score is not a reason; an attention map is not a justification; an AI-generated summary is not independent evidence.</li>
+      <li>Leaders need visibility of decisions, reasoning, escalations and patterns — matched to the agent's risk, scale and consequence.</li>
+      <li>Observability must be specified, tested and required — in procurement, in contracts, in build briefs — before approval, not after.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">Without it</div>
+    <p>If you cannot see enough to reconstruct and explain the decision, those decisions are not fully defensible. They are positions taken on faith.</p>
+  </div></div>
+
+  <!-- ============ DAY 1 SUMMARY ============ -->
+  <section class="msec">
+    <div class="d1band" id="day1close">
+      <h2>Day 1 close — what you're carrying into Day 2</h2>
+      <p class="sub">Four artefacts, one workflow, and a sharper set of questions. Your Day 1 outputs become <b>evidence</b> for Day 2's decisions.</p>
+      <div class="d1arts" id="d1arts"></div>
+      <div class="field"><label for="d1q">One question I need to ask my team is…</label><textarea id="d1q" data-key="m4.d1.q" style="min-height:56px"></textarea></div>
+      <div class="field"><label for="d1a">One assumption I need to challenge is…</label><textarea id="d1a" data-key="m4.d1.assume" style="min-height:56px"></textarea></div>
+      <div class="field"><label for="d1b">One boundary I would never delegate is…</label><textarea id="d1b" data-key="m4.d1.boundary" style="min-height:56px"></textarea></div>
+      <div class="btnrow" style="margin-bottom:0">
+        <button class="btn primary" data-action="download-state">Download my answers for Day 2</button>
+      </div>
+      <p style="font-size:12.5px;color:rgba(255,255,255,.6);margin-top:10px">Load them tomorrow on any device — and if your facilitator runs this module on Day 2 morning instead, everything here works either way.</p>
+    </div>
+  </section>
+
+  <div class="quoteband" style="margin-top:10px"><div class="inner">
+    <div class="eyebrow">End of Day 1</div>
+    <p>Agentic AI is not primarily a technology decision. It is a leadership decision about authority, accountability, visibility and governance. The question is no longer “What can this AI do?” — it is “What am I prepared to let it do on the organisation's behalf?”</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next — Day 2:</b> most AI failures are not failures of the agent. They are failures of the workflow around the agent. Module 5 shifts the object of judgement from the agent to the workflow, the organisation, and you.</p>
+  </section>
+
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="module-3.html"><span class="lbl">← Previous</span><span>Module 3 — Delegation and Boundaries</span></a>
+    <a class="next" href="module-5.html"><span class="lbl">Next →</span><span>Module 5 — Workflow Readiness</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+  /* ---------------- 48h clock ---------------- */
+  (function(){
+    var badge=document.getElementById('clock48');
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var start=parseInt(AAL.get('_clock.m4')||'0',10);
+    if(!start){ start=Date.now(); AAL.set('_clock.m4', String(start), {silent:true}); }
+    function show(){ badge.classList.add('on'); }
+    function tick(){
+      var left=48*3600*1000-(Date.now()-start);
+      if(left<0)left=0;
+      var h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);
+      document.getElementById('clockval').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    }
+    var sc=document.getElementById('scenario');
+    var io=new IntersectionObserver(function(en){ if(en[0].isIntersecting){ show(); io.disconnect(); } });
+    io.observe(sc);
+    if(reduced){ document.getElementById('clockval').textContent='48:00:00'; }
+    else { tick(); setInterval(tick,1000); }
+  })();
+
+  /* ---------------- log row marking ---------------- */
+  var dlog=document.getElementById('dlog');
+  var marks=(AAL.get('m4.a41.marks')||'').split(',').filter(Boolean);
+  function paintMarks(){
+    dlog.querySelectorAll('.dl-row').forEach(function(r){
+      r.classList.toggle('marked', marks.indexOf(r.getAttribute('data-r'))!==-1);
+    });
+    document.getElementById('marknote').textContent=marks.length+' row'+(marks.length===1?'':'s')+' marked as “helps me explain”';
+  }
+  dlog.addEventListener('click',function(e){
+    if(dlog.classList.contains('judged'))return;
+    var row=e.target.closest('.dl-row');
+    if(!row)return;
+    var id=row.getAttribute('data-r');
+    var i=marks.indexOf(id);
+    if(i===-1)marks.push(id); else marks.splice(i,1);
+    AAL.set('m4.a41.marks',marks.join(','),{silent:true});
+    paintMarks();
+  });
+  paintMarks();
+  function judged(){
+    if(AAL.get('rv.a41reveal')==='1'){ dlog.classList.add('judged'); }
+  }
+  judged();
+  document.addEventListener('aal:change',judged);
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-reveal="#a41reveal"]')) setTimeout(judged,50);
+  });
+
+  /* ---------------- a42 workflow mention ---------------- */
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a42wf').textContent = w? ' for “'+w+'”':'';
+  }
+
+  /* ---------------- day 1 artefact cards ---------------- */
+  var D1=[
+    ['Points of Agency & Accountability Map','me.workflow'],
+    ['Autonomy Decision Snapshot','m2.snap.level'],
+    ['Boundary Map','m3.a31.d1'],
+    ['Observability Readiness Map','m4.a42.commit']
+  ];
+  function d1arts(){
+    document.getElementById('d1arts').innerHTML=D1.map(function(a,i){
+      var ok=AAL.has(a[1]);
+      return '<div class="d1art'+(ok?' ok':'')+'"><span class="st">'+(ok?'✓ Captured':'— Open')+'</span><div class="nm">0'+(i+1)+' · '+a[0]+'</div></div>';
+    }).join('');
+  }
+
+  /* ---------------- artefact ---------------- */
+  var ROWS=[
+    ['Workflow','me.workflow'],
+    ['What the log gave me','m4.a41.present'],
+    ['What was missing','m4.a41.missing'],
+    ['Least defensible explanation','m4.a41.leastdef'],
+    ['Observable information I require','m4.a42.info'],
+    ['My top 2–3 must-haves','m4.a42.musthave'],
+    ['My 30-day commitment','m4.a42.commit'],
+    ['Partners for the conversation','m4.a42.partners'],
+    ['My visibility requirement (share)','m4.a42.share']
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function drawArtefact(){
+    document.getElementById('m4rows').innerHTML=ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('m4print').addEventListener('click',function(){
+    AAL.printDoc('Observability Readiness Map', AAL.artefactRows(ROWS));
+  });
+
+  function refresh(){wf();d1arts();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

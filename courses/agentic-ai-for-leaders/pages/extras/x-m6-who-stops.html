@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Who Can Actually Stop It? — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · Who Can Actually Stop It? — eight stop-the-agent scenarios, six plausible roles each. Pick who really holds the authority.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:780px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:56ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--head)}
+.hud .score{font-weight:700;font-size:22px}
+.hud .score small{font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block}
+.hud .prog{font-family:var(--mono);font-size:12px;color:var(--teal-light)}
+.scen{background:#141414;border:1px solid rgba(255,255,255,.14);padding:22px 22px 20px}
+.scen .st{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light);margin-bottom:10px}
+.scen .sx{font-size:14.5px;line-height:1.62;color:rgba(255,255,255,.9);margin-bottom:6px;text-align:left}
+.scen .sx b{color:#fff}
+.scen .q{font-family:var(--head);font-weight:700;font-size:16px;margin:14px 0 14px;text-align:left;color:var(--teal-light)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.rolecard{font-family:var(--head);font-weight:600;font-size:13.5px;line-height:1.3;background:#181818;border:1.5px solid rgba(255,255,255,.22);padding:14px 10px;cursor:pointer;color:#fff;min-height:58px}
+.rolecard:hover{border-color:var(--teal-light)}
+.rolecard:disabled{cursor:default;opacity:.45}
+.rolecard.right{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);opacity:1}
+.rolecard.wrongpick{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral);opacity:1}
+.reveal{display:none;margin-top:14px;border-top:1px dashed rgba(255,255,255,.2);padding-top:12px;text-align:left;font-size:13px;line-height:1.58;color:rgba(255,255,255,.85)}
+.reveal b{font-family:var(--head)}
+.reveal .good{color:var(--teal-light)}
+.reveal .bad{color:var(--coral)}
+.nextbtn{display:none;margin-top:14px;text-align:center}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">Who Can Actually Stop It?<small>Extras · Module 6 · Guessing game</small></div>
+  <a class="back" href="../module-6.html">← Back to Module 6</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 5 min</div>
+    <h1>Who Can Actually Stop It?</h1>
+    <p class="lead">Eight organisations. Eight agents that need stopping — right now. Six plausible role cards each. The org chart says one thing; the fine print says another. Pick who <b>really</b> holds the authority to stop it, and watch out for the room where everyone assumed someone else.</p>
+    <div class="rules"><span class="rule">8 scenarios</span><span class="rule">+10 per right call</span><span class="rule">The fine print is the answer</span></div>
+    <button class="go" id="start">Open scenario 1</button>
+    <div class="facnote"><b>Facilitator note</b>Run before Activity 6.2 — it seeds element 3 (intervention paths) and element 4 (ownership) with eight concrete failure shapes. The two that split every room: the vendor console (scenario order shuffles, look for “suspension requests within two business days”) and “no one — it was never assigned.” Close by asking each table: which of the eight is closest to your organisation today?</div>
+  </section>
+
+  <section id="play">
+    <div class="hud">
+      <div class="prog" id="prog">Scenario 1/8</div>
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+    </div>
+    <div class="scen">
+      <div class="st" id="st"></div>
+      <div class="sx" id="sx"></div>
+      <div class="q">It needs to stop. Who can actually stop it?</div>
+      <div class="cards" id="cards"></div>
+      <div class="reveal" id="reveal"></div>
+      <div class="nextbtn"><button class="go" id="next">Next scenario →</button></div>
+    </div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag">All eight rooms visited</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="fright">0</b><span>right calls</span></div>
+    </div>
+    <div class="takeaway"><b>A meeting is not an intervention path. “The executive team would decide” is not an authority.</b> The organisations that intervene quickly are the organisations that decided in advance who can act — which executive, under what condition, by what authority. If your answer today is a job title nobody wrote down, your answer is scenario 3.</div>
+    <button class="go" id="again">Play again</button>
+    <a href="../module-6.html"><button class="ghosty">Back to Module 6</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+  var LSKEY='aal.x.m6.who-stops';
+  var el=function(id){return document.getElementById(id)};
+
+  /* Each scenario: title, text (the tell is in the fine print), roles (6, first = correct before shuffle), why */
+  var SCENARIOS=[
+    {t:"THE 2 AM PAGE",
+     x:"A complaint triage agent starts mis-routing at 2 AM on a Saturday. The approval memo says <b>“operations manages day-to-day.”</b> But the ops lead's delegation schedule explicitly excludes <b>“changes to system availability”</b> — that sits under the IT change policy, which names one role for out-of-hours takedowns.",
+     roles:["IT on-call (CTO delegate)","Operations lead","Executive sponsor","Risk lead","Team lead","The vendor"],
+     why:"<b class='good'>IT on-call (CTO delegate).</b> “Manages day-to-day” is not “can take it down.” The delegation schedule carved availability out of ops' authority — at 2 AM the only hand that can legally pull the plug is the one the change policy names. Intervention paths live in the fine print, not the org chart."},
+    {t:"THE VENDOR CONSOLE",
+     x:"An identity verification agent runs entirely on the <b>vendor's infrastructure</b>. The kill switch is a button in the vendor console — and no one inside the organisation has credentials. The contract says the supplier will action <b>“suspension requests within two business days.”</b>",
+     roles:["The vendor","Executive sponsor","IT on-call (CTO delegate)","Compliance lead","Risk lead","Operations lead"],
+     why:"<b class='good'>The vendor.</b> Nobody in the building can stop this agent — the only kill switch belongs to the supplier, on a two-business-day SLA. If intervention depends on vendor disclosure — or vendor scheduling — you have outsourced governance. The fix isn't a faster email; it's contractual stop rights and your own credentials, before deployment."},
+    {t:"THE EMPTY CHAIR",
+     x:"A refunds agent misfires. The proposal said the team would <b>“work with the vendor if issues arose.”</b> No one was named. The sponsoring executive <b>left the company in March</b>; her successor assumed Risk had it. Risk assumed Operations. Operations assumed it came with the platform.",
+     roles:["No one — it was never assigned","Executive sponsor","Risk lead","Operations lead","The vendor","Team lead"],
+     why:"<b class='good'>No one — it was never assigned.</b> This is the room where everyone assumed someone else. “Work with the vendor” is not a protocol, and an owner who left in March is not an owner. Until someone claims the authority — loudly, in writing — this agent cannot be stopped, only survived."},
+    {t:"THE SHADOW ADMIN",
+     x:"A scheduling agent has run for a year, wired into rostering by a team lead who has since become indispensable. The sponsor holds accountability on paper — but the <b>only admin credentials belong to the team lead</b> who built the integration. IT has no access; the sponsor wouldn't know where to click.",
+     roles:["Team lead","Executive sponsor","IT on-call (CTO delegate)","Operations lead","The vendor","Risk lead"],
+     why:"<b class='good'>Team lead.</b> The org chart says sponsor; the password says team lead. Authority you cannot exercise is not authority — today, in practice, one person can stop this agent, and they're not on the governance map. Capability and accountability have drifted apart; intervention design is what pulls them back together."},
+    {t:"THE PRE-AUTHORISED STOP",
+     x:"A financial decisioning agent trips its trigger: exception volume past the agreed line. The intervention path, specified before deployment, reads: <b>“Risk lead may halt the agent path without further approval when this trigger is met.”</b> The trigger is met. The exec committee is in an offsite.",
+     roles:["Risk lead","Executive sponsor","The executive team (as a body)","Compliance lead","Operations lead","IT on-call (CTO delegate)"],
+     why:"<b class='good'>Risk lead.</b> No meeting, no offsite interruption, no debate — the decision was made before deployment, so at the moment it matters nobody has to make it. This is the whole model working: trigger, authority, window, coordination. The stop takes four minutes because it was designed months ago."},
+    {t:"THE REGULATORY TRIGGER",
+     x:"A triage agent auto-closes a complaint that turns out to involve a regulator. The governance cadence is unambiguous: <b>“Trigger: any single case involving a regulatory or material-harm issue. Owner: Compliance.”</b> Ops wants to keep it running while they check; the sponsor is on a plane.",
+     roles:["Compliance lead","Operations lead","Executive sponsor","Risk lead","Legal lead","The vendor"],
+     why:"<b class='good'>Compliance lead.</b> The cadence map already answered this: regulatory trigger, Compliance owns it. Ops' preference doesn't outrank a named owner, and the sponsor being airborne doesn't matter — that's exactly why the authority was delegated in advance. Read your own cadence before you debate it."},
+    {t:"THE COMMITTEE",
+     x:"An underwriting agent needs stopping this hour. The approval memo lists the owner as <b>“the executive team.”</b> Five executives are in the room. Twenty minutes in, they are still discussing who should make the call — each waiting for another to move first.",
+     roles:["Executive sponsor","The executive team (as a body)","Risk lead","Compliance lead","Operations lead","Legal lead"],
+     why:"<b class='good'>Executive sponsor.</b> “The executive team would decide” is not an answer: which executive, under what condition, by what authority? A body cannot pull a lever — a named person can. In the absence of a designed path, authority defaults to the single accountable sponsor, and the cost of discovering that mid-incident is twenty minutes of window."},
+    {t:"THE 11 PM SPIKE",
+     x:"A payments agent shows a fraud spike at 11 PM. The runbook is specific: <b>“Operations on-call may halt the agent path immediately. A full-system stop requires the executive sponsor.”</b> The question on the bridge call is the agent path — now.",
+     roles:["Operations on-call","Executive sponsor","Risk lead","IT on-call (CTO delegate)","The vendor","Compliance lead"],
+     why:"<b class='good'>Operations on-call.</b> Two different stops, two different authorities — and tonight's question is the agent path, which the runbook pre-authorises to the person already awake. Escalating to the sponsor for a call that was delegated down is as much a failure as acting without authority. Partial or full: know which stop you're making."}
+  ];
+
+  var order=[],idx=0,score=0,right=0;
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+  function show(){
+    var s=SCENARIOS[order[idx]];
+    el('prog').textContent='Scenario '+(idx+1)+'/8';
+    el('st').textContent=s.t;
+    el('sx').innerHTML=s.x;
+    el('reveal').style.display='none';
+    document.querySelector('.nextbtn').style.display='none';
+    var correct=s.roles[0];
+    var deck=shuffle(s.roles.slice());
+    el('cards').innerHTML=deck.map(function(r){
+      return '<button class="rolecard" data-r="'+r.replace(/"/g,'&quot;')+'">'+r+'</button>';
+    }).join('');
+    el('cards').querySelectorAll('.rolecard').forEach(function(b){
+      b.addEventListener('click',function(){pick(b,correct,s)});
+    });
+  }
+  function pick(btn,correct,s){
+    var chosen=btn.getAttribute('data-r');
+    var ok=chosen===correct;
+    if(ok){score+=10;right++;}
+    el('score').textContent=score;
+    el('cards').querySelectorAll('.rolecard').forEach(function(b){
+      b.disabled=true;
+      if(b.getAttribute('data-r')===correct)b.classList.add('right');
+      else if(b===btn)b.classList.add('wrongpick');
+    });
+    el('reveal').innerHTML=(ok?'<b class="good">+10 — you found the hand on the lever.</b> ':'<b class="bad">Not this room. </b>')+s.why;
+    el('reveal').style.display='block';
+    document.querySelector('.nextbtn').style.display='block';
+    el('next').textContent=idx===SCENARIOS.length-1?'See the verdict →':'Next scenario →';
+  }
+  function tierFor(sc){
+    if(sc>=70)return'Kill Switch Keeper';
+    if(sc>=50)return'Chain of Command';
+    if(sc>=30)return'Assumed Someone Else';
+    return'Nobody Stopped It';
+  }
+  function end(){
+    el('play').style.display='none';el('end').style.display='block';
+    el('tier').textContent=tierFor(score);
+    el('fscore').textContent=score;el('fright').textContent=right+'/8';
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    order=shuffle([0,1,2,3,4,5,6,7]);
+    idx=0;score=0;right=0;el('score').textContent='0';
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    show();
+  }
+  el('next').addEventListener('click',function(){
+    idx++;
+    if(idx>=SCENARIOS.length){end();}else{show();}
+  });
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+})();
+</script>
+</body>
+</html>

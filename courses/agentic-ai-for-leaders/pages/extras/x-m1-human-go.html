@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Where Did the Human Go? — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · Where Did the Human Go? — same workflow, one week apart. A human checkpoint has quietly vanished. Find it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:860px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:54ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+/* play */
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--head)}
+.hud .rname{font-weight:700;font-size:17px}
+.hud .rname small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hud .score{font-weight:700;font-size:22px;text-align:right}
+.hud .score small{display:block;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.timerwrap{height:7px;background:rgba(255,255,255,.12);margin-bottom:18px;overflow:hidden}
+.timerbar{height:100%;width:100%;background:var(--teal);transform-origin:left}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.cols{grid-template-columns:1fr}}
+.col h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:9px}
+.col.now h5{color:var(--teal-light)}
+.step{display:flex;gap:9px;align-items:flex-start;background:#181818;border:1px solid rgba(255,255,255,.14);padding:11px 13px;margin-bottom:8px;font-size:13.2px;line-height:1.4}
+.step .n{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.4);padding-top:2px}
+.step .hu{font-family:var(--head);font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:2px 6px;margin-left:auto;white-space:nowrap;align-self:center}
+.step .au{font-family:var(--head);font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);padding:2px 6px;margin-left:auto;white-space:nowrap;align-self:center}
+.col.now .step{cursor:pointer;transition:.12s}
+.col.now .step:hover{border-color:var(--teal-light)}
+.col.now .step:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.step.right{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.step.wrongpick{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.nothing{margin-top:14px;text-align:center}
+.nothing button{font-family:var(--head);font-weight:700;font-size:13px;background:transparent;color:rgba(255,255,255,.85);border:2px solid rgba(255,255,255,.3);padding:12px 22px;cursor:pointer}
+.nothing button:hover{border-color:var(--teal-light);color:var(--teal-light)}
+.callout{margin-top:14px;min-height:64px;background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:12px 16px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.9);display:none}
+.callout.no{background:rgba(220,90,70,.08);border-left-color:var(--coral)}
+.callout b{font-family:var(--head)}
+.nextbtn{margin-top:14px;text-align:center;display:none}
+/* end */
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">Where Did the Human Go?<small>Extras · Module 1 · Spot the difference</small></div>
+  <a class="back" href="../module-1.html">← Back to Module 1</a>
+</div>
+<main><div class="stage">
+
+  <!-- SPLASH -->
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 4 min</div>
+    <h1>Where Did the Human Go?</h1>
+    <p class="lead">Same workflow, one week apart. Somewhere in this week's version, a human checkpoint has quietly become automatic — no memo, no approval, no fuss. <b>Find it before the clock runs out.</b> And careful: sometimes nothing changed at all.</p>
+    <div class="rules"><span class="rule">6 rounds</span><span class="rule">20 seconds each</span><span class="rule">False alarms cost you</span></div>
+    <button class="go" id="start">Start watching</button>
+    <div class="facnote"><b>Facilitator note</b>Run after the Agency Discovery Canvas. The debrief question that lands: "none of these changes had a meeting. How would your organisation notice?" The final round — where nothing changed — is the one to talk about: vigilance has a false-alarm cost too.</div>
+  </section>
+
+  <!-- PLAY -->
+  <section id="play">
+    <div class="hud">
+      <div class="rname" id="rname">—<small id="rnum">Round 1 of 6</small></div>
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+    </div>
+    <div class="timerwrap"><div class="timerbar" id="tbar"></div></div>
+    <div class="cols">
+      <div class="col"><h5>Last month</h5><div id="before"></div></div>
+      <div class="col now"><h5>This week — click the step where the human vanished</h5><div id="after"></div></div>
+    </div>
+    <div class="nothing"><button id="nothing">Nothing changed</button></div>
+    <div class="callout" id="callout"></div>
+    <div class="nextbtn"><button class="go" id="nextr">Next round →</button></div>
+  </section>
+
+  <!-- END -->
+  <section class="cardo" id="end">
+    <div class="tag">Watch ended</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="ffound">0</b><span>vanishings found</span></div>
+      <div class="fn"><b id="ffalse">0</b><span>false alarms</span></div>
+    </div>
+    <div class="takeaway"><b>None of those changes called a meeting.</b> Decisions, actions and consequences moved further from direct human control — and accountability stayed exactly where it was. The leadership skill is noticing the week it happens, not the month it goes wrong.</div>
+    <button class="go" id="again">Watch again</button>
+    <a href="../module-1.html"><button class="ghosty">Back to Module 1</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+
+  /* Each round: name; steps [{t, h:'human'|'auto'}]; ch = index whose human quietly became auto (-1 = nothing changed); note */
+  var ROUNDS=[
+    {name:"New-starter onboarding",ch:2,
+     steps:[{t:"Offer accepted — record created",h:"auto"},{t:"Contract generated and sent",h:"auto"},{t:"IT grants system access",h:"human"},{t:"Manager books week-one meetings",h:"human"},{t:"Payroll set up from the contract",h:"auto"},{t:"Buddy assigned by team lead",h:"human"}],
+     after:"Access auto-provisioned from the role profile",
+     note:"<b>Access decisions moved into the system.</b> Who now decides what a new starter can see — and who finds out when the role profile is wrong?"},
+    {name:"Complaint triage",ch:1,
+     steps:[{t:"Complaint received and logged",h:"auto"},{t:"Rep reviews the severity call",h:"human"},{t:"Case routed to handling team",h:"auto"},{t:"Response drafted for approval",h:"auto"},{t:"Team lead approves compensation",h:"human"},{t:"Case closed and customer notified",h:"auto"}],
+     after:"Severity applied as classified — no review",
+     note:"<b>The review didn't fail — it vanished.</b> The agent's severity call is now final. Yesterday's low-severity misclassification just became invisible."},
+    {name:"Supplier invoicing",ch:3,
+     steps:[{t:"Invoice received by AP inbox",h:"auto"},{t:"Matched against the purchase order",h:"auto"},{t:"Amount checked against contract",h:"auto"},{t:"Finance officer approves under $5k",h:"human"},{t:"Payment scheduled",h:"auto"},{t:"Remittance advice sent",h:"auto"}],
+     after:"Auto-approved under $5k on a clean match",
+     note:"<b>Payment authority was delegated by default.</b> Nobody signed a delegation. The threshold is now the only boundary — and nobody is watching it move."},
+    {name:"Recruitment screening",ch:1,
+     steps:[{t:"Applications close",h:"auto"},{t:"Recruiter screens the CV pool",h:"human"},{t:"Shortlist sent to hiring panel",h:"auto"},{t:"Panel interviews candidates",h:"human"},{t:"Reference checks completed",h:"human"},{t:"Offer approved by department head",h:"human"}],
+     after:"System shortlists the top twenty by fit score",
+     note:"<b>The judgement moved, the accountability didn't.</b> If the shortlist is challenged, the recruiter still owns it — and can no longer explain it."},
+    {name:"Weekend rostering",ch:4,
+     steps:[{t:"Availability collected from the team",h:"auto"},{t:"Demand forecast for the week",h:"auto"},{t:"Draft roster generated",h:"auto"},{t:"Swap requests gathered",h:"auto"},{t:"Team lead signs off the roster",h:"human"},{t:"Roster published to the team",h:"auto"}],
+     after:"Roster publishes automatically Friday 5pm",
+     note:"<b>The sign-off became a deadline.</b> The one person who knew Sam can't work Sundays is no longer in the loop — and finds out when Sam does."},
+    {name:"Procurement requests",ch:-1,
+     steps:[{t:"Request raised with business case",h:"auto"},{t:"Budget owner approves the spend",h:"human"},{t:"Three quotes gathered",h:"auto"},{t:"Procurement reviews the contract",h:"human"},{t:"PO issued to the supplier",h:"auto"},{t:"Goods receipted on delivery",h:"human"}],
+     after:null,
+     note:"<b>Nothing changed — and you didn't invent a problem.</b> Vigilance has a false-alarm cost too: cry drift when there is none and nobody listens the week it's real."}
+  ];
+  var LSKEY='aal.x.m1.humango';
+  var TIME=20000;
+
+  function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+  var el=function(id){return document.getElementById(id);};
+
+  var order=[],ri=0,score=0,found=0,falses=0,answering=false,timer=null,t0=0;
+
+  function stepHtml(s,i,now){
+    var badge=s.h==='human'?'<span class="hu">Human</span>':'<span class="au">Auto</span>';
+    return '<div class="step" data-i="'+i+'" '+(now?'tabindex="0" role="button"':'')+'><span class="n">'+(i+1)+'</span><span>'+s.t+'</span>'+badge+'</div>';
+  }
+  function render(){
+    var R=order[ri];
+    el('rname').childNodes[0].textContent=R.name;
+    el('rnum').textContent='Round '+(ri+1)+' of '+order.length;
+    el('before').innerHTML=R.steps.map(function(s,i){return stepHtml(s,i,false);}).join('');
+    var after=R.steps.map(function(s,i){
+      if(i===R.ch)return {t:R.after,h:'auto'};
+      return s;
+    });
+    el('after').innerHTML=after.map(function(s,i){return stepHtml(s,i,true);}).join('');
+    el('callout').style.display='none';el('callout').className='callout';
+    document.querySelector('.nextbtn').style.display='none';
+    el('after').querySelectorAll('.step').forEach(function(st){
+      st.addEventListener('click',function(){pick(Number(st.getAttribute('data-i')));});
+      st.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(Number(st.getAttribute('data-i')));}});
+    });
+    answering=true;t0=performance.now();
+    var bar=el('tbar');bar.style.transition='none';bar.style.transform='scaleX(1)';
+    void bar.offsetWidth;
+    bar.style.transition='transform '+TIME+'ms linear';bar.style.transform='scaleX(0)';
+    clearTimeout(timer);
+    timer=setTimeout(function(){if(answering)timeout();},TIME);
+  }
+  function freeze(){
+    answering=false;clearTimeout(timer);
+    var bar=el('tbar');var m=getComputedStyle(bar).transform;bar.style.transition='none';bar.style.transform=m;
+  }
+  function reveal(correctIdx){
+    if(correctIdx>=0){
+      var node=el('after').querySelector('.step[data-i="'+correctIdx+'"]');
+      if(node)node.classList.add('right');
+    }
+  }
+  function say(html,bad){
+    var c=el('callout');c.innerHTML=html;c.className='callout'+(bad?' no':'');c.style.display='block';
+    document.querySelector('.nextbtn').style.display='block';
+  }
+  function pick(i){
+    if(!answering)return;freeze();
+    var R=order[ri];
+    if(R.ch===-1){
+      falses++;score-=5;
+      var node=el('after').querySelector('.step[data-i="'+i+'"]');if(node)node.classList.add('wrongpick');
+      say('<b>False alarm — nothing changed this week.</b> −5. '+R.note,true);
+    }else if(i===R.ch){
+      found++;
+      var speedBonus=Math.max(0,Math.round(5*(1-(performance.now()-t0)/TIME)));
+      score+=15+speedBonus;
+      reveal(R.ch);
+      say('<b>Found it. +'+(15+speedBonus)+'.</b> '+R.note,false);
+    }else{
+      score-=5;
+      var node2=el('after').querySelector('.step[data-i="'+i+'"]');if(node2)node2.classList.add('wrongpick');
+      reveal(R.ch);
+      say('<b>Not that one. −5.</b> '+R.note,true);
+    }
+    el('score').textContent=score;
+  }
+  function nothing(){
+    if(!answering)return;freeze();
+    var R=order[ri];
+    if(R.ch===-1){
+      found++;
+      var speedBonus=Math.max(0,Math.round(5*(1-(performance.now()-t0)/TIME)));
+      score+=15+speedBonus;
+      say('<b>Correct — nothing changed. +'+(15+speedBonus)+'.</b> '+R.note,false);
+    }else{
+      score-=5;
+      reveal(R.ch);
+      say('<b>Something did change. −5.</b> '+R.note,true);
+    }
+    el('score').textContent=score;
+  }
+  function timeout(){
+    freeze();
+    var R=order[ri];
+    if(R.ch===-1){say('<b>⏱ Time — and nothing had changed.</b> '+R.note,true);}
+    else{reveal(R.ch);say('<b>⏱ Time. The vanishing was here.</b> '+R.note,true);}
+  }
+  function nextRound(){
+    ri++;
+    if(ri>=order.length)end();else render();
+  }
+  function tierFor(s){
+    if(s>=100)return'Nothing Gets Past You';
+    if(s>=70)return'Watchful';
+    if(s>=40)return'Half-Watching';
+    return'The Org Chart Didn’t Notice';
+  }
+  function end(){
+    el('play').style.display='none';el('end').style.display='block';
+    el('tier').textContent=tierFor(score);
+    el('fscore').textContent=score;el('ffound').textContent=found;el('ffalse').textContent=falses;
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    var changed=ROUNDS.filter(function(r){return r.ch!==-1;});
+    var identical=ROUNDS.filter(function(r){return r.ch===-1;});
+    order=shuffle(changed.slice()).concat(identical);   /* the nothing-changed round always lands last */
+    ri=0;score=0;found=0;falses=0;
+    el('score').textContent='0';
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    render();
+  }
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+  el('nothing').addEventListener('click',nothing);
+  el('nextr').addEventListener('click',nextRound);
+})();
+</script>
+</body>
+</html>

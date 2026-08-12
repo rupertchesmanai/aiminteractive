@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 6: Intervention Readiness — Agentic AI for Leaders</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='6' fill='%23008D80'/%3E%3Cpath d='M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z' fill='%23fff'/%3E%3Crect x='20.4' y='7' width='3.3' height='20' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="Module 6 · Intervention Readiness — a live incident simulation, then design who can stop the agent, and on whose authority.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* incident feed */
+.incident{background:#141414;color:#d9d4c8;padding:24px 26px;margin:16px 0}
+.incident .ih{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.incident .ih .live{color:var(--coral)}
+.incident .ih .live::before{content:"● ";animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.incident .ih .live::before{animation:none}}
+.incident h5{font-family:var(--head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:14px 0 8px}
+.incident ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.incident li{font-size:13.5px;line-height:1.55;padding-left:14px;position:relative}
+.incident li::before{content:"·";position:absolute;left:2px;color:#53DFCB}
+.incident .stat{color:var(--coral);font-weight:600}
+.incident .qbox{border:1.5px dashed rgba(255,255,255,.45);padding:12px 16px;margin-top:14px;font-family:var(--head);font-weight:600;font-size:15px;color:#fff}
+/* sim stages */
+.stage{border:1px solid var(--line);border-left:6px solid var(--coral);background:#fff;padding:22px 24px;margin:18px 0}
+.stage.gated{display:none}
+.stage.revealed{display:block;animation:aal-in .35s ease}
+.stage .sh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.stage .sh h3{font-size:19px}
+.stage .sh .st-time{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.stimer{font-family:var(--mono);font-weight:600;font-size:15px;background:#141414;color:#fff;padding:7px 13px;display:inline-flex;gap:8px;align-items:center}
+.stimer.low{color:var(--coral)}
+.stimer .tl{font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.stimer.expired{background:var(--coral-dark);color:#fff}
+.update{background:rgba(220,90,70,.07);border:1px solid rgba(220,90,70,.35);border-left:5px solid var(--coral);padding:16px 20px;margin:0 0 14px}
+.update .ut{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+.update p{font-size:14px;line-height:1.6}
+.rolegrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media(max-width:860px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
+.notimer{margin:10px 0 0;font-size:12.5px}
+.notimer label{display:inline-flex;gap:8px;align-items:center;cursor:pointer;color:var(--grey)}
+/* four elements */
+.els{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media(max-width:820px){.els{grid-template-columns:1fr}}
+.el{background:var(--ink);color:#fff;padding:17px 19px}
+.el .en{font-family:var(--mono);font-size:11px;color:var(--teal-light)}
+.el h4{font-size:17px;color:#fff;margin:4px 0 5px}
+.el p{font-size:12.8px;color:rgba(255,255,255,.82);line-height:1.5}
+.el .kq{margin-top:9px;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);border-top:1px solid rgba(255,255,255,.2);padding-top:8px}
+/* windows */
+.wins{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+@media(max-width:760px){.wins{grid-template-columns:repeat(2,1fr)}}
+.win{background:#fff;border:1px solid var(--line);padding:12px 14px;text-align:center}
+.win b{font-family:var(--head);font-size:13.5px;display:block}
+.win span{font-family:var(--mono);font-size:12px;color:var(--coral-dark);display:block;margin-top:4px}
+/* RPN element rows (A6.2) */
+.rpnrow{background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.rpnrow .rh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.rpnrow h5{font-family:var(--head);font-size:14.5px}
+.rpnrow .rq{font-size:12.3px;color:var(--grey);margin-top:2px;max-width:60ch}
+.seg{display:flex;border:1.5px solid rgba(66,58,58,.3)}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg .sl{display:block;font-family:var(--head);font-weight:700;font-size:12px;padding:8px 13px;border-right:1.5px solid rgba(66,58,58,.3);color:var(--grey);min-width:40px;text-align:center}
+.seg label:last-child .sl{border-right:0}
+.seg label:nth-child(1) input:checked + .sl{background:var(--teal-dark);color:#fff}
+.seg label:nth-child(2) input:checked + .sl{background:var(--coral);color:#fff}
+.seg label:nth-child(3) input:checked + .sl{background:var(--ink);color:#fff}
+.seg input:focus-visible + .sl{outline:3px solid var(--teal);outline-offset:2px}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.gcol{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.gcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px;color:var(--teal-dark)}
+.gcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.gcol li{font-size:12.6px;color:var(--grey);padding-left:14px;position:relative;line-height:1.4}
+.gcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+</style>
+</head>
+<body data-page="module-6">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m6-hero-first-hour.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 2 · Module 6 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “Is the workflow ready?”</span><span class="arrow">→</span><span class="to">To “What happens when it fails?”</span></div>
+    <h1>Intervention Readiness</h1>
+    <p class="sub">Dashboard — The Incident Simulation</p>
+    <div class="gq"><span class="bar" style="background:var(--teal-light)"></span><p>If this fails, can the organisation intervene quickly enough to justify deployment?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light)">Leadership move · Intervene &amp; escalate</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>From readiness to resilience</h2>
+    <p class="body">Readiness should never be judged only by what happens when everything goes to plan. Mature leaders ask: <b>what happens when it doesn't?</b> Failure handling is not a technical capability — it is a leadership capability. Intervention paths, stop conditions and ownership do not appear during an incident. They must be specified <b>before</b> deployment. This activity should feel like <b>response, not analysis</b>: limited time, incomplete information, and a workflow that is still operating.</p>
+  </section>
+
+  <!-- ============ SCENARIO ============ -->
+  <section class="msec" id="scenario">
+    <div class="sec-eyebrow">Scenario — the workflow you approved in Module 5</div>
+    <h2>Identity Verification — Three Months Later</h2>
+    <p class="body">In Module 5 you assessed the identity verification proposal at the point of approval and named what you would require before signing off. Today you are picking up that workflow three months in. The pilot was approved. The agent has been live. And something has gone wrong.</p>
+
+    <div class="incident">
+      <div class="ih"><span class="live">Live incident</span><span>TUESDAY · 2:47 PM · IDENTITY VERIFICATION WORKFLOW</span></div>
+      <h5 style="margin-top:0">The pattern the risk team is seeing</h5>
+      <ul>
+        <li>Over the last six weeks, the rate of low-risk auto-approvals has crept from <span class="stat">71% to 84%</span></li>
+        <li>Two customers approved as low-risk in the last fortnight have been flagged by the fraud team after onboarding — <span class="stat">one confirmed as a sanctioned entity that should have been refused</span></li>
+        <li>The vendor's monthly report (delivered yesterday) shows no anomaly. Confidence scores look stable. The decision record shows nothing unusual</li>
+      </ul>
+      <h5>Three teams, three questions</h5>
+      <ul>
+        <li><b>Risk</b> wants to know how many customers might be affected</li>
+        <li><b>Compliance</b> wants to know the regulatory exposure</li>
+        <li><b>Onboarding</b> wants to know whether to keep using the agent for incoming applications <i>today</i></li>
+      </ul>
+      <h5>The wider context</h5>
+      <ul>
+        <li>Live for three months · ~800 applications a week · roughly <b>9,600 cases</b> have run through the agent</li>
+        <li>The three-month pilot had no failures</li>
+        <li>The agent is embedded in the onboarding team's daily operations</li>
+        <li>No formal intervention protocol was specified in the approval — the proposal said the team would <span class="stat">“work with the vendor”</span> if issues arose</li>
+        <li>The vendor has been notified. They say they need <span class="stat">48 hours</span> to investigate</li>
+      </ul>
+      <div class="qbox">What does the executive committee do in the next 60 minutes — and on whose authority?</div>
+    </div>
+  </section>
+
+  <!-- ============ A6.1 SIMULATION ============ -->
+  <section class="msec" id="a61">
+    <div class="activity-block" style="border-top-color:var(--coral)">
+      <div class="a-kicker"><span class="a-chip">Activity 6.1</span><span class="a-chip time">≈ 20 min · timed</span><span class="a-chip" style="background:var(--ink)">Simulation</span></div>
+      <h3>Failure Scenario Simulation</h3>
+      <p class="a-purpose">You are not analysing this case — you are responding to it. The workflow is still operating. At the end, only two questions matter: <b>what did you do, and on whose authority?</b></p>
+      <div class="notimer"><label><input type="checkbox" id="notimer"> Run without timers (the pressure is theatre — the commitments are the work)</label></div>
+
+      <div class="a-step">
+        <div class="s-label">Choose your seat at the table</div>
+        <p class="small" style="margin-bottom:8px">Pick the role you would naturally hold in your own organisation. If unsure, take executive sponsor.</p>
+        <div class="rolegrid">
+          <label class="optcard"><input type="radio" name="role" data-key="m6.sim.role" value="Executive sponsor"><span class="oc"><b>Executive sponsor</b></span></label>
+          <label class="optcard"><input type="radio" name="role" data-key="m6.sim.role" value="Risk lead"><span class="oc"><b>Risk lead</b></span></label>
+          <label class="optcard"><input type="radio" name="role" data-key="m6.sim.role" value="Compliance lead"><span class="oc"><b>Compliance lead</b></span></label>
+          <label class="optcard"><input type="radio" name="role" data-key="m6.sim.role" value="Operations lead"><span class="oc"><b>Operations lead</b></span></label>
+          <label class="optcard"><input type="radio" name="role" data-key="m6.sim.role" value="Legal lead"><span class="oc"><b>Legal lead</b></span></label>
+        </div>
+        <div class="btnrow"><button class="btn coral" data-requires="m6.sim.role" data-reveal="#stage1" data-revealed-label="In the room">Take your seat → the first hour begins</button></div>
+      </div>
+
+      <!-- STAGE 1 -->
+      <div class="stage gated reveal-box" id="stage1" style="padding:22px 24px;background:#fff;border-left:6px solid var(--coral)">
+        <div class="sh"><div><h3>Step 1 — First response</h3><div class="st-time">It is 2:47 PM. The room is looking at you.</div></div>
+          <span class="stimer" data-stage="1" data-mins="5"><span class="tl">Commit within</span><b>5:00</b></span></div>
+        <div class="field">
+          <label>Do you stop the workflow now, or let it keep running while you investigate?</label>
+          <div class="optcards" style="grid-template-columns:repeat(2,1fr)">
+            <label class="optcard coral"><input type="radio" name="stp" data-key="m6.sim.stop" value="Stop the workflow now"><span class="oc"><b>Stop it now</b><span>Halt auto-approvals while we investigate.</span></span></label>
+            <label class="optcard"><input type="radio" name="stp" data-key="m6.sim.stop" value="Keep running while we investigate"><span class="oc"><b>Keep it running</b><span>Continue while the investigation proceeds.</span></span></label>
+          </div>
+        </div>
+        <div class="field"><label for="s1auth">…on whose authority?</label><input type="text" id="s1auth" data-key="m6.sim.authority1" placeholder="Name the role that can make this call — and whether that authority actually exists today"></div>
+        <div class="fieldrow">
+          <div class="field"><label for="s1room">Who do you bring into the room, by when?</label><textarea id="s1room" data-key="m6.sim.room" style="min-height:60px"></textarea></div>
+          <div class="field"><label for="s1reg">What do you tell the regulator — if anything — and when?</label><textarea id="s1reg" data-key="m6.sim.regulator" style="min-height:60px"></textarea></div>
+        </div>
+        <div class="field"><label for="s1ops">What do you tell the onboarding team, who are asking right now whether to keep using the agent today?</label><textarea id="s1ops" data-key="m6.sim.ops" style="min-height:60px"></textarea></div>
+        <div class="btnrow"><button class="btn coral" data-requires="m6.sim.stop,m6.sim.authority1,m6.sim.room,m6.sim.regulator,m6.sim.ops" data-reveal="#stage2" data-revealed-label="Committed — 3:17 PM">Commit first response</button></div>
+      </div>
+
+      <!-- STAGE 2 -->
+      <div class="stage gated reveal-box" id="stage2" style="padding:22px 24px;background:#fff;border-left:6px solid var(--coral)">
+        <div class="update">
+          <div class="ut">⚠ First escalation update · 3:17 PM</div>
+          <p>The compliance team has identified <b>four more customers</b> approved in the last week who match patterns similar to the sanctioned entity. The vendor has come back: the issue may be related to a <b>quiet recalibration they did six weeks ago</b>, which they did not flag because it did not change the agent's stated accuracy. <b>The CEO has asked for a one-page briefing by 6 PM.</b></p>
+        </div>
+        <div class="sh"><div><h3>Step 2 — Reconsider</h3><div class="st-time">Does your first response survive this?</div></div>
+          <span class="stimer" data-stage="2" data-mins="3"><span class="tl">Commit within</span><b>3:00</b></span></div>
+        <div class="fieldrow">
+          <div class="field"><label for="s2ceo">The main points that must be in the CEO brief</label><textarea id="s2ceo" data-key="m6.sim.ceobrief" style="min-height:72px"></textarea></div>
+          <div class="field"><label for="s2chg">What changes in your response — and what holds?</label><textarea id="s2chg" data-key="m6.sim.change1" style="min-height:72px"></textarea></div>
+        </div>
+        <div class="btnrow"><button class="btn coral" data-requires="m6.sim.ceobrief,m6.sim.change1" data-reveal="#stage3" data-revealed-label="Committed — 3:42 PM">Commit → keep going</button></div>
+      </div>
+
+      <!-- STAGE 3 -->
+      <div class="stage gated reveal-box" id="stage3" style="padding:22px 24px;background:#fff;border-left:6px solid var(--coral)">
+        <div class="update">
+          <div class="ut">⚠ Second escalation update · 3:42 PM</div>
+          <p>A reporter from a national newspaper has contacted the press office with the question: <i>“Are you using AI to approve customer onboarding decisions, and has it let through anyone you should have refused?”</i> <b>Risk</b> has just asked whether the workflow should be stopped across the <b>entire onboarding system</b>, not just the agent path. <b>Compliance</b> is asking who has the authority to make that call.</p>
+        </div>
+        <div class="sh"><div><h3>Step 3 — Under scrutiny</h3><div class="st-time">Three audiences want answers now.</div></div>
+          <span class="stimer" data-stage="3" data-mins="3"><span class="tl">Commit within</span><b>3:00</b></span></div>
+        <div class="field"><label for="s3med">Your answer for the press office to give the media</label><textarea id="s3med" data-key="m6.sim.media" style="min-height:56px"></textarea></div>
+        <div class="fieldrow">
+          <div class="field"><label for="s3risk">Your answer to Risk — full-system stop, or agent path only?</label><textarea id="s3risk" data-key="m6.sim.riskans" style="min-height:56px"></textarea></div>
+          <div class="field"><label for="s3comp">Your answer to Compliance — who has the authority to make that call?</label><textarea id="s3comp" data-key="m6.sim.compliance" style="min-height:56px"></textarea></div>
+        </div>
+        <div class="btnrow"><button class="btn coral" data-requires="m6.sim.media,m6.sim.riskans,m6.sim.compliance" data-reveal="#stage4" data-revealed-label="Committed">Commit → final record</button></div>
+      </div>
+
+      <!-- STAGE 4 -->
+      <div class="stage gated reveal-box" id="stage4" style="padding:22px 24px;background:#fff;border-left:6px solid var(--ink)">
+        <div class="sh"><div><h3>Step 4 — Final commitment</h3><div class="st-time">Stop. Decide. Record.</div></div></div>
+        <div class="fieldrow">
+          <div class="field"><label for="s4sixty">What happened in the first sixty minutes?</label><textarea id="s4sixty" data-key="m6.sim.sixty" style="min-height:72px"></textarea></div>
+          <div class="field"><label for="s4auth">Who authorised each action?</label><textarea id="s4auth" data-key="m6.sim.authfinal" style="min-height:72px"></textarea></div>
+        </div>
+        <div class="btnrow"><button class="btn" data-requires="m6.sim.sixty,m6.sim.authfinal" data-reveal="#simreveal" data-revealed-label="Simulation complete">Close the incident → the reveal</button></div>
+      </div>
+
+      <!-- REVEAL -->
+      <div class="reveal-box" id="simreveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:17px;margin-bottom:10px">Intervention readiness is not about decision quality. It is about decision authority.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:12px">The organisations that intervene quickly are usually the organisations that decided <b>in advance</b> who can act. The room spent its first minutes debating whether to stop — that decision should already have existed. If intervention depends on vendor disclosure, you have outsourced governance. And “the executive team would decide” is not an answer: <i>which executive, under what condition, by what authority?</i></p>
+        <div class="a-step" style="margin-top:6px">
+          <div class="s-label">Debrief</div>
+          <div class="field">
+            <label for="s5deb">Work the five debrief questions: 1 · What was the first decision your table struggled with, and why? 2 · What did you NOT do in the first 60 minutes that you wish you had? 3 · Who owned intervention and escalation in your response — and who should have? 4 · The proposal said “work with the vendor.” What should it have said instead? 5 · If this same failure happened in a complaint triage or scheduling workflow, what would have looked different?</label>
+            <textarea id="s5deb" data-key="m6.sim.debrief" style="min-height:90px"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-message"><div class="km-label">Debrief insight</div>
+    <p>Failure handling is not a response capability. It is a deployment capability. If intervention authority has not been specified before deployment, the workflow is not fully ready for deployment.</p></div>
+  </section>
+
+  <!-- ============ FOUR ELEMENTS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>The Four Elements of Intervention Design</h2>
+    <p class="body">You have just experienced a failure without intervention design. These are the elements that should have existed before the workflow went live.</p>
+    <div class="els">
+      <div class="el"><div class="en">1</div><h4>Escalation triggers</h4><p>Signals indicating something requires human attention: anomalies, drift, external complaints, missed timing thresholds.</p><div class="kq">How do we know something is wrong?</div></div>
+      <div class="el"><div class="en">2</div><h4>Stop conditions</h4><p>Pre-defined points where the workflow must stop. Non-negotiable, quantitative or qualitative, partial or full.</p><div class="kq">What automatically becomes unacceptable? The room debated whether to stop — that decision should already have existed.</div></div>
+      <div class="el"><div class="en">3</div><h4>Intervention paths</h4><p>Defined routes for action: trigger, authority, time window, coordination — with override controls and named ownership.</p><div class="kq">Who can act, how quickly, and without asking permission?</div></div>
+      <div class="el"><div class="en">4</div><h4>Cross-functional accountability ownership</h4><p>Named ownership before deployment: risk, compliance, operations, legal, executive sponsor.</p><div class="kq">Who owns what when reality becomes messy?</div></div>
+    </div>
+
+    <img class="secimg selfOnly" src="../assets/pics/m6-authority-baton.jpg" alt="A relay baton passed cleanly between two runners at dawn" style="max-height:260px">
+    <p class="body dim">The four elements remain consistent across workflows. <b>The clock changes:</b></p>
+    <div class="wins">
+      <div class="win"><b>Complaint triage</b><span>Hours → Days</span></div>
+      <div class="win"><b>Scheduling</b><span>Weeks → Months</span></div>
+      <div class="win"><b>Financial decisioning</b><span>Minutes → Hours</span></div>
+      <div class="win"><b>Identity verification</b><span>Minutes → Hours</span></div>
+    </div>
+    <div class="key-message"><div class="km-label">Whose feature is it?</div>
+    <p>Intervention readiness is not a feature of the agent — or even of the workflow. It is a feature of the organisation. When leaders approve deployment they are not approving success. They are approving how failure will be handled.</p></div>
+  </section>
+
+  <!-- ============ A6.2 ============ -->
+  <section class="msec" id="a62">
+    <img class="secimg" src="../assets/pics/m6-stop-button.jpg" alt="A hand hovering over an emergency stop button" style="max-height:280px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 6.2</span><span class="a-chip time">≈ 20 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>Design Intervention for Your Own Workflow</h3>
+      <p class="a-purpose">You have just felt the cost of missing intervention design. Now specify it — before deployment — for the workflow you named in Module 5's transfer exercise<span id="a62wf"></span>, or a different one if it feels more pressing. Who can stop the workflow, how fast, and on whose authority? For each element: <b>R</b>eady · <b>P</b>artial · <b>N</b>ot ready, plus what's in place, what to add before deployment, and the cross-functional owner.</p>
+
+      <div class="field"><label for="m6wfname">The workflow</label><input type="text" id="m6wfname" data-key="m6.map.workflow" placeholder="Name it — or leave blank to use your carried workflow"></div>
+
+      <div class="rpnrow">
+        <div class="rh"><div><h5>1 · Escalation triggers</h5><div class="rq">Pre-defined signals that raise a workflow event to a human: performance drift, pattern anomalies, external signals, time-based.</div></div>
+          <div class="seg" role="radiogroup" aria-label="Element 1"><label><input type="radio" name="e1" data-key="m6.map.e1" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="e1" data-key="m6.map.e1" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="e1" data-key="m6.map.e1" value="Not ready"><span class="sl">N</span></label></div></div>
+        <textarea data-key="m6.map.e1n" placeholder="In place · to add before deployment · cross-functional owner" aria-label="Element 1 notes" style="min-height:52px"></textarea>
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>2 · Stop conditions</h5><div class="rq">Pre-defined points at which the workflow halts. Non-negotiable. Quantitative or qualitative. Partial or full.</div></div>
+          <div class="seg" role="radiogroup" aria-label="Element 2"><label><input type="radio" name="e2" data-key="m6.map.e2" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="e2" data-key="m6.map.e2" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="e2" data-key="m6.map.e2" value="Not ready"><span class="sl">N</span></label></div></div>
+        <textarea data-key="m6.map.e2n" placeholder="In place · to add before deployment · cross-functional owner" aria-label="Element 2 notes" style="min-height:52px"></textarea>
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>3 · Intervention paths</h5><div class="rq">Trigger, authority, window, coordination. Override controls with named ownership.</div></div>
+          <div class="seg" role="radiogroup" aria-label="Element 3"><label><input type="radio" name="e3" data-key="m6.map.e3" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="e3" data-key="m6.map.e3" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="e3" data-key="m6.map.e3" value="Not ready"><span class="sl">N</span></label></div></div>
+        <textarea data-key="m6.map.e3n" placeholder="In place · to add before deployment · cross-functional owner" aria-label="Element 3 notes" style="min-height:52px"></textarea>
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>4 · Accountability ownership, named cross-functionally</h5><div class="rq">Specific roles within specific functions: risk, compliance, operations, legal, executive sponsor.</div></div>
+          <div class="seg" role="radiogroup" aria-label="Element 4"><label><input type="radio" name="e4" data-key="m6.map.e4" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="e4" data-key="m6.map.e4" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="e4" data-key="m6.map.e4" value="Not ready"><span class="sl">N</span></label></div></div>
+        <textarea data-key="m6.map.e4n" placeholder="In place · to add before deployment · cross-functional owner" aria-label="Element 4 notes" style="min-height:52px"></textarea>
+      </div>
+
+      <div class="field">
+        <label>The intervention window — calibrated to the workflow's harm-containment shape. The longest window the failure can tolerate before harm is locked in:</label>
+        <div class="optcards" style="grid-template-columns:repeat(4,1fr)">
+          <label class="optcard coral"><input type="radio" name="win" data-key="m6.map.window" value="Minutes"><span class="oc"><b>Minutes</b></span></label>
+          <label class="optcard"><input type="radio" name="win" data-key="m6.map.window" value="Hours"><span class="oc"><b>Hours</b></span></label>
+          <label class="optcard"><input type="radio" name="win" data-key="m6.map.window" value="Days"><span class="oc"><b>Days</b></span></label>
+          <label class="optcard"><input type="radio" name="win" data-key="m6.map.window" value="Weeks"><span class="oc"><b>Weeks</b></span></label>
+        </div>
+      </div>
+      <div class="fieldrow">
+        <div class="field"><label for="m6call">The honest readiness call — is this workflow intervention-ready? One sentence verdict.</label><textarea id="m6call" data-key="m6.map.call" style="min-height:60px"></textarea></div>
+        <div class="field"><label for="m6chg">…and one sentence on what would have to be true to change it.</label><textarea id="m6chg" data-key="m6.map.change" style="min-height:60px"></textarea></div>
+      </div>
+    </div>
+
+    <div class="guide selfOnly">
+      <div class="gcol"><h5>What happens if something goes wrong? — questions for my team</h5>
+        <ul><li>What would trigger escalation?</li><li>What would trigger a shutdown?</li><li>Who can intervene?</li><li>Who must be informed?</li><li>What is the intervention window?</li></ul></div>
+      <div class="gcol"><h5>Questions for a vendor</h5>
+        <ul><li>What failure scenarios have occurred?</li><li>How quickly can issues be investigated?</li><li>What support is available during incidents?</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 6 artefact · 6 of 8</span>
+        <button class="btn ghost" id="m6print">Download PDF</button></div>
+      <h3>Escalation Design Map</h3>
+      <p class="ap-note">Intervention design specified before deployment. In Module 8 it answers: <i>“Under what conditions would autonomy need to be constrained or revoked — and can we intervene?”</i></p>
+      <div class="ap-rows" id="m6rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 6 established</h2>
+    <div class="takeaways"><ul>
+      <li>The test of deployment is not whether the workflow works when everything goes right — it is whether the organisation can act quickly enough when things go wrong.</li>
+      <li>Intervention readiness is about decision authority, not decision quality. The organisations that intervene quickly decided in advance who can act.</li>
+      <li>A meeting is not an intervention path. “The executive team would decide” is not an authority. “Work with the vendor” is not a protocol.</li>
+      <li>Stop conditions exist for the failure scenario, not normal operations — flexibility during normal operations, clarity during failure.</li>
+      <li>Monitoring tells you something is wrong. Intervention determines what happens next.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing thought</div>
+    <p>Leaders are not responsible for predicting every failure. They are responsible for ensuring intervention authority, stop conditions, escalation paths and ownership exist before failure occurs.</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> most AI systems don't fail dramatically — they change gradually. Module 7 asks how today's defensible decision stays defensible twelve months from now.</p>
+  </section>
+
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="module-5.html"><span class="lbl">← Previous</span><span>Module 5 — Workflow Readiness</span></a>
+    <a class="next" href="module-7.html"><span class="lbl">Next →</span><span>Module 7 — Governing Autonomy Over Time</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+  /* ---------------- stage timers (pressure theatre) ---------------- */
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var noTimerBox=document.getElementById('notimer');
+  if(reduced) noTimerBox.checked=true;
+  var timers={};
+  function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+  function startTimer(el){
+    var stage=el.getAttribute('data-stage');
+    if(timers[stage])return;
+    var secs=parseInt(el.getAttribute('data-mins'),10)*60;
+    timers[stage]=setInterval(function(){
+      if(noTimerBox.checked){ el.querySelector('b').textContent=fmt(parseInt(el.getAttribute('data-mins'),10)*60); el.classList.remove('low','expired'); return; }
+      secs--;
+      if(secs<=0){
+        el.classList.add('expired');
+        el.querySelector('.tl').textContent='Time is up';
+        el.querySelector('b').textContent='In the room, you’d have had to commit';
+        clearInterval(timers[stage]);
+        return;
+      }
+      el.querySelector('b').textContent=fmt(secs);
+      el.classList.toggle('low',secs<=30);
+    },1000);
+  }
+  function watchStages(){
+    document.querySelectorAll('.stage.revealed .stimer').forEach(function(el){
+      var committed = el.closest('.stage').querySelector('.btn.done');
+      if(!committed) startTimer(el);
+      else { var st=el.getAttribute('data-stage'); if(timers[st]){clearInterval(timers[st]);} el.querySelector('.tl').textContent='Committed'; el.classList.remove('low','expired'); }
+    });
+  }
+  watchStages();
+  document.addEventListener('aal:change',function(){setTimeout(watchStages,100);});
+  document.addEventListener('click',function(e){ if(e.target.closest('[data-reveal]')) setTimeout(watchStages,150); });
+
+  /* ---------------- a62 workflow mention + prefill ---------------- */
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a62wf').textContent = w? ' — “'+w+'”':'';
+    var f=document.getElementById('m6wfname');
+    if(w && !f.value && !AAL.has('m6.map.workflow')) f.placeholder='Carried workflow: '+w+' (or name a different one)';
+  }
+
+  /* ---------------- artefact ---------------- */
+  var ROWS=[
+    ['The workflow','m6.map.workflow'],
+    ['Simulation — my role','m6.sim.role'],
+    ['Simulation — stop or continue, and authority','__stopauth'],
+    ['Simulation — first 60 minutes','m6.sim.sixty'],
+    ['Simulation — who authorised each action','m6.sim.authfinal'],
+    ['Escalation triggers','m6.map.e1'],
+    ['Stop conditions','m6.map.e2'],
+    ['Intervention paths','m6.map.e3'],
+    ['Accountability ownership','m6.map.e4'],
+    ['Intervention window','m6.map.window'],
+    ['Honest readiness call','m6.map.call'],
+    ['What would change it','m6.map.change']
+  ];
+  var NOTES={'m6.map.e1':'m6.map.e1n','m6.map.e2':'m6.map.e2n','m6.map.e3':'m6.map.e3n','m6.map.e4':'m6.map.e4n'};
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function rowVal(k){
+    if(k==='__stopauth'){
+      var a=AAL.get('m6.sim.stop'),b=AAL.get('m6.sim.authority1');
+      return a? a+(b? ' — authority: '+b:'') : '';
+    }
+    if(k==='m6.map.workflow' && !AAL.has(k)) return AAL.get('me.workflow');
+    var v=AAL.get(k);
+    if(NOTES[k] && AAL.has(NOTES[k])) v = v + ' — ' + AAL.get(NOTES[k]);
+    return v;
+  }
+  function drawArtefact(){
+    document.getElementById('m6rows').innerHTML=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('m6print').addEventListener('click',function(){
+    var html=ROWS.map(function(r){
+      var v=rowVal(r[1]);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+    AAL.printDoc('Escalation Design Map', html);
+  });
+
+  function refresh(){wf();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>

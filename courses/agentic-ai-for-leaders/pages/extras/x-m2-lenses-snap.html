@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Four Lenses Snap — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · Four Lenses Snap — forty-five seconds, one combo meter, four lenses. Then sudden death.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:760px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:52ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--head)}
+.hud .score{font-weight:700;font-size:24px}
+.hud .score small{display:block;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hud .combo{font-family:var(--mono);font-size:12px;color:var(--teal-light)}
+.hud .phase{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hud .phase.sd{color:var(--coral)}
+.timerwrap{height:7px;background:rgba(255,255,255,.12);margin-bottom:20px;overflow:hidden}
+.timerbar{height:100%;width:100%;background:var(--teal);transform-origin:left}
+.timerbar.sd{background:var(--coral)}
+.statement{background:#181818;border:1px solid rgba(255,255,255,.14);min-height:120px;display:flex;align-items:center;justify-content:center;padding:24px 28px;text-align:center;font-family:var(--head);font-weight:600;font-size:clamp(17px,3vw,23px);line-height:1.35;margin-bottom:18px}
+.statement.right{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.statement.wrong{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.lenses{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:700px){.lenses{grid-template-columns:repeat(4,1fr)}}
+.lenses button{font-family:var(--head);font-weight:700;font-size:13.5px;line-height:1.2;padding:16px 8px;border:2px solid rgba(255,255,255,.25);background:#141414;color:#fff;cursor:pointer;transition:.12s}
+.lenses button small{display:block;font-weight:500;font-size:10px;color:rgba(255,255,255,.5);margin-top:4px;font-family:var(--mono)}
+.lenses button:hover{border-color:var(--teal-light)}
+.verdict{text-align:center;font-family:var(--head);font-weight:700;font-size:13px;height:20px;margin-top:12px;letter-spacing:.06em;text-transform:uppercase}
+.verdict.ok{color:var(--teal-light)}
+.verdict.no{color:var(--coral)}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">Four Lenses Snap<small>Extras · Module 2 · Sorting sprint</small></div>
+  <a class="back" href="../module-2.html">← Back to Module 2</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 3 min</div>
+    <h1>Four Lenses Snap</h1>
+    <p class="lead">Every statement belongs to one of the <b>Four Autonomy Decision Lenses</b>. Snap it to its lens before the clock eats it. Forty-five seconds on the sprint clock — survive that, and it's <b>sudden death</b>: one wrong snap ends the run.</p>
+    <div class="rules"><span class="rule">45-second sprint</span><span class="rule">Combos multiply</span><span class="rule">Then sudden death</span></div>
+    <button class="go" id="start">Snap</button>
+    <div class="facnote"><b>Facilitator note</b>Run straight after the Four Lenses concept layer. The statements that get missnapped most are the Trade-off Reality ones — the room keeps reading them as Failure Consequence. That confusion is exactly the discussion worth having: consequence is what could go wrong; trade-off is what you're knowingly paying.</div>
+  </section>
+
+  <section id="play">
+    <div class="hud">
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+      <div class="phase" id="phase">Sprint</div>
+      <div class="combo" id="combo">combo ×0</div>
+    </div>
+    <div class="timerwrap"><div class="timerbar" id="tbar"></div></div>
+    <div class="statement" id="stmt"></div>
+    <div class="lenses">
+      <button data-l="trust">Trust &amp; Stability<small>1</small></button>
+      <button data-l="fail">Failure Consequence<small>2</small></button>
+      <button data-l="ctrl">Control &amp; Recoverability<small>3</small></button>
+      <button data-l="trade">Trade-off Reality<small>4</small></button>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag" id="endtag">Run over</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="fsnaps">0</b><span>correct snaps</span></div>
+      <div class="fn"><b id="fsd">0</b><span>sudden-death survivals</span></div>
+    </div>
+    <div class="takeaway"><b>Four lenses, one decision.</b> Trust &amp; Stability asks if it has earned the autonomy. Failure Consequence asks who gets hurt when it's wrong. Control &amp; Recoverability asks whether you can catch and undo it. Trade-off Reality asks what you're knowingly paying for the value. The decision is defensible when all four have been looked through — not just the comfortable ones.</div>
+    <button class="go" id="again">Snap again</button>
+    <a href="../module-2.html"><button class="ghosty">Back to Module 2</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+
+  var POOL=[
+    {t:"Has it performed consistently for six months?",l:"trust"},
+    {t:"Does accuracy hold when volumes spike?",l:"trust"},
+    {t:"Do we know how it behaves in chaotic weeks, not just quiet ones?",l:"trust"},
+    {t:"Does the vendor's next update change how it behaves?",l:"trust"},
+    {t:"If it's wrong, who gets hurt — and how badly?",l:"fail"},
+    {t:"A wrongful decline reaches the customer before anyone sees it.",l:"fail"},
+    {t:"One bad call here means a letter from the regulator.",l:"fail"},
+    {t:"The worst case is an apology — nothing irreversible.",l:"fail"},
+    {t:"Can we catch a wrong call before it lands?",l:"ctrl"},
+    {t:"There's a kill switch — whose hand is on it?",l:"ctrl"},
+    {t:"Once the payment leaves, can we get it back?",l:"ctrl"},
+    {t:"Escalations land with someone who can actually act.",l:"ctrl"},
+    {t:"The speed we gain versus the judgement we give up.",l:"trade"},
+    {t:"The 13% we accept in exchange for the 87%.",l:"trade"},
+    {t:"What are we accepting in exchange for the value?",l:"trade"},
+    {t:"Cheaper per case — but what is the cost of a miss?",l:"trade"}
+  ];
+  var NAMES={trust:"Trust & Stability",fail:"Failure Consequence",ctrl:"Control & Recoverability",trade:"Trade-off Reality"};
+  var LSKEY='aal.x.m2.lenses';
+  var SPRINT=45000;
+
+  function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+  var el=function(id){return document.getElementById(id);};
+
+  var deck=[],di=0,score=0,combo=0,snaps=0,sd=false,sdWins=0,answering=false,sprintTimer=null,over=false;
+
+  function draw(){
+    el('score').textContent=score;
+    el('combo').textContent='combo ×'+combo;
+  }
+  function nextStmt(){
+    if(di>=deck.length){deck=shuffle(POOL.slice());di=0;}
+    el('stmt').className='statement';
+    el('stmt').textContent=deck[di].t;
+    el('verdict').textContent='';el('verdict').className='verdict';
+    answering=true;
+  }
+  function enterSuddenDeath(){
+    sd=true;
+    el('phase').textContent='Sudden death';
+    el('phase').className='phase sd';
+    var bar=el('tbar');bar.style.transition='none';bar.style.transform='scaleX(1)';bar.className='timerbar sd';
+  }
+  function answer(l){
+    if(!answering||over)return;answering=false;
+    var it=deck[di];di++;
+    if(l===it.l){
+      snaps++;combo++;
+      var gained=Math.round(10*(1+Math.floor(combo/4)*0.5));
+      score+=gained;
+      if(sd)sdWins++;
+      el('stmt').classList.add('right');
+      el('verdict').textContent='✓ '+NAMES[it.l]+' +'+gained;
+      el('verdict').className='verdict ok';
+      draw();
+      setTimeout(nextStmt,420);
+    }else{
+      combo=0;score=Math.max(0,score-5);
+      el('stmt').classList.add('wrong');
+      el('verdict').textContent='✗ That was '+NAMES[it.l];
+      el('verdict').className='verdict no';
+      draw();
+      if(sd){setTimeout(end,900);}
+      else setTimeout(nextStmt,650);
+    }
+  }
+  function tierFor(s){
+    if(s>=230)return'Lens Master';
+    if(s>=150)return'Focused';
+    if(s>=80)return'Squinting';
+    return'Blurred';
+  }
+  function end(){
+    over=true;clearTimeout(sprintTimer);
+    el('play').style.display='none';el('end').style.display='block';
+    el('endtag').textContent=sd?'Sudden death':'Run over';
+    el('tier').textContent=tierFor(score);
+    el('fscore').textContent=score;el('fsnaps').textContent=snaps;el('fsd').textContent=sdWins;
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    deck=shuffle(POOL.slice());di=0;score=0;combo=0;snaps=0;sd=false;sdWins=0;over=false;
+    el('phase').textContent='Sprint';el('phase').className='phase';
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    draw();nextStmt();
+    var bar=el('tbar');bar.className='timerbar';bar.style.transition='none';bar.style.transform='scaleX(1)';
+    void bar.offsetWidth;
+    bar.style.transition='transform '+SPRINT+'ms linear';bar.style.transform='scaleX(0)';
+    clearTimeout(sprintTimer);
+    sprintTimer=setTimeout(enterSuddenDeath,SPRINT);
+  }
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+  document.querySelectorAll('.lenses button').forEach(function(b){
+    b.addEventListener('click',function(){answer(b.getAttribute('data-l'));});
+  });
+  document.addEventListener('keydown',function(e){
+    if(el('play').style.display!=='block')return;
+    var map={'1':'trust','2':'fail','3':'ctrl','4':'trade'};
+    if(map[e.key]){e.preventDefault();answer(map[e.key]);}
+  });
+})();
+</script>
+</body>
+</html>

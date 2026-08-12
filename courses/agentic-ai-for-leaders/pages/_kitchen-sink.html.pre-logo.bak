@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kitchen Sink — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body data-page="_kitchen-sink">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a></nav>
+  </div>
+</header>
+
+<main class="stub wrap" id="main" style="padding-top:40px">
+  <div class="buildnote"><b>Kitchen sink (not part of the course).</b> Component and engine test page for the build — every capture type, gating, exports and print live here first.</div>
+
+  <!-- ================= modes ================= -->
+  <div class="panel">
+    <h2>Mode visibility</h2>
+    <p class="selfOnly" id="ks-self">Visible in <b>self-paced</b> mode only.</p>
+    <p class="presentOnly" id="ks-present">Visible in <b>present</b> mode only.</p>
+  </div>
+
+  <!-- ================= fields ================= -->
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Activity 0.1</span><span class="a-chip time">≈ 2 min</span></div>
+    <h3>Capture field types</h3>
+    <p class="a-purpose">Everything autosaves to <code>aal.capture</code> and restores on reload.</p>
+
+    <div class="fieldrow">
+      <div class="field">
+        <label for="ks-wf">Your workflow (writes me.workflow — feeds the header chip)</label>
+        <input type="text" id="ks-wf" data-key="me.workflow" placeholder="e.g. Complaint triage pilot">
+      </div>
+      <div class="field">
+        <label for="ks-text">Text field (ks.text)</label>
+        <input type="text" id="ks-text" data-key="ks.text" placeholder="Type something…">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="ks-notes">Textarea (ks.notes)</label>
+      <textarea id="ks-notes" data-key="ks.notes" placeholder="Longer reflection…"></textarea>
+      <div class="hint">Debounced 400ms; the savebar flashes bottom-right.</div>
+    </div>
+
+    <div class="fieldrow">
+      <div class="field">
+        <label for="ks-select">Select (ks.select)</label>
+        <select id="ks-select" data-key="ks.select">
+          <option value="">Choose…</option>
+          <option>Minutes</option><option>Hours</option><option>Days</option><option>Weeks</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="ks-range">Range (ks.range)</label>
+        <input type="range" id="ks-range" data-key="ks.range" min="0" max="10" value="5">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Option cards — radio group (ks.autonomy)</label>
+      <div class="optcards">
+        <label class="optcard"><input type="radio" name="ks-aut" data-key="ks.autonomy" value="Full autonomy"><span class="oc"><b>Full autonomy</b><span>The agent acts without case-by-case approval.</span></span></label>
+        <label class="optcard"><input type="radio" name="ks-aut" data-key="ks.autonomy" value="Partial autonomy"><span class="oc"><b>Partial autonomy</b><span>Acts inside explicit limits; humans hold the edge cases.</span></span></label>
+        <label class="optcard coral"><input type="radio" name="ks-aut" data-key="ks.autonomy" value="No autonomy yet"><span class="oc"><b>No autonomy yet</b><span>Recommends only. A human decides.</span></span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Checkbox group — multi (ks.rationale)</label>
+      <div class="checks">
+        <label><input type="checkbox" data-key="ks.rationale" data-multi value="Low risk"> Low risk</label>
+        <label><input type="checkbox" data-key="ks.rationale" data-multi value="Easy to reverse"> Easy to reverse</label>
+        <label><input type="checkbox" data-key="ks.rationale" data-multi value="High volume"> High volume</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= reveal gating ================= -->
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Gating</span></div>
+    <h3>Decide before reveal</h3>
+    <p class="a-purpose">The button unlocks only when <code>ks.autonomy</code> and <code>ks.text</code> are answered; the reveal survives refresh.</p>
+    <div class="btnrow">
+      <button class="btn coral" id="ks-revealbtn" data-requires="ks.autonomy,ks.text" data-reveal="#ks-thereveal" data-revealed-label="Revealed">Commit and reveal</button>
+    </div>
+    <div class="reveal-box" id="ks-thereveal">
+      <b>The reveal.</b> You committed before you saw this — that ordering is the course's experiential arc, enforced by the engine.
+    </div>
+  </div>
+
+  <!-- ================= meter ================= -->
+  <div class="activity-block">
+    <div class="a-kicker"><span class="a-chip">Meter</span></div>
+    <h3>Defensibility meter</h3>
+    <p class="a-purpose">Fills as ks.text / ks.notes / ks.select / ks.autonomy are answered.</p>
+    <div class="meter" id="ks-meter">
+      <div class="m-track"><div class="m-fill" id="ks-meterfill"></div></div>
+      <div class="m-label"><span>Vague</span><span id="ks-meterpct">0 of 4</span><span>Defensible</span></div>
+    </div>
+  </div>
+
+  <!-- ================= evidence ================= -->
+  <div class="panel">
+    <h2>Evidence block (Mono voice)</h2>
+    <div class="evidence">
+      <div class="ev-head">Decision log · Case #48211</div>
+      <div>2026-04-02 09:14:07 · INTAKE       · complaint received (email)</div>
+      <div>2026-04-02 09:14:09 · CLASSIFY     · severity=LOW · confidence=0.87</div>
+      <div>2026-04-02 09:14:10 · ACTION       · template response T-04 sent</div>
+      <div class="dim">2026-04-02 09:14:10 · REVIEW       · —</div>
+      <div class="flag">WHY (reasoning)                        · [not recorded]</div>
+    </div>
+  </div>
+
+  <!-- ================= callouts ================= -->
+  <div class="key-message"><div class="km-label">Key message</div><p>Capability is not permission. Leaders decide.</p></div>
+
+  <!-- ================= artefact ================= -->
+  <div class="artefact-panel">
+    <div class="ap-kicker"><span class="ap-chip">Test artefact</span>
+      <button class="btn ghost" id="ks-print">Download PDF</button></div>
+    <h3>Kitchen Sink Snapshot</h3>
+    <p class="ap-note">Assembled live from this page's capture. Gaps render as findings.</p>
+    <div class="ap-rows" id="ks-artefact"></div>
+  </div>
+
+  <!-- ================= state ================= -->
+  <div class="panel">
+    <h2>State controls</h2>
+    <div class="btnrow">
+      <button class="btn primary" data-action="download-state">Download my answers</button>
+      <button class="btn ghost" data-action="load-state">Load answers</button>
+      <button class="btn" data-action="reset-state">Start over</button>
+      <button class="btn ghost" id="ks-gloss">Open glossary</button>
+    </div>
+    <p class="small">Progress fixture: <span id="ks-progress">–</span></p>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Kitchen sink — engine test page</small></div></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // meter
+  var KEYS=['ks.text','ks.notes','ks.select','ks.autonomy'];
+  function meter(){
+    var n=KEYS.filter(function(k){return AAL.has(k)}).length;
+    document.getElementById('ks-meterfill').style.width=(n/KEYS.length*100)+'%';
+    document.getElementById('ks-meterpct').textContent=n+' of '+KEYS.length;
+  }
+  // artefact rows (screen version mirrors print rows)
+  var ROWS=[['Workflow','me.workflow'],['Text answer','ks.text'],['Reflection','ks.notes'],
+            ['Window','ks.select'],['Autonomy position','ks.autonomy'],['Rationale','ks.rationale']];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function artefact(){
+    document.getElementById('ks-artefact').innerHTML=ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  function progressLine(){
+    var p=AAL.progress('ks.',5);
+    document.getElementById('ks-progress').textContent=p.have+' / '+p.total+' ('+Math.round(p.frac*100)+'%)';
+  }
+  function refresh(){meter();artefact();progressLine();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+  document.getElementById('ks-print').addEventListener('click',function(){
+    AAL.printDoc('Kitchen Sink Snapshot', AAL.artefactRows(ROWS));
+  });
+  document.getElementById('ks-gloss').addEventListener('click',AAL.openGlossary);
+});
+</script>
+</body>
+</html>

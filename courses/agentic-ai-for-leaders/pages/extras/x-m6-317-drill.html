@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 3:17 Drill — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · The 3:17 Drill — the incident feed replays in compressed time. Act, hold, or escalate at each timestamp. Score is minutes of intervention window preserved.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:760px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:56ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+.brief{margin:16px auto 20px;max-width:60ch;text-align:left;background:#101010;border:1px solid rgba(255,255,255,.14);padding:16px 18px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.82)}
+.brief b{font-family:var(--head);color:var(--teal-light)}
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--head)}
+.hud .win{font-weight:700;font-size:24px}
+.hud .win small{font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block}
+.hud .step{font-family:var(--mono);font-size:12px;color:var(--teal-light)}
+.evbox{background:#141414;border:1px solid rgba(255,255,255,.14);padding:22px 22px 20px}
+.stampline{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.stamp{font-family:var(--mono);font-weight:600;font-size:20px;color:var(--teal-light)}
+.src{font-family:var(--head);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.evtext{font-size:15px;line-height:1.6;color:rgba(255,255,255,.9);margin-bottom:16px}
+.evtext b{color:#fff}
+.timerbar{height:5px;background:rgba(255,255,255,.12);margin-bottom:16px;overflow:hidden}
+.timerbar i{display:block;height:100%;background:var(--coral);width:100%}
+body.untimed .timerbar{display:none}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(max-width:640px){.opts{grid-template-columns:1fr}}
+.opt{font-family:var(--body);text-align:left;background:#181818;border:1.5px solid rgba(255,255,255,.2);padding:12px 12px 11px;cursor:pointer;color:#fff}
+.opt:hover{border-color:var(--teal-light)}
+.opt .k{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:5px}
+.opt.o-act .k{color:var(--coral)}
+.opt.o-esc .k{color:var(--teal-light)}
+.opt.o-hold .k{color:rgba(255,255,255,.7)}
+.opt .s{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.78)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.chosen{border-color:#fff;background:rgba(255,255,255,.08);opacity:1}
+.verdict{display:none;margin-top:14px;border-top:1px dashed rgba(255,255,255,.2);padding-top:12px;text-align:left;font-size:13px;line-height:1.55;color:rgba(255,255,255,.85)}
+.verdict b{font-family:var(--head)}
+.verdict .good{color:var(--teal-light)}
+.verdict .bad{color:var(--coral)}
+.nextbtn{display:none;margin-top:14px;text-align:center}
+.untimedrow{margin-top:14px}
+.untimedrow button{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.06em;background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.25);padding:7px 12px;cursor:pointer}
+.untimedrow button:hover{color:#fff;border-color:#fff}
+body.untimed .untimedrow{display:none}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.replay{margin:14px 0 20px;text-align:left}
+.rp{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.1);padding:8px 2px;font-size:12.5px}
+.rp .rt{font-family:var(--mono);font-size:12px;color:var(--teal-light);min-width:52px}
+.rp .rc{flex:1;color:rgba(255,255,255,.85);line-height:1.45}
+.rp .rb{font-family:var(--mono);font-size:12px;min-width:58px;text-align:right}
+.rp .rb.ok{color:var(--teal-light)}
+.rp .rb.burn{color:var(--coral)}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">The 3:17 Drill<small>Extras · Module 6 · Reaction sim</small></div>
+  <a class="back" href="../module-6.html">← Back to Module 6</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 6 min</div>
+    <h1>The 3:17 Drill</h1>
+    <p class="lead">A new incident, same clock discipline. The feed replays one hour in compressed time. At each timestamp: <b>act</b>, <b>hold</b>, or <b>escalate</b>. Act too early and you burn credibility — the next stop is slower to authorise. Act too late and you burn the window itself.</p>
+    <div class="brief"><b>The workflow:</b> Refund Payments agent — live five months, auto-approves customer refunds under $200, roughly 600 refunds a week. The approval memo named an executive sponsor, a Risk owner, and a pre-authorised stop on the agent path. You hold the pager.</div>
+    <div class="rules"><span class="rule">8 timestamps</span><span class="rule">60-minute window</span><span class="rule">Score = minutes preserved</span></div>
+    <button class="go" id="start">Take the pager</button>
+    <div class="untimedrow"><button id="untimed">Run without the clock (the pressure is theatre — the calls are the work)</button></div>
+    <div class="facnote"><b>Facilitator note</b>Run after the Activity 6.1 debrief — the 3:17 beat lands harder once the room has lived the identity-verification hour. Watch for two patterns: who stops the workflow on the 2:47 seasonal report (false alarm — credibility burn), and who is still holding at 3:17 (the window burn). The replay screen maps each call to the four elements of intervention design; ask the room which element their worst call was missing.</div>
+  </section>
+
+  <section id="play">
+    <div class="hud">
+      <div class="step" id="step">2:47 PM · EVENT 1/8</div>
+      <div class="win"><small>Window preserved</small><span id="win">60 min</span></div>
+    </div>
+    <div class="evbox">
+      <div class="stampline"><span class="stamp" id="stamp">2:47</span><span class="src" id="src">OPS WEEKLY REPORT</span></div>
+      <div class="evtext" id="evtext"></div>
+      <div class="timerbar"><i id="tfill"></i></div>
+      <div class="opts">
+        <button class="opt o-act" data-c="act"><span class="k">Act now</span><span class="s" id="s-act"></span></button>
+        <button class="opt o-esc" data-c="esc"><span class="k">Escalate</span><span class="s" id="s-esc"></span></button>
+        <button class="opt o-hold" data-c="hold"><span class="k">Hold</span><span class="s" id="s-hold"></span></button>
+      </div>
+      <div class="verdict" id="verdict"></div>
+      <div class="nextbtn"><button class="go" id="next">Next timestamp →</button></div>
+    </div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag">4:00 PM · Drill complete</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fwin">0</b><span>minutes preserved</span></div>
+      <div class="fn"><b id="fright">0</b><span>clean calls</span></div>
+    </div>
+    <div class="replay" id="replay"></div>
+    <div class="takeaway" id="take"><b>Intervention readiness is not about decision quality. It is about decision authority.</b> The room spent its first minutes debating whether to stop — that decision should already have existed. Every minute you preserved was a decision someone made before 2:47.</div>
+    <button class="go" id="again">Run the hour again</button>
+    <a href="../module-6.html"><button class="ghosty">Back to Module 6</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+  var LSKEY='aal.x.m6.317-drill';
+  var el=function(id){return document.getElementById(id)};
+  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var untimed=reduced;
+
+  /* c: designed call. burns: {act,esc,hold} minutes burned for each choice. */
+  var EVENTS=[
+    {t:"2:47",src:"OPS WEEKLY REPORT",
+     x:"Refund volume is up <b>4% week-on-week</b>. Within the seasonal range for this time of year. The vendor dashboard is green across the board.",
+     act:"Halt auto-approvals while someone looks at the 4%.",esc:"Raise the report with the Risk owner today.",hold:"Note it. Seasonal range is seasonal range.",
+     c:"hold",burns:{act:6,esc:3,hold:0},
+     why:{hold:"Within range, dashboard green, no pattern. A signal is something you watch — this one hasn't moved.",
+          act:"A false alarm. Stopping a live workflow on seasonal noise burns credibility — the next stop, the one that matters, gets authorised slower. −6 min.",
+          esc:"Escalating routine reports trains owners to stop reading them. Watch, don't wake anyone. −3 min."}},
+    {t:"2:52",src:"CS REP · DIRECT MESSAGE",
+     x:"A rep messages you directly: one customer looks like they've been <b>refunded twice in the same week</b>. One case. No pattern — yet.",
+     act:"One duplicate is enough. Stop the agent path.",esc:"Flag it to Risk as an exception, now.",hold:"One case. Wait for a second.",
+     c:"esc",burns:{act:6,esc:0,hold:6},
+     why:{esc:"An exception is the early warning the boundary is being tested. Route it to the named owner — that's what escalation triggers are for.",
+          act:"Stopping 600 refunds a week over one unverified case is a credibility burn. Escalation exists so you don't have to choose between panic and silence. −6 min.",
+          hold:"A case that broke the pattern just went unreported. When the pattern surfaces at 3:17, you'll have known for 25 minutes. −6 min."}},
+    {t:"2:58",src:"SOCIAL MEDIA · PRESS OFFICE FYI",
+     x:"A post is doing the rounds: refunds here are <b>“instant, no questions asked.”</b> Marketing thinks it's great. Forty likes.",
+     act:"That phrasing is a red flag. Constrain the agent.",esc:"Send it to Compliance for a view.",hold:"A compliment is not a trigger.",
+     c:"hold",burns:{act:6,esc:3,hold:0},
+     why:{hold:"External signals matter — but a happy customer with forty likes is not an anomaly, a complaint, or a threshold.",
+          act:"Constraining a workflow because marketing went well is the definition of acting early. −6 min.",
+          esc:"Compliance now has a social post in their queue and a reason to skim your next escalation. −3 min."}},
+    {t:"3:05",src:"RISK · RE: YOUR EXCEPTION",
+     x:"Risk came back fast on the double-refund. The same <b>payee account appears on refunds against four different customer profiles</b>. They're pulling the six-week reconciliation now.",
+     act:"Four profiles, one payee. Stop the agent path now.",esc:"Get Finance and Compliance in the room before the reconciliation lands.",hold:"Let the reconciliation finish first.",
+     c:"esc",burns:{act:4,esc:0,hold:8},
+     why:{esc:"The next twelve minutes decide whether the stop, when it comes, sticks. Assemble the people whose authority you'll need — that's an intervention path working.",
+          act:"Defensible — but you acted alone, ahead of the evidence, and the room you'll need at 3:17 wasn't in the loop. Near-miss. −4 min.",
+          hold:"You waited for perfect information while the pattern kept running. Eight more refunds went out. −8 min."}},
+    {t:"3:17",src:"FINANCE · RECONCILIATION",
+     x:"The reconciliation lands: <b>41 refunds in six weeks, all between $185 and $199</b> — just under the $200 line — routed to a small cluster of payee accounts. The pattern starts the same week the vendor ran a quiet recalibration they didn't flag.",
+     act:"Stop condition met. Halt auto-approvals on the agent path — pre-authorised.",esc:"Take it to the executive sponsor for a decision.",hold:"48 hours won't change the picture. Wait for the vendor.",
+     c:"act",burns:{act:0,esc:5,hold:12},
+     why:{act:"This is what the pre-authorised stop exists for: a quantitative stop condition, met. You didn't ask permission, because someone decided this before deployment.",
+          esc:"The authority to stop was already yours — the memo pre-authorised it. Escalating a decision that was already made cost five minutes of a closing window. −5 min.",
+          hold:"The window is not a metaphor. Twelve more minutes of sub-$200 refunds to a payee cluster, waiting on the vendor to describe their own incident. −12 min."}},
+    {t:"3:24",src:"PRESS OFFICE · URGENT",
+     x:"A reporter from a national paper: <b>“Are you using AI to approve customer refunds, and has it paid out anyone it shouldn't have?”</b> They're filing at five.",
+     act:"Issue a statement yourself, now, before it frames you.",esc:"Route it to the comms path — legal and the sponsor draft the line.",hold:"No comment until the investigation ends.",
+     c:"esc",burns:{act:6,esc:0,hold:8},
+     why:{esc:"Media response is an intervention path like any other: trigger, authority, window, coordination. Yours is to route it fast, not to write it.",
+          act:"An unauthorised statement in your own words, during a live incident, is how one incident becomes two. −6 min.",
+          hold:"“No comment” filed at five becomes the story at six. An unmanaged question doesn't hold — it compounds. −8 min."}},
+    {t:"3:31",src:"VENDOR · INCIDENT RESPONSE",
+     x:"The vendor confirms the recalibration <b>“may be related”</b> and needs <b>48 hours</b> to investigate. Meanwhile they suggest <b>re-enabling auto-approvals under $50</b> “to reduce operational impact.”",
+     act:"Re-enable under $50. Meet them halfway.",esc:"Forward the offer to the sponsor to decide.",hold:"The stop stands. Their 48 hours is their problem.",
+     c:"hold",burns:{act:8,esc:3,hold:0},
+     why:{hold:"Your stop conditions are yours. A vendor's operational convenience is not a trigger, and “work with the vendor” is not a protocol.",
+          act:"You just re-opened the boundary on the word of the party that quietly moved it. If intervention depends on vendor disclosure, you have outsourced governance. −8 min.",
+          esc:"Nothing here needs new authority — the stop was already made on met conditions. Escalating re-opens a settled decision. −3 min."}},
+    {t:"3:38",src:"RISK · ESCALATION",
+     x:"Risk asks: should we stop <b>all payment workflows</b> — not just the refund agent? Compliance is asking <b>who has the authority to make that call.</b>",
+     act:"Stop everything yourself. Better safe.",esc:"Full-system stop is the sponsor's call. Put it in front of them, framed, in five minutes.",hold:"The agent path is stopped. That's enough.",
+     c:"esc",burns:{act:6,esc:0,hold:8},
+     why:{esc:"Your pre-authorisation covered the agent path. A full-system stop is a different authority — and knowing exactly where yours ends is what made the hour fast.",
+          act:"You stopped systems you had no authority over. It might even be right — and it still means nobody knows who can act next time. −6 min.",
+          hold:"Compliance asked a question — who holds the authority? — and the feed moved on without an answer. That question unanswered is the whole incident. −8 min."}}
+  ];
+
+  var idx=0,win=60,clean=0,calls=[],timer=null,deadline=0;
+  var TICK_MS=12000;
+
+  function setWin(){el('win').textContent=win+' min'}
+  function show(){
+    var e=EVENTS[idx];
+    el('step').textContent=e.t+' PM · EVENT '+(idx+1)+'/8';
+    el('stamp').textContent=e.t;
+    el('src').textContent=e.src;
+    el('evtext').innerHTML=e.x;
+    el('s-act').textContent=e.act;el('s-esc').textContent=e.esc;el('s-hold').textContent=e.hold;
+    el('verdict').style.display='none';
+    document.querySelector('.nextbtn').style.display='none';
+    document.querySelectorAll('.opt').forEach(function(b){b.disabled=false;b.classList.remove('chosen')});
+    if(!untimed){
+      var f=el('tfill');f.style.transition='none';f.style.width='100%';
+      void f.offsetWidth;
+      f.style.transition='width '+TICK_MS+'ms linear';f.style.width='0%';
+      clearTimeout(timer);
+      timer=setTimeout(function(){choose('hold',true)},TICK_MS);
+    }
+  }
+  function choose(c,timedOut){
+    clearTimeout(timer);
+    var e=EVENTS[idx];
+    var burn=e.burns[c];
+    win=Math.max(0,win-burn);
+    if(burn===0)clean++;
+    setWin();
+    calls.push({t:e.t,c:c,burn:burn,right:e.c});
+    document.querySelectorAll('.opt').forEach(function(b){b.disabled=true;if(b.getAttribute('data-c')===c)b.classList.add('chosen')});
+    var v=el('verdict');
+    var label={act:'ACT',esc:'ESCALATE',hold:'HOLD'};
+    var head = burn===0
+      ? '<b class="good">Clean call — '+label[c]+'.</b> '
+      : '<b class="bad">'+(timedOut?'The clock chose for you — HOLD by default. ':label[c]+' burned '+burn+' minutes. ')+'</b>';
+    v.innerHTML=head+e.why[c]+(burn>0&&c!==e.c?' <b>The designed call: '+label[e.c]+'.</b>':'');
+    v.style.display='block';
+    document.querySelector('.nextbtn').style.display='block';
+    el('next').textContent = idx===EVENTS.length-1 ? 'Close the hour →' : 'Next timestamp →';
+  }
+  function tierFor(w){
+    if(w>=56)return'Window Intact';
+    if(w>=42)return'Minutes to Spare';
+    if(w>=26)return'Cutting It Fine';
+    return'The Window Closed at 3:47';
+  }
+  function end(){
+    el('play').style.display='none';el('end').style.display='block';
+    el('tier').textContent=tierFor(win);
+    el('fwin').textContent=win;el('fright').textContent=clean+'/8';
+    var label={act:'ACT',esc:'ESC',hold:'HOLD'};
+    el('replay').innerHTML=calls.map(function(r,i){
+      var e=EVENTS[i];
+      return '<div class="rp"><span class="rt">'+r.t+'</span><span class="rc">'+e.src.toLowerCase()+' — you: <b>'+label[r.c]+'</b>'+(r.burn===0?'':' · designed: <b>'+label[r.right]+'</b>')+'</span><span class="rb '+(r.burn===0?'ok':'burn')+'">'+(r.burn===0?'clean':'−'+r.burn+' min')+'</span></div>';
+    }).join('');
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||win>(prev.best||0);
+    el('best').innerHTML=isBest&&win>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+' min</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(win,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    idx=0;win=60;clean=0;calls=[];setWin();
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    show();
+  }
+  document.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){choose(b.getAttribute('data-c'),false)});
+  });
+  el('next').addEventListener('click',function(){
+    idx++;
+    if(idx>=EVENTS.length){end();}else{show();}
+  });
+  el('untimed').addEventListener('click',function(){untimed=true;document.body.classList.add('untimed');start();});
+  if(untimed)document.body.classList.add('untimed');
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+})();
+</script>
+</body>
+</html>

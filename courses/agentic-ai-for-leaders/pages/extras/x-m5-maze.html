@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Reversibility Maze — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · The Reversibility Maze — every path through the workflow works. Only one keeps a wrong call catchable all the way to the exit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:820px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:54ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.go:disabled{opacity:.35;cursor:not-allowed}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#play{display:none}
+.hint{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.5);text-align:center;margin-bottom:14px}
+.stagegrp{margin-bottom:16px}
+.stagegrp .sh{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-light);margin-bottom:8px}
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:640px){.lanes{grid-template-columns:1fr}}
+.lane{background:#181818;border:1.5px solid rgba(255,255,255,.16);padding:12px 13px;cursor:pointer;transition:.12s;text-align:left}
+.lane:hover{border-color:var(--teal-light)}
+.lane.sel{border-color:var(--teal-light);background:rgba(83,223,203,.1)}
+.lane .lt{font-family:var(--head);font-weight:600;font-size:13.5px;line-height:1.3;margin-bottom:6px}
+.lane .lm{display:flex;gap:6px;align-items:center}
+.lane .sp{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.55)}
+.lane .rv{font-family:var(--head);font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px}
+.lane .rv.catch{background:rgba(83,223,203,.18);color:var(--teal-light)}
+.lane .rv.neutral{background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.lane .rv.lock{background:rgba(220,90,70,.2);color:var(--coral)}
+.runbtn{margin-top:6px;text-align:center}
+/* trace */
+#trace{display:none}
+.errbanner{background:#1a1210;border:2px solid var(--coral);padding:16px 20px;margin-bottom:14px;text-align:center}
+.errbanner b{font-family:var(--head);color:var(--coral);font-size:15px}
+.errbanner p{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px}
+.trow{display:flex;gap:12px;align-items:flex-start;background:#181818;border:1px solid rgba(255,255,255,.14);padding:12px 15px;margin-bottom:8px;font-size:13.5px}
+.trow .tn{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.4);padding-top:2px;white-space:nowrap}
+.trow.caught{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.trow.locked{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.trow .note{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-left:auto;white-space:nowrap;align-self:center}
+.trow.caught .note{color:var(--teal-light)}
+.trow.locked .note{color:var(--coral)}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.betterroute{font-family:var(--head);font-weight:600;font-size:13px;color:var(--coral);margin-bottom:8px}
+.optimum{font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);margin-bottom:8px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">The Reversibility Maze<small>Extras · Module 5 · Puzzle</small></div>
+  <a class="back" href="../module-5.html">← Back to Module 5</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 5 min</div>
+    <h1>The Reversibility Maze</h1>
+    <p class="lead">Design a customer-payout workflow: four stages, three lanes each. Every path works when nothing goes wrong. But an error <b>always</b> slips in at intake — and your route decides whether it gets caught or locked in. Speed scores. Catch-points score more. <b>There is exactly one best route. Find it.</b></p>
+    <div class="rules"><span class="rule">4 stages × 3 lanes</span><span class="rule">81 possible routes</span><span class="rule">One unique optimum</span></div>
+    <button class="go" id="start">Design the workflow</button>
+    <div class="facnote"><b>Facilitator note</b>Run after the Four Criteria. The trap route is all-speed (fastest lanes everywhere) — it scores terribly because the error locks in at the skip-verification lane. The optimum is not the slowest route either: reversibility is a design property, not a tax. Ask who found 111.</div>
+  </section>
+
+  <section id="play">
+    <div class="hint">SPEED SCORES · CATCH-POINTS SCORE MORE · A LOCK MAKES EVERYTHING AFTER IT FINAL</div>
+    <div id="stages"></div>
+    <div class="runbtn"><button class="go" id="run" disabled>Run the case →</button></div>
+  </section>
+
+  <section id="trace">
+    <div class="errbanner"><b>⚠ Intake error</b><p>The case entered with the wrong account linked. Nobody knows yet. Your workflow is about to process it.</p></div>
+    <div id="trows"></div>
+    <div class="runbtn"><button class="go" id="toend">The verdict →</button></div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag">Route scored</div>
+    <div id="best"></div>
+    <div id="optnote"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>route score</span></div>
+      <div class="fn"><b id="fspeed">0</b><span>speed</span></div>
+      <div class="fn"><b id="fcatch">0</b><span>live catch-points</span></div>
+    </div>
+    <div class="takeaway"><b>Reversibility is a workflow property.</b> The fastest route locked the error in at stage one. The best route wasn't the slowest — it was the one that kept a hand on the case at every stage. If the agent gets this wrong: how quickly would we know, how far would it travel, what could still be corrected?</div>
+    <button class="go" id="again">Design another route</button>
+    <a href="../module-5.html"><button class="ghosty">Back to Module 5</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+
+  /* r: catch | neutral | lock · s: speed
+     scoring: speed sum + 12/catch BEFORE first lock + 40 if any catch before first lock + (−25 if a lock exists with no catch before it)
+     brute-forced: unique optimum B,B,B,B = 111 */
+  var STAGES=[
+    {name:"Stage 1 · Verify the customer",lanes:[
+      {t:"Auto-verify against records",s:8,r:"neutral"},
+      {t:"Manual spot-check queue",s:4,r:"catch"},
+      {t:"Skip for returning customers",s:10,r:"lock"}]},
+    {name:"Stage 2 · Assess the claim",lanes:[
+      {t:"Agent scores it — no reasoning trail",s:9,r:"lock"},
+      {t:"Agent scores it + reasoning log",s:7,r:"catch"},
+      {t:"Full manual assessment",s:3,r:"catch"}]},
+    {name:"Stage 3 · Decide",lanes:[
+      {t:"Auto-approve the low band",s:8,r:"neutral"},
+      {t:"Approve with 24h cooling-off",s:6,r:"catch"},
+      {t:"Committee sign-off",s:3,r:"catch"}]},
+    {name:"Stage 4 · Pay out",lanes:[
+      {t:"Instant payout",s:9,r:"lock"},
+      {t:"Batch payout overnight",s:6,r:"catch"},
+      {t:"Payout after customer confirms",s:5,r:"catch"}]}
+  ];
+  var LSKEY='aal.x.m5.maze';
+  var RVNAME={catch:"Catch-point",neutral:"Pass-through",lock:"Locks in"};
+
+  var el=function(id){return document.getElementById(id);};
+  var picks=[null,null,null,null];
+
+  function scorePath(p){
+    var speed=0,catches=0,locked=false,caught=false,lockNoCatch=false;
+    for(var i=0;i<4;i++){
+      var L=STAGES[i].lanes[p[i]];
+      speed+=L.s;
+      if(!locked){
+        if(L.r==='catch'){catches++;caught=true;}
+        if(L.r==='lock'){locked=true;if(!caught)lockNoCatch=true;}
+      }
+    }
+    var score=speed+12*catches+(caught?40:0)+(lockNoCatch?-25:0);
+    return {score:score,speed:speed,catches:catches,caught:caught,locked:locked,lockNoCatch:lockNoCatch};
+  }
+  function optimum(){
+    var best=null,bestP=null,count=0;
+    for(var a=0;a<3;a++)for(var b=0;b<3;b++)for(var c=0;c<3;c++)for(var d=0;d<3;d++){
+      var s=scorePath([a,b,c,d]).score;
+      if(best===null||s>best){best=s;bestP=[a,b,c,d];count=1;}
+      else if(s===best)count++;
+    }
+    return {best:best,path:bestP,unique:count===1};
+  }
+
+  function render(){
+    picks=[null,null,null,null];
+    el('run').disabled=true;
+    el('stages').innerHTML=STAGES.map(function(st,si){
+      return '<div class="stagegrp"><div class="sh">'+st.name+'</div><div class="lanes">'+
+        st.lanes.map(function(L,li){
+          return '<div class="lane" data-s="'+si+'" data-l="'+li+'" role="button" tabindex="0">'+
+            '<div class="lt">'+L.t+'</div>'+
+            '<div class="lm"><span class="sp">speed '+L.s+'</span><span class="rv '+L.r+'">'+RVNAME[L.r]+'</span></div></div>';
+        }).join('')+'</div></div>';
+    }).join('');
+    el('stages').querySelectorAll('.lane').forEach(function(node){
+      var choose=function(){
+        var si=Number(node.getAttribute('data-s')),li=Number(node.getAttribute('data-l'));
+        picks[si]=li;
+        node.parentElement.querySelectorAll('.lane').forEach(function(x){x.classList.remove('sel');});
+        node.classList.add('sel');
+        el('run').disabled=picks.some(function(p){return p===null;});
+      };
+      node.addEventListener('click',choose);
+      node.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});
+    });
+  }
+  function runTrace(){
+    var res=scorePath(picks);
+    el('play').style.display='none';el('trace').style.display='block';
+    var locked=false,caughtShown=false;
+    el('trows').innerHTML=STAGES.map(function(st,i){
+      var L=st.lanes[picks[i]];
+      var cls='',note='';
+      if(!locked){
+        if(L.r==='catch'&&!caughtShown){cls='caught';note='✓ ERROR CATCHABLE HERE';caughtShown=true;}
+        else if(L.r==='catch'){cls='caught';note='✓ STILL CATCHABLE';}
+        else if(L.r==='lock'){cls='locked';note=caughtShown?'LOCKS — BUT CAUGHT UPSTREAM':'✗ ERROR LOCKED IN';locked=true;}
+      }else{note='DOWNSTREAM OF THE LOCK';}
+      return '<div class="trow'+(cls?' '+cls:'')+'"><span class="tn">S'+(i+1)+'</span><span>'+L.t+'</span><span class="note">'+note+'</span></div>';
+    }).join('');
+    window.__lastRun=res;
+  }
+  function tierFor(res,opt){
+    if(res.score===opt.best)return'Reversibility Architect';
+    if(res.score>=95)return'Safety-Minded';
+    if(res.score>=60)return'Fast but Fragile';
+    return'Locked It In';
+  }
+  function end(){
+    var res=window.__lastRun;
+    var opt=optimum();
+    el('trace').style.display='none';el('end').style.display='block';
+    el('tier').textContent=tierFor(res,opt);
+    el('fscore').textContent=res.score;el('fspeed').textContent=res.speed;el('fcatch').textContent=res.catches;
+    el('optnote').innerHTML=res.score===opt.best
+      ?'<div class="optimum">You found the unique optimum — '+opt.best+'. One route out of 81.</div>'
+      :'<div class="betterroute">A better route exists. Best possible: '+opt.best+'.</div>';
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||res.score>(prev.best||0);
+    el('best').innerHTML=isBest&&res.score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(res.score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(){
+    el('splash').style.display='none';el('end').style.display='none';el('trace').style.display='none';el('play').style.display='block';
+    render();
+  }
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+  el('run').addEventListener('click',runTrace);
+  el('toend').addEventListener('click',end);
+  /* exposed for the harness */
+  window.__mazeScore=scorePath;window.__mazeOpt=optimum;
+})();
+</script>
+</body>
+</html>

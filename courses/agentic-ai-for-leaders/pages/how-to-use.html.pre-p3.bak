@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use this site — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body data-page="how-to-use">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html"><svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+<section class="hero" style="min-height:340px">
+  <img class="bg" src="../assets/pics/hub-arc-corridor.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Agentic AI for Leaders</div>
+    <h1>How to use this site</h1>
+  </div>
+</section>
+<main class="stub wrap" id="main">
+  <div class="buildnote"><b>This page is being built.</b> Here’s what it will do.</div>
+  <div class="panel"><p class="lead" style="margin:0">Present mode vs self-paced mode, how your answers save automatically in this browser, carrying answers across two days and devices, and exporting your artefacts as PDFs.</p></div>
+  <div class="pn"><a href="welcome.html"><span class="lbl">← Previous</span><span>Welcome &amp; Orientation</span></a><a class="next" href="foundations.html"><span class="lbl">Next →</span><span>The Foundations Gym</span></a></div>
+</main>
+<footer>
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div>
+    <small>Australian Institute of Management — Interactive Workbook</small></div>
+    <small>Capability is not permission. Leaders decide.</small>
+  </div>
+</footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

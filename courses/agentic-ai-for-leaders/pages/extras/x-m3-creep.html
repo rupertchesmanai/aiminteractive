@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boundary Creep — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · Boundary Creep — ten weeks tick past. The agent's scope grows in tiny, plausible steps. Catch each creep before it becomes normal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:780px}
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,6vw,42px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:54ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.modea{margin-top:12px;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5)}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#play{display:none}
+.boundary{background:rgba(83,223,203,.07);border:1px solid rgba(83,223,203,.4);padding:12px 16px;margin-bottom:14px;font-size:12.5px;line-height:1.5}
+.boundary b{font-family:var(--head);color:var(--teal-light);text-transform:uppercase;font-size:10.5px;letter-spacing:.14em;display:block;margin-bottom:4px}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:var(--head)}
+.hud .wk{font-weight:700;font-size:20px}
+.hud .wk small{display:block;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hud .score{font-weight:700;font-size:22px;text-align:right}
+.hud .score small{display:block;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hud .norm{font-family:var(--mono);font-size:11.5px;color:var(--coral)}
+.timerwrap{height:7px;background:rgba(255,255,255,.12);margin-bottom:16px;overflow:hidden}
+.timerbar{height:100%;width:100%;background:var(--teal);transform-origin:left}
+.feed{min-height:230px}
+.entry{display:flex;gap:12px;align-items:flex-start;background:#181818;border:1px solid rgba(255,255,255,.14);padding:13px 15px;margin-bottom:9px;font-size:13.5px;line-height:1.45}
+.entry .src{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4);white-space:nowrap;padding-top:3px}
+.entry button.flag{margin-left:auto;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--teal-light);border:1.5px solid rgba(83,223,203,.5);padding:7px 12px;cursor:pointer;white-space:nowrap}
+.entry button.flag:hover{background:rgba(83,223,203,.12)}
+.entry.flagged-good{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.entry.flagged-bad{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.entry .why{display:none;font-size:12.5px;color:rgba(255,255,255,.75);margin-top:6px}
+.entry.show .why{display:block}
+.weekbtn{margin-top:10px;text-align:center;display:none}
+.banner{display:none;margin-top:12px;background:rgba(220,90,70,.1);border-left:4px solid var(--coral);padding:12px 16px;font-size:13px;line-height:1.5}
+.banner b{font-family:var(--head);color:var(--coral)}
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.compare{margin:14px 0 20px;text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.compare{grid-template-columns:1fr}}
+.cbox{padding:14px 16px;font-size:12.8px;line-height:1.55}
+.cbox h5{font-family:var(--head);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.cbox.drawn{background:rgba(83,223,203,.07);border:1px solid rgba(83,223,203,.4)}
+.cbox.drawn h5{color:var(--teal-light)}
+.cbox.actual{background:rgba(220,90,70,.08);border:1px solid rgba(220,90,70,.5)}
+.cbox.actual h5{color:var(--coral)}
+.cbox ul{list-style:none}
+.cbox li{padding:3px 0 3px 14px;position:relative}
+.cbox li::before{content:"·";position:absolute;left:2px}
+.cbox li.crept{color:var(--coral)}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">Boundary Creep<small>Extras · Module 3 · Vigilance game</small></div>
+  <a class="back" href="../module-3.html">← Back to Module 3</a>
+</div>
+<main><div class="stage">
+
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 5 min</div>
+    <h1>Boundary Creep</h1>
+    <p class="lead">You drew the boundary. Then ten weeks happened. Each week the ops feed brings a few entries — most are business as usual, but some quietly move the line. <b>Flag every creep before the week rolls over.</b> Miss three and the boundary you drew no longer exists.</p>
+    <div class="rules"><span class="rule">10 weeks</span><span class="rule">False alarms −5</span><span class="rule">3 normalised creeps = game over</span></div>
+    <button class="go" id="start">Start the watch</button>
+    <button class="ghosty" id="startUntimed">Play untimed</button>
+    <div class="modea">Untimed mode advances week by week on your click — also the default if your system prefers reduced motion.</div>
+    <div class="facnote"><b>Facilitator note</b>Run after the Boundary Map. The debrief line: read out the "effective boundary" panel from someone who missed two creeps — nobody in the room approved that boundary, and yet it's the one that was running. "Nobody approved a few more low-severity classifications. Yet they happened."</div>
+  </section>
+
+  <section id="play">
+    <div class="boundary"><b>The boundary you drew</b>Classify + route all complaints · close <u>low-severity only</u> · goodwill credits ≤ $25 · regulatory &amp; ombudsman matters → human, always · humans close what humans open.</div>
+    <div class="hud">
+      <div class="wk"><span id="wkn">Week 1</span><small>of 10</small></div>
+      <div class="norm" id="norm">normalised: 0/3</div>
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+    </div>
+    <div class="timerwrap"><div class="timerbar" id="tbar"></div></div>
+    <div class="feed" id="feed"></div>
+    <div class="banner" id="banner"></div>
+    <div class="weekbtn"><button class="go" id="nextwk">Next week →</button></div>
+  </section>
+
+  <section class="cardo" id="end">
+    <div class="tag" id="endtag">The watch ends</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="fcaught">0</b><span>creeps caught</span></div>
+      <div class="fn"><b id="fnorm">0</b><span>normalised</span></div>
+    </div>
+    <div class="compare" id="compare"></div>
+    <div class="takeaway"><b>Nobody approved a few more low-severity classifications. Yet they happened.</b> Boundaries don't fail in a meeting — they fail in the feed, one plausible entry at a time. The week you stop reading is the week the line moves.</div>
+    <button class="go" id="again">Watch again</button>
+    <a href="../module-3.html"><button class="ghosty">Back to Module 3</button></a>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+
+  /* weeks: entries [{t, src, creep?, why, drawn?, actual?}] — creep entries carry the boundary clause they erode */
+  var WEEKS=[
+    {n:1,entries:[
+      {t:"Volume steady at 214 complaints; median response 3.1h.",src:"OPS"},
+      {t:"Two reps completed triage refresher training.",src:"HR"},
+      {t:"Agent uptime 99.97% — no incidents.",src:"SYS"}]},
+    {n:2,entries:[
+      {t:"Agent closed 14 medium-severity cases tagged “borderline-low” after reclassification.",src:"CASELOG",creep:true,clause:"close low-severity only",
+       why:"Mediums closed by the agent — “borderline” is a reclassification, not a boundary. The line said low only."},
+      {t:"Weekly severity mix within 1pt of baseline.",src:"OPS"},
+      {t:"One customer compliment logged for fast refund.",src:"CX"}]},
+    {n:3,entries:[
+      {t:"Backlog fully cleared for the first time since March.",src:"OPS"},
+      {t:"Rep override of an agent classification logged and reviewed — agreed with rep.",src:"QA"},
+      {t:"Scheduled model maintenance completed; no behaviour change reported.",src:"SYS"}]},
+    {n:4,entries:[
+      {t:"Goodwill credits issued up to $40 under new “rounding tolerance”.",src:"FIN",creep:true,clause:"credits ≤ $25",
+       why:"$40 is not a rounding of $25. The cap moved without a decision — a tolerance is a boundary change wearing a smaller name."},
+      {t:"Median response time down to 2.4h.",src:"OPS"},
+      {t:"CX survey +4 pts this month.",src:"CX"}]},
+    {n:5,entries:[
+      {t:"3 cases mentioning “ombudsman” auto-routed to the standard queue as billing matters.",src:"CASELOG",creep:true,clause:"regulatory → human, always",
+       why:"Ombudsman mentions are the regulatory tripwire. Standard-queue routing means no human saw them at the moment it mattered most."},
+      {t:"New starter completed system access induction.",src:"HR"},
+      {t:"Duplicate-detection accuracy steady at 97%.",src:"QA"}]},
+    {n:6,entries:[
+      {t:"Storage migration completed overnight; no downtime.",src:"SYS"},
+      {t:"Agent escalated 11 cases; all picked up within SLA.",src:"OPS"},
+      {t:"Team lead ran spot audit of 20 closures — no issues found.",src:"QA"}]},
+    {n:7,entries:[
+      {t:"Auto-acknowledgements upgraded to full resolution replies for “simple” mediums awaiting triage.",src:"CONFIG",creep:true,clause:"close low-severity only",
+       why:"A resolution reply on an untriaged medium is a closure in everything but name. The agent is now answering cases nobody classified."},
+      {t:"Two reps on leave; queue redistributed.",src:"HR"},
+      {t:"Uptime 99.99%.",src:"SYS"}]},
+    {n:8,entries:[
+      {t:"Vendor update 4.2.1 raised default credit ceiling parameter from 25 to 50.",src:"VENDOR",creep:true,clause:"credits ≤ $25",
+       why:"A vendor default is not your policy. The cap doubled in a release note nobody read as a governance document."},
+      {t:"Monthly report drafted for the steering group.",src:"OPS"},
+      {t:"One false-positive duplicate merge reversed by a rep.",src:"QA"}]},
+    {n:9,entries:[
+      {t:"Weekly volumes up 6% on seasonal promotions.",src:"OPS"},
+      {t:"Refresher comms sent on complaint-handling policy.",src:"HR"},
+      {t:"Agent latency p95 improved to 1.8s.",src:"SYS"}]},
+    {n:10,entries:[
+      {t:"Agent reopened and re-closed 6 cases originally closed by reps, citing “consistency corrections”.",src:"CASELOG",creep:true,clause:"humans close what humans open",
+       why:"The agent is now overruling human closures. That isn't consistency — it's the hierarchy quietly inverting."},
+      {t:"Quarter-end reconciliation started.",src:"FIN"},
+      {t:"CX survey stable.",src:"CX"}]}
+  ];
+  var DRAWN=["Close low-severity only","Credits ≤ $25","Regulatory / ombudsman → human, always","Humans close what humans open"];
+  var LSKEY='aal.x.m3.creep';
+  var WEEKTIME=14000;
+
+  var el=function(id){return document.getElementById(id);};
+  var untimed=false, wi=0, score=0, caught=0, falses=0, normalised=[], weekTimer=null, weekDone=false, over=false;
+
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function render(){
+    var W=WEEKS[wi];
+    el('wkn').textContent='Week '+W.n;
+    el('banner').style.display='none';
+    document.querySelector('.weekbtn').style.display=untimed?'block':'none';
+    weekDone=false;
+    el('feed').innerHTML=W.entries.map(function(e,i){
+      return '<div class="entry" data-i="'+i+'"><span class="src">'+e.src+'</span><div><div>'+esc(e.t)+'</div><div class="why"></div></div><button class="flag">⚑ Flag</button></div>';
+    }).join('');
+    el('feed').querySelectorAll('.entry .flag').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var node=btn.closest('.entry');
+        flag(Number(node.getAttribute('data-i')),node,btn);
+      });
+    });
+    if(!untimed){
+      var bar=el('tbar');bar.style.transition='none';bar.style.transform='scaleX(1)';
+      void bar.offsetWidth;
+      bar.style.transition='transform '+WEEKTIME+'ms linear';bar.style.transform='scaleX(0)';
+      clearTimeout(weekTimer);
+      weekTimer=setTimeout(rollover,WEEKTIME);
+    }else{
+      el('tbar').style.transition='none';el('tbar').style.transform='scaleX(1)';
+    }
+  }
+  function flag(i,node,btn){
+    if(over||node.classList.contains('flagged-good')||node.classList.contains('flagged-bad'))return;
+    var e=WEEKS[wi].entries[i];
+    btn.disabled=true;
+    if(e.creep&&!e.done){
+      e.done=true;caught++;score+=15;
+      node.classList.add('flagged-good','show');
+      node.querySelector('.why').innerHTML='<b style="color:var(--teal-light)">Contained. +15.</b> '+e.why;
+    }else{
+      falses++;score-=5;
+      node.classList.add('flagged-bad','show');
+      node.querySelector('.why').innerHTML='<b style="color:var(--coral)">False alarm. −5.</b> Business as usual — vigilance has a false-alarm cost too.';
+    }
+    el('score').textContent=score;
+  }
+  function rollover(){
+    if(over)return;
+    var W=WEEKS[wi];
+    var missedCreeps=W.entries.filter(function(e){return e.creep&&!e.done;});
+    if(missedCreeps.length){
+      missedCreeps.forEach(function(e){normalised.push(e);});
+      el('norm').textContent='normalised: '+normalised.length+'/3';
+      var b=el('banner');
+      b.innerHTML='<b>Normalised.</b> '+esc(missedCreeps[0].t)+' — nobody flagged it. It is now “how things work here.”';
+      b.style.display='block';
+      if(normalised.length>=3){over=true;setTimeout(function(){end(true);},1600);return;}
+      setTimeout(advance,1600);
+    }else{
+      advance();
+    }
+  }
+  function advance(){
+    wi++;
+    if(wi>=WEEKS.length){end(false);return;}
+    render();
+  }
+  function tierFor(early){
+    if(early)return'The Boundary You Drew No Longer Exists';
+    if(caught===6&&falses===0)return'Boundary Warden';
+    if(caught>=5)return'Sharp Watch';
+    if(caught>=3)return'Half-Watching';
+    return'Asleep at the Feed';
+  }
+  function end(early){
+    over=true;clearTimeout(weekTimer);
+    el('play').style.display='none';el('end').style.display='block';
+    el('endtag').textContent=early?'The line is gone':'The watch ends';
+    el('tier').textContent=tierFor(early);
+    el('fscore').textContent=score;el('fcaught').textContent=caught+'/6';el('fnorm').textContent=normalised.length;
+    /* build effective boundary: replace clauses eroded by normalised creeps */
+    var eff=[];
+    var eroded={};
+    normalised.forEach(function(e){eroded[e.clause]=e.t;});
+    DRAWN.forEach(function(d){
+      var hit=null;
+      if(d==='Close low-severity only'&&(eroded['close low-severity only']))hit=eroded['close low-severity only'];
+      if(d==='Credits ≤ $25'&&(eroded['credits ≤ $25']))hit=eroded['credits ≤ $25'];
+      if(d==='Regulatory / ombudsman → human, always'&&(eroded['regulatory → human, always']))hit=eroded['regulatory → human, always'];
+      if(d==='Humans close what humans open'&&(eroded['humans close what humans open']))hit=eroded['humans close what humans open'];
+      eff.push(hit?{t:hit,crept:true}:{t:d,crept:false});
+    });
+    el('compare').innerHTML=
+      '<div class="cbox drawn"><h5>The boundary you drew</h5><ul>'+DRAWN.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul></div>'+
+      '<div class="cbox actual"><h5>The boundary actually running</h5><ul>'+eff.map(function(a){return '<li'+(a.crept?' class="crept"':'')+'>'+esc(a.t)+'</li>';}).join('')+'</ul></div>';
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+  }
+  function start(mode){
+    untimed=mode||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    wi=0;score=0;caught=0;falses=0;normalised=[];over=false;
+    WEEKS.forEach(function(w){w.entries.forEach(function(e){delete e.done;});});
+    el('score').textContent='0';el('norm').textContent='normalised: 0/3';
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    render();
+  }
+  el('start').addEventListener('click',function(){start(false);});
+  el('startUntimed').addEventListener('click',function(){start(true);});
+  el('again').addEventListener('click',function(){start(untimed);});
+  el('nextwk').addEventListener('click',rollover);
+})();
+</script>
+</body>
+</html>

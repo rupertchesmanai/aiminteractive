@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 5: Workflow Readiness — Agentic AI for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body data-page="module-5">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html"><svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+<section class="hero">
+  <img class="bg" src="../assets/pics/m5-hero-committee.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 2 · Module 5 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “What must I see?”</span><span class="arrow">→</span><span class="to">To “Is the workflow ready?”</span></div>
+    <h1>Workflow Readiness</h1>
+    <p class="sub">Dashboard — The Approval Committee</p>
+    <div class="gq"><span class="bar"></span><p>Is this workflow actually ready for agentic AI?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)">Leadership move · Require &amp; refuse</span></div>
+  </div>
+</section>
+<main class="stub wrap" id="main">
+  <div class="buildnote"><b>This dashboard is being built.</b> The full interactive version of Module 5 arrives in a later build phase. Below is what it will contain — the names match your Activity Workbook exactly.</div>
+  <div class="panel"><h2>Sections</h2><ul><li>Day 1 Close → Day 2 Open</li><li>Where Agentic AI Sits in the Workflow</li><li>Scenario: The New Workflow Proposal</li><li>The Four Workflow Readiness Criteria</li><li>Workflow Readiness Is Contextual</li><li>Common Workflow Failure Patterns</li><li>Reversibility and Containment</li></ul></div>
+  <div class="panel acts"><h2>Activities</h2><ul><li>Activity 5.1 — The Workflow Embedding Lab</li><li>Activity 5.2 — Apply the Lens to Your Own Context</li></ul></div>
+  <div class="artefact"><span class="chip">Module 5 artefact</span><h3>Workflow Embedding Map</h3>
+  <p style="font-size:13.5px;color:var(--grey);margin-top:6px">Joins your Capstone Evidence Pack and feeds Module 8’s Reasoning Bridge.</p></div>
+  <div class="pn"><a href="module-4.html"><span class="lbl">← Previous</span><span>Module 4 — Observability</span></a><a class="next" href="module-6.html"><span class="lbl">Next →</span><span>Module 6 — Intervention Readiness</span></a></div>
+</main>
+<footer>
+  <div class="wrap row">
+    <div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div>
+    <small>Australian Institute of Management — Interactive Workbook</small></div>
+    <small>Capability is not permission. Leaders decide.</small>
+  </div>
+</footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

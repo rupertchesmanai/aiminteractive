@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 1: When AI Begins to Act — Agentic AI for Leaders</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='6' fill='%23008D80'/%3E%3Cpath d='M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z' fill='%23fff'/%3E%3Crect x='20.4' y='7' width='3.3' height='20' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="Module 1 · When AI Begins to Act — recognise where AI is already acting, influencing and deciding in your workflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+/* ---------- module content shell ---------- */
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:360px;object-fit:cover;margin:14px 0;display:block}
+/* ---------- agent judgement cards (A1.1) ---------- */
+.agents{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:960px){.agents{grid-template-columns:1fr}}
+.agent{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);padding:18px 20px;display:flex;flex-direction:column}
+.agent .an{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-bottom:4px}
+.agent h4{font-size:18px;margin-bottom:10px}
+.agent .fact{font-size:13px;line-height:1.5;margin-bottom:8px;color:var(--grey)}
+.agent .fact b{font-family:var(--head);font-weight:600;color:var(--ink);display:block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+.agent .verdict{margin-top:auto;border-top:1px solid var(--line);padding-top:12px}
+.agent .verdict .vl{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:8px}
+.vopt{display:flex;gap:8px;align-items:flex-start;font-size:12.8px;line-height:1.35;cursor:pointer;padding:7px 8px;border:1.5px solid transparent}
+.vopt:hover{background:var(--cream)}
+.vopt input{margin-top:2px;accent-color:var(--teal-dark)}
+.vopt.checked{border-color:var(--teal-dark);background:rgba(0,192,175,.07)}
+.agent .whyf input{margin-top:8px}
+/* decision verb highlight in reveal */
+.dv{background:rgba(220,90,70,.16);border-bottom:2px solid var(--coral);padding:0 2px;font-weight:600}
+/* ---------- participation lanes ---------- */
+.lanes{margin:16px 0}
+.lane-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.lane-tabs button{font-family:var(--head);font-weight:600;font-size:13px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;border-bottom:3px solid transparent}
+.lane-tabs button.on{border-bottom-color:var(--coral);background:var(--cream-alt)}
+.lane-panel{background:#fff;border:1px solid var(--line);padding:22px 24px;display:none}
+.lane-panel.on{display:block}
+.lane-panel .lp-def{font-size:14.5px;line-height:1.6;max-width:72ch}
+.lane-panel .lp-ex{background:var(--cream-alt);padding:12px 16px;margin:12px 0;font-size:13.5px}
+.lane-panel .lp-onb{border-left:4px solid var(--teal-dark);padding:10px 16px;margin:12px 0;font-size:13.5px;color:var(--grey)}
+.lane-panel .lp-onb b{color:var(--ink)}
+.lane-panel .lp-q{font-family:var(--head);font-weight:600;font-size:14px;color:var(--teal-dark);margin-top:12px}
+/* ---------- triptych ---------- */
+.trip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:900px){.trip{grid-template-columns:1fr}}
+.trip .tcard{background:var(--ink);color:#fff;padding:20px 22px}
+.trip .tn{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:.1em;margin-bottom:6px}
+.trip h4{font-size:19px;color:#fff;margin-bottom:8px}
+.trip p{font-size:13.5px;color:rgba(255,255,255,.85);line-height:1.5}
+.trip .anchor{margin-top:12px;font-family:var(--head);font-weight:500;font-size:13px;color:var(--teal-light);border-top:1px solid rgba(255,255,255,.2);padding-top:10px}
+/* ---------- A1.2 quiz ---------- */
+.q12 .scenario{background:var(--cream-alt);border-left:5px solid var(--ink);padding:16px 20px;font-size:14.5px;line-height:1.55;margin-bottom:12px}
+.q12 .drill-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.q12 .drill-btns{grid-template-columns:1fr}}
+.q12 .btn{justify-content:center}
+.q12 .dfeed{display:none;padding:14px 18px;margin-top:12px;font-size:13.5px;line-height:1.5;border-left:5px solid}
+.q12 .dfeed.ok{display:block;background:rgba(0,141,128,.08);border-color:var(--teal-dark)}
+.q12 .dfeed.no{display:block;background:rgba(220,90,70,.09);border-color:var(--coral-dark)}
+.q12 .qmeta{display:flex;gap:10px;margin-bottom:12px}
+.q12 .dchip{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--cream);padding:6px 12px}
+.q12 .dchip b{color:var(--teal-dark)}
+/* ---------- canvas ---------- */
+.pathcards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:760px){.pathcards{grid-template-columns:1fr}}
+.promptbox{background:#141414;color:#d9d4c8;font-family:var(--mono);font-size:12px;line-height:1.6;padding:16px 18px;margin:10px 0;position:relative;white-space:pre-wrap}
+.promptbox .copybtn{position:absolute;top:10px;right:10px}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.gcol{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.gcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px;color:var(--teal-dark)}
+.gcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.gcol li{font-size:12.6px;color:var(--grey);padding-left:14px;position:relative;line-height:1.4}
+.gcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+/* thermostat contrast */
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:760px){.contrast{grid-template-columns:1fr}}
+.contrast .cc{background:#fff;border:1px solid var(--line);padding:18px 20px}
+.contrast .cc.hot{background:var(--ink);color:#fff}
+.contrast h5{font-family:var(--head);font-size:15px;margin-bottom:6px}
+.contrast .cc.hot h5{color:var(--teal-light)}
+.contrast p{font-size:13.5px;line-height:1.55;color:var(--grey)}
+.contrast .cc.hot p{color:rgba(255,255,255,.85)}
+/* takeaways */
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--coral);font-weight:700}
+</style>
+</head>
+<body data-page="module-1">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img class="bg" src="../assets/pics/m1-hero-first-light.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 1 · Module 1 · ≈ 90 min</div>
+    <h1>When AI Begins to Act</h1>
+    <p class="sub">Dashboard — The Actor Detector</p>
+    <div class="gq"><span class="bar"></span><p>What changes when AI is no longer just a tool people use, but a system that can participate in decisions and actions within a workflow?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)">Leadership move · Recognise</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <!-- ============ OPENING CONTEXT ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Opening context</div>
+    <h2>The leadership question is arriving</h2>
+    <p class="body">Some organisations already have AI embedded in products, services and internal workflows. In others it still feels emerging, uneven or distant. Regardless of maturity, the same leadership question is arriving: <b>what happens when AI is no longer just something people use, but something that can take action inside the workflow itself?</b></p>
+    <p class="body dim selfOnly">This module is about preparing for that decision point: how to recognise it, how to judge it, and how to govern it responsibly. Before we define agentic AI, you'll experience the leadership challenge it creates — three agents to judge, with exactly the information leaders usually have.</p>
+  </section>
+
+  <!-- ============ CASE + A1.1 ============ -->
+  <section class="msec" id="a11">
+    <div class="sec-eyebrow">Case study</div>
+    <h2>Three Agents to Judge</h2>
+    <img class="secimg" src="../assets/pics/m1-three-agents.jpg" alt="Three closed briefing folders on a boardroom table">
+    <p class="body">Your team is briefing you on three AI agents they have introduced into live workflows. They are describing them in good faith, and you have no reason to doubt the capability of the team or the quality of the setup.</p>
+
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 1.1</span><span class="a-chip time">≈ 25 min</span></div>
+      <h3>Following the Rules, or Making the Decisions?</h3>
+      <p class="a-purpose"><b>Step 1.</b> Read each agent's description and decide: is this AI following instructions, or making its own decisions and acting? Select one of the three options for each — and be prepared to explain your selection.</p>
+
+      <div class="agents" id="agentcards"></div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — Group position</div>
+        <div class="field">
+          <label for="a11notes">Discuss with your group and agree a position for each agent. Capture your notes.</label>
+          <textarea id="a11notes" data-key="m1.a11.notes" placeholder="Where did the group agree, where did it split, and why…"></textarea>
+        </div>
+        <details class="selfOnly" style="margin-top:8px"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Similar example agents across industries</summary>
+          <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:5px;font-size:12.8px;color:var(--grey)">
+            <li>• Employee support ticket triage — classifies HR/IT requests, prioritises urgency, routes cases</li>
+            <li>• Insurance claim intake — reviews claim information, identifies missing details, recommends next steps</li>
+            <li>• Procurement request screening — checks against policy, flags exceptions, routes approvals</li>
+            <li>• Loan application pre-assessment — reviews data, identifies risk indicators, recommends human review</li>
+            <li>• Patient referral prioritisation — categorises by urgency, routes for clinical review</li>
+            <li>• Cybersecurity alert triage — assesses alerts, prioritises risk, escalates high-severity incidents</li>
+            <li>• Compliance case screening — flags potential breaches, recommends investigation pathways</li>
+            <li>• Student enquiry triage — categorises, identifies urgency, routes to support services</li>
+            <li>• Maintenance request triage — assesses severity, prioritises work orders, assigns tasks</li>
+            <li>• Grant or application screening — completeness, eligibility and risk checks before human assessment</li>
+            <li>• Employee onboarding support — monitors progress, coordinates HR/IT/managers, adapts when delays occur, escalates exceptions</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn coral" data-requires="m1.a11.agent1,m1.a11.agent2,m1.a11.agent3" data-reveal="#a11reveal" data-revealed-label="Debriefed">Commit my three calls → debrief</button>
+      </div>
+
+      <div class="reveal-box" id="a11reveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:10px">Now look at the verbs your team used.</p>
+        <p style="font-size:14px;line-height:1.7;margin-bottom:10px">
+          The triage agent <span class="dv">decides</span> which complaints are urgent and which need a manager. The expense agent <span class="dv">approves</span> claims and <span class="dv">decides</span> when to push to a human. The leads agent <span class="dv">scores</span>, <span class="dv">judges</span> who looks like a time-waster, and <span class="dv">assigns</span> work to people — before anyone has seen the lead.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:10px">At first glance these systems sound operationally straightforward — routing, sorting, applying rules. In practice, every one of them is exercising judgement and acting in the live workflow. The description just made it easy to miss.</p>
+        <p style="font-size:13.5px;color:var(--grey)">And here's the part the descriptions didn't capture at all: these agents <b>adapt</b>. The agent approved last month may not be the agent operating today.</p>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Reflection</div>
+        <div class="field">
+          <label for="a11reflect">Where in your own organisation might AI already be acting like this — without you having consciously decided to let it?</label>
+          <textarea id="a11reflect" data-key="m1.a11.reflect" placeholder="Scheduling, routing, recommendations, screening, prioritising… anywhere a decision used to take a person's time and now doesn't."></textarea>
+        </div>
+        <div class="field">
+          <label for="a11approach">How might this change your approach to agentic AI use?</label>
+          <textarea id="a11approach" data-key="m1.a11.approach" placeholder="What would you now want to know before approving — or continuing to allow — this kind of role?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-message"><div class="km-label">Key insight to land</div>
+    <p>Automation follows your instructions. Generative AI waits for them. Agentic AI plans, acts and adapts on its own. The moment AI acts on its own, your accountability changes shape — but it does not go away.</p></div>
+  </section>
+
+  <!-- ============ CONCEPT LAYER ============ -->
+  <section class="msec" id="concepts">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>How AI participates in work</h2>
+    <p class="body">Now that you've seen it, let's give it a name. Three ways AI shows up in a workflow — and three different leadership questions.</p>
+
+    <div class="lanes">
+      <div class="lane-tabs" role="tablist">
+        <button class="on" data-lane="auto" role="tab" aria-selected="true">Automation</button>
+        <button data-lane="gen" role="tab" aria-selected="false">Generative AI</button>
+        <button data-lane="agentic" role="tab" aria-selected="false">Agentic AI</button>
+      </div>
+      <div class="lane-panel on" data-lane="auto" role="tabpanel">
+        <p class="lp-def">Executes predefined steps within a process — routing requests, triggering notifications, updating records, moving work between systems, applying predefined business rules. It may or may not use AI.</p>
+        <div class="lp-ex">🚆 <b>Think of a direct debit.</b> Same date, same amount, every month. If something blocks the track, it stops, fails, or follows the next predefined rule.</div>
+        <div class="lp-onb"><b>Onboarding example:</b> HR enters a confirmed start date → the system sends the welcome email, creates standard tasks, assigns training, reminds on a fixed schedule. Same trigger, same steps, same rules. It never asks whether the plan is still appropriate.</div>
+        <div class="lp-q">Leadership focus: are the rules appropriate, reliable and consistently applied?</div>
+      </div>
+      <div class="lane-panel" data-lane="gen" role="tabpanel">
+        <p class="lp-def">Creates content in response to a prompt. A person initiates the interaction, reviews the output and decides what happens next. Nothing happens until you act.</p>
+        <div class="lp-ex">✉️ <b>Think of AI drafting an email.</b> You ask, it writes, you read, you send.</div>
+        <div class="lp-onb"><b>Onboarding example:</b> a manager asks AI to draft a personalised welcome note. The manager reviews, edits and sends it. The AI created content — the human owned every step that mattered.</div>
+        <div class="lp-q">Leadership question: can we trust the quality of the output?</div>
+      </div>
+      <div class="lane-panel" data-lane="agentic" role="tabpanel">
+        <p class="lp-def">Goes beyond generating outputs or executing steps: it can pursue a goal across multiple stages of work — plan what needs to happen, select between actions, adapt when conditions change, and continue work between human interactions.</p>
+        <div class="lp-ex">🧭 <b>Think of the triage agent we just judged.</b> Nobody asked it to change what counts as urgent. It noticed a pattern and adjusted.</div>
+        <div class="lp-onb"><b>Onboarding example:</b> the system is given the goal <i>“ensure the new employee is ready for day one.”</i> It monitors progress, coordinates HR, IT and the manager, resolves routine issues, adapts when delays occur — and hands back when the situation exceeds its boundaries.</div>
+        <div class="lp-q">Leadership question: what authority should this system be allowed to exercise on the organisation's behalf?</div>
+      </div>
+    </div>
+
+    <img class="secimg selfOnly" src="../assets/pics/m1-train-vs-chef.jpg" alt="A train on fixed tracks beside a chef improvising at a bench" style="max-height:300px">
+    <div class="key-message"><div class="km-label">The simple test</div>
+    <p>Automation asks: “When X happens, what predefined step should occur?” &nbsp;·&nbsp; Agentic AI asks: “Given this goal, what needs to happen next — and what should I do or escalate?”</p></div>
+    <p class="body dim selfOnly">Or in kitchen terms: automation is a recipe — no eggs, no cake. Agentic AI is a chef given “make me a cake” — it checks ingredients, finds alternatives, adjusts quantities and adapts when something goes wrong. The goal stays the same. The path changes. Good agentic AI is not “AI doing whatever it wants” — it acts within boundaries that leaders, teams and governance deliberately set.</p>
+  </section>
+
+  <!-- ============ PLAN ACT ADAPT ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Recognising agentic behaviour</div>
+    <h2>An actor does three things</h2>
+    <div class="trip">
+      <div class="tcard"><div class="tn">01</div><h4>Planning</h4>
+        <p>The system works out what to do, and in what order, to reach an outcome. It does not wait for step-by-step instructions.</p>
+        <div class="anchor">Which of the three agents was planning — and what were the signs?</div></div>
+      <div class="tcard"><div class="tn">02</div><h4>Acting</h4>
+        <p>It does things in the real workflow, not just on a screen: changes records, routes work, sends messages, approves or denies, triggers action.</p>
+        <div class="anchor">Which of those actions would you most want to know about before they happened?</div></div>
+      <div class="tcard"><div class="tn">03</div><h4>Adapting</h4>
+        <p>It changes its behaviour based on patterns it picks up — and may handle situations it has never seen by working out a new approach in the moment. Automation breaks when conditions change. Agentic AI keeps going.</p>
+        <div class="anchor" style="border-top-color:rgba(220,90,70,.5);color:var(--coral)">Every one of our three agents was adapting in ways the description did not capture. What does that mean for how you approve AI?</div></div>
+    </div>
+    <div class="buildnote" style="border-left-color:var(--teal-dark)"><b>The agent approved last month may not be the agent operating today.</b> Adaptation is what makes recognition a continuing leadership task, not a one-off assessment.</div>
+  </section>
+
+  <!-- ============ AGENTIC ≠ AUTONOMY / AGENTS VS AGENTIC ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Two distinctions that matter</div>
+    <h2>Capability is not permission</h2>
+    <div class="contrast">
+      <div class="cc"><h5>Agentic behaviour = capability</h5><p>What is the system <b>capable</b> of doing? Planning, acting, adapting, using tools, coordinating tasks, progressing a goal.</p></div>
+      <div class="cc hot"><h5>Autonomy = delegated authority</h5><p>What is the system <b>allowed</b> to do? Not determined by technology alone — determined by leadership decisions, governance, policies, controls and workflow design.</p></div>
+    </div>
+    <p class="body dim selfOnly">The same applies to labels. An <b>agent</b> is what the system is — the bot or service performing a task. <b>Agentic</b> describes how it behaves: initiative, choosing between actions, responding to change, progressing without constant direction. A vendor may call something an agent, an assistant, a copilot or smart automation. The important question is never the label. It is: <b>what is this system actually being allowed to decide and do?</b> Need the definitions again mid-course? They're always one tap away in the <b>A–Z</b>.</p>
+
+    <div class="activity-block q12" id="a12">
+      <div class="a-kicker"><span class="a-chip">Activity 1.2</span><span class="a-chip time">5 min</span></div>
+      <h3>Spot the Difference</h3>
+      <p class="a-purpose">Read each example and decide: automation, generative AI, or agentic AI — then see what made the difference.</p>
+      <div class="qmeta"><span class="dchip">Question <b id="q12n">1</b>/4</span><span class="dchip">Score <b id="q12s">0</b></span></div>
+      <div id="q12play">
+        <div class="scenario" id="q12scen"></div>
+        <div class="drill-btns">
+          <button class="btn ghost" data-ans="Automation">Automation</button>
+          <button class="btn ghost" data-ans="Generative AI">Generative AI</button>
+          <button class="btn ghost" data-ans="Agentic AI">Agentic AI</button>
+        </div>
+        <div class="dfeed" id="q12feed"></div>
+        <div class="btnrow" id="q12nextwrap" style="display:none"><button class="btn primary" id="q12next">Next →</button></div>
+      </div>
+      <div id="q12done" style="display:none">
+        <p style="font-family:var(--head);font-weight:600;font-size:17px">You scored <span id="q12final"></span>/4.</p>
+        <p style="font-size:13.5px;color:var(--grey);margin:6px 0 12px">Want more reps? The <a href="foundations.html" style="color:var(--coral-dark);font-weight:600">Foundations Gym</a> has a 12-scenario version that reshuffles every time.</p>
+        <button class="btn ghost" id="q12again">Run it again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT LEADERS NEED TO NOTICE + A1.3 ============ -->
+  <section class="msec" id="a13">
+    <div class="sec-eyebrow">From shared examples to your world</div>
+    <h2>What leaders need to notice</h2>
+    <p class="body">Focus less on whether a system is <i>labelled</i> an agent, and more on the role it plays in the workflow, the authority it has, and the evidence you would need to remain accountable for its actions. You'll now choose one workflow to carry through the entire course.</p>
+    <img class="secimg" src="../assets/pics/m1-canvas-mapping.jpg" alt="Two colleagues mapping a workflow on a glass wall" style="max-height:320px">
+
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 1.3</span><span class="a-chip time">≈ 20 min</span><span class="a-chip" style="background:var(--ink)">Builds your first artefact</span></div>
+      <h3>Agency Discovery Canvas</h3>
+      <p class="a-purpose">Identify where AI may influence decisions, actions and accountability in one workflow of your own. Choose something specific and bounded — a recognisable trigger, sequence and outcome — not a whole function like “customer service” or “HR”. Your aim is not to design the system; it is to notice where AI may be taking on judgement previously exercised by a person.</p>
+
+      <div class="a-step">
+        <div class="s-label">Choose your starting point</div>
+        <div class="pathcards">
+          <label class="optcard"><input type="radio" name="cpath" data-key="m1.canvas.path" value="Path A — an existing workflow, pilot or proposal"><span class="oc"><b>Path A</b><span>We already have AI or an agentic workflow — use a real workflow, pilot, AI-enabled process or agent proposal. E.g. customer service, onboarding, sales leads, claims, compliance, procurement, scheduling.</span></span></label>
+          <label class="optcard coral"><input type="radio" name="cpath" data-key="m1.canvas.path" value="Path B — a plausible workflow within 12–24 months"><span class="oc"><b>Path B</b><span>No clear AI workflow yet — use AI as a thinking partner to find a realistic example that could plausibly emerge in your function within 12–24 months.</span></span></label>
+        </div>
+        <details id="pathbhelp"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--coral-dark);cursor:pointer">Path B — the thinking-partner prompt</summary>
+          <p class="small" style="margin:8px 0">You're not looking for the perfect idea — just a realistic example to use all course. The more specific your role and function, the better the examples: telling the AI what your team does on a Tuesday afternoon beats a generic prompt. You remain responsible for selecting and validating the example.</p>
+          <div class="promptbox" id="pbprompt">“I am a [your role] at a [size and type of organisation, e.g. mid-sized professional services firm, regional hospital, national retailer]. My team is responsible for [one or two sentences on what your function actually does, day to day].
+Suggest three realistic examples of where agentic AI could plausibly be introduced in my function in the next 12 months. For each example, use this format only:
+What it does.
+What it decides.
+What it acts on.
+Which behaviours it would show: planning, acting, adapting, or all three.
+Keep each example to four short lines. Realistic for my context, not aspirational.”<button class="btn ghost copybtn" id="copyprompt" style="color:#fff;border-color:rgba(255,255,255,.4);font-size:12px;padding:7px 12px">Copy</button></div>
+        </details>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Select your workflow</div>
+        <div class="fieldrow">
+          <div class="field">
+            <label for="cwf">The workflow I am exploring is</label>
+            <input type="text" id="cwf" data-key="me.workflow" placeholder="e.g. Customer complaint triage in our contact centre">
+            <div class="hint">This name follows you through all eight modules — watch the header.</div>
+          </div>
+          <div class="field">
+            <label>Status</label>
+            <div class="optcards" style="grid-template-columns:repeat(2,1fr)">
+              <label class="optcard"><input type="radio" name="cstat" data-key="me.workflowLive" value="Live or in pilot today"><span class="oc"><b>Live / pilot</b><span>Operating now</span></span></label>
+              <label class="optcard"><input type="radio" name="cstat" data-key="me.workflowLive" value="Proposed or plausible future"><span class="oc"><b>Proposed / future</b><span>Could realistically emerge</span></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — Identify the agentic behaviour</div>
+        <div class="field">
+          <label>Which behaviours are present — or could plausibly emerge?</label>
+          <div class="checks">
+            <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Planning"> Planning — it works out what to do, in what order</label>
+            <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Acting"> Acting — it does things in the real workflow</label>
+            <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Adapting"> Adapting — it changes behaviour based on what it sees</label>
+          </div>
+          <div class="hint">A workflow may show only one or two. You don't need all three — you're identifying where agency may be emerging.</div>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 3 — Recognise agency</div>
+        <div class="field">
+          <label for="cinf">Where in this workflow does AI appear to influence what happens next?</label>
+          <textarea id="cinf" data-key="m1.canvas.influence"></textarea>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 4 — Surface accountability</div>
+        <div class="field">
+          <label for="cacc">Where does AI appear to be making, shaping, influencing or prioritising a decision that a person might previously have made?</label>
+          <textarea id="cacc" data-key="m1.canvas.accountability"></textarea>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 5 — Your three biggest unknowns</div>
+        <p class="small" style="margin-bottom:8px">Scan the Leadership Conversation Guide below, then name the three things you would want to understand before feeling comfortable allowing this AI to perform this role — the questions you'd want answered before you could say <i>“yes, I approved this knowingly.”</i></p>
+        <div class="field"><input type="text" data-key="m1.canvas.unknown1" placeholder="Unknown 1" aria-label="Unknown 1"></div>
+        <div class="field"><input type="text" data-key="m1.canvas.unknown2" placeholder="Unknown 2" aria-label="Unknown 2"></div>
+        <div class="field"><input type="text" data-key="m1.canvas.unknown3" placeholder="Unknown 3" aria-label="Unknown 3"></div>
+
+        <div class="guide">
+          <div class="gcol"><h5>Questions to ask my team</h5>
+            <ul><li>What goal is the system trying to achieve?</li><li>What decisions or actions is it influencing?</li><li>What actions can it take without asking a human first?</li><li>Where is it planning, acting or adapting?</li><li>What would happen if it stopped tomorrow?</li><li>Where is human judgement currently involved?</li><li>What information or systems can it access?</li><li>How does it decide what to do next?</li><li>What happens when information is missing, conflicting or unusual?</li><li>When must it stop, pause or escalate?</li><li>Who remains accountable for the outcome?</li></ul>
+            <div class="field" style="margin-bottom:0"><label for="cqteam" style="margin-top:10px">My additional questions</label><textarea id="cqteam" data-key="m1.canvas.qteam" style="min-height:56px"></textarea></div>
+          </div>
+          <div class="gcol"><h5>Questions to ask a vendor / project sponsor</h5>
+            <ul><li>How does the system make decisions?</li><li>What parts of the workflow can it influence?</li><li>To what level can it adapt?</li><li>Will the agent operate using fixed rules?</li><li>Will it learn from experience?</li><li>Will it receive vendor model updates?</li><li>Can decision logic change over time?</li><li>What examples of real-world use exist?</li><li>What limitations should we understand?</li></ul>
+            <div class="field" style="margin-bottom:0"><label for="cqvendor" style="margin-top:10px">My additional questions</label><textarea id="cqvendor" data-key="m1.canvas.qvendor" style="min-height:56px"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Pair check — one minute</div>
+        <p class="small">Explain your workflow to a colleague in one minute. Could they locate the point of agency from your description? If organisational details are sensitive, describe what the process does without naming systems, teams or individuals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY AUTONOMY SHIFTS ACCOUNTABILITY ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Why this matters</div>
+    <h2>Why autonomy shifts accountability</h2>
+    <div class="contrast">
+      <div class="cc"><h5>🌡️ The thermostat</h5><p>It fails, and you know whose hand was last on the dial. The outcome traces to a single decision someone made.</p></div>
+      <div class="cc hot"><h5>🤖 The agent, six weeks later</h5><p>It adapts long after you approved it, and the line back to your decision is much harder to draw. As systems operate across workflows, accountability doesn't just stretch — it becomes harder to locate across teams, systems and decisions.</p></div>
+    </div>
+    <div class="key-message"><div class="km-label">The part nobody can wriggle out of</div>
+    <p>The accountability does not disappear. It just moves further from the action. If you approved the agent, you own what it does — even when you cannot see every move it makes.</p></div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 1 artefact · 1 of 8</span>
+        <button class="btn ghost" id="m1print">Download PDF</button></div>
+      <h3>Points of Agency &amp; Accountability Map</h3>
+      <p class="ap-note">Your first piece of capstone evidence — assembled live from this page. It travels to Module 8's Reasoning Bridge, where it answers: <i>“What exactly is this agent being trusted to do?”</i></p>
+      <div class="ap-rows" id="m1rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS + CLOSE ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 1 established</h2>
+    <div class="takeaways"><ul>
+      <li>Generative AI creates outputs. Automation executes predefined processes. Agentic AI can plan, act and adapt in pursuit of a goal.</li>
+      <li>Agentic behaviour describes what a system is <b>capable</b> of doing. Autonomy describes how much authority it is <b>allowed</b> to exercise. These are not the same thing.</li>
+      <li>The leadership challenge begins when AI influences what happens next in a workflow — not simply when it generates information.</li>
+      <li>What initially appears to be automation may already involve delegated judgement, prioritisation, routing, escalation or action.</li>
+      <li>Focus less on whether a system is labelled an agent, and more on what decisions it influences, what actions it can take, and what authority has been delegated to it.</li>
+      <li>As AI becomes embedded in workflows, accountability does not disappear — leadership responsibility shifts toward understanding authority, boundaries, oversight and governance.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing question</div>
+    <p>The question is no longer “What can this AI do?” It is: “What role is this AI playing in the workflow, what authority has been delegated to it — and what am I still accountable for when it acts?”</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> you can now recognise when AI is acting. Module 2 shifts the question — just because it <i>can</i> act… <b>should it?</b></p>
+  </section>
+
+  <!-- cheat sheets slot — Phase 12 -->
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="foundations.html"><span class="lbl">← Previous</span><span>The Foundations Gym</span></a>
+    <a class="next" href="module-2.html"><span class="lbl">Next →</span><span>Module 2 — Defensible Agentic AI Decisions</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+  /* ---------------- A1.1 agent cards ---------------- */
+  var AGENTS=[
+    {n:"Agent One",t:"Complaint Triage",does:"Sorts incoming customer complaints by priority and routes them to the right team.",decides:"Which complaints are urgent, which can wait, and which need a manager.",acts:"Every complaint that comes in, around the clock."},
+    {n:"Agent Two",t:"Expense Approvals",does:"Reviews staff expense claims and approves the routine ones.",decides:"Whether a claim fits policy, whether to ask for more information, or whether to push to a human approver.",acts:"All expense submissions, with humans only involved on flagged cases."},
+    {n:"Agent Three",t:"Inbound Sales Leads",does:"Reads new leads coming in through the website, scores them, and assigns them to a salesperson.",decides:"Which leads look promising, which look like time-wasters, and which salesperson is best placed to win them.",acts:"Every lead that arrives, before anyone in the sales team has seen it."}
+  ];
+  var OPTS=["Executes a pre-defined process","Applies judgement within set boundaries","Acts independently where the task design allows"];
+  var host=document.getElementById('agentcards');
+  AGENTS.forEach(function(a,i){
+    var k='m1.a11.agent'+(i+1);
+    var card=document.createElement('div');card.className='agent';
+    card.innerHTML='<div class="an">'+a.n+'</div><h4>'+a.t+'</h4>'+
+      '<div class="fact"><b>What it does</b>'+a.does+'</div>'+
+      '<div class="fact"><b>What it decides</b>'+a.decides+'</div>'+
+      '<div class="fact"><b>What it acts on</b>'+a.acts+'</div>'+
+      '<div class="verdict"><div class="vl">Your call</div>'+
+      OPTS.map(function(o){return '<label class="vopt"><input type="radio" name="ag'+i+'" data-key="'+k+'" value="'+o+'"><span>'+o+'</span></label>';}).join('')+
+      '<div class="field whyf" style="margin:8px 0 0"><input type="text" data-key="m1.a11.why'+(i+1)+'" placeholder="What tipped you? (one line)" aria-label="Why for '+a.t+'"></div></div>';
+    host.appendChild(card);
+  });
+  AAL.wireFields(host); AAL.refreshGates();
+  function markChecked(){
+    host.querySelectorAll('.vopt').forEach(function(l){
+      l.classList.toggle('checked', l.querySelector('input').checked);
+    });
+  }
+  host.addEventListener('change',markChecked); markChecked();
+  document.addEventListener('aal:change',markChecked);
+
+  /* ---------------- lanes ---------------- */
+  document.querySelectorAll('.lane-tabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.lane-tabs button').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.lane-panel').forEach(function(p){p.classList.remove('on');});
+      b.classList.add('on');b.setAttribute('aria-selected','true');
+      document.querySelector('.lane-panel[data-lane="'+b.dataset.lane+'"]').classList.add('on');
+    });
+  });
+
+  /* ---------------- A1.2 quiz (4 workbook scenarios) ---------------- */
+  var Q12=[
+    {t:"A new employee's start date is entered into HRIS. The system automatically sends a welcome email and generates a standard onboarding checklist.",a:"Automation",w:"Fixed trigger, fixed sequence. The system is executing predefined steps."},
+    {t:"A manager asks AI to draft a warm welcome message for a new team member. The manager edits and sends it.",a:"Generative AI",w:"The AI creates content in response to a prompt. The human decides what happens next."},
+    {t:"An onboarding system monitors whether IT access, mandatory training, equipment and manager readiness are complete. If IT access is delayed, it follows up with IT; if the manager has not confirmed readiness, it escalates rather than assuming readiness.",a:"Agentic AI",w:"It is pursuing the goal of day-one readiness — monitoring progress, taking action and escalating when conditions require judgement."},
+    {t:"A direct debit payment processes every month on the same date unless the customer cancels it.",a:"Automation",w:"It follows a standing rule. The system does not interpret context."}
+  ];
+  var qi=0,qs=0,qans=false;
+  function q12show(){
+    document.getElementById('q12n').textContent=qi+1;
+    document.getElementById('q12s').textContent=qs;
+    document.getElementById('q12scen').textContent=Q12[qi].t;
+    document.getElementById('q12feed').className='dfeed';document.getElementById('q12feed').innerHTML='';
+    document.getElementById('q12nextwrap').style.display='none';qans=false;
+    document.querySelectorAll('#a12 [data-ans]').forEach(function(b){b.disabled=false;});
+  }
+  document.querySelectorAll('#a12 [data-ans]').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(qans)return;qans=true;
+      var ok=b.getAttribute('data-ans')===Q12[qi].a;
+      if(ok)qs++;
+      document.getElementById('q12s').textContent=qs;
+      var f=document.getElementById('q12feed');
+      f.className='dfeed '+(ok?'ok':'no');
+      f.innerHTML=(ok?'<b>Correct — '+Q12[qi].a+'.</b> ':'<b>It’s '+Q12[qi].a+'.</b> ')+Q12[qi].w;
+      document.querySelectorAll('#a12 [data-ans]').forEach(function(x){x.disabled=true;});
+      document.getElementById('q12nextwrap').style.display='';
+      document.getElementById('q12next').textContent = qi===3?'Finish →':'Next →';
+    });
+  });
+  document.getElementById('q12next').addEventListener('click',function(){
+    qi++;
+    if(qi>=4){
+      document.getElementById('q12play').style.display='none';
+      document.getElementById('q12done').style.display='';
+      document.getElementById('q12final').textContent=qs;
+      AAL.set('m1.a12.score',qs+'/4');
+      return;
+    }
+    q12show();
+  });
+  document.getElementById('q12again').addEventListener('click',function(){
+    qi=0;qs=0;
+    document.getElementById('q12play').style.display='';
+    document.getElementById('q12done').style.display='none';
+    q12show();
+  });
+  q12show();
+
+  /* ---------------- Path B prompt copy ---------------- */
+  document.getElementById('copyprompt').addEventListener('click',function(){
+    var txt=document.getElementById('pbprompt').textContent.replace('Copy','').trim();
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){
+      document.getElementById('copyprompt').textContent='Copied ✓';
+      setTimeout(function(){document.getElementById('copyprompt').textContent='Copy';},1600);
+    }).catch(function(){});
+  });
+
+  /* ---------------- artefact assembly ---------------- */
+  var ROWS=[
+    ['Workflow','me.workflow'],
+    ['Status','me.workflowLive'],
+    ['Starting point','m1.canvas.path'],
+    ['Agentic behaviours present','m1.canvas.behaviours'],
+    ['Where AI influences what happens next','m1.canvas.influence'],
+    ['Decisions a person previously made','m1.canvas.accountability'],
+    ['Unknown 1 — before I approve knowingly','m1.canvas.unknown1'],
+    ['Unknown 2','m1.canvas.unknown2'],
+    ['Unknown 3','m1.canvas.unknown3'],
+    ['Where AI may already be acting for me','m1.a11.reflect']
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function drawArtefact(){
+    document.getElementById('m1rows').innerHTML=ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  drawArtefact();
+  document.addEventListener('aal:change',drawArtefact);
+  document.getElementById('m1print').addEventListener('click',function(){
+    AAL.printDoc('Points of Agency & Accountability Map', AAL.artefactRows(ROWS));
+  });
+});
+</script>
+</body>
+</html>

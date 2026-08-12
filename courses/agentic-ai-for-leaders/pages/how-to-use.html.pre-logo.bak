@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to use this site — Agentic AI for Leaders</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='6' fill='%23008D80'/%3E%3Cpath d='M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z' fill='%23fff'/%3E%3Crect x='20.4' y='7' width='3.3' height='20' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="How the interactive workbook works — self-paced and present modes, autosave, moving between devices, and printing your artefacts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+.howgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.howgrid{grid-template-columns:1fr}}
+.how{background:#fff;border:1px solid var(--line);padding:22px 24px}
+.how .hn{font-family:var(--mono);font-size:11px;color:var(--coral-dark);letter-spacing:.1em;margin-bottom:8px}
+.how h3{font-size:18px;margin-bottom:8px}
+.how p{font-size:13.5px;color:var(--grey);line-height:1.55}
+.how p+p{margin-top:8px}
+.how .btnrow{margin-bottom:0}
+kbd.ui{font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;background:var(--cream);border:1px solid var(--line);padding:2px 7px;color:var(--teal-dark);white-space:nowrap}
+</style>
+</head>
+<body data-page="how-to-use">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <svg width="30" height="30" viewBox="0 0 34 34" aria-label="AIM"><path d="M3 27 L9 7 L13 7 L19 27 L15 27 L13.6 22 L8.2 22 L6.9 27 Z M9 18.6 L12.8 18.6 L10.9 11.4 Z" fill="#fff"/><rect x="20.4" y="7" width="3.3" height="20" fill="#fff"/></svg>
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero" style="min-height:340px">
+  <img class="bg" src="../assets/pics/hub-arc-corridor.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Orientation</div>
+    <h1>How to use this site</h1>
+    <p class="sub">Two minutes here saves fumbling later — how the modes, saving, exports and your paper workbook fit together.</p>
+  </div>
+</section>
+
+<main class="stub wrap" id="main">
+  <div class="howgrid" style="margin-top:34px">
+
+    <div class="how">
+      <div class="hn">01 · MODES</div>
+      <h3>Self-paced vs Present</h3>
+      <p>The <kbd class="ui">Self-paced</kbd> / <kbd class="ui">Present</kbd> toggle lives top-right on every page. <b>Self-paced</b> shows the full explanatory prose from the Concepts Workbook — use it for pre-reading, catch-up or revisiting after the course. <b>Present</b> strips pages back to the essentials for the live room, where your facilitator carries the narrative.</p>
+      <p>Your choice is remembered on this device.</p>
+    </div>
+
+    <div class="how">
+      <div class="hn">02 · SAVING</div>
+      <h3>Your answers save themselves</h3>
+      <p>Every field autosaves as you type — watch for the <kbd class="ui">✓ Saved automatically</kbd> pill bottom-right. There are no accounts and no servers: <b>everything stays in this browser on this device</b>. Nothing you write leaves your machine unless you export it yourself.</p>
+      <p>That privacy has one consequence: a different browser or device starts empty — which is what the next card solves.</p>
+    </div>
+
+    <div class="how">
+      <div class="hn">03 · TWO DAYS, ANY DEVICE</div>
+      <h3>Carry your answers with you</h3>
+      <p>At the end of Day 1 (or any time), download your answers as a single file. Load it tomorrow — on the same laptop, a different one, or a tablet — and you continue exactly where you stopped. The file is named after your workflow, e.g. <span style="font-family:var(--mono);font-size:12px">aal-evidence-complaint-triage-pilot.json</span>.</p>
+      <div class="btnrow"><button class="btn primary" data-action="download-state">Download my answers</button>
+      <button class="btn ghost" data-action="load-state">Load answers</button></div>
+    </div>
+
+    <div class="how">
+      <div class="hn">04 · ARTEFACTS</div>
+      <h3>Your work becomes documents</h3>
+      <p>Each module assembles your answers into a named artefact — the Boundary Map, the Governance Cadence Map, and so on — with a <kbd class="ui">Download PDF</kbd> button (choose “Save as PDF” in the print dialog). The <a href="evidence-pack.html" style="color:var(--teal-dark);font-weight:600">Evidence Pack</a> collects all eight into one exportable document: your defence.</p>
+    </div>
+
+    <div class="how">
+      <div class="hn">05 · YOUR PAPER WORKBOOK</div>
+      <h3>Matched to the Activity Workbook</h3>
+      <p>Activity numbers here are identical to the fillable PDF — Activity 3.1 is <i>Where Is Your Line?</i> in both. Work wherever suits you; if you write on paper in the room, you can transfer the answers that matter here so they flow into your Evidence Pack.</p>
+      <p>The workflow you choose in Activity 1.3 follows you everywhere — look for the chip in the header.</p>
+    </div>
+
+    <div class="how">
+      <div class="hn">06 · REFERENCE &amp; RESET</div>
+      <h3>The A–Z, and starting over</h3>
+      <p>The <kbd class="ui">A–Z</kbd> button (top-right) opens the five foundational definitions from anywhere — automation, generative AI, agents, agentic AI, autonomy — with a link to drill them in the <a href="foundations.html" style="color:var(--teal-dark);font-weight:600">Foundations Gym</a>.</p>
+      <p>Starting over erases every answer in this browser. It asks first, and download-before-reset is always the safe move.</p>
+      <div class="btnrow"><button class="btn" data-action="reset-state">Start over</button></div>
+    </div>
+  </div>
+
+  <div class="buildnote" style="margin-top:18px"><b>One technical note.</b> This site is built to be hosted; if you're opening the files directly from a folder (a <span style="font-family:var(--mono);font-size:12px">file://</span> address), some browsers limit saving between pages. Use the hosted address your facilitator shares.</div>
+
+  <div class="pn">
+    <a href="welcome.html"><span class="lbl">← Previous</span><span>Welcome &amp; Orientation</span></a>
+    <a class="next" href="foundations.html"><span class="lbl">Next →</span><span>The Foundations Gym</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

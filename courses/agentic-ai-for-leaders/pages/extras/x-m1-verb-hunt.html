@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Verb Hunt — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · The Verb Hunt — assisting or acting? Slap the buzzer the instant the verb crosses the line.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:26px 18px}
+.stage{width:100%;max-width:720px}
+/* splash + end share styles */
+.cardo{background:#141414;border:1px solid rgba(255,255,255,.12);padding:34px 34px 30px;text-align:center}
+.cardo .tag{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px}
+.cardo h1{font-family:var(--head);font-weight:700;font-size:clamp(30px,6vw,44px);line-height:1.05;margin-bottom:12px}
+.cardo p.lead{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:52ch;margin:0 auto 10px}
+.cardo .rules{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+.cardo .rule{font-family:var(--head);font-weight:600;font-size:12px;border:1px solid rgba(255,255,255,.25);padding:7px 12px;color:rgba(255,255,255,.85)}
+button.go{font-family:var(--head);font-weight:700;font-size:16px;letter-spacing:.03em;background:var(--coral);color:#fff;border:0;padding:15px 34px;cursor:pointer}
+button.go:hover{background:var(--coral-dark)}
+button.ghosty{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:11px 18px;cursor:pointer;margin-left:8px}
+button.ghosty:hover{border-color:#fff;color:#fff}
+.facnote{display:none;margin-top:20px;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+body.facilitator .facnote{display:block}
+.facnote b{font-family:var(--head);color:var(--teal-light);display:block;margin-bottom:4px;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+/* play */
+#play{display:none}
+.hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--head)}
+.hud .score{font-weight:700;font-size:24px}
+.hud .score small{font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block}
+.hud .streak{font-family:var(--mono);font-size:12px;color:var(--teal-light)}
+.hud .lives{font-size:18px;letter-spacing:4px}
+.timerwrap{height:7px;background:rgba(255,255,255,.12);margin-bottom:22px;overflow:hidden}
+.timerbar{height:100%;width:100%;background:var(--teal);transform-origin:left}
+.sentence{background:#181818;border:1px solid rgba(255,255,255,.14);min-height:150px;display:flex;align-items:center;justify-content:center;padding:26px 30px;text-align:center;font-family:var(--head);font-weight:600;font-size:clamp(20px,3.6vw,27px);line-height:1.3;margin-bottom:20px}
+.sentence .vb{color:var(--teal-light)}
+.sentence.right{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.sentence.wrong{border-color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answers button{font-family:var(--head);font-weight:700;font-size:18px;padding:20px 10px;border:2px solid rgba(255,255,255,.25);background:#141414;color:#fff;cursor:pointer;transition:.12s}
+.answers button small{display:block;font-weight:500;font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;letter-spacing:.02em}
+.answers button:hover{border-color:var(--teal-light)}
+.answers button:active{transform:scale(.98)}
+.keys{margin-top:12px;text-align:center;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.4)}
+.verdict{text-align:center;font-family:var(--head);font-weight:700;font-size:14px;height:22px;margin-top:12px;letter-spacing:.06em;text-transform:uppercase}
+.verdict.ok{color:var(--teal-light)}
+.verdict.no{color:var(--coral)}
+/* end */
+#end{display:none}
+.tier{font-family:var(--head);font-weight:700;font-size:clamp(26px,5vw,38px);color:var(--teal-light);margin:6px 0 4px}
+.finalnums{display:flex;gap:26px;justify-content:center;margin:18px 0}
+.fn b{display:block;font-family:var(--head);font-weight:700;font-size:32px}
+.fn span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.newbest{display:inline-block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#0b0b0b;background:var(--teal-light);padding:4px 10px;margin-bottom:10px}
+.takeaway{background:rgba(83,223,203,.07);border-left:4px solid var(--teal);padding:14px 18px;text-align:left;font-size:14px;line-height:1.6;margin:16px 0 22px;color:rgba(255,255,255,.9)}
+.missed{margin:0 0 20px;text-align:left}
+.missed h5{font-family:var(--head);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px}
+.missed .mi{font-size:13px;color:rgba(255,255,255,.75);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.missed .mi b{color:var(--teal-light);font-family:var(--head)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">The Verb Hunt<small>Extras · Module 1 · Reaction game</small></div>
+  <a class="back" href="../module-1.html">← Back to Module 1</a>
+</div>
+<main><div class="stage">
+
+  <!-- SPLASH -->
+  <section class="cardo" id="splash">
+    <div class="tag">Extra · Optional · ≈ 3 min</div>
+    <h1>The Verb Hunt</h1>
+    <p class="lead">Systems that <b>assist</b> leave the acting to a person. Systems that <b>act</b> have already taken it. One sentence at a time, faster and faster — call it before the clock dies. <b>The verb is the tell.</b></p>
+    <div class="rules"><span class="rule">3 lives</span><span class="rule">Streaks multiply your score</span><span class="rule">It speeds up. A lot.</span></div>
+    <button class="go" id="start">Start the hunt</button>
+    <div class="facnote"><b>Facilitator note</b>Run in the last ten minutes of Module 1. Ask the room for their longest streak — then ask which single verb fooled the most people. That verb is your segue back to the Agency Discovery Canvas: "so who owns what that verb just did?"</div>
+  </section>
+
+  <!-- PLAY -->
+  <section id="play">
+    <div class="hud">
+      <div class="score"><small>Score</small><span id="score">0</span></div>
+      <div class="streak" id="streak">streak ×0</div>
+      <div class="lives" id="lives">●●●</div>
+    </div>
+    <div class="timerwrap"><div class="timerbar" id="tbar"></div></div>
+    <div class="sentence" id="sent"></div>
+    <div class="answers">
+      <button id="btnAssist">ASSISTS<small>a human still acts on it</small></button>
+      <button id="btnAct">ACTS<small>the system does it itself</small></button>
+    </div>
+    <div class="keys">keyboard: ← assists · acts →</div>
+    <div class="verdict" id="verdict"></div>
+  </section>
+
+  <!-- END -->
+  <section class="cardo" id="end">
+    <div class="tag">The hunt is over</div>
+    <div id="best"></div>
+    <div class="tier" id="tier"></div>
+    <div class="finalnums">
+      <div class="fn"><b id="fscore">0</b><span>score</span></div>
+      <div class="fn"><b id="fstreak">0</b><span>best streak</span></div>
+      <div class="fn"><b id="fcalls">0</b><span>correct calls</span></div>
+    </div>
+    <div class="takeaway"><b>The verb is the tell.</b> Drafts, suggests, summarises, flags, recommends — assistance; a person still acts. Routes, closes, approves, pays, blocks, escalates — action; the system has already acted. The moment the verb changes, the accountability questions change with it.</div>
+    <div class="missed" id="missed"></div>
+    <button class="go" id="again">Hunt again</button>
+    <a href="../module-1.html"><button class="ghosty">Back to Module 1</button></a>
+    <div class="facnote"><b>Facilitator note</b>The most-missed sentences are usually "flags an invoice for review" (still assistance) and "sends the apology template" (already action). Both are worth thirty seconds in the room.</div>
+  </section>
+
+</div></main>
+<script>
+(function(){
+  'use strict';
+  if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');
+
+  /* pool: a = 'assist' | 'act'; v = the tell verb phrase (highlighted after answer) */
+  var POOL=[
+    {t:"Drafts a reply for the rep to review",v:"Drafts",a:"assist"},
+    {t:"Summarises the complaint history for the case owner",v:"Summarises",a:"assist"},
+    {t:"Suggests three candidate suppliers",v:"Suggests",a:"assist"},
+    {t:"Flags an invoice for review",v:"Flags",a:"assist"},
+    {t:"Recommends a severity rating",v:"Recommends",a:"assist"},
+    {t:"Translates the customer's email into English",v:"Translates",a:"assist"},
+    {t:"Highlights unusual clauses in the contract",v:"Highlights",a:"assist"},
+    {t:"Prepares a shortlist for the hiring panel to consider",v:"Prepares",a:"assist"},
+    {t:"Estimates the delivery date for the quote",v:"Estimates",a:"assist"},
+    {t:"Surfaces similar past cases for the analyst",v:"Surfaces",a:"assist"},
+    {t:"Drafts the rejection letter for sign-off",v:"Drafts",a:"assist"},
+    {t:"Ranks the queue by urgency for the team lead",v:"Ranks",a:"assist"},
+    {t:"Closes low-severity complaints without review",v:"Closes",a:"act"},
+    {t:"Approves invoices under the threshold",v:"Approves",a:"act"},
+    {t:"Routes the case straight to the legal team",v:"Routes",a:"act"},
+    {t:"Issues the refund to the customer's card",v:"Issues",a:"act"},
+    {t:"Reorders stock when levels drop below par",v:"Reorders",a:"act"},
+    {t:"Escalates the case to a senior officer",v:"Escalates",a:"act"},
+    {t:"Sends the apology template to the customer",v:"Sends",a:"act"},
+    {t:"Blocks the transaction pending identity checks",v:"Blocks",a:"act"},
+    {t:"Books the new starter's induction session",v:"Books",a:"act"},
+    {t:"Pays the supplier once the PO matches",v:"Pays",a:"act"},
+    {t:"Updates the customer's risk rating in the CRM",v:"Updates",a:"act"},
+    {t:"Reschedules tomorrow's delivery route",v:"Reschedules",a:"act"}
+  ];
+  var LSKEY='aal.x.m1.verbhunt';
+
+  function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+  var deck=[],di=0,score=0,streak=0,bestStreak=0,lives=3,correct=0,speed=6000,missed=[],timer=null,t0=0,answering=false,raf=null;
+  var el=function(id){return document.getElementById(id);};
+
+  function draw(){
+    el('score').textContent=score;
+    el('streak').textContent='streak ×'+streak;
+    el('lives').textContent='●●●'.slice(0,lives*1)+ '○○○'.slice(0,(3-lives));
+  }
+  function next(){
+    if(di>=deck.length){deck=shuffle(POOL.slice());di=0;}
+    var it=deck[di];
+    el('sent').className='sentence';
+    el('sent').textContent=it.t;
+    el('verdict').textContent='';el('verdict').className='verdict';
+    answering=true;t0=performance.now();
+    var bar=el('tbar');bar.style.transition='none';bar.style.transform='scaleX(1)';
+    void bar.offsetWidth;
+    bar.style.transition='transform '+speed+'ms linear';bar.style.transform='scaleX(0)';
+    clearTimeout(timer);
+    timer=setTimeout(function(){if(answering)miss(it,'⏱ Too slow — it was '+(it.a==='act'?'ACTING':'ASSISTING'));},speed);
+  }
+  function highlight(it){
+    var html=esc(it.t).replace(esc(it.v),'<span class="vb">'+esc(it.v)+'</span>');
+    el('sent').innerHTML=html;
+  }
+  function hit(it){
+    correct++;streak++;bestStreak=Math.max(bestStreak,streak);
+    var mult=1+Math.floor(streak/5)*0.5;             /* ×1, ×1.5 @5, ×2 @10 … */
+    var gained=Math.round(10*mult);
+    score+=gained;
+    el('sent').classList.add('right');highlight(it);
+    el('verdict').textContent='✓ +'+gained+(streak>0&&streak%5===0?'  — multiplier up!':'');
+    el('verdict').className='verdict ok';
+    speed=Math.max(2400,speed-150);
+    after(it);
+  }
+  function miss(it,msg){
+    lives--;streak=0;missed.push(it);
+    el('sent').classList.add('wrong');highlight(it);
+    el('verdict').textContent=msg;
+    el('verdict').className='verdict no';
+    after(it);
+  }
+  function after(){
+    answering=false;clearTimeout(timer);
+    var bar=el('tbar');var m=getComputedStyle(bar).transform;bar.style.transition='none';bar.style.transform=m;
+    draw();
+    di++;
+    setTimeout(function(){ if(lives<=0){end();} else next(); },900);
+  }
+  function answer(a){
+    if(!answering)return;
+    answering=false;
+    var it=deck[di];
+    if(a===it.a)hit(it);else miss(it,'✗ It was '+(it.a==='act'?'ACTING — the system already did it':'ASSISTING — a human still acts'));
+  }
+  function tierFor(s){
+    if(s>=340)return'Verb Whisperer';
+    if(s>=220)return'Sharp-Eyed';
+    if(s>=110)return'Getting There';
+    return'The Agent Snuck Past You';
+  }
+  function end(){
+    el('play').style.display='none';
+    el('end').style.display='block';
+    el('tier').textContent=tierFor(score);
+    el('fscore').textContent=score;
+    el('fstreak').textContent=bestStreak;
+    el('fcalls').textContent=correct;
+    var prev=null;try{prev=JSON.parse(localStorage.getItem(LSKEY)||'null');}catch(e){}
+    var isBest=!prev||score>(prev.best||0);
+    el('best').innerHTML=isBest&&score>0?'<span class="newbest">New personal best</span>':(prev?'<div style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px">Personal best: '+prev.best+'</div>':'');
+    try{localStorage.setItem(LSKEY,JSON.stringify({best:Math.max(score,prev&&prev.best||0),streak:Math.max(bestStreak,prev&&prev.streak||0),plays:(prev&&prev.plays||0)+1}));}catch(e){}
+    var mset=[];var seen={};
+    missed.forEach(function(m){if(!seen[m.t]){seen[m.t]=1;mset.push(m);}});
+    el('missed').innerHTML=mset.length?'<h5>The ones that got away</h5>'+mset.slice(0,4).map(function(m){
+      return '<div class="mi">“'+esc(m.t)+'” — <b>'+esc(m.v)+'</b> is '+(m.a==='act'?'an acting verb':'an assisting verb')+'.</div>';}).join(''):'';
+  }
+  function start(){
+    deck=shuffle(POOL.slice());di=0;score=0;streak=0;bestStreak=0;lives=3;correct=0;speed=6000;missed=[];
+    el('splash').style.display='none';el('end').style.display='none';el('play').style.display='block';
+    draw();next();
+  }
+  el('start').addEventListener('click',start);
+  el('again').addEventListener('click',start);
+  el('btnAssist').addEventListener('click',function(){answer('assist');});
+  el('btnAct').addEventListener('click',function(){answer('act');});
+  document.addEventListener('keydown',function(e){
+    if(el('play').style.display!=='block')return;
+    if(e.key==='ArrowLeft'){e.preventDefault();answer('assist');}
+    if(e.key==='ArrowRight'){e.preventDefault();answer('act');}
+  });
+})();
+</script>
+</body>
+</html>

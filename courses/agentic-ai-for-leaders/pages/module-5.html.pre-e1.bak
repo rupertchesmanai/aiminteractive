@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 5: Workflow Readiness — Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../assets/img/aim-logo-blue.png">
+<meta name="description" content="Module 5 · Workflow Readiness — the Approval Committee: what you would require before signing off, and what you would refuse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+main.mod{padding:10px 0 30px}
+.msec{margin:44px 0}
+.msec > h2{font-size:26px;margin-bottom:6px}
+.msec > .sec-eyebrow{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+.msec > p.body{font-size:15px;color:var(--ink);max-width:72ch;margin:10px 0;line-height:1.6}
+.msec > p.body.dim{color:var(--grey)}
+.secimg{width:100%;max-height:340px;object-fit:cover;margin:14px 0;display:block}
+/* day 2 reframe evidence chips */
+.evchips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:860px){.evchips{grid-template-columns:repeat(2,1fr)}}
+.evchip{border:1px solid var(--line);background:#fff;padding:12px 14px;font-family:var(--head)}
+.evchip .st{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.evchip.ok .st{color:var(--teal-dark)}
+.evchip .nm{font-weight:600;font-size:12.5px;margin-top:4px;line-height:1.3}
+/* proposal dossier */
+.dossier{background:#141414;color:#d9d4c8;padding:24px 26px;margin:16px 0}
+.dossier .dh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#53DFCB;margin-bottom:12px}
+.dossier h5{font-family:var(--head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:14px 0 8px}
+.dossier ol{margin-left:18px;display:flex;flex-direction:column;gap:4px}
+.dossier ol li,.dossier ul li{font-size:13px;line-height:1.5}
+.dossier ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.dossier ul li{padding-left:14px;position:relative}
+.dossier ul li::before{content:"·";position:absolute;left:2px;color:#53DFCB}
+.dossier .vendorline{border:1.5px dashed rgba(255,255,255,.4);padding:10px 14px;margin:12px 0;font-style:italic;font-size:13.5px}
+.dossier .warn{color:var(--coral)}
+.dstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 4px}
+@media(max-width:760px){.dstats{grid-template-columns:repeat(2,1fr)}}
+.dstat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);padding:12px;text-align:center}
+.dstat b{display:block;font-family:var(--head);font-weight:700;font-size:24px;color:#53DFCB}
+.dstat span{font-size:10.5px;line-height:1.3;display:block;margin-top:4px;color:rgba(255,255,255,.7)}
+/* zones */
+.zones{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:820px){.zones{grid-template-columns:1fr}}
+.zone{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal-dark);padding:14px 16px}
+.zone.z7{grid-column:1/-1}
+.zone .zn{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.zone h5{font-family:var(--head);font-size:15px;margin:3px 0 4px}
+.zone .zq{font-size:12.5px;color:var(--grey);line-height:1.4;margin-bottom:8px}
+.zone textarea{min-height:60px;font-size:13px}
+/* criteria */
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+@media(max-width:820px){.crit{grid-template-columns:1fr}}
+.cr{background:var(--ink);color:#fff;padding:16px 18px}
+.cr .cn{font-family:var(--mono);font-size:11px;color:var(--teal-light)}
+.cr h4{font-size:17px;color:#fff;margin:4px 0 5px}
+.cr p{font-size:12.8px;color:rgba(255,255,255,.82);line-height:1.5}
+.cr .kq{margin-top:9px;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);border-top:1px solid rgba(255,255,255,.2);padding-top:8px}
+/* weighting + patterns */
+.weigh{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+@media(max-width:820px){.weigh{grid-template-columns:1fr}}
+.wg{background:#fff;border:1px solid var(--line);padding:13px 15px;font-size:12.6px;color:var(--grey)}
+.wg b{font-family:var(--head);display:block;font-size:13.5px;color:var(--ink);margin-bottom:4px}
+.pats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+@media(max-width:820px){.pats{grid-template-columns:1fr}}
+.pat{background:var(--cream-alt);border-left:4px solid var(--coral);padding:13px 15px;font-size:12.8px}
+.pat b{font-family:var(--head);display:block;margin-bottom:3px}
+/* RPN rows */
+.rpnrow{background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.rpnrow .rh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.rpnrow h5{font-family:var(--head);font-size:14.5px}
+.rpnrow .rq{font-size:12.3px;color:var(--grey);margin-top:2px}
+.seg{display:flex;border:1.5px solid rgba(66,58,58,.3)}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg .sl{display:block;font-family:var(--head);font-weight:700;font-size:12px;padding:8px 13px;border-right:1.5px solid rgba(66,58,58,.3);color:var(--grey);min-width:40px;text-align:center}
+.seg label:last-child .sl{border-right:0}
+.seg label:nth-child(1) input:checked + .sl{background:var(--teal-dark);color:#fff}
+.seg label:nth-child(2) input:checked + .sl{background:var(--coral);color:#fff}
+.seg label:nth-child(3) input:checked + .sl{background:var(--ink);color:#fff}
+.seg input:focus-visible + .sl{outline:3px solid var(--teal);outline-offset:2px}
+.takeaways{background:#fff;border:1px solid var(--line);padding:22px 26px}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.takeaways li{font-size:14px;line-height:1.5;padding-left:22px;position:relative}
+.takeaways li::before{content:"→";position:absolute;left:0;color:var(--teal-dark);font-weight:700}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:820px){.guide{grid-template-columns:1fr}}
+.gcol{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.gcol h5{font-family:var(--head);font-size:14px;margin-bottom:8px;color:var(--teal-dark)}
+.gcol ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.gcol li{font-size:12.6px;color:var(--grey);padding-left:14px;position:relative;line-height:1.4}
+.gcol li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--teal)}
+.sampletab{background:#fff;border:1px solid var(--line);margin-top:10px}
+.sampletab .srow{display:grid;grid-template-columns:190px 60px 1fr;border-bottom:1px solid var(--line);font-size:12.6px}
+.sampletab .srow:last-child{border-bottom:0}
+.sampletab .sk{font-family:var(--head);font-weight:600;padding:9px 12px;background:var(--cream)}
+.sampletab .sv{padding:9px 12px;color:var(--grey);font-style:italic}
+.sampletab .sr{padding:9px 6px;font-family:var(--mono);font-weight:600;text-align:center}
+@media(max-width:640px){.sampletab .srow{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="module-5">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Agentic AI for Leaders</div></div>
+    </a>
+    <span class="wfchip" id="wfchip"></span>
+    <nav><a href="../index.html">Course hub</a><a href="evidence-pack.html">Evidence Pack</a><a href="foundations.html">Foundations</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="bg" src="../assets/pics/m5-hero-committee.jpg" alt="">
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <div class="eyebrow">Day 2 · Module 5 · ≈ 90 min</div>
+    <div class="crumb"><span class="from">From “What must I see?”</span><span class="arrow">→</span><span class="to">To “Is the workflow ready?”</span></div>
+    <h1>Workflow Readiness</h1>
+    <p class="sub">Dashboard — The Approval Committee</p>
+    <div class="gq"><span class="bar" style="background:var(--teal-light)"></span><p>Is this workflow actually ready for agentic AI?</p></div>
+    <div style="margin-top:14px"><span style="font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light)">Leadership move · Require &amp; refuse</span></div>
+  </div>
+</section>
+
+<main class="mod wrap" id="main">
+
+  <!-- ============ DAY 2 REFRAME ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Day 1 close → Day 2 open</div>
+    <h2>The object of judgement changes</h2>
+    <p class="body">Day 1 judged <b>the agent</b>: what it's doing, whether autonomy is appropriate, where authority stops, what must be visible. Day 2 judges <b>the organisation around it</b> — because most AI failures are not failures of the agent. They are failures of the workflow around the agent. Even a well-governed agent can fail inside a poorly designed workflow. Your Day 1 outputs are now <b>evidence</b> for Day 2 decisions:</p>
+    <div class="evchips" id="evchips"></div>
+    <p class="body dim selfOnly">Agentic AI rarely announces itself by name. It shows up as smarter automation, a business case promising speed, behaviour more autonomous than expected, an incident, fragments across teams, or a shift in trust. It announces itself when decisions, actions or consequences start moving further from direct human control — while accountability stays exactly where it was.</p>
+
+    <div class="activity-block" style="margin-top:18px">
+      <div class="a-kicker"><span class="a-chip">Initial reflection</span><span class="a-chip time">3 min</span></div>
+      <h3>Which Day 1 decision would be hardest to sustain?</h3>
+      <p class="a-purpose">Review your Day 1 artefacts. Pick one decision — the autonomy call, the boundary, the visibility requirement, the escalation trigger, or the value claim.</p>
+      <div class="field">
+        <label for="m5ref">What might make this decision difficult to implement in a real workflow — and what would need to be clarified before approval?</label>
+        <textarea id="m5ref" data-key="m5.reflect"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCENARIO ============ -->
+  <section class="msec" id="proposal">
+    <div class="sec-eyebrow">Scenario</div>
+    <h2>The New Workflow Proposal</h2>
+    <p class="body">You know the Complaint Triage workflow. Today you are reviewing something new: a proposal to introduce agentic AI into <b>customer onboarding and identity verification</b>. It has a vendor, a business case and pilot results. The executive committee is being asked to approve it — and you are on that committee. Your job is not to redesign the workflow. It is to determine whether you would approve it: <b>what would I require before signing off, and what would I refuse?</b></p>
+
+    <div class="dossier">
+      <div class="dh">Proposal pack · Customer onboarding &amp; identity verification · ~800 applications/week</div>
+      <h5 style="margin-top:0">The current workflow</h5>
+      <ol>
+        <li>A new customer submits an application — website, app, or via a relationship manager</li>
+        <li>The application is checked for completeness; missing details go back to the customer</li>
+        <li>Identity is verified against government records and credit information</li>
+        <li>The customer is screened against sanctions lists and politically-exposed-persons checks</li>
+        <li>A risk score is calculated</li>
+        <li>Low-risk applications are approved and onboarded</li>
+        <li>Medium-risk cases route to a compliance analyst for review</li>
+        <li>High-risk cases escalate to a senior compliance officer and may be declined</li>
+      </ol>
+      <h5>The proposal</h5>
+      <ul>
+        <li>An agent handles the <b>first six steps</b>. Its goal: <i>assess whether an applicant can be safely onboarded while complying with customer due diligence obligations</i></li>
+        <li>It performs the completeness check, identity verification, sanctions and screening checks, risk scoring, <b>low-risk approvals</b>, and routing of medium and high-risk cases</li>
+      </ul>
+      <div class="vendorline">The vendor describes the solution as <b>“an AI-powered onboarding automation platform.”</b> The proposed design, however, would allow the system to determine what information to request, decide when evidence is sufficient, route cases, <b>approve customers assessed as low risk</b>, and escalate cases where uncertainty remains.</div>
+      <h5>The pitch</h5>
+      <div class="dstats">
+        <div class="dstat"><b>94%</b><span>low-risk approvals correct at a peer organisation</span></div>
+        <div class="dstat"><b>3d → 4h</b><span>application-to-decision time</span></div>
+        <div class="dstat"><b>↑</b><span>analysts freed for medium/high-risk cases</span></div>
+        <div class="dstat"><b>📄</b><span>vendor provides a record of what the agent decided and when</span></div>
+      </div>
+      <h5>The wider operating context</h5>
+      <ul>
+        <li>Regulated sector with strict legal obligations on customer due diligence</li>
+        <li>A wrongful approval carries serious downside: penalties, regulatory action, reputational damage — possibly admitting a customer the organisation is <b>legally required to refuse</b></li>
+        <li>A wrongful decline also carries downside: customer harm, fair-access claims, competitive loss</li>
+        <li>Volume is meaningful but not extreme — each case has individual weight</li>
+        <li class="warn">The proposing team has not yet specified what the workflow will let leaders see, how cases will be escalated when the agent is uncertain, or who outside the proposing team will need visibility</li>
+      </ul>
+    </div>
+
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">First instinct</span><span class="a-chip time">1 min</span></div>
+      <h3>“This sounds like automation…”</h3>
+      <p class="a-purpose">Before we go further — your gut call on the proposal as described:</p>
+      <div class="optcards" style="grid-template-columns:repeat(3,1fr)">
+        <label class="optcard"><input type="radio" name="inst" data-key="m5.instinct" value="It's essentially automation"><span class="oc"><b>Essentially automation</b><span>A sequence of checks with fixed steps.</span></span></label>
+        <label class="optcard"><input type="radio" name="inst" data-key="m5.instinct" value="It's more than automation"><span class="oc"><b>More than automation</b><span>It's been given authority over outcomes.</span></span></label>
+        <label class="optcard coral"><input type="radio" name="inst" data-key="m5.instinct" value="Genuinely unsure"><span class="oc"><b>Genuinely unsure</b><span>The label and the behaviour don't match.</span></span></label>
+      </div>
+      <div class="btnrow"><button class="btn coral" data-requires="m5.instinct" data-reveal="#instreveal" data-revealed-label="Considered">Commit → consider the tension</button></div>
+      <div class="reveal-box" id="instreveal">
+        <p style="font-size:14px;line-height:1.6;margin-bottom:8px">“This sounds like automation” is a reasonable first response — completeness check, verification, screening, scoring, routing all sound like a rules-based sequence. But ask the workbook's question: <b>would a traditional automation system normally determine whether evidence is sufficient, decide when uncertainty exists, approve customers without human review, and choose when a case should be escalated?</b></p>
+        <p style="font-size:14px;line-height:1.6">The point is not how intelligent the system is. The point is <b>the authority the organisation is delegating</b>: determining sufficiency of evidence, approving some customers, routing others, deciding when uncertainty requires escalation. If no human reviews low-risk applications, what is the organisation assuming about the agent — trust, accuracy, reliability, governance?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A5.1 ============ -->
+  <section class="msec" id="a51">
+    <img class="secimg" src="../assets/pics/m5-seven-zones.jpg" alt="Leaders annotating a long printed workflow map across a boardroom wall" style="max-height:300px">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 5.1</span><span class="a-chip time">≈ 25 min</span></div>
+      <h3>The Workflow Embedding Lab</h3>
+      <p class="a-purpose">This is an <b>approval</b> activity, not a design activity. Map the proposed workflow across seven zones, then make the readiness judgement. Don't perfect the map — the map is diagnostic; the judgement is the goal. Decide what you would require before approving. Refuse what does not meet the bar.</p>
+
+      <div class="a-step">
+        <div class="s-label">Step 1 — Map the proposed workflow across seven zones</div>
+        <div class="zones">
+          <div class="zone"><div class="zn">ZONE 1</div><h5>Entry</h5><div class="zq">What triggers the workflow?</div><textarea data-key="m5.lab.z1" aria-label="Zone 1 Entry"></textarea></div>
+          <div class="zone"><div class="zn">ZONE 2</div><h5>Decisions</h5><div class="zq">Every decision point. Who makes each decision?</div><textarea data-key="m5.lab.z2" aria-label="Zone 2 Decisions"></textarea></div>
+          <div class="zone"><div class="zn">ZONE 3</div><h5>Human checkpoints</h5><div class="zq">Where do humans review, approve or override? Designed — or assumed?</div><textarea data-key="m5.lab.z3" aria-label="Zone 3 Human checkpoints"></textarea></div>
+          <div class="zone"><div class="zn">ZONE 4</div><h5>Handovers &amp; escalation paths</h5><div class="zq">Where does work move? What information moves with the case? When does it escalate?</div><textarea data-key="m5.lab.z4" aria-label="Zone 4 Handovers"></textarea></div>
+          <div class="zone"><div class="zn">ZONE 5</div><h5>Exits</h5><div class="zq">How does a case leave the workflow? Approved, declined, escalated, deferred?</div><textarea data-key="m5.lab.z5" aria-label="Zone 5 Exits"></textarea></div>
+          <div class="zone"><div class="zn">ZONE 6</div><h5>Reversibility</h5><div class="zq">Where can a wrong call still be caught? Where is the harm locked in?</div><textarea data-key="m5.lab.z6" aria-label="Zone 6 Reversibility"></textarea></div>
+          <div class="zone z7"><div class="zn">ZONE 7</div><h5>Observability</h5><div class="zq">What does the workflow let you see? What does it not? Who else needs visibility?</div><textarea data-key="m5.lab.z7" aria-label="Zone 7 Observability"></textarea></div>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 2 — The readiness judgement</div>
+        <div class="fieldrow">
+          <div class="field"><label for="l-ready">Where is this workflow ready? Structure, designed handovers, reversibility, observability built in.</label><textarea id="l-ready" data-key="m5.lab.ready" style="min-height:64px"></textarea></div>
+          <div class="field"><label for="l-not">Where is it not ready? For each unready part, name who else would also need it to be ready.</label><textarea id="l-not" data-key="m5.lab.notready" style="min-height:64px"></textarea></div>
+        </div>
+        <div class="field"><label for="l-val">Where is value real, and where is value assumed?</label><textarea id="l-val" data-key="m5.lab.value" style="min-height:64px"></textarea></div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 3 — Require and refuse</div>
+        <div class="fieldrow">
+          <div class="field"><label for="l-req">What would I require before signing off? Write it as approval conditions.</label><textarea id="l-req" data-key="m5.lab.require"></textarea></div>
+          <div class="field"><label for="l-ref">What would I refuse to approve if those conditions were not met? What single issue would make you vote no, regardless of the business case?</label><textarea id="l-ref" data-key="m5.lab.refuse"></textarea>
+          <div class="hint">If you cannot answer this, your approval criteria are not yet clear. Conditions added later are usually conditions that never arrive.</div></div>
+        </div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn coral" data-requires="m5.lab.ready,m5.lab.notready,m5.lab.value,m5.lab.require,m5.lab.refuse" data-reveal="#labreveal" data-revealed-label="Compared">Commit → the reveal</button>
+      </div>
+      <div class="reveal-box" id="labreveal">
+        <p style="font-family:var(--head);font-weight:600;font-size:16px;margin-bottom:8px">Most groups identify the same obvious risks. The most important gaps are usually not technical.</p>
+        <p style="font-size:14px;line-height:1.6;margin-bottom:8px">They are <b>governance gaps</b>: missing visibility, missing escalation, missing accountability, missing ownership. And they are not observations — they are <b>approval conditions</b>. If they do not exist, the workflow is not ready.</p>
+        <p style="font-size:13.5px;color:var(--grey)">Agent failures rarely begin with the agent. They begin with the workflow surrounding it. The leadership responsibility is not approving the technology — it is approving the conditions under which the technology operates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOUR CRITERIA ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Concept layer</div>
+    <h2>The Four Workflow Readiness Criteria</h2>
+    <p class="body">You have just assessed a workflow. Now let's name the criteria you were using.</p>
+    <div class="crit">
+      <div class="cr"><div class="cn">1</div><h4>Explicit actions and decisions</h4><p>What the agent does, what humans do, who decides, where authority sits.</p><div class="kq">Is responsibility explicit?</div></div>
+      <div class="cr"><div class="cn">2</div><h4>Designed handovers and escalation paths</h4><p>When handovers occur, who receives them, what information travels, how escalation works.</p><div class="kq">Do deliberate paths exist when something goes wrong?</div></div>
+      <div class="cr"><div class="cn">3</div><h4>Observability built in</h4><p>Decisions reconstructable, escalations reviewable, patterns detectable, accountability demonstrable.</p><div class="kq">Can the workflow be explained later?</div></div>
+      <div class="cr"><div class="cn">4</div><h4>Tested value and mapped reversibility</h4><p>Where value appears, how it's measured, what can be reversed, what consequences remain irreversible.</p><div class="kq">If the agent gets this wrong, what happens next?</div></div>
+    </div>
+
+    <p class="body dim selfOnly">The criteria stay constant; the weighting changes by workflow:</p>
+    <div class="weigh selfOnly">
+      <div class="wg"><b>Complaint triage</b>Primary concern: handovers and escalation.</div>
+      <div class="wg"><b>Scheduling</b>Primary concern: patterns and fairness.</div>
+      <div class="wg"><b>Financial decisioning</b>Primary concern: reversibility and per-case defensibility.</div>
+    </div>
+
+    <p class="body dim">Three workflow failure patterns to watch for:</p>
+    <div class="pats">
+      <div class="pat"><b>Agent acts, human reviews later</b>Review becomes rubber-stamping.</div>
+      <div class="pat"><b>Human decides, agent executes</b>Execution changes impact.</div>
+      <div class="pat"><b>Human and agent share responsibility</b>Ownership becomes unclear.</div>
+    </div>
+
+    <img class="secimg selfOnly" src="../assets/pics/m5-bridge-inspection.jpg" alt="An engineer inspecting the underside of a bridge before it takes load" style="max-height:280px">
+    <div class="key-message"><div class="km-label">Reversibility is a workflow property</div>
+    <p>A highly accurate agent inside an irreversible workflow may be more dangerous than a less capable agent operating inside a highly reversible one. If the agent gets this wrong: how quickly would we know, how far would the impact travel, what could still be corrected?</p></div>
+  </section>
+
+  <!-- ============ A5.2 ============ -->
+  <section class="msec" id="a52">
+    <div class="activity-block">
+      <div class="a-kicker"><span class="a-chip">Activity 5.2</span><span class="a-chip time">≈ 15–20 min</span><span class="a-chip" style="background:var(--ink)">Your workflow</span></div>
+      <h3>Apply the Lens to Your Own Context</h3>
+      <p class="a-purpose">The onboarding example was practice. Your workflow is the real test<span id="a52wf"></span>. Name one workflow in your organisation that is — or might soon be — the subject of an agent proposal, apply the four criteria, and make the readiness call. For each criterion: <b>ready, partial, or not ready</b>, one line on what would change the call, and who else needs visibility.</p>
+
+      <div class="rpnrow">
+        <div class="rh"><div><h5>1 · Explicit actions and decisions</h5><div class="rq">Who does what, who decides what. Who else needs visibility?</div></div>
+          <div class="seg" role="radiogroup" aria-label="Criterion 1"><label><input type="radio" name="c1" data-key="m5.own.c1" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="c1" data-key="m5.own.c1" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="c1" data-key="m5.own.c1" value="Not ready"><span class="sl">N</span></label></div></div>
+        <input type="text" data-key="m5.own.n1" placeholder="Note — what would change the call, and who else needs visibility" aria-label="Criterion 1 note">
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>2 · Designed handovers and escalation paths</h5><div class="rq">Trigger, recipient, payload, time bound. Who else needs visibility?</div></div>
+          <div class="seg" role="radiogroup" aria-label="Criterion 2"><label><input type="radio" name="c2" data-key="m5.own.c2" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="c2" data-key="m5.own.c2" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="c2" data-key="m5.own.c2" value="Not ready"><span class="sl">N</span></label></div></div>
+        <input type="text" data-key="m5.own.n2" placeholder="Note" aria-label="Criterion 2 note">
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>3 · Observability built in</h5><div class="rq">Decisions, reasoning, escalations, patterns. Who else needs visibility?</div></div>
+          <div class="seg" role="radiogroup" aria-label="Criterion 3"><label><input type="radio" name="c3" data-key="m5.own.c3" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="c3" data-key="m5.own.c3" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="c3" data-key="m5.own.c3" value="Not ready"><span class="sl">N</span></label></div></div>
+        <input type="text" data-key="m5.own.n3" placeholder="Note" aria-label="Criterion 3 note">
+      </div>
+      <div class="rpnrow">
+        <div class="rh"><div><h5>4 · Tested value, mapped reversibility</h5><div class="rq">Where value is delivered. Where the workflow is forgiving — or final. Who else needs visibility?</div></div>
+          <div class="seg" role="radiogroup" aria-label="Criterion 4"><label><input type="radio" name="c4" data-key="m5.own.c4" value="Ready"><span class="sl">R</span></label><label><input type="radio" name="c4" data-key="m5.own.c4" value="Partial"><span class="sl">P</span></label><label><input type="radio" name="c4" data-key="m5.own.c4" value="Not ready"><span class="sl">N</span></label></div></div>
+        <input type="text" data-key="m5.own.n4" placeholder="Note" aria-label="Criterion 4 note">
+      </div>
+
+      <div class="field"><label for="ownval">Value: real or assumed? Where in the workflow is value being delivered — and where is it being assumed?</label><textarea id="ownval" data-key="m5.own.value" style="min-height:60px"></textarea></div>
+      <div class="field"><label for="ownverd">The honest readiness call — one sentence verdict, and what would have to be true to change your decision</label><textarea id="ownverd" data-key="m5.own.verdict"></textarea></div>
+
+      <details class="selfOnly"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-dark);cursor:pointer">Sample completed map (Activity Workbook, p.58 — vendor contract review)</summary>
+        <div class="sampletab">
+          <div class="srow"><div class="sk">The workflow</div><div class="sr"></div><div class="sv">Vendor contract review and approval. Procurement has proposed an agent that reads incoming contracts, flags non-standard clauses, and recommends approve, negotiate, or escalate. Pilot proposed for Q2.</div></div>
+          <div class="srow"><div class="sk">Explicit actions &amp; decisions</div><div class="sr">P</div><div class="sv">Agent actions clear. Human decision rights on escalations not. Legal needs this in writing before approval.</div></div>
+          <div class="srow"><div class="sk">Handovers &amp; escalation</div><div class="sr">N</div><div class="sv">No escalation path for unfamiliar clauses. Legal and Procurement both need this and neither has been brought in.</div></div>
+          <div class="srow"><div class="sk">Observability built in</div><div class="sr">P</div><div class="sv">Agent records its flags but not reasoning. Legal cannot review; Risk has no portfolio view of decisions.</div></div>
+          <div class="srow"><div class="sk">Tested value, reversibility</div><div class="sr">P</div><div class="sv">Reversibility high (contracts negotiable). Value claim operational only. Finance needs the strategic case before approval.</div></div>
+          <div class="srow"><div class="sk">Value: real or assumed</div><div class="sr"></div><div class="sv">Real: faster turnaround on standard contracts, reduced legal review queue. Assumed: that the agent will catch the non-standard clauses legal currently catches; that “non-standard” is well enough defined to be a reliable trigger.</div></div>
+          <div class="srow"><div class="sk">Honest readiness call</div><div class="sr"></div><div class="sv">Not yet ready. Would change to partial if legal specifies the escalation triggers in writing and the workflow records reasoning — not just flags — on every clause the agent treats as standard.</div></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="guide selfOnly">
+      <div class="gcol"><h5>Is the workflow ready? — questions for my team</h5>
+        <ul><li>Where are the workflow handovers?</li><li>Where could errors occur?</li><li>Where are human checkpoints needed?</li><li>Who owns escalation?</li><li>Is value measurable?</li></ul></div>
+      <div class="gcol"><h5>Questions for a vendor</h5>
+        <ul><li>What assumptions does this solution make about our workflow?</li><li>What implementation challenges are common?</li><li>Where have other organisations struggled?</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ============ ARTEFACT ============ -->
+  <section class="msec">
+    <div class="artefact-panel">
+      <div class="ap-kicker"><span class="ap-chip">Module 5 artefact · 5 of 8</span>
+        <button class="btn ghost" id="m5print">Download PDF</button></div>
+      <h3>Workflow Embedding Map</h3>
+      <p class="ap-note">Your readiness assessment — proposal and own context. In Module 8 it helps answer: <i>“What exactly is this agent being trusted to do — and what harms would be difficult to reverse?”</i></p>
+      <div class="ap-rows" id="m5rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAYS ============ -->
+  <section class="msec">
+    <div class="sec-eyebrow">Key takeaways</div>
+    <h2>What Module 5 established</h2>
+    <div class="takeaways"><ul>
+      <li>Leaders do not approve agents. Leaders approve workflows containing agents.</li>
+      <li>A capable agent inside an unready workflow is still an unsafe deployment — accuracy tells you the agent performs, not that the workflow can support, monitor, escalate or defend what it does.</li>
+      <li>The most important gaps are governance gaps — visibility, escalation, accountability, ownership — and they are approval conditions, not observations.</li>
+      <li>Requirements important enough to mention are important enough to require before approval. Conditions added later usually never arrive.</li>
+      <li>A workflow is ready when leaders can explain who does what, where authority sits, how issues escalate, what must be visible, where value is created, and how harm is contained. Anything less is not readiness — it is hope.</li>
+    </ul></div>
+  </section>
+
+  <div class="quoteband"><div class="inner">
+    <div class="eyebrow">The closing thought</div>
+    <p>You are not being asked whether the agent is good. You are being asked whether the workflow deserves the agent.</p>
+  </div></div>
+
+  <section class="msec" style="margin-top:26px">
+    <p class="body dim"><b>Next:</b> you specified the conditions for approval. Module 6 asks what happens when the workflow signals that something has gone wrong — three months after you signed.</p>
+  </section>
+
+  <section class="cheats" style="display:none"></section>
+
+  <div class="pn">
+    <a href="module-4.html"><span class="lbl">← Previous</span><span>Module 4 — Observability</span></a>
+    <a class="next" href="module-6.html"><span class="lbl">Next →</span><span>Module 6 — Intervention Readiness</span></a>
+  </div>
+</main>
+
+<footer><div class="wrap row"><div><div class="tick"></div><div class="lt">Agentic AI for Leaders</div><small>Australian Institute of Management — Interactive Workbook</small></div><small>Capability is not permission. Leaders decide.</small></div></footer>
+
+<script src="../assets/js/site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  /* day-1 evidence chips */
+  var D1=[
+    ['01 · Points of Agency & Accountability Map','me.workflow'],
+    ['02 · Autonomy Decision Snapshot','m2.snap.level'],
+    ['03 · Boundary Map','m3.a31.d1'],
+    ['04 · Observability Readiness Map','m4.a42.commit']
+  ];
+  document.getElementById('evchips').innerHTML=D1.map(function(a){
+    var ok=AAL.has(a[1]);
+    return '<div class="evchip'+(ok?' ok':'')+'"><span class="st">'+(ok?'✓ Evidence in hand':'— Not yet captured')+'</span><div class="nm">'+a[0]+'</div></div>';
+  }).join('');
+
+  function wf(){
+    var w=AAL.get('me.workflow');
+    document.getElementById('a52wf').textContent = w? ' — you carried “'+w+'”, use it or pick a more pressing one':'';
+  }
+
+  var ROWS=[
+    ['Hardest Day-1 decision to sustain','m5.reflect'],
+    ['First instinct on the proposal','m5.instinct'],
+    ['Proposal — where ready','m5.lab.ready'],
+    ['Proposal — where not ready (and who must fix it)','m5.lab.notready'],
+    ['Proposal — value real vs assumed','m5.lab.value'],
+    ['I would require before approval','m5.lab.require'],
+    ['I would refuse','m5.lab.refuse'],
+    ['My workflow — explicit actions & decisions','m5.own.c1'],
+    ['My workflow — handovers & escalation','m5.own.c2'],
+    ['My workflow — observability','m5.own.c3'],
+    ['My workflow — value & reversibility','m5.own.c4'],
+    ['My workflow — value real or assumed','m5.own.value'],
+    ['The honest readiness call','m5.own.verdict']
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function drawArtefact(){
+    document.getElementById('m5rows').innerHTML=ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      var note={'m5.own.c1':'m5.own.n1','m5.own.c2':'m5.own.n2','m5.own.c3':'m5.own.n3','m5.own.c4':'m5.own.n4'}[r[1]];
+      if(note && AAL.has(note)) v = v + ' — ' + AAL.get(note);
+      return '<div class="ap-row"><div class="k">'+r[0]+'</div><div class="v">'+
+        (String(v).trim()?esc(v):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('m5print').addEventListener('click',function(){
+    var html=ROWS.map(function(r){
+      var v=AAL.get(r[1]);
+      var note={'m5.own.c1':'m5.own.n1','m5.own.c2':'m5.own.n2','m5.own.c3':'m5.own.n3','m5.own.c4':'m5.own.n4'}[r[1]];
+      if(note && AAL.has(note)) v = v + ' — ' + AAL.get(note);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v).replace(/\n/g,'<br>'):'<em>Not yet answered — this gap is a finding.</em>')+'</div></div>';
+    }).join('');
+    AAL.printDoc('Workflow Embedding Map', html);
+  });
+
+  function refresh(){wf();drawArtefact();}
+  refresh();
+  document.addEventListener('aal:change',refresh);
+});
+</script>
+</body>
+</html>
