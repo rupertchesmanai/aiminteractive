@@ -1,0 +1,20 @@
+/* Agentic AI for Leaders — site.js · Phase 0 stub.
+   Phase 1 replaces this with the full capture engine (autosave, TOTALS, modes, export). */
+window.AAL = (function(){
+  var NS = 'aal.capture', LAST = 'aal.last';
+  function last(page){ try{ localStorage.setItem(LAST, page); }catch(e){} }
+  function getCap(){ try{ return JSON.parse(localStorage.getItem(NS)||'{}'); }catch(e){ return {}; } }
+  function chip(){
+    var cap = getCap(), el = document.getElementById('wfchip');
+    if(el && cap['me.workflow'] && String(cap['me.workflow']).trim()){
+      el.textContent = 'Your workflow: ' + cap['me.workflow'];
+      el.classList.add('on');
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var page = document.body.getAttribute('data-page');
+    if(page) last(page);
+    chip();
+  });
+  return { last:last, getCap:getCap };
+})();
