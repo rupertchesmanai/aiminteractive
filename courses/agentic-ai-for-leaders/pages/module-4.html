@@ -121,7 +121,7 @@ main.mod{padding:10px 0 30px}
   <img class="bg" src="../assets/pics/m4-hero-audit-room.jpg" alt="">
   <div class="veil"></div>
   <div class="wrap inner">
-    <div class="eyebrow">Day 1 · Module 4 · ≈ 90 min <span style="color:var(--teal-light)">· Flexible — may run Day 1 PM or Day 2 AM</span></div>
+    <div class="eyebrow">Day 1 · Module 4 · ≈ 90 min</div>
     <div class="crumb"><span class="from">From “What can it do?”</span><span class="arrow">→</span><span class="to">To “How would I know?”</span></div>
     <h1>Observability</h1>
     <p class="sub">Dashboard — The Audit Room</p>
@@ -265,7 +265,7 @@ main.mod{padding:10px 0 30px}
     <div class="types">
       <div class="type"><h5>Complaint triage agent</h5><p>Customer-facing, high-volume, moderate consequence per case. Individual cases <i>and</i> cross-case patterns both matter.</p><div class="lq">Can we explain individual decisions and detect wider patterns before they become a problem?</div></div>
       <div class="type"><h5>Scheduling agent</h5><p>Back-office and apparently low-stakes per decision — but repeated decisions can create cumulative unfairness, imbalance or strain.</p><div class="lq">Can we see whether the agent is creating cumulative unfairness or operational strain over time?</div></div>
-      <div class="type"><h5>Financial triage agent</h5><p>High-consequence individual decisions — lending, credit, hardship, fraud. Each decision may need to be fully reconstructable, even later.</p><div class="lq">Can we show exactly how this decision was made, what evidence was used, what humans reviewed, and why the outcome was reached?</div></div>
+      <div class="type"><h5>Financial triage agent</h5><p>High-consequence individual decisions — lending, credit, hardship, fraud. Each decision may need to be fully reconstructable, even later.</p><div class="lq">Can we show exactly how this decision was made, what evidence was used, what the agent did, what humans reviewed, and why the final outcome was reached?</div></div>
     </div>
     <div class="key-message"><div class="km-label">Specify it before you sign</div>
     <p>Observability is a procurement decision, a contract decision and an internal-build decision. It happens before the agent is approved, not after. The leaders who get it right specify the visibility they need in writing before they sign off — and refuse to deploy an agent that cannot deliver it.</p></div>
@@ -308,10 +308,10 @@ main.mod{padding:10px 0 30px}
         <details class="selfOnly" style="margin-top:8px"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--coral-dark);cursor:pointer">When leaders should act to secure observability</summary>
           <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:12.8px;color:var(--grey)">
             <li><b>Tool &amp; vendor selection:</b> require the ability to reconstruct decisions, view inputs and rules, identify reviews and escalations, analyse patterns, control access, and retain or transfer records.</li>
-            <li><b>Contracting &amp; procurement:</b> document access, retention, reporting, audit rights, incident support, change notifications, and record ownership. Do not rely on claims that a system is “explainable.”</li>
+            <li><b>Contracting &amp; procurement:</b> document access, retention, reporting, audit rights, incident support, change notifications, and record ownership and portability. Do not rely on claims that a system is “explainable.”</li>
             <li><b>Internal build brief:</b> specify what operational, leadership, risk, compliance, legal, audit and customer-facing teams need to see.</li>
             <li><b>Deployment approval:</b> confirm evidence is proportionate to consequences — if inadequate: delay, reduce autonomy, increase review, narrow scope, or require further work.</li>
-            <li><b>Ongoing governance:</b> regularly test that records remain complete, accessible and useful.</li>
+            <li><b>Ongoing governance:</b> regularly test that records remain complete, accessible and useful — and that decisions, reviews, overrides and escalations can still be reconstructed.</li>
             <li><b>Leadership principle:</b> if the organisation cannot see, reconstruct and defend an AI-influenced decision, it should not delegate that level of authority.</li>
           </ul>
         </details>
@@ -319,7 +319,7 @@ main.mod{padding:10px 0 30px}
 
       <div class="a-step">
         <div class="s-label">Step 2 — My next commitment</div>
-        <p class="small" style="margin-bottom:8px">You won't close every observability gap immediately. Choose <b>one</b> gap you can begin to address in the next 30 days — e.g. <i>“Request a review of the current triage decision logs and identify whether we can reconstruct why a complaint was classified low, medium or high. If not, define the additional reasoning data to capture.”</i></p>
+        <p class="small" style="margin-bottom:8px">You won't close every observability gap immediately. Choose <b>one</b> gap you can begin to address in the next 30 days — e.g. <i>“Request a review of the current triage decision logs and identify whether we can reconstruct why a complaint was classified low, medium or high. If not, define the additional reasoning data to capture.”</i> Other workbook examples: introduce monthly reviews of randomly sampled complaints, or create a dashboard showing escalation and override rates.</p>
         <div class="field">
           <label for="a42c">One small action this month to make an AI-enabled decision more visible, traceable or explainable to the people accountable for it</label>
           <textarea id="a42c" data-key="m4.a42.commit"></textarea>
@@ -338,6 +338,18 @@ main.mod{padding:10px 0 30px}
         <div class="field">
           <label for="a42s">Partner share — complete: “My visibility requirement is… and the first person I need to speak with is…”</label>
           <textarea id="a42s" data-key="m4.a42.share" style="min-height:64px"></textarea>
+        </div>
+      </div>
+
+      <div class="a-step">
+        <div class="s-label">Step 4 — Leadership moment readiness</div>
+        <p class="small" style="margin-bottom:8px">For each leadership moment, assess whether you would be <b>ready, partly ready, or not ready</b> to explain and defend an AI-influenced decision. If you do not yet have live AI systems, answer based on where your organisation would stand if you approved an agent today.</p>
+        <div class="fieldrow">
+          <div class="field"><label for="lmr1">Incident review</label><select id="lmr1" data-key="m4.a42.lmr1" aria-label="Incident review — readiness"><option value=""></option><option>Ready</option><option>Partly ready</option><option>Not ready</option></select><input type="text" data-key="m4.a42.lmr1n" placeholder="What would need to change?" aria-label="Incident review — what would need to change" style="margin-top:6px"></div>
+          <div class="field"><label for="lmr2">Board or executive question</label><select id="lmr2" data-key="m4.a42.lmr2" aria-label="Board or executive question — readiness"><option value=""></option><option>Ready</option><option>Partly ready</option><option>Not ready</option></select><input type="text" data-key="m4.a42.lmr2n" placeholder="What would need to change?" aria-label="Board or executive question — what would need to change" style="margin-top:6px"></div>
+          <div class="field"><label for="lmr3">Regulatory inquiry</label><select id="lmr3" data-key="m4.a42.lmr3" aria-label="Regulatory inquiry — readiness"><option value=""></option><option>Ready</option><option>Partly ready</option><option>Not ready</option></select><input type="text" data-key="m4.a42.lmr3n" placeholder="What would need to change?" aria-label="Regulatory inquiry — what would need to change" style="margin-top:6px"></div>
+          <div class="field"><label for="lmr4">Customer, employee, or internal accountability moment</label><select id="lmr4" data-key="m4.a42.lmr4" aria-label="Customer, employee, or internal accountability moment — readiness"><option value=""></option><option>Ready</option><option>Partly ready</option><option>Not ready</option></select><input type="text" data-key="m4.a42.lmr4n" placeholder="What would need to change?" aria-label="Customer, employee, or internal accountability moment — what would need to change" style="margin-top:6px"></div>
+          <div class="field"><label for="lmr5">Others specific to your organisation</label><select id="lmr5" data-key="m4.a42.lmr5" aria-label="Others specific to your organisation — readiness"><option value=""></option><option>Ready</option><option>Partly ready</option><option>Not ready</option></select><input type="text" data-key="m4.a42.lmr5n" placeholder="What would need to change?" aria-label="Others specific to your organisation — what would need to change" style="margin-top:6px"></div>
         </div>
       </div>
     </div>

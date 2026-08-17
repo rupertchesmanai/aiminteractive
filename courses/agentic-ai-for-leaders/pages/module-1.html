@@ -268,7 +268,7 @@ main.mod{padding:10px 0 30px}
       <div class="a-kicker"><span class="a-chip">Activity 1.2</span><span class="a-chip time">5 min</span></div>
       <h3>Spot the Difference</h3>
       <p class="a-purpose">Read each example and decide: automation, generative AI, or agentic AI — then see what made the difference.</p>
-      <div class="qmeta"><span class="dchip">Question <b id="q12n">1</b>/4</span><span class="dchip">Score <b id="q12s">0</b></span></div>
+      <div class="qmeta"><span class="dchip">Question <b id="q12n">1</b>/6</span><span class="dchip">Score <b id="q12s">0</b></span></div>
       <div id="q12play">
         <div class="scenario" id="q12scen"></div>
         <div class="drill-btns">
@@ -306,7 +306,7 @@ main.mod{padding:10px 0 30px}
           <label class="optcard coral"><input type="radio" name="cpath" data-key="m1.canvas.path" value="Path B — a plausible workflow within 12–24 months"><span class="oc"><b>Path B</b><span>No clear AI workflow yet — use AI as a thinking partner to find a realistic example that could plausibly emerge in your function within 12–24 months.</span></span></label>
         </div>
         <details id="pathbhelp"><summary style="font-family:var(--head);font-weight:600;font-size:13px;color:var(--coral-dark);cursor:pointer">Path B — the thinking-partner prompt</summary>
-          <p class="small" style="margin:8px 0">You're not looking for the perfect idea — just a realistic example to use all course. The more specific your role and function, the better the examples: telling the AI what your team does on a Tuesday afternoon beats a generic prompt. You remain responsible for selecting and validating the example.</p>
+          <p class="small" style="margin:8px 0">You're not looking for the perfect idea — just a realistic example to use throughout the course. The more specific your role and function, the better the examples: telling the AI what your team does on a Tuesday afternoon beats a generic prompt. You remain responsible for selecting and validating the example.</p>
           <div class="promptbox" id="pbprompt">“I am a [your role] at a [size and type of organisation, e.g. mid-sized professional services firm, regional hospital, national retailer]. My team is responsible for [one or two sentences on what your function actually does, day to day].
 Suggest three realistic examples of where agentic AI could plausibly be introduced in my function in the next 12 months. For each example, use this format only:
 What it does.
@@ -343,6 +343,7 @@ Keep each example to four short lines. Realistic for my context, not aspirationa
             <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Planning"> Planning — it works out what to do, in what order</label>
             <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Acting"> Acting — it does things in the real workflow</label>
             <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="Adapting"> Adapting — it changes behaviour based on what it sees</label>
+            <label><input type="checkbox" data-key="m1.canvas.behaviours" data-multi value="All three"> All three</label>
           </div>
           <div class="hint">A workflow may show only one or two. You don't need all three — you're identifying where agency may be emerging.</div>
         </div>
@@ -462,7 +463,7 @@ Keep each example to four short lines. Realistic for my context, not aspirationa
 
   <div class="pn">
     <a href="foundations.html"><span class="lbl">← Previous</span><span>The Foundations Gym</span></a>
-    <a class="next" href="module-2.html"><span class="lbl">Next →</span><span>Module 2 — Defensible Agentic AI Decisions</span></a>
+    <a class="next" href="module-2.html"><span class="lbl">Next →</span><span>Module 2 — Defensible AI Decisions</span></a>
   </div>
 </main>
 
@@ -511,12 +512,14 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* ---------------- A1.2 quiz (4 workbook scenarios) ---------------- */
+  /* ---------------- A1.2 quiz (6 workbook scenarios) ---------------- */
   var Q12=[
     {t:"A new employee's start date is entered into HRIS. The system automatically sends a welcome email and generates a standard onboarding checklist.",a:"Automation",w:"Fixed trigger, fixed sequence. The system is executing predefined steps."},
     {t:"A manager asks AI to draft a warm welcome message for a new team member. The manager edits and sends it.",a:"Generative AI",w:"The AI creates content in response to a prompt. The human decides what happens next."},
     {t:"An onboarding system monitors whether IT access, mandatory training, equipment and manager readiness are complete. If IT access is delayed, it follows up with IT; if the manager has not confirmed readiness, it escalates rather than assuming readiness.",a:"Agentic AI",w:"It is pursuing the goal of day-one readiness — monitoring progress, taking action and escalating when conditions require judgement."},
-    {t:"A direct debit payment processes every month on the same date unless the customer cancels it.",a:"Automation",w:"It follows a standing rule. The system does not interpret context."}
+    {t:"A direct debit payment processes every month on the same date unless the customer cancels it.",a:"Automation",w:"It follows a standing rule. The system does not interpret context or adjust its goal."},
+    {t:"A customer complaint system reads incoming messages, classifies urgency, checks customer history, sends routine acknowledgements, routes cases to the right team and escalates legal or high-risk complaints.",a:"Agentic AI",w:"It classifies, prioritises, acts, routes and escalates across a workflow. It is shaping what happens next."},
+    {t:"A workflow automatically sends a reminder every three days until a task is marked complete.",a:"Automation",w:"It acts repeatedly, but the logic is still predefined. Repetition is not the same as agency."}
   ];
   var qi=0,qs=0,qans=false;
   function q12show(){
@@ -538,16 +541,16 @@ document.addEventListener('DOMContentLoaded',function(){
       f.innerHTML=(ok?'<b>Correct — '+Q12[qi].a+'.</b> ':'<b>It’s '+Q12[qi].a+'.</b> ')+Q12[qi].w;
       document.querySelectorAll('#a12 [data-ans]').forEach(function(x){x.disabled=true;});
       document.getElementById('q12nextwrap').style.display='';
-      document.getElementById('q12next').textContent = qi===3?'Finish →':'Next →';
+      document.getElementById('q12next').textContent = qi===5?'Finish →':'Next →';
     });
   });
   document.getElementById('q12next').addEventListener('click',function(){
     qi++;
-    if(qi>=4){
+    if(qi>=6){
       document.getElementById('q12play').style.display='none';
       document.getElementById('q12done').style.display='';
       document.getElementById('q12final').textContent=qs;
-      AAL.set('m1.a12.score',qs+'/4');
+      AAL.set('m1.a12.score',qs+'/6');
       return;
     }
     q12show();
