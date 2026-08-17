@@ -255,7 +255,7 @@ main#map{padding:50px 0 30px}
     <div class="d1close" data-day="1">
       <div>
         <h3>Finishing Day 1?</h3>
-        <p>Download your answers so tomorrow starts where today ended — on any device. Your facilitator may also run Module 4 tomorrow morning; it’s ready either way.</p>
+        <p>Download your answers so tomorrow starts where today ended — on any device.</p>
       </div>
       <button class="btn primary" data-action="download-state">Download my answers</button>
     </div>
@@ -270,7 +270,7 @@ main#map{padding:50px 0 30px}
     <div class="band" data-day="2">
       <div class="label"><span class="tag zero">Capstone</span><h3>Your evidence, your decision</h3><span class="ln"></span></div>
       <div class="minor" style="grid-template-columns:repeat(2,1fr)">
-        <a class="minorCard" href="pages/evidence-pack.html"><h4>The Evidence Pack</h4><p>All eight artefacts assembled into one exportable document — by Thursday afternoon, this page is your defence.</p><div class="go">Open →</div></a>
+        <a class="minorCard" href="pages/evidence-pack.html"><h4>The Evidence Pack</h4><p>All eight artefacts assembled into one exportable document — by the end of Day 2, this page is your defence.</p><div class="go">Open →</div></a>
         <a class="minorCard" href="pages/references.html"><h4>References &amp; Resource Bank</h4><p>Pre-course refreshers, the Responsible AI Leadership foundations, and resources for going deeper.</p><div class="go">Open →</div></a>
       </div>
     </div>
@@ -320,7 +320,7 @@ const MODULES=[
   sections:["Case Study: Three Agents to Judge","How AI Participates in Work","Recognising Agentic Behaviour (Plan · Act · Adapt)","Agentic Behaviour ≠ Autonomy","Agents vs Agentic","Why Autonomy Shifts Accountability"],
   acts:["Activity 1.1 — Following the Rules, or Making the Decisions?","Activity 1.2 — Spot the Difference","Activity 1.3 — Agency Discovery Canvas"],
   artefact:"Points of Agency & Accountability Map"},
- {day:1,n:2,title:"Defensible Agentic AI Decisions",dash:"The Autonomy Decision Desk",move:"Judge",
+ {day:1,n:2,title:"Defensible AI Decisions",dash:"The Autonomy Decision Desk",move:"Judge",
   q:"Should this agent be allowed to act, and if so, under what conditions?",
   desc:"Make the autonomy call on the Complaint Triage agent before you get the framework — then test it through the Four Autonomy Decision Lenses.",
   sections:["The Value Question","Case Study: Complaint Triage Agent (87% · 82% · 9%)","The Four Autonomy Decision Lenses","Readiness Bridge"],
@@ -332,7 +332,7 @@ const MODULES=[
   sections:["Authority Is Not Binary","Three Types of Decisions","The Four Parts of a Defensible Boundary","Protecting Human Judgement","The Value Consideration"],
   acts:["Activity 3.1 — Where Is Your Line?","Activity 3.2 — Defensible Boundary Design","Activity 3.3 — Stress-Test the Boundary","Activity 3.4 — My Delegation Decision"],
   artefact:"Boundary Map"},
- {day:1,n:4,title:"Observability",dash:"The Audit Room",move:"Sustain",flexible:true,
+ {day:1,n:4,title:"Observability",dash:"The Audit Room",move:"Sustain",
   q:"If you were asked tomorrow to explain how a specific AI-influenced decision was made, could you show it clearly?",
   desc:"A regulator gives you 48 hours. The decision log looks complete — until you try to defend it.",
   sections:["Scenario: The Complaint Triage Audit","Explanation Is Not the Same as Evidence","What Leaders Need Visibility Of","Cross-Functional Visibility","Observability by Agent Type"],
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const ev=EVIDENCE.find(e=>e.n===m.n);
     const done=ev.signals.every(k=>AAL.has(k)) && (p.total===0? false : p.frac>=0.9);
     const state=done?'<span class="chip statechip">✓ Done</span>':started?'<span class="chip statechip">In progress</span>':'';
-    const flex=m.flexible?'<span class="chip time">Flexible — Day 1 PM or Day 2 AM</span>':'';
+    const flex='';
     const dotN=Math.max(m.acts.length,4);
     const lit=started?Math.max(1,Math.round((p.total?p.frac:0.15)*dotN)):0;
     const dots=Array.from({length:dotN}).map((_,i)=>'<i class="'+(i<lit?'done':'')+'"></i>').join('');
