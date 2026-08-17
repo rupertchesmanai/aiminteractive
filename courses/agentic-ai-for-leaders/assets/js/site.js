@@ -330,7 +330,7 @@ window.AAL = (function () {
     d.id = 'printdoc';
     var wf = get('me.workflow');
     var date = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
-    var logoBase = location.pathname.indexOf('/pages/') > -1 ? '../' : '';
+    var logoBase = location.pathname.indexOf('/pages/extras/') > -1 ? '../../' : (location.pathname.indexOf('/pages/') > -1 ? '../' : '');
     d.innerHTML =
       '<div class="pd-head"><img class="pd-logo" src="' + logoBase + 'assets/img/aim-logo-blue.png" alt="AIM — Australian Institute of Management" width="40" height="40">' +
       '<div class="pd-brand">AIM · Agentic AI for Leaders</div>' +
