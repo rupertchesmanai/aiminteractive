@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_agentic-ai-for-leaders";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../../../index.html?course=agentic-ai-for-leaders");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Agent, In Pieces — Extras · Agentic AI for Leaders</title>
+<link rel="icon" type="image/png" href="../../assets/img/aim-logo-blue.png">
+<meta name="description" content="Extras · The Agent, In Pieces — the Complaint Triage Agent dismantled into fifteen jigsaw pieces. Rebuild the flow lane, wrap the leadership ring around it, and dodge the four traps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00C0AF;--teal-light:#53DFCB;--teal-dark:#008D80;--cream:#F1EEDE;--coral:#DC5A46;--coral-dark:#B53D2C;--ink:#423A3A;--head:'IBM Plex Sans Condensed',sans-serif;--body:'IBM Plex Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:#0b0b0b;color:#fff;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:#000;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar img{display:block}
+.bar .t{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.06em}
+.bar .t small{display:block;font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-light)}
+.bar a.back{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;color:var(--teal-light);text-decoration:none;padding:8px 12px;border:1px solid rgba(255,255,255,.25)}
+.bar a.back:hover{border-color:var(--teal-light)}
+main{flex:1}
+a{color:var(--teal-light)}
+.facnote{display:none;margin:26px 0 0;text-align:left;background:rgba(83,223,203,.08);border:1px dashed rgba(83,223,203,.5);padding:14px 16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85)}
+.facnote b{display:block;font-family:var(--head);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-light);margin-bottom:5px}
+body.facilitator .facnote{display:block}
+footer{padding:18px 20px;background:#000;border-top:1px solid rgba(255,255,255,.12);font-family:var(--head);font-weight:500;font-size:11.5px;letter-spacing:.06em;color:rgba(255,255,255,.55);text-align:center}
+</style>
+</head>
+<body>
+<div class="bar">
+  <img src="../../assets/img/aim-logo-white.png" alt="AIM" width="26" height="26">
+  <div class="t">The Agent, In Pieces<small>Extras · Front-page special · Jigsaw</small></div>
+  <a class="back" href="index.html">&larr; The Arcade</a>
+</div>
+<main>
+<!-- ================= AGENT JIGSAW (Extra · J1) ================= -->
+<section class="jig" id="agent-jigsaw" aria-label="Extra — The Agent, In Pieces">
+<style>
+.jig{color:#fff;padding:34px 0 60px}
+.jig .jw{max-width:1160px;margin:0 auto;padding:0 5vw}
+.jig .jig-eyebrow{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-light);margin-bottom:10px}
+.jig h1{font-family:var(--head);font-weight:700;font-size:clamp(28px,4.4vw,40px);line-height:1.05;margin-bottom:10px}
+.jig .jig-lead{font-size:15px;line-height:1.65;color:rgba(255,255,255,.78);max-width:74ch;margin-bottom:8px}
+.jig .jig-lead b{color:#fff}
+.jig .jig-sub{font-family:var(--head);font-weight:600;font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:26px}
+.jig .board{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+@media(max-width:900px){.jig .board{grid-template-columns:1fr}}
+.jig .zone-label{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px}
+/* ---- the bench (tray) ---- */
+.jig .tray{background:#141414;border:1px solid rgba(255,255,255,.12);padding:16px 14px 18px;min-height:200px}
+.jig .tray .pieces{display:flex;flex-direction:column;gap:9px}
+/* ---- pieces: jigsaw tab right, notch left ---- */
+.jig .pc{position:relative;display:block;width:100%;text-align:left;background:#1e1c18;border:1px solid rgba(255,255,255,.22);color:#fff;font-family:var(--body);padding:10px 26px 10px 20px;cursor:pointer;transition:transform .12s,border-color .12s,background .12s;border-radius:3px}
+.jig .pc::after{content:"";position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:15px;height:15px;border-radius:50%;background:#1e1c18;border:1px solid rgba(255,255,255,.22);border-left-color:transparent}
+.jig .pc::before{content:"";position:absolute;left:-1px;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#141414;border-right:1px solid rgba(255,255,255,.22);z-index:1}
+.jig .tray .pc:nth-child(odd){transform:rotate(-.5deg)}
+.jig .tray .pc:nth-child(3n){transform:rotate(.6deg)}
+.jig .pc:hover{border-color:var(--teal-light)}
+.jig .pc:focus-visible{outline:2px solid var(--teal-light);outline-offset:2px}
+.jig .pc .t{display:block;font-family:var(--head);font-weight:700;font-size:13.5px;line-height:1.25}
+.jig .pc .s{display:block;font-size:11.5px;color:rgba(255,255,255,.6);margin-top:2px;line-height:1.35}
+.jig .pc.sel{border-color:var(--teal-light);background:#12332f;transform:none;box-shadow:0 0 0 1px var(--teal-light)}
+.jig .pc.sel::after{background:#12332f;border-color:var(--teal-light);border-left-color:transparent}
+.jig .pc.dud{border-color:var(--coral);background:#241211;color:rgba(255,255,255,.55);cursor:not-allowed}
+.jig .pc.dud::after{background:#241211;border-color:var(--coral);border-left-color:transparent}
+.jig .pc.dud .t{text-decoration:line-through;text-decoration-color:var(--coral)}
+.jig .pc.dud .s{color:var(--coral)}
+.jig .pc.shake{animation:jigshake .3s}
+@keyframes jigshake{0%,100%{translate:0}25%{translate:-5px 0}75%{translate:5px 0}}
+@media (prefers-reduced-motion: reduce){.jig .pc.shake{animation:none}}
+/* ---- the agent (target) ---- */
+.jig .agent{position:relative;border:2px dashed rgba(83,223,203,.4);padding:20px 18px 18px;border-radius:6px}
+.jig .agent .ringlab{position:absolute;top:-9px;left:16px;background:#0b0b0b;padding:0 8px;font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-light)}
+.jig .ringrow{display:grid;gap:10px;margin:6px 0}
+.jig .ringrow.top{grid-template-columns:repeat(3,1fr)}
+.jig .ringrow.bottom{grid-template-columns:repeat(2,1fr)}
+@media(max-width:700px){.jig .ringrow.top,.jig .ringrow.bottom{grid-template-columns:1fr}}
+/* lane */
+.jig .lane{position:relative;background:#141414;border:1px solid rgba(255,255,255,.14);padding:14px 12px 16px;margin:12px 0}
+.jig .lane .lanelab{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.jig .lane .slots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;position:relative}
+@media(max-width:1050px){.jig .lane .slots{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.jig .lane .slots{grid-template-columns:1fr}}
+/* sockets */
+.jig .sk{position:relative;min-height:74px;border:1.5px dashed rgba(255,255,255,.3);border-radius:3px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.45);font-family:var(--head);font-weight:600;font-size:12px;padding:8px 10px;cursor:pointer;text-align:left;transition:border-color .12s,background .12s;width:100%}
+.jig .sk:hover{border-color:rgba(255,255,255,.55)}
+.jig .sk:focus-visible{outline:2px solid var(--teal-light);outline-offset:2px}
+.jig .sk .n{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,.4);font-size:11px;margin-bottom:5px}
+.jig .sk .lab{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.jig .sk.hintz{border-color:var(--teal-light);box-shadow:0 0 0 1px var(--teal-light);animation:jigpulse 1.2s infinite}
+@keyframes jigpulse{50%{box-shadow:0 0 0 4px rgba(83,223,203,.25)}}
+@media (prefers-reduced-motion: reduce){.jig .sk.hintz{animation:none}}
+/* filled sockets */
+.jig .sk.filled{border-style:solid;cursor:default;color:#fff}
+.jig .sk.filled.flow{background:#0e2f2b;border-color:var(--teal-dark)}
+.jig .sk.filled.ring{background:#26231b;border-color:var(--cream)}
+.jig .sk.filled .pt{display:block;font-family:var(--head);font-weight:700;font-size:12.5px;line-height:1.25;color:#fff}
+.jig .sk.filled .ps{display:block;font-family:var(--body);font-weight:400;font-size:10.5px;color:rgba(255,255,255,.65);margin-top:2px;text-transform:none;letter-spacing:0}
+.jig .sk.filled.flow .n{background:var(--teal-dark);border-color:var(--teal-dark);color:#fff}
+/* status */
+.jig .status{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:18px;font-family:var(--head);font-weight:600;font-size:13px}
+.jig .status .st{color:rgba(255,255,255,.7)}
+.jig .status .st b{color:var(--teal-light)}
+.jig .status .st.traps b{color:var(--coral)}
+.jig .msg{margin-top:12px;border-left:3px solid var(--teal-light);background:rgba(83,223,203,.08);padding:12px 16px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.85);display:none}
+.jig .msg.show{display:block}
+.jig .msg.bad{border-left-color:var(--coral);background:rgba(220,90,70,.1)}
+.jig .msg b{color:#fff}
+/* ---- J2: power-on ---- */
+.jig .sk.lit{border-color:var(--teal-light);background:#0f4a43;box-shadow:0 0 18px rgba(83,223,203,.35)}
+.jig .sk .jtok{position:absolute;top:-11px;right:-7px;width:26px;height:26px;border-radius:50%;background:var(--teal-light);color:#062b26;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.5);z-index:2}
+.jig .agent.ringon{border-style:solid;border-color:var(--teal-light);box-shadow:0 0 0 1px rgba(83,223,203,.35),0 0 34px rgba(83,223,203,.18)}
+.jig .agent.ringon .ringlab{color:#fff}
+.jig .agent.ringon .sk.filled.ring{border-color:var(--teal-light)}
+.jig .stats{display:none;gap:12px;flex-wrap:wrap;margin-top:16px}
+.jig .stats.show{display:flex}
+.jig .chip{border:1px solid var(--teal-dark);background:#141414;padding:12px 18px;min-width:150px}
+.jig .chip .cv{font-family:var(--head);font-weight:700;font-size:26px;color:var(--teal-light)}
+.jig .chip.warn .cv{color:var(--coral)}
+.jig .chip .cl{font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:2px}
+.jig .done-line{margin-top:16px;display:none;border:1px solid var(--teal-dark);background:#0e2f2b;padding:16px 20px;font-size:14.5px;line-height:1.6}
+.jig .done-line.show{display:block}
+.jig .done-line .zap{font-family:var(--head);font-weight:700;font-size:16px;color:var(--teal-light);display:block;margin-bottom:4px}
+.jig .replay{margin-top:14px;font-family:var(--head);font-weight:700;font-size:13px;background:transparent;color:var(--teal-light);border:1px solid var(--teal-dark);padding:9px 16px;cursor:pointer;display:none}
+.jig .replay.show{display:inline-block}
+.jig .replay:hover{background:rgba(83,223,203,.1)}
+</style>
+<div class="jw">
+  <div class="jig-eyebrow">Extra · If we have time</div>
+  <h1>The Agent, In Pieces</h1>
+  <p class="jig-lead">The Complaint Triage Agent has been dismantled onto the bench. Rebuild it: the <b>flow lane</b> runs in order, one to six, and the <b>leadership ring</b> wraps around it — those pieces fit any ring socket. But look closely: <b>four pieces on the bench were never part of this agent.</b></p>
+  <div class="jig-sub">Tap a piece, then tap where it belongs. Nothing here writes into your workbook.</div>
+  <div class="board">
+    <div>
+      <div class="zone-label">The bench</div>
+      <div class="tray"><div class="pieces" id="jigTray"></div></div>
+    </div>
+    <div>
+      <div class="zone-label">The agent</div>
+      <div class="agent">
+        <span class="ringlab">The leadership ring</span>
+        <div class="ringrow top" id="jigRingTop"></div>
+        <div class="lane">
+          <div class="lanelab">The flow lane — in order</div>
+          <div class="slots" id="jigLane"></div>
+        </div>
+        <div class="ringrow bottom" id="jigRingBottom"></div>
+      </div>
+      <div class="status">
+        <span class="st">Pieces placed <b id="jigPlaced">0</b> / 11</span>
+        <span class="st traps">Traps exposed <b id="jigTraps">0</b> / 4</span>
+      </div>
+      <div class="msg" id="jigMsg" role="status" aria-live="polite"></div>
+      <div class="stats" id="jigStats" aria-label="Pilot results — month six">
+        <div class="chip"><div class="cv" data-target="87">0%</div><div class="cl">cases classified correctly</div></div>
+        <div class="chip"><div class="cv" data-target="82">0%</div><div class="cl">compensation matches policy</div></div>
+        <div class="chip warn"><div class="cv" data-target="9">0%</div><div class="cl">of cases trigger escalation</div></div>
+      </div>
+      <div class="done-line" id="jigDone" tabindex="-1"><span class="zap">⚡ Assembled.</span>The lane is what the agent <b style="color:#fff">can</b> do — the ring is what leadership <b style="color:#fff">allows</b> it to do. Capability came out of the box. The harness is the part you built.</div>
+      <button class="replay" id="jigReplay" type="button">↻ Dismantle it again</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var FLOW=[
+    {t:'A complaint arrives',s:'Thousands a week, around the clock'},
+    {t:'Read the complaint',s:'Text, customer history, account status'},
+    {t:'Classify severity',s:'Low · medium · high'},
+    {t:'Route to the right team',s:'Based on the classification'},
+    {t:'Trigger a compensation offer',s:'Automatically — lower-tier cases only'},
+    {t:'Escalate to human teams',s:'The higher-risk cases — about 9%'}
+  ];
+  var RING=[
+    {t:'Autonomy setting: partial',s:'Acts alone on lower tiers only'},
+    {t:'The boundary',s:'What it may never do without a human'},
+    {t:'The decision log',s:'Every classification and payout recorded'},
+    {t:'The stop mechanism',s:'Who pulls it, and how fast'},
+    {t:'The governance cadence',s:'Drift reviewed on a rhythm, not by luck'}
+  ];
+  var TRAPS=[
+    {t:'Full autonomy from day one',s:'Why wait? The pilot data looks fine',
+     why:'<b>Never part of this agent.</b> The pilot ran six months before leadership even made the autonomy call — and the call was partial, not full. Authority is decided, not defaulted (Module 2).'},
+    {t:'Self-adjusting severity thresholds',s:'The agent tunes its own definition of urgent',
+     why:'<b>Never part of this agent.</b> That is Module 7’s severity-drift signal — the change nobody approved. Thresholds move through governance, not through the agent’s own learning.'},
+    {t:'Skip logging on low-severity cases',s:'Saves storage — they’re only small complaints',
+     why:'<b>Never part of this agent.</b> Module 4’s audit gives you 48 hours to produce exactly those records. The log you skip is always the one the regulator asks for.'},
+    {t:'Stop switch removed',s:'It’s been stable for a year — dead weight',
+     why:'<b>Never part of this agent.</b> Stable is when de-skilling peaks and the stop switch matters most. “Who can stop it, and how fast?” never becomes an optional question (Module 6).'}
+  ];
+  var tray=document.getElementById('jigTray'), lane=document.getElementById('jigLane'),
+      ringT=document.getElementById('jigRingTop'), ringB=document.getElementById('jigRingBottom'),
+      msg=document.getElementById('jigMsg'), placedEl=document.getElementById('jigPlaced'),
+      trapsEl=document.getElementById('jigTraps'), done=document.getElementById('jigDone'),
+      replay=document.getElementById('jigReplay');
+  var stats=document.getElementById('jigStats');
+  var sel=null, placed=0, trapsFound=0, misses={};
+  var ptimers=[];
+  function pt(fn,ms){ ptimers.push(setTimeout(fn,ms)); }
+  function clearPower(){ ptimers.forEach(clearTimeout); ptimers=[]; }
+  var reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function say(html,bad){ msg.innerHTML=html; msg.classList.add('show'); msg.classList.toggle('bad',!!bad); }
+  function clearMsg(){ msg.classList.remove('show','bad'); msg.innerHTML=''; }
+  function clearHints(){ document.querySelectorAll('.jig .sk.hintz').forEach(function(x){x.classList.remove('hintz');}); }
+  function deselect(){ if(sel){ sel.el.classList.remove('sel'); sel.el.setAttribute('aria-pressed','false'); } sel=null; clearHints(); }
+  function miss(p,el,zoneSel){
+    misses[p.t]=(misses[p.t]||0)+1;
+    el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+    if(misses[p.t]>=2 && zoneSel){ document.querySelectorAll(zoneSel).forEach(function(x){ if(!x.classList.contains('filled')) x.classList.add('hintz'); }); }
+  }
+  function fill(sock,p,kind){
+    sock.classList.add('filled',kind); sock.disabled=true;
+    sock.innerHTML=(kind==='flow'?'<span class="n">'+(+sock.getAttribute('data-order')+1)+'</span>':'')
+      +'<span class="pt">'+p.t+'</span><span class="ps">'+p.s+'</span>';
+    sock.setAttribute('aria-label','Placed: '+p.t);
+    sel.el.remove(); deselect(); clearMsg();
+    placed++; placedEl.textContent=placed;
+    if(placed===11) powerOn();
+  }
+  function finale(){
+    stats.classList.add('show');
+    stats.querySelectorAll('.cv').forEach(function(c){
+      var target=+c.getAttribute('data-target');
+      if(reduced){ c.textContent=target+'%'; return; }
+      var v=0, step=Math.max(1,Math.round(target/24));
+      var iv=setInterval(function(){ v+=step; if(v>=target){ v=target; clearInterval(iv); } c.textContent=v+'%'; },40);
+      ptimers.push(iv);
+    });
+    done.classList.add('show'); replay.classList.add('show');
+    if(trapsFound<4){
+      say('Powered on — but <b>'+(4-trapsFound)+' trap piece'+(trapsFound===3?'':'s')+'</b> still sit'+(trapsFound===3?'s':'')+' on the bench unexposed. Tap '+(trapsFound===3?'it':'each one')+' to hear why it was never part of this agent.');
+    } else {
+      say('Powered on with a <b>clean bench</b> — all four traps exposed before assembly finished. Nothing plausible slipped in.');
+    }
+    try{ done.focus({preventScroll:true}); }catch(e){}
+  }
+  function powerOn(){
+    clearMsg();
+    var socks=[].slice.call(lane.querySelectorAll('.sk'));
+    var agent=document.querySelector('.jig .agent');
+    if(reduced){
+      socks.forEach(function(s){ s.classList.add('lit'); });
+      agent.classList.add('ringon');
+      finale(); return;
+    }
+    socks.forEach(function(s,i){
+      pt(function(){
+        var prev=lane.querySelector('.jtok'); if(prev) prev.remove();
+        s.classList.add('lit');
+        var tok=document.createElement('span'); tok.className='jtok'; tok.textContent='✉'; tok.setAttribute('aria-hidden','true');
+        s.appendChild(tok);
+      },350+i*430);
+    });
+    pt(function(){
+      var prev=lane.querySelector('.jtok'); if(prev) prev.remove();
+      agent.classList.add('ringon');
+    },3080);
+    pt(finale,3550);
+  }
+  function expose(p,el){
+    trapsFound++; trapsEl.textContent=trapsFound;
+    el.classList.add('dud'); el.disabled=true;
+    deselect();
+    el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+    var extra=(placed===11 && trapsFound===4)?'<br><br><b>That’s all four traps exposed — clean bench.</b> Every plausible-but-wrong piece was named and refused. That instinct is the whole course.':'';
+    say(p.why+extra,true);
+  }
+  function onSocket(sock,kind){
+    if(sock.classList.contains('filled')) return;
+    if(!sel){ say('Pick a piece from the bench first, then tap where it belongs.'); return; }
+    var p=sel.p;
+    if(p.kind==='trap'){ expose(p,sel.el); return; }
+    if(p.kind==='flow'){
+      if(kind!=='flow'){ say('That piece is a step the agent <b>performs</b> — it belongs in the flow lane.',true); miss(p,sel.el,'.jig .lane .sk'); return; }
+      if(+sock.getAttribute('data-order')!==p.order){ say('Right lane, wrong position. Where does “'+p.t+'” sit in the sequence?',true); miss(p,sel.el,null); return; }
+      fill(sock,p,'flow'); return;
+    }
+    /* ring piece */
+    if(kind!=='ring'){ say('That piece isn’t a step the agent performs — it’s something leadership wraps <b>around</b> the agent. It belongs on the ring.',true); miss(p,sel.el,'.jig .ringrow .sk'); return; }
+    fill(sock,p,'ring');
+  }
+  function build(){
+    clearPower();
+    tray.innerHTML=''; lane.innerHTML=''; ringT.innerHTML=''; ringB.innerHTML='';
+    sel=null; placed=0; trapsFound=0; misses={};
+    placedEl.textContent='0'; trapsEl.textContent='0';
+    done.classList.remove('show'); replay.classList.remove('show'); clearMsg();
+    var agent=document.querySelector('.jig .agent'); if(agent) agent.classList.remove('ringon');
+    stats.classList.remove('show');
+    stats.querySelectorAll('.cv').forEach(function(c){ c.textContent='0%'; });
+    var pieces=[];
+    FLOW.forEach(function(p,i){ pieces.push({t:p.t,s:p.s,kind:'flow',order:i}); });
+    RING.forEach(function(p){ pieces.push({t:p.t,s:p.s,kind:'ring'}); });
+    TRAPS.forEach(function(p){ pieces.push({t:p.t,s:p.s,why:p.why,kind:'trap'}); });
+    shuffle(pieces).forEach(function(p){
+      var b=document.createElement('button');
+      b.type='button'; b.className='pc'; b.setAttribute('aria-pressed','false');
+      b.innerHTML='<span class="t">'+p.t+'</span><span class="s">'+p.s+'</span>';
+      b.addEventListener('click',function(){
+        if(b.classList.contains('dud')) return;
+        if(p.kind==='trap' && placed===11){ expose(p,b); return; }
+        if(sel && sel.el===b){ deselect(); return; }
+        deselect(); sel={p:p,el:b};
+        b.classList.add('sel'); b.setAttribute('aria-pressed','true');
+      });
+      tray.appendChild(b);
+    });
+    for(var i=0;i<6;i++){
+      var s=document.createElement('button');
+      s.type='button'; s.className='sk'; s.setAttribute('data-order',i);
+      s.setAttribute('aria-label','Flow lane position '+(i+1)+' — empty');
+      s.innerHTML='<span class="n">'+(i+1)+'</span><span class="lab">Step '+(i+1)+'</span>';
+      (function(sock){ sock.addEventListener('click',function(){ onSocket(sock,'flow'); }); })(s);
+      lane.appendChild(s);
+    }
+    for(var r=0;r<5;r++){
+      var s2=document.createElement('button');
+      s2.type='button'; s2.className='sk';
+      s2.setAttribute('aria-label','Leadership ring socket — empty');
+      s2.innerHTML='<span class="lab">Ring</span>';
+      (function(sock){ sock.addEventListener('click',function(){ onSocket(sock,'ring'); }); })(s2);
+      (r<3?ringT:ringB).appendChild(s2);
+    }
+  }
+  replay.addEventListener('click',function(){
+    build();
+    var first=tray.querySelector('.pc'); if(first){ try{ first.focus({preventScroll:true}); }catch(e){} }
+  });
+  build();
+})();
+</script>
+</section>
+<div style="max-width:1160px;margin:0 auto;padding:0 5vw 46px">
+  <div class="facnote"><b>Facilitator note</b>Best as the Day 1 closer or a Day 2 warm-up — it replays Modules 1–2 (what the agent does, what leadership decided) before the governance modules build on them. The four traps are the teaching moments: each one is a real failure pattern from Modules 2, 4, 6 and 7, so when the room falls for one, ask which module would have caught it. Play on the projector as one room; the loudest arguments happen over whether "self-adjusting thresholds" sounds like a feature.</div>
+</div>
+</main>
+<footer>Agentic AI for Leaders — Australian Institute of Management · Capability is not permission. Leaders decide.</footer>
+<script>if(/[?&]facilitator=1/.test(location.search))document.body.classList.add('facilitator');</script>
+</body>
+</html>
