@@ -1,257 +1,2461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIM Interactive Workbooks — Course Dashboard</title>
+<script>(function(){var k="aim_access_community-of-practice";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../index.html?course=community-of-practice");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build it. Light it. Show it. — AIM Facilitator Community of Practice</title>
+<meta name="description" content="A 45-minute facilitator Community of Practice: build a working tool from a plain-English brief, fix how you look on camera, and leave with a link you can use with your next cohort.">
+<link rel="icon" type="image/png" href="assets/img/aim-logo-blue.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build it. Light it. Show it. — AIM Facilitator CoP">
+<meta property="og:description" content="Build a working tool. Fix how you look on camera. Leave with something you'll use on Tuesday.">
+<meta property="og:image" content="pics/cop-og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --teal: #00C0AF; --teal-light: #53DFCB; --teal-dark: #008D80;
-    --cream: #F1EEDE; --coral: #DC5A46; --coral-dark: #B53D2C;
-    --black: #000000; --white: #FFFFFF;
-    --text-dark: #423A3A; --text-grey: #595959; --text-muted: #A7A7A7;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'IBM Plex Sans', sans-serif;
-    background: var(--teal);
-    color: var(--white);
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-  }
-  h1, h2, h3, .condensed { font-family: 'IBM Plex Sans Condensed', sans-serif; font-weight: 500; }
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS — inherited from the AIM workbook system, plus CoP identity
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --cream:#F1EEDE; --cream-alt:#F7EBDB;
+  --ink:#423A3A; --black:#141414; --grey:#595959; --muted:#666666;
+  --teal:#00C0AF; --teal-light:#53DFCB; --teal-dark:#00796E;
+  /* Three tokens deliberately deviate from the shared AIM palette, all for AA
+     contrast — do not "correct" them back:
+       --muted     was #A7A7A7  (2.6:1 as text on white — well under AA)
+       --teal-dark was #008D80  (4.10:1 under white text, and as text on white)
+       --blue      was #2D7DD2  (4.22:1 under white text in the header)
+     Verified by the contrast audit in tests/b4.spec.js. */
+  --coral:#DC5A46; --coral-dark:#B53D2C;
+  --line:rgba(0,0,0,.10);
+  --head:'IBM Plex Sans Condensed',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --maxw:1180px;
+  /* CoP identity — blue leads, amber marks "you are working now" */
+  --blue:#2A74C8; --blue-dark:#1B5FA8; --blue-light:#7FB8ED;
+  --amber:#E8A33D; --amber-dark:#8A5A0C;
+  --accent:var(--blue);
+}
 
-  /* ---------- Chrome ---------- */
-  .topbar { padding: 28px 40px 0; }
-  .topbar img { height: 44px; width: auto; display: block; }
+/* ═══ BASE ═══ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+/* the header wraps to two rows below 860px — anchors must still clear it */
+@media(max-width:860px){html{scroll-padding-top:100px}}
+body{font-family:var(--body);font-size:15px;line-height:1.55;color:var(--ink);background:var(--cream);overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--head);font-weight:600;letter-spacing:.2px;line-height:1.08}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12.5px}
+.small{font-size:12.5px;color:var(--muted)}
+.divider{height:1px;background:var(--line);margin:30px 0}
+.mt0{margin-top:0}.mb0{margin-bottom:0}
+p.body{font-size:15px;margin-bottom:12px;max-width:70ch}
+p.lead{font-size:17px;font-weight:300;margin-bottom:14px;max-width:66ch}
 
-  /* ---------- Hero ---------- */
-  .hero { padding: 56px 40px 8px; max-width: 1200px; margin: 0 auto; width: 100%; }
-  .eyebrow { color: rgba(0,0,0,0.55); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 14px; }
-  .hero h1 { font-size: clamp(34px, 5vw, 58px); font-weight: 600; line-height: 1.06; max-width: 760px; }
-  .hero p.lead { margin-top: 16px; font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.9); max-width: 560px; }
+/* ═══ ACCESSIBILITY ═══ */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+header.chrome a:focus-visible,header.chrome button:focus-visible{outline-color:#fff;outline-offset:-3px}
+.skip-link{position:absolute;left:8px;top:-60px;z-index:200;background:var(--ink);color:#fff;font-family:var(--head);font-weight:600;font-size:13px;padding:10px 16px;transition:top .15s}
+.skip-link:focus{top:8px}
+.visually-hidden-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .card:hover,.stcard:hover{transform:none!important}
+}
 
-  /* ---------- Course cards ---------- */
-  .courses {
-    padding: 40px 40px 72px; max-width: 1200px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
-  }
-  .card {
-    background: var(--cream); color: var(--text-dark);
-    border-radius: 14px; padding: 30px 28px 26px;
-    display: flex; flex-direction: column; gap: 12px;
-    cursor: pointer; border: none; text-align: left;
-    font-family: inherit;
-    transition: transform .18s ease, box-shadow .18s ease;
-    position: relative; overflow: hidden;
-  }
-  .card:hover, .card:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.22); outline: none; }
-  .card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-    background: var(--accent, var(--teal-dark));
-  }
-  .card .tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--accent, var(--teal-dark)); }
-  .card h2 { font-size: 26px; line-height: 1.15; font-weight: 600; }
-  .card p { font-size: 14.5px; color: var(--text-grey); font-weight: 400; line-height: 1.5; flex: 1; }
-  .card .enter {
-    display: flex; align-items: center; gap: 8px; margin-top: 8px;
-    font-size: 14px; font-weight: 600; color: var(--text-dark);
-  }
-  .card .lock { font-size: 15px; }
-  .card .arrow { transition: transform .18s ease; }
-  .card:hover .arrow { transform: translateX(4px); }
+/* ═══ STICKY HEADER ═══ */
+header.chrome{position:sticky;top:0;z-index:50;background:var(--blue);color:#fff;border-bottom:1px solid rgba(255,255,255,.18)}
+.chrome .row{display:flex;align-items:center;gap:14px;height:60px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:32px;height:32px}
+.logo .lt{font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.08em;line-height:1}
+.logo .ls{font-family:var(--head);font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.82;line-height:1;margin-top:3px}
+.chrome nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.chrome nav a{font-family:var(--head);font-weight:500;font-size:13.5px;padding:8px 12px;color:#fff;opacity:1}
+.chrome nav a:hover{opacity:1;background:rgba(255,255,255,.12)}
+.chrome .prog{display:flex;align-items:center;gap:9px;margin-left:8px}
+.chrome .prog .pt{width:104px;height:6px;background:rgba(255,255,255,.28);overflow:hidden}
+.chrome .prog .pf{height:100%;width:0%;background:#fff;transition:width .4s ease}
+.chrome .prog .pl{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.06em;opacity:.9;white-space:nowrap}
+.modeToggle{display:flex;border:1px solid rgba(255,255,255,.55);margin-left:6px}
+.modeToggle button{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;background:transparent;color:#fff;border:0;padding:8px 11px;cursor:pointer}
+.modeToggle button.on{background:#fff;color:var(--blue-dark)}
+@media(max-width:860px){
+  .chrome .row{height:auto;flex-wrap:wrap;padding:9px 0;gap:8px;row-gap:4px}
+  .chrome nav{margin-left:0;flex-wrap:wrap;gap:2px}
+  .chrome nav a{font-size:12.5px;padding:6px 9px}
+  .chrome .prog{display:none}
+  .modeToggle button{padding:6px 9px}
+}
 
-  /* ---------- Footer ---------- */
-  footer { margin-top: auto; padding: 22px 40px 30px; font-size: 12.5px; color: rgba(0,0,0,0.5); }
+/* ═══ HERO ═══ */
+.hero{position:relative;background:var(--black);color:#fff;overflow:hidden;min-height:440px;display:flex;align-items:flex-end}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,14,.28) 0%,rgba(8,10,14,.76) 76%,rgba(8,10,14,.94) 100%)}
+.hero .inner{position:relative;z-index:3;padding:70px 0 46px;width:100%}
+.hero .eyebrow{color:var(--blue-light)}
+.hero h1{font-size:clamp(34px,5.4vw,62px);font-weight:700;margin:10px 0 10px;max-width:18ch}
+.hero .sub{font-size:17.5px;max-width:58ch;opacity:.94;font-weight:300}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .meta span{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22)}
 
-  /* ---------- Password modal ---------- */
-  .overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.66);
-    display: none; align-items: center; justify-content: center; z-index: 200; padding: 24px;
-  }
-  .overlay.open { display: flex; }
-  .modal {
-    background: var(--cream); color: var(--text-dark);
-    border-radius: 14px; padding: 36px 34px 30px; width: 100%; max-width: 420px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-  }
-  .modal .tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; color: var(--teal-dark); margin-bottom: 8px; }
-  .modal h3 { font-size: 24px; margin-bottom: 6px; }
-  .modal p { font-size: 14px; color: var(--text-grey); margin-bottom: 18px; }
-  .modal input {
-    width: 100%; padding: 13px 14px; font-size: 16px; font-family: inherit;
-    border: 2px solid rgba(66,58,58,0.25); border-radius: 8px; background: var(--white);
-    color: var(--text-dark); letter-spacing: 1px;
-  }
-  .modal input:focus { outline: none; border-color: var(--teal-dark); }
-  .modal.error input { border-color: var(--coral); animation: shake .3s; }
-  .modal .err { display: none; color: var(--coral-dark); font-size: 13px; font-weight: 600; margin-top: 8px; }
-  .modal.error .err { display: block; }
-  .modal .actions { display: flex; gap: 10px; margin-top: 20px; }
-  .modal button {
-    font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
-    border-radius: 8px; padding: 12px 22px; border: none;
-  }
-  .btn-go { background: var(--black); color: var(--white); flex: 1; }
-  .btn-go:hover { background: var(--teal-dark); }
-  .btn-cancel { background: transparent; color: var(--text-grey); }
-  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+/* ═══ BANDS ═══ */
+main{padding-bottom:20px}
+.band{margin:46px 0 8px}
+.band .label{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.band .label .tag{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--blue);padding:6px 12px}
+.band .label .tag.s2{background:var(--amber-dark)}
+.band .label .tag.s3{background:var(--teal-dark)}
+.band .label .tag.zero{background:var(--ink)}
+.band .label h3{font-size:20px;font-weight:600}
+.band .label .ln{flex:1;height:1px;background:var(--line)}
 
-  @media (max-width: 640px) {
-    .topbar { padding: 22px 24px 0; }
-    .hero { padding: 40px 24px 4px; }
-    .courses { padding: 32px 24px 56px; }
-    footer { padding: 18px 24px 26px; }
-  }
+/* ═══ STATION SECTIONS ═══ */
+.station{padding:8px 0 12px}
+.station .shero{position:relative;margin:0 0 26px;background:var(--black)}
+.station .shero img{width:100%;height:auto;object-fit:cover}
+.station .stitle{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.station h2{font-size:clamp(26px,3.4vw,38px);font-weight:700}
+.station .stime{font-family:var(--head);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--amber);padding:5px 10px}
+.station .sline{border-left:4px solid var(--blue);padding-left:16px;margin:18px 0}
+#s2 .station .sline,#s2 .sline{border-left-color:var(--amber)}
+#s3 .sline{border-left-color:var(--teal-dark)}
+
+/* ═══ CARDS ═══ */
+.card{position:relative;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:.2s}
+.card .accent{height:5px;background:var(--blue)}
+.card .pad{padding:18px 20px 20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+
+/* station map cards */
+.stcard{display:block;background:#fff;border:1px solid var(--line);padding:0;overflow:hidden;transition:.2s}
+.stcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px -22px rgba(0,0,0,.45)}
+.stcard .bar{height:5px;background:var(--blue)}
+.stcard.s2 .bar{background:var(--amber)}
+.stcard.s3 .bar{background:var(--teal-dark)}
+.stcard .p{padding:18px 20px 20px}
+.stcard .n{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:7px}
+.stcard.s2 .n{color:var(--amber-dark)}
+.stcard.s3 .n{color:var(--teal-dark)}
+.stcard h3{font-size:20px;margin-bottom:6px}
+.stcard p{font-size:13.5px;color:var(--grey);line-height:1.5}
+.stcard .go{margin-top:14px;border-top:1px solid var(--line);padding-top:11px;font-family:var(--head);font-weight:600;font-size:13px;color:var(--blue-dark)}
+.stcard.s2 .go{color:var(--amber-dark)}
+.stcard.s3 .go{color:var(--teal-dark)}
+
+/* ═══ FIELDS ═══ */
+.field{margin:14px 0}
+.field > label{display:block;font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+.field .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+.fieldrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.fieldrow{grid-template-columns:1fr}}
+input[type="text"],textarea,select{width:100%;font-family:var(--body);font-size:14.5px;color:var(--ink);background:#fff;border:1.5px solid rgba(66,58,58,.28);padding:11px 12px;border-radius:0}
+textarea{min-height:88px;resize:vertical;line-height:1.5}
+input[type="text"]:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,125,210,.16)}
+.optcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0}
+.optcard{position:relative;display:block;cursor:pointer}
+.optcard input{position:absolute;opacity:0;pointer-events:none}
+.optcard .oc{display:block;box-sizing:border-box;border:1.5px solid rgba(66,58,58,.25);background:#fff;padding:15px 17px;transition:.15s;height:100%}
+.optcard .oc b{display:block;font-family:var(--head);font-weight:700;font-size:16px;margin-bottom:4px}
+.optcard .oc span{display:block;font-size:13px;color:var(--grey);line-height:1.45}
+.optcard:hover .oc{border-color:var(--blue)}
+.optcard input:checked + .oc{border-color:var(--teal-dark);background:rgba(0,121,110,.07);box-shadow:inset 0 0 0 1px var(--teal-dark)}
+.optcard input:focus-visible + .oc{outline:3px solid var(--blue);outline-offset:2px}
+.checks{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.checks label{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;cursor:pointer}
+.checks input{margin-top:3px;accent-color:var(--blue);width:17px;height:17px;flex:0 0 17px}
+.checks .sub{display:block;font-size:12.5px;color:var(--grey);margin-top:2px}
+
+/* ═══ BUTTONS ═══ */
+.btn{font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.02em;border:0;cursor:pointer;padding:12px 20px;background:var(--ink);color:#fff;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:var(--black)}
+.btn.primary{background:var(--blue)}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.amber{background:var(--amber-dark)}
+.btn.amber:hover{background:var(--amber)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(66,58,58,.35)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.done{background:var(--blue-dark);opacity:1;cursor:default}
+.btn.done::before{content:"✓ "}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+
+/* ═══ CALLOUTS ═══ */
+.reveal-box{display:none;border:1px solid var(--line);border-left:5px solid var(--blue);background:var(--cream-alt);padding:18px 22px;margin:16px 0}
+.reveal-box.revealed{display:block;animation:cop-in .35s ease}
+@keyframes cop-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.key-message{background:var(--ink);color:#fff;padding:22px 26px;margin:24px 0}
+.key-message .km-label{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:8px}
+.key-message p{font-family:var(--head);font-weight:500;font-size:17.5px;line-height:1.4}
+.buildnote{background:var(--cream-alt);border-left:5px solid var(--amber);padding:14px 18px;font-size:13.5px;margin:18px 0}
+.buildnote b{font-family:var(--head);display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:4px}
+.warn{background:#fff;border:1.5px solid var(--coral);border-left-width:5px;padding:14px 18px;font-size:13.5px;margin:18px 0}
+.warn b{font-family:var(--head);display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:4px}
+.quoteband{background:#0e1220;color:#fff;padding:46px 0;text-align:center;margin:40px 0}
+.quoteband .inner{max-width:62ch;margin:0 auto;padding:0 28px}
+.quoteband .eyebrow{color:var(--blue-light);margin-bottom:10px}
+.quoteband p{font-family:var(--head);font-weight:600;font-size:clamp(18px,2.6vw,25px);line-height:1.35}
+
+/* ═══ PRE-FLIGHT ═══ */
+.preflight{background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);padding:0;overflow:hidden}
+.preflight .pf-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:0;align-items:stretch}
+@media(max-width:820px){.preflight .pf-grid{grid-template-columns:1fr}}
+.preflight .pf-img{position:relative;min-height:100%;background:var(--cream-alt)}
+.preflight .pf-img img{width:100%;height:100%;object-fit:cover;min-height:240px}
+.preflight .pf-body{padding:24px 28px 26px}
+.preflight .pf-k{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:7px}
+.preflight h2{font-size:22px;margin-bottom:6px}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--ink);color:#fff;margin-top:54px;padding:30px 0}
+footer .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer .tick{width:26px;height:3px;background:#fff;margin-bottom:10px}
+footer .lt{font-family:var(--head);font-weight:600;font-size:13px}
+footer p{font-size:12.5px;opacity:.75;max-width:60ch}
+footer .fbtns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+footer .fbtn{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.04em;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);padding:9px 14px;cursor:pointer;transition:.15s}
+footer .fbtn:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ═══ SAVEBAR ═══ */
+#cop-savebar{position:fixed;right:18px;bottom:18px;z-index:120;background:var(--ink);color:#fff;font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.03em;padding:9px 16px;border-radius:999px;opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+#cop-savebar.on{opacity:1;transform:translateY(0)}
+#cop-savebar::before{content:"✓ ";color:var(--blue-light)}
+
+/* ═══ MODE VISIBILITY ═══ */
+.selfOnly{display:block}
+body.present .selfOnly{display:none}
+.presentOnly{display:none}
+body.present .presentOnly{display:block}
+.facOnly{display:none}
+body.facilitator .facOnly{display:block}
+
+/* ═══ FACILITATOR RUN-SHEET STRIP (shell only — populated in B4) ═══ */
+.runstrip{display:none;background:#0e1220;color:rgba(255,255,255,.95);border-left:5px solid var(--blue-light);padding:16px 20px;margin:18px 0;font-size:13px;line-height:1.55}
+body.facilitator .runstrip{display:block}
+.runstrip b{display:block;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:6px}
+
+/* ═══ PLACEHOLDER MOUNTS (B2/B3) ═══ */
+.mount:empty{display:none}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   STATION 2 — LIGHT IT
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── The Lighting Rig ───────────────────────────────────────── */
+.rig{background:#12151c;color:#fff;border:1px solid #12151c;margin:26px 0 0}
+.rig .rig-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:20px 24px 0}
+.rig .rig-k{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.rig h3{font-size:22px;color:#fff}
+.rig .rig-sub{padding:6px 24px 0;font-size:13.5px;color:rgba(255,255,255,.78);max-width:72ch}
+.rig .panels{display:grid;grid-template-columns:1.32fr 1fr;gap:0;margin-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.rig .panels{grid-template-columns:1fr}}
+.rig .pane{padding:18px 24px 22px;min-width:0}
+.rig .pane + .pane{border-left:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.rig .pane + .pane{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+.rig .pane-k{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px}
+.rig svg{width:100%;height:auto;display:block}
+
+/* light toggles */
+.rig .lights{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 4px}
+.lightbtn{display:inline-flex;align-items:center;gap:9px;font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.3);padding:9px 13px;cursor:pointer;transition:.15s}
+.lightbtn:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.lightbtn .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);flex:0 0 9px;transition:.15s}
+.lightbtn[aria-pressed="true"]{color:#12151c;background:var(--amber);border-color:var(--amber)}
+.lightbtn[aria-pressed="true"] .dot{background:#12151c}
+.lightbtn.off-key[aria-pressed="true"]{background:#FFD9A0;border-color:#FFD9A0}
+
+/* presets */
+.rig .presets{display:flex;flex-wrap:wrap;gap:7px;padding:14px 24px 16px;border-top:1px solid rgba(255,255,255,.08);margin-top:4px}
+.rig .presets .pk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);align-self:center;margin-right:4px}
+.presetbtn{font-family:var(--body);font-size:13px;background:transparent;color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.2);padding:8px 12px;cursor:pointer;transition:.15s}
+.presetbtn:hover{border-color:#fff;color:#fff}
+.presetbtn.on{background:#fff;color:#12151c;border-color:#fff;font-weight:600}
+
+/* verdict */
+.rig .verdict{border-top:1px solid rgba(255,255,255,.1);padding:18px 24px 22px;display:flex;gap:16px;align-items:flex-start}
+.rig .verdict .vi{font-family:var(--head);font-weight:700;font-size:26px;line-height:1;color:var(--amber);flex:0 0 auto;margin-top:2px}
+.rig .verdict p{font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.95);max-width:62ch}
+.rig .verdict.bad .vi{color:var(--coral)}
+.rig .verdict.good .vi{color:var(--teal-light)}
+
+/* ── The triptych ──────────────────────────────────────────── */
+.tript{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 0}
+@media(max-width:820px){.tript{grid-template-columns:1fr}}
+.tcard{background:#fff;border:1px solid var(--line);overflow:hidden;transition:.25s;opacity:.55}
+.tcard.on{opacity:1;box-shadow:0 0 0 3px var(--amber)}
+.tcard img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.tcard .tp{padding:13px 15px 15px}
+.tcard .tn{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:5px}
+.tcard h4{font-size:16px;margin-bottom:4px}
+.tcard p{font-size:13px;color:var(--grey);line-height:1.45}
+.tript-note{font-size:13px;color:var(--grey);margin-top:12px;max-width:74ch}
+/* bare figures: state the ratio so they crop rather than stretch at any width */
+figure.fig img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+figure.fig figcaption{padding:12px 16px 14px;font-size:13px;color:var(--grey);line-height:1.45}
+img.bleed{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+
+/* ── 60-second audit ───────────────────────────────────────── */
+.audit{background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);padding:24px 26px 26px;margin:26px 0 0}
+.audit .ak{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:7px}
+.audit h3{font-size:22px;margin-bottom:6px}
+.audit .checks{margin-top:18px}
+.scorewrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0 4px;padding-top:18px;border-top:1px solid var(--line)}
+.scoreN{font-family:var(--head);font-weight:700;font-size:34px;line-height:1;color:var(--amber-dark)}
+.scoreN small{font-size:16px;color:var(--muted);font-weight:600}
+.scoreTrack{flex:1;min-width:150px;height:10px;background:var(--cream-alt);border:1px solid var(--line);overflow:hidden}
+.scoreFill{height:100%;width:0%;background:linear-gradient(90deg,var(--coral),var(--amber),var(--teal-dark));transition:width .4s ease}
+.scoreVerdict{font-family:var(--head);font-weight:600;font-size:14.5px;flex-basis:100%;color:var(--ink)}
+
+/* ── before / after ────────────────────────────────────────── */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+@media(max-width:760px){.ba{grid-template-columns:1fr}}
+.ba figure{background:#fff;border:1px solid var(--line);overflow:hidden}
+.ba img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.ba figcaption{padding:12px 15px 14px;font-size:13px;color:var(--grey);line-height:1.45}
+.ba figcaption b{display:block;font-family:var(--head);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.ba .before figcaption b{color:var(--coral-dark)}
+.ba .after figcaption b{color:var(--teal-dark)}
+
+/* ── kit ladder ────────────────────────────────────────────── */
+.ladder{margin:26px 0 0}
+.ladder details{background:#fff;border:1px solid var(--line);border-left:5px solid var(--muted);margin-bottom:8px}
+.ladder details[data-tier="1"]{border-left-color:var(--teal-dark)}
+.ladder details[data-tier="2"]{border-left-color:var(--amber)}
+.ladder details[data-tier="3"]{border-left-color:var(--amber-dark)}
+.ladder details[data-tier="4"]{border-left-color:var(--ink)}
+.ladder summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ladder summary::-webkit-details-marker{display:none}
+.ladder summary::after{content:"+";margin-left:auto;font-family:var(--head);font-weight:600;font-size:19px;color:var(--muted);line-height:1}
+.ladder details[open] summary::after{content:"–"}
+.ladder summary:hover{background:var(--cream-alt)}
+.ladder .tname{font-family:var(--head);font-weight:700;font-size:17px}
+.ladder .ttag{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--muted);padding:4px 8px}
+.ladder details[data-tier="1"] .ttag{background:var(--teal-dark)}
+.ladder details[data-tier="2"] .ttag{background:var(--amber-dark)}
+.ladder details[data-tier="3"] .ttag{background:var(--amber-dark)}
+.ladder details[data-tier="4"] .ttag{background:var(--ink)}
+.ladder .price{font-family:var(--mono);font-size:12.5px;color:var(--grey)}
+.ladder .price:empty{display:none}
+.ladder .tbody{padding:0 20px 20px;font-size:14px;max-width:76ch}
+.ladder .tbody p{margin-bottom:9px}
+.ladder .tbody .nope{font-size:13px;color:var(--grey);border-left:3px solid var(--line);padding-left:12px;margin-top:12px}
+.ladder .tbody .nope b{font-family:var(--head);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+
+/* ── Rodecaster encore ─────────────────────────────────────── */
+.encore{background:var(--ink);color:#fff;margin:32px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+@media(max-width:820px){.encore{grid-template-columns:1fr}}
+.encore .eimg img{width:100%;height:100%;object-fit:cover;min-height:260px}
+.encore .ebody{padding:28px 30px 30px}
+.encore .ek{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.encore h3{font-size:24px;margin-bottom:10px}
+.encore p{font-size:14.5px;color:rgba(255,255,255,.9);margin-bottom:12px;max-width:56ch}
+.encore ul{list-style:none;margin:14px 0 0;font-size:13.5px}
+.encore li{padding-left:20px;position:relative;margin-bottom:7px;color:rgba(255,255,255,.92)}
+.encore li::before{content:"→";position:absolute;left:0;color:var(--amber)}
+.encore .eclose{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);font-family:var(--head);font-weight:600;font-size:15px;color:#fff}
+
+/* ── rig SVG internals ─────────────────────────────────────── */
+.pv text,.fv text{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;fill:rgba(255,255,255,.45)}
+.pv .lt .cone{fill:url(#coneGrad);opacity:0;transition:opacity .3s ease}
+.pv .lt .body{fill:#252b38;stroke:rgba(255,255,255,.30);stroke-width:1.5;transition:.3s ease}
+.pv .lt .face{fill:rgba(255,255,255,.22);transition:.3s ease}
+.pv .lt.on .cone{opacity:1}
+.pv .lt.on .body{fill:#4b3f26;stroke:var(--amber)}
+.pv .lt.on .face{fill:var(--amber)}
+.pv .lt.on + text,.pv text.on{fill:var(--amber)}
+.pv .ring{stroke:rgba(255,255,255,.28);stroke-width:2;stroke-dasharray:5 6;fill:none;transition:.3s ease}
+.pv .ring.on{stroke:var(--amber);stroke-dasharray:none}
+.pv .chev{fill:rgba(255,255,255,.25);transition:.3s ease}
+.pv .ring-g.on .chev{fill:var(--amber)}
+.pv .axis{stroke:rgba(255,255,255,.16);stroke-width:1.5;stroke-dasharray:3 5}
+.pv .subject{fill:#cfc6ba}
+.pv .cam{fill:#252b38;stroke:rgba(255,255,255,.4);stroke-width:1.5}
+.pv .camlens{fill:rgba(255,255,255,.45)}
+.fv .lay{transition:opacity .34s ease}
+@media (prefers-reduced-motion: reduce){
+  .pv .lt .cone,.pv .lt .body,.pv .lt .face,.pv .ring,.pv .chev,.fv .lay,.tcard,.scoreFill{transition:none!important}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   STATION 1 — BUILD IT
+   ═══════════════════════════════════════════════════════════════ */
+.aepcard{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:0;background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);margin:26px 0 0;align-items:stretch}
+@media(max-width:820px){.aepcard{grid-template-columns:1fr}}
+.aepcard .aimg img{width:100%;height:100%;object-fit:cover;min-height:230px}
+.aepcard .abody{padding:24px 28px 26px}
+.aepcard .ak{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:7px}
+.aepcard h3{font-size:22px;margin-bottom:10px}
+.aeplist{list-style:none;margin:16px 0 0}
+.aeplist li{padding-left:0;margin-bottom:14px}
+.aeplist .w{font-family:var(--head);font-weight:700;font-size:15px;color:var(--blue-dark);display:block}
+.aeplist .d{font-size:14px;color:var(--grey);line-height:1.5}
+
+/* the builder */
+.builder{background:#0f1117;color:#fff;margin:26px 0 0}
+.builder .bhead{padding:20px 24px 0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.builder .bk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light)}
+.builder h3{font-size:22px;color:#fff}
+.builder .bsub{padding:6px 24px 0;font-size:13.5px;color:rgba(255,255,255,.78);max-width:74ch}
+.builder .bgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.builder .bgrid{grid-template-columns:1fr}}
+.builder .bin{padding:20px 24px 22px}
+.builder .bout{padding:20px 24px 22px;border-left:1px solid rgba(255,255,255,.1);background:#0a0c11;min-width:0}
+@media(max-width:900px){.builder .bout{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+.builder .field > label{color:rgba(255,255,255,.72)}
+.builder .field .hint{color:rgba(255,255,255,.62)}
+.builder textarea{background:#161923;border-color:rgba(255,255,255,.2);color:#fff;min-height:74px}
+.builder textarea::placeholder{color:rgba(255,255,255,.3)}
+.builder textarea:focus{border-color:var(--blue-light);box-shadow:0 0 0 3px rgba(127,184,237,.2)}
+.builder .pane-k{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px}
+.promptout{font-family:var(--mono);font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#DCE6F5;background:#12151d;border:1px solid rgba(255,255,255,.12);padding:16px 18px;min-height:190px;max-height:340px;overflow:auto}
+.promptout .ph{color:rgba(255,255,255,.52);font-style:italic}
+
+/* seed chips */
+.seeds{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 0}
+.seedchip{font-family:var(--body);font-size:12.5px;background:transparent;color:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.22);padding:7px 11px;cursor:pointer;transition:.15s;text-align:left}
+.seedchip:hover{border-color:var(--blue-light);color:#fff}
+
+/* genericness meter */
+.gmeter{margin:16px 0 0}
+.gmeter .gm-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.gmeter .gm-dots{display:flex;gap:6px}
+.gmeter .gm-dot{flex:1;height:6px;background:rgba(255,255,255,.14);transition:background .3s}
+.gmeter .gm-dot.on{background:var(--blue-light)}
+.gmeter .gm-dot.on.full{background:var(--teal-light)}
+.gmeter ul{list-style:none;margin:12px 0 0;font-size:12.5px}
+.gmeter li{color:rgba(255,255,255,.62);padding-left:20px;position:relative;margin-bottom:5px;transition:color .3s}
+.gmeter li::before{content:"○";position:absolute;left:0}
+.gmeter li.met{color:rgba(255,255,255,.88)}
+.gmeter li.met::before{content:"●";color:var(--blue-light)}
+
+.builder .bfoot{border-top:1px solid rgba(255,255,255,.1);padding:16px 24px 20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.builder .bfoot .fb{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.28);padding:11px 15px;cursor:pointer;transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.builder .bfoot .fb:hover{border-color:#fff;color:#fff}
+.builder .bfoot .fb.go{background:var(--blue);border-color:var(--blue);color:#fff}
+.builder .bfoot .fb.go:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.builder .bfoot .stuck{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,.62)}
+
+/* ═══════════════════════════════════════════════════════════════
+   STATION 3 — SHOW IT
+   ═══════════════════════════════════════════════════════════════ */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 0}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.gallery{grid-template-columns:1fr}}
+.gcard{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:.2s}
+.gcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px -22px rgba(0,0,0,.45)}
+.gcard .gbar{height:5px;background:var(--teal-dark)}
+.gcard.game .gbar{background:var(--amber)}
+.gcard .gp{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.gcard .gtag{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:7px}
+.gcard.game .gtag{color:var(--amber-dark)}
+.gcard .gtag .took{color:var(--muted);letter-spacing:.06em}
+.gcard h3{font-size:18px;margin-bottom:5px}
+.gcard p{font-size:13px;color:var(--grey);line-height:1.5;flex:1}
+.gcard .glinks{margin-top:14px;border-top:1px solid var(--line);padding-top:11px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--head);font-weight:600;font-size:13px}
+.gcard .glinks a{color:var(--teal-dark)}
+.gcard.game .glinks a{color:var(--amber-dark)}
+.gcard .glinks a:hover{text-decoration:underline}
+.gcard .glinks .pending{color:var(--muted);font-weight:500}
+.gcard.soon{opacity:.62}
+.gcard.soon .gbar{background:var(--muted)}
+
+/* the wall */
+.wall{position:relative;background:var(--black);color:#fff;margin:34px 0 0;overflow:hidden}
+.wall .wbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78}
+/* veil runs left-to-right, not top-to-bottom: the copy stays legible on the left
+   while the room stays visible on the right, where the faces are */
+.wall .wveil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,10,14,.95) 0%,rgba(8,10,14,.9) 40%,rgba(8,10,14,.55) 72%,rgba(8,10,14,.38) 100%)}
+@media(max-width:820px){.wall .wveil{background:linear-gradient(180deg,rgba(8,10,14,.72) 0%,rgba(8,10,14,.93) 62%,rgba(8,10,14,.95) 100%)}}
+.wall .winner{position:relative;z-index:3;padding:34px 32px 36px;max-width:70ch}
+.wall .wk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-light);margin-bottom:8px}
+.wall h3{font-size:26px;margin-bottom:10px}
+.wall p{font-size:15px;color:rgba(255,255,255,.92);margin-bottom:14px}
+.wall .field{max-width:470px}
+.wall .field > label{color:rgba(255,255,255,.8)}
+.wall .field .hint{color:rgba(255,255,255,.7)}
+.wall input[type="text"]{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);color:#fff}
+.wall input[type="text"]::placeholder{color:rgba(255,255,255,.35)}
+.wall input[type="text"]:focus{border-color:var(--teal-light);box-shadow:0 0 0 3px rgba(83,223,203,.2)}
+
+/* ═══════════════════════════════════════════════════════════════
+   CLOSE
+   ═══════════════════════════════════════════════════════════════ */
+.closegrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px;align-items:start}
+@media(max-width:820px){.closegrid{grid-template-columns:1fr}}
+.closecard{background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.closecard .cbar{height:5px;background:var(--blue)}
+.closecard.next .cbar{background:var(--teal-dark)}
+.closecard img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.closecard .cp{padding:20px 22px 22px}
+.closecard .ck{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:7px}
+.closecard.next .ck{color:var(--teal-dark)}
+.closecard h3{font-size:20px;margin-bottom:6px}
+.closecard p{font-size:13.5px;color:var(--grey);line-height:1.5}
+.takeaway{background:var(--cream-alt);border:1px solid var(--line);border-left:5px solid var(--blue);padding:22px 26px;margin:24px 0 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.takeaway .tt{flex:1;min-width:240px}
+.takeaway h3{font-size:19px;margin-bottom:5px}
+.takeaway p{font-size:13.5px;color:var(--grey);max-width:56ch}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   B4 — FACILITATOR BRIEFING & SESSION TIMER (facilitator mode only)
+   ═══════════════════════════════════════════════════════════════ */
+.facband{display:none;background:#0e1220;color:#fff;margin:34px 0 0;border-top:5px solid var(--blue-light)}
+body.facilitator .facband{display:block}
+.facband .fbh{padding:22px 26px 0}
+.facband .fbk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:7px}
+.facband h3{font-size:22px;color:#fff;margin-bottom:6px}
+.facband .fbsub{font-size:13.5px;color:rgba(255,255,255,.72);max-width:74ch}
+.facband .fbcols{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.facband .fbcols{grid-template-columns:1fr}}
+.facband .fbcol{padding:20px 26px 24px}
+.facband .fbcol + .fbcol{border-left:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.facband .fbcol + .fbcol{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+.facband .fbct{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:14px}
+
+/* cut list */
+.cuts{list-style:none;counter-reset:cut}
+.cuts li{counter-increment:cut;display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13.5px}
+.cuts li:last-child{border-bottom:0}
+.cuts li::before{content:counter(cut);font-family:var(--head);font-weight:700;color:var(--blue-light);font-size:15px}
+.cuts .cw{color:rgba(255,255,255,.92)}
+.cuts .cw small{display:block;color:rgba(255,255,255,.66);font-size:12.5px;margin-top:2px}
+.cuts .cs{font-family:var(--mono);font-size:12.5px;color:var(--amber);white-space:nowrap}
+.nevercut{margin-top:14px;padding:12px 14px;background:rgba(220,90,70,.12);border-left:3px solid var(--coral);font-size:13px;color:rgba(255,255,255,.88)}
+.nevercut b{font-family:var(--head);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:3px}
+
+/* venue table */
+.venues{width:100%;border-collapse:collapse;font-size:13px}
+.venues th,.venues td{text-align:left;padding:9px 10px 9px 0;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08)}
+.venues th{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-light)}
+.venues td:first-child{font-family:var(--head);font-weight:600;color:rgba(255,255,255,.82);white-space:nowrap;padding-right:16px}
+.venues td{color:rgba(255,255,255,.84)}
+.venues tr:last-child td{border-bottom:0}
+.venuewrap{overflow-x:auto}
+
+/* ── the session timer ─────────────────────────────────────── */
+#copTimer{display:none;position:fixed;left:18px;bottom:18px;z-index:130;background:#0b0e16;border:1.5px solid rgba(255,255,255,.22);box-shadow:0 18px 50px -18px rgba(0,0,0,.8);min-width:212px}
+body.facilitator #copTimer{display:block}
+#copTimer .tt{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.12)}
+#copTimer .tt .lbl{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+#copTimer .tt .sp{margin-left:auto;display:flex;gap:4px}
+#copTimer .ic{background:transparent;border:0;color:rgba(255,255,255,.74);cursor:pointer;font-size:13px;line-height:1;padding:4px 6px;font-family:var(--body)}
+#copTimer .ic:hover{color:#fff}
+#copTimer .ic[aria-pressed="true"]{color:var(--amber)}
+#copTimer .digits{font-family:var(--mono);font-weight:500;font-size:46px;line-height:1;letter-spacing:.02em;color:#fff;text-align:center;padding:16px 12px 12px;font-variant-numeric:tabular-nums}
+#copTimer.warn .digits{color:var(--amber)}
+#copTimer.done .digits{color:var(--coral)}
+#copTimer.done{border-color:var(--coral)}
+#copTimer .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12)}
+#copTimer .presets button{background:#0b0e16;border:0;color:rgba(255,255,255,.84);font-family:var(--head);font-weight:600;font-size:12px;padding:9px 4px;cursor:pointer;transition:.12s}
+#copTimer .presets button:hover{background:#161b28;color:#fff}
+#copTimer .presets button.on{background:var(--amber);color:#0b0e16}
+#copTimer .ctrl{display:flex;gap:1px;background:rgba(255,255,255,.12);border-top:1px solid rgba(255,255,255,.12)}
+#copTimer .ctrl button{flex:1;background:#0b0e16;border:0;color:#fff;font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.04em;padding:11px 6px;cursor:pointer;transition:.12s}
+#copTimer .ctrl button:hover{background:#161b28}
+#copTimer .ctrl .go{background:var(--blue);color:#fff}
+#copTimer .ctrl .go:hover{background:var(--blue-dark)}
+#copTimer .hintline{font-size:11.5px;color:rgba(255,255,255,.62);padding:8px 12px 10px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
+#copTimer.min .digits,#copTimer.min .presets,#copTimer.min .ctrl,#copTimer.min .hintline{display:none}
+#copTimer.min{min-width:0}
+@media(max-width:760px){#copTimer{left:10px;bottom:10px;min-width:180px}#copTimer .digits{font-size:36px}}
+@media print{#copTimer{display:none!important}}
+
+/* ═══ PRINT ═══ */
+#printdoc{display:none}
+@media print{
+  body.printing > *{display:none !important}
+  body.printing #printdoc{display:block !important}
+  #printdoc{font-family:'IBM Plex Sans',sans-serif;color:#222;font-size:12px;line-height:1.5}
+  #printdoc .pd-head{border-bottom:3px solid #2D7DD2;padding-bottom:12px;margin-bottom:18px}
+  #printdoc .pd-logo{width:40px;height:40px;display:block;margin-bottom:8px}
+  #printdoc .pd-brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#1B5FA8;margin-bottom:6px}
+  #printdoc h1{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:24px;color:#141414;margin:0 0 4px}
+  #printdoc h2{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:16px;color:#141414;margin:18px 0 8px;border-bottom:1px solid #ddd;padding-bottom:4px;page-break-after:avoid}
+  #printdoc .pd-meta{font-size:11px;color:#666}
+  #printdoc .pd-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid #eee;page-break-inside:avoid}
+  #printdoc .pd-label{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#666;padding:8px 10px 8px 0}
+  #printdoc .pd-value{padding:8px 0}
+  #printdoc .pd-value em{color:#C4821E;font-style:italic}
+  #printdoc .pd-foot{margin-top:26px;padding-top:10px;border-top:1px solid #ddd;font-size:10px;color:#888}
+}
 </style>
 </head>
-<body>
+<body class="self">
 
-<div class="topbar">
-  <img src="Assets/aim-logo-white.png" alt="AIM — Australian Institute of Management">
-</div>
+<a class="skip-link" href="#main">Skip to content</a>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     CHROME
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../../index.html">
+      <img src="assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Community of Practice</div></div>
+    </a>
+    <div class="prog" id="prog" title="Your progress through this session">
+      <div class="pt"><div class="pf" id="progFill"></div></div>
+      <div class="pl" id="progLabel">0 / 12</div>
+    </div>
+    <nav>
+      <a href="#s1">Build</a>
+      <a href="#s2">Light</a>
+      <a href="#s3">Show</a>
+      <a href="#close">Close</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════ -->
 <section class="hero">
-  <div class="eyebrow">Interactive Workbooks</div>
-  <h1>Your course hub.</h1>
-  <p class="lead">Choose your course below and enter the access code shared by your facilitator to open the interactive workbook.</p>
-</section>
-
-<main class="courses">
-  <button class="card" style="--accent: var(--coral);" data-course="ai-essentials-for-business" data-title="AI Essentials for Business">
-    <span class="tag">Essentials · 4 Modules</span>
-    <h2>AI Essentials for Business</h2>
-    <p>A one-day, hands-on intensive — foundations, safe practice, creating with AI, and integrating tools into your workflow.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-
-  <button class="card" style="--accent: var(--teal-dark);" data-course="responsible-ai-leadership" data-title="Responsible AI Leadership">
-    <span class="tag">Leadership · 8 Modules</span>
-    <h2>Responsible AI Leadership</h2>
-    <p>The AIRSPACE framework for leading AI adoption — defensible decisions, guardrails, incidents and change.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-
-  <button class="card" style="--accent: var(--black);" data-course="data-analytics" data-title="Data Analytics Essentials">
-    <span class="tag">Analytics</span>
-    <h2>Data Analytics Essentials</h2>
-    <p>An interactive learning hub for turning raw data into confident, evidence-based business decisions.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-
-  <button class="card" style="--accent: #6b5bd6;" data-course="agentic-ai" data-title="Designing Workflows for Agentic AI">
-    <span class="tag">Agentic AI</span>
-    <h2>Designing Workflows for Agentic AI</h2>
-    <p>Design, delegate and supervise agentic AI workflows — from single tasks to multi-step automation.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-
-  <button class="card" style="--accent: #2D7DD2;" data-course="ai-for-teamwork" data-title="AI for Teamwork">
-    <span class="tag">Teamwork · 8 Modules</span>
-    <h2>AI for Teamwork</h2>
-    <p>Use AI as a practical teammate — clearer communication, better meetings, deeper analysis and safe, transparent adoption.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-
-  <button class="card" style="--accent: #B53D2C;" data-course="agentic-ai-for-leaders" data-title="Agentic AI for Leaders">
-    <span class="tag">Leadership · Advanced · 8 Modules</span>
-    <h2>Agentic AI for Leaders</h2>
-    <p>The advanced sequel to Responsible AI Leadership — decide when AI may act on your behalf, draw the boundaries, and defend the decision.</p>
-    <span class="enter"><span class="lock">🔒</span> Enter workbook <span class="arrow">→</span></span>
-  </button>
-</main>
-
-<footer>© Australian Institute of Management · Access codes are provided by your facilitator.</footer>
-
-<!-- Password modal -->
-<div class="overlay" id="overlay">
-  <div class="modal" id="modal">
-    <div class="tag">Access Required</div>
-    <h3 id="modalTitle">Course</h3>
-    <p>Enter the access code for this course.</p>
-    <input type="password" id="pwInput" placeholder="Access code" autocomplete="off">
-    <div class="err">That code isn’t right — please check with your facilitator.</div>
-    <div class="actions">
-      <button class="btn-go" id="btnGo">Open workbook</button>
-      <button class="btn-cancel" id="btnCancel">Cancel</button>
+  <img class="bg" src="pics/cop-hero-two-halves.jpg" alt="" width="1680" height="720" fetchpriority="high">
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="wrap">
+      <div class="eyebrow">AIM Facilitator Community of Practice</div>
+      <h1>Build it. Light it. Show it.</h1>
+      <p class="sub">In forty-five minutes you'll have built a working tool, fixed how you look on camera, and left with a link you can use with your next cohort.</p>
+      <div class="meta">
+        <span>45 minutes</span>
+        <span>Laptops open</span>
+        <span>Brisbane · Sydney · Online</span>
+      </div>
     </div>
   </div>
+</section>
+
+<main id="main">
+<div class="wrap">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PRE-FLIGHT
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="band" id="preflight">
+    <div class="label"><span class="tag zero">Before you arrive</span><span class="ln"></span><span class="small">5 minutes</span></div>
+
+    <div class="preflight">
+      <div class="pf-grid">
+        <div class="pf-img">
+          <img src="pics/cop-preflight-bench.jpg" alt="An organised desk before a session: laptop, headphones, battery pack and a notebook" width="1680" height="720">
+        </div>
+        <div class="pf-body">
+          <div class="pf-k">Five minutes, in advance</div>
+          <h2>Do these three things before the session</h2>
+          <p class="body small mb0" style="color:var(--grey);font-size:13.5px">Tick them off here — this page remembers.</p>
+
+          <div class="checks" style="margin-top:16px">
+            <label>
+              <input type="checkbox" data-key="pf.studio" value="1">
+              <span><b>Sign in to Google AI Studio</b> and open Build mode.
+              <span class="sub">If your AIM account blocks it, use a personal Google account. Find that out now, not at minute eight.</span></span>
+            </label>
+            <label>
+              <input type="checkbox" data-key="pf.kit" value="1">
+              <span><b>Laptop charged, camera working</b>, headphones if you're joining online.</span>
+            </label>
+            <label>
+              <input type="checkbox" data-key="pf.idea" value="1">
+              <span><b>Think of one thing you wish existed</b> for your next cohort.
+              <span class="sub">It doesn't have to be clever. It has to be real.</span></span>
+            </label>
+          </div>
+
+          <div class="warn" style="margin-bottom:0">
+            <b>The one thing that can derail this</b>
+            Twenty people discovering a corporate Google Workspace restriction at the same moment. Two minutes now saves the session.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · pre-flight</b>
+      Send this link with the calendar invite, not on the day. If more than a couple of people arrive without AI Studio access, run Station 1 as a watch-along and point them at the finished-example link — do not spend the session troubleshooting sign-ins.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THE SPINE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="band" id="spine">
+    <div class="label"><span class="tag zero">Why we're here</span><span class="ln"></span></div>
+    <h2 class="visually-hidden-label">Why we're here</h2>
+
+    <div class="key-message">
+      <div class="km-label">The argument</div>
+      <p>The specialist gap has closed in both directions. Building a working tool used to need a developer. Looking broadcast-quality on a call used to need a studio. Neither is true any more — and facilitators are exactly the people who should notice first.</p>
+    </div>
+
+    <p class="lead">Three stations, forty-five minutes, and you build something in each one.</p>
+
+    <div class="grid3" style="margin-top:22px">
+      <a class="stcard s1" href="#s1">
+        <div class="bar"></div>
+        <div class="p">
+          <div class="n">Station 1 · 12 min</div>
+          <h3>Build it</h3>
+          <p>Write an Act–Explain–Please brief, paste it into Google AI Studio, and watch a working app appear.</p>
+          <div class="go">I can specify software in English →</div>
+        </div>
+      </a>
+      <a class="stcard s2" href="#s2">
+        <div class="bar"></div>
+        <div class="p">
+          <div class="n">Station 2 · 15 min</div>
+          <h3>Light it</h3>
+          <p>Three-point lighting, an audit of your own camera, and one thing fixed before the timer ends.</p>
+          <div class="go">I can look like I take this seriously →</div>
+        </div>
+      </a>
+      <a class="stcard s3" href="#s3">
+        <div class="bar"></div>
+        <div class="p">
+          <div class="n">Station 3 · 12 min</div>
+          <h3>Show it</h3>
+          <p>Tour finished builds, remix one, and leave holding a link you'll actually use.</p>
+          <div class="go">I have a thing I'll use on Tuesday →</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · cold open, 0:00–2:00</b>
+      Appear badly lit — overhead light, camera low, window behind you. Hold it fifteen seconds while you welcome them, then cut to your proper setup mid-sentence and say nothing about it. Then the promise, this URL and the access code on screen. No agenda slide: this page is the agenda.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FACILITATOR BRIEFING — cut list + venue notes (facilitator only)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="facband" id="facbrief">
+    <div class="fbh">
+      <div class="fbk">Facilitator briefing</div>
+      <h3>Before you start</h3>
+      <p class="fbsub">Forty-five minutes with three substantial parts is ambitious, and it will run long. Decide the cut order now, not at 0:38. The timer sits bottom-left — space bar starts and pauses it.</p>
+    </div>
+
+    <div class="fbcols">
+      <div class="fbcol">
+        <div class="fbct">If it runs long — cut in this order</div>
+        <ul class="cuts">
+          <li><span class="cw">The Rodecaster encore<small>Becomes a workbook panel and an offer to stay back. It's an encore — low cost.</small></span><span class="cs">−3:00</span></li>
+          <li><span class="cw">Gallery from six cards to four<small>The effect is cumulative; four still lands.</small></span><span class="cs">−2:00</span></li>
+          <li><span class="cw">Station 3 remix, six minutes to four<small>Shortens the best working block. Medium cost.</small></span><span class="cs">−2:00</span></li>
+          <li><span class="cw">"Two out loud" in Station 1<small>This is the only peer beat in Station 1. High cost — cut last.</small></span><span class="cs">−1:00</span></li>
+        </ul>
+        <div class="nevercut">
+          <b>Never cut</b>
+          The cold open. The three lights going on one at a time. The wall.
+        </div>
+      </div>
+
+      <div class="fbcol">
+        <div class="fbct">What differs across the three runs</div>
+        <div class="venuewrap">
+          <table class="venues">
+            <thead><tr><th></th><th>In the room</th><th>Online</th></tr></thead>
+            <tbody>
+              <tr><td>Station 1</td><td>Wifi is the risk. Confirm the guest network carries 20 laptops.</td><td>Easiest — everyone on their own connection.</td></tr>
+              <tr><td>Lighting demo</td><td>Needs a volunteer and a camera to the projector. <b>Confirm what travels to Brisbane</b> — a two-light demo is fine and may beat freighting the kit.</td><td>Strongest version. You are the demo, live, no extra hardware.</td></tr>
+              <tr><td>The audit</td><td>Demo-heavy, audit-light. Private 60 seconds, then ask two people what they changed.</td><td>Demo-light, audit-heavy. Gallery view makes it collective.</td></tr>
+              <tr><td>The wall</td><td>Project the chat, or read three out by name.</td><td>Meeting chat works as is.</td></tr>
+              <tr><td>Energy risk</td><td>Room goes quiet during the six-minute build. Circulate; don't fill the silence.</td><td>Screens go dark and you can't tell who's working. Ask for a reaction at three minutes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STATION 1 — BUILD IT          [interactives land in B3]
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="station" id="s1">
+    <div class="band">
+      <div class="label"><span class="tag">Station 1</span><span class="ln"></span><span class="small">12 minutes</span></div>
+    </div>
+
+    <div class="shero">
+      <img src="pics/s1-hero-the-brief.jpg" alt="A facilitator writing a short brief by hand on an index card" width="1456" height="816" loading="lazy" decoding="async">
+    </div>
+
+    <div class="stitle">
+      <h2>Build it</h2>
+      <span class="stime">Hands on</span>
+    </div>
+
+    <div class="sline">
+      <p class="lead mb0">Most prompts fail because they're a wish, not a brief. Act–Explain–Please fixes that in three lines — and a brief is all it now takes to get working software.</p>
+    </div>
+
+    <div id="mount-s1">
+
+    <!-- ─── Act · Explain · Please ────────────────────────────── -->
+    <div class="aepcard">
+      <div class="aimg">
+        <img src="pics/s1-aep-card.jpg" alt="Three index cards reading Act, Explain and Please in fountain pen" width="1344" height="896" loading="lazy" decoding="async">
+      </div>
+      <div class="abody">
+        <div class="ak">The framework you already teach</div>
+        <h3>Act · Explain · Please</h3>
+        <p class="body mb0" style="color:var(--grey)">A weak prompt is a wish. A good one is a brief — and a brief is now all it takes to get working software.</p>
+        <ul class="aeplist">
+          <li><span class="w">Act</span><span class="d">Who the model is. A facilitator's tool-builder, a curriculum designer, a front-end developer who writes plain, readable code.</span></li>
+          <li><span class="w">Explain</span><span class="d">The situation, the audience and the constraints. Who uses it, where, on what, and what must not happen.</span></li>
+          <li><span class="w">Please</span><span class="d">The specific ask and the format. Not "help me with" — the actual thing you want handed back.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ─── The AEP Brief Builder ─────────────────────────────── -->
+    <div class="builder" id="builder">
+      <div class="bhead">
+        <span class="bk">Hands on · 3 minutes</span>
+        <h3>Write the brief</h3>
+      </div>
+      <p class="bsub">Think of one tool you wish you had for your next cohort. Fill the three boxes. The prompt assembles itself on the right, ready to paste straight into Google AI Studio.</p>
+
+      <div class="bgrid">
+        <div class="bin">
+          <div class="field">
+            <label for="s1act">Act — who should the model be?</label>
+            <textarea id="s1act" data-key="s1.act" placeholder="a front-end developer who builds small, self-contained teaching tools and writes plain readable code"></textarea>
+          </div>
+          <div class="field">
+            <label for="s1explain">Explain — the situation, the audience, the constraints</label>
+            <textarea id="s1explain" data-key="s1.explain" placeholder="I facilitate a one-day workshop for about 20 people. I need to split them into groups several times across the day without the same people ending up together twice. I'll run this from a laptop on a projector."></textarea>
+          </div>
+          <div class="field">
+            <label for="s1please">Please — the specific ask, and the format</label>
+            <textarea id="s1please" data-key="s1.please" placeholder="Build me a group allocator. I paste in a list of names, choose a group size, and it deals them into groups — then remembers previous rounds so it never repeats a pairing. Big type, readable from the back of a room."></textarea>
+          </div>
+
+          <div class="field" style="margin-bottom:0">
+            <label>Stuck? Borrow one of these</label>
+            <div class="seeds" id="seedRow"></div>
+            <div class="hint">A seed fills the last two boxes with a starting point. Edit it — it should be your problem, not mine.</div>
+          </div>
+        </div>
+
+        <div class="bout">
+          <div class="pane-k">Your prompt, ready to paste</div>
+          <div class="promptout" id="promptOut" aria-live="polite"></div>
+
+          <div class="gmeter" id="gmeter">
+            <div class="gm-head"><span>How specific is it?</span><span id="gmScore">0 / 4</span></div>
+            <div class="gm-dots">
+              <div class="gm-dot" data-d="0"></div><div class="gm-dot" data-d="1"></div>
+              <div class="gm-dot" data-d="2"></div><div class="gm-dot" data-d="3"></div>
+            </div>
+            <ul>
+              <li data-check="role">Says who the model should be</li>
+              <li data-check="who">Names who will use it, and where</li>
+              <li data-check="format">Asks for a specific thing, not "help with"</li>
+              <li data-check="length">Long enough to be a brief, not a wish</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bfoot">
+        <button type="button" class="fb go" id="copyPrompt">Copy the prompt</button>
+        <a class="fb" href="https://aistudio.google.com/apps" target="_blank" rel="noopener">Open Google AI Studio ↗</a>
+        <button type="button" class="fb" id="copyFallback">Copy a known-good one instead</button>
+        <span class="stuck">Can't get in? Nothing here is wasted — keep writing, build it after.</span>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 4:00–8:00</b>
+      Three minutes on the brief, timer up, then two people read theirs aloud. They will steal each other's ideas — that is the point, and it is the only peer beat in Station 1. Do not cut it.
+    </div>
+
+    <!-- ─── What you built ───────────────────────────────────── -->
+    <div class="grid2" style="margin-top:30px">
+      <div>
+        <div class="field">
+          <label for="s1built">What did it actually build?</label>
+          <input type="text" id="s1built" data-key="s1.built" placeholder="e.g. a working group allocator, first try">
+          <div class="hint">One line. Include what surprised you — that's the bit you'll retell.</div>
+        </div>
+        <div class="key-message" style="margin-top:20px">
+          <div class="km-label">Name the shift</div>
+          <p>You just specified software in English and something built it. Six months ago that sentence was a conference keynote.</p>
+        </div>
+      </div>
+      <figure class="fig" style="background:#fff;border:1px solid var(--line)">
+        <img src="pics/s1-it-worked.jpg" alt="A facilitator reacting with delight as something works on his screen" width="1344" height="896" loading="lazy" decoding="async">
+        <figcaption>The half-second where it works. Most people get here inside ninety seconds.</figcaption>
+      </figure>
+    </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 2:00–14:00</b>
+      2:00 why prompts fail + AEP in 90 seconds · 4:00 three minutes on the brief, timer up · 7:00 two read theirs out · 8:00 five minutes building in AI Studio · 13:00 name the shift. Don't teach the code view or deployment — that's Station 3.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STATION 2 — LIGHT IT          [interactives land in B2]
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="station" id="s2">
+    <div class="band">
+      <div class="label"><span class="tag s2">Station 2</span><span class="ln"></span><span class="small">15 minutes</span></div>
+    </div>
+
+    <div class="shero">
+      <img src="pics/s2-hero-three-lights.jpg" alt="A three-point lighting setup with all three units visible around the subject" width="1456" height="816" loading="lazy" decoding="async">
+    </div>
+
+    <div class="stitle">
+      <h2>Light it</h2>
+      <span class="stime">Hands on</span>
+    </div>
+
+    <div class="sline">
+      <p class="lead mb0">You are on camera more than you are in a room now. People decide something about your competence in the first two seconds, it isn't fair, and it is still true. Lighting is the highest-return fix you can make today.</p>
+    </div>
+
+    <div id="mount-s2">
+
+    <!-- ─── The Lighting Rig ─────────────────────────────────── -->
+    <div class="rig" id="rig">
+      <div class="rig-head">
+        <span class="rig-k">Interactive</span>
+        <h3>The Lighting Rig</h3>
+      </div>
+      <p class="rig-sub">Switch the lights on one at a time. The left panel shows where they sit; the right shows what they do to a face. Every combination gets an honest verdict — including the one you're probably broadcasting right now.</p>
+
+      <div class="lights" style="padding-top:16px">
+        <button type="button" class="lightbtn" data-light="key"      aria-pressed="false"><span class="dot"></span>Key</button>
+        <button type="button" class="lightbtn" data-light="fill"     aria-pressed="false"><span class="dot"></span>Fill</button>
+        <button type="button" class="lightbtn" data-light="back"     aria-pressed="false"><span class="dot"></span>Back</button>
+        <button type="button" class="lightbtn" data-light="window"   aria-pressed="false"><span class="dot"></span>Window</button>
+        <button type="button" class="lightbtn" data-light="overhead" aria-pressed="false"><span class="dot"></span>Overhead</button>
+      </div>
+
+      <div class="presets">
+        <span class="pk">Or try</span>
+        <button type="button" class="presetbtn" data-preset="overhead">Overhead only</button>
+        <button type="button" class="presetbtn" data-preset="window">Window key</button>
+        <button type="button" class="presetbtn" data-preset="key">Key only</button>
+        <button type="button" class="presetbtn" data-preset="keyfill">Key + fill</button>
+        <button type="button" class="presetbtn" data-preset="full">Full three-point</button>
+        <button type="button" class="presetbtn" data-preset="none">All off</button>
+      </div>
+
+      <div class="panels">
+        <!-- PLAN VIEW -->
+        <div class="pane">
+          <div class="pane-k">Where the lights go · from above</div>
+          <svg class="pv" viewBox="0 0 560 400" role="img" aria-label="Plan view of a subject, a camera and five possible light positions">
+            <defs>
+              <linearGradient id="coneGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0"   stop-color="#E8A33D" stop-opacity=".42"/>
+                <stop offset="1"   stop-color="#E8A33D" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- camera axis -->
+            <line class="axis" x1="280" y1="330" x2="280" y2="224"/>
+
+            <!-- cones first so they sit behind everything -->
+            <g class="lt" id="pv-key"      transform="translate(165,300) rotate(45)"><polygon class="cone" points="0,-8 -50,-146 50,-146"/></g>
+            <g class="lt" id="pv-fill"     transform="translate(395,300) rotate(-45)"><polygon class="cone" points="0,-8 -50,-146 50,-146"/></g>
+            <g class="lt" id="pv-back"     transform="translate(395,80) rotate(-135)"><polygon class="cone" points="0,-8 -44,-140 44,-140"/></g>
+            <g class="lt" id="pv-window"   transform="translate(95,190) rotate(90)"><polygon class="cone" points="0,-8 -62,-150 62,-150"/></g>
+
+            <!-- overhead ring, centred on the subject -->
+            <g class="ring-g" id="pv-overhead">
+              <rect class="ring" x="222" y="132" width="116" height="116" rx="8"/>
+              <polygon class="chev" points="280,140 273,130 287,130"/>
+              <polygon class="chev" points="280,240 273,250 287,250"/>
+              <polygon class="chev" points="230,190 220,183 220,197"/>
+              <polygon class="chev" points="330,190 340,183 340,197"/>
+            </g>
+
+            <!-- subject -->
+            <circle class="subject" cx="280" cy="190" r="26"/>
+            <polygon class="subject" points="280,222 272,212 288,212"/>
+
+            <!-- camera -->
+            <g>
+              <rect class="cam" x="258" y="336" width="44" height="26" rx="4"/>
+              <circle class="camlens" cx="280" cy="349" r="7"/>
+            </g>
+
+            <!-- light bodies, drawn over the cones -->
+            <g class="lt" id="pv-key-b"    transform="translate(165,300) rotate(45)"><rect class="body" x="-23" y="-10" width="46" height="20" rx="3"/><rect class="face" x="-19" y="-15" width="38" height="6" rx="2"/></g>
+            <g class="lt" id="pv-fill-b"   transform="translate(395,300) rotate(-45)"><rect class="body" x="-19" y="-9" width="38" height="18" rx="3"/><rect class="face" x="-15" y="-13" width="30" height="5" rx="2"/></g>
+            <g class="lt" id="pv-back-b"   transform="translate(395,80) rotate(-135)"><rect class="body" x="-15" y="-8" width="30" height="16" rx="3"/><rect class="face" x="-12" y="-12" width="24" height="5" rx="2"/></g>
+            <g class="lt" id="pv-window-b" transform="translate(95,190) rotate(90)"><rect class="body" x="-34" y="-8" width="68" height="16" rx="2"/><rect class="face" x="-30" y="-12" width="60" height="5" rx="2"/></g>
+
+            <text x="165" y="345" text-anchor="middle" id="lbl-key">Key</text>
+            <text x="395" y="345" text-anchor="middle" id="lbl-fill">Fill</text>
+            <text x="395" y="46"  text-anchor="middle" id="lbl-back">Back</text>
+            <text x="95"  y="252" text-anchor="middle" id="lbl-window">Window</text>
+            <text x="280" y="122" text-anchor="middle" id="lbl-overhead">Overhead</text>
+            <text x="280" y="382" text-anchor="middle">Camera</text>
+          </svg>
+        </div>
+
+        <!-- FRONT VIEW -->
+        <div class="pane">
+          <div class="pane-k">What it does to a face</div>
+          <svg class="fv" viewBox="0 0 320 380" role="img" aria-label="Front view of a neutral bust showing the effect of the selected lights">
+            <defs>
+              <clipPath id="bustClip">
+                <ellipse cx="160" cy="168" rx="72" ry="92"/>
+                <rect x="134" y="240" width="52" height="46"/>
+                <path d="M160 272 C 96 272 52 306 40 380 L280 380 C268 306 224 272 160 272 Z"/>
+                <ellipse cx="86" cy="176" rx="11" ry="17"/>
+                <ellipse cx="234" cy="176" rx="11" ry="17"/>
+              </clipPath>
+              <!-- gradients are mapped across the BUST, not the viewBox, so the
+                   falloff actually lands on the face where it can be read -->
+              <linearGradient id="gKeyL" gradientUnits="userSpaceOnUse" x1="52" y1="0" x2="218" y2="0">
+                <stop offset="0" stop-color="#FFEBCC" stop-opacity="1"/>
+                <stop offset="1" stop-color="#FFEBCC" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gWinL" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="252" y2="0">
+                <stop offset="0" stop-color="#EDF3FF" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#EDF3FF" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gFillR" gradientUnits="userSpaceOnUse" x1="268" y1="0" x2="132" y2="0">
+                <stop offset="0" stop-color="#FFF3E0" stop-opacity=".95"/>
+                <stop offset="1" stop-color="#FFF3E0" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gShadeR" gradientUnits="userSpaceOnUse" x1="258" y1="0" x2="138" y2="0">
+                <stop offset="0" stop-color="#04060A" stop-opacity="1"/>
+                <stop offset="1" stop-color="#04060A" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gTopL" gradientUnits="userSpaceOnUse" x1="0" y1="58" x2="0" y2="240">
+                <stop offset="0" stop-color="#F4F8FF" stop-opacity="1"/>
+                <stop offset="1" stop-color="#F4F8FF" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gRimR" gradientUnits="userSpaceOnUse" x1="240" y1="0" x2="196" y2="0">
+                <stop offset="0" stop-color="#FFE3B0" stop-opacity="1"/>
+                <stop offset="1" stop-color="#FFE3B0" stop-opacity="0"/>
+              </linearGradient>
+              <radialGradient id="gForm" gradientUnits="userSpaceOnUse" cx="96" cy="128" r="215">
+                <stop offset="0" stop-color="#FFFFFF" stop-opacity=".34"/>
+                <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="4.5"/>
+              </filter>
+              <radialGradient id="gSocket">
+                <stop offset="0" stop-color="#04060A" stop-opacity="1"/>
+                <stop offset="1" stop-color="#04060A" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gBgGlow" gradientUnits="userSpaceOnUse" x1="0" y1="380" x2="0" y2="40">
+                <stop offset="0" stop-color="#E8A33D" stop-opacity="0"/>
+                <stop offset="1" stop-color="#E8A33D" stop-opacity=".26"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="320" height="380" fill="#0c0e13"/>
+            <rect class="lay" id="fv-bgglow" x="0" y="0" width="320" height="380" fill="url(#gBgGlow)" opacity="0"/>
+
+            <g clip-path="url(#bustClip)">
+              <!-- base bust, kept deliberately flat so the LIGHTING does the shaping -->
+              <rect x="0" y="0" width="320" height="380" fill="#8a8177"/>
+              <ellipse cx="160" cy="168" rx="72" ry="92" fill="#6f675e" opacity=".18"/>
+
+              <rect class="lay" id="fv-win"   x="0" y="0" width="320" height="380" fill="url(#gWinL)"  opacity="0"/>
+              <rect class="lay" id="fv-key"   x="0" y="0" width="320" height="380" fill="url(#gKeyL)"  opacity="0"/>
+              <rect class="lay" id="fv-top"   x="0" y="0" width="320" height="380" fill="url(#gTopL)"  opacity="0"/>
+              <rect class="lay" id="fv-fill"  x="0" y="0" width="320" height="380" fill="url(#gFillR)" opacity="0"/>
+              <rect class="lay" id="fv-form"  x="0" y="0" width="320" height="380" fill="url(#gForm)"   opacity="0"/>
+              <rect class="lay" id="fv-shade" x="0" y="0" width="320" height="380" fill="url(#gShadeR)" opacity="0"/>
+
+              <!-- cast nose shadow: the strongest single cue that light has a direction.
+                   Side-cast when a light leads from one side; straight down under a ceiling. -->
+              <g class="lay" id="fv-nose-side" opacity="0" filter="url(#softShadow)">
+                <path d="M163 172 C 172 184 179 194 182 202 C 184 209 179 213 172 211 C 168 203 164 193 160 187 Z" fill="#04060A"/>
+              </g>
+              <g class="lay" id="fv-nose-down" opacity="0" filter="url(#softShadow)">
+                <ellipse cx="161" cy="210" rx="14" ry="7" fill="#04060A"/>
+              </g>
+
+              <!-- the rim reads as an edge ON the subject, not an outline around it -->
+              <rect class="lay" id="fv-rim"   x="0" y="0" width="320" height="380" fill="url(#gRimR)" opacity="0"/>
+
+              <!-- the overhead tell: hollowed sockets, shadow under nose and chin -->
+              <g class="lay" id="fv-sockets" opacity="0">
+                <ellipse cx="128" cy="163" rx="25" ry="17" fill="url(#gSocket)"/>
+                <ellipse cx="192" cy="163" rx="25" ry="17" fill="url(#gSocket)"/>
+                <ellipse cx="160" cy="208" rx="20" ry="12" fill="url(#gSocket)"/>
+                <ellipse cx="160" cy="268" rx="44" ry="20" fill="url(#gSocket)"/>
+              </g>
+
+              <rect class="lay" id="fv-dark" x="0" y="0" width="320" height="380" fill="#05070C" opacity="0"/>
+            </g>
+
+            <!-- features, drawn over the shading and dimmed with it -->
+            <g class="lay" id="fv-features" fill="none" stroke="#403a34" stroke-width="2.5" stroke-linecap="round" opacity=".8">
+              <path d="M110 150 C 118 143 138 143 146 149"/>
+              <path d="M174 149 C 182 143 202 143 210 150"/>
+              <path d="M160 158 L160 200 C 160 206 152 208 148 205"/>
+              <path d="M138 232 C 150 239 170 239 182 232"/>
+              <ellipse cx="128" cy="166" rx="9" ry="6" fill="#35302a" stroke="none"/>
+              <ellipse cx="192" cy="166" rx="9" ry="6" fill="#35302a" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="verdict" id="rigVerdict" role="status" aria-live="polite">
+        <span class="vi" id="rigIcon">·</span>
+        <p id="rigText">Nothing on yet. Switch a light and see what happens.</p>
+      </div>
+    </div>
+
+    <!-- ─── The triptych ─────────────────────────────────────── -->
+    <div class="tript">
+      <div class="tcard" data-tript="key">
+        <img src="pics/s2-portrait-key.jpg" alt="A portrait lit by a single key light at 45 degrees, the shadow side unfilled" width="960" height="1200" loading="lazy" decoding="async">
+        <div class="tp">
+          <div class="tn">One light</div>
+          <h4>Key only</h4>
+          <p>Soft, 45° off-axis, just above the eyeline. Dramatic, and already better than most of what you see on Teams.</p>
+        </div>
+      </div>
+      <div class="tcard" data-tript="keyfill">
+        <img src="pics/s2-portrait-key-fill.jpg" alt="The same setup with fill added, opening the shadow side" width="960" height="1200" loading="lazy" decoding="async">
+        <div class="tp">
+          <div class="tn">Two lights</div>
+          <h4>Key + fill</h4>
+          <p>The shadow side opens up. A white wall or a sheet of foamcore does this for nothing at all.</p>
+        </div>
+      </div>
+      <div class="tcard" data-tript="full">
+        <img src="pics/s2-portrait-full.jpg" alt="A full three-point portrait, a rim light separating hair and shoulder from the background" width="960" height="1200" loading="lazy" decoding="async">
+        <div class="tp">
+          <div class="tn">Three lights</div>
+          <h4>Full three-point</h4>
+          <p>The rim lifts you off the background. This is the whole setup, and it costs less than you'd think.</p>
+        </div>
+      </div>
+    </div>
+    <p class="tript-note">Three different people, on purpose. Good lighting is not one recipe applied to one kind of face — it's exposing for the person in front of you. Watch what the same three positions do across all three.</p>
+
+    <div class="runstrip">
+      <b>Facilitator · the money moment, 15:30</b>
+      Do this live on a volunteer, not on the rig — the rig is what they replay afterwards. Dark → key → +fill → +back, naming each as it lands. Then put the overhead back on and leave it there for three seconds. The laugh you get is the whole teaching point.
+    </div>
+
+    <!-- ─── 60-second self-audit ─────────────────────────────── -->
+    <div class="audit" id="audit">
+      <div class="ak">Hands on · 60 seconds</div>
+      <h3>Audit your own setup, right now</h3>
+      <p class="body mb0" style="color:var(--grey)">Camera on. Open your meeting preview, or Photo Booth, or just the camera app. Six questions — be honest, nobody can see this.</p>
+
+      <div class="checks">
+        <label><input type="checkbox" data-key="s2.audit.1" value="1"><span><b>My main light is in front of me, not behind.</b><span class="sub">A window at your back is the single most common mistake. It turns you into a silhouette.</span></span></label>
+        <label><input type="checkbox" data-key="s2.audit.2" value="1"><span><b>My camera is at eye level.</b><span class="sub">Laptop on a stack of books. Free, takes four seconds, and stops the up-the-nose angle.</span></span></label>
+        <label><input type="checkbox" data-key="s2.audit.3" value="1"><span><b>There is one dominant light, not three competing ones.</b><span class="sub">Pick a winner. Two equal sources from opposite sides flatten a face.</span></span></label>
+        <label><input type="checkbox" data-key="s2.audit.4" value="1"><span><b>The overhead light is off.</b><span class="sub">It lights the top of your head and hollows out your eyes. It is never helping.</span></span></label>
+        <label><input type="checkbox" data-key="s2.audit.5" value="1"><span><b>My light sources match in colour.</b><span class="sub">All warm or all cool. A tungsten lamp beside a cold window makes one half of you orange.</span></span></label>
+        <label><input type="checkbox" data-key="s2.audit.6" value="1"><span><b>There is some separation between me and the wall behind.</b><span class="sub">A metre of depth reads as considered. Nose to plasterboard reads as a hostage video.</span></span></label>
+      </div>
+
+      <div class="scorewrap">
+        <div class="scoreN" id="auditScore">0<small>/6</small></div>
+        <div class="scoreTrack"><div class="scoreFill" id="auditFill"></div></div>
+        <div class="scoreVerdict" id="auditVerdict">Tick what's already true.</div>
+      </div>
+
+      <div class="field" style="margin-top:22px">
+        <label for="s2fix">The one thing I'm fixing before the timer ends</label>
+        <input type="text" id="s2fix" data-key="s2.fix" placeholder="e.g. turn the desk round to face the window">
+        <div class="hint">One. Not a list. Something you can do in the next forty seconds.</div>
+      </div>
+
+      <div class="btnrow">
+        <button class="btn amber" data-requires="s2.fix" data-reveal="#baPair" data-revealed-label="Fixed">I've fixed one thing → show me the difference</button>
+      </div>
+
+      <div class="reveal-box" id="baPair" style="padding:0;border:0;background:transparent">
+        <div class="ba">
+          <figure class="before">
+            <img src="pics/s2-the-room-is-the-problem.jpg" alt="An empty desk with a window behind the chair and a hard overhead light" width="1344" height="896" loading="lazy" decoding="async">
+            <figcaption><b>Before</b>Window behind the chair, laptop low on the desk, ceiling panel glaring down. Nobody in this photograph — because the fault is the room, not the face.</figcaption>
+          </figure>
+          <figure class="after">
+            <img src="pics/s2-the-fix.jpg" alt="The same desk turned to face the window, laptop raised on books, overhead light off" width="1344" height="896" loading="lazy" decoding="async">
+            <figcaption><b>After</b>Same desk, turned to face the window. Laptop up on books. One small panel with diffusion, a white board opposite as bounce, ceiling light off. No money spent.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · the audit, 20:00</b>
+      Online is the strong version: gallery view, everyone's camera on, and you can call out three good fixes by name. In the room you lose that — so do it as a private sixty seconds on their own laptops and ask two people what they changed. Do not let this run past three minutes.
+    </div>
+
+    <!-- ─── Kit ladder ───────────────────────────────────────── -->
+    <div class="band" style="margin-top:40px">
+      <div class="label"><span class="tag s2">The kit ladder</span><span class="ln"></span></div>
+    </div>
+    <p class="lead">Tier one is free and gets you most of the way. Everything above it is a refinement, not a rescue.</p>
+
+    <img src="pics/s2-kit-ladder.jpg" alt="Four lighting options arranged in ascending order on a bench" width="1456" height="816" loading="lazy" decoding="async" class="bleed" style="margin:18px 0 0;border:1px solid var(--line)">
+
+    <div class="ladder">
+      <details data-tier="1" open>
+        <summary><span class="ttag">Tier 1</span><span class="tname">A window and some books</span><span class="price" data-price>$0</span></summary>
+        <div class="tbody">
+          <p>Turn your desk so you <b>face</b> a window. Put the laptop on a stack of hardbacks until the camera is at eye level. Turn the ceiling light off. Put anything white — a sheet of foamcore, a whiteboard, an open lever-arch file — on the shadow side to bounce light back.</p>
+          <p>That is a key light and a fill. You have just built two thirds of a three-point setup out of furniture.</p>
+          <p class="small" style="color:var(--grey)">Cost: nothing. You already own all of it.</p>
+          <div class="nope"><b>What it won't do</b>Work after dark, or on a grey day, or if your only window is behind you and can't be moved.</div>
+        </div>
+      </details>
+
+      <details data-tier="2">
+        <summary><span class="ttag">Tier 2</span><span class="tname">One LED panel with diffusion</span><span class="price" data-price>≈ $200</span></summary>
+        <div class="tbody">
+          <p>A small bi-colour folding panel on a clamp arm or a short stand, with its diffusion clipped on. Set it 45° off-axis and slightly above your eyeline, then turn it <b>down</b> — the most common mistake with a first light is running it flat out.</p>
+          <p>Bi-colour matters more than power: it lets you match the window in the afternoon and the room lamp at night, which is audit question five.</p>
+          <p class="small" style="color:var(--grey)">Benchmark: a Godox Litemons LP800Bi 80W bi-colour panel is about $199. Anything in that class does the job.</p>
+          <div class="nope"><b>What it won't do</b>Separate you from the wall behind. That's tier three.</div>
+        </div>
+      </details>
+
+      <details data-tier="3">
+        <summary><span class="ttag">Tier 3</span><span class="tname">Two lights, a softbox and stands</span><span class="price" data-price>≈ $550–750</span></summary>
+        <div class="tbody">
+          <p>A proper softbox as the key — bigger source, softer shadow, that's the whole physics of it — plus a second smaller light behind and above you for the rim. Fill can still be a bounce board; it doesn't need to be a light.</p>
+          <p>This is the tier where people stop noticing your lighting and start noticing you, which is the actual goal.</p>
+          <p class="small" style="color:var(--grey)">Benchmark: a 70cm Godox parabolic softbox is about $139, plus a second light and two stands. Around $550–750 all in, depending on how good the lights are.</p>
+          <div class="nope"><b>What it won't do</b>Fit in a bag. Once you're on stands you're committing floor space.</div>
+        </div>
+      </details>
+
+      <details data-tier="4">
+        <summary><span class="ttag">Tier 4</span><span class="tname">A production console</span><span class="price" data-price>≈ $930–1,250</span></summary>
+        <div class="tbody">
+          <p>The point at which lighting stops being the interesting problem and switching does. See the encore below.</p>
+          <p class="small" style="color:var(--grey)">Benchmark: the RØDECaster Video S lists between $1,095 and $1,250 depending on the retailer, and has been selling around $930–990. The original RØDECaster Video was more than twice that.</p>
+          <div class="nope"><b>What it won't do</b>Make an unlit face look good. Nothing downstream fixes what the lights didn't do.</div>
+        </div>
+      </details>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · pricing</b>
+      Indicative AUD prices checked 11 September 2026 against Australian retailers (digiDirect, Camera Warehouse, Videocraft). Treat them as ballpark, not quotes — the Rodecaster in particular swings a few hundred dollars between retailers and sales. Re-check before the Brisbane run if anyone is likely to buy on the day.
+    </div>
+
+    <!-- ─── Rodecaster encore ────────────────────────────────── -->
+    <div class="encore">
+      <div class="eimg">
+        <img src="pics/s2-console-hands.jpg" alt="Hands on a video production console, the scene buttons lit" width="1344" height="896" loading="lazy" decoding="async">
+      </div>
+      <div class="ebody">
+        <div class="ek">The encore · three minutes</div>
+        <h3>Where this goes if you get obsessed</h3>
+        <p>The RØDECaster Video S is a small console that takes three HDMI sources and a USB camera, and presents all of it to Teams or Zoom as <b>one webcam and one microphone</b>.</p>
+        <p>Which means you stop screen-sharing and start directing: cut from your face, to your slides, to a document camera, from physical buttons.</p>
+        <ul>
+          <li>Three HDMI inputs plus USB-C, with automatic frame-rate conversion</li>
+          <li>Five scene buttons carrying layered graphics and lower-thirds</li>
+          <li>Automatic chroma key, so a background goes without a green screen ritual</li>
+          <li>Auto-switching that follows whoever is talking</li>
+          <li>Two mic inputs with processing, plus built-in wireless receivers</li>
+        </ul>
+        <div class="eclose">You don't need it. I wanted you to see the ceiling.</div>
+      </div>
+    </div>
+
+    <div class="key-message" style="margin-top:34px">
+      <div class="km-label">If you remember one thing</div>
+      <p>One soft light, in front of you, slightly above your eyes, and the ceiling light off. That's ninety per cent of it, and none of it costs anything.</p>
+    </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 14:00–29:00</b>
+      15:30 the three lights added one at a time — this is the money moment, do it live · 20:00 sixty-second audit, everyone's camera on · 23:00 kit ladder, lead with "tier one is free" · 26:00 Rodecaster, three minutes, show don't teach. <br><br>In-room: demo-heavy, audit-light — you need a volunteer and a camera on the projector. Online: demo-light, audit-heavy — gallery view does the work for you.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STATION 3 — SHOW IT           [interactives land in B3]
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="station" id="s3">
+    <div class="band">
+      <div class="label"><span class="tag s3">Station 3</span><span class="ln"></span><span class="small">12 minutes</span></div>
+    </div>
+
+    <div class="shero">
+      <img src="pics/s3-hero-the-gallery.jpg" alt="Two people viewing six lit screens on a dark gallery wall" width="1456" height="816" loading="lazy" decoding="async">
+    </div>
+
+    <div class="stitle">
+      <h2>Show it</h2>
+      <span class="stime">Hands on</span>
+    </div>
+
+    <div class="sline">
+      <p class="lead mb0">Six finished things, then six minutes to make one of them yours. Nothing here took longer than an afternoon.</p>
+    </div>
+
+    <div id="mount-s3">
+
+    <!-- ─── The Gallery ──────────────────────────────────────── -->
+    <div class="band" style="margin-top:8px">
+      <div class="label"><span class="tag s3">The gallery</span><span class="ln"></span><span class="small">4 minutes</span></div>
+    </div>
+    <p class="lead">Six finished things. Two games, because they prove how easy this is. Four tools, because they prove it isn't a novelty.</p>
+
+    <div class="gallery" id="galleryGrid"></div>
+
+    <div class="runstrip">
+      <b>Facilitator · gallery links still needed</b>
+      Five of the six cards have no live link yet and currently read "Link to come". Before the Brisbane run, add URLs for: Two-Player Tetris · PDF Read-Aloud · Agentic AI Workbook Extras · Supersnake — and build the Group Allocator, which is the card that makes a facilitator think "I could have that by Friday". Edit the GALLERY array at the foot of this file; a card with no url degrades on its own, so nothing breaks in the meantime.
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 29:00–33:00</b>
+      Thirty seconds a card, and move. The effect is cumulative, not individual — six in a row lands, two dwelt on does not. If you're behind, cut to four and say so.
+    </div>
+
+    <!-- ─── Remix or iterate ─────────────────────────────────── -->
+    <div class="audit" style="border-top-color:var(--teal-dark)">
+      <div class="ak" style="color:var(--teal-dark)">Hands on · 6 minutes</div>
+      <h3>Now make one of them yours</h3>
+      <p class="body mb0" style="color:var(--grey)">The longest working block of the session. Two doors — pick either, there's no wrong one.</p>
+
+      <div class="field" style="margin-top:18px">
+        <label>Which door?</label>
+        <div class="optcards" style="grid-template-columns:1fr 1fr">
+          <label class="optcard">
+            <input type="radio" name="s3path" data-key="s3.path" value="Remix one from the gallery">
+            <span class="oc"><b>Remix</b><span>Open one of the six in AI Studio and change one thing so it's yours — the questions, the subject, the branding.</span></span>
+          </label>
+          <label class="optcard">
+            <input type="radio" name="s3path" data-key="s3.path" value="Iterate my own build">
+            <span class="oc"><b>Iterate</b><span>Go back to what you built in Station 1 and give it one improvement. Ask for the thing that annoyed you.</span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:20px">
+        <figure class="fig" style="background:#fff;border:1px solid var(--line)">
+          <img src="pics/s3-remix.jpg" alt="Two facilitators working together on one laptop" width="1344" height="896" loading="lazy" decoding="async">
+        </figure>
+        <div>
+          <div class="buildnote" style="margin-top:0;border-left-color:var(--teal-dark)">
+            <b>One change, not five</b>
+            The instinct is to rewrite everything. Resist it — ask for one specific change, look at what comes back, then ask for the next. That habit is the actual skill, and it's the one worth teaching your own cohorts.
+          </div>
+          <p class="body small" style="color:var(--grey)">If you're remixing: open the gallery link, hit <b>Remix</b> in AI Studio, and it forks into your own copy. Nothing you do touches the original.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── The Wall ─────────────────────────────────────────── -->
+    <div class="wall">
+      <img class="wbg" src="pics/s3-the-wall.jpg" alt="" width="1680" height="720" loading="lazy" decoding="async">
+      <div class="wveil"></div>
+      <div class="winner">
+        <div class="wk">The wall · 2 minutes</div>
+        <h3>Put your link up</h3>
+        <p>Paste what you made into the meeting chat, and keep a copy here so you still have it next week. Then look at what the room built in six minutes.</p>
+
+        <div class="field">
+          <label for="s3link">My link</label>
+          <input type="text" id="s3link" data-key="s3.link" placeholder="https://aistudio.google.com/apps/...">
+          <div class="hint">Saved in this browser only. The chat is what the room sees.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 39:00–41:00</b>
+      Links into the meeting chat, then thirty seconds scrolling them on screen. This is the emotional peak of the session — do not rush it and do not talk over it. In-room, project the chat or read three out by name.
+    </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 29:00–41:00</b>
+      29:00 gallery tour, thirty seconds a card, move fast — the effect is cumulative · 33:00 six minutes remixing or iterating, stay quiet and circulate · 39:00 the wall. Do not talk over the wall.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CLOSE                          [fields land in B3]
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="station" id="close">
+    <div class="band">
+      <div class="label"><span class="tag zero">Close</span><span class="ln"></span><span class="small">4 minutes</span></div>
+      <h2 class="visually-hidden-label">Close</h2>
+    </div>
+    <div id="mount-close">
+
+    <div class="closegrid">
+      <div class="closecard">
+        <div class="cbar"></div>
+        <img src="pics/cop-commitment.jpg" alt="A hand lifting a pen from a card bearing one handwritten line" width="1344" height="896" loading="lazy" decoding="async">
+        <div class="cp">
+          <div class="ck">One thing</div>
+          <h3>Before my next session I will…</h3>
+          <p>Specific beats ambitious. "Move my desk" outlives "improve my setup" by about a year.</p>
+          <div class="field" style="margin-bottom:0">
+            <label for="mecommit" class="visually-hidden-label">Before my next session I will</label>
+            <input type="text" id="mecommit" data-key="me.commit" placeholder="e.g. build the group allocator properly and use it on Thursday">
+          </div>
+        </div>
+      </div>
+
+      <div class="closecard next">
+        <div class="cbar"></div>
+        <img src="pics/cop-next-question.jpg" alt="A workshop room at the end of a session, chairs turned toward each other" width="1456" height="816" loading="lazy" decoding="async">
+        <div class="cp">
+          <div class="ck">Over to you</div>
+          <h3>What should the next CoP be?</h3>
+          <p>This is a community, not a broadcast. What you write here is the brief for round two.</p>
+          <div class="field" style="margin-bottom:0">
+            <label for="menext" class="visually-hidden-label">The next CoP should be about</label>
+            <input type="text" id="menext" data-key="me.next" placeholder="e.g. audio — mics, rooms, and why everyone sounds like a tunnel">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="tt">
+        <h3>Take your notes with you</h3>
+        <p>Your brief, what you built, your audit score, your link and your commitment — on one page you can print or save as a PDF. Everything stays in this browser; nothing is sent anywhere.</p>
+      </div>
+      <div class="field" style="margin:0;min-width:200px">
+        <label for="mename">Your name (optional)</label>
+        <input type="text" id="mename" data-key="me.name" placeholder="for the printout header">
+      </div>
+      <button class="btn primary" data-action="print-notes">Take my notes with me</button>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 41:00–45:00</b>
+      One commitment each, three or four read out. Thirty seconds on what this page still holds for them afterwards — the rig, the kit ladder, the AEP card they can put in front of their own learners. Then the next-CoP question, and mean it: that field is your brief for round two, free.
+    </div>
+    </div>
+  </section>
+
 </div>
 
+<section class="quoteband">
+  <div class="inner">
+    <div class="eyebrow">The point</div>
+    <p>Both of these used to need a specialist. You just did them in forty-five minutes, between a coffee and your next meeting.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AIM · Community of Practice</div>
+      <p>Everything you type here is saved in this browser only. Nothing is sent anywhere, and nobody else can see it.</p>
+    </div>
+    <div class="fbtns">
+      <button class="fbtn" data-action="print-notes">Take my notes with me</button>
+      <button class="fbtn" data-action="reset-state">Start over</button>
+    </div>
+  </div>
+</footer>
+
+<div id="printdoc"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ENGINE — window.COP
+     A slimmed descendant of the AAL engine. Same data-key contract,
+     same reveal gates, same mode classes. Differences on purpose:
+       · re-reads storage before every write (fixes AAL's multi-tab clobber)
+       · listens for `storage` so a second tab stays honest
+       · one rows() drives both screen and print
+       · no resume, no artefact registry, no glossary — single page
+     ═══════════════════════════════════════════════════════════════ -->
 <script>
-(function () {
-  // NOTE: simple client-side gate — deters casual access, not a security boundary.
-  var COURSES = {
-    'ai-essentials-for-business': { title: 'AI Essentials for Business', url: 'courses/ai-essentials-for-business/index.html', code: 'ZXNzZW50aWFsczIwMjY=' },
-    'responsible-ai-leadership': { title: 'Responsible AI Leadership', url: 'courses/responsible-ai-leadership/index.html', code: 'bGVhZDIwMjY=' },
-    'data-analytics':            { title: 'Data Analytics Essentials', url: 'courses/data-analytics/index.html',            code: 'ZGF0YTIwMjY=' },
-    'agentic-ai':                { title: 'Designing Workflows for Agentic AI', url: 'courses/agentic-ai/index.html',       code: 'YWdlbnQyMDI2' },
-    'ai-for-teamwork':           { title: 'AI for Teamwork', url: 'courses/ai-for-teamwork/index.html',                    code: 'dGVhbTIwMjY=' },
-    'agentic-ai-for-leaders':    { title: 'Agentic AI for Leaders', url: 'courses/agentic-ai-for-leaders/index.html',        code: 'bGVhZGVyczIwMjY=' }
-  };
+window.COP = (function(){
+  'use strict';
+  var NS='cop.capture', MODE='cop.mode', V=1;
+  var COURSE='community-of-practice';
+  var TITLE='Build it. Light it. Show it.';
 
-  var overlay = document.getElementById('overlay');
-  var modal = document.getElementById('modal');
-  var input = document.getElementById('pwInput');
-  var current = null;
+  /* the twelve keys the progress bar counts */
+  var PROGRESS_KEYS=['pf.studio','pf.kit','pf.idea',
+                     's1.act','s1.explain','s1.please','s1.built',
+                     's2.fix','s3.link','s3.path','me.commit','me.next'];
 
-  function openModal(key) {
-    var c = COURSES[key];
-    if (!c) return;
-    current = key;
-    document.getElementById('modalTitle').textContent = c.title;
-    modal.classList.remove('error');
-    input.value = '';
-    overlay.classList.add('open');
-    setTimeout(function () { input.focus(); }, 50);
+  /* ── storage ───────────────────────────────────────────── */
+  function readAll(){ try{ return JSON.parse(localStorage.getItem(NS)||'{}')||{}; }catch(e){ return {}; } }
+  function writeAll(o){ try{ localStorage.setItem(NS,JSON.stringify(o)); }catch(e){} }
+
+  function get(key,fallback){
+    var v=readAll()[key];
+    return (v===undefined||v===null) ? (fallback===undefined?'':fallback) : v;
+  }
+  function has(key){ return String(get(key)).trim()!==''; }
+  function del(key){ set(key,''); }
+
+  function set(key,value,opts){
+    var cap=readAll();                       /* re-read: never trust a stale copy */
+    if(value===''||value===null||value===undefined){ delete cap[key]; }
+    else { cap[key]=String(value); }
+    writeAll(cap);
+    if(!opts||!opts.silent) savedFlash();
+    document.dispatchEvent(new CustomEvent('cop:change',{detail:{key:key,value:value}}));
   }
 
-  function closeModal() {
-    overlay.classList.remove('open');
-    current = null;
+  function countWith(prefix){
+    var cap=readAll(), n=0;
+    for(var k in cap){ if(k.indexOf(prefix)===0 && String(cap[k]).trim()!=='') n++; }
+    return n;
+  }
+  function progress(keys){
+    var list=keys||PROGRESS_KEYS, have=0;
+    list.forEach(function(k){ if(has(k)) have++; });
+    return { have:have, total:list.length, frac:list.length?have/list.length:0 };
   }
 
-  function submit() {
-    if (!current) return;
-    var c = COURSES[current];
-    var attempt = btoa(input.value.trim().toLowerCase());
-    if (attempt === c.code) {
-      try { sessionStorage.setItem('aim_access_' + current, 'granted'); } catch (e) {}
-      window.location.href = c.url;
+  /* another tab wrote — resync this one */
+  window.addEventListener('storage',function(e){
+    if(e.key!==NS) return;
+    wireFields();
+    refreshGates();
+    document.dispatchEvent(new CustomEvent('cop:change',{detail:{external:true}}));
+  });
+
+  /* ── savebar ───────────────────────────────────────────── */
+  var saveTimer=null;
+  function savedFlash(){
+    var bar=document.getElementById('cop-savebar');
+    if(!bar) return;
+    bar.classList.add('on');
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){ bar.classList.remove('on'); },1600);
+  }
+
+  /* ── field wiring ──────────────────────────────────────── */
+  var debounces={};
+  function fieldValue(el){
+    var key=el.getAttribute('data-key');
+    if(el.type==='checkbox'){
+      var siblings=document.querySelectorAll('input[type="checkbox"][data-key="'+key+'"]');
+      if(el.hasAttribute('data-multi')||siblings.length>1){
+        var vals=[];
+        siblings.forEach(function(c){ if(c.checked) vals.push(c.value||'1'); });
+        return vals.join('; ');
+      }
+      return el.checked ? (el.value && el.value!=='on' ? el.value : '1') : '';
+    }
+    if(el.type==='radio'){
+      var sel=document.querySelector('input[type="radio"][data-key="'+key+'"]:checked');
+      return sel?sel.value:'';
+    }
+    return el.value;
+  }
+  function restoreField(el){
+    var v=get(el.getAttribute('data-key'));
+    if(el.type==='checkbox'){
+      var multi=v.split('; ');
+      el.checked=(v!=='')&&(multi.indexOf(el.value||'1')!==-1||v==='1');
+    } else if(el.type==='radio'){
+      el.checked=(el.value===v);
     } else {
-      modal.classList.remove('error');
-      void modal.offsetWidth; // restart animation
-      modal.classList.add('error');
-      input.select();
+      el.value=v;
+    }
+  }
+  function wireFields(root){
+    (root||document).querySelectorAll('[data-key]').forEach(function(el){
+      if(!/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) return;
+      restoreField(el);
+      if(el.getAttribute('data-wired')==='1') return;
+      el.setAttribute('data-wired','1');
+      var key=el.getAttribute('data-key');
+      var immediate=(el.tagName==='SELECT'||el.type==='radio'||el.type==='checkbox'||el.type==='range');
+      el.addEventListener(immediate?'change':'input',function(){
+        clearTimeout(debounces[key]);
+        debounces[key]=setTimeout(function(){
+          set(key,fieldValue(el));
+          refreshGates();
+        }, immediate?0:400);
+      });
+    });
+  }
+
+  /* ── reveal gates ──────────────────────────────────────── */
+  function gateReady(btn){
+    var req=(btn.getAttribute('data-requires')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+    return req.every(has);
+  }
+  function applyReveal(btn){
+    var sel=btn.getAttribute('data-reveal');
+    var target=sel?document.querySelector(sel):null;
+    if(target) target.classList.add('revealed');
+    btn.classList.add('done');
+    btn.disabled=true;
+    var lbl=btn.getAttribute('data-revealed-label');
+    if(lbl) btn.textContent=lbl;
+  }
+  function refreshGates(){
+    document.querySelectorAll('[data-requires]').forEach(function(btn){
+      if(btn.classList.contains('done')) return;
+      btn.disabled=!gateReady(btn);
+    });
+  }
+  function wireReveals(root){
+    (root||document).querySelectorAll('[data-requires]').forEach(function(btn){
+      if(btn.getAttribute('data-wired')==='1') return;
+      btn.setAttribute('data-wired','1');
+      var sel=btn.getAttribute('data-reveal')||'';
+      var id=sel.replace(/^#/,'')||Math.random().toString(36).slice(2);
+      var rkey=btn.getAttribute('data-reveal-key')||('rv.'+id);
+      if(get(rkey)==='1'){ applyReveal(btn); return; }
+      btn.disabled=!gateReady(btn);
+      btn.addEventListener('click',function(){
+        if(btn.disabled) return;
+        set(rkey,'1',{silent:true});
+        applyReveal(btn);
+        savedFlash();
+      });
+    });
+  }
+
+  /* ── modes ─────────────────────────────────────────────── */
+  function applyMode(mode){
+    document.body.classList.toggle('present',mode==='present');
+    document.body.classList.toggle('self',mode!=='present');
+    document.querySelectorAll('#cop-mode button').forEach(function(b){
+      b.classList.toggle('on',b.getAttribute('data-mode')===mode);
+      b.setAttribute('aria-pressed',String(b.getAttribute('data-mode')===mode));
+    });
+  }
+  function setMode(mode){ try{ localStorage.setItem(MODE,mode); }catch(e){} applyMode(mode); }
+  function initMode(){
+    var mode='self';
+    try{ mode=localStorage.getItem(MODE)||'self'; }catch(e){}
+    applyMode(mode);
+  }
+
+  /* ── chrome injection ──────────────────────────────────── */
+  function injectChrome(){
+    if(!document.getElementById('cop-savebar')){
+      var bar=document.createElement('div');
+      bar.id='cop-savebar';
+      bar.setAttribute('aria-live','polite');
+      bar.textContent='Saved automatically';
+      document.body.appendChild(bar);
+    }
+    var nav=document.querySelector('header.chrome nav');
+    if(nav && !document.getElementById('cop-mode')){
+      var mt=document.createElement('div');
+      mt.id='cop-mode';
+      mt.className='modeToggle';
+      mt.innerHTML='<button type="button" data-mode="self" aria-pressed="true">Self-paced</button>'+
+                   '<button type="button" data-mode="present" aria-pressed="false">Present</button>';
+      mt.addEventListener('click',function(e){
+        var b=e.target.closest('button[data-mode]');
+        if(b) setMode(b.getAttribute('data-mode'));
+      });
+      nav.appendChild(mt);
     }
   }
 
-  document.querySelectorAll('.card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var key = card.getAttribute('data-course');
-      try {
-        if (sessionStorage.getItem('aim_access_' + key) === 'granted') {
-          window.location.href = COURSES[key].url;
-          return;
-        }
-      } catch (e) {}
-      openModal(key);
+  /* ── progress bar ──────────────────────────────────────── */
+  function drawProgress(){
+    var p=progress();
+    var fill=document.getElementById('progFill');
+    var label=document.getElementById('progLabel');
+    if(fill) fill.style.width=Math.round(p.frac*100)+'%';
+    if(label) label.textContent=p.have+' / '+p.total;
+  }
+
+  /* ── print ─────────────────────────────────────────────── */
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
+  function rows(pairs){
+    return pairs.map(function(r){
+      var v=(typeof r[1]==='function')?r[1]():get(r[1]);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v):'<em>Not filled in — that’s fine, it’s yours to finish.</em>')+
+        '</div></div>';
+    }).join('');
+  }
+  function printDoc(title,bodyHtml){
+    var old=document.getElementById('printdoc');
+    var d=old||document.createElement('div');
+    d.id='printdoc';
+    var date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+    var who=get('me.name');
+    d.innerHTML=
+      '<div class="pd-head">'+
+        '<img class="pd-logo" src="assets/img/aim-logo-blue.png" alt="AIM">'+
+        '<div class="pd-brand">AIM · Community of Practice</div>'+
+        '<h1>'+title+'</h1>'+
+        '<div class="pd-meta">'+(who?esc(who)+' · ':'')+date+'</div>'+
+      '</div>'+
+      bodyHtml+
+      '<div class="pd-foot">Build it. Light it. Show it. — Australian Institute of Management</div>';
+    if(!old) document.body.appendChild(d);
+    document.body.classList.add('printing');
+    var cleanup=function(){
+      document.body.classList.remove('printing');
+      window.removeEventListener('afterprint',cleanup);
+    };
+    window.addEventListener('afterprint',cleanup);
+    window.print();
+    setTimeout(cleanup,60000);   /* Safari sometimes skips afterprint on cancel */
+  }
+
+  /* ── reset ─────────────────────────────────────────────── */
+  function resetAll(){
+    var msg='Start over?\n\nThis erases everything you have typed on this page in this browser '+
+            '— your brief, your audit, your links and your commitment.\n\n'+
+            'If you might want them later, Cancel and use “Take my notes with me” first.';
+    if(!window.confirm(msg)) return;
+    try{ localStorage.removeItem(NS); }catch(e){}
+    location.reload();
+  }
+
+  /* ── declarative actions ───────────────────────────────── */
+  function wireActions(root){
+    (root||document).querySelectorAll('[data-action]').forEach(function(el){
+      if(el.getAttribute('data-wired')==='1') return;
+      el.setAttribute('data-wired','1');
+      var a=el.getAttribute('data-action');
+      if(a==='reset-state') el.addEventListener('click',resetAll);
+      if(a==='print-notes') el.addEventListener('click',function(){
+        printDoc('My notes from the Community of Practice', rows([
+          ['Pre-flight done', function(){
+            var n=['pf.studio','pf.kit','pf.idea'].filter(has).length;
+            return n?n+' of 3':'';
+          }],
+          ['My brief · Act','s1.act'],
+          ['My brief · Explain','s1.explain'],
+          ['My brief · Please','s1.please'],
+          ['What I built','s1.built'],
+          ['Camera audit', function(){
+            var n=countWith('s2.audit.');
+            return n?n+' of 6':'';
+          }],
+          ['The one thing I’m fixing','s2.fix'],
+          ['My link','s3.link'],
+          ['Before my next session I will','me.commit'],
+          ['The next CoP should be','me.next']
+        ]));
+      });
     });
-  });
+  }
 
-  document.getElementById('btnGo').addEventListener('click', submit);
-  document.getElementById('btnCancel').addEventListener('click', closeModal);
-  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
-  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+  /* ── boot ──────────────────────────────────────────────── */
+  function boot(){
+    if(/[?&]facilitator=1/.test(location.search)) document.body.classList.add('facilitator');
+    injectChrome();
+    initMode();
+    wireFields();
+    wireReveals();
+    wireActions();
+    refreshGates();
+    drawProgress();
+    document.addEventListener('cop:change',drawProgress);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
 
-  // Bounced here from a guarded workbook page? Auto-open the right modal.
-  var param = new URLSearchParams(window.location.search).get('course');
-  if (param && COURSES[param]) openModal(param);
+  return {
+    get:get, set:set, del:del, has:has, getAll:readAll,
+    countWith:countWith, progress:progress,
+    wireFields:wireFields, wireReveals:wireReveals, wireActions:wireActions,
+    refreshGates:refreshGates, drawProgress:drawProgress,
+    setMode:setMode, printDoc:printDoc, rows:rows, resetAll:resetAll,
+    esc:esc, PROGRESS_KEYS:PROGRESS_KEYS, COURSE:COURSE, TITLE:TITLE, V:V
+  };
 })();
 </script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   STATION 2 CONTROLLER — the Lighting Rig and the 60-second audit
+   Requires window.COP.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if(!window.COP) return;
+
+  /* ── state ─────────────────────────────────────────────── */
+  var LIGHTS=['key','fill','back','window','overhead'];
+  var S={key:false,fill:false,back:false,window:false,overhead:false};
+
+  var PRESETS={
+    none:     [],
+    overhead: ['overhead'],
+    window:   ['window'],
+    key:      ['key'],
+    keyfill:  ['key','fill'],
+    full:     ['key','fill','back']
+  };
+
+  /* ── the verdicts ──────────────────────────────────────────
+     Priority order. Every one of the 32 combinations lands on a
+     rule that says something true — no generic fallback string.  */
+  var RULES=[
+    { when:function(s){ return !s.key&&!s.fill&&!s.back&&!s.window&&!s.overhead; },
+      tone:'bad', icon:'✕',
+      text:'Nothing on. This is a dark room with a laptop screen for a face — and a screen lighting you from below is the one angle horror films reserved for the villain.' },
+
+    { when:function(s){ return s.overhead && (s.key||s.window); },
+      tone:'bad', icon:'!',
+      text:'Your overhead is fighting your key. Two sources from different directions cancel each other into flatness, and you cannot win an argument with a ceiling. Turn it off — that is the whole fix.' },
+
+    { when:function(s){ return s.overhead && !s.key && !s.window && !s.fill && !s.back; },
+      tone:'bad', icon:'!',
+      text:'The default, and the reason most calls look the way they do. Light from directly above hollows the eye sockets, drops a shadow under the nose, and flattens everything else. Nobody has ever been flattered by a ceiling.' },
+
+    { when:function(s){ return s.overhead; },
+      tone:'bad', icon:'!',
+      text:'The ceiling is still on and it is still winning. Whatever else you add, the overhead keeps hollowing your eyes. Switch it off first, then decide what you actually need.' },
+
+    { when:function(s){ return s.window && s.key; },
+      tone:'', icon:'~',
+      text:'Two key lights at once. Pick one to lead — usually the window, because it is enormous and free, and a big source is a soft source. Demote the panel to fill, or turn it off.' },
+
+    { when:function(s){ return s.window && s.fill && s.back; },
+      tone:'good', icon:'✓',
+      text:'A window keying, a bounce filling, one small light rimming. This is the full setup built almost entirely out of things you already own.' },
+
+    { when:function(s){ return s.window && s.fill; },
+      tone:'good', icon:'✓',
+      text:'The window keys and the bounce fills. This costs nothing, takes a minute, and looks like you meant it. For most people on most days this is the right answer.' },
+
+    { when:function(s){ return s.window && s.back; },
+      tone:'', icon:'~',
+      text:'Window key and a rim, but nothing opening the shadow side. Put anything white opposite the window — the shadow will lift and you will not have spent a cent.' },
+
+    { when:function(s){ return s.window; },
+      tone:'good', icon:'✓',
+      text:'Free, soft, and most of the way there. Face the window — never sit with it behind you. The only thing it is missing is something white on the shadow side.' },
+
+    { when:function(s){ return s.key&&s.fill&&s.back; },
+      tone:'good', icon:'✓',
+      text:'Full three-point. The key shapes you, the fill keeps the shadow readable, and the rim lifts you off the background so you stop looking pasted on. This is the setup, and it is cheaper than people assume.' },
+
+    { when:function(s){ return s.key&&s.fill; },
+      tone:'good', icon:'✓',
+      text:'The shadow side opens up and the face reads properly. A white wall, a sheet of foamcore or an open folder does this for nothing — fill almost never needs to be a light.' },
+
+    { when:function(s){ return s.key&&s.back; },
+      tone:'', icon:'~',
+      text:'Rim without fill. Dramatic, a bit severe, and the shadow side is still doing nothing. Handsome for a portrait; harder to read for forty minutes of talking.' },
+
+    { when:function(s){ return s.key; },
+      tone:'', icon:'~',
+      text:'One good soft source at 45°, just above the eyeline. Shadowed on one side, and already better than most of what you see on a Teams call. Now open that shadow.' },
+
+    { when:function(s){ return s.fill&&s.back; },
+      tone:'bad', icon:'!',
+      text:'A fill and a rim, and nothing actually lighting your face. You have built the supporting cast and forgotten the lead.' },
+
+    { when:function(s){ return s.fill; },
+      tone:'bad', icon:'!',
+      text:'Fill on its own is a dim, flat, directionless light. It is a supporting actor — give it something to support.' },
+
+    { when:function(s){ return s.back; },
+      tone:'bad', icon:'!',
+      text:'A rim light and nothing else. You are a silhouette with beautifully lit hair.' }
+  ];
+
+  function verdict(s){
+    for(var i=0;i<RULES.length;i++){ if(RULES[i].when(s)) return RULES[i]; }
+    return RULES[0];
+  }
+
+  /* ── plan view ─────────────────────────────────────────── */
+  function paintPlan(){
+    ['key','fill','back','window'].forEach(function(k){
+      var on=S[k];
+      ['#pv-'+k,'#pv-'+k+'-b'].forEach(function(sel){
+        var el=document.querySelector(sel);
+        if(el) el.classList.toggle('on',on);
+      });
+      var lbl=document.getElementById('lbl-'+k);
+      if(lbl) lbl.classList.toggle('on',on);
+    });
+    var ring=document.getElementById('pv-overhead');
+    if(ring){
+      ring.classList.toggle('on',S.overhead);
+      var r=ring.querySelector('.ring');
+      if(r) r.classList.toggle('on',S.overhead);
+    }
+    var ol=document.getElementById('lbl-overhead');
+    if(ol) ol.classList.toggle('on',S.overhead);
+  }
+
+  /* ── front view ────────────────────────────────────────── */
+  function set(id,v){
+    var el=document.getElementById(id);
+    if(el) el.setAttribute('opacity',String(v));
+  }
+  function paintFace(){
+    var anyLight=S.key||S.fill||S.back||S.window||S.overhead;
+    var sideLit=S.key||S.window;
+
+    /* shade on the side opposite the key, softened by fill */
+    var shade=0;
+    if(sideLit) shade=S.window?0.6:0.97;    /* a window is broad, so it wraps more */
+    else if(S.overhead) shade=0.12;
+    if(S.fill) shade=Math.max(0,shade-0.58);
+
+    set('fv-key',   S.key?1:0);
+    set('fv-win',   S.window?0.9:0);
+    set('fv-top',   S.overhead?0.95:0);
+    set('fv-fill',  S.fill?0.6:0);
+    set('fv-shade', shade);
+    set('fv-sockets', S.overhead ? (sideLit?0.34:0.95) : 0);
+    set('fv-rim',   S.back?0.9:0);
+    set('fv-bgglow',S.back?1:0);
+    set('fv-dark',  anyLight?0:0.9);
+    set('fv-features', anyLight?0.8:0.12);
+
+    /* the form highlight sits where the dominant light is, so the head reads round */
+    var g=document.getElementById('gForm');
+    if(g){
+      var cx=160, cy=150, lit=0;
+      if(sideLit){ cx=S.window?70:96; cy=128; lit=1; }
+      else if(S.overhead){ cx=160; cy=46; lit=1; }
+      else if(S.fill){ cx=224; cy=150; lit=.5; }
+      g.setAttribute('cx',cx); g.setAttribute('cy',cy);
+      set('fv-form', lit);
+    }
+
+    /* a cast nose shadow only exists when one source is clearly leading, and
+       it softens away as fill opens the shadow side */
+    var side=0;
+    if(S.key)         side=S.fill?0.32:0.85;
+    else if(S.window) side=S.fill?0.14:0.42;
+    set('fv-nose-side', side);
+    set('fv-nose-down', S.overhead ? (S.fill?0.45:0.85) : 0);
+  }
+
+  /* ── triptych ──────────────────────────────────────────── */
+  function paintTriptych(){
+    var match='';
+    if(S.key&&!S.fill&&!S.back&&!S.window&&!S.overhead) match='key';
+    else if(S.key&&S.fill&&!S.back&&!S.window&&!S.overhead) match='keyfill';
+    else if(S.key&&S.fill&&S.back&&!S.window&&!S.overhead) match='full';
+    document.querySelectorAll('.tcard').forEach(function(c){
+      c.classList.toggle('on', c.getAttribute('data-tript')===match);
+    });
+  }
+
+  /* ── chrome ────────────────────────────────────────────── */
+  function paintButtons(){
+    document.querySelectorAll('.lightbtn').forEach(function(b){
+      b.setAttribute('aria-pressed', String(!!S[b.getAttribute('data-light')]));
+    });
+    var active=LIGHTS.filter(function(k){ return S[k]; }).sort().join(',');
+    document.querySelectorAll('.presetbtn').forEach(function(b){
+      var p=PRESETS[b.getAttribute('data-preset')]||[];
+      b.classList.toggle('on', p.slice().sort().join(',')===active);
+    });
+  }
+  function paintVerdict(){
+    var v=verdict(S);
+    var box=document.getElementById('rigVerdict');
+    var icon=document.getElementById('rigIcon');
+    var text=document.getElementById('rigText');
+    if(!box) return;
+    box.classList.remove('bad','good');
+    if(v.tone) box.classList.add(v.tone);
+    icon.textContent=v.icon;
+    text.textContent=v.text;
+  }
+
+  function render(persist){
+    paintPlan(); paintFace(); paintTriptych(); paintButtons(); paintVerdict();
+    if(persist!==false){
+      COP.set('s2.rig.state', LIGHTS.filter(function(k){return S[k];}).join(','), {silent:true});
+    }
+  }
+
+  function applyPreset(name){
+    var on=PRESETS[name]||[];
+    LIGHTS.forEach(function(k){ S[k]=on.indexOf(k)!==-1; });
+    render();
+  }
+
+  /* ── wiring ────────────────────────────────────────────── */
+  function initRig(){
+    if(!document.getElementById('rig')) return;
+
+    document.querySelectorAll('.lightbtn').forEach(function(b){
+      b.addEventListener('click',function(){
+        var k=b.getAttribute('data-light');
+        S[k]=!S[k];
+        render();
+      });
+    });
+    document.querySelectorAll('.presetbtn').forEach(function(b){
+      b.addEventListener('click',function(){ applyPreset(b.getAttribute('data-preset')); });
+    });
+
+    /* restore where they left off */
+    var saved=COP.get('s2.rig.state');
+    if(saved){
+      var on=saved.split(',');
+      LIGHTS.forEach(function(k){ S[k]=on.indexOf(k)!==-1; });
+    }
+    render(false);
+  }
+
+  /* ── 60-second audit ───────────────────────────────────── */
+  var BANDS=[
+    { max:2, text:'Plenty to gain here — and every one of these is free. Pick the top unticked box and fix that one.' },
+    { max:4, text:'Most of the way there. The unticked ones are the difference between acceptable and considered.' },
+    { max:6, text:'You are already better lit than almost everyone on the call. Now go and teach someone else.' }
+  ];
+  function drawAudit(){
+    var el=document.getElementById('auditScore');
+    if(!el) return;
+    var n=0;
+    for(var i=1;i<=6;i++){ if(COP.has('s2.audit.'+i)) n++; }
+    el.innerHTML=n+'<small>/6</small>';
+    var fill=document.getElementById('auditFill');
+    if(fill) fill.style.width=Math.round(n/6*100)+'%';
+    var v=document.getElementById('auditVerdict');
+    if(v){
+      if(n===0){ v.textContent='Tick what’s already true.'; }
+      else {
+        for(var b=0;b<BANDS.length;b++){ if(n<=BANDS[b].max){ v.textContent=BANDS[b].text; break; } }
+      }
+    }
+  }
+
+  /* ── boot ──────────────────────────────────────────────── */
+  function boot(){
+    initRig();
+    drawAudit();
+    document.addEventListener('cop:change',function(e){
+      if(!e.detail || !e.detail.key || e.detail.key.indexOf('s2.audit.')===0 || e.detail.external) drawAudit();
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+
+  /* exposed for tests */
+  window.COP_S2={ state:S, applyPreset:applyPreset, verdict:verdict, render:render, RULES:RULES, PRESETS:PRESETS };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   STATIONS 1 & 3 CONTROLLER — brief builder, gallery, close
+   Requires window.COP.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if(!window.COP) return;
+
+  /* ── seeds ─────────────────────────────────────────────────
+     Each fills Explain and Please with a real starting point the
+     facilitator then edits. Act is left alone — it rarely changes. */
+  var SEEDS=[
+    { label:'Group allocator',
+      explain:'I facilitate a one-day workshop for about 20 people. I need to split them into groups several times across the day without the same people ending up together twice. I run it from a laptop on a projector.',
+      please:'Build me a group allocator. I paste in a list of names, choose a group size, and it deals them into groups — then remembers previous rounds so it never repeats a pairing. Big type, readable from the back of a room.' },
+    { label:'Debrief question wheel',
+      explain:'After every activity I ask the same three debrief questions and the room has learned to predict them. I want variety without losing rigour, and I want it on screen so people can see what is coming.',
+      please:'Build me a spinning question wheel for debriefs. I supply the questions, it spins and lands on one, and it does not repeat until every question has come up. Large type, high contrast, works on a projector.' },
+    { label:'Branded countdown timer',
+      explain:'I run timed activities all day. The generic timers online are covered in ads and none of them match how the rest of my session looks. I need something I can put on a second screen and forget about.',
+      please:'Build me a full-screen countdown timer. Preset buttons for 60 seconds, 3, 5 and 10 minutes, a colour change in the last 30 seconds, and a big clear finish state. No sound by default, with a toggle to turn one on.' },
+    { label:'Scenario card generator',
+      explain:'I teach a decision-making module where participants work through workplace scenarios. I currently print the same eight cards every time, so repeat attendees have seen them all.',
+      please:'Build me a scenario card generator. I give it a list of situations, roles and complications, and it combines them into a fresh card each time I press the button, with one card shown large on screen.' },
+    { label:'Branching dilemma',
+      explain:'I want a short decision exercise people work through on their own laptops, where each choice leads somewhere different and there is no obviously correct path.',
+      please:'Build me a branching dilemma. One situation, three choices, each leading to a consequence and another three choices, three levels deep, ending in a short summary of the path they took.' },
+    { label:'Self-summarising feedback form',
+      explain:'At the end of every session I collect feedback on paper and then spend an evening typing it up. I want the typing-up part to stop.',
+      please:'Build me an end-of-session feedback form. Four questions, answers collected in the browser, and a button that produces a one-paragraph summary of everything submitted so far plus the raw responses underneath.' }
+  ];
+
+  var FALLBACK =
+    'You are a front-end developer who builds small, self-contained teaching tools and writes plain, readable code.\n\n' +
+    'I facilitate corporate workshops for groups of about 20 people. I need to split them into new groups several times across a day without the same people ending up together twice. I will run this from a laptop connected to a projector, so anything on screen has to be readable from the back of the room.\n\n' +
+    'Build me a group allocator. I paste in a list of names, choose a group size, and it deals them into groups. It remembers previous rounds so it never repeats a pairing, and it shows each round as large cards on screen. Include a reset button.\n\n' +
+    'Build this as a single self-contained web page.';
+
+  var TAIL = 'Build this as a single self-contained web page.';
+
+  /* ── prompt assembly ───────────────────────────────────── */
+  function assemble(){
+    var act=COP.get('s1.act').trim(),
+        ex =COP.get('s1.explain').trim(),
+        pl =COP.get('s1.please').trim();
+    if(!act && !ex && !pl) return null;
+    var parts=[];
+    parts.push(act ? 'You are '+act.replace(/\.$/,'')+'.' : null);
+    parts.push(ex || null);
+    parts.push(pl || null);
+    parts.push(TAIL);
+    return parts.filter(Boolean).join('\n\n');
+  }
+
+  function drawPrompt(){
+    var out=document.getElementById('promptOut');
+    if(!out) return;
+    var p=assemble();
+    if(!p){
+      out.innerHTML='<span class="ph">Fill in a box on the left and your prompt appears here.</span>';
+    } else {
+      out.textContent=p;
+    }
+    drawMeter();
+  }
+
+  /* ── genericness meter ─────────────────────────────────── */
+  var WORDS=function(s){ return String(s).trim().split(/\s+/).filter(Boolean).length; };
+  function checks(){
+    var act=COP.get('s1.act'), ex=COP.get('s1.explain'), pl=COP.get('s1.please');
+    return {
+      role:   WORDS(act)>=3,
+      who:    WORDS(ex)>=12 && /\b(i|we|my|our|team|cohort|class|group|groups|students|learners|participants|room|workshop|session|people|staff|attendees)\b/i.test(ex),
+      format: WORDS(pl)>=10 && /\b(build|make|create|generate|produce|show|page|app|tool|form|table|wheel|timer|card|cards|board|allocator|generator|quiz|list|dashboard|form)\b/i.test(pl),
+      length: WORDS(act)+WORDS(ex)+WORDS(pl) >= 45
+    };
+  }
+  function drawMeter(){
+    var m=document.getElementById('gmeter');
+    if(!m) return;
+    var c=checks();
+    var n=['role','who','format','length'].filter(function(k){return c[k];}).length;
+    m.querySelectorAll('.gm-dot').forEach(function(d,i){
+      d.classList.toggle('on', i<n);
+      d.classList.toggle('full', n===4);
+    });
+    m.querySelectorAll('li[data-check]').forEach(function(li){
+      li.classList.toggle('met', !!c[li.getAttribute('data-check')]);
+    });
+    var s=document.getElementById('gmScore');
+    if(s) s.textContent=n+' / 4';
+  }
+
+  /* ── copy ──────────────────────────────────────────────── */
+  function copyText(text, btn, label){
+    var done=function(){
+      var old=btn.textContent;
+      btn.textContent=label||'Copied ✓';
+      setTimeout(function(){ btn.textContent=old; },1600);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ legacy(text,done); });
+    } else { legacy(text,done); }
+  }
+  function legacy(text,done){
+    /* file:// and older Safari have no async clipboard */
+    var ta=document.createElement('textarea');
+    ta.value=text;
+    ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:0;left:-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    ta.remove();
+  }
+
+  /* ── seeds ─────────────────────────────────────────────── */
+  function fillSeed(seed){
+    var hasWork = COP.has('s1.explain') || COP.has('s1.please');
+    if(hasWork && !window.confirm('Replace what you have written with the "'+seed.label+'" starting point?\n\nYour own words will be overwritten.')) return;
+    COP.set('s1.explain', seed.explain);
+    COP.set('s1.please',  seed.please);
+    if(!COP.has('s1.act')){
+      COP.set('s1.act','a front-end developer who builds small, self-contained teaching tools and writes plain, readable code');
+    }
+    COP.wireFields();          /* re-populate the textareas from storage */
+    COP.refreshGates();
+    drawPrompt();
+  }
+  function buildSeeds(){
+    var row=document.getElementById('seedRow');
+    if(!row) return;
+    SEEDS.forEach(function(s){
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='seedchip';
+      b.textContent=s.label;
+      b.addEventListener('click',function(){ fillSeed(s); });
+      row.appendChild(b);
+    });
+  }
+
+  /* ── the gallery ───────────────────────────────────────────
+     url:null renders the card without an Open link rather than a
+     broken one — a dead link degrades, it doesn't break the page. */
+  var GALLERY=[
+    { kind:'game', slot:1, title:'Two-Player Tetris',
+      took:'One evening',
+      what:'Two players, one keyboard, working collision detection and a scoring system. Built in a chat window by someone who does not write code.',
+      url:null, remix:null },
+
+    { kind:'tool', slot:2, title:'QR Code Generator',
+      took:'An afternoon',
+      what:'Type a link, get a QR code, download it. Built to match the rest of the site exactly, because a generic one always looks borrowed.',
+      url:'https://rupertchesman.com/qr/', remix:null },
+
+    { kind:'tool', slot:3, title:'PDF Read-Aloud',
+      took:'A weekend',
+      what:'Drop in a PDF and it reads it to you in a natural voice, then exports the audio as an MP3. One self-contained file, no install, no account.',
+      url:null, remix:null },
+
+    { kind:'tool', slot:4, title:'Group Allocator', soon:true,
+      took:'About an hour',
+      what:'Paste in your names, pick a group size, and it deals them out without ever repeating a pairing. The one on this list you could have by Friday.',
+      url:null, remix:null },
+
+    { kind:'tool', slot:5, title:'Agentic AI Workbook Extras',
+      took:'A day each',
+      what:'Sixteen small teaching games sitting inside a course hub — reaction games, sorting sprints, a decision maze. All of it prompted, none of it hand-coded.',
+      url:null, remix:null },
+
+    { kind:'game', slot:6, title:'Supersnake',
+      took:'Twenty minutes',
+      what:'The one everybody builds first, and the reason everybody believes it afterwards. Play it — then remember it came from three sentences.',
+      url:null, remix:null }
+  ];
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+  function drawGallery(){
+    var grid=document.getElementById('galleryGrid');
+    if(!grid) return;
+    grid.innerHTML=GALLERY.map(function(g){
+      var links=[];
+      if(g.url)   links.push('<a href="'+esc(g.url)+'" target="_blank" rel="noopener">Open ↗</a>');
+      if(g.remix) links.push('<a href="'+esc(g.remix)+'" target="_blank" rel="noopener">Remix this ↗</a>');
+      if(!links.length) links.push('<span class="pending">'+(g.soon?'Being built':'Link to come')+'</span>');
+      return '<article class="gcard '+(g.kind==='game'?'game':'')+(g.soon?' soon':'')+'">'+
+        '<div class="gbar"></div>'+
+        '<div class="gp">'+
+          '<div class="gtag"><span>'+(g.kind==='game'?'Game':'Tool')+'</span><span class="took">'+esc(g.took)+'</span></div>'+
+          '<h3>'+esc(g.title)+'</h3>'+
+          '<p>'+esc(g.what)+'</p>'+
+          '<div class="glinks">'+links.join('')+'</div>'+
+        '</div>'+
+      '</article>';
+    }).join('');
+  }
+
+  /* ── boot ──────────────────────────────────────────────── */
+  function boot(){
+    buildSeeds();
+    drawGallery();
+    drawPrompt();
+
+    var cp=document.getElementById('copyPrompt');
+    if(cp) cp.addEventListener('click',function(){
+      var p=assemble();
+      if(!p){ cp.textContent='Nothing to copy yet'; setTimeout(function(){cp.textContent='Copy the prompt';},1600); return; }
+      copyText(p,cp);
+    });
+    var cf=document.getElementById('copyFallback');
+    if(cf) cf.addEventListener('click',function(){ copyText(FALLBACK,cf); });
+
+    document.addEventListener('cop:change',function(e){
+      var k=e.detail && e.detail.key;
+      if(!k || (e.detail && e.detail.external) || k.indexOf('s1.')===0) drawPrompt();
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+
+  /* exposed for tests */
+  window.COP_S3={ assemble:assemble, checks:checks, SEEDS:SEEDS, GALLERY:GALLERY, FALLBACK:FALLBACK };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SESSION TIMER — facilitator layer only.
+   Deliberately does NOT persist: a timer that survives a reload is
+   a bug, not a feature.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if(!/[?&]facilitator=1/.test(location.search)) return;
+
+  var PRESETS=[
+    {label:'60s', secs:60,  note:'The camera audit'},
+    {label:'3m',  secs:180, note:'Write the brief'},
+    {label:'5m',  secs:300, note:'Build it in AI Studio'},
+    {label:'6m',  secs:360, note:'Remix or iterate'}
+  ];
+
+  var total=0, left=0, running=false, tick=null, muted=false, armed=false;
+
+  function el(id){ return document.getElementById(id); }
+  function fmt(s){
+    s=Math.max(0,Math.round(s));
+    var m=Math.floor(s/60), r=s%60;
+    return m+':'+(r<10?'0':'')+r;
+  }
+
+  function build(){
+    if(document.getElementById('copTimer')) return;
+    var t=document.createElement('div');
+    t.id='copTimer';
+    t.setAttribute('role','group');
+    t.setAttribute('aria-label','Session timer');
+    t.innerHTML=
+      '<div class="tt">'+
+        '<span class="lbl" id="tmLabel">Timer</span>'+
+        '<span class="sp">'+
+          '<button type="button" class="ic" id="tmMute" aria-pressed="false" aria-label="Mute the end chime" title="Mute the end chime">♪</button>'+
+          '<button type="button" class="ic" id="tmMin" aria-label="Collapse the timer" title="Collapse">–</button>'+
+        '</span>'+
+      '</div>'+
+      '<div class="digits" id="tmDigits" role="timer" aria-live="off">0:00</div>'+
+      '<div class="presets" id="tmPresets"></div>'+
+      '<div class="ctrl">'+
+        '<button type="button" class="go" id="tmGo">Start</button>'+
+        '<button type="button" id="tmReset">Reset</button>'+
+      '</div>'+
+      '<div class="hintline">Space to start / pause</div>';
+    document.body.appendChild(t);
+
+    var pr=el('tmPresets');
+    PRESETS.forEach(function(p){
+      var b=document.createElement('button');
+      b.type='button';
+      b.textContent=p.label;
+      b.title=p.note;
+      b.setAttribute('data-secs',p.secs);
+      b.addEventListener('click',function(){ setTime(p.secs, p.note); });
+      pr.appendChild(b);
+    });
+
+    el('tmGo').addEventListener('click',toggle);
+    el('tmReset').addEventListener('click',function(){ setTime(total||60, null); });
+    el('tmMute').addEventListener('click',function(){
+      muted=!muted;
+      this.setAttribute('aria-pressed',String(muted));
+      this.textContent=muted?'♪̸':'♪';
+      this.setAttribute('aria-label', muted?'Unmute the end chime':'Mute the end chime');
+    });
+    el('tmMin').addEventListener('click',function(){
+      var c=document.getElementById('copTimer').classList.toggle('min');
+      this.textContent=c?'+':'–';
+      this.setAttribute('aria-label', c?'Expand the timer':'Collapse the timer');
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.code!=='Space' && e.key!==' ') return;
+      if(!armed) return;                                   /* not armed: leave the page alone */
+      var t=e.target;
+      if(t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+      if(t && t.closest && t.closest('button')) return;     /* let buttons be buttons */
+      e.preventDefault();
+      toggle();
+    });
+  }
+
+  function setTime(secs, note){
+    stop();
+    total=secs; left=secs; armed=true;
+    var box=document.getElementById('copTimer');
+    box.classList.remove('warn','done');
+    document.querySelectorAll('#tmPresets button').forEach(function(b){
+      b.classList.toggle('on', +b.getAttribute('data-secs')===secs);
+    });
+    var lbl=el('tmLabel');
+    if(lbl) lbl.textContent = note || 'Timer';
+    el('tmGo').textContent='Start';
+    draw();
+  }
+
+  function draw(){
+    el('tmDigits').textContent=fmt(left);
+    var box=document.getElementById('copTimer');
+    box.classList.toggle('warn', left<=30 && left>0 && armed);
+    box.classList.toggle('done', left<=0 && armed);
+  }
+
+  function toggle(){ running?stop():start(); }
+
+  function start(){
+    if(!armed || left<=0) return;
+    running=true;
+    el('tmGo').textContent='Pause';
+    var end=Date.now()+left*1000;
+    tick=setInterval(function(){
+      left=(end-Date.now())/1000;
+      if(left<=0){ left=0; stop(); chime(); el('tmDigits').setAttribute('aria-live','polite'); }
+      draw();
+    },200);
+  }
+
+  function stop(){
+    running=false;
+    if(tick){ clearInterval(tick); tick=null; }
+    var g=el('tmGo');
+    if(g) g.textContent = (left>0 ? 'Start' : 'Start');
+  }
+
+  /* a short two-note chime, synthesised — no asset to ship or fail to load */
+  function chime(){
+    if(muted) return;
+    try{
+      var AC=window.AudioContext||window.webkitAudioContext;
+      if(!AC) return;
+      var ctx=new AC();
+      [0,0.18].forEach(function(t,i){
+        var o=ctx.createOscillator(), g=ctx.createGain();
+        o.type='sine';
+        o.frequency.value=i?784:587;      /* G5 over D5 */
+        g.gain.setValueAtTime(0.0001, ctx.currentTime+t);
+        g.gain.exponentialRampToValueAtTime(0.16, ctx.currentTime+t+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+t+0.5);
+        o.connect(g); g.connect(ctx.destination);
+        o.start(ctx.currentTime+t); o.stop(ctx.currentTime+t+0.55);
+      });
+      setTimeout(function(){ try{ctx.close();}catch(e){} }, 1400);
+    }catch(e){}
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',build);
+  else build();
+
+  window.COP_TIMER={
+    set:setTime, start:start, stop:stop, chime:chime,
+    state:function(){ return {total:total,left:left,running:running,muted:muted,armed:armed}; }
+  };
+})();
+</script>
+
 </body>
 </html>
