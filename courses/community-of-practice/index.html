@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var k="aim_access_community-of-practice";try{if(sessionStorage.getItem(k)==="granted")return;}catch(e){}location.replace("../../index.html?course=community-of-practice");})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prompt it. Build it. — AIM Facilitator Community of Practice</title>
+<meta name="description" content="A 45-minute facilitator Community of Practice in two sections: three AI basics every facilitator should hold (Act–Explain–Please, context windows, cutoff dates) — then a new AIM interactive workbook built live in six plain-English steps.">
+<link rel="icon" type="image/png" href="assets/img/aim-logo-blue.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prompt it. Build it. — AIM Facilitator CoP">
+<meta property="og:description" content="Three AI basics, then the pipeline behind the AIM interactive workbooks — and why Section 2 is just Section 1 at scale.">
+<meta property="og:image" content="pics/cop-og-share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS — inherited from the AIM workbook system, plus CoP identity
+   (v2 · "Prompt it. Build it." · 5 October 2026)
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --cream:#F1EEDE; --cream-alt:#F7EBDB;
+  --ink:#423A3A; --black:#141414; --grey:#595959; --muted:#666666;
+  --teal:#00C0AF; --teal-light:#53DFCB; --teal-dark:#00796E;
+  /* Three tokens deliberately deviate from the shared AIM palette, all for AA
+     contrast — do not "correct" them back:
+       --muted     was #A7A7A7  (2.6:1 as text on white — well under AA)
+       --teal-dark was #008D80  (4.10:1 under white text, and as text on white)
+       --blue      was #2D7DD2  (4.22:1 under white text in the header)
+     Verified by the contrast audit in tests/v2.spec.js. */
+  --coral:#DC5A46; --coral-dark:#B53D2C;
+  --line:rgba(0,0,0,.10);
+  --head:'IBM Plex Sans Condensed',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --maxw:1180px;
+  /* CoP identity — blue leads Section 1, amber leads Section 2 */
+  --blue:#2A74C8; --blue-dark:#1B5FA8; --blue-light:#7FB8ED;
+  --amber:#E8A33D; --amber-dark:#8A5A0C;
+  --accent:var(--blue);
+  --railw:200px;
+}
+
+/* ═══ BASE ═══ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media(max-width:860px){html{scroll-padding-top:100px}}
+body{font-family:var(--body);font-size:15px;line-height:1.55;color:var(--ink);background:var(--cream);overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--head);font-weight:600;letter-spacing:.2px;line-height:1.08}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12.5px}
+.small{font-size:12.5px;color:var(--muted)}
+.mt0{margin-top:0}.mb0{margin-bottom:0}
+p.body{font-size:15px;margin-bottom:12px;max-width:70ch}
+p.lead{font-size:17px;font-weight:300;margin-bottom:14px;max-width:66ch}
+body.present p.lead{font-size:clamp(19px,1.8vw,24px);max-width:60ch}
+body.present p.body{font-size:16.5px}
+
+/* ═══ ACCESSIBILITY ═══ */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+header.chrome a:focus-visible,header.chrome button:focus-visible{outline-color:#fff;outline-offset:-3px}
+.skip-link{position:absolute;left:8px;top:-60px;z-index:200;background:var(--ink);color:#fff;font-family:var(--head);font-weight:600;font-size:13px;padding:10px 16px;transition:top .15s}
+.skip-link:focus{top:8px}
+.visually-hidden-label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .card:hover,.gcard:hover{transform:none!important}
+}
+
+/* ═══ STICKY HEADER ═══ */
+header.chrome{position:sticky;top:0;z-index:50;background:var(--blue);color:#fff;border-bottom:1px solid rgba(255,255,255,.18)}
+.chrome .row{display:flex;align-items:center;gap:14px;height:60px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:32px;height:32px}
+.logo .lt{font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.08em;line-height:1}
+.logo .ls{font-family:var(--head);font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.82;line-height:1;margin-top:3px}
+.chrome nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.chrome nav a{font-family:var(--head);font-weight:500;font-size:13.5px;padding:8px 12px;color:#fff}
+.chrome nav a:hover{background:rgba(255,255,255,.12)}
+.chrome .prog{display:flex;align-items:center;gap:9px;margin-left:8px}
+.chrome .prog .pt{width:104px;height:6px;background:rgba(255,255,255,.28);overflow:hidden}
+.chrome .prog .pf{height:100%;width:0%;background:#fff;transition:width .4s ease}
+.chrome .prog .pl{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.06em;opacity:.9;white-space:nowrap}
+body.present .chrome .prog{display:none}
+.modeToggle{display:flex;border:1px solid rgba(255,255,255,.55);margin-left:6px}
+.modeToggle button{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;background:transparent;color:#fff;border:0;padding:8px 11px;cursor:pointer}
+.modeToggle button.on{background:#fff;color:var(--blue-dark)}
+/* the "where are we" chip in the header — fed by the chapter rail's scroll-spy */
+.chrome .here{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 11px;white-space:nowrap;display:none}
+@media(min-width:861px){body.present .chrome .here{display:inline-block}}
+@media(max-width:860px){
+  .chrome .row{height:auto;flex-wrap:wrap;padding:9px 0;gap:8px;row-gap:4px}
+  .chrome nav{margin-left:0;flex-wrap:wrap;gap:2px}
+  .chrome nav a{font-size:12.5px;padding:6px 9px}
+  .chrome .prog{display:none}
+  .modeToggle button{padding:6px 9px}
+}
+
+/* ═══ CHAPTER RAIL — the on-screen agenda ═══ */
+.rail{display:none}
+@media(min-width:1200px){
+  .rail{display:block;position:fixed;left:0;top:60px;bottom:0;width:var(--railw);z-index:40;padding:26px 0 26px 18px;overflow:auto;border-right:1px solid var(--line);background:var(--cream)}
+  .rail-k{font-family:var(--head);font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;padding-left:10px}
+  .rail-k:first-child{margin-top:0}
+  .rail a{display:grid;grid-template-columns:26px 1fr;gap:6px;align-items:baseline;padding:7px 10px;font-family:var(--head);font-weight:500;font-size:13px;color:var(--grey);border-left:3px solid transparent;line-height:1.25}
+  .rail a .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .rail a:hover{color:var(--ink);background:rgba(0,0,0,.035)}
+  .rail a.on{color:var(--ink);font-weight:700;border-left-color:var(--blue);background:#fff}
+  .rail a.on .n{color:var(--blue-dark)}
+  .rail a.s2.on{border-left-color:var(--amber)}
+  .rail a.s2.on .n{color:var(--amber-dark)}
+  .rail a.s0.on{border-left-color:var(--ink)}
+  main.withrail,.hero.withrail,footer.withrail,.quoteband.withrail{margin-left:var(--railw)}
+}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;background:var(--black);color:#fff;overflow:hidden;min-height:440px;display:flex;align-items:flex-end}
+body.present .hero{min-height:calc(100vh - 60px)}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,14,.28) 0%,rgba(8,10,14,.76) 76%,rgba(8,10,14,.94) 100%)}
+.hero .inner{position:relative;z-index:3;padding:70px 0 46px;width:100%}
+.hero .eyebrow{color:var(--blue-light)}
+.hero h1{font-size:clamp(34px,5.4vw,62px);font-weight:700;margin:10px 0 10px;max-width:18ch}
+body.present .hero h1{font-size:clamp(44px,7vw,92px)}
+.hero .sub{font-size:17.5px;max-width:58ch;opacity:.94;font-weight:300}
+body.present .hero .sub{font-size:clamp(19px,2vw,26px);max-width:50ch}
+.hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .meta span{font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22)}
+
+/* ═══ CHAPTERS — one idea per band, every heading a zoom target ═══ */
+main{padding-bottom:20px}
+.chapter{padding:54px 0 30px;border-top:1px solid var(--line)}
+body.present .chapter{min-height:calc(100vh - 60px);padding-top:64px}
+.chapter.first{border-top:0}
+.ch-mark{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ch-mark .num{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.08em;color:#fff;background:var(--blue);padding:5px 9px}
+.ch-mark .sec{font-family:var(--head);font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-dark)}
+.ch-mark .ln{flex:1;height:1px;background:var(--line)}
+.ch-mark .time{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--amber);padding:4px 9px}
+.chapter.s2 .ch-mark .num{background:var(--amber-dark)}
+.chapter.s2 .ch-mark .sec{color:var(--amber-dark)}
+.chapter.s0 .ch-mark .num{background:var(--ink)}
+.chapter.s0 .ch-mark .sec{color:var(--ink)}
+h2.ch-title{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.005em;margin-bottom:14px;max-width:22ch}
+body.present h2.ch-title{font-size:clamp(44px,5.6vw,72px);margin-bottom:18px}
+.ch-lede{font-size:17px;font-weight:300;max-width:66ch;margin-bottom:22px;color:var(--ink)}
+body.present .ch-lede{font-size:clamp(19px,1.9vw,25px);max-width:56ch}
+h3.zoom{font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:34px 0 10px}
+body.present h3.zoom{font-size:clamp(28px,3.2vw,40px);margin-top:40px}
+h3.zoom .zk{display:block;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px}
+.chapter.s2 h3.zoom .zk{color:var(--amber-dark)}
+.section-divider{margin:70px 0 0;padding:30px 0 10px;border-top:3px solid var(--ink)}
+body.present .section-divider{min-height:calc(100vh - 60px);display:flex;flex-direction:column;justify-content:center;border-top:0;margin-top:0}
+.section-divider .sd-k{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-dark)}
+.section-divider.s2 .sd-k{color:var(--amber-dark)}
+.section-divider h2{font-size:clamp(38px,6vw,76px);font-weight:700;letter-spacing:-.01em;margin:10px 0 12px;max-width:16ch}
+body.present .section-divider h2{font-size:clamp(56px,8.5vw,120px)}
+.section-divider p{font-size:clamp(17px,1.8vw,24px);font-weight:300;max-width:52ch}
+
+/* ═══ CARDS ═══ */
+.card{position:relative;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:.2s}
+.card .accent{height:5px;background:var(--blue)}
+.card .pad{padding:18px 20px 20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+
+/* big numbered idea cards (rules, teaching points) */
+.bigcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 0}
+@media(max-width:860px){.bigcards{grid-template-columns:1fr}}
+.bigcard{background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);padding:22px 24px 24px}
+.chapter.s2 .bigcard{border-top-color:var(--amber)}
+.bigcard .bn{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+.bigcard h4{font-size:clamp(20px,2vw,26px);font-weight:700;margin-bottom:8px;line-height:1.1}
+body.present .bigcard h4{font-size:clamp(24px,2.4vw,32px)}
+.bigcard p{font-size:14.5px;color:var(--grey);line-height:1.5}
+body.present .bigcard p{font-size:16px}
+
+/* ═══ FIELDS ═══ */
+.field{margin:14px 0}
+.field > label{display:block;font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+.field .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+input[type="text"],textarea,select{width:100%;font-family:var(--body);font-size:14.5px;color:var(--ink);background:#fff;border:1.5px solid rgba(66,58,58,.28);padding:11px 12px;border-radius:0}
+textarea{min-height:88px;resize:vertical;line-height:1.5}
+input[type="text"]:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,125,210,.16)}
+
+/* ═══ BUTTONS ═══ */
+.btn{font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.02em;border:0;cursor:pointer;padding:12px 20px;background:var(--ink);color:#fff;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:var(--black)}
+.btn.primary{background:var(--blue)}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.amber{background:var(--amber-dark)}
+.btn.amber:hover{background:var(--amber);color:var(--black)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(66,58,58,.35)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.done{background:var(--blue-dark);opacity:1;cursor:default}
+.btn.done::before{content:"✓ "}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+
+/* ═══ CALLOUTS ═══ */
+.reveal-box{display:none;border:1px solid var(--line);border-left:5px solid var(--blue);background:var(--cream-alt);padding:18px 22px;margin:16px 0}
+.reveal-box.revealed{display:block;animation:cop-in .35s ease}
+@keyframes cop-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.key-message{background:var(--ink);color:#fff;padding:22px 26px;margin:24px 0}
+.key-message .km-label{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:8px}
+.key-message p{font-family:var(--head);font-weight:500;font-size:17.5px;line-height:1.4}
+body.present .key-message{padding:30px 34px}
+body.present .key-message p{font-size:clamp(22px,2.4vw,32px);line-height:1.3}
+.chapter.s2 .key-message .km-label{color:var(--amber)}
+.buildnote{background:var(--cream-alt);border-left:5px solid var(--amber);padding:14px 18px;font-size:13.5px;margin:18px 0}
+.buildnote b{font-family:var(--head);display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:4px}
+.warn{background:#fff;border:1.5px solid var(--coral);border-left-width:5px;padding:14px 18px;font-size:13.5px;margin:18px 0}
+.warn b{font-family:var(--head);display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:4px}
+.quoteband{background:#0e1220;color:#fff;padding:46px 0;text-align:center;margin:40px 0 0}
+.quoteband .inner{max-width:62ch;margin:0 auto;padding:0 28px}
+.quoteband .eyebrow{color:var(--blue-light);margin-bottom:10px}
+.quoteband p{font-family:var(--head);font-weight:600;font-size:clamp(18px,2.6vw,25px);line-height:1.35}
+body.present .quoteband p{font-size:clamp(24px,3vw,38px)}
+figure.fig{margin:0}
+figure.fig img{width:100%}
+figure.fig figcaption{font-size:12.5px;color:var(--grey);padding:10px 14px}
+
+/* two-up weak-vs-brief */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 0}
+@media(max-width:820px){.vs{grid-template-columns:1fr}}
+.vs .side{background:#fff;border:1px solid var(--line);padding:18px 20px 20px;border-top:5px solid var(--coral)}
+.vs .side.good{border-top-color:var(--teal-dark)}
+.vs .vk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:8px}
+.vs .good .vk{color:var(--teal-dark)}
+.vs .q{font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--ink);background:var(--cream-alt);padding:14px 16px;white-space:pre-wrap}
+body.present .vs .q{font-size:16px}
+.vs .q em{font-style:normal;background:rgba(42,116,200,.14);padding:0 3px}
+.vs .q em.a{background:rgba(42,116,200,.24)}
+.vs .q em.e{background:rgba(232,163,61,.26)}
+.vs .q em.p{background:rgba(0,121,110,.16)}
+.vs .verdict{margin-top:12px;font-size:14px;color:var(--grey)}
+.aepkey{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 0;font-family:var(--head);font-weight:600;font-size:13px}
+.aepkey span::before{content:"";display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+.aepkey .a::before{background:rgba(42,116,200,.5)}
+.aepkey .e::before{background:rgba(232,163,61,.7)}
+.aepkey .p::before{background:rgba(0,121,110,.5)}
+
+/* ═══════════════════════════════════════════════════════════════
+   01 — ACT · EXPLAIN · PLEASE (builder carried over from v1)
+   ═══════════════════════════════════════════════════════════════ */
+.aepcard{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:0;background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);margin:26px 0 0;align-items:stretch}
+@media(max-width:820px){.aepcard{grid-template-columns:1fr}}
+.aepcard .aimg img{width:100%;height:100%;object-fit:cover;min-height:230px}
+.aepcard .abody{padding:24px 28px 26px}
+.aepcard .ak{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:7px}
+.aepcard h3{font-size:22px;margin-bottom:10px}
+body.present .aepcard h3{font-size:30px}
+.aeplist{list-style:none;margin:16px 0 0}
+.aeplist li{margin-bottom:14px}
+.aeplist .w{font-family:var(--head);font-weight:700;font-size:15px;color:var(--blue-dark);display:block}
+body.present .aeplist .w{font-size:20px}
+.aeplist .d{font-size:14px;color:var(--grey);line-height:1.5}
+body.present .aeplist .d{font-size:16px}
+
+.builder{background:#0f1117;color:#fff;margin:26px 0 0}
+.builder .bhead{padding:20px 24px 0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.builder .bk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light)}
+.builder h3{font-size:22px;color:#fff}
+.builder .bsub{padding:6px 24px 0;font-size:13.5px;color:rgba(255,255,255,.78);max-width:74ch}
+.builder .bgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.builder .bgrid{grid-template-columns:1fr}}
+.builder .bin{padding:20px 24px 22px}
+.builder .bout{padding:20px 24px 22px;border-left:1px solid rgba(255,255,255,.1);background:#0a0c11;min-width:0}
+@media(max-width:900px){.builder .bout{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+.builder .field > label{color:rgba(255,255,255,.72)}
+.builder .field .hint{color:rgba(255,255,255,.62)}
+.builder textarea{background:#161923;border-color:rgba(255,255,255,.2);color:#fff;min-height:74px}
+.builder textarea::placeholder{color:rgba(255,255,255,.3)}
+.builder textarea:focus{border-color:var(--blue-light);box-shadow:0 0 0 3px rgba(127,184,237,.2)}
+body.present .builder textarea{font-size:16.5px}
+.builder .pane-k{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px}
+.promptout{font-family:var(--mono);font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#DCE6F5;background:#12151d;border:1px solid rgba(255,255,255,.12);padding:16px 18px;min-height:190px;max-height:380px;overflow:auto}
+body.present .promptout{font-size:15.5px}
+.promptout .ph{color:rgba(255,255,255,.52);font-style:italic}
+.seeds{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 0}
+.seedchip{font-family:var(--body);font-size:12.5px;background:transparent;color:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.22);padding:7px 11px;cursor:pointer;transition:.15s;text-align:left}
+.seedchip:hover{border-color:var(--blue-light);color:#fff}
+.gmeter{margin:16px 0 0}
+.gmeter .gm-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.gmeter .gm-dots{display:flex;gap:6px}
+.gmeter .gm-dot{flex:1;height:6px;background:rgba(255,255,255,.14);transition:background .3s}
+.gmeter .gm-dot.on{background:var(--blue-light)}
+.gmeter .gm-dot.on.full{background:var(--teal-light)}
+.gmeter ul{list-style:none;margin:12px 0 0;font-size:12.5px}
+.gmeter li{color:rgba(255,255,255,.62);padding-left:20px;position:relative;margin-bottom:5px;transition:color .3s}
+.gmeter li::before{content:"○";position:absolute;left:0}
+.gmeter li.met{color:rgba(255,255,255,.88)}
+.gmeter li.met::before{content:"●";color:var(--blue-light)}
+.builder .bfoot{border-top:1px solid rgba(255,255,255,.1);padding:16px 24px 20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.builder .bfoot .fb{font-family:var(--head);font-weight:600;font-size:13px;background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.28);padding:11px 15px;cursor:pointer;transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.builder .bfoot .fb:hover{border-color:#fff;color:#fff}
+.builder .bfoot .fb.go{background:var(--blue);border-color:var(--blue);color:#fff}
+.builder .bfoot .fb.go:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.builder .bfoot .stuck{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,.62)}
+
+/* ═══════════════════════════════════════════════════════════════
+   02 — THE CONTEXT METER
+   ═══════════════════════════════════════════════════════════════ */
+.meter{background:#12151c;color:#fff;margin:26px 0 0}
+.meter .mhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:20px 24px 0}
+.meter .mk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light)}
+.meter h3{font-size:22px;color:#fff}
+.meter .msub{padding:6px 24px 0;font-size:13.5px;color:rgba(255,255,255,.78);max-width:74ch}
+.meter .presets{display:flex;flex-wrap:wrap;gap:7px;padding:16px 24px 0}
+.meter .presets .pk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);align-self:center;margin-right:4px}
+.presetbtn{font-family:var(--body);font-size:13px;background:transparent;color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.2);padding:8px 12px;cursor:pointer;transition:.15s}
+.presetbtn:hover{border-color:#fff;color:#fff}
+.presetbtn.on{background:#fff;color:#12151c;border-color:#fff;font-weight:600}
+body.present .presetbtn{font-size:15px;padding:10px 15px}
+.deskwrap{padding:22px 24px 6px}
+.desk-label{display:flex;justify-content:space-between;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
+.desk-label .edge{color:var(--coral)}
+.desk{position:relative;height:88px;border:2px dashed rgba(255,255,255,.28);background:rgba(255,255,255,.03);overflow:hidden}
+body.present .desk{height:110px}
+.desk .strip{position:absolute;left:0;top:0;bottom:0;display:flex;transition:transform .9s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.blk{position:relative;flex:0 0 auto;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--head);font-weight:700;font-size:12.5px;letter-spacing:.04em;line-height:1.15;color:#0f1117;border-right:2px solid #12151c;padding:0 6px;overflow:hidden;transition:width .9s cubic-bezier(.2,.7,.2,1),opacity .9s,filter .9s}
+body.present .blk{font-size:14.5px}
+.blk small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;opacity:.75;margin-top:3px;letter-spacing:0}
+.blk.sys{background:#9aa3b2}
+.blk.brief{background:var(--blue-light)}
+.blk.doc{background:var(--amber)}
+.blk.conv{background:#C9D8EA}
+.blk.ans{background:var(--teal-light)}
+.blk.gone{filter:grayscale(1);opacity:.35}
+.desk .edgeline{position:absolute;left:0;top:0;bottom:0;width:0;border-left:3px solid var(--coral);z-index:3;opacity:0;transition:opacity .4s}
+.desk.over .edgeline{opacity:1}
+.desk-label .fillpct{font-family:var(--mono);font-size:12px;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.85)}
+.legend{display:flex;flex-wrap:wrap;gap:12px 18px;padding:12px 24px 0;font-size:12.5px;color:rgba(255,255,255,.8)}
+.legend span::before{content:"";display:inline-block;width:11px;height:11px;margin-right:6px;vertical-align:-1px}
+.legend .sys::before{background:#9aa3b2}.legend .brief::before{background:var(--blue-light)}.legend .doc::before{background:var(--amber)}.legend .conv::before{background:#C9D8EA}.legend .ans::before{background:var(--teal-light)}
+.meter .verdict{border-top:1px solid rgba(255,255,255,.1);margin-top:18px;padding:18px 24px 22px;display:flex;gap:16px;align-items:flex-start}
+.meter .verdict .vi{font-family:var(--head);font-weight:700;font-size:26px;line-height:1;color:var(--amber);flex:0 0 auto;margin-top:2px}
+.meter .verdict p{font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.95);max-width:62ch}
+body.present .meter .verdict p{font-size:clamp(18px,1.8vw,23px)}
+.meter .verdict.bad .vi{color:var(--coral)}
+.meter .verdict.good .vi{color:var(--teal-light)}
+.meter .scale{padding:0 24px 18px;font-size:12px;color:rgba(255,255,255,.55)}
+
+/* ═══════════════════════════════════════════════════════════════
+   03 — CUTOFF DATES & TRAINING
+   ═══════════════════════════════════════════════════════════════ */
+.clock{background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);margin:22px 0 0}
+.clock .chead{padding:20px 24px 0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.clock .ck{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark)}
+.clock h3{font-size:22px}
+.clock .csub{padding:6px 24px 0;font-size:13.5px;color:var(--grey);max-width:74ch}
+.clock .csub a{text-decoration:underline}
+.clockgrid{display:grid;grid-template-columns:1fr 1.25fr;gap:0;margin-top:16px;border-top:1px solid var(--line)}
+@media(max-width:900px){.clockgrid{grid-template-columns:1fr}}
+.dial{padding:18px 22px 22px;background:var(--cream-alt);display:flex;flex-direction:column;gap:8px}
+.modelbtn{border:1px solid var(--line);background:#fff;padding:12px 14px;cursor:pointer;font-family:var(--body);text-align:left;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;transition:.16s}
+.modelbtn:hover{border-color:var(--blue)}
+.modelbtn.on{border-color:var(--blue-dark);background:var(--blue-dark);color:#fff}
+.modelbtn .nm{font-family:var(--head);font-weight:600;font-size:15px}
+body.present .modelbtn .nm{font-size:18px}
+.modelbtn .dt{font-family:var(--mono);font-size:12.5px;opacity:.9;white-space:nowrap}
+body.present .modelbtn .dt{font-size:14px}
+.tl{padding:22px 24px 20px;min-width:0}
+.tl svg{width:100%;height:auto;display:block;overflow:visible}
+.tl .big{font-family:var(--head);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--blue-dark);line-height:1}
+.tl .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:2px}
+.tl .note{margin-top:14px;background:var(--cream-alt);border-left:4px solid var(--blue);padding:12px 15px;font-size:14px}
+body.present .tl .note{font-size:17px}
+.tl .gap{margin-top:12px;font-family:var(--head);font-weight:700;font-size:15px;color:var(--coral-dark)}
+body.present .tl .gap{font-size:19px}
+.stamp{padding:12px 24px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+
+/* with / without search */
+.search2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 0}
+@media(max-width:820px){.search2{grid-template-columns:1fr}}
+.search2 .side{background:#fff;border:1px solid var(--line);padding:18px 20px 20px;border-top:5px solid var(--coral)}
+.search2 .side.on{border-top-color:var(--teal-dark)}
+.search2 .sk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:8px}
+.search2 .on .sk{color:var(--teal-dark)}
+.search2 h4{font-size:20px;margin-bottom:8px}
+body.present .search2 h4{font-size:26px}
+.search2 p{font-size:14px;color:var(--grey)}
+body.present .search2 p{font-size:16px}
+.askcard{background:var(--ink);color:#fff;padding:20px 24px;margin:18px 0 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.askcard .ak{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:5px}
+.askcard .q{font-family:var(--mono);font-size:15px;color:#fff}
+body.present .askcard .q{font-size:19px}
+.askcard .btn{margin-left:auto}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 2 — PIPELINE RAIL, SOURCE → PLAN, PLAN → PAGES, PROMPT → PICTURE
+   ═══════════════════════════════════════════════════════════════ */
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:18px 0 26px;border:1px solid var(--line);background:#fff}
+@media(max-width:820px){.pipe{grid-template-columns:repeat(3,1fr)}}
+.pipe .stop{position:relative;padding:14px 12px 14px 16px;border-right:1px solid var(--line);font-family:var(--head);font-weight:600;font-size:13px;color:var(--grey);line-height:1.2}
+.pipe .stop:last-child{border-right:0}
+.pipe .stop .pn{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:4px}
+.pipe .stop.on{background:var(--amber-dark);color:#fff}
+.pipe .stop.on .pn{color:rgba(255,255,255,.92)}
+.pipe .stop.done{color:var(--ink)}
+.pipe .stop.done .pn{color:var(--amber-dark)}
+.pipe .stop.done .pn::after{content:" ✓"}
+body.present .pipe .stop{font-size:15px;padding:16px 14px 16px 18px}
+
+.srcgrid{display:grid;grid-template-columns:1fr 1fr 1fr auto 1.6fr;gap:12px;align-items:stretch;margin:18px 0 0}
+@media(max-width:900px){.srcgrid{grid-template-columns:1fr 1fr 1fr}.srcgrid .arrow{display:none}.srcgrid .plancard{grid-column:1/-1}}
+@media(max-width:600px){.srcgrid{grid-template-columns:1fr}}
+.srccard,.plancard{min-width:0;overflow-wrap:anywhere}
+.srccard{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);padding:16px 18px 18px}
+.srccard .sk{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.srccard h4{font-size:18px;margin-bottom:4px}
+.srccard .pp{font-family:var(--mono);font-size:12.5px;color:var(--grey)}
+.srcgrid .arrow{display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--amber-dark);font-weight:300;padding:0 4px}
+.plancard{background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);padding:16px 18px 18px}
+.plancard .sk{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.plancard h4{font-size:18px;margin-bottom:4px}
+.plancard .pp{font-family:var(--mono);font-size:12.5px;color:var(--grey)}
+
+.spine-wrap{overflow-x:auto}
+.spine-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);margin:16px 0 0;font-size:13.5px}
+.spine-table th,.spine-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.spine-table th{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-dark);background:var(--cream-alt)}
+.spine-table td:first-child{font-family:var(--mono);color:var(--muted);width:30px}
+.spine-table td:nth-child(2){font-family:var(--head);font-weight:600;font-size:14.5px}
+body.present .spine-table{font-size:15.5px}
+body.present .spine-table td:nth-child(2){font-size:17px}
+.spine-table .capt{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--line);background:#fafafa}
+
+/* the plan-as-brief overlay */
+.planbrief{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 0}
+@media(max-width:820px){.planbrief{grid-template-columns:1fr}}
+.pb{background:#fff;border:1px solid var(--line);padding:16px 18px 18px;border-top:5px solid var(--blue)}
+.pb.e{border-top-color:var(--amber)}
+.pb.p{border-top-color:var(--teal-dark)}
+.pb .w{font-family:var(--head);font-weight:700;font-size:clamp(20px,2vw,26px);color:var(--blue-dark);margin-bottom:6px}
+.pb.e .w{color:var(--amber-dark)}
+.pb.p .w{color:var(--teal-dark)}
+.pb .in{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:var(--head);font-weight:700;margin-bottom:8px}
+.pb q{display:block;font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--ink);background:var(--cream-alt);padding:10px 12px;quotes:none}
+body.present .pb q{font-size:14px}
+.pb q + q{margin-top:6px}
+
+/* "say this" prompt card + Section 1 tie-in */
+.say{background:#0f1117;color:#fff;margin:18px 0 0;padding:20px 24px 22px;display:grid;grid-template-columns:1fr auto;gap:14px 20px;align-items:center}
+@media(max-width:700px){.say{grid-template-columns:1fr}}
+.say .say-k{grid-column:1/-1;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.say .say-q{font-family:var(--mono);font-size:17px;line-height:1.55;color:#fff;white-space:pre-wrap}
+body.present .say .say-q{font-size:clamp(19px,1.9vw,25px)}
+.say .btn{justify-self:end}
+.tie{margin:16px 0 0;background:var(--cream-alt);border-left:5px solid var(--blue);padding:14px 18px;font-size:14.5px;color:var(--ink);max-width:80ch}
+body.present .tie{font-size:17px}
+.tie .tie-k{display:block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:4px}
+.chapter.s2 .bigcard h4{font-size:clamp(19px,1.9vw,24px)}
+body.present .chapter.s2 .bigcard h4{font-size:clamp(22px,2.2vw,28px)}
+.bigcard code,.ch-lede code{font-family:var(--mono);font-size:.9em;background:rgba(0,0,0,.06);padding:1px 5px;overflow-wrap:anywhere}
+
+/* terminal blocks */
+.term{background:#0b0e16;color:#d7dde8;font-family:var(--mono);font-size:12.5px;line-height:1.55;padding:16px 18px;border:1px solid rgba(255,255,255,.1);overflow:auto;white-space:pre}
+body.present .term{font-size:14px}
+.term .tk{display:block;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;white-space:normal}
+.term .ok{color:var(--teal-light)}
+.term .dim{color:rgba(215,221,232,.66)}
+.term .hl{color:var(--amber)}
+
+/* before / after strip */
+.ba{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;margin:16px 0 0;align-items:stretch}
+@media(max-width:820px){.ba{grid-template-columns:1fr}}
+.paper{background:#fff;border:1px solid var(--line);padding:26px 28px;position:relative;box-shadow:inset 0 0 0 1px #fff,0 1px 0 rgba(0,0,0,.08);font-family:Georgia,'Times New Roman',serif;color:#222;display:flex;flex-direction:column}
+.paper .pk{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.paper .ptitle{font-family:var(--head);font-weight:700;font-size:16px;color:#111;margin-bottom:6px}
+.paper .psub{font-size:13px;color:#444;margin-bottom:14px}
+.paper .pline{height:12px;border-bottom:1px solid #999;margin:14px 0 0}
+.paper .pfoot{margin-top:auto;font-family:var(--mono);font-size:11px;color:#777;padding-top:16px}
+.shot{background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.shot .pk{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);padding:12px 16px 0}
+.shot img{width:100%;height:auto;display:block;margin-top:10px}
+.shot .cap{font-size:12.5px;color:var(--grey);padding:10px 16px 14px}
+
+/* prompt → picture pairs */
+.pair{display:grid;grid-template-columns:1fr 1.3fr;gap:0;background:#0f1117;color:#fff;margin:16px 0 0;border:1px solid #0f1117}
+@media(max-width:860px){.pair{grid-template-columns:1fr}}
+.pair .ptext{padding:20px 22px 22px;min-width:0}
+.pair .pk{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.pair .fname{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.pair .prompt{font-family:var(--mono);font-size:12.5px;line-height:1.6;color:#DCE6F5;background:#12151d;border:1px solid rgba(255,255,255,.12);padding:14px 16px;white-space:pre-wrap;word-break:break-word}
+body.present .pair .prompt{font-size:14px}
+.pair .prompt em{font-style:normal;color:var(--amber)}
+.pair .pimg{position:relative;background:#000;min-height:260px}
+.pair .pimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s}
+.pair .pimg.shown img{opacity:1}
+.pair .pimg .cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#171a22 0 14px,#12151d 14px 28px)}
+.pair .pimg.shown .cover{display:none}
+.pair .pimg .cover .btn{font-size:15px;padding:14px 22px}
+.pair .pcap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78));color:#fff;padding:26px 16px 12px;font-size:12.5px;opacity:0;transition:opacity .6s}
+.pair .pimg.shown .pcap{opacity:1}
+
+.style-card{background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);padding:20px 22px 22px;margin:16px 0 0}
+.style-card .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.style-card .tags span{font-family:var(--head);font-weight:600;font-size:13px;background:var(--cream-alt);padding:7px 11px;border:1px solid var(--line)}
+body.present .style-card .tags span{font-size:16px;padding:9px 14px}
+.style-card p{font-size:14px;color:var(--grey);margin-top:12px}
+body.present .style-card p{font-size:16px}
+
+.reroll{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 0}
+@media(max-width:820px){.reroll{grid-template-columns:1fr}}
+.reroll figure{margin:0;background:#fff;border:1px solid var(--line);overflow:hidden}
+.reroll img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.reroll figcaption{padding:12px 16px 14px;font-size:13px;color:var(--grey)}
+.reroll figcaption b{font-family:var(--head);display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);margin-bottom:3px}
+.reroll .final figcaption b{color:var(--teal-dark)}
+
+/* ═══ 07 — GALLERY ═══ */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 0}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.gallery{grid-template-columns:1fr}}
+.gcard{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;transition:.2s}
+.gcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px -22px rgba(0,0,0,.45)}
+.gcard img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.gcard .gp{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.gcard .gtag{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.gcard .gtag .took{color:var(--muted);letter-spacing:.06em}
+.gcard h3{font-size:18px;margin-bottom:5px}
+body.present .gcard h3{font-size:21px}
+.gcard p{font-size:13px;color:var(--grey);line-height:1.5;flex:1}
+.gcard .glinks{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--head);font-weight:600;font-size:13px}
+.gcard .glinks a{color:var(--amber-dark)}
+.gcard .glinks a:hover{text-decoration:underline}
+.gcard .glinks .pending{color:var(--muted);font-weight:500}
+
+/* ═══ 08 — CLOSE ═══ */
+.closegrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px;align-items:start}
+@media(max-width:820px){.closegrid{grid-template-columns:1fr}}
+.closecard{background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.closecard .cbar{height:5px;background:var(--blue)}
+.closecard.next .cbar{background:var(--teal-dark)}
+.closecard img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.closecard .cp{padding:20px 22px 22px}
+.closecard .ck{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:7px}
+.closecard.next .ck{color:var(--teal-dark)}
+.closecard h3{font-size:20px;margin-bottom:6px}
+body.present .closecard h3{font-size:26px}
+.closecard p{font-size:13.5px;color:var(--grey);line-height:1.5}
+.closecard input[type="text"]{font-size:16px}
+body.present .closecard input[type="text"]{font-size:19px;padding:14px}
+.keepthis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 0}
+@media(max-width:900px){.keepthis{grid-template-columns:1fr 1fr}}
+.keepthis a{background:#fff;border:1px solid var(--line);padding:16px 18px;display:block;transition:.15s}
+.keepthis a:hover{border-color:var(--ink)}
+.keepthis .kk{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:5px}
+.keepthis b{font-family:var(--head);font-size:16px;display:block}
+.keepthis span{font-size:13px;color:var(--grey)}
+.takeaway{background:var(--cream-alt);border:1px solid var(--line);border-left:5px solid var(--blue);padding:22px 26px;margin:24px 0 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.takeaway .tt{flex:1;min-width:240px}
+.takeaway h3{font-size:19px;margin-bottom:5px}
+.takeaway p{font-size:13.5px;color:var(--grey);max-width:56ch}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--ink);color:#fff;margin-top:0;padding:30px 0}
+footer .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer .tick{width:26px;height:3px;background:#fff;margin-bottom:10px}
+footer .lt{font-family:var(--head);font-weight:600;font-size:13px}
+footer p{font-size:12.5px;opacity:.75;max-width:60ch}
+footer .fbtns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+footer .fbtn{font-family:var(--head);font-weight:600;font-size:12px;letter-spacing:.04em;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);padding:9px 14px;cursor:pointer;transition:.15s}
+footer .fbtn:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ═══ SAVEBAR ═══ */
+#cop-savebar{position:fixed;right:18px;bottom:18px;z-index:120;background:var(--ink);color:#fff;font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.03em;padding:9px 16px;border-radius:999px;opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+#cop-savebar.on{opacity:1;transform:translateY(0)}
+#cop-savebar::before{content:"✓ ";color:var(--blue-light)}
+
+/* ═══ MODE VISIBILITY ═══ */
+.selfOnly{display:block}
+body.present .selfOnly{display:none}
+.presentOnly{display:none}
+body.present .presentOnly{display:block}
+.facOnly{display:none}
+body.facilitator .facOnly{display:block}
+
+/* ═══ FACILITATOR RUN-SHEET STRIPS ═══ */
+.runstrip{display:none;background:#0e1220;color:rgba(255,255,255,.95);border-left:5px solid var(--blue-light);padding:16px 20px;margin:18px 0;font-size:13px;line-height:1.55}
+body.facilitator .runstrip{display:block}
+.runstrip b{display:block;font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:6px}
+
+/* ═══ FACILITATOR BRIEFING ═══ */
+.facband{display:none;background:#0e1220;color:#fff;margin:34px 0 0;border-top:5px solid var(--blue-light)}
+body.facilitator .facband{display:block}
+.facband .fbh{padding:22px 26px 0}
+.facband .fbk{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:7px}
+.facband h3{font-size:22px;color:#fff;margin-bottom:6px}
+.facband .fbsub{font-size:13.5px;color:rgba(255,255,255,.72);max-width:74ch}
+.facband .fbcols{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.facband .fbcols{grid-template-columns:1fr}}
+.facband .fbcol{padding:20px 26px 24px}
+.facband .fbcol + .fbcol{border-left:1px solid rgba(255,255,255,.1)}
+@media(max-width:900px){.facband .fbcol + .fbcol{border-left:0;border-top:1px solid rgba(255,255,255,.1)}}
+.facband .fbct{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:14px}
+.cuts{list-style:none;counter-reset:cut}
+.cuts li{counter-increment:cut;display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13.5px}
+.cuts li:last-child{border-bottom:0}
+.cuts li::before{content:counter(cut);font-family:var(--head);font-weight:700;color:var(--blue-light);font-size:15px}
+.cuts .cw{color:rgba(255,255,255,.92)}
+.cuts .cw small{display:block;color:rgba(255,255,255,.66);font-size:12.5px;margin-top:2px}
+.cuts .cs{font-family:var(--mono);font-size:12.5px;color:var(--amber);white-space:nowrap}
+.nevercut{margin-top:14px;padding:12px 14px;background:rgba(220,90,70,.12);border-left:3px solid var(--coral);font-size:13px;color:rgba(255,255,255,.88)}
+.nevercut b{font-family:var(--head);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:3px}
+.runsheet{width:100%;border-collapse:collapse;font-size:13px}
+.runsheet th,.runsheet td{text-align:left;padding:8px 10px 8px 0;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08)}
+.runsheet th{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-light)}
+.runsheet td:first-child{font-family:var(--mono);color:var(--amber);white-space:nowrap;padding-right:14px}
+.runsheet td:nth-child(2){font-family:var(--mono);color:rgba(255,255,255,.6);white-space:nowrap;padding-right:14px}
+.runsheet td{color:rgba(255,255,255,.86)}
+.runsheet tr:last-child td{border-bottom:0}
+
+/* ═══ SESSION TIMER (facilitator) ═══ */
+#copTimer{display:none;position:fixed;left:18px;bottom:18px;z-index:130;background:#0b0e16;border:1.5px solid rgba(255,255,255,.22);box-shadow:0 18px 50px -18px rgba(0,0,0,.8);min-width:212px}
+@media(min-width:1200px){#copTimer{left:calc(var(--railw) + 18px)}}
+body.facilitator #copTimer{display:block}
+#copTimer .tt{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.12)}
+#copTimer .tt .lbl{font-family:var(--head);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+#copTimer .tt .sp{margin-left:auto;display:flex;gap:4px}
+#copTimer .ic{background:transparent;border:0;color:rgba(255,255,255,.74);cursor:pointer;font-size:13px;line-height:1;padding:4px 6px;font-family:var(--body)}
+#copTimer .ic:hover{color:#fff}
+#copTimer .ic[aria-pressed="true"]{color:var(--amber)}
+#copTimer .digits{font-family:var(--mono);font-weight:500;font-size:46px;line-height:1;letter-spacing:.02em;color:#fff;text-align:center;padding:16px 12px 12px;font-variant-numeric:tabular-nums}
+#copTimer.warn .digits{color:var(--amber)}
+#copTimer.done .digits{color:var(--coral)}
+#copTimer.done{border-color:var(--coral)}
+#copTimer .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12)}
+#copTimer .presets button{background:#0b0e16;border:0;color:rgba(255,255,255,.84);font-family:var(--head);font-weight:600;font-size:12px;padding:9px 4px;cursor:pointer;transition:.12s}
+#copTimer .presets button:hover{background:#161b28;color:#fff}
+#copTimer .presets button.on{background:var(--amber);color:#0b0e16}
+#copTimer .ctrl{display:flex;gap:1px;background:rgba(255,255,255,.12);border-top:1px solid rgba(255,255,255,.12)}
+#copTimer .ctrl button{flex:1;background:#0b0e16;border:0;color:#fff;font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.04em;padding:11px 6px;cursor:pointer;transition:.12s}
+#copTimer .ctrl button:hover{background:#161b28}
+#copTimer .ctrl .go{background:var(--blue);color:#fff}
+#copTimer .ctrl .go:hover{background:var(--blue-dark)}
+#copTimer .hintline{font-size:11.5px;color:rgba(255,255,255,.62);padding:8px 12px 10px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
+#copTimer.min .digits,#copTimer.min .presets,#copTimer.min .ctrl,#copTimer.min .hintline{display:none}
+#copTimer.min{min-width:0}
+@media(max-width:760px){#copTimer{left:10px;bottom:10px;min-width:180px}#copTimer .digits{font-size:36px}}
+@media print{#copTimer{display:none!important}}
+
+/* ═══ PRINT ═══ */
+#printdoc{display:none}
+@media print{
+  body.printing > *{display:none !important}
+  body.printing #printdoc{display:block !important}
+  #printdoc{font-family:'IBM Plex Sans',sans-serif;color:#222;font-size:12px;line-height:1.5}
+  #printdoc .pd-head{border-bottom:3px solid #2D7DD2;padding-bottom:12px;margin-bottom:18px}
+  #printdoc .pd-logo{width:40px;height:40px;display:block;margin-bottom:8px}
+  #printdoc .pd-brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#1B5FA8;margin-bottom:6px}
+  #printdoc h1{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:24px;color:#141414;margin:0 0 4px}
+  #printdoc .pd-meta{font-size:11px;color:#666}
+  #printdoc .pd-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid #eee;page-break-inside:avoid}
+  #printdoc .pd-label{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#666;padding:8px 10px 8px 0}
+  #printdoc .pd-value{padding:8px 0}
+  #printdoc .pd-value em{color:#C4821E;font-style:italic}
+  #printdoc .pd-foot{margin-top:26px;padding-top:10px;border-top:1px solid #ddd;font-size:10px;color:#888}
+}
+</style>
+</head>
+<body class="present">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHROME
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="chrome">
+  <div class="wrap row">
+    <a class="logo" href="../../index.html">
+      <img src="assets/img/aim-logo-white.png" alt="AIM — Australian Institute of Management" width="32" height="32">
+      <div><div class="lt">AIM</div><div class="ls">Community of Practice</div></div>
+    </a>
+    <div class="prog" id="prog" title="Your progress through this page">
+      <div class="pt"><div class="pf" id="progFill"></div></div>
+      <div class="pl" id="progLabel">0 / 5</div>
+    </div>
+    <span class="here" id="hereChip" aria-live="polite">00 · Prompt it. Build it.</span>
+    <nav aria-label="Sections">
+      <a href="#sec1">Section 1</a>
+      <a href="#sec2">Section 2</a>
+      <a href="#close">Close</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CHAPTER RAIL — the agenda, always on screen at desktop widths
+     ═══════════════════════════════════════════════════════════════ -->
+<nav class="rail" id="rail" aria-label="Chapters">
+  <div class="rail-k">Open</div>
+  <a href="#open" class="s0" data-ch="open"><span class="n">00</span><span>Prompt it. Build it.</span></a>
+  <div class="rail-k">Section 1 · AI Basics</div>
+  <a href="#aep" data-ch="aep"><span class="n">01</span><span>Act · Explain · Please</span></a>
+  <a href="#context" data-ch="context"><span class="n">02</span><span>Context Windows</span></a>
+  <a href="#cutoff" data-ch="cutoff"><span class="n">03</span><span>Cutoff Dates &amp; Training</span></a>
+  <div class="rail-k">Section 2 · Six steps</div>
+  <a href="#folder" class="s2" data-ch="folder"><span class="n">04</span><span>Give it the folder</span></a>
+  <a href="#plan" class="s2" data-ch="plan"><span class="n">05</span><span>Phased plan</span></a>
+  <a href="#prompts" class="s2" data-ch="prompts"><span class="n">06</span><span>Midjourney prompts</span></a>
+  <a href="#rename" class="s2" data-ch="rename"><span class="n">07</span><span>Rename the images</span></a>
+  <a href="#module1" class="s2" data-ch="module1"><span class="n">08</span><span>Module 1, with images</span></a>
+  <a href="#continue" class="s2" data-ch="continue"><span class="n">09</span><span>Continue with all phases</span></a>
+  <div class="rail-k">Close</div>
+  <a href="#close" class="s0" data-ch="close"><span class="n">10</span><span>Close</span></a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO — 00 · COLD OPEN
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="hero withrail chapter-anchor" id="open" data-ch="open" data-title="Prompt it. Build it.">
+  <img class="bg" src="pics/cop-hero-two-halves.jpg" alt="" width="1680" height="720" fetchpriority="high">
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="wrap">
+      <div class="eyebrow">AIM Facilitator Community of Practice · 45 minutes</div>
+      <h1>Prompt it. Build it.</h1>
+      <p class="sub">Three AI basics every facilitator should hold — then a new interactive workbook built live, in six plain-English steps, using those same three ideas at scale.</p>
+      <div class="meta">
+        <span>Section 1 · AI Basics</span>
+        <span>Section 2 · How the Workbook Got Built</span>
+        <span>Shown on screen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="withrail">
+<div class="wrap">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       00 · THE SPINE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="chapter first s0" id="spine">
+    <div class="ch-mark"><span class="num">00</span><span class="sec">Open</span><span class="ln"></span><span class="time">0:00 – 2:00</span></div>
+    <h2 class="ch-title">Section 2 is Section 1 at scale.</h2>
+    <p class="ch-lede">A four-hundred-line build plan is just an Act–Explain–Please brief that respects the context window and doesn't trust the model to know what it can't. Hold that sentence — we'll test it at the end.</p>
+
+    <div class="grid2">
+      <div class="bigcard">
+        <div class="bn">Section 1 · 01 – 03 · about 18 minutes</div>
+        <h4>AI Basics</h4>
+        <p>Three ideas, each with one demo on screen: how to brief a model, what it can hold in view, and what it cannot know.</p>
+      </div>
+      <div class="bigcard" style="border-top-color:var(--amber)">
+        <div class="bn">Section 2 · 04 – 09 · about 20 minutes</div>
+        <h4>How the Workbook Gets Built</h4>
+        <p>Six things said in plain English, live, and a new AI for Productivity interactive workbook comes out the other end. Folder → plan → prompts → rename → Module 1 → "continue with all phases".</p>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · cold open, 0:00–2:00</b>
+      Open on a finished interactive workbook — not this page. Scroll one module in silence for twenty seconds. Then: <em>"Everything you just saw was made with three ideas. Here they are."</em> Switch to this page, read the spine sentence once, and go. No agenda slide: the rail on the left is the agenda.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FACILITATOR BRIEFING — run sheet + cut list (facilitator only)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="facband" id="facbrief">
+    <div class="fbh">
+      <div class="fbk">Facilitator briefing</div>
+      <h3>The run sheet, and what to cut</h3>
+      <p class="fbsub">Forty-five minutes, eight bands, you driving. The timer sits bottom-left — space bar starts and pauses it. Zoom on headings, not paragraphs: every heading on this page is designed to fill a projector cleanly.</p>
+    </div>
+    <div class="fbcols">
+      <div class="fbcol">
+        <div class="fbct">Run sheet</div>
+        <table class="runsheet">
+          <thead><tr><th>Time</th><th>Band</th><th>Beat</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td>00</td><td>Workbook on screen, 20 s silent scroll. Spine sentence.</td></tr>
+            <tr><td>2:00</td><td>01</td><td>Weak prompt → three fields live → assembled brief. Why most prompts are a wish.</td></tr>
+            <tr><td>8:00</td><td>02</td><td>Context Meter, four presets. Hold the forgetting moment.</td></tr>
+            <tr><td>14:00</td><td>03</td><td>Timeline, then the clock, then search off / search on.</td></tr>
+            <tr><td>20:00</td><td>→</td><td>Pivot card: "these three are the whole reason the next section works."</td></tr>
+            <tr><td>21:00</td><td>04</td><td>Step 1 — "Please understand the contents of the folder." Let it read.</td></tr>
+            <tr><td>24:00</td><td>05</td><td>Step 2 — phased plan. Zoom the spine table; read two names against the printed workbook.</td></tr>
+            <tr><td>27:00</td><td>06</td><td>Step 3 — Midjourney prompts. One reveal pair; the casting rule in full.</td></tr>
+            <tr><td>30:00</td><td>07</td><td>Step 4 — rename the images. Show the old → new table.</td></tr>
+            <tr><td>32:00</td><td>08</td><td>Step 5 — Module 1 with images. Dry-run tab ready as the fallback.</td></tr>
+            <tr><td>38:00</td><td>09</td><td>Step 6 — "Continue with all phases." Show the first files land, then move on.</td></tr>
+            <tr><td>41:00</td><td>10</td><td>Spine paid off · two or three commitments read out · next CoP.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fbcol">
+        <div class="fbct">If it runs long — cut in this order</div>
+        <ul class="cuts">
+          <li><span class="cw">The reveal pair in step 3<small>The prompt library on screen makes the point; the picture is confirmation.</small></span><span class="cs">−1:30</span></li>
+          <li><span class="cw">Step 4 live<small>Describe the rename and show the table from the dry run instead.</small></span><span class="cs">−1:30</span></li>
+          <li><span class="cw">Live search-off / search-on demo in 03<small>Describe it instead: with search off it either declines or guesses — both are the lesson.</small></span><span class="cs">−1:30</span></li>
+        </ul>
+        <div class="nevercut">
+          <b>Never cut</b>
+          The forgetting moment in 02. "Please understand the contents of the folder" in 04. Module 1 opening in a browser in 08.
+        </div>
+        <div class="fbct" style="margin-top:22px">Before you start</div>
+        <ul class="cuts" style="counter-reset:cut">
+          <li><span class="cw">Do a full dry run of the six steps on AI for Productivity today. Keep that session and its finished Module 1 open in another tab as the fallback.</span><span class="cs">tab 1</span></li>
+          <li><span class="cw">A fresh session with the AI for Productivity folder already added, so step 1 is one line, not a file dialog.</span><span class="cs">tab 2</span></li>
+          <li><span class="cw">A chat window with web search visibly off, for band 03.</span><span class="cs">tab 3</span></li>
+          <li><span class="cw">Present mode is the default on this page. Browser zoom at 125% on a 1280×720 projector reads from the back.</span><span class="cs">zoom</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 1 DIVIDER
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section-divider" id="sec1">
+    <div class="sd-k">Section 1</div>
+    <h2>AI Basics</h2>
+    <p>Three ideas. If you hold these, almost everything a model does that looks strange stops looking strange.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       01 · ACT · EXPLAIN · PLEASE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="chapter" id="aep" data-ch="aep" data-title="Act · Explain · Please">
+    <div class="ch-mark"><span class="num">01</span><span class="sec">Section 1 · AI Basics</span><span class="ln"></span><span class="time">2:00 – 8:00</span></div>
+    <h2 class="ch-title">Act · Explain · Please</h2>
+    <p class="ch-lede">Most prompts fail because they're a wish, not a brief. A brief says who the model is, what the situation is, and exactly what you want handed back.</p>
+
+    <h3 class="zoom"><span class="zk">The same ask, twice</span>A wish, and a brief</h3>
+    <div class="vs">
+      <div class="side">
+        <div class="vk">The wish</div>
+        <div class="q">Write me a case study about giving feedback.</div>
+        <p class="verdict">Eight words. No role, no audience, no length, no format. Whatever comes back is generic by construction — and then we blame the model.</p>
+      </div>
+      <div class="side good">
+        <div class="vk">The brief</div>
+        <div class="q"><em class="a">You are a learning designer at the Australian Institute of Management.</em>
+
+<em class="e">I'm running a 20-minute activity for first-time managers on giving feedback. Australian workplace, plain language, no jargon, no American spellings. They'll read it on paper in pairs.</em>
+
+<em class="p">Write a 400-word case study with one realistic dilemma and three discussion questions. Plain text, no headings.</em></div>
+        <p class="verdict">Three paragraphs, three jobs. The model now knows who it is, what room it's in, and what done looks like.</p>
+        <div class="aepkey"><span class="a">Act</span><span class="e">Explain</span><span class="p">Please</span></div>
+      </div>
+    </div>
+
+    <div class="aepcard selfOnly">
+      <div class="aimg">
+        <img src="pics/s1-aep-card.jpg" alt="Three index cards reading Act, Explain and Please in fountain pen" width="1344" height="896" loading="lazy" decoding="async">
+      </div>
+      <div class="abody">
+        <div class="ak">The framework AIM already teaches</div>
+        <h3>Act · Explain · Please</h3>
+        <ul class="aeplist">
+          <li><span class="w">Act</span><span class="d">Who the model is. A learning designer, a plain-English editor, a front-end developer who writes readable code. The role sets the standard it reaches for.</span></li>
+          <li><span class="w">Explain</span><span class="d">The situation, the audience and the constraints. Who this is for, where it will be used, and what must not happen.</span></li>
+          <li><span class="w">Please</span><span class="d">The specific ask and the format. Not "help me with" — the actual thing you want handed back, with its shape and its length.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="zoom"><span class="zk">Live on screen</span>Build the brief</h3>
+    <div class="builder" id="builder">
+      <div class="bhead">
+        <span class="bk">The AEP Brief Builder</span>
+        <h3>Three boxes. One brief.</h3>
+      </div>
+      <p class="bsub">Fill the three boxes and the brief assembles itself on the right. The meter underneath says how specific it is — four dots is a brief, one dot is a wish.</p>
+
+      <div class="bgrid">
+        <div class="bin">
+          <div class="field">
+            <label for="s1act">Act — who should the model be?</label>
+            <textarea id="s1act" data-key="s1.act" placeholder="a learning designer at AIM who writes plain, warm, practical course material"></textarea>
+          </div>
+          <div class="field">
+            <label for="s1explain">Explain — the situation, the audience, the constraints</label>
+            <textarea id="s1explain" data-key="s1.explain" placeholder="I'm running a 20-minute activity for first-time managers on giving feedback. Australian workplace, plain language, no jargon. They'll read it on paper in pairs."></textarea>
+          </div>
+          <div class="field">
+            <label for="s1please">Please — the specific ask, and the format</label>
+            <textarea id="s1please" data-key="s1.please" placeholder="Write a 400-word case study with one realistic dilemma and three discussion questions. Plain text, no headings."></textarea>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label>Starting points — one click</label>
+            <div class="seeds" id="seedRow"></div>
+            <div class="hint">Each seed fills all three boxes with a real piece of course content. Edit it in front of the room — the point is that it's yours to change.</div>
+          </div>
+        </div>
+        <div class="bout">
+          <div class="pane-k">The brief, assembled</div>
+          <div class="promptout" id="promptOut" aria-live="polite"></div>
+          <div class="gmeter" id="gmeter">
+            <div class="gm-head"><span>How specific is it?</span><span id="gmScore">0 / 4</span></div>
+            <div class="gm-dots">
+              <div class="gm-dot" data-d="0"></div><div class="gm-dot" data-d="1"></div>
+              <div class="gm-dot" data-d="2"></div><div class="gm-dot" data-d="3"></div>
+            </div>
+            <ul>
+              <li data-check="role">Says who the model should be</li>
+              <li data-check="who">Names who it's for, and where it will be used</li>
+              <li data-check="format">Asks for a specific thing, in a specific shape</li>
+              <li data-check="length">Long enough to be a brief, not a wish</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bfoot">
+        <button type="button" class="fb go" id="copyPrompt">Copy the brief</button>
+        <button type="button" class="fb" id="clearBrief">Clear</button>
+        <span class="stuck">Paste it into whichever model you use. The brief is the same; only the model changes.</span>
+      </div>
+    </div>
+
+    <div class="key-message">
+      <div class="km-label">Hold this</div>
+      <p>A model is only ever as good as the brief it was given. Act, Explain, Please — and then everything in Section 2 is this, longer.</p>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 2:00–8:00</b>
+      Read the wish aloud, then the brief, pointing at the three colours. Then click the <em>Feedback case study</em> seed, delete the Explain box and retype it live for your own course — the room needs to see the brief change, not appear. Ninety seconds on why most prompts fail; the rest is the demo. Don't paste it into a model here — band 03 does the live model moment.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       02 · CONTEXT WINDOWS
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="chapter" id="context" data-ch="context" data-title="Context Windows">
+    <div class="ch-mark"><span class="num">02</span><span class="sec">Section 1 · AI Basics</span><span class="ln"></span><span class="time">8:00 – 14:00</span></div>
+    <h2 class="ch-title">Context Windows</h2>
+    <p class="ch-lede">A model can only work with what's on the desk in front of it. The desk is big these days — but it is a desk, not a filing cabinet, and what slides off the edge is gone.</p>
+
+    <div class="meter" id="meter">
+      <div class="mhead">
+        <span class="mk">The Context Meter</span>
+        <h3>Everything the model can see, right now</h3>
+      </div>
+      <p class="msub">Each block is something taking up room in the model's working memory. Press a preset and watch the desk fill — and watch what happens at the left-hand edge.</p>
+
+      <div class="presets" id="meterPresets" role="group" aria-label="Context Meter presets">
+        <span class="pk">Show</span>
+      </div>
+
+      <div class="deskwrap">
+        <div class="desk-label"><span class="edge" id="edgeLabel" aria-live="polite"></span><span>The desk — everything in view · <span class="fillpct" id="fillPct">0% full</span></span></div>
+        <div class="desk" id="desk">
+          <div class="edgeline"></div>
+          <div class="strip" id="deskStrip"></div>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="sys">The app's own instructions</span>
+        <span class="brief">Your brief</span>
+        <span class="doc">A pasted document</span>
+        <span class="conv">The conversation so far</span>
+        <span class="ans">Room for the answer</span>
+      </div>
+
+      <div class="verdict" id="meterVerdict">
+        <div class="vi">→</div>
+        <p>Pick a preset above.</p>
+      </div>
+      <div class="scale">Not to scale. Today's large models hold around a million tokens — well over a thousand pages — so a real desk is far bigger than this one. It is drawn small so you can watch it fill.</div>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard">
+        <div class="bn">01</div>
+        <h4>It's a desk, not a filing cabinet.</h4>
+        <p>The model doesn't "know" your document. It can see the copy you put on the desk, for as long as it's there.</p>
+      </div>
+      <div class="bigcard">
+        <div class="bn">02</div>
+        <h4>What falls off the left edge is gone.</h4>
+        <p>In a long conversation the earliest turns stop being visible. It isn't being coy about what you said at minute two — it can't see it.</p>
+      </div>
+      <div class="bigcard">
+        <div class="bn">03</div>
+        <h4>New task, new chat.</h4>
+        <p>A clean desk with only what the job needs. The single highest-return habit, and it costs nothing.</p>
+      </div>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 8:00–14:00</b>
+      Presets in order: <em>A short chat</em> → <em>You pasted the whole facilitator guide</em> → <em>An hour-long conversation</em> → <em>New chat, one task</em>. Stop talking when the third preset slides the early blocks off the edge. Let the room watch it. Then the line: "It isn't being coy. It can't see it." The three cards are the take-home; read the headings only.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       03 · CUTOFF DATES & TRAINING
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="chapter" id="cutoff" data-ch="cutoff" data-title="Cutoff Dates &amp; Training">
+    <div class="ch-mark"><span class="num">03</span><span class="sec">Section 1 · AI Basics</span><span class="ln"></span><span class="time">14:00 – 20:00</span></div>
+    <h2 class="ch-title">Cutoff Dates &amp; Training</h2>
+    <p class="ch-lede">A model is trained on a snapshot of the world that ends on a date. It is released months later. You use it months after that. Everything in that gap, it has never seen — unless you let it search.</p>
+
+    <h3 class="zoom"><span class="zk">How a model learns</span>Trained, released, used</h3>
+    <div class="clock" id="clock">
+      <div class="chead">
+        <span class="ck">The Model Cutoff Clock</span>
+        <h3>Which models know what, and until when</h3>
+      </div>
+      <p class="csub">Pick a model. The timeline shows where its knowledge stops, when it was released, and how far "today" has drifted from both. Dates shift every time a new model ships — <a href="https://github.com/HaoooWang/llm-knowledge-cutoff-dates" target="_blank" rel="noopener">the live list is here</a>.</p>
+      <div class="clockgrid">
+        <div class="dial" id="modelDial" role="group" aria-label="Choose a model"></div>
+        <div class="tl" id="timeline"></div>
+      </div>
+      <div class="stamp"><span id="checkedStamp">Dates checked 5 October 2026</span><span>Months only — vendors publish cutoffs to the month, and sometimes revise them.</span></div>
+    </div>
+
+    <h3 class="zoom"><span class="zk">Live on screen</span>Search off. Search on.</h3>
+    <div class="askcard">
+      <div>
+        <div class="ak">Ask it this, twice</div>
+        <div class="q">What has happened in Australian workplace news this week?</div>
+      </div>
+      <a class="btn primary" href="https://chatgpt.com/" target="_blank" rel="noopener">Open a chat ↗</a>
+    </div>
+    <div class="search2">
+      <div class="side">
+        <div class="sk">Web search off</div>
+        <h4>It can only use the snapshot.</h4>
+        <p>One of two things happens, and both are the lesson. It tells you it can't know — good. Or it answers confidently from months-old data without saying so — the one that gets people in trouble.</p>
+      </div>
+      <div class="side on">
+        <div class="sk">Web search on</div>
+        <h4>It goes and looks.</h4>
+        <p>Now it reads today's pages and cites them. Same model, same question. The difference is whether you let it leave the snapshot.</p>
+      </div>
+    </div>
+
+    <div class="key-message">
+      <div class="km-label">Hold this</div>
+      <p>If the answer depends on anything after the cutoff — a price, a policy, a person's job title — turn search on, or don't trust it.</p>
+    </div>
+
+    <h3 class="zoom"><span class="zk">Cutoff dates meet context windows</span>Make sure it's got the context — considering the cutoff date</h3>
+    <div class="bigcards">
+      <div class="bigcard">
+        <div class="bn">Ask first</div>
+        <h4>Could it have seen this?</h4>
+        <p>If the thing you're asking about is newer than the cutoff — or it's yours, like a facilitator guide — the model has never seen it. No amount of good prompting changes that.</p>
+      </div>
+      <div class="bigcard">
+        <div class="bn">Then supply it</div>
+        <h4>Put it on the desk.</h4>
+        <p>Paste the pages, attach the document, turn search on. Context is how you give a model what training couldn't — and it only works if you actually do it.</p>
+      </div>
+      <div class="bigcard">
+        <div class="bn">And check</div>
+        <h4>Did it use what you gave it?</h4>
+        <p>Ask it to quote the page. If the answer sounds plausible but cites nothing you supplied, it's answering from the snapshot, not from your context.</p>
+      </div>
+    </div>
+
+    <div class="buildnote">
+      <b>And one more thing it was never trained on</b>
+      Your course. Your facilitator guide, your activity numbers, your running case. A model has never seen any of it, which is why Section 2 starts by putting it on the desk.
+    </div>
+
+    <div class="key-message presentOnly" style="background:var(--blue-dark)">
+      <div class="km-label" style="color:#fff">Pivot</div>
+      <p>These three are the whole reason the next section works.</p>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 14:00–20:00</b>
+      Click two or three models and read the gap line each time — the red "has never seen" number is the point. Then the live demo in tab 2: ask with search off, then switch it on, same question. If the wifi is bad, skip the live demo and describe it (cut 3). End on the pivot card and give it two full seconds of silence before scrolling.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 2 DIVIDER
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="section-divider s2" id="sec2">
+    <div class="sd-k">Section 2</div>
+    <h2>How the Workbook Gets Built</h2>
+    <p>Six steps, said in plain English, live. Today's course is AI for Productivity. The three ideas from Section 1 are doing all the work — watch for them.</p>
+  </section>
+
+  <section class="chapter s2" id="folder" data-ch="folder" data-title="Give it the folder">
+    <div class="ch-mark"><span class="num">04</span><span class="sec">Section 2 · Step 1 of 6</span><span class="ln"></span><span class="time">21:00 – 24:00</span></div>
+    <h2 class="ch-title">Give it the folder</h2>
+    <p class="ch-lede">Nothing starts until the course is on the desk. One folder: the AI for Productivity workbook, facilitator guide and slides — sitting next to the finished interactive workbooks so it can see the pattern.</p>
+
+    <div class="pipe" data-stop="1" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Please understand the contents of the folder.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>It reads before it speaks.</h4><p>A listing of what's there, the page counts, what each course is and how the existing workbooks are built. If it starts proposing anything at this point, stop it.</p></div>
+      <div class="bigcard"><div class="bn">Why the finished ones are in there</div><h4>The pattern is the brief.</h4><p>Six built workbooks beside the new source material means it can copy how they're made — hub, modules, capture engine, Midjourney library — instead of inventing a format.</p></div>
+      <div class="bigcard"><div class="bn">Check</div><h4>Did it find the source PDFs?</h4><p>Facilitator guide, participant workbook, slide deck. If one is missing from its summary, it never saw it, and nothing downstream can use it.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>This is context windows and cutoff dates in one move: the course is newer than anything it was trained on, so you put it on the desk first.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      Add the folder in the desktop app before the session, don't do it live. Say the line, then let it read — thirty seconds of silence is fine. Point at the bit of its answer where it names the three AI for Productivity source files.
+    </div>
+  </section>
+
+  <section class="chapter s2" id="plan" data-ch="plan" data-title="Ask for a phased plan">
+    <div class="ch-mark"><span class="num">05</span><span class="sec">Section 2 · Step 2 of 6</span><span class="ln"></span><span class="time">24:00 – 27:00</span></div>
+    <h2 class="ch-title">Ask for a phased plan</h2>
+    <p class="ch-lede">The plan is the single most important document in the whole build. It's a very long Act–Explain–Please brief — and you make it ask for one before it builds anything.</p>
+
+    <div class="pipe" data-stop="2" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Make a phased plan to create the new AI for Productivity interactive workbook, matching the pattern of the existing interactive workbooks in this folder. Module names, activity numbers and names verbatim from the source. Save it as a markdown file in the course's docs folder.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>A plan document, not a page.</h4><p>The course spine as a table, the running cases, the file structure, the build phases, the open choices with defaults marked. Scroll it once on screen; don't read it.</p></div>
+      <div class="bigcard"><div class="bn">Zoom on</div><h4>The module names.</h4><p>Every one should match the workbook exactly. That's "verbatim" doing its job — the single word in the brief that stops it inventing course content.</p></div>
+      <div class="bigcard"><div class="bn">Check</div><h4>Does it end in phases?</h4><p>Each phase should end with a working site and a backup of what it replaced. Small slices are the context window respected.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>Act (match the pattern) · Explain (the course, the source, the constraint "verbatim") · Please (a plan, as a markdown file, in a named folder). Same three jobs as band 01.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      Zoom the spine table in the plan and read two module names against the printed workbook. Then the phases list. That's it — three minutes, no more; the plan is the proof, not the lesson.
+    </div>
+  </section>
+
+  <section class="chapter s2" id="prompts" data-ch="prompts" data-title="Ask for Midjourney prompts">
+    <div class="ch-mark"><span class="num">06</span><span class="sec">Section 2 · Step 3 of 6</span><span class="ln"></span><span class="time">27:00 – 30:00</span></div>
+    <h2 class="ch-title">Ask for Midjourney prompts</h2>
+    <p class="ch-lede">Every image is briefed before a single one is generated. The prompt library is a brief too — the house style fixed once at the top, then one prompt per picture, each with its filename.</p>
+
+    <div class="pipe" data-stop="3" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Make the Midjourney prompts for every image the plan needs. Photorealistic, shot on Hasselblad, warm cinematic light, inclusively cast with authority distributed across the people shown. Give each prompt the filename it will be saved as, and put the aspect ratio last.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <h3 class="zoom"><span class="zk">One from the library, revealed</span>What a prompt becomes</h3>
+    <div class="pair">
+      <div class="ptext">
+        <div class="pk">The prompt · Midjourney</div>
+        <div class="fname">m7-hero-lighthouse-keeper.jpg</div>
+        <div class="prompt">Photorealistic editorial Hasselblad photograph of a lighthouse keeper — a weathered Torres Strait Islander man in his 60s in a wool jumper — making a routine logbook entry at dusk inside the lamp room, the great lens turning slowly behind him, calm sea and long horizon through the glass, ritual and vigilance in equal measure, shot on Hasselblad H6D-100c with HC 50mm f/3.5 lens, warm lamp light against blue hour, cinematic serenity <em>--ar 21:9</em></div>
+      </div>
+      <div class="pimg" data-reveal-img>
+        <img src="pics/s6-m7-hero-lighthouse-keeper.jpg" alt="A lighthouse keeper making a logbook entry at dusk, the lamp turning behind him" width="1680" height="720" loading="lazy" decoding="async">
+        <div class="cover"><button type="button" class="btn amber">Reveal the picture</button></div>
+        <div class="pcap">From the Agentic AI for Leaders library — Module 7, "Governing Autonomy Over Time". The metaphor was chosen in the plan, not in Midjourney.</div>
+      </div>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>One document, fifty-odd prompts.</h4><p>A casting note at the top, then heroes, module cards and portraits in order, each ending with the filename and the ratio. Read one aloud, slowly — it's a brief.</p></div>
+      <div class="bigcard"><div class="bn">The rule worth stealing</div><h4>Nobody is only ever the junior.</h4><p>Generative tools default to a type. If you don't write the room you want, you get the room the training data imagines — and your learners will notice before you do.</p></div>
+      <div class="bigcard"><div class="bn">Check</div><h4>Is the filename in the prompt?</h4><p>That's what makes step 4 possible. A prompt without a filename is a picture you'll be renaming by hand on Thursday.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>The house style and casting note are Act and Please, written once. Every prompt underneath inherits them — fifty pictures from fifty briefs that still read as one photographer.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      Say the line, scroll the library once, then do the reveal pair below it: read the prompt aloud, reveal, let the room compare. The casting rule card is the one to read in full. Generating the images happens in Midjourney, not here — say that you've done that already and have them in the folder.
+    </div>
+  </section>
+
+  <section class="chapter s2" id="rename" data-ch="rename" data-title="Ask it to rename the images">
+    <div class="ch-mark"><span class="num">07</span><span class="sec">Section 2 · Step 4 of 6</span><span class="ln"></span><span class="time">30:00 – 32:00</span></div>
+    <h2 class="ch-title">Ask it to rename the images</h2>
+    <p class="ch-lede">Midjourney hands back files called things like <code>rupert_a_lighthouse_keeper_at_dusk_3f9a2c.png</code>. The plan already knows what each one should be called. So you ask.</p>
+
+    <div class="pipe" data-stop="4" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Rename all the Midjourney images in the folder to match the filenames in the prompt library, and put them in the course's pics folder.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>A table: old name → new name.</h4><p>It matches each image to its prompt by what's in the picture and the Midjourney filename, renames it, and tells you which ones it couldn't place. Those are usually the alternates.</p></div>
+      <div class="bigcard"><div class="bn">Why this is a step at all</div><h4>Boring work is the point.</h4><p>Fifty renames by hand is an afternoon. This is a sentence. The whole session is about which jobs become a sentence.</p></div>
+      <div class="bigcard"><div class="bn">Check</div><h4>Count them.</h4><p>The plan says how many images it needs. The pics folder should hold that many, named exactly as the prompts said. Anything missing gets generated before step 5.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>Context again: it can only rename what it can see. The images are in the folder, the prompt library is in the folder — so the match is on the desk.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      Two minutes. Show the before/after table it produces and move on. If a few images didn't place, say so — that honesty lands better than pretending it's magic.
+    </div>
+  </section>
+
+  <section class="chapter s2" id="module1" data-ch="module1" data-title="Do the first module, with the images">
+    <div class="ch-mark"><span class="num">08</span><span class="sec">Section 2 · Step 5 of 6</span><span class="ln"></span><span class="time">32:00 – 38:00</span></div>
+    <h2 class="ch-title">Do the first module, with the images</h2>
+    <p class="ch-lede">Now it builds. One module only — because you check the first one properly before you let it run the rest. Module 1 is the test of everything above.</p>
+
+    <div class="pipe" data-stop="5" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Do the first module of the AI for Productivity interactive workbook, including the images. Follow the plan: hub card, module page, every activity numbered and named exactly, captured and autosaved, images from the pics folder.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>Files appearing in the course folder.</h4><p>The hub, the shared CSS and JS, Module 1 — then it opens in a browser. Zoom on an activity: same number, same name, same case as the printed workbook, now captured.</p></div>
+      <div class="bigcard"><div class="bn">Zoom on</div><h4>The hero image in place.</h4><p>That's steps 3 and 4 paying off — the picture that was a sentence of prompt ten minutes ago, sitting at the top of a live page with the right filename.</p></div>
+      <div class="bigcard"><div class="bn">Check</div><h4>Open the printed workbook beside it.</h4><p>Module name, activity 1.1, 1.2, 1.3. If anything drifted, say "fidelity first — fix it" before anything else gets built.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>Cutoff dates: it was never trained on this course, so everything correct on this page came from the folder. Everything wrong came from the model guessing. The check is how you tell them apart.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      This is the longest wait of the session. Have a finished Module 1 from a dry run open in another tab, so you can show the result even if the live build is still running at 37:00. Narrate the files as they appear; don't fill the silence with theory.
+    </div>
+  </section>
+
+  <section class="chapter s2" id="continue" data-ch="continue" data-title=""Continue with all phases."">
+    <div class="ch-mark"><span class="num">09</span><span class="sec">Section 2 · Step 6 of 6</span><span class="ln"></span><span class="time">38:00 – 41:00</span></div>
+    <h2 class="ch-title">"Continue with all phases."</h2>
+    <p class="ch-lede">Module 1 checked, you say four words and leave it running. The rest of the workbook builds while you close the session.</p>
+
+    <div class="pipe" data-stop="6" aria-label="The six steps">
+      <div class="stop"><span class="pn">1</span>Give it the folder</div>
+      <div class="stop"><span class="pn">2</span>Phased plan</div>
+      <div class="stop"><span class="pn">3</span>Midjourney prompts</div>
+      <div class="stop"><span class="pn">4</span>Rename the images</div>
+      <div class="stop"><span class="pn">5</span>Module 1</div>
+      <div class="stop"><span class="pn">6</span>Continue</div>
+    </div>
+
+    <div class="say">
+      <div class="say-k">Say this</div>
+      <div class="say-q" data-say>Continue with all phases.</div>
+      <button type="button" class="btn amber copy-say">Copy</button>
+    </div>
+
+    <div class="bigcards">
+      <div class="bigcard"><div class="bn">What you'll see</div><h4>Phase after phase, each with a backup.</h4><p>Modules 2 to 8, the plan page, references, the cheat-sheet slot — one phase at a time, a <code>.pre-pN.bak</code> beside every file it overwrites, tests after each.</p></div>
+      <div class="bigcard"><div class="bn">What you do</div><h4>Nothing.</h4><p>That's the point of the plan. Four words are enough because the brief, the context and the checks were all done at steps 1 to 5.</p></div>
+      <div class="bigcard"><div class="bn">Check — later</div><h4>Run the tests. Then read it like a learner.</h4><p>The automated battery catches structure. Only you catch tone. Budget an hour for that before a cohort sees it.</p></div>
+
+    </div>
+
+    <div class="tie"><span class="tie-k">Section 1</span>Section 2 was Section 1 at scale: a long brief, a clean desk with the course on it, and no trust in anything the model couldn't have seen. Four words at the end — because the work was done at the start.</div>
+
+    <div class="runstrip">
+      <b>Facilitator</b>
+      Say the four words at 38:00, show the first new files landing, then switch to the close. Don't wait for it to finish; if someone asks, it'll be done before they're back at their desk.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       08 · CLOSE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="chapter s0" id="close" data-ch="close" data-title="Close">
+    <div class="ch-mark"><span class="num">10</span><span class="sec">Close</span><span class="ln"></span><span class="time">41:00 – 45:00</span></div>
+    <h2 class="ch-title">Section 2 was Section 1 at scale.</h2>
+    <p class="ch-lede">A brief that says who, what and exactly what. A desk with only what the job needs on it. And no trust in what the model couldn't have seen. That's the whole method.</p>
+
+    <div class="closegrid">
+      <div class="closecard">
+        <div class="cbar"></div>
+        <img src="pics/cop-commitment.jpg" alt="A hand lifting a pen from a card bearing one handwritten line" width="1344" height="896" loading="lazy" decoding="async">
+        <div class="cp">
+          <div class="ck">One thing</div>
+          <h3>Before my next session I will…</h3>
+          <p>Specific beats ambitious. "Rewrite my scenario prompt as a brief" outlives "use AI more" by about a year.</p>
+          <div class="field" style="margin-bottom:0">
+            <label for="mecommit" class="visually-hidden-label">Before my next session I will</label>
+            <input type="text" id="mecommit" data-key="me.commit" placeholder="e.g. turn my three debrief prompts into proper briefs">
+          </div>
+        </div>
+      </div>
+      <div class="closecard next">
+        <div class="cbar"></div>
+        <img src="pics/cop-next-question.jpg" alt="A workshop room at the end of a session, chairs turned toward each other" width="1456" height="816" loading="lazy" decoding="async">
+        <div class="cp">
+          <div class="ck">Over to you</div>
+          <h3>What should the next CoP be?</h3>
+          <p>This is a community, not a broadcast. What goes here is the brief for round two.</p>
+          <div class="field" style="margin-bottom:0">
+            <label for="menext" class="visually-hidden-label">The next CoP should be about</label>
+            <input type="text" id="menext" data-key="me.next" placeholder="e.g. building one interactive activity, hands on">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="zoom"><span class="zk">Keep this</span>What this page holds for later</h3>
+    <div class="keepthis">
+      <a href="#aep"><div class="kk">01</div><b>The AEP card</b><span>Act · Explain · Please, with a worked brief you can put in front of your own learners.</span></a>
+      <a href="#context"><div class="kk">02</div><b>The Context Meter</b><span>Four presets. Show the forgetting moment to your next cohort.</span></a>
+      <a href="#cutoff"><div class="kk">03</div><b>The Cutoff Clock</b><span>Dated. Re-check before you rely on it; the live list is linked.</span></a>
+      <a href="#prompts"><div class="kk">06</div><b>The six prompts</b><span>The six things to say, in order, with Copy buttons — run it yourself on your next course.</span></a>
+    </div>
+
+    <div class="takeaway">
+      <div class="tt">
+        <h3>Take your notes with you</h3>
+        <p>Your brief and your commitment on one printable page. Everything stays in this browser; nothing is sent anywhere.</p>
+      </div>
+      <div class="field" style="margin:0;min-width:200px">
+        <label for="mename">Your name (optional)</label>
+        <input type="text" id="mename" data-key="me.name" placeholder="for the printout header">
+      </div>
+      <button class="btn primary" data-action="print-notes">Take my notes with me</button>
+    </div>
+
+    <div class="runstrip">
+      <b>Facilitator · 41:00–45:00</b>
+      Read the title and the lede; that's the spine paid off. Then ask for commitments — two or three from the room, typed in by you. Then the next-CoP question, and mean it: if the answer is "we want to build one ourselves, hands on", that's round two written for you.
+    </div>
+  </section>
+
+</div>
+</main>
+
+<section class="quoteband withrail">
+  <div class="inner">
+    <div class="eyebrow">The point</div>
+    <p>Brief it properly. Keep the desk clear. Don't trust what it couldn't have seen. Everything else is scale.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer class="withrail">
+  <div class="wrap row">
+    <div>
+      <div class="tick"></div>
+      <div class="lt">AIM · Community of Practice · Prompt it. Build it.</div>
+      <p>Everything you type here is saved in this browser only. Nothing is sent anywhere, and nobody else can see it.</p>
+    </div>
+    <div class="fbtns">
+      <button class="fbtn" data-action="print-notes">Take my notes with me</button>
+      <button class="fbtn" data-action="reset-state">Start over</button>
+    </div>
+  </div>
+</footer>
+
+<div id="printdoc"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ENGINE — window.COP  (carried over from v1, unchanged in contract)
+       · re-reads storage before every write (multi-tab safe)
+       · listens for `storage` so a second tab stays honest
+       · one rows() drives both screen and print
+     v2 changes: Present is the default mode (new key cop.mode.v2 so a
+     v1 "self" preference doesn't leak in), five progress keys, new title.
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+window.COP = (function(){
+  'use strict';
+  var NS='cop.capture', MODE='cop.mode.v2', V=2;
+  var COURSE='community-of-practice';
+  var TITLE='Prompt it. Build it.';
+
+  var PROGRESS_KEYS=['s1.act','s1.explain','s1.please','me.commit','me.next'];
+
+  function readAll(){ try{ return JSON.parse(localStorage.getItem(NS)||'{}')||{}; }catch(e){ return {}; } }
+  function writeAll(o){ try{ localStorage.setItem(NS,JSON.stringify(o)); }catch(e){} }
+  function get(key,fallback){
+    var v=readAll()[key];
+    return (v===undefined||v===null) ? (fallback===undefined?'':fallback) : v;
+  }
+  function has(key){ return String(get(key)).trim()!==''; }
+  function del(key){ set(key,''); }
+  function set(key,value,opts){
+    var cap=readAll();
+    if(value===''||value===null||value===undefined){ delete cap[key]; }
+    else { cap[key]=String(value); }
+    writeAll(cap);
+    if(!opts||!opts.silent) savedFlash();
+    document.dispatchEvent(new CustomEvent('cop:change',{detail:{key:key,value:value}}));
+  }
+  function countWith(prefix){
+    var cap=readAll(), n=0;
+    for(var k in cap){ if(k.indexOf(prefix)===0 && String(cap[k]).trim()!=='') n++; }
+    return n;
+  }
+  function progress(keys){
+    var list=keys||PROGRESS_KEYS, have=0;
+    list.forEach(function(k){ if(has(k)) have++; });
+    return { have:have, total:list.length, frac:list.length?have/list.length:0 };
+  }
+  window.addEventListener('storage',function(e){
+    if(e.key!==NS) return;
+    wireFields(); refreshGates();
+    document.dispatchEvent(new CustomEvent('cop:change',{detail:{external:true}}));
+  });
+
+  var saveTimer=null;
+  function savedFlash(){
+    var bar=document.getElementById('cop-savebar');
+    if(!bar) return;
+    bar.classList.add('on');
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){ bar.classList.remove('on'); },1600);
+  }
+
+  var debounces={};
+  function fieldValue(el){
+    var key=el.getAttribute('data-key');
+    if(el.type==='checkbox'){
+      var siblings=document.querySelectorAll('input[type="checkbox"][data-key="'+key+'"]');
+      if(el.hasAttribute('data-multi')||siblings.length>1){
+        var vals=[]; siblings.forEach(function(c){ if(c.checked) vals.push(c.value||'1'); });
+        return vals.join('; ');
+      }
+      return el.checked ? (el.value && el.value!=='on' ? el.value : '1') : '';
+    }
+    if(el.type==='radio'){
+      var sel=document.querySelector('input[type="radio"][data-key="'+key+'"]:checked');
+      return sel?sel.value:'';
+    }
+    return el.value;
+  }
+  function restoreField(el){
+    var v=get(el.getAttribute('data-key'));
+    if(el.type==='checkbox'){ var multi=v.split('; '); el.checked=(v!=='')&&(multi.indexOf(el.value||'1')!==-1||v==='1'); }
+    else if(el.type==='radio'){ el.checked=(el.value===v); }
+    else { el.value=v; }
+  }
+  function wireFields(root){
+    (root||document).querySelectorAll('[data-key]').forEach(function(el){
+      if(!/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) return;
+      restoreField(el);
+      if(el.getAttribute('data-wired')==='1') return;
+      el.setAttribute('data-wired','1');
+      var key=el.getAttribute('data-key');
+      var immediate=(el.tagName==='SELECT'||el.type==='radio'||el.type==='checkbox'||el.type==='range');
+      el.addEventListener(immediate?'change':'input',function(){
+        clearTimeout(debounces[key]);
+        debounces[key]=setTimeout(function(){ set(key,fieldValue(el)); refreshGates(); }, immediate?0:400);
+      });
+    });
+  }
+
+  function gateReady(btn){
+    var req=(btn.getAttribute('data-requires')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+    return req.every(has);
+  }
+  function applyReveal(btn){
+    var sel=btn.getAttribute('data-reveal');
+    var target=sel?document.querySelector(sel):null;
+    if(target) target.classList.add('revealed');
+    btn.classList.add('done'); btn.disabled=true;
+    var lbl=btn.getAttribute('data-revealed-label'); if(lbl) btn.textContent=lbl;
+  }
+  function refreshGates(){
+    document.querySelectorAll('[data-requires]').forEach(function(btn){
+      if(btn.classList.contains('done')) return;
+      btn.disabled=!gateReady(btn);
+    });
+  }
+  function wireReveals(root){
+    (root||document).querySelectorAll('[data-requires]').forEach(function(btn){
+      if(btn.getAttribute('data-wired')==='1') return;
+      btn.setAttribute('data-wired','1');
+      var sel=btn.getAttribute('data-reveal')||'';
+      var id=sel.replace(/^#/,'')||Math.random().toString(36).slice(2);
+      var rkey=btn.getAttribute('data-reveal-key')||('rv.'+id);
+      if(get(rkey)==='1'){ applyReveal(btn); return; }
+      btn.disabled=!gateReady(btn);
+      btn.addEventListener('click',function(){
+        if(btn.disabled) return;
+        set(rkey,'1',{silent:true}); applyReveal(btn); savedFlash();
+      });
+    });
+  }
+
+  /* ── modes — Present is the default on this page ───────── */
+  function applyMode(mode){
+    document.body.classList.toggle('present',mode==='present');
+    document.body.classList.toggle('self',mode!=='present');
+    document.querySelectorAll('#cop-mode button').forEach(function(b){
+      b.classList.toggle('on',b.getAttribute('data-mode')===mode);
+      b.setAttribute('aria-pressed',String(b.getAttribute('data-mode')===mode));
+    });
+  }
+  function setMode(mode){ try{ localStorage.setItem(MODE,mode); }catch(e){} applyMode(mode); }
+  function initMode(){
+    var mode='present';
+    try{ mode=localStorage.getItem(MODE)||'present'; }catch(e){}
+    applyMode(mode);
+  }
+
+  function injectChrome(){
+    if(!document.getElementById('cop-savebar')){
+      var bar=document.createElement('div');
+      bar.id='cop-savebar'; bar.setAttribute('aria-live','polite'); bar.textContent='Saved automatically';
+      document.body.appendChild(bar);
+    }
+    var nav=document.querySelector('header.chrome nav');
+    if(nav && !document.getElementById('cop-mode')){
+      var mt=document.createElement('div');
+      mt.id='cop-mode'; mt.className='modeToggle';
+      mt.innerHTML='<button type="button" data-mode="present" aria-pressed="true">Present</button>'+
+                   '<button type="button" data-mode="self" aria-pressed="false">Self-paced</button>';
+      mt.addEventListener('click',function(e){
+        var b=e.target.closest('button[data-mode]'); if(b) setMode(b.getAttribute('data-mode'));
+      });
+      nav.appendChild(mt);
+    }
+  }
+
+  function drawProgress(){
+    var p=progress();
+    var fill=document.getElementById('progFill'), label=document.getElementById('progLabel');
+    if(fill) fill.style.width=Math.round(p.frac*100)+'%';
+    if(label) label.textContent=p.have+' / '+p.total;
+  }
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>'); }
+  function rows(pairs){
+    return pairs.map(function(r){
+      var v=(typeof r[1]==='function')?r[1]():get(r[1]);
+      return '<div class="pd-row"><div class="pd-label">'+r[0]+'</div><div class="pd-value">'+
+        (String(v).trim()?esc(v):'<em>Not filled in — that’s fine, it’s yours to finish.</em>')+'</div></div>';
+    }).join('');
+  }
+  function printDoc(title,bodyHtml){
+    var old=document.getElementById('printdoc');
+    var d=old||document.createElement('div'); d.id='printdoc';
+    var date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+    var who=get('me.name');
+    d.innerHTML='<div class="pd-head"><img class="pd-logo" src="assets/img/aim-logo-blue.png" alt="AIM">'+
+      '<div class="pd-brand">AIM · Community of Practice</div><h1>'+title+'</h1>'+
+      '<div class="pd-meta">'+(who?esc(who)+' · ':'')+date+'</div></div>'+bodyHtml+
+      '<div class="pd-foot">Prompt it. Build it. — Australian Institute of Management</div>';
+    if(!old) document.body.appendChild(d);
+    document.body.classList.add('printing');
+    var cleanup=function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint',cleanup); };
+    window.addEventListener('afterprint',cleanup);
+    window.print();
+    setTimeout(cleanup,60000);
+  }
+  function resetAll(){
+    var msg='Start over?\n\nThis erases everything typed on this page in this browser — the brief and the commitments.\n\nIf you might want them later, Cancel and use “Take my notes with me” first.';
+    if(!window.confirm(msg)) return;
+    try{ localStorage.removeItem(NS); }catch(e){}
+    location.reload();
+  }
+  function wireActions(root){
+    (root||document).querySelectorAll('[data-action]').forEach(function(el){
+      if(el.getAttribute('data-wired')==='1') return;
+      el.setAttribute('data-wired','1');
+      var a=el.getAttribute('data-action');
+      if(a==='reset-state') el.addEventListener('click',resetAll);
+      if(a==='print-notes') el.addEventListener('click',function(){
+        printDoc('My notes from the Community of Practice', rows([
+          ['My brief · Act','s1.act'],
+          ['My brief · Explain','s1.explain'],
+          ['My brief · Please','s1.please'],
+          ['Before my next session I will','me.commit'],
+          ['The next CoP should be','me.next']
+        ]));
+      });
+    });
+  }
+
+  function boot(){
+    if(/[?&]facilitator=1/.test(location.search)) document.body.classList.add('facilitator');
+    injectChrome(); initMode(); wireFields(); wireReveals(); wireActions(); refreshGates(); drawProgress();
+    document.addEventListener('cop:change',drawProgress);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+
+  return {
+    get:get, set:set, del:del, has:has, getAll:readAll, countWith:countWith, progress:progress,
+    wireFields:wireFields, wireReveals:wireReveals, wireActions:wireActions, refreshGates:refreshGates,
+    drawProgress:drawProgress, setMode:setMode, printDoc:printDoc, rows:rows, resetAll:resetAll,
+    esc:esc, PROGRESS_KEYS:PROGRESS_KEYS, COURSE:COURSE, TITLE:TITLE, V:V
+  };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   CHROME CONTROLLER — chapter rail scroll-spy, header "here" chip,
+   pipeline rail state. Requires window.COP.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var chapters=[].slice.call(document.querySelectorAll('[data-ch]')).filter(function(el){ return el.tagName==='SECTION'; });
+  var links=document.querySelectorAll('.rail a[data-ch]');
+  var chip=document.getElementById('hereChip');
+  var NUM={open:'00',aep:'01',context:'02',cutoff:'03',folder:'04',plan:'05',prompts:'06',rename:'07',module1:'08','continue':'09',close:'10'};
+  var current=null;
+  function setCurrent(id){
+    if(id===current) return;
+    current=id;
+    links.forEach(function(a){ a.classList.toggle('on',a.getAttribute('data-ch')===id); });
+    var sec=document.querySelector('section[data-ch="'+id+'"]');
+    if(chip && sec) chip.textContent=(NUM[id]||'')+' · '+(sec.getAttribute('data-title')||'').replace(/&amp;/g,'&');
+  }
+  function spy(){
+    var line=window.innerHeight*0.35, best=null;
+    chapters.forEach(function(s){
+      var r=s.getBoundingClientRect();
+      if(r.top<=line) best=s;
+    });
+    if(best) setCurrent(best.getAttribute('data-ch'));
+  }
+  var raf=null;
+  window.addEventListener('scroll',function(){ if(raf) return; raf=requestAnimationFrame(function(){ raf=null; spy(); }); },{passive:true});
+  window.addEventListener('resize',spy);
+  spy();
+
+  /* pipeline rails: light the current stop, mark earlier ones done */
+  document.querySelectorAll('.pipe[data-stop]').forEach(function(p){
+    var n=+p.getAttribute('data-stop');
+    p.querySelectorAll('.stop').forEach(function(s,i){
+      s.classList.toggle('on',i+1===n);
+      s.classList.toggle('done',i+1<n);
+      if(i+1===n) s.setAttribute('aria-current','step');
+    });
+  });
+
+  /* prompt → picture reveals (not persisted: the reveal is the moment) */
+  document.querySelectorAll('[data-reveal-img]').forEach(function(box){
+    var b=box.querySelector('.cover button');
+    if(!b) return;
+    b.addEventListener('click',function(){ box.classList.add('shown'); });
+  });
+
+  /* "Say this" copy buttons */
+  document.querySelectorAll('.say .copy-say').forEach(function(b){
+    b.addEventListener('click',function(){
+      var q=b.closest('.say').querySelector('[data-say]'); if(!q) return;
+      var text=q.textContent.trim(), done=function(){ b.textContent='Copied ✓'; setTimeout(function(){ b.textContent='Copy'; },1600); };
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,function(){ fallback(text,done); }); } else fallback(text,done);
+    });
+  });
+  function fallback(text,done){ var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;top:0;left:-9999px'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} ta.remove(); }
+
+  window.COP_CHROME={ current:function(){ return current; }, spy:spy };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   01 — AEP BRIEF BUILDER (v1 mechanic, reframed for course content)
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if(!window.COP) return;
+
+  var SEEDS=[
+    { label:'Feedback case study',
+      act:'a learning designer at the Australian Institute of Management who writes plain, warm, practical course material',
+      explain:'I\'m running a 20-minute activity for first-time managers on giving feedback. Australian workplace, plain language, no jargon, no American spellings. They\'ll read it on paper in pairs.',
+      please:'Write a 400-word case study with one realistic dilemma and three discussion questions. Plain text, no headings.' },
+    { label:'Debrief questions',
+      act:'an experienced facilitator who designs reflective debriefs for adult learners',
+      explain:'I run a one-day leadership workshop for about 20 mid-level managers in a corporate setting. The afternoon activity is a role-play on having a difficult conversation. People are tired by then and the usual three debrief questions have gone stale.',
+      please:'Give me twelve debrief questions in three sets of four — what happened, what it felt like, what changes on Monday. Short, open, no yes/no questions. Plain list.' },
+    { label:'Scenario cards',
+      act:'a curriculum writer who specialises in realistic workplace scenarios for Australian organisations',
+      explain:'I teach a decision-making module to new team leaders in a government agency. Participants work in groups of four through one scenario each. They know the theory; they need practice applying it under ambiguity.',
+      please:'Write six scenario cards. Each: a title, a 120-word situation with one genuine tension, the role the reader is playing, and the single decision they must make. No right answer should be obvious. Plain text.' },
+    { label:'Quiz for a module',
+      act:'an assessment designer who writes fair, unambiguous multiple-choice questions',
+      explain:'Participants have just finished a module on psychological safety. I want a quick check for understanding, not a test — it runs on screen and people answer by show of hands.',
+      please:'Write eight multiple-choice questions with four options each, one correct answer, and a one-line explanation of why. Mix recall and application. Mark the correct answer. Plain text.' },
+    { label:'Slide outline',
+      act:'a presentation designer who builds sparse, visual slides for corporate training',
+      explain:'I am turning a 25-page section of a facilitator guide on change management into a 20-minute talk for senior leaders. They are impatient with text-heavy slides and want to be shown, not told.',
+      please:'Give me a slide-by-slide outline: twelve slides, each with a six-word title, one line of speaker intent, and a suggested visual. No bullet lists on the slides themselves. Plain text.' },
+    { label:'Image brief',
+      act:'an art director who writes precise image-generation prompts for editorial photography',
+      explain:'I need a hero image for a leadership module called "Lead Through AI Change". The house style is photorealistic, warm cinematic light, contemporary Australian corporate settings, inclusively cast with authority distributed across the people shown.',
+      please:'Write one image-generation prompt of about 80 words that follows that style, names the camera and lens, places a specific person in a specific moment, and ends with the aspect ratio 21:9.' }
+  ];
+
+  var TAIL = '';
+
+  function assemble(){
+    var act=COP.get('s1.act').trim(), ex=COP.get('s1.explain').trim(), pl=COP.get('s1.please').trim();
+    if(!act && !ex && !pl) return null;
+    var parts=[];
+    parts.push(act ? 'You are '+act.replace(/\.$/,'')+'.' : null);
+    parts.push(ex || null);
+    parts.push(pl || null);
+    if(TAIL) parts.push(TAIL);
+    return parts.filter(Boolean).join('\n\n');
+  }
+  function drawPrompt(){
+    var out=document.getElementById('promptOut'); if(!out) return;
+    var p=assemble();
+    if(!p) out.innerHTML='<span class="ph">Fill in a box on the left — or click a starting point — and the brief appears here.</span>';
+    else out.textContent=p;
+    drawMeter();
+  }
+  var WORDS=function(s){ return String(s).trim().split(/\s+/).filter(Boolean).length; };
+  function checks(){
+    var act=COP.get('s1.act'), ex=COP.get('s1.explain'), pl=COP.get('s1.please');
+    return {
+      role:   WORDS(act)>=3,
+      who:    WORDS(ex)>=12 && /\b(i|we|my|our|team|cohort|class|group|groups|students|learners|participants|managers|leaders|room|workshop|session|module|course|people|staff|attendees)\b/i.test(ex),
+      format: WORDS(pl)>=10 && /\b(write|build|make|create|give|generate|produce|draft|list|outline|case study|questions?|cards?|quiz|slides?|prompt|words?|plain text|headings?)\b/i.test(pl),
+      length: WORDS(act)+WORDS(ex)+WORDS(pl) >= 45
+    };
+  }
+  function drawMeter(){
+    var m=document.getElementById('gmeter'); if(!m) return;
+    var c=checks(), n=['role','who','format','length'].filter(function(k){return c[k];}).length;
+    m.querySelectorAll('.gm-dot').forEach(function(d,i){ d.classList.toggle('on',i<n); d.classList.toggle('full',n===4); });
+    m.querySelectorAll('li[data-check]').forEach(function(li){ li.classList.toggle('met',!!c[li.getAttribute('data-check')]); });
+    var s=document.getElementById('gmScore'); if(s) s.textContent=n+' / 4';
+  }
+  function copyText(text,btn,label){
+    var done=function(){ var old=btn.textContent; btn.textContent=label||'Copied ✓'; setTimeout(function(){ btn.textContent=old; },1600); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,function(){ legacy(text,done); }); }
+    else legacy(text,done);
+  }
+  function legacy(text,done){
+    var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;top:0;left:-9999px';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    ta.remove();
+  }
+  function fillSeed(seed){
+    COP.set('s1.act',seed.act,{silent:true});
+    COP.set('s1.explain',seed.explain,{silent:true});
+    COP.set('s1.please',seed.please);
+    COP.wireFields(); COP.refreshGates(); drawPrompt();
+  }
+  function buildSeeds(){
+    var row=document.getElementById('seedRow'); if(!row) return;
+    SEEDS.forEach(function(s){
+      var b=document.createElement('button'); b.type='button'; b.className='seedchip'; b.textContent=s.label;
+      b.addEventListener('click',function(){ fillSeed(s); });
+      row.appendChild(b);
+    });
+  }
+  function boot(){
+    buildSeeds(); drawPrompt();
+    document.addEventListener('cop:change',function(e){
+      var k=e.detail&&e.detail.key;
+      if(!k || /^s1\./.test(k) || e.detail.external) drawPrompt();
+    });
+    var cp=document.getElementById('copyPrompt');
+    if(cp) cp.addEventListener('click',function(){ var p=assemble(); if(p) copyText(p,cp,'Copied ✓'); else copyText('',cp,'Nothing to copy yet'); });
+    var cl=document.getElementById('clearBrief');
+    if(cl) cl.addEventListener('click',function(){
+      ['s1.act','s1.explain','s1.please'].forEach(function(k){ COP.set(k,'',{silent:true}); });
+      COP.wireFields(); COP.refreshGates(); drawPrompt(); COP.drawProgress();
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+  window.COP_AEP={ assemble:assemble, checks:checks, SEEDS:SEEDS, fillSeed:fillSeed };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   02 — THE CONTEXT METER
+   Blocks are widths in "desk units" where the desk is 100. Anything
+   past 100 pushes the strip left; the blocks that fall off the edge
+   grey out. Deliberately not to scale — the caption says so.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var PRESETS=[
+    { id:'short', label:'A short chat', tone:'good', icon:'✓',
+      blocks:[['sys','App instructions',6],['brief','Your brief',8],['conv','Chat so far',10],['ans','Answer',10]],
+      verdict:'Everything it needs is in view and most of the desk is clear. This is the model at its best — and it\'s how most people start.' },
+    { id:'doc', label:'You pasted the whole facilitator guide', tone:'warn', icon:'!',
+      blocks:[['sys','App instructions',6],['brief','Your brief',8],['doc','Facilitator Guide · 171 pp',66],['conv','Chat so far',6],['ans','Answer',10]],
+      verdict:'It fits — just. Now ask about page 3 and page 140 in the same question and watch the answer go vague. A big window is not the same as perfect recall of everything on it.' },
+    { id:'long', label:'An hour-long conversation', tone:'bad', icon:'✕',
+      blocks:[['sys','App instructions',6],['conv','Minute 2',20],['conv','Minute 9',20],['brief','Your original brief',10],['conv','Minute 20',21],['conv','Minute 31',21],['conv','Minute 44',21],['conv','Minute 55',21],['ans','Answer',10]],
+      verdict:'The start of this conversation — including your original brief — is no longer on the desk. It isn\'t being coy about what you said at minute two. It can\'t see it.' },
+    { id:'fresh', label:'New chat, one task', tone:'good', icon:'✓',
+      blocks:[['sys','App instructions',6],['brief','Your brief',10],['doc','Just the 4 pages it needs',18],['ans','Answer',12]],
+      verdict:'A clean desk with only what the job needs. This is the habit: new task, new chat — and paste the pages, not the book.' }
+  ];
+  var strip=document.getElementById('deskStrip'), desk=document.getElementById('desk'),
+      verdict=document.getElementById('meterVerdict'), pct=document.getElementById('fillPct'),
+      edge=document.getElementById('edgeLabel'), host=document.getElementById('meterPresets');
+  if(!strip||!host) return;
+
+  var current=null;
+  function render(p){
+    current=p.id;
+    host.querySelectorAll('.presetbtn').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-id')===p.id); b.setAttribute('aria-pressed',String(b.getAttribute('data-id')===p.id)); });
+    var total=p.blocks.reduce(function(a,b){ return a+b[2]; },0);
+    var over=Math.max(0,total-100);
+    /* rebuild the strip so widths animate from a sensible start */
+    strip.innerHTML='';
+    var acc=0;
+    p.blocks.forEach(function(b){
+      var d=document.createElement('div');
+      d.className='blk '+b[0];
+      d.style.width=(b[2]/total*100)+'%';          /* % of the strip, which is total% of the desk */
+      d.title=b[1]+' · '+b[2]+' units';
+      d.innerHTML=(b[2]>=8?'<span>'+b[1]+'<small>'+b[2]+' units</small></span>':'');
+      /* a block is "gone" if it ends before the visible edge */
+      if(acc < over-0.01) d.classList.add('gone');   /* starts off the edge — fully or partly lost */
+      acc+=b[2];
+      strip.appendChild(d);
+    });
+    strip.style.width=total+'%';
+    /* the transform is a % of the strip's own width — convert desk-units to strip-% */
+    requestAnimationFrame(function(){ strip.style.transform='translateX(-'+(over/total*100)+'%)'; });
+    desk.classList.toggle('over',over>0);
+    pct.textContent=Math.min(100,Math.round(total))+'% full'+(over>0?' · '+Math.round(over)+' units lost':'');
+    edge.textContent=over>0?'◄ Off the edge — no longer visible to the model':'';
+    verdict.className='verdict '+p.tone;
+    verdict.innerHTML='<div class="vi">'+p.icon+'</div><p>'+p.verdict+'</p>';
+  }
+  PRESETS.forEach(function(p){
+    var b=document.createElement('button'); b.type='button'; b.className='presetbtn'; b.textContent=p.label;
+    b.setAttribute('data-id',p.id); b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){ render(p); });
+    host.appendChild(b);
+  });
+  render(PRESETS[0]);
+  window.COP_METER={ PRESETS:PRESETS, show:function(id){ var p=PRESETS.filter(function(x){return x.id===id;})[0]; if(p) render(p); }, current:function(){ return current; } };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   03 — THE MODEL CUTOFF CLOCK
+   Dates checked 5 October 2026 against vendor documentation and the
+   public cutoff trackers. Months only. Re-check before relying on them.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  var TODAY=new Date(2026,9,5);          /* 5 Oct 2026 — the day the dates were checked */
+  var MODELS=[
+    { nm:'ChatGPT — GPT-5.6 (the default)', cut:[2026,2], rel:[2026,7], note:'The model most people are using when they open ChatGPT. Anything after February 2026 it has never seen — until you turn web search on.' },
+    { nm:'ChatGPT — GPT-6 Astra', cut:[2026,4], rel:[2026,9], note:'OpenAI\'s flagship tier. Newer model, and still a snapshot: the cutoff is five months before release.' },
+    { nm:'Claude Fable 5.1', cut:[2026,6], rel:[2026,9], note:'Anthropic\'s top tier, and one of the freshest cutoffs published — still a training-time snapshot, not a live feed.' },
+    { nm:'Claude Opus 5.5', cut:[2026,6], rel:[2026,9], note:'Same June 2026 cutoff as Fable 5.1. Two different models, one snapshot of the world.' },
+    { nm:'Gemini 3.8 Flash', cut:[2026,3], rel:[2026,9], note:'Google publishes March 2026 — and warns that some topics still stop at January 2025. "Recent" is not the same as "today".' },
+    { nm:'Grok 4.7', cut:[2026,5], rel:[2026,9], note:'Connected to X in real time, so it behaves differently to the others — but a live feed of posts is not the same as being correct.' }
+  ];
+  var dial=document.getElementById('modelDial'), tl=document.getElementById('timeline');
+  if(!dial||!tl) return;
+
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function label(ym){ return MON[ym[1]-1]+' '+ym[0]; }
+  function months(a,b){ return (b[0]-a[0])*12+(b[1]-a[1]); }
+  var AXIS0=[2025,10], AXIS1=[2026,11];           /* Oct 2025 → Nov 2026 */
+  var SPAN=months(AXIS0,AXIS1);
+  function x(ym){ return 50 + (months(AXIS0,ym)/SPAN)*(600-100); }
+
+  function draw(i){
+    dial.querySelectorAll('.modelbtn').forEach(function(b,j){ b.classList.toggle('on',i===j); b.setAttribute('aria-pressed',String(i===j)); });
+    var m=MODELS[i];
+    var today=[TODAY.getFullYear(),TODAY.getMonth()+1];
+    var gap=months(m.cut,today);
+    var xc=x(m.cut), xr=x(m.rel), xt=x(today);
+    var svg=
+      '<svg viewBox="0 0 600 175" role="img" aria-label="Timeline: trained until '+label(m.cut)+', released '+label(m.rel)+', today '+label(today)+'">'+
+      '<line x1="30" y1="96" x2="570" y2="96" stroke="#c9c2b4" stroke-width="3"/>'+
+      /* the gap */
+      '<rect x="'+xc+'" y="78" width="'+Math.max(0,xt-xc)+'" height="36" fill="rgba(220,90,70,.2)"/>'+
+      '<text x="'+((xc+xt)/2)+'" y="150" text-anchor="middle" font-family="IBM Plex Sans Condensed" font-weight="700" font-size="17" fill="#B53D2C">'+gap+' months it has never seen</text>'+
+      /* stops */
+      stop(xc,'Training data ends',label(m.cut),'#1B5FA8')+
+      stop(xr,'Released',label(m.rel),'#8A5A0C')+
+      stop(xt,'Today',label(today),'#141414')+
+      '</svg>';
+    tl.innerHTML=
+      '<div class="lbl">Knowledge stops at</div><div class="big">'+label(m.cut)+'</div>'+
+      svg+
+      '<div class="gap">Everything after '+label(m.cut)+' — '+gap+' months of it — this model has never seen.</div>'+
+      '<div class="note">'+m.note+'</div>';
+  }
+  function stop(px,k,v,c){
+    return '<circle cx="'+px+'" cy="96" r="11" fill="'+c+'"/>'+
+      '<text x="'+px+'" y="40" text-anchor="middle" font-family="IBM Plex Sans Condensed" font-weight="700" font-size="13" letter-spacing="1.4" fill="#595959">'+k.toUpperCase()+'</text>'+
+      '<text x="'+px+'" y="64" text-anchor="middle" font-family="IBM Plex Mono" font-weight="500" font-size="17" fill="'+c+'">'+v+'</text>';
+  }
+  MODELS.forEach(function(m,i){
+    var b=document.createElement('button'); b.type='button'; b.className='modelbtn'; b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="nm">'+m.nm+'</span><span class="dt">'+label(m.cut)+'</span>';
+    b.addEventListener('click',function(){ draw(i); });
+    dial.appendChild(b);
+  });
+  draw(0);
+  window.COP_CLOCK={ MODELS:MODELS, show:draw };
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SESSION TIMER — facilitator layer only.
+   Deliberately does NOT persist: a timer that survives a reload is
+   a bug, not a feature.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  if(!/[?&]facilitator=1/.test(location.search)) return;
+
+  var PRESETS=[
+    {label:'2m',  secs:120, note:'Cold open · the pivot'},
+    {label:'5m',  secs:300, note:'One band of Section 2'},
+    {label:'6m',  secs:360, note:'One band of Section 1'},
+    {label:'7m',  secs:420, note:'Prompt → Picture'}
+  ];
+
+  var total=0, left=0, running=false, tick=null, muted=false, armed=false;
+
+  function el(id){ return document.getElementById(id); }
+  function fmt(s){
+    s=Math.max(0,Math.round(s));
+    var m=Math.floor(s/60), r=s%60;
+    return m+':'+(r<10?'0':'')+r;
+  }
+
+  function build(){
+    if(document.getElementById('copTimer')) return;
+    var t=document.createElement('div');
+    t.id='copTimer';
+    t.setAttribute('role','group');
+    t.setAttribute('aria-label','Session timer');
+    t.innerHTML=
+      '<div class="tt">'+
+        '<span class="lbl" id="tmLabel">Timer</span>'+
+        '<span class="sp">'+
+          '<button type="button" class="ic" id="tmMute" aria-pressed="false" aria-label="Mute the end chime" title="Mute the end chime">♪</button>'+
+          '<button type="button" class="ic" id="tmMin" aria-label="Collapse the timer" title="Collapse">–</button>'+
+        '</span>'+
+      '</div>'+
+      '<div class="digits" id="tmDigits" role="timer" aria-live="off">0:00</div>'+
+      '<div class="presets" id="tmPresets"></div>'+
+      '<div class="ctrl">'+
+        '<button type="button" class="go" id="tmGo">Start</button>'+
+        '<button type="button" id="tmReset">Reset</button>'+
+      '</div>'+
+      '<div class="hintline">Space to start / pause</div>';
+    document.body.appendChild(t);
+
+    var pr=el('tmPresets');
+    PRESETS.forEach(function(p){
+      var b=document.createElement('button');
+      b.type='button';
+      b.textContent=p.label;
+      b.title=p.note;
+      b.setAttribute('data-secs',p.secs);
+      b.addEventListener('click',function(){ setTime(p.secs, p.note); });
+      pr.appendChild(b);
+    });
+
+    el('tmGo').addEventListener('click',toggle);
+    el('tmReset').addEventListener('click',function(){ setTime(total||60, null); });
+    el('tmMute').addEventListener('click',function(){
+      muted=!muted;
+      this.setAttribute('aria-pressed',String(muted));
+      this.textContent=muted?'♪̸':'♪';
+      this.setAttribute('aria-label', muted?'Unmute the end chime':'Mute the end chime');
+    });
+    el('tmMin').addEventListener('click',function(){
+      var c=document.getElementById('copTimer').classList.toggle('min');
+      this.textContent=c?'+':'–';
+      this.setAttribute('aria-label', c?'Expand the timer':'Collapse the timer');
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.code!=='Space' && e.key!==' ') return;
+      if(!armed) return;                                   /* not armed: leave the page alone */
+      var t=e.target;
+      if(t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+      if(t && t.closest && t.closest('button')) return;     /* let buttons be buttons */
+      e.preventDefault();
+      toggle();
+    });
+  }
+
+  function setTime(secs, note){
+    stop();
+    total=secs; left=secs; armed=true;
+    var box=document.getElementById('copTimer');
+    box.classList.remove('warn','done');
+    document.querySelectorAll('#tmPresets button').forEach(function(b){
+      b.classList.toggle('on', +b.getAttribute('data-secs')===secs);
+    });
+    var lbl=el('tmLabel');
+    if(lbl) lbl.textContent = note || 'Timer';
+    el('tmGo').textContent='Start';
+    draw();
+  }
+
+  function draw(){
+    el('tmDigits').textContent=fmt(left);
+    var box=document.getElementById('copTimer');
+    box.classList.toggle('warn', left<=30 && left>0 && armed);
+    box.classList.toggle('done', left<=0 && armed);
+  }
+
+  function toggle(){ running?stop():start(); }
+
+  function start(){
+    if(!armed || left<=0) return;
+    running=true;
+    el('tmGo').textContent='Pause';
+    var end=Date.now()+left*1000;
+    tick=setInterval(function(){
+      left=(end-Date.now())/1000;
+      if(left<=0){ left=0; stop(); chime(); el('tmDigits').setAttribute('aria-live','polite'); }
+      draw();
+    },200);
+  }
+
+  function stop(){
+    running=false;
+    if(tick){ clearInterval(tick); tick=null; }
+    var g=el('tmGo');
+    if(g) g.textContent = (left>0 ? 'Start' : 'Start');
+  }
+
+  /* a short two-note chime, synthesised — no asset to ship or fail to load */
+  function chime(){
+    if(muted) return;
+    try{
+      var AC=window.AudioContext||window.webkitAudioContext;
+      if(!AC) return;
+      var ctx=new AC();
+      [0,0.18].forEach(function(t,i){
+        var o=ctx.createOscillator(), g=ctx.createGain();
+        o.type='sine';
+        o.frequency.value=i?784:587;      /* G5 over D5 */
+        g.gain.setValueAtTime(0.0001, ctx.currentTime+t);
+        g.gain.exponentialRampToValueAtTime(0.16, ctx.currentTime+t+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+t+0.5);
+        o.connect(g); g.connect(ctx.destination);
+        o.start(ctx.currentTime+t); o.stop(ctx.currentTime+t+0.55);
+      });
+      setTimeout(function(){ try{ctx.close();}catch(e){} }, 1400);
+    }catch(e){}
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',build);
+  else build();
+
+  window.COP_TIMER={
+    set:setTime, start:start, stop:stop, chime:chime,
+    state:function(){ return {total:total,left:left,running:running,muted:muted,armed:armed}; }
+  };
+})();
+</script>
+
+</body>
+</html>
